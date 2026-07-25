@@ -22,7 +22,7 @@ jobs:
   automerge:
     if: ${{ !github.event.pull_request.draft && !contains(github.event.pull_request.labels.*.name, 'no-automerge') }}
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 35
     env:
       GH_TOKEN: ${{ github.token }}
       PR: ${{ github.event.pull_request.number }}
@@ -33,7 +33,8 @@ jobs:
       - name: 他のチェックの完了を待って自動マージ
         run: |
           echo "PR #$PR ($SHA) のチェック完了を待機します"
-          for i in $(seq 1 50); do
+          # 上限約28分(AIレビュー(review-auto-update)の完了を待てる長さ)
+          for i in $(seq 1 84); do
             sleep 20
             runs=$(gh api "repos/$REPO/commits/$SHA/check-runs?per_page=100" \
               -q '[.check_runs[] | select(.name != "automerge")]')

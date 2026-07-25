@@ -35,7 +35,7 @@
 
 | ファイル | 内容 | 出典・クレジット |
 |---|---|---|
-| baseball.csv | プロ野球選手・歴代(type: family/given/full/registered) | Moto(選手表ニキ)様と協力者の皆様([やきゅうた広場](https://sns.prtls.jp/yakyuuta/home.html))。現役の新規追加は[Wikipedia](https://ja.wikipedia.org/) (CC BY-SA 4.0)で自動更新 |
+| baseball.csv | プロ野球選手・歴代(type: family/given/full/registered) | Moto(選手表ニキ)様と協力者の皆様。現役の新規追加は[Wikipedia](https://ja.wikipedia.org/) (CC BY-SA 4.0)で自動更新 |
 | football.csv | サッカー選手(J1〜J3・歴代) | ヨロスー様。現役の新規追加はWikipediaで自動更新 |
 | stations.csv | 駅名(現役駅+路面電車・索道。所在地・写真URL付き) | [Wikidata](https://www.wikidata.org/)/[Wikipedia](https://ja.wikipedia.org/) (CC BY-SA 4.0) で自動更新。旧リストはすきやきすきや様 |
 | nations.csv | 国名(国連加盟国) | [mledoze/countries](https://github.com/mledoze/countries) で自動更新 |
@@ -56,12 +56,16 @@
 - youtuber.csvのcategory=vtuberの行は各社(カバー・ANYCOLOR等)の知的財産であるキャラクター名です。名称と読みのみを非商用のファンメイド用途で収録しています(画像・キャラクターデザインは含みません)
 - 掲載内容について権利者からの申し出があれば速やかに対応します(Issueにてご連絡ください)
 
-## 自動更新(pokemon / nations)
+## 自動更新
 
 ネット上の公開データから自動更新できるリストは、GitHub Actions
-(`.github/workflows/update-wordlists.yml`)で年1回(1月上旬)バッチ実行し、
+(`.github/workflows/update-wordlists.yml`)で月1回(毎月6日)バッチ実行し、
 差分があればPRが作られる(要リポジトリ設定: Settings > Actions > General >
 「Allow GitHub Actions to create and approve pull requests」)。
+作られたPRはAIレビュー(`review-auto-update.yml`。Gemini API無料枠を使用、
+要 `GEMINI_API_KEY` シークレット)が追加行の品質を確認し、問題なければCI通過後に
+automergeで自動マージされる。不安があればPRコメントで報告され、マージは
+人間の確認待ちになる。
 手動実行は Actions タブの workflow_dispatch から。ローカルでは:
 
 ```sh
@@ -111,22 +115,10 @@ python3 tools/enrich_images.py     # 画像が空の人物行にCommons画像を
 
 設計判断の記録は [docs/adr/](docs/adr/) を参照。
 
-## 野球選手表の更新手順
-
-1. 最新の野球選手表を[やきゅうた広場(旧)](https://sns.prtls.jp/yakyuuta/home.html)からダウンロード
-2. Sheet1をcsvにして1−4行目を削除。文字コードはutf8。ここでは `new_baseball_raw.csv` とする
-   - 使われる列は「氏名」「球団」「フルネーム ふりがな」「姓 フリガナ」「名 フリガナ」のみ
-3. 差分csvを作成:
-   ```sh
-   cd tools
-   uv run make_diff_baseball_tidy.py -n new_baseball_raw.csv -c ../baseball.csv -o output.csv
-   ```
-4. 出力の `score`(NameDividerのスコア。低いほど怪しい)や `note` が「please check」の行を中心に名字分割を目視確認(偽陽性多め)
-5. 確認後、`score`/`note` 列を削除して `baseball.csv` に追記する(Google Sheet等の利用推奨)
-
 ## メンテナンス
 
 - `tools/` に整備用スクリプト(uv管理)
+- 提供データの一括取り込みなど手動での更新手順は [docs/](docs/) 参照
 - 更新したら利用側リポジトリで submodule を更新する:
   ```sh
   git submodule update --remote wordlists
