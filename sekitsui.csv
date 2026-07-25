@@ -14544,7 +14544,7 @@ id,original,surface,pronunciation,class,extinct,image,image_page,wikidata
 14542,フエフキダイ,フエフキダイ,フエフキダイ,魚類,no,http://commons.wikimedia.org/wiki/Special:FilePath/Naturalis_Biodiversity_Center_-_RMNH.ART.459_-_Lethrinus_haematopterus_Temminck_and_Schlegel_-_Kawahara_Keiga_-_1823_-_1829_-_Siebold_Collection_-_pencil_drawing_-_water_colour.jpeg,https://commons.wikimedia.org/wiki/File:Naturalis_Biodiversity_Center_-_RMNH.ART.459_-_Lethrinus_haematopterus_Temminck_and_Schlegel_-_Kawahara_Keiga_-_1823_-_1829_-_Siebold_Collection_-_pencil_drawing_-_water_colour.jpeg,Q2451346
 14543,フエフキミソサザイ,フエフキミソサザイ,フエフキミソサザイ,鳥類,no,http://commons.wikimedia.org/wiki/Special:FilePath/MicrocerculusKeulemans.jpg,https://commons.wikimedia.org/wiki/File:MicrocerculusKeulemans.jpg,Q1189563
 14544,フエヤッコダイ,フエヤッコダイ,フエヤッコダイ,魚類,no,http://commons.wikimedia.org/wiki/Special:FilePath/Pez_mariposa_hocicona_%28Forcipiger_flavissimus%29%2C_Anilao%2C_Filipinas%2C_2023-08-25%2C_DD_194.jpg,https://commons.wikimedia.org/wiki/File:Pez_mariposa_hocicona_%28Forcipiger_flavissimus%29%2C_Anilao%2C_Filipinas%2C_2023-08-25%2C_DD_194.jpg,Q1499346
-14545,フォストリア,フォストリア,フォストリア,爬虫類,no,http://commons.wikimedia.org/wiki/Special:FilePath/Fostoria_braincase.jpg,https://commons.wikimedia.org/wiki/File:Fostoria_braincase.jpg,Q64364439
+14545,フォストリア,フォストリア,フォストリア,爬虫類,yes,http://commons.wikimedia.org/wiki/Special:FilePath/Fostoria_braincase.jpg,https://commons.wikimedia.org/wiki/File:Fostoria_braincase.jpg,Q64364439
 14546,フォーアイバタフライフィッシュ,フォーアイバタフライフィッシュ,フォーアイバタフライフィッシュ,魚類,no,http://commons.wikimedia.org/wiki/Special:FilePath/Chaetodon_capistratus_332936353.jpg,https://commons.wikimedia.org/wiki/File:Chaetodon_capistratus_332936353.jpg,Q2165517
 14547,フォークランドアイナメ,フォークランドアイナメ,フォークランドアイナメ,魚類,no,http://commons.wikimedia.org/wiki/Special:FilePath/Eleginops_maclovinus_6830057.jpg,https://commons.wikimedia.org/wiki/File:Eleginops_maclovinus_6830057.jpg,Q2056618
 14548,フォークランドカラカラ,フォークランドカラカラ,フォークランドカラカラ,鳥類,no,http://commons.wikimedia.org/wiki/Special:FilePath/Striated_Caracara_on_Saunders_Island_%285551648335%29.jpg,https://commons.wikimedia.org/wiki/File:Striated_Caracara_on_Saunders_Island_%285551648335%29.jpg,Q916843
@@ -16730,3 +16730,13 @@ id,original,surface,pronunciation,class,extinct,image,image_page,wikidata
 16728,ヴォアイ,ヴォアイ,ヴォアイ,爬虫類,yes,http://commons.wikimedia.org/wiki/Special:FilePath/Voay_robustus.JPG,https://commons.wikimedia.org/wiki/File:Voay_robustus.JPG,Q1284680
 16729,ヴォロナ,ヴォロナ,ヴォロナ,爬虫類,yes,,,
 16730,ヴォーリーヨタカ,ヴォーリーヨタカ,ヴォーリーヨタカ,鳥類,no,,,
+16731,イソハゼ,イソハゼ,イソハゼ,魚類,no,,,
+16732,イヘヤバーバートカゲ,イヘヤバーバートカゲ,イヘヤバーバートカゲ,爬虫類,no,,,
+16733,イワキサンショウウオ,イワキサンショウウオ,イワキサンショウウオ,両生類,no,,,
+16734,ウロコマグロ,ウロコマグロ,ウロコマグロ,魚類,no,,,
+16735,オキナワバーバートカゲ,オキナワバーバートカゲ,オキナワバーバートカゲ,爬虫類,no,,,
+16736,クメバーバートカゲ,クメバーバートカゲ,クメバーバートカゲ,爬虫類,no,,,
+16737,コロブス・コンゴエンシス,コロブス・コンゴエンシス,コロブス・コンゴエンシス,哺乳類,no,,,
+16738,サビハゼ,サビハゼ,サビハゼ,魚類,no,,,
+16739,ニシヤモリ,ニシヤモリ,ニシヤモリ,爬虫類,no,,,
+16740,ハネガジ,ハネガジ,ハネガジ,魚類,no,,,
