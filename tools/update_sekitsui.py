@@ -11,6 +11,11 @@
 - 化石種・絶滅種(rank=種で登録されているもの)も対象に含め、`extinct` 列
   (yes/no)で区別する。判定は IUCNステータス(P141)が絶滅/野生絶滅、または
   instance of(P31)が化石タクソン(Q23038290)のいずれか。既存行にも付与する
+- **既存行の埋まっている値は劣化させない**: 分割クエリのタイムアウトや Wikidata
+  側のラベル改名で当回の取得から名前が落ちることがあるため、既存行の class は
+  「今回実データが取れたとき」だけ更新し、取れなければ既存値(NA含む)を保つ。
+  extinct は no→yes の一方向のみ更新する(絶滅シグナルは取りこぼしやすく、
+  取りこぼしで yes→no に落とすと情報が失われるため)
 - 脊椎動物 Q25241 を一括クエリすると WDQS がタイムアウトするため、綱ごとに
   分割してクエリする。綱の系統樹は重複しうるが、original 照合で重複排除する
 
@@ -88,11 +93,25 @@ def main() -> int:
 
     reader = csv.DictReader(CSV_PATH.open(encoding="utf-8"))
     old_rows = list(reader)
-    na = 0
+    na = kept = 0
     for r in old_rows:
-        r["class"] = name_cat.get(r["original"], UNKNOWN)
-        # 既存行の絶滅列: Wikidataに無ければ現生扱い(no)
-        r["extinct"] = ext_str(r["original"])
+        # 既存行は「今回実データが取れたときだけ」更新する。取れなかった名前
+        # (クエリのタイムアウト分割・Wikidata側のラベル改名で落ちうる)は既存値を
+        # 保持し、既に埋まっている分類を NA に劣化させない
+        cat = name_cat.get(r["original"])
+        cur = (r.get("class") or "").strip()
+        if cat:
+            r["class"] = cat
+        elif not cur:
+            r["class"] = UNKNOWN
+        elif cur != UNKNOWN:
+            kept += 1
+        # 絶滅列は no→yes の一方向のみ。取りこぼしで yes→no に落とさない
+        cur_ext = (r.get("extinct") or "").strip()
+        if ext_str(r["original"]) == "yes":
+            r["extinct"] = "yes"
+        elif cur_ext not in ("yes", "no"):
+            r["extinct"] = "no"
         if r["class"] == UNKNOWN:
             na += 1
     existing = {r["original"] for r in old_rows}
@@ -110,7 +129,7 @@ def main() -> int:
     cols = list(reader.fieldnames)
     write_csv_no_trailing_newline(CSV_PATH, cols, old_rows + added)
     print(f"sekitsui.csv: +{len(added)}種 (計 {len(old_rows) + len(added)}行), "
-          f"既存の分類不明(NA) {na}行, "
+          f"既存の分類不明(NA) {na}行, 今回未取得だが既存分類を保持 {kept}行, "
           f"絶滅 {sum(1 for n in name_cat if name_ext.get(n))}種")
     return 0
 

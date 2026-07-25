@@ -3,6 +3,7 @@
 - Status: accepted
 - Date: 2026-07-11
 - Related: 00007(sekitsui の自動更新。本リストはその設計を植物に踏襲)
+- Superseded by: 00014-no-degrading-existing-rows.md(既存行の class/extinct を毎回取得結果で上書きする判断のみが置き換え)
 
 ## Context
 

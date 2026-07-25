@@ -3,7 +3,7 @@
 - Status: accepted
 - Date: 2026-07-12
 - Supersedes: 00005 のうち physicist(物理学者)の対象範囲・列設計の判断
-- Superseded by: none
+- Superseded by: 00014-no-degrading-existing-rows.md(既存行の付加列を毎回 Wikidata の最新値で埋め直す判断のみが置き換え)
 
 ## Context
 
