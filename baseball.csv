@@ -10789,10 +10789,10 @@ id,original,team,surface,pronunciation,type,org_id,image,image_page
 3577,ブルック・ジャコビー,中日,ジャコビー,ジャコビー,family,3577,http://commons.wikimedia.org/wiki/Special:FilePath/Brook_Jacoby.jpg,https://commons.wikimedia.org/wiki/File:Brook_Jacoby.jpg
 3577,ブルック・ジャコビー,中日,ブルック・ジャコビー,ブルック・ジャコビー,full,3577,http://commons.wikimedia.org/wiki/Special:FilePath/Brook_Jacoby.jpg,https://commons.wikimedia.org/wiki/File:Brook_Jacoby.jpg
 3577,ブルック・ジャコビー,中日,ブルック,ブルック,given,3577,http://commons.wikimedia.org/wiki/Special:FilePath/Brook_Jacoby.jpg,https://commons.wikimedia.org/wiki/File:Brook_Jacoby.jpg
-3578,ジャック(ジャック・ドウティー),ロッテ,ジャック,ジャック,registered,3578,,
-3578,ジャック・ドウティー(ジャック),ロッテ,ドウティー,ドウティー,family,4867,,
-3578,ジャック・ドウティー(ジャック),ロッテ,ジャック・ドウティー,ジャック・ドウティー,full,4867,,
-3578,ジャック・ドウティー(ジャック),ロッテ,ジャック,ジャック,given,4867,,
+3578,ジャック(ジャック・ドウティー),ロッテ,ジャック,ジャック,registered,3578,http://commons.wikimedia.org/wiki/Special:FilePath/1987_Indianapolis_Indians_-_Jack_Daugherty_%28cropped%29.jpg,https://commons.wikimedia.org/wiki/File:1987_Indianapolis_Indians_-_Jack_Daugherty_%28cropped%29.jpg
+3578,ジャック・ドウティー(ジャック),ロッテ,ドウティー,ドウティー,family,4867,http://commons.wikimedia.org/wiki/Special:FilePath/1987_Indianapolis_Indians_-_Jack_Daugherty_%28cropped%29.jpg,https://commons.wikimedia.org/wiki/File:1987_Indianapolis_Indians_-_Jack_Daugherty_%28cropped%29.jpg
+3578,ジャック・ドウティー(ジャック),ロッテ,ジャック・ドウティー,ジャック・ドウティー,full,4867,http://commons.wikimedia.org/wiki/Special:FilePath/1987_Indianapolis_Indians_-_Jack_Daugherty_%28cropped%29.jpg,https://commons.wikimedia.org/wiki/File:1987_Indianapolis_Indians_-_Jack_Daugherty_%28cropped%29.jpg
+3578,ジャック・ドウティー(ジャック),ロッテ,ジャック,ジャック,given,4867,http://commons.wikimedia.org/wiki/Special:FilePath/1987_Indianapolis_Indians_-_Jack_Daugherty_%28cropped%29.jpg,https://commons.wikimedia.org/wiki/File:1987_Indianapolis_Indians_-_Jack_Daugherty_%28cropped%29.jpg
 3579,ケビン・ジャッケルフォード,DeNA,ジャッケルフォード,ジャッケルフォード,family,3579,,
 3579,ケビン・ジャッケルフォード,DeNA,ケビン・ジャッケルフォード,ケビン・ジャッケルフォード,full,3579,,
 3579,ケビン・ジャッケルフォード,DeNA,ケビン,ケビン,given,3579,,
@@ -25853,9 +25853,9 @@ A.J.コール_ヤクルト_00000,A.J.コール,ヤクルト,.J.コール,アン�
 佐々木伸_広島_00000,佐々木伸,広島,佐々木伸,ササキ シン,full,佐々木伸_広島_00000,,
 佐々木伸_広島_00000,佐々木伸,広島,佐々木,ササキ,family,佐々木伸_広島_00000,,
 佐々木伸_広島_00000,佐々木伸,広島,伸,シン,given,佐々木伸_広島_00000,,
-笹原操希_巨人_00000,笹原操希,巨人,笹原操希,ササハラ ミサキ,full,笹原操希_巨人_00000,,
-笹原操希_巨人_00000,笹原操希,巨人,笹原,ササハラ,family,笹原操希_巨人_00000,,
-笹原操希_巨人_00000,笹原操希,巨人,操希,ミサキ,given,笹原操希_巨人_00000,,
+笹原操希_巨人_00000,笹原操希,巨人,笹原操希,ササハラ ミサキ,full,笹原操希_巨人_00000,http://commons.wikimedia.org/wiki/Special:FilePath/YG-MisakiSasahara_20260711.jpg,https://commons.wikimedia.org/wiki/File:YG-MisakiSasahara_20260711.jpg
+笹原操希_巨人_00000,笹原操希,巨人,笹原,ササハラ,family,笹原操希_巨人_00000,http://commons.wikimedia.org/wiki/Special:FilePath/YG-MisakiSasahara_20260711.jpg,https://commons.wikimedia.org/wiki/File:YG-MisakiSasahara_20260711.jpg
+笹原操希_巨人_00000,笹原操希,巨人,操希,ミサキ,given,笹原操希_巨人_00000,http://commons.wikimedia.org/wiki/Special:FilePath/YG-MisakiSasahara_20260711.jpg,https://commons.wikimedia.org/wiki/File:YG-MisakiSasahara_20260711.jpg
 佐藤栄一_タイガース_00000,佐藤栄一,タイガース,佐藤栄一,サトウ エイイチ,full,佐藤栄一_タイガース_00000,,
 佐藤栄一_タイガース_00000,佐藤栄一,タイガース,佐藤,サトウ,family,佐藤栄一_タイガース_00000,,
 佐藤栄一_タイガース_00000,佐藤栄一,タイガース,栄一,エイイチ,given,佐藤栄一_タイガース_00000,,
@@ -26506,9 +26506,9 @@ A.J.コール_ヤクルト_00000,A.J.コール,ヤクルト,.J.コール,アン�
 真部繁敏_南海_00000,真部繁敏,南海,真部繁敏,マナベ シゲトシ,full,真部繁敏_南海_00000,,
 真部繁敏_南海_00000,真部繁敏,南海,真部,マナベ,family,真部繁敏_南海_00000,,
 真部繁敏_南海_00000,真部繁敏,南海,繁敏,シゲトシ,given,真部繁敏_南海_00000,,
-ハンセル・マルセリーノ_DeNA_00000,ハンセル・マルセリーノ,DeNA,ハンセル・マルセリーノ,ハンセル・マルセリーノ,full,ハンセル・マルセリーノ_DeNA_00000,,
-ハンセル・マルセリーノ_DeNA_00000,ハンセル・マルセリーノ,DeNA,マルセリーノ,マルセリーノ,family,ハンセル・マルセリーノ_DeNA_00000,,
-ハンセル・マルセリーノ_DeNA_00000,ハンセル・マルセリーノ,DeNA,ハンセル,ハンセル,given,ハンセル・マルセリーノ_DeNA_00000,,
+ハンセル・マルセリーノ_DeNA_00000,ハンセル・マルセリーノ,DeNA,ハンセル・マルセリーノ,ハンセル・マルセリーノ,full,ハンセル・マルセリーノ_DeNA_00000,http://commons.wikimedia.org/wiki/Special:FilePath/Yokohama_DeNA_Baystars_Marcelino.107.jpg,https://commons.wikimedia.org/wiki/File:Yokohama_DeNA_Baystars_Marcelino.107.jpg
+ハンセル・マルセリーノ_DeNA_00000,ハンセル・マルセリーノ,DeNA,マルセリーノ,マルセリーノ,family,ハンセル・マルセリーノ_DeNA_00000,http://commons.wikimedia.org/wiki/Special:FilePath/Yokohama_DeNA_Baystars_Marcelino.107.jpg,https://commons.wikimedia.org/wiki/File:Yokohama_DeNA_Baystars_Marcelino.107.jpg
+ハンセル・マルセリーノ_DeNA_00000,ハンセル・マルセリーノ,DeNA,ハンセル,ハンセル,given,ハンセル・マルセリーノ_DeNA_00000,http://commons.wikimedia.org/wiki/Special:FilePath/Yokohama_DeNA_Baystars_Marcelino.107.jpg,https://commons.wikimedia.org/wiki/File:Yokohama_DeNA_Baystars_Marcelino.107.jpg
 ホセ・マルモレホス_楽天_00000,ホセ・マルモレホス,楽天,ホセ・マルモレホス,ホセ・マルモレホス,full,ホセ・マルモレホス_楽天_00000,http://commons.wikimedia.org/wiki/Special:FilePath/Jose_Marmolejos_Rakuten_Eagles_20220508.jpg,https://commons.wikimedia.org/wiki/File:Jose_Marmolejos_Rakuten_Eagles_20220508.jpg
 ホセ・マルモレホス_楽天_00000,ホセ・マルモレホス,楽天,マルモレホス,マルモレホス,family,ホセ・マルモレホス_楽天_00000,http://commons.wikimedia.org/wiki/Special:FilePath/Jose_Marmolejos_Rakuten_Eagles_20220508.jpg,https://commons.wikimedia.org/wiki/File:Jose_Marmolejos_Rakuten_Eagles_20220508.jpg
 ホセ・マルモレホス_楽天_00000,ホセ・マルモレホス,楽天,ホセ,ホセ,given,ホセ・マルモレホス_楽天_00000,http://commons.wikimedia.org/wiki/Special:FilePath/Jose_Marmolejos_Rakuten_Eagles_20220508.jpg,https://commons.wikimedia.org/wiki/File:Jose_Marmolejos_Rakuten_Eagles_20220508.jpg
@@ -27912,9 +27912,9 @@ A.J.コール_ヤクルト_00000,A.J.コール,ヤクルト,.J.コール,アン�
 ヘスース・リランソ_ヤクルト_00000,ヘスース・リランソ,ヤクルト,リランソ,リランソ,family,ヘスース・リランソ_ヤクルト_00000,http://commons.wikimedia.org/wiki/Special:FilePath/YS-JesusLiranzo20260314.jpg,https://commons.wikimedia.org/wiki/File:YS-JesusLiranzo20260314.jpg
 ヘスース・リランソ_ヤクルト_00000,ヘスース・リランソ,ヤクルト,ヘスース,ヘスース,given,ヘスース・リランソ_ヤクルト_00000,http://commons.wikimedia.org/wiki/Special:FilePath/YS-JesusLiranzo20260314.jpg,https://commons.wikimedia.org/wiki/File:YS-JesusLiranzo20260314.jpg
 ヘスース・リランソ_ヤクルト_00000,ヘスース・リランソ,ヤクルト,ヘスース・リランソ,ヘスース・リランソ,full,ヘスース・リランソ_ヤクルト_00000,http://commons.wikimedia.org/wiki/Special:FilePath/YS-JesusLiranzo20260314.jpg,https://commons.wikimedia.org/wiki/File:YS-JesusLiranzo20260314.jpg
-ヘラル・エンカーナシオン_DeNA_00000,ヘラル・エンカーナシオン,DeNA,エンカーナシオン,エンカーナシオン,family,ヘラル・エンカーナシオン_DeNA_00000,,
-ヘラル・エンカーナシオン_DeNA_00000,ヘラル・エンカーナシオン,DeNA,ヘラル,ヘラル,given,ヘラル・エンカーナシオン_DeNA_00000,,
-ヘラル・エンカーナシオン_DeNA_00000,ヘラル・エンカーナシオン,DeNA,ヘラル・エンカーナシオン,ヘラル・エンカーナシオン,full,ヘラル・エンカーナシオン_DeNA_00000,,
+ヘラル・エンカーナシオン_DeNA_00000,ヘラル・エンカーナシオン,DeNA,エンカーナシオン,エンカーナシオン,family,ヘラル・エンカーナシオン_DeNA_00000,http://commons.wikimedia.org/wiki/Special:FilePath/DB-JerarEncarnacion_20260711.jpg,https://commons.wikimedia.org/wiki/File:DB-JerarEncarnacion_20260711.jpg
+ヘラル・エンカーナシオン_DeNA_00000,ヘラル・エンカーナシオン,DeNA,ヘラル,ヘラル,given,ヘラル・エンカーナシオン_DeNA_00000,http://commons.wikimedia.org/wiki/Special:FilePath/DB-JerarEncarnacion_20260711.jpg,https://commons.wikimedia.org/wiki/File:DB-JerarEncarnacion_20260711.jpg
+ヘラル・エンカーナシオン_DeNA_00000,ヘラル・エンカーナシオン,DeNA,ヘラル・エンカーナシオン,ヘラル・エンカーナシオン,full,ヘラル・エンカーナシオン_DeNA_00000,http://commons.wikimedia.org/wiki/Special:FilePath/DB-JerarEncarnacion_20260711.jpg,https://commons.wikimedia.org/wiki/File:DB-JerarEncarnacion_20260711.jpg
 ホセ・ウレーニャ_楽天_00000,ホセ・ウレーニャ,楽天,ウレーニャ,ウレーニャ,family,ホセ・ウレーニャ_楽天_00000,http://commons.wikimedia.org/wiki/Special:FilePath/Jose_Urena.jpg,https://commons.wikimedia.org/wiki/File:Jose_Urena.jpg
 ホセ・ウレーニャ_楽天_00000,ホセ・ウレーニャ,楽天,ホセ,ホセ,given,ホセ・ウレーニャ_楽天_00000,http://commons.wikimedia.org/wiki/Special:FilePath/Jose_Urena.jpg,https://commons.wikimedia.org/wiki/File:Jose_Urena.jpg
 ホセ・ウレーニャ_楽天_00000,ホセ・ウレーニャ,楽天,ホセ・ウレーニャ,ホセ・ウレーニャ,full,ホセ・ウレーニャ_楽天_00000,http://commons.wikimedia.org/wiki/Special:FilePath/Jose_Urena.jpg,https://commons.wikimedia.org/wiki/File:Jose_Urena.jpg
@@ -27924,9 +27924,9 @@ A.J.コール_ヤクルト_00000,A.J.コール,ヤクルト,.J.コール,アン�
 ホセ・ルイーズ_DeNA_00000,ホセ・ルイーズ,DeNA,ルイーズ,ルイーズ,family,ホセ・ルイーズ_DeNA_00000,http://commons.wikimedia.org/wiki/Special:FilePath/Game_02_2025_Philles-Cardinals_Apr_11_Jos%C3%A9_Ruiz_1.png,https://commons.wikimedia.org/wiki/File:Game_02_2025_Philles-Cardinals_Apr_11_Jos%C3%A9_Ruiz_1.png
 ホセ・ルイーズ_DeNA_00000,ホセ・ルイーズ,DeNA,ホセ,ホセ,given,ホセ・ルイーズ_DeNA_00000,http://commons.wikimedia.org/wiki/Special:FilePath/Game_02_2025_Philles-Cardinals_Apr_11_Jos%C3%A9_Ruiz_1.png,https://commons.wikimedia.org/wiki/File:Game_02_2025_Philles-Cardinals_Apr_11_Jos%C3%A9_Ruiz_1.png
 ホセ・ルイーズ_DeNA_00000,ホセ・ルイーズ,DeNA,ホセ・ルイーズ,ホセ・ルイーズ,full,ホセ・ルイーズ_DeNA_00000,http://commons.wikimedia.org/wiki/Special:FilePath/Game_02_2025_Philles-Cardinals_Apr_11_Jos%C3%A9_Ruiz_1.png,https://commons.wikimedia.org/wiki/File:Game_02_2025_Philles-Cardinals_Apr_11_Jos%C3%A9_Ruiz_1.png
-ボビー・ダルベック_巨人_00000,ボビー・ダルベック,巨人,ダルベック,ダルベック,family,ボビー・ダルベック_巨人_00000,,
-ボビー・ダルベック_巨人_00000,ボビー・ダルベック,巨人,ボビー,ボビー,given,ボビー・ダルベック_巨人_00000,,
-ボビー・ダルベック_巨人_00000,ボビー・ダルベック,巨人,ボビー・ダルベック,ボビー・ダルベック,full,ボビー・ダルベック_巨人_00000,,
+ボビー・ダルベック_巨人_00000,ボビー・ダルベック,巨人,ダルベック,ダルベック,family,ボビー・ダルベック_巨人_00000,http://commons.wikimedia.org/wiki/Special:FilePath/YG-BobbyDalbec_20260711.jpg,https://commons.wikimedia.org/wiki/File:YG-BobbyDalbec_20260711.jpg
+ボビー・ダルベック_巨人_00000,ボビー・ダルベック,巨人,ボビー,ボビー,given,ボビー・ダルベック_巨人_00000,http://commons.wikimedia.org/wiki/Special:FilePath/YG-BobbyDalbec_20260711.jpg,https://commons.wikimedia.org/wiki/File:YG-BobbyDalbec_20260711.jpg
+ボビー・ダルベック_巨人_00000,ボビー・ダルベック,巨人,ボビー・ダルベック,ボビー・ダルベック,full,ボビー・ダルベック_巨人_00000,http://commons.wikimedia.org/wiki/Special:FilePath/YG-BobbyDalbec_20260711.jpg,https://commons.wikimedia.org/wiki/File:YG-BobbyDalbec_20260711.jpg
 ボブ・シーモア_オリックス_00000,ボブ・シーモア,オリックス,シーモア,シーモア,family,ボブ・シーモア_オリックス_00000,http://commons.wikimedia.org/wiki/Special:FilePath/Bob_Seymour_Orix_Buffaloes_20260307.jpg,https://commons.wikimedia.org/wiki/File:Bob_Seymour_Orix_Buffaloes_20260307.jpg
 ボブ・シーモア_オリックス_00000,ボブ・シーモア,オリックス,ボブ,ボブ,given,ボブ・シーモア_オリックス_00000,http://commons.wikimedia.org/wiki/Special:FilePath/Bob_Seymour_Orix_Buffaloes_20260307.jpg,https://commons.wikimedia.org/wiki/File:Bob_Seymour_Orix_Buffaloes_20260307.jpg
 ボブ・シーモア_オリックス_00000,ボブ・シーモア,オリックス,ボブ・シーモア,ボブ・シーモア,full,ボブ・シーモア_オリックス_00000,http://commons.wikimedia.org/wiki/Special:FilePath/Bob_Seymour_Orix_Buffaloes_20260307.jpg,https://commons.wikimedia.org/wiki/File:Bob_Seymour_Orix_Buffaloes_20260307.jpg
@@ -28025,9 +28025,9 @@ A.J.コール_ヤクルト_00000,A.J.コール,ヤクルト,.J.コール,アン�
 佐藤龍月_オリックス_00000,佐藤龍月,オリックス,佐藤,サトウ,family,佐藤龍月_オリックス_00000,,
 佐藤龍月_オリックス_00000,佐藤龍月,オリックス,龍月,リュウガ,given,佐藤龍月_オリックス_00000,,
 佐藤龍月_オリックス_00000,佐藤龍月,オリックス,佐藤龍月,サトウ リュウガ,full,佐藤龍月_オリックス_00000,,
-佐野大陽_阪神_00000,佐野大陽,阪神,佐野,サノ,family,佐野大陽_阪神_00000,,
-佐野大陽_阪神_00000,佐野大陽,阪神,大陽,タイヨウ,given,佐野大陽_阪神_00000,,
-佐野大陽_阪神_00000,佐野大陽,阪神,佐野大陽,サノ タイヨウ,full,佐野大陽_阪神_00000,,
+佐野大陽_阪神_00000,佐野大陽,阪神,佐野,サノ,family,佐野大陽_阪神_00000,http://commons.wikimedia.org/wiki/Special:FilePath/HT-TaiyoSano20260417.jpg,https://commons.wikimedia.org/wiki/File:HT-TaiyoSano20260417.jpg
+佐野大陽_阪神_00000,佐野大陽,阪神,大陽,タイヨウ,given,佐野大陽_阪神_00000,http://commons.wikimedia.org/wiki/Special:FilePath/HT-TaiyoSano20260417.jpg,https://commons.wikimedia.org/wiki/File:HT-TaiyoSano20260417.jpg
+佐野大陽_阪神_00000,佐野大陽,阪神,佐野大陽,サノ タイヨウ,full,佐野大陽_阪神_00000,http://commons.wikimedia.org/wiki/Special:FilePath/HT-TaiyoSano20260417.jpg,https://commons.wikimedia.org/wiki/File:HT-TaiyoSano20260417.jpg
 冨士大和_西武_00000,冨士大和,西武,冨士,フジ,family,冨士大和_西武_00000,,
 冨士大和_西武_00000,冨士大和,西武,大和,ヤマト,given,冨士大和_西武_00000,,
 冨士大和_西武_00000,冨士大和,西武,冨士大和,フジ ヤマト,full,冨士大和_西武_00000,,
@@ -28118,9 +28118,9 @@ A.J.コール_ヤクルト_00000,A.J.コール,ヤクルト,.J.コール,アン�
 宗山塁_楽天_00000,宗山塁,楽天,宗山,ムネヤマ,family,宗山塁_楽天_00000,http://commons.wikimedia.org/wiki/Special:FilePath/Rui_Muneyama_Eagles_20250305.jpg,https://commons.wikimedia.org/wiki/File:Rui_Muneyama_Eagles_20250305.jpg
 宗山塁_楽天_00000,宗山塁,楽天,塁,ルイ,given,宗山塁_楽天_00000,http://commons.wikimedia.org/wiki/Special:FilePath/Rui_Muneyama_Eagles_20250305.jpg,https://commons.wikimedia.org/wiki/File:Rui_Muneyama_Eagles_20250305.jpg
 宗山塁_楽天_00000,宗山塁,楽天,宗山塁,ムネヤマ ルイ,full,宗山塁_楽天_00000,http://commons.wikimedia.org/wiki/Special:FilePath/Rui_Muneyama_Eagles_20250305.jpg,https://commons.wikimedia.org/wiki/File:Rui_Muneyama_Eagles_20250305.jpg
-宮下朝陽_DeNA_00000,宮下朝陽,DeNA,宮下,ミヤシタ,family,宮下朝陽_DeNA_00000,,
-宮下朝陽_DeNA_00000,宮下朝陽,DeNA,朝陽,アサヒ,given,宮下朝陽_DeNA_00000,,
-宮下朝陽_DeNA_00000,宮下朝陽,DeNA,宮下朝陽,ミヤシタ アサヒ,full,宮下朝陽_DeNA_00000,,
+宮下朝陽_DeNA_00000,宮下朝陽,DeNA,宮下,ミヤシタ,family,宮下朝陽_DeNA_00000,http://commons.wikimedia.org/wiki/Special:FilePath/DB-AsahiMiyashota20260711.jpg,https://commons.wikimedia.org/wiki/File:DB-AsahiMiyashota20260711.jpg
+宮下朝陽_DeNA_00000,宮下朝陽,DeNA,朝陽,アサヒ,given,宮下朝陽_DeNA_00000,http://commons.wikimedia.org/wiki/Special:FilePath/DB-AsahiMiyashota20260711.jpg,https://commons.wikimedia.org/wiki/File:DB-AsahiMiyashota20260711.jpg
+宮下朝陽_DeNA_00000,宮下朝陽,DeNA,宮下朝陽,ミヤシタ アサヒ,full,宮下朝陽_DeNA_00000,http://commons.wikimedia.org/wiki/Special:FilePath/DB-AsahiMiyashota20260711.jpg,https://commons.wikimedia.org/wiki/File:DB-AsahiMiyashota20260711.jpg
 宮原駿介_巨人_00000,宮原駿介,巨人,宮原,ミヤハラ,family,宮原駿介_巨人_00000,http://commons.wikimedia.org/wiki/Special:FilePath/Shunsuke_Miyahara_Giants_20250720.jpg,https://commons.wikimedia.org/wiki/File:Shunsuke_Miyahara_Giants_20250720.jpg
 宮原駿介_巨人_00000,宮原駿介,巨人,駿介,シュンスケ,given,宮原駿介_巨人_00000,http://commons.wikimedia.org/wiki/Special:FilePath/Shunsuke_Miyahara_Giants_20250720.jpg,https://commons.wikimedia.org/wiki/File:Shunsuke_Miyahara_Giants_20250720.jpg
 宮原駿介_巨人_00000,宮原駿介,巨人,宮原駿介,ミヤハラ シュンスケ,full,宮原駿介_巨人_00000,http://commons.wikimedia.org/wiki/Special:FilePath/Shunsuke_Miyahara_Giants_20250720.jpg,https://commons.wikimedia.org/wiki/File:Shunsuke_Miyahara_Giants_20250720.jpg
@@ -28455,9 +28455,9 @@ A.J.コール_ヤクルト_00000,A.J.コール,ヤクルト,.J.コール,アン�
 竹下海斗_広島_00000,竹下海斗,広島,竹下,タケシタ,family,竹下海斗_広島_00000,,
 竹下海斗_広島_00000,竹下海斗,広島,海斗,カイト,given,竹下海斗_広島_00000,,
 竹下海斗_広島_00000,竹下海斗,広島,竹下海斗,タケシタ カイト,full,竹下海斗_広島_00000,,
-竹丸和幸_巨人_00000,竹丸和幸,巨人,竹丸,タケマル,family,竹丸和幸_巨人_00000,,
-竹丸和幸_巨人_00000,竹丸和幸,巨人,和幸,カズユキ,given,竹丸和幸_巨人_00000,,
-竹丸和幸_巨人_00000,竹丸和幸,巨人,竹丸和幸,タケマル カズユキ,full,竹丸和幸_巨人_00000,,
+竹丸和幸_巨人_00000,竹丸和幸,巨人,竹丸,タケマル,family,竹丸和幸_巨人_00000,http://commons.wikimedia.org/wiki/Special:FilePath/YG-KazuyuekiTakemaru_20260711.jpg,https://commons.wikimedia.org/wiki/File:YG-KazuyuekiTakemaru_20260711.jpg
+竹丸和幸_巨人_00000,竹丸和幸,巨人,和幸,カズユキ,given,竹丸和幸_巨人_00000,http://commons.wikimedia.org/wiki/Special:FilePath/YG-KazuyuekiTakemaru_20260711.jpg,https://commons.wikimedia.org/wiki/File:YG-KazuyuekiTakemaru_20260711.jpg
+竹丸和幸_巨人_00000,竹丸和幸,巨人,竹丸和幸,タケマル カズユキ,full,竹丸和幸_巨人_00000,http://commons.wikimedia.org/wiki/Special:FilePath/YG-KazuyuekiTakemaru_20260711.jpg,https://commons.wikimedia.org/wiki/File:YG-KazuyuekiTakemaru_20260711.jpg
 竹田祐_DeNA_00000,竹田祐,DeNA,竹田,タケダ,family,竹田祐_DeNA_00000,http://commons.wikimedia.org/wiki/Special:FilePath/Yu_Takeda_MHI_West_20241103.jpg,https://commons.wikimedia.org/wiki/File:Yu_Takeda_MHI_West_20241103.jpg
 竹田祐_DeNA_00000,竹田祐,DeNA,祐,ユウ,given,竹田祐_DeNA_00000,http://commons.wikimedia.org/wiki/Special:FilePath/Yu_Takeda_MHI_West_20241103.jpg,https://commons.wikimedia.org/wiki/File:Yu_Takeda_MHI_West_20241103.jpg
 竹田祐_DeNA_00000,竹田祐,DeNA,竹田祐,タケダ ユウ,full,竹田祐_DeNA_00000,http://commons.wikimedia.org/wiki/Special:FilePath/Yu_Takeda_MHI_West_20241103.jpg,https://commons.wikimedia.org/wiki/File:Yu_Takeda_MHI_West_20241103.jpg
@@ -28593,3 +28593,15 @@ A.J.コール_ヤクルト_00000,A.J.コール,ヤクルト,.J.コール,アン�
 龍山暖_西武_00000,龍山暖,西武,龍山,タツヤマ,family,龍山暖_西武_00000,,
 龍山暖_西武_00000,龍山暖,西武,暖,ハルキ,given,龍山暖_西武_00000,,
 龍山暖_西武_00000,龍山暖,西武,龍山暖,タツヤマ ハルキ,full,龍山暖_西武_00000,,
+ジュニオル・マルテ_楽天_00000,ジュニオル・マルテ,楽天,マルテ,マルテ,family,ジュニオル・マルテ_楽天_00000,http://commons.wikimedia.org/wiki/Special:FilePath/Yunior_Marte_%2848217971902%29_%28cropped%29.jpg,https://commons.wikimedia.org/wiki/File:Yunior_Marte_%2848217971902%29_%28cropped%29.jpg
+ジュニオル・マルテ_楽天_00000,ジュニオル・マルテ,楽天,ジュニオル,ジュニオル,given,ジュニオル・マルテ_楽天_00000,http://commons.wikimedia.org/wiki/Special:FilePath/Yunior_Marte_%2848217971902%29_%28cropped%29.jpg,https://commons.wikimedia.org/wiki/File:Yunior_Marte_%2848217971902%29_%28cropped%29.jpg
+ジュニオル・マルテ_楽天_00000,ジュニオル・マルテ,楽天,ジュニオル・マルテ,ジュニオル・マルテ,full,ジュニオル・マルテ_楽天_00000,http://commons.wikimedia.org/wiki/Special:FilePath/Yunior_Marte_%2848217971902%29_%28cropped%29.jpg,https://commons.wikimedia.org/wiki/File:Yunior_Marte_%2848217971902%29_%28cropped%29.jpg
+ジョーイ・ルケーシー_ロッテ_00000,ジョーイ・ルケーシー,ロッテ,ルケーシー,ルケーシー,family,ジョーイ・ルケーシー_ロッテ_00000,http://commons.wikimedia.org/wiki/Special:FilePath/Joey_Lucchesi_%2851268239950%29_%28cropped%29.jpg,https://commons.wikimedia.org/wiki/File:Joey_Lucchesi_%2851268239950%29_%28cropped%29.jpg
+ジョーイ・ルケーシー_ロッテ_00000,ジョーイ・ルケーシー,ロッテ,ジョーイ,ジョーイ,given,ジョーイ・ルケーシー_ロッテ_00000,http://commons.wikimedia.org/wiki/Special:FilePath/Joey_Lucchesi_%2851268239950%29_%28cropped%29.jpg,https://commons.wikimedia.org/wiki/File:Joey_Lucchesi_%2851268239950%29_%28cropped%29.jpg
+ジョーイ・ルケーシー_ロッテ_00000,ジョーイ・ルケーシー,ロッテ,ジョーイ・ルケーシー,ジョーイ・ルケーシー,full,ジョーイ・ルケーシー_ロッテ_00000,http://commons.wikimedia.org/wiki/Special:FilePath/Joey_Lucchesi_%2851268239950%29_%28cropped%29.jpg,https://commons.wikimedia.org/wiki/File:Joey_Lucchesi_%2851268239950%29_%28cropped%29.jpg
+デルミス・ガルシア_阪神_00000,デルミス・ガルシア,阪神,ガルシア,ガルシア,family,デルミス・ガルシア_阪神_00000,http://commons.wikimedia.org/wiki/Special:FilePath/Dermis_Garcia_%2852835538886%29.jpg,https://commons.wikimedia.org/wiki/File:Dermis_Garcia_%2852835538886%29.jpg
+デルミス・ガルシア_阪神_00000,デルミス・ガルシア,阪神,デルミス,デルミス,given,デルミス・ガルシア_阪神_00000,http://commons.wikimedia.org/wiki/Special:FilePath/Dermis_Garcia_%2852835538886%29.jpg,https://commons.wikimedia.org/wiki/File:Dermis_Garcia_%2852835538886%29.jpg
+デルミス・ガルシア_阪神_00000,デルミス・ガルシア,阪神,デルミス・ガルシア,デルミス・ガルシア,full,デルミス・ガルシア_阪神_00000,http://commons.wikimedia.org/wiki/Special:FilePath/Dermis_Garcia_%2852835538886%29.jpg,https://commons.wikimedia.org/wiki/File:Dermis_Garcia_%2852835538886%29.jpg
+髙橋快秀_ロッテ_00000,髙橋快秀,ロッテ,髙橋,タカハシ,family,髙橋快秀_ロッテ_00000,,
+髙橋快秀_ロッテ_00000,髙橋快秀,ロッテ,快秀,カイシュウ,given,髙橋快秀_ロッテ_00000,,
+髙橋快秀_ロッテ_00000,髙橋快秀,ロッテ,髙橋快秀,タカハシ カイシュウ,full,髙橋快秀_ロッテ_00000,,

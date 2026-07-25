@@ -7614,9 +7614,9 @@ id,original,surface,pronunciation,type,category,image,image_page
 2806,瀬口 拓弥,瀬口 拓弥,セグチ タクヤ,full,player,,
 2806,瀬口 拓弥,瀬口,セグチ,family,player,,
 2806,瀬口 拓弥,拓弥,タクヤ,given,player,,
-2807,瀬古 歩夢,瀬古 歩夢,セコ アユム,full,player,,
-2807,瀬古 歩夢,瀬古,セコ,family,player,,
-2807,瀬古 歩夢,歩夢,アユム,given,player,,
+2807,瀬古 歩夢,瀬古 歩夢,セコ アユム,full,player,http://commons.wikimedia.org/wiki/Special:FilePath/Ayumu_Seko_Japan_2025_%28cropped%29.jpg,https://commons.wikimedia.org/wiki/File:Ayumu_Seko_Japan_2025_%28cropped%29.jpg
+2807,瀬古 歩夢,瀬古,セコ,family,player,http://commons.wikimedia.org/wiki/Special:FilePath/Ayumu_Seko_Japan_2025_%28cropped%29.jpg,https://commons.wikimedia.org/wiki/File:Ayumu_Seko_Japan_2025_%28cropped%29.jpg
+2807,瀬古 歩夢,歩夢,アユム,given,player,http://commons.wikimedia.org/wiki/Special:FilePath/Ayumu_Seko_Japan_2025_%28cropped%29.jpg,https://commons.wikimedia.org/wiki/File:Ayumu_Seko_Japan_2025_%28cropped%29.jpg
 2808,瀬古 寛治,瀬古 寛治,セコ カンジ,full,player,,
 2808,瀬古 寛治,瀬古,セコ,family,player,,
 2808,瀬古 寛治,寛治,カンジ,given,player,,
@@ -19012,9 +19012,9 @@ id,original,surface,pronunciation,type,category,image,image_page
 7094,笠井 佳祐,笠井 佳祐,カサイ ケイスケ,full,player,,
 7094,笠井 佳祐,笠井,カサイ,family,player,,
 7094,笠井 佳祐,佳祐,ケイスケ,given,player,,
-7095,笠柳 翼,笠柳 翼,カサヤナギ ツバサ,full,player,,
-7095,笠柳 翼,笠柳,カサヤナギ,family,player,,
-7095,笠柳 翼,翼,ツバサ,given,player,,
+7095,笠柳 翼,笠柳 翼,カサヤナギ ツバサ,full,player,http://commons.wikimedia.org/wiki/Special:FilePath/Tsubasa_Kasayanagi_16-07-2026_10-59-19.jpg,https://commons.wikimedia.org/wiki/File:Tsubasa_Kasayanagi_16-07-2026_10-59-19.jpg
+7095,笠柳 翼,笠柳,カサヤナギ,family,player,http://commons.wikimedia.org/wiki/Special:FilePath/Tsubasa_Kasayanagi_16-07-2026_10-59-19.jpg,https://commons.wikimedia.org/wiki/File:Tsubasa_Kasayanagi_16-07-2026_10-59-19.jpg
+7095,笠柳 翼,翼,ツバサ,given,player,http://commons.wikimedia.org/wiki/Special:FilePath/Tsubasa_Kasayanagi_16-07-2026_10-59-19.jpg,https://commons.wikimedia.org/wiki/File:Tsubasa_Kasayanagi_16-07-2026_10-59-19.jpg
 7096,笹 修大,笹 修大,ササ シュウタ,full,player,,
 7096,笹 修大,笹,ササ,family,player,,
 7096,笹 修大,修大,シュウタ,given,player,,
@@ -19549,3 +19549,213 @@ id,original,surface,pronunciation,type,category,image,image_page
 7273,閑田 隼人,閑田 隼人,カンダ ハヤト,full,player,,
 7273,閑田 隼人,閑田,カンダ,family,player,,
 7273,閑田 隼人,隼人,ハヤト,given,player,,
+7274,アキ・コッホ,アキ・コッホ,アキ コッホ,full,player,,
+7274,アキ・コッホ,アキ・コッホ,コッホ,family,player,,
+7274,アキ・コッホ,アキ・コッホ,アキ,given,player,,
+7275,アレクサンダル・パロチェヴィッチ,アレクサンダル・パロチェヴィッチ,アレクサンダル パロチェヴィッチ,full,player,http://commons.wikimedia.org/wiki/Special:FilePath/240721_FC_%EC%84%9C%EC%9A%B8_vs_%EA%B9%80%EC%B2%9C_%28Aleksandar_Palo%C4%8Devi%C4%87%29.jpg,https://commons.wikimedia.org/wiki/File:240721_FC_%EC%84%9C%EC%9A%B8_vs_%EA%B9%80%EC%B2%9C_%28Aleksandar_Palo%C4%8Devi%C4%87%29.jpg
+7275,アレクサンダル・パロチェヴィッチ,アレクサンダル・パロチェヴィッチ,パロチェヴィッチ,family,player,http://commons.wikimedia.org/wiki/Special:FilePath/240721_FC_%EC%84%9C%EC%9A%B8_vs_%EA%B9%80%EC%B2%9C_%28Aleksandar_Palo%C4%8Devi%C4%87%29.jpg,https://commons.wikimedia.org/wiki/File:240721_FC_%EC%84%9C%EC%9A%B8_vs_%EA%B9%80%EC%B2%9C_%28Aleksandar_Palo%C4%8Devi%C4%87%29.jpg
+7275,アレクサンダル・パロチェヴィッチ,アレクサンダル・パロチェヴィッチ,アレクサンダル,given,player,http://commons.wikimedia.org/wiki/Special:FilePath/240721_FC_%EC%84%9C%EC%9A%B8_vs_%EA%B9%80%EC%B2%9C_%28Aleksandar_Palo%C4%8Devi%C4%87%29.jpg,https://commons.wikimedia.org/wiki/File:240721_FC_%EC%84%9C%EC%9A%B8_vs_%EA%B9%80%EC%B2%9C_%28Aleksandar_Palo%C4%8Devi%C4%87%29.jpg
+7276,アンデルソン・ジョゼ・ロペス・デ・ソウザ,アンデルソン・ジョゼ・ロペス・デ・ソウザ,アンデルソン ジョゼ ロペス デ ソウザ,full,player,http://commons.wikimedia.org/wiki/Special:FilePath/Yokohama_F._Marinos_-_Manchester_City_%283-5%29_-_53075490955_%28Anderson_Lopes%29.jpg,https://commons.wikimedia.org/wiki/File:Yokohama_F._Marinos_-_Manchester_City_%283-5%29_-_53075490955_%28Anderson_Lopes%29.jpg
+7276,アンデルソン・ジョゼ・ロペス・デ・ソウザ,アンデルソン・ジョゼ・ロペス・デ・ソウザ,ソウザ,family,player,http://commons.wikimedia.org/wiki/Special:FilePath/Yokohama_F._Marinos_-_Manchester_City_%283-5%29_-_53075490955_%28Anderson_Lopes%29.jpg,https://commons.wikimedia.org/wiki/File:Yokohama_F._Marinos_-_Manchester_City_%283-5%29_-_53075490955_%28Anderson_Lopes%29.jpg
+7276,アンデルソン・ジョゼ・ロペス・デ・ソウザ,アンデルソン・ジョゼ・ロペス・デ・ソウザ,アンデルソン,given,player,http://commons.wikimedia.org/wiki/Special:FilePath/Yokohama_F._Marinos_-_Manchester_City_%283-5%29_-_53075490955_%28Anderson_Lopes%29.jpg,https://commons.wikimedia.org/wiki/File:Yokohama_F._Marinos_-_Manchester_City_%283-5%29_-_53075490955_%28Anderson_Lopes%29.jpg
+7277,イクサン・ファンディ,イクサン・ファンディ,イクサン ファンディ,full,player,http://commons.wikimedia.org/wiki/Special:FilePath/Kc-ikhsan1302_%28cropped%29.jpg,https://commons.wikimedia.org/wiki/File:Kc-ikhsan1302_%28cropped%29.jpg
+7277,イクサン・ファンディ,イクサン・ファンディ,ファンディ,family,player,http://commons.wikimedia.org/wiki/Special:FilePath/Kc-ikhsan1302_%28cropped%29.jpg,https://commons.wikimedia.org/wiki/File:Kc-ikhsan1302_%28cropped%29.jpg
+7277,イクサン・ファンディ,イクサン・ファンディ,イクサン,given,player,http://commons.wikimedia.org/wiki/Special:FilePath/Kc-ikhsan1302_%28cropped%29.jpg,https://commons.wikimedia.org/wiki/File:Kc-ikhsan1302_%28cropped%29.jpg
+7278,イーライ・アダムス,イーライ・アダムス,イーライ アダムス,full,player,http://commons.wikimedia.org/wiki/Special:FilePath/Eli_Adams_training_December_2023.jpg,https://commons.wikimedia.org/wiki/File:Eli_Adams_training_December_2023.jpg
+7278,イーライ・アダムス,イーライ・アダムス,アダムス,family,player,http://commons.wikimedia.org/wiki/Special:FilePath/Eli_Adams_training_December_2023.jpg,https://commons.wikimedia.org/wiki/File:Eli_Adams_training_December_2023.jpg
+7278,イーライ・アダムス,イーライ・アダムス,イーライ,given,player,http://commons.wikimedia.org/wiki/Special:FilePath/Eli_Adams_training_December_2023.jpg,https://commons.wikimedia.org/wiki/File:Eli_Adams_training_December_2023.jpg
+7279,エリソン・ダニーロ・デ・ソウザ,エリソン・ダニーロ・デ・ソウザ,エリソン ダニーロ デ ソウザ,full,player,,
+7279,エリソン・ダニーロ・デ・ソウザ,エリソン・ダニーロ・デ・ソウザ,ソウザ,family,player,,
+7279,エリソン・ダニーロ・デ・ソウザ,エリソン・ダニーロ・デ・ソウザ,エリソン,given,player,,
+7280,オリオール・ロメウ,オリオール・ロメウ,オリオール ロメウ,full,player,http://commons.wikimedia.org/wiki/Special:FilePath/Oriol_romeu.jpg,https://commons.wikimedia.org/wiki/File:Oriol_romeu.jpg
+7280,オリオール・ロメウ,オリオール・ロメウ,ロメウ,family,player,http://commons.wikimedia.org/wiki/Special:FilePath/Oriol_romeu.jpg,https://commons.wikimedia.org/wiki/File:Oriol_romeu.jpg
+7280,オリオール・ロメウ,オリオール・ロメウ,オリオール,given,player,http://commons.wikimedia.org/wiki/Special:FilePath/Oriol_romeu.jpg,https://commons.wikimedia.org/wiki/File:Oriol_romeu.jpg
+7281,カウアン・ディニース,カウアン・ディニース,カウアン ディニース,full,player,,
+7281,カウアン・ディニース,カウアン・ディニース,ディニース,family,player,,
+7281,カウアン・ディニース,カウアン・ディニース,カウアン,given,player,,
+7282,キム・ドフン,キム・ドフン,キム ドフン,full,player,,
+7282,キム・ドフン,キム・ドフン,ドフン,family,player,,
+7282,キム・ドフン,キム・ドフン,キム,given,player,,
+7283,ジャクソン・ディエゴ・イブライム・ファグンデス,ジャクソン・ディエゴ・イブライム・ファグンデス,ジャクソン ディエゴ イブライム ファグンデス,full,player,http://commons.wikimedia.org/wiki/Special:FilePath/Diego_-_S%C3%89RIE_A_-_CORINTHIANS_1_X_0_GOI%C3%81S_-_IMG_2975_%28cropped%29.jpg,https://commons.wikimedia.org/wiki/File:Diego_-_S%C3%89RIE_A_-_CORINTHIANS_1_X_0_GOI%C3%81S_-_IMG_2975_%28cropped%29.jpg
+7283,ジャクソン・ディエゴ・イブライム・ファグンデス,ジャクソン・ディエゴ・イブライム・ファグンデス,ファグンデス,family,player,http://commons.wikimedia.org/wiki/Special:FilePath/Diego_-_S%C3%89RIE_A_-_CORINTHIANS_1_X_0_GOI%C3%81S_-_IMG_2975_%28cropped%29.jpg,https://commons.wikimedia.org/wiki/File:Diego_-_S%C3%89RIE_A_-_CORINTHIANS_1_X_0_GOI%C3%81S_-_IMG_2975_%28cropped%29.jpg
+7283,ジャクソン・ディエゴ・イブライム・ファグンデス,ジャクソン・ディエゴ・イブライム・ファグンデス,ジャクソン,given,player,http://commons.wikimedia.org/wiki/Special:FilePath/Diego_-_S%C3%89RIE_A_-_CORINTHIANS_1_X_0_GOI%C3%81S_-_IMG_2975_%28cropped%29.jpg,https://commons.wikimedia.org/wiki/File:Diego_-_S%C3%89RIE_A_-_CORINTHIANS_1_X_0_GOI%C3%81S_-_IMG_2975_%28cropped%29.jpg
+7284,スファナット・ムエアンタ,スファナット・ムエアンタ,スファナット ムエアンタ,full,player,http://commons.wikimedia.org/wiki/Special:FilePath/Suphanat_Mueanta_in_2025.png,https://commons.wikimedia.org/wiki/File:Suphanat_Mueanta_in_2025.png
+7284,スファナット・ムエアンタ,スファナット・ムエアンタ,ムエアンタ,family,player,http://commons.wikimedia.org/wiki/Special:FilePath/Suphanat_Mueanta_in_2025.png,https://commons.wikimedia.org/wiki/File:Suphanat_Mueanta_in_2025.png
+7284,スファナット・ムエアンタ,スファナット・ムエアンタ,スファナット,given,player,http://commons.wikimedia.org/wiki/Special:FilePath/Suphanat_Mueanta_in_2025.png,https://commons.wikimedia.org/wiki/File:Suphanat_Mueanta_in_2025.png
+7285,セバスティアン・アレー,セバスティアン・アレー,セバスティアン アレー,full,player,http://commons.wikimedia.org/wiki/Special:FilePath/S%C3%A9bastien_Haller_2.jpg,https://commons.wikimedia.org/wiki/File:S%C3%A9bastien_Haller_2.jpg
+7285,セバスティアン・アレー,セバスティアン・アレー,アレー,family,player,http://commons.wikimedia.org/wiki/Special:FilePath/S%C3%A9bastien_Haller_2.jpg,https://commons.wikimedia.org/wiki/File:S%C3%A9bastien_Haller_2.jpg
+7285,セバスティアン・アレー,セバスティアン・アレー,セバスティアン,given,player,http://commons.wikimedia.org/wiki/Special:FilePath/S%C3%A9bastien_Haller_2.jpg,https://commons.wikimedia.org/wiki/File:S%C3%A9bastien_Haller_2.jpg
+7286,ダニエル・ホール,ダニエル・ホール,ダニエル ホール,full,player,,
+7286,ダニエル・ホール,ダニエル・ホール,ホール,family,player,,
+7286,ダニエル・ホール,ダニエル・ホール,ダニエル,given,player,,
+7287,トクマック・グエン,トクマック・グエン,トクマック グエン,full,player,,
+7287,トクマック・グエン,トクマック・グエン,グエン,family,player,,
+7287,トクマック・グエン,トクマック・グエン,トクマック,given,player,,
+7288,ニコラス・ギマラエス,ニコラス・ギマラエス,ニコラス ギマラエス,full,player,,
+7288,ニコラス・ギマラエス,ニコラス・ギマラエス,ギマラエス,family,player,,
+7288,ニコラス・ギマラエス,ニコラス・ギマラエス,ニコラス,given,player,,
+7289,ミッチェル・デューク,ミッチェル・デューク,ミッチェル デューク,full,player,http://commons.wikimedia.org/wiki/Special:FilePath/Mitchell_Duke.jpg,https://commons.wikimedia.org/wiki/File:Mitchell_Duke.jpg
+7289,ミッチェル・デューク,ミッチェル・デューク,デューク,family,player,http://commons.wikimedia.org/wiki/Special:FilePath/Mitchell_Duke.jpg,https://commons.wikimedia.org/wiki/File:Mitchell_Duke.jpg
+7289,ミッチェル・デューク,ミッチェル・デューク,ミッチェル,given,player,http://commons.wikimedia.org/wiki/Special:FilePath/Mitchell_Duke.jpg,https://commons.wikimedia.org/wiki/File:Mitchell_Duke.jpg
+7290,ユーリ・リマ・ララ,ユーリ・リマ・ララ,ユーリ リマ ララ,full,player,,
+7290,ユーリ・リマ・ララ,ユーリ・リマ・ララ,ララ,family,player,,
+7290,ユーリ・リマ・ララ,ユーリ・リマ・ララ,ユーリ,given,player,,
+7291,レオナルド・ローシャ,レオナルド・ローシャ,レオナルド ローシャ,full,player,,
+7291,レオナルド・ローシャ,レオナルド・ローシャ,ローシャ,family,player,,
+7291,レオナルド・ローシャ,レオナルド・ローシャ,レオナルド,given,player,,
+7292,三品 直哉,三品 直哉,ミシマ ナオヤ,full,player,,
+7292,三品 直哉,三品,ミシマ,family,player,,
+7292,三品 直哉,直哉,ナオヤ,given,player,,
+7293,中井 卓大,中井 卓大,ナカイ タクヒロ,full,player,,
+7293,中井 卓大,中井,ナカイ,family,player,,
+7293,中井 卓大,卓大,タクヒロ,given,player,,
+7294,中島 永弥,中島 永弥,ナカジマ トウヤ,full,player,,
+7294,中島 永弥,中島,ナカジマ,family,player,,
+7294,中島 永弥,永弥,トウヤ,given,player,,
+7295,伊澤 璃来,伊澤 璃来,イザワ リク,full,player,,
+7295,伊澤 璃来,伊澤,イザワ,family,player,,
+7295,伊澤 璃来,璃来,リク,given,player,,
+7296,佐々木 輝大,佐々木 輝大,ササキ キラト,full,player,,
+7296,佐々木 輝大,佐々木,ササキ,family,player,,
+7296,佐々木 輝大,輝大,キラト,given,player,,
+7297,佐藤 瑠星,佐藤 瑠星,サトウ リュウセイ,full,player,,
+7297,佐藤 瑠星,佐藤,サトウ,family,player,,
+7297,佐藤 瑠星,瑠星,リュウセイ,given,player,,
+7298,保田 堅心,保田 堅心,ヤスダ ケンシン,full,player,,
+7298,保田 堅心,保田,ヤスダ,family,player,,
+7298,保田 堅心,堅心,ケンシン,given,player,,
+7299,元 斗才,元 斗才,ウォン ドゥジェ,full,player,http://commons.wikimedia.org/wiki/Special:FilePath/%EC%9B%90%EB%91%90%EC%9E%AC_AFC_U-23_%EC%B1%94%ED%94%BC%EC%96%B8%EC%8B%AD.jpg,https://commons.wikimedia.org/wiki/File:%EC%9B%90%EB%91%90%EC%9E%AC_AFC_U-23_%EC%B1%94%ED%94%BC%EC%96%B8%EC%8B%AD.jpg
+7299,元 斗才,元,ウォン,family,player,http://commons.wikimedia.org/wiki/Special:FilePath/%EC%9B%90%EB%91%90%EC%9E%AC_AFC_U-23_%EC%B1%94%ED%94%BC%EC%96%B8%EC%8B%AD.jpg,https://commons.wikimedia.org/wiki/File:%EC%9B%90%EB%91%90%EC%9E%AC_AFC_U-23_%EC%B1%94%ED%94%BC%EC%96%B8%EC%8B%AD.jpg
+7299,元 斗才,斗才,ドゥジェ,given,player,http://commons.wikimedia.org/wiki/Special:FilePath/%EC%9B%90%EB%91%90%EC%9E%AC_AFC_U-23_%EC%B1%94%ED%94%BC%EC%96%B8%EC%8B%AD.jpg,https://commons.wikimedia.org/wiki/File:%EC%9B%90%EB%91%90%EC%9E%AC_AFC_U-23_%EC%B1%94%ED%94%BC%EC%96%B8%EC%8B%AD.jpg
+7300,前田 一翔,前田 一翔,マエダ イチカ,full,player,,
+7300,前田 一翔,前田,マエダ,family,player,,
+7300,前田 一翔,一翔,イチカ,given,player,,
+7301,合戸 晴矢,合戸 晴矢,ゴウト ハルヤ,full,player,,
+7301,合戸 晴矢,合戸,ゴウト,family,player,,
+7301,合戸 晴矢,晴矢,ハルヤ,given,player,,
+7302,吉岡 優希,吉岡 優希,ヨシオカ ユウキ,full,player,,
+7302,吉岡 優希,吉岡,ヨシオカ,family,player,,
+7302,吉岡 優希,優希,ユウキ,given,player,,
+7303,吉村 耕一,吉村 耕一,ヨシムラ コウイチ,full,player,,
+7303,吉村 耕一,吉村,ヨシムラ,family,player,,
+7303,吉村 耕一,耕一,コウイチ,given,player,,
+7304,吉田 温紀,吉田 温紀,ヨシダ ハルキ,full,player,,
+7304,吉田 温紀,吉田,ヨシダ,family,player,,
+7304,吉田 温紀,温紀,ハルキ,given,player,,
+7305,和田 育,和田 育,ワダ ハグミ,full,player,,
+7305,和田 育,和田,ワダ,family,player,,
+7305,和田 育,育,ハグミ,given,player,,
+7306,國武 勇斗,國武 勇斗,クニタケ ユウト,full,player,,
+7306,國武 勇斗,國武,クニタケ,family,player,,
+7306,國武 勇斗,勇斗,ユウト,given,player,,
+7307,土肥 幹太,土肥 幹太,ドイ カンタ,full,player,,
+7307,土肥 幹太,土肥,ドイ,family,player,,
+7307,土肥 幹太,幹太,カンタ,given,player,,
+7308,堤 奏一郎,堤 奏一郎,ツツミ ソウイチロウ,full,player,,
+7308,堤 奏一郎,堤,ツツミ,family,player,,
+7308,堤 奏一郎,奏一郎,ソウイチロウ,given,player,,
+7309,家坂 葉光,家坂 葉光,イエサカ ヨウコウ,full,player,,
+7309,家坂 葉光,家坂,イエサカ,family,player,,
+7309,家坂 葉光,葉光,ヨウコウ,given,player,,
+7310,小林 将天,小林 将天,コバヤシ マサタカ,full,player,,
+7310,小林 将天,小林,コバヤシ,family,player,,
+7310,小林 将天,将天,マサタカ,given,player,,
+7311,小澤 秀充,小澤 秀充,オザワ ヒデアツ,full,player,,
+7311,小澤 秀充,小澤,オザワ,family,player,,
+7311,小澤 秀充,秀充,ヒデアツ,given,player,,
+7312,山口 隆希,山口 隆希,ヤマグチ リュウキ,full,player,,
+7312,山口 隆希,山口,ヤマグチ,family,player,,
+7312,山口 隆希,隆希,リュウキ,given,player,,
+7313,岡 健太,岡 健太,オカ ケンタ,full,player,,
+7313,岡 健太,岡,オカ,family,player,,
+7313,岡 健太,健太,ケンタ,given,player,,
+7314,岡田 慎司,岡田 慎司,オカダ シンジ,full,player,http://commons.wikimedia.org/wiki/Special:FilePath/Shinji_Okada_%28cropped%29.jpg,https://commons.wikimedia.org/wiki/File:Shinji_Okada_%28cropped%29.jpg
+7314,岡田 慎司,岡田,オカダ,family,player,http://commons.wikimedia.org/wiki/Special:FilePath/Shinji_Okada_%28cropped%29.jpg,https://commons.wikimedia.org/wiki/File:Shinji_Okada_%28cropped%29.jpg
+7314,岡田 慎司,慎司,シンジ,given,player,http://commons.wikimedia.org/wiki/Special:FilePath/Shinji_Okada_%28cropped%29.jpg,https://commons.wikimedia.org/wiki/File:Shinji_Okada_%28cropped%29.jpg
+7315,岡﨑 大志郎,岡﨑 大志郎,オカザキ タイシロウ,full,player,,
+7315,岡﨑 大志郎,岡﨑,オカザキ,family,player,,
+7315,岡﨑 大志郎,大志郎,タイシロウ,given,player,,
+7316,幸喜 祐心,幸喜 祐心,コウキ ユウシン,full,player,,
+7316,幸喜 祐心,幸喜,コウキ,family,player,,
+7316,幸喜 祐心,祐心,ユウシン,given,player,,
+7317,戸田 峻平,戸田 峻平,トダ シュンペイ,full,player,,
+7317,戸田 峻平,戸田,トダ,family,player,,
+7317,戸田 峻平,峻平,シュンペイ,given,player,,
+7318,日髙 華杜,日髙 華杜,ヒダカ ハルト,full,player,,
+7318,日髙 華杜,日髙,ヒダカ,family,player,,
+7318,日髙 華杜,華杜,ハルト,given,player,,
+7319,明本 考浩,明本 考浩,アキモト タカヒロ,full,player,,
+7319,明本 考浩,明本,アキモト,family,player,,
+7319,明本 考浩,考浩,タカヒロ,given,player,,
+7320,木實 快斗,木實 快斗,コノミ カイト,full,player,,
+7320,木實 快斗,木實,コノミ,family,player,,
+7320,木實 快斗,快斗,カイト,given,player,,
+7321,木村 凌也,木村 凌也,キムラ リョウヤ,full,player,,
+7321,木村 凌也,木村,キムラ,family,player,,
+7321,木村 凌也,凌也,リョウヤ,given,player,,
+7322,朴 鎬緡,朴 鎬緡,パク ホミン,full,player,http://commons.wikimedia.org/wiki/Special:FilePath/241019_%EB%B6%80%EC%B2%9C_FC_1995_vs_%EC%88%98%EC%9B%90_%28%EB%B0%95%ED%98%B8%EB%AF%BC%29.jpg,https://commons.wikimedia.org/wiki/File:241019_%EB%B6%80%EC%B2%9C_FC_1995_vs_%EC%88%98%EC%9B%90_%28%EB%B0%95%ED%98%B8%EB%AF%BC%29.jpg
+7322,朴 鎬緡,朴,パク,family,player,http://commons.wikimedia.org/wiki/Special:FilePath/241019_%EB%B6%80%EC%B2%9C_FC_1995_vs_%EC%88%98%EC%9B%90_%28%EB%B0%95%ED%98%B8%EB%AF%BC%29.jpg,https://commons.wikimedia.org/wiki/File:241019_%EB%B6%80%EC%B2%9C_FC_1995_vs_%EC%88%98%EC%9B%90_%28%EB%B0%95%ED%98%B8%EB%AF%BC%29.jpg
+7322,朴 鎬緡,鎬緡,ホミン,given,player,http://commons.wikimedia.org/wiki/Special:FilePath/241019_%EB%B6%80%EC%B2%9C_FC_1995_vs_%EC%88%98%EC%9B%90_%28%EB%B0%95%ED%98%B8%EB%AF%BC%29.jpg,https://commons.wikimedia.org/wiki/File:241019_%EB%B6%80%EC%B2%9C_FC_1995_vs_%EC%88%98%EC%9B%90_%28%EB%B0%95%ED%98%B8%EB%AF%BC%29.jpg
+7323,村上 慶,村上 慶,ムラカミ ケイ,full,player,,
+7323,村上 慶,村上,ムラカミ,family,player,,
+7323,村上 慶,慶,ケイ,given,player,,
+7324,松山 健太,松山 健太,マツヤマ ケンタ,full,player,,
+7324,松山 健太,松山,マツヤマ,family,player,,
+7324,松山 健太,健太,ケンタ,given,player,,
+7325,松岡 響祈,松岡 響祈,マツオカ ヒビキ,full,player,,
+7325,松岡 響祈,松岡,マツオカ,family,player,,
+7325,松岡 響祈,響祈,ヒビキ,given,player,,
+7326,林 賢吾,林 賢吾,ハヤシ ケンゴ,full,player,,
+7326,林 賢吾,林,ハヤシ,family,player,,
+7326,林 賢吾,賢吾,ケンゴ,given,player,,
+7327,清水 悠斗,清水 悠斗,シミズ ユウト,full,player,,
+7327,清水 悠斗,清水,シミズ,family,player,,
+7327,清水 悠斗,悠斗,ユウト,given,player,,
+7328,渡邉 颯太,渡邉 颯太,ワタナベ ソウタ,full,player,,
+7328,渡邉 颯太,渡邉,ワタナベ,family,player,,
+7328,渡邉 颯太,颯太,ソウタ,given,player,,
+7329,照内 利和,照内 利和,テルウチ トシカズ,full,player,,
+7329,照内 利和,照内,テルウチ,family,player,,
+7329,照内 利和,利和,トシカズ,given,player,,
+7330,牛澤 健,牛澤 健,ウシザワ タケシ,full,player,,
+7330,牛澤 健,牛澤,ウシザワ,family,player,,
+7330,牛澤 健,健,タケシ,given,player,,
+7331,田中 純,田中 純,タナカ ジュン,full,player,,
+7331,田中 純,田中,タナカ,family,player,,
+7331,田中 純,純,ジュン,given,player,,
+7332,芳野 凱斗,芳野 凱斗,ヨシノ カイト,full,player,,
+7332,芳野 凱斗,芳野,ヨシノ,family,player,,
+7332,芳野 凱斗,凱斗,カイト,given,player,,
+7333,荒井 悠汰,荒井 悠汰,アライ ユウタ,full,player,,
+7333,荒井 悠汰,荒井,アライ,family,player,,
+7333,荒井 悠汰,悠汰,ユウタ,given,player,,
+7334,薬師田 澪,薬師田 澪,ヤクシダ レイ,full,player,,
+7334,薬師田 澪,薬師田,ヤクシダ,family,player,,
+7334,薬師田 澪,澪,レイ,given,player,,
+7335,藤井 海和,藤井 海和,フジイ カイト,full,player,,
+7335,藤井 海和,藤井,フジイ,family,player,,
+7335,藤井 海和,海和,カイト,given,player,,
+7336,道脇 豊,道脇 豊,ミチワキ ユタカ,full,player,,
+7336,道脇 豊,道脇,ミチワキ,family,player,,
+7336,道脇 豊,豊,ユタカ,given,player,,
+7337,那須 健一,那須 健一,ナス ケンイチ,full,player,,
+7337,那須 健一,那須,ナス,family,player,,
+7337,那須 健一,健一,ケンイチ,given,player,,
+7338,金 文賢,金 文賢,キム ムンヒョン,full,player,,
+7338,金 文賢,金,キム,family,player,,
+7338,金 文賢,文賢,ムンヒョン,given,player,,
+7339,金 鎮鉉,金 鎮鉉,キム ジンヒョン,full,player,http://commons.wikimedia.org/wiki/Special:FilePath/Kim_Jin-Hyeon.jpg,https://commons.wikimedia.org/wiki/File:Kim_Jin-Hyeon.jpg
+7339,金 鎮鉉,金,キム,family,player,http://commons.wikimedia.org/wiki/Special:FilePath/Kim_Jin-Hyeon.jpg,https://commons.wikimedia.org/wiki/File:Kim_Jin-Hyeon.jpg
+7339,金 鎮鉉,鎮鉉,ジンヒョン,given,player,http://commons.wikimedia.org/wiki/Special:FilePath/Kim_Jin-Hyeon.jpg,https://commons.wikimedia.org/wiki/File:Kim_Jin-Hyeon.jpg
+7340,須貝 英大,須貝 英大,スガイ ヒデヒロ,full,player,http://commons.wikimedia.org/wiki/Special:FilePath/Hidehiro_Sugai_%28cropped%29.jpg,https://commons.wikimedia.org/wiki/File:Hidehiro_Sugai_%28cropped%29.jpg
+7340,須貝 英大,須貝,スガイ,family,player,http://commons.wikimedia.org/wiki/Special:FilePath/Hidehiro_Sugai_%28cropped%29.jpg,https://commons.wikimedia.org/wiki/File:Hidehiro_Sugai_%28cropped%29.jpg
+7340,須貝 英大,英大,ヒデヒロ,given,player,http://commons.wikimedia.org/wiki/Special:FilePath/Hidehiro_Sugai_%28cropped%29.jpg,https://commons.wikimedia.org/wiki/File:Hidehiro_Sugai_%28cropped%29.jpg
+7341,高柳 郁弥,高柳 郁弥,タカヤナギ フミヤ,full,player,,
+7341,高柳 郁弥,高柳,タカヤナギ,family,player,,
+7341,高柳 郁弥,郁弥,フミヤ,given,player,,
+7342,鹿取 勇斗,鹿取 勇斗,カトリ ユウト,full,player,,
+7342,鹿取 勇斗,鹿取,カトリ,family,player,,
+7342,鹿取 勇斗,勇斗,ユウト,given,player,,
+7343,齋藤 翔,齋藤 翔,サイトウ ショウ,full,player,,
+7343,齋藤 翔,齋藤,サイトウ,family,player,,
+7343,齋藤 翔,翔,ショウ,given,player,,
