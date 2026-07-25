@@ -27,22 +27,15 @@ from wpnames import UA, WP_API, qids_to_images, write_csv_no_trailing_newline
 CONFIGS = {
     "baseball": {
         "csv": "baseball.csv", "keyword": r"野球", "suffixes": [" (野球)"],
-        "cols": ["id", "original", "team", "surface", "pronunciation", "type",
-                 "org_id", "image", "image_page"],
     },
     "football": {
         "csv": "football.csv", "keyword": r"サッカー|フットボール",
         "suffixes": [" (サッカー選手)"],
-        "cols": ["id", "original", "surface", "pronunciation", "type",
-                 "category", "image", "image_page"],
     },
     "scientist": {
         "csv": "scientist.csv",
         "keyword": r"物理|天文|化学|数学|生物|生化学|計算機|情報|地質|地球|科学者|学者",
         "suffixes": [],
-        "cols": ["id", "original", "surface", "pronunciation", "type", "field",
-                 "era", "birth_year", "nobel", "gender", "country", "status",
-                 "image", "image_page"],
     },
 }
 PAREN = re.compile(r"^(.+?)[((](.+?)[))]$")
@@ -89,7 +82,14 @@ def lookup(titles: list, keyword: str) -> dict:
 def enrich(name: str) -> None:
     cfg = CONFIGS[name]
     path = Path(__file__).resolve().parent.parent / cfg["csv"]
-    rows = list(csv.DictReader(path.open(encoding="utf-8")))
+    reader = csv.DictReader(path.open(encoding="utf-8"))
+    rows = list(reader)
+    # 列は実ファイルのヘッダーに追随する(description列等の追加でここが
+    # 壊れないように)。image/image_page が無いファイルには列を追加する
+    fieldnames = list(reader.fieldnames)
+    for c in ("image", "image_page"):
+        if c not in fieldnames:
+            fieldnames.append(c)
     for r in rows:
         r.setdefault("image", "")
         r.setdefault("image_page", "")
@@ -141,7 +141,7 @@ def enrich(name: str) -> None:
         if not r["image"] and r["id"] in fill_by_id:
             r["image"], r["image_page"] = fill_by_id[r["id"]]
             filled += 1
-    write_csv_no_trailing_newline(path, cfg["cols"], rows)
+    write_csv_no_trailing_newline(path, fieldnames, rows)
     print(f"{cfg['csv']}: 画像付与 {len(fill_by_id)}人 ({filled}行)", flush=True)
 
 
