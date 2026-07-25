@@ -86,7 +86,8 @@ def main() -> int:
     def ext_str(name: str) -> str:
         return "yes" if name_ext.get(name) else "no"
 
-    old_rows = list(csv.DictReader(CSV_PATH.open(encoding="utf-8")))
+    reader = csv.DictReader(CSV_PATH.open(encoding="utf-8"))
+    old_rows = list(reader)
     na = 0
     for r in old_rows:
         r["class"] = name_cat.get(r["original"], UNKNOWN)
@@ -104,7 +105,9 @@ def main() -> int:
                       "extinct": ext_str(name)})
         next_id += 1
 
-    cols = ["id", "original", "surface", "pronunciation", "class", "extinct"]
+    # 列は実ファイルのヘッダーに追随する(image列等の追加でここが壊れないように。
+    # 新規追加行に無い列は空文字で埋められる)
+    cols = list(reader.fieldnames)
     write_csv_no_trailing_newline(CSV_PATH, cols, old_rows + added)
     print(f"sekitsui.csv: +{len(added)}種 (計 {len(old_rows) + len(added)}行), "
           f"既存の分類不明(NA) {na}行, "
