@@ -18,6 +18,14 @@ sekitsui.csv(脊椎動物)と同じ設計。和名(surface)がそのまま読み
 - 化石種・絶滅種(rank=種で登録されているもの)も対象に含め、`extinct` 列
   (yes/no)で区別する。判定は sekitsui と同じ(IUCN絶滅/野生絶滅、または化石
   タクソン Q23038290)
+- **既存行の埋まっている値は劣化させない**: 目ごとの分割クエリの取りこぼしや
+  Wikidata側のラベル改名(例 ユーカリ→ユーカリノキ)で当回の取得から名前が落ちる
+  ことがあるため、既存行の class は「今回実データが取れたとき」だけ更新し、
+  取れなければ既存値(NA含む)を保つ。extinct は no→yes の一方向のみ更新する
+- **動物の混入をガードする**: Wikidata の系統樹(P171)には稀に界をまたぐ誤リンク
+  があり、昆虫が被子植物の目の配下として引けてしまう(実例: ヘビトンボ
+  Q2481303)。新規追加候補の taxon QID について上位タクソン(P171*)を引き、
+  動物界 Q729 に到達するものは追加しない
 
 usage: python3 tools/update_plant.py
 """
@@ -37,6 +45,7 @@ SPECIES = "wd:Q7432"   # taxon rank = 種
 ORDER = "wd:Q36602"    # taxon rank = 目
 ANGIOSPERM = "Q25314"  # 被子植物
 MONOCOTS = "Q78961"    # 単子葉植物
+ANIMALIA = "Q729"      # 動物界(誤リンク混入の判定用)
 
 # 非被子植物: 正式な門・綱QID -> class列の大分類。非公式グループ(コケ植物
 # Q29993 / 藻類 Q37868)は P171 の親にならないので門ごとに分ける
@@ -73,11 +82,12 @@ SELECT DISTINCT ?o WHERE {{
 
 
 def fetch_taxa(qid: str) -> dict:
-    """QID配下の種(カタカナ和名) -> 絶滅フラグ(bool)。絶滅は IUCN(P141)が
-    絶滅種/野生絶滅、または instance of(P31)が化石タクソンのいずれか。
-    sekitsui.update_sekitsui.fetch_taxa と同じ。"""
+    """QID配下の種(カタカナ和名) -> (絶滅フラグ(bool), taxon QID集合)。絶滅は
+    IUCN(P141)が絶滅種/野生絶滅、または instance of(P31)が化石タクソンのいずれか
+    (sekitsui.update_sekitsui.fetch_taxa と同じ判定)。QID は動物混入ガード
+    (animal_taxa)で使う。"""
     query = f"""
-SELECT DISTINCT ?l (BOUND(?ext) AS ?extinct) WHERE {{
+SELECT DISTINCT ?t ?l (BOUND(?ext) AS ?extinct) WHERE {{
   ?t wdt:P171* wd:{qid} ; wdt:P105 {SPECIES} ; rdfs:label ?l .
   FILTER(LANG(?l) = "ja")
   OPTIONAL {{ ?t wdt:P141 ?i . FILTER(?i IN (wd:Q237350, wd:Q239509)) }}
@@ -91,8 +101,34 @@ SELECT DISTINCT ?l (BOUND(?ext) AS ?extinct) WHERE {{
         if not KATAKANA.match(name):
             continue
         ext = b["extinct"]["value"] == "true"
-        result[name] = result.get(name, False) or ext
+        prev_ext, qids = result.get(name, (False, set()))
+        qids.add(b["t"]["value"].rsplit("/", 1)[-1])
+        result[name] = (prev_ext or ext, qids)
     return result
+
+
+def animal_taxa(qids: list) -> set:
+    """与えた taxon QID のうち、P171 を辿ると動物界(Q729)に到達するものを返す。
+
+    Wikidata の系統樹には稀に界をまたぐ誤リンクがあり、昆虫が被子植物の目の配下
+    として引けてしまう(実例: ヘビトンボ Q2481303 の上位が Ranunculales/被子植物
+    まで繋がっている)。新規追加候補だけに絞って確認するので件数は小さい。
+
+    上位タクソンを列挙して Python 側で判定する。`?t wdt:P171* wd:Q729` と直接
+    書くと WDQS が動物界側から降りる走査になりタイムアウトする。"""
+    bad = set()
+    for i in range(0, len(qids), 100):
+        values = " ".join(f"wd:{q}" for q in qids[i:i + 100])
+        data = sparql(f"""
+SELECT DISTINCT ?t ?a WHERE {{
+  VALUES ?t {{ {values} }}
+  ?t wdt:P171* ?a .
+}}""")
+        for b in data["results"]["bindings"]:
+            if b["a"]["value"].rsplit("/", 1)[-1] == ANIMALIA:
+                bad.add(b["t"]["value"].rsplit("/", 1)[-1])
+        time.sleep(1)
+    return bad
 
 
 def main() -> int:
@@ -109,13 +145,15 @@ def main() -> int:
 
     name_cat = {}   # カタカナ和名 -> 大分類(先勝ち)
     name_ext = {}   # カタカナ和名 -> 絶滅フラグ(いずれかで絶滅なら絶滅)
+    name_qids = {}  # カタカナ和名 -> taxon QID集合(動物混入ガード用)
     for qid, cat in targets:
         taxa = fetch_taxa(qid)
-        for n, e in taxa.items():
+        for n, (e, qs) in taxa.items():
             name_cat.setdefault(n, cat)
             name_ext[n] = name_ext.get(n, False) or e
+            name_qids.setdefault(n, set()).update(qs)
         print(f"{cat}({qid}): カタカナ和名 {len(taxa)}, "
-              f"うち絶滅 {sum(taxa.values())}")
+              f"うち絶滅 {sum(e for e, _ in taxa.values())}")
         time.sleep(1)  # WDQSへの連続アクセスを避ける(取得対象は70件超)
 
     if len(name_cat) < MIN_TOTAL:
@@ -130,17 +168,43 @@ def main() -> int:
         old_rows = list(csv.DictReader(CSV_PATH.open(encoding="utf-8")))
     else:
         old_rows = []
-    na = 0
+    na = kept = 0
     for r in old_rows:
-        r["class"] = name_cat.get(r["original"], UNKNOWN)
-        r["extinct"] = ext_str(r["original"])
+        # 既存行は「今回実データが取れたときだけ」更新する。取れなかった名前
+        # (目ごとの分割クエリの取りこぼし・Wikidata側のラベル改名で落ちうる)は
+        # 既存値を保持し、既に埋まっている分類を NA に劣化させない
+        cat = name_cat.get(r["original"])
+        cur = (r.get("class") or "").strip()
+        if cat:
+            r["class"] = cat
+        elif not cur:
+            r["class"] = UNKNOWN
+        elif cur != UNKNOWN:
+            kept += 1
+        # 絶滅列は no→yes の一方向のみ。取りこぼしで yes→no に落とさない
+        cur_ext = (r.get("extinct") or "").strip()
+        if ext_str(r["original"]) == "yes":
+            r["extinct"] = "yes"
+        elif cur_ext not in ("yes", "no"):
+            r["extinct"] = "no"
         if r["class"] == UNKNOWN:
             na += 1
     existing = {r["original"] for r in old_rows}
     next_id = (max(int(r["id"]) for r in old_rows) + 1) if old_rows else 0
 
+    # 新規追加候補から、系統樹の誤リンクで拾ってしまった動物を除外する
+    candidates = sorted(name_cat.keys() - existing)
+    cand_qids = sorted({q for n in candidates for q in name_qids.get(n, ())})
+    bad_qids = animal_taxa(cand_qids) if cand_qids else set()
+    # 和名に複数のtaxonがぶら下がる場合は、全てが動物到達のときだけ除外する
+    dropped = [n for n in candidates
+               if name_qids.get(n) and not (name_qids[n] - bad_qids)]
+    candidates = [n for n in candidates if n not in set(dropped)]
+    if dropped:
+        print(f"動物混入として除外: {len(dropped)}件 {'/'.join(dropped[:20])}")
+
     added = []
-    for name in sorted(name_cat.keys() - existing):
+    for name in candidates:
         added.append({"id": str(next_id), "original": name, "surface": name,
                       "pronunciation": name, "class": name_cat[name],
                       "extinct": ext_str(name)})
@@ -148,7 +212,7 @@ def main() -> int:
 
     write_csv_no_trailing_newline(CSV_PATH, cols, old_rows + added)
     print(f"plant.csv: +{len(added)}種 (計 {len(old_rows) + len(added)}行), "
-          f"既存の分類不明(NA) {na}行, "
+          f"既存の分類不明(NA) {na}行, 今回未取得だが既存分類を保持 {kept}行, "
           f"絶滅 {sum(1 for n in name_cat if name_ext.get(n))}種")
     return 0
 

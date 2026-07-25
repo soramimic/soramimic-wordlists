@@ -9,6 +9,10 @@ sitelinks>=20 ≒ 多言語版20版以上に記事がある著名層)と、Wikip
   はそのまま引き継ぎ、新列 field/era/birth_year/nobel/gender/country/status を付与
 - 未収録の著名科学者を追記(読み・姓名分割は update_physicist.py と同じ方式)
 - 既存行の読み・id・表記は絶対に書き換えない
+- 既存行の付加列は**空欄/NAの補完のみ**行い、既に埋まっている値は書き換えない
+  (例外は status の 存命→物故 のみ。死没は不可逆なので反映する)。Wikidata の
+  ラベル揺れ・記事冒頭の改稿を毎回取り込むと、月次PRが既存行の書き換えだらけに
+  なり、レビューで本当の追記が埋もれるため(ADR 00014)
 
 新列(詳細は docs/adr/00009):
 - field:   分野(物理/化学/数学/天文学/生物学/計算機科学/地学)を優先順で並べた
@@ -79,6 +83,11 @@ def era_of(year: int) -> str:
     if year <= 1900:
         return "近代"
     return "現代"
+
+
+def is_blank(v) -> bool:
+    """既存セルが「未記入」か。空文字・空白のみ・NA を未記入とみなす。"""
+    return v is None or v.strip() in ("", "NA")
 
 
 def norm(title: str) -> str:
@@ -333,15 +342,27 @@ def main() -> int:
     attrs, extracts = fetch_all(persons)
 
     # 照合キー(正規化タイトル)-> {qid, field, attr, desc}
-    by_key = {}
-    for qid, p in persons.items():
+    # norm() は曖昧さ回避サフィックスを落とすので、同名別人が同じキーに衝突する
+    # (例: 「カール・フォン・リンネ」と「カール・フォン・リンネ (子)」)。dict の
+    # 挿入順まかせだと実行のたびに別人の属性が既存行に書かれてしまうため、
+    # (1) サフィックスの無い記事名を優先 (2) 同順は QID 昇順、で決定的に選ぶ
+    by_key, collisions = {}, 0
+    for qid in sorted(persons, key=lambda q: int(q[1:])):
+        p = persons[qid]
         key = norm(p["title"])
+        rank = 0 if DISAMBIG.sub("", p["title"]) == p["title"] else 1
+        if key in by_key:
+            collisions += 1
+            if by_key[key]["rank"] <= rank:
+                continue
         by_key[key] = {
-            "qid": qid, "field": field_value(p["fields"]),
+            "qid": qid, "rank": rank, "field": field_value(p["fields"]),
             "attr": attrs.get(qid, {}),
             "desc": make_description(extracts.get(p["title"], ""),
                                      attrs.get(qid, {}).get("wd_desc", "")),
         }
+    if collisions:
+        print(f"照合キー衝突(同名別人) {collisions}件: サフィックス無しを優先", flush=True)
 
     # 2回目以降は生成済みの scientist.csv を正とし、初回のみ physicist.csv から移行
     source = NEW_CSV if NEW_CSV.exists() else OLD_CSV
@@ -352,21 +373,33 @@ def main() -> int:
         r.setdefault("image_page", "")
     existing = {r["original"] for r in old_rows}
 
-    # 既存行への新列付与 + 空欄画像のバックフィル
-    matched = 0
+    # 既存行への新列付与 + 空欄のバックフィル。既に埋まっている値は書き換えない
+    # (ADR 00014)。上流のラベル揺れ・記事改稿・同名別人の取り違えで、良いデータが
+    # 毎回上書きされるのを防ぐ
+    matched = filled = deceased = 0
     for r in old_rows:
         info = by_key.get(r["original"])
         if info:
             matched += 1
-            r["field"] = info["field"]
             a = info["attr"]
-            r["era"] = a.get("era", "NA")
-            r["birth_year"] = a.get("birth_year", "NA")
-            r["nobel"] = a.get("nobel", "no")
-            r["gender"] = a.get("gender", "NA")
-            r["country"] = a.get("country", "NA")
-            r["status"] = a.get("status", "NA")
-            r["description"] = info["desc"]
+            fresh = {
+                "field": info["field"],
+                "era": a.get("era", "NA"),
+                "birth_year": a.get("birth_year", "NA"),
+                "nobel": a.get("nobel", "no"),
+                "gender": a.get("gender", "NA"),
+                "country": a.get("country", "NA"),
+                "status": a.get("status", "NA"),
+                "description": info["desc"],
+            }
+            for c, v in fresh.items():
+                if is_blank(r.get(c)):
+                    r[c] = v if not is_blank(v) else "NA"
+                    filled += 1
+            # 唯一の例外: 死没は不可逆なので 存命→物故 だけは反映する
+            if r["status"] == "存命" and fresh["status"] == "物故":
+                r["status"] = "物故"
+                deceased += 1
             if not r["image"] and a.get("image"):
                 r["image"], r["image_page"] = a["image"]
         elif r.get("field"):
@@ -378,7 +411,8 @@ def main() -> int:
             r["field"] = "物理"
             r["era"] = r["birth_year"] = r["nobel"] = "NA"
             r["gender"] = r["country"] = r["status"] = r["description"] = "NA"
-    print(f"既存 {len(old_rows)}行, Wikidata一致 {matched}行", flush=True)
+    print(f"既存 {len(old_rows)}行, Wikidata一致 {matched}行, "
+          f"空欄補完 {filled}セル, 存命→物故 {deceased}行", flush=True)
 
     candidates = [p["title"] for p in persons.values()
                   if norm(p["title"]) not in existing]
