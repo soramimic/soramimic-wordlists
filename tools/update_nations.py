@@ -49,7 +49,13 @@ def main() -> int:
     with MAP_PATH.open(encoding="utf-8") as f:
         mapping = {row["cca3"]: row for row in csv.DictReader(f)}
     with CSV_PATH.open(encoding="utf-8") as f:
-        rows = list(csv.DictReader(f))
+        reader = csv.DictReader(f)
+        rows = list(reader)
+        # 列は実ファイルのヘッダーに追随する(image列等の追加でこの
+        # スクリプトが列を削ってしまわないように)
+        fieldnames = list(reader.fieldnames)
+    if "status" not in fieldnames:
+        fieldnames.append("status")
     for row in rows:
         row.setdefault("status", "current")
 
@@ -92,11 +98,9 @@ def main() -> int:
         next_id += 1
 
     buf = io.StringIO()
-    writer = csv.writer(buf, lineterminator="\n")
-    writer.writerow(["id", "original", "surface", "status"])
-    for row in rows:
-        writer.writerow([row["id"], row["original"], row["surface"],
-                         row["status"]])
+    writer = csv.DictWriter(buf, fieldnames=fieldnames, lineterminator="\n")
+    writer.writeheader()
+    writer.writerows(rows)
     # 末尾改行なしで書く(soramimic側のパーサが最終空行で落ちるため)
     CSV_PATH.write_text(buf.getvalue().rstrip("\n"), encoding="utf-8")
 
