@@ -2,7 +2,7 @@ name: update-wordlists
 
 on:
   schedule:
-    - cron: "0 21 5 1 *" # 毎年1月6日 6:00 JST
+    - cron: "0 21 5 * *" # 毎月6日 6:00 JST
   workflow_dispatch:
 
 permissions:
@@ -19,57 +19,139 @@ jobs:
         with:
           python-version: "3.12"
 
+      # 各updaterは continue-on-error で独立させ、1つの失敗で全体が
+      # 止まらないようにする。失敗したupdaterの出力は後段で巻き戻す
       - name: Update pokemon.csv (PokéAPI)
+        id: pokemon
+        continue-on-error: true
         run: python tools/update_pokemon.py
 
       - name: Update nations.csv (mledoze/countries)
+        id: nations
+        continue-on-error: true
         run: python tools/update_nations.py
 
       - name: Update stations.csv (Wikidata/Wikipedia)
+        id: stations
+        continue-on-error: true
         run: python tools/update_stations.py
 
       - name: Update baseball.csv (Wikipedia rosters)
+        id: baseball
+        continue-on-error: true
         run: python tools/update_baseball.py
 
       - name: Update football.csv (Wikipedia rosters)
+        id: football
+        continue-on-error: true
         run: python tools/update_football.py
 
       - name: Update scientist.csv (Wikidata/Wikipedia)
+        id: scientist
+        continue-on-error: true
         run: python tools/update_scientist.py
 
       - name: Update sekitsui.csv (Wikidata taxa)
+        id: sekitsui
+        continue-on-error: true
         run: python tools/update_sekitsui.py
 
       - name: Update plant.csv (Wikidata taxa)
+        id: plant
+        continue-on-error: true
         run: python tools/update_plant.py
 
       - name: Update youtuber.csv (Wikidata/Wikipedia)
+        id: youtuber
+        continue-on-error: true
         run: python tools/update_youtuber.py
 
       - name: Backfill images (Wikidata P18)
+        id: images
+        continue-on-error: true
         run: python tools/enrich_images.py
+
+      - name: 失敗したupdaterの書きかけ出力を巻き戻す
+        id: failures
+        env:
+          O_POKEMON: ${{ steps.pokemon.outcome }}
+          O_NATIONS: ${{ steps.nations.outcome }}
+          O_STATIONS: ${{ steps.stations.outcome }}
+          O_BASEBALL: ${{ steps.baseball.outcome }}
+          O_FOOTBALL: ${{ steps.football.outcome }}
+          O_SCIENTIST: ${{ steps.scientist.outcome }}
+          O_SEKITSUI: ${{ steps.sekitsui.outcome }}
+          O_PLANT: ${{ steps.plant.outcome }}
+          O_YOUTUBER: ${{ steps.youtuber.outcome }}
+          O_IMAGES: ${{ steps.images.outcome }}
+        run: |
+          failed=""
+          revert_if_failed() {
+            # $1=表示名 $2=outcome $3以降=巻き戻すファイル(省略時は戻さない)
+            name="$1"; outcome="$2"; shift 2
+            if [ "$outcome" = "failure" ]; then
+              if [ $# -gt 0 ]; then git checkout -- "$@"; fi
+              failed="$failed $name"
+            fi
+          }
+          revert_if_failed pokemon "$O_POKEMON" pokemon.csv
+          revert_if_failed nations "$O_NATIONS" nations.csv tools/nations_map.csv
+          revert_if_failed stations "$O_STATIONS" stations.csv
+          revert_if_failed baseball "$O_BASEBALL" baseball.csv
+          revert_if_failed football "$O_FOOTBALL" football.csv
+          revert_if_failed scientist "$O_SCIENTIST" scientist.csv
+          revert_if_failed sekitsui "$O_SEKITSUI" sekitsui.csv
+          revert_if_failed plant "$O_PLANT" plant.csv
+          revert_if_failed youtuber "$O_YOUTUBER" youtuber.csv
+          # enrich_imagesは複数ファイルを触るため巻き戻さない(他updaterの
+          # 成果を消すおそれ)。破壊は次の行数チェックとvalidateで検出する
+          revert_if_failed enrich_images "$O_IMAGES"
+          failed="${failed# }"
+          echo "failed=$failed" >> "$GITHUB_OUTPUT"
+          if [ -n "$failed" ]; then echo "::warning::失敗したupdater: $failed"; fi
+
+      - name: 行数が減っていないか確認(書きかけ・データ破壊の防止)
+        run: |
+          for f in *.csv tools/nations_map.csv; do
+            old=$(git show "HEAD:$f" | wc -l)
+            new=$(wc -l < "$f")
+            if [ "$new" -lt "$old" ]; then
+              echo "::error::$f の行数が減少 ($old -> $new 行)。破壊的変更の可能性があるため中断"
+              exit 1
+            fi
+          done
 
       - name: Validate CSVs
         run: python tools/validate_csvs.py
+
+      # GITHUB_TOKENで作ったPRではpull_request系ワークフロー
+      # (ci / automerge / review-auto-update)が走らないため、
+      # GitHub Appトークン(無期限) > AUTOMERGE_PAT(要年次更新) > github.token
+      # の優先順で使う。App設定: vars.BOT_APP_ID + secrets.BOT_APP_PRIVATE_KEY
+      - name: Generate GitHub App token
+        id: app-token
+        if: vars.BOT_APP_ID != ''
+        uses: actions/create-github-app-token@v2
+        with:
+          app-id: ${{ vars.BOT_APP_ID }}
+          private-key: ${{ secrets.BOT_APP_PRIVATE_KEY }}
 
       - name: Create pull request if changed
         id: cpr
         uses: peter-evans/create-pull-request@v7
         with:
-          # AUTOMERGE_PAT(fine-grained PAT)があればそれを使う。
-          # GITHUB_TOKENだと作られたPRでpull_requestワークフロー(ci)が
-          # 走らず、required checks待ちのauto-mergeが完了しないため
-          token: ${{ secrets.AUTOMERGE_PAT != '' && secrets.AUTOMERGE_PAT || github.token }}
+          token: ${{ steps.app-token.outputs.token || (secrets.AUTOMERGE_PAT != '' && secrets.AUTOMERGE_PAT) || github.token }}
           branch: auto/update-wordlists
-          title: "自動更新: 単語リスト(年次バッチ)"
-          commit-message: "自動更新: 単語リスト(年次バッチ)"
+          title: "自動更新: 単語リスト(月次バッチ)"
+          commit-message: "自動更新: 単語リスト(月次バッチ)"
           body: |
             定期バッチ(update-wordlists)による自動更新です。
-            実行ログの「要確認」も確認してください。CIが通れば自動マージされます。
+            AIレビュー(review-auto-update)を含む全チェックが成功すれば自動マージされます。
+            ${{ steps.failures.outputs.failed != '' && format('⚠ 失敗したupdaterがあります: {0}。今回このリストは更新されていません。ワークフローログを確認してください(自動マージはされません)。', steps.failures.outputs.failed) || '' }}
           delete-branch: true
 
-      - name: Enable auto-merge
-        if: steps.cpr.outputs.pull-request-number
-        env:
-          GH_TOKEN: ${{ secrets.AUTOMERGE_PAT != '' && secrets.AUTOMERGE_PAT || github.token }}
-        run: gh pr merge --auto --squash "${{ steps.cpr.outputs.pull-request-number }}" -R "${{ github.repository }}"
+      - name: updater失敗をジョブ失敗として通知(メール用)
+        if: steps.failures.outputs.failed != ''
+        run: |
+          echo "::error::失敗したupdater: ${{ steps.failures.outputs.failed }}"
+          exit 1
