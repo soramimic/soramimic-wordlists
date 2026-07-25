@@ -22,9 +22,11 @@ jobs:
       PR: ${{ github.event.pull_request.number }}
     steps:
       - name: updater失敗を含むPRは自動マージさせない
-        env:
-          BODY: ${{ github.event.pull_request.body }}
+        # イベントペイロードのbodyはブランチpush時点のスナップショットで、
+        # create-pull-requestによる本文更新(数秒後)が反映されず競合する。
+        # 必ずAPIで現在の本文を取得する
         run: |
+          BODY=$(gh pr view "$PR" --repo "${{ github.repository }}" --json body -q .body)
           if printf '%s' "$BODY" | grep -q "失敗したupdaterがあります"; then
             echo "::error::updater失敗を含むPRのため、このチェックを失敗させて自動マージを止めます(内容とログを手動確認してください)"
             exit 1
