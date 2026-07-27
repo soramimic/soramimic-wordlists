@@ -58,6 +58,23 @@ def sparql(query: str) -> dict:
     raise RuntimeError("wdqs failed")
 
 
+def sparql_post(query: str) -> dict:
+    """sparql() のPOST版。VALUES句に数百件を並べるとGETのURLが長すぎて
+    HTTP 414 になるため、大きなクエリはこちらを使う。"""
+    body = urllib.parse.urlencode({"query": query}).encode()
+    headers = {**UA, "Accept": "application/sparql-results+json",
+               "Content-Type": "application/x-www-form-urlencoded"}
+    for attempt in range(4):
+        try:
+            req = urllib.request.Request(WDQS, data=body, headers=headers)
+            with urllib.request.urlopen(req, timeout=180) as res:
+                return json.load(res)
+        except Exception as ex:
+            print(f"WDQS retry {attempt}: {ex}")
+            time.sleep(20 * (attempt + 1))
+    raise RuntimeError("wdqs failed")
+
+
 def template_wikitext(title: str):
     data = api({"action": "query", "prop": "revisions", "rvprop": "content",
                 "rvslots": "main", "titles": title})
