@@ -6,7 +6,9 @@ update_sekitsui.py と同じく綱QIDごとに Wikidata を引き、各 taxon �
 wikidata を埋める。人名リストと違い taxon は日本語ラベルが一意な学術和名
 なので、enrich_images.py のような同名回避キーワードガードは不要。
 
-- 既存の image が空の行だけ埋める(冪等)。他の列は変更しない。
+- 既存の image が空の行だけ埋める(冪等)。他の列は変更しない。ただし
+  apply_class_images.py が入れた分類の概念イメージは実写で上書きする
+  (概念イメージ→実写は改善方向なので劣化にあたらない)。
 - 脊椎動物 Q25241 を一括で引くと WDQS がタイムアウトするため、綱ごとに
   分割してクエリする(update_sekitsui.py と同じ7綱)。
 - WDQS 部分応答ガード: 収集画像数が MIN_TOTAL を下回ったら中断。
@@ -22,6 +24,7 @@ import urllib.parse
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+from apply_class_images import is_class_image  # noqa: E402
 from wpnames import sparql, write_csv_no_trailing_newline  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -89,16 +92,17 @@ def main() -> int:
     for r in rows:
         for c in cols:
             r.setdefault(c, "")
-        if r.get("image"):
-            continue  # 既に画像がある行は触らない(冪等)
+        cur = r.get("image") or ""
+        if cur and not is_class_image(cur):
+            continue  # 実写がある行は触らない(冪等)
         hit = name_img.get(r["original"])
         if hit:
             r["wikidata"], r["image"], r["image_page"] = hit
-            filled += 1
+            filled += 1  # 概念イメージだった行は実写に差し替わる
 
     write_csv_no_trailing_newline(CSV_PATH, cols, rows)
-    have = sum(1 for r in rows if r["image"])
-    print(f"画像を付与: +{filled} (計 {have}/{len(rows)}行に画像)")
+    have = sum(1 for r in rows if r["image"] and not is_class_image(r["image"]))
+    print(f"画像を付与: +{filled} (計 {have}/{len(rows)}行に実写画像)")
     return 0
 
 
