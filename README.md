@@ -25,7 +25,7 @@
 | category, org, debut_year | youtuber固有: 区分(`youtuber`=実在のYouTuber/`vtuber`=VTuber)、所属事務所・グループ(スラッシュ区切り多値、`org~=ホロライブ` で絞り込む前提。無ければNA)、活動開始年(西暦、無ければNA) |
 | prefecture, city | stations固有: 駅の所在都道府県・市区町村(同名駅の区別用。1行=1駅) |
 | lines | stations固有: 乗り入れ路線(「JR東日本 東北本線」形式、複数は「／」区切り)。Wikidata/Wikipediaに情報が無い駅は空。補完は `tools/enrich_lines.py` |
-| image, image_page | 写真のURL(Wikimedia Commons直リンクまたは本リポジトリのGitHub Releaseアセット)と、ライセンス・作者の確認先ページ(stations/baseball/football/scientist/fictional_scientist/fictional_anime_character)。利用時はimage_pageのクレジット条件に従うこと |
+| image, image_page | 画像のURL(Wikimedia Commons直リンクまたは本リポジトリのGitHub Releaseアセット)と、ライセンス・作者の確認先ページ(stations/baseball/football/scientist/fictional_scientist/fictional_anime_character/pokemon)。利用時はimage_pageのクレジット条件に従うこと。pokemonのみ写真ではなく「型色カード」SVG(タイプの配色と文字だけで描いたもの。キャラクター造形は使わない。詳細は ADR 00002) |
 | field | scientist固有: 分野を優先順(物理→化学→数学→天文学→生物学→計算機科学→地学)で並べた単一列のスラッシュ区切り多値(例 `物理/数学`)。切り詰めなし、無ければ`NA`。ソラミミックに部分一致演算子`~=`を追加したので、多値を1列で持ち`field~=物理`で絞り込める(app側 setting.json の対応は別リポジトリ soramimic 側で実施) |
 | era, birth_year, nobel, gender, country, status, description | scientist固有: 時代区分(古代/中世/近世/近代/現代/NA。生年basis)・西暦生年(紀元前は「前287」、不明はNA)・科学系ノーベル賞受賞者か(yes/no、照合不能はNA)・性別(男性/女性/その他/NA)・市民権のある国(情報列。複数は"/"、不明はNA)・生死(物故/存命/NA)・主な業績の短い完結文(記事冒頭の先頭生没年カッコを除去し、「。」区切りで完結文を目安90字まで連結。常に「。」で終わる。ASCIIカンマ・引用符除去、無ければNA) |
 | wikidata | stations固有: 駅のWikidata QID(差分更新の永続キー) |
@@ -43,7 +43,7 @@
 | scientist.csv | 科学者(物理/化学/数学/天文/生物/計算機/地学。分野・時代区分・生没・国・性別・ノーベル賞・業績説明付き。手選び+著名層) | Wikidata/Wikipediaで自動更新 |
 | sekitsui.csv | 動物(脊椎動物) | [Wikidata](https://www.wikidata.org/) (CC0) で自動更新 |
 | plant.csv | 植物(被子/裸子/シダ/コケ/藻類の和名) | [Wikidata](https://www.wikidata.org/) (CC0) で自動更新 |
-| pokemon.csv | ポケモン(地方のすがた・メガ・キョダイマックス含む) | [PokéAPI](https://github.com/PokeAPI/pokeapi) で自動更新 |
+| pokemon.csv | ポケモン(地方のすがた・メガ・キョダイマックス含む。タイプ配色のみで描いた「型色カード」画像付き) | [PokéAPI](https://github.com/PokeAPI/pokeapi) で自動更新。画像は本リポジトリのReleaseで配布(公式アセット・キャラクター造形は使わず配色と文字のみ)。本リポジトリは非公式のファンメイドであり株式会社ポケモン・任天堂等とは無関係 |
 | youtuber.csv | YouTuber・VTuber(ja.wikipediaに記事がある著名層。海外勢含む。活動名のみ、type: family/given/full。category列で区分、所属・活動開始年・status付き) | Wikidata/Wikipedia (CC BY-SA 4.0) で自動更新 |
 | fictional_scientist.csv | AI生成による架空の科学者1000人(名前・読み・生没年・国籍・分野・主な業績・肖像画像。type: family/given/full) | jiroshimaya/fictional-scientists プロジェクトによる自動生成(実在人物とは無関係)、画像は本リポジトリのReleaseで配布 |
 | fictional_anime_character.csv | AI生成による架空アニメ『蒼穹の螺旋航路』の登場キャラ1000人(名前・読み・所属・初登場年・種族・声優名・紹介文・肖像画像。type: family/given/full/call/nick。callは作中で使われる呼び名(敬称込み)、nickはあだ名) | jiroshimaya/fictional-scientists プロジェクトによる自動生成(実在の作品・人物とは無関係)、画像は本リポジトリのReleaseで配布 |
@@ -85,7 +85,18 @@ python3 tools/audit_taxa.py sekitsui  # 既存行が想定した界・門の配�
 
 - pokemon: 全件再生成。フォームは「ライチュウ（アローラのすがた）」形式で
   表記ゆれ3行を同一idで収録。種とフォームは別ポケモンとして別id
-  (詳細は ADR 00002)
+  (詳細は ADR 00002)。`image`/`image_page` は id から機械的に組み立てるので
+  全件再生成でも消えない。**新ポケモンが追加された回は型色カードを作り直して
+  Release を更新すること**(未生成のidは画像が404。フォームのidは種が増えると
+  振り直されるため、差分だけでなく全枚数を再生成して上書きする):
+  ```sh
+  python3 tools/gen_pokemon_typecards.py --out build/pokemon_typecards --upload
+  ```
+  再生成したら `tools/gen_pokemon_typecards.py` の `ASSET_MAX_ID` を
+  出力される値に更新する(未生成idの警告に使う)。
+  Releaseは1つあたり1000アセットが上限なので、id 1000枚ごとに
+  `pokemon-typecard-v1` / `pokemon-typecard-v1b` / … と分けている。
+  id が新しい区切りに到達したら、その分のReleaseを先に作っておくこと
 - nations: 既存行の表記・idは変更しない。新規加盟の追記と status の更新のみ。
   ISOコードとの対応は `tools/nations_map.csv` で管理。正式名称(大韓民国)・
   通称(北朝鮮)・漢字略称(米国)・別読み(ニッポン)・別カナ表記(テュルキエ)は
