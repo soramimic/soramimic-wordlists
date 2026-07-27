@@ -39,8 +39,8 @@ PALETTES = {
                "chip": "#7a5a44", "chip_ink": "#f6f0eb"},
     "gray":   {"bg": "#ecebe7", "halo": "#dedcd6", "fig": "#6b6b64", "ink": "#454540",
                "chip": "#6b6b64", "chip_ink": "#f2f1ee"},
-    "amber":  {"bg": "#f2ece0", "halo": "#e7dfcc", "fig": "#8a6a35", "ink": "#584322",
-               "chip": "#8a6a35", "chip_ink": "#f7f3ea"},
+    "jade":   {"bg": "#e3efe9", "halo": "#d1e4da", "fig": "#42836a", "ink": "#2a5343",
+               "chip": "#42836a", "chip_ink": "#eef6f2"},
     "moss":   {"bg": "#e9eee6", "halo": "#dae3d5", "fig": "#5c7444", "ink": "#3a4a2b",
                "chip": "#5c7444", "chip_ink": "#f1f4ee"},
 }
@@ -152,10 +152,11 @@ def shape_dicot(p: dict) -> str:
         _stroke("M 100 116 L 100 74", f, 6),                                  # 葉柄
         _path("M 100 78 C 60 76 30 54 26 20 C 66 16 96 38 100 78 Z", f),
         _path("M 100 78 C 140 76 170 54 174 20 C 134 16 104 38 100 78 Z", f),  # 葉身
-        _stroke("M 100 78 L 44 26", bg, 3),
-        _stroke("M 100 78 L 156 26", bg, 3),                                  # 主脈
-        _stroke("M 82 62 L 72 40 M 64 48 L 56 30 M 118 62 L 128 40 "
-                "M 136 48 L 144 30", bg, 2.5),                                # 側脈
+        _stroke("M 100 78 C 76 66 52 48 32 26", bg, 2.8),
+        _stroke("M 100 78 C 124 66 148 48 168 26", bg, 2.8),                  # 主脈
+        _stroke("M 78 65 C 76 54 76 44 78 36 M 61 53 C 59 44 59 36 61 28 "
+                "M 122 65 C 124 54 124 44 122 36 M 139 53 C 141 44 141 36 139 28",
+                bg, 2.2),                                                     # 側脈
     ])
 
 
@@ -166,9 +167,9 @@ def shape_monocot(p: dict) -> str:
         _path("M 100 116 C 84 88 62 60 26 34 C 52 72 74 92 96 116 Z", f),
         _path("M 100 116 C 116 88 138 60 174 34 C 148 72 126 92 104 116 Z", f),
         _path("M 100 116 C 96 84 96 50 100 14 C 108 50 108 84 104 116 Z", f),
-        _stroke("M 100 110 C 98 78 98 46 100 24", bg, 2.5),
-        _stroke("M 84 108 C 72 84 58 62 40 44", bg, 2.5),
-        _stroke("M 118 108 C 130 84 144 62 162 44", bg, 2.5),                 # 平行脈
+        _stroke("M 102 108 C 100 78 100 46 101 24", bg, 2.2),
+        _stroke("M 86 106 C 74 84 60 64 44 48", bg, 2.2),
+        _stroke("M 116 106 C 128 84 142 64 158 48", bg, 2.2),                 # 平行脈
     ])
 
 
@@ -184,48 +185,65 @@ def shape_gymnosperm(p: dict) -> str:
 
 
 def shape_fern(p: dict) -> str:
-    """シダ植物: 先が巻いた羽状複葉。"""
+    """シダ植物: 羽状複葉と、先が渦を巻いた新芽(ゼンマイ)。"""
     f = p["fig"]
     pinnae = []
-    for i in range(6):
-        y = 100 - i * 14
-        length = 46 - i * 5
-        pinnae.append(_stroke(f"M 100 {y} C {100 - length * 0.6} {y - 2} "
-                              f"{100 - length} {y - 8} {100 - length} {y - 16}", f, 6))
-        pinnae.append(_stroke(f"M 100 {y} C {100 + length * 0.6} {y - 2} "
-                              f"{100 + length} {y - 8} {100 + length} {y - 16}", f, 6))
+    for i in range(7):
+        y = 108 - i * 11          # 下ほど大きい羽片を対で並べる
+        half = (46 - i * 5) / 2
+        ry = 5.6 - i * 0.45
+        for sign, ang in ((-1, 25), (1, -25)):
+            pinnae.append(f'<ellipse cx="{100 + sign * half:g}" cy="{y}" '
+                          f'rx="{half:g}" ry="{ry:g}" fill="{f}" '
+                          f'transform="rotate({ang} 100 {y})"/>')
     return "".join([
-        _stroke("M 100 116 C 100 80 100 48 104 26 C 106 14 118 10 124 18 "
-                "C 129 25 124 33 116 31", f, 7),                              # 中軸と巻きひげ
+        _stroke("M 100 118 C 100 90 100 60 104 34", f, 6),                    # 中軸
         *pinnae,
+        _stroke("M 104 34 C 106 22 114 14 124 16 C 133 18 136 28 130 34 "
+                "C 125 39 117 37 117 30", f, 6),                              # 巻いた新芽
     ])
 
 
 def shape_moss(p: dict) -> str:
-    """コケ植物: 群落と胞子体(蒴)。"""
+    """コケ植物: 蒴をつけた胞子体と、粒だったマット状の群落。"""
     f = p["fig"]
-    stalks = []
-    for x, h in ((66, 40), (88, 56), (112, 48), (136, 62)):
-        stalks.append(_stroke(f"M {x} 96 C {x - 3} {96 - h * 0.6} {x + 3} "
-                              f"{96 - h * 0.8} {x} {96 - h}", f, 4))
-        stalks.append(f'<ellipse cx="{x}" cy="{96 - h - 6}" rx="8" ry="6" fill="{f}"/>')
-    return "".join([
-        *stalks,
-        _path("M 24 116 C 30 96 48 90 66 98 C 82 88 104 90 116 100 "
-              "C 134 90 158 96 176 116 Z", f),                                # 群落
-    ])
+    parts = []
+    for x, h, tilt in ((60, 42, -6), (84, 62, -2), (112, 50, 4), (136, 68, 8)):
+        top = 102 - h
+        parts.append(_stroke(f"M {x} 102 C {x - 2} {102 - h * 0.5:g} "
+                             f"{x + tilt * 0.5:g} {102 - h * 0.8:g} "
+                             f"{x + tilt} {top}", f, 3.5))                    # 蒴柄
+        parts.append(f'<ellipse cx="{x + tilt}" cy="{top - 7}" rx="6.5" ry="9" '
+                     f'fill="{f}" transform="rotate({tilt * 2} {x + tilt} {top - 7})"/>')
+    # 群落: 上端を小さな弧の連なりにして、土の塊ではなく葉の粒だちに見せる
+    x0, x1, n, base, rise = 16, 184, 12, 118, 24
+    d = [f"M {x0} 120", f"L {x0} {base}"]
+    for i in range(n):
+        xa = x0 + (x1 - x0) * i / n
+        xb = x0 + (x1 - x0) * (i + 1) / n
+        ya = base - rise * (1 - abs(i / n * 2 - 1) ** 2)
+        yb = base - rise * (1 - abs((i + 1) / n * 2 - 1) ** 2)
+        d.append(f"C {xa + 2:g} {ya - 9:g} {xb - 2:g} {yb - 9:g} {xb:g} {yb:g}")
+    d.append(f"L {x1} 120 Z")
+    parts.append(_path(" ".join(d), f))
+    return "".join(parts)
 
 
 def shape_algae(p: dict) -> str:
-    """藻類: 水中でゆれる帯状の葉状体。"""
+    """藻類: 付着器から伸びる帯状の葉状体と、水中を示す気泡。"""
     f = p["fig"]
     return "".join([
-        _stroke("M 76 116 C 62 90 70 62 58 34 C 54 24 60 16 68 18", f, 9),
-        _stroke("M 100 116 C 96 84 108 56 100 26 C 98 14 106 8 114 12", f, 11),
-        _stroke("M 124 116 C 136 92 130 68 142 44 C 147 34 142 26 134 26", f, 8),
-        _stroke("M 92 84 C 78 74 74 62 76 50", f, 5),
-        _stroke("M 110 70 C 124 62 128 50 126 38", f, 5),                     # 側枝
-        f'<rect x="60" y="112" width="86" height="8" rx="4" fill="{f}"/>',    # 付着器
+        f'<circle cx="34" cy="34" r="6" fill="{f}" opacity="0.4"/>',
+        f'<circle cx="52" cy="58" r="3.5" fill="{f}" opacity="0.4"/>',
+        f'<circle cx="170" cy="46" r="7" fill="{f}" opacity="0.4"/>',
+        f'<circle cx="154" cy="72" r="4" fill="{f}" opacity="0.4"/>',         # 気泡
+        _stroke("M 100 114 C 94 100 86 92 76 84", f, 5),
+        _stroke("M 100 114 C 100 100 100 92 100 80", f, 5),
+        _stroke("M 100 114 C 108 102 118 94 126 86", f, 5),                   # 柄
+        _path("M 76 84 C 54 68 44 42 46 16 C 70 32 86 60 76 84 Z", f),
+        _path("M 100 80 C 82 60 82 30 96 6 C 114 30 116 60 100 80 Z", f),
+        _path("M 126 86 C 126 60 140 34 158 20 C 160 48 148 72 126 86 Z", f),  # 葉状体
+        f'<rect x="68" y="110" width="66" height="9" rx="4.5" fill="{f}"/>',  # 付着器
     ])
 
 
@@ -254,8 +272,11 @@ GROUPS = {
         ("単子葉", "class_monocot.svg", "monocot", "moss"),
         ("裸子植物", "class_gymnosperm.svg", "gymnosperm", "teal"),
         ("シダ植物", "class_fern.svg", "fern", "olive"),
-        ("コケ植物", "class_moss.svg", "moss", "amber"),
+        ("コケ植物", "class_moss.svg", "moss", "jade"),
         ("藻類", "class_algae.svg", "algae", "indigo"),
+        # plant.csv に現状 NA の行は無いが、将来 class が増えたときの受け皿。
+        # sekitsui と同じ絵・同じファイル名で、リリースのアセットも共用する
+        ("NA", "class_unknown.svg", "unknown", "gray"),
     ],
 }
 

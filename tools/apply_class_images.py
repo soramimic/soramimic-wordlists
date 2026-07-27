@@ -2,10 +2,10 @@
 """実写画像が無い行に、分類(class列)レベルの概念イメージ画像を設定する。
 
 種ごとの実写画像は Wikidata の P18 から取れるが、取れない種も多い(sekitsui は
-約2,700行)。個体の写真を用意するのは不可能なので、`class` 列の単位で1枚ずつ
-用意した概念イメージ(tools/gen_class_images.py が生成し GitHub Release で配布)
-を共有で割り当てる。画像内に「イメージ」と明記してあり、実写ではないことが
-見た目で分かるようにしてある。
+約2,700行、plant は約740行)。個体の写真を用意するのは不可能なので、`class` 列の
+単位で1枚ずつ用意した概念イメージ(tools/gen_class_images.py が生成し GitHub
+Release で配布)を共有で割り当てる。画像内に「イメージ」と明記してあり、実写
+ではないことが見た目で分かるようにしてある。
 
 - **実写がある行は触らない**。image が空の行だけ埋める(冪等)
 - 既に概念イメージが入っている行は、class が変わっていたら現在の class の
@@ -13,11 +13,11 @@
 - ネットワークアクセスなし。月次バッチ(update-wordlists)で updater の後に
   実行し、新規追加行にも概念イメージが付くようにする
 - 実写が後から取れたときは概念イメージを上書きしてよい(改善方向。判定は
-  enrich_sekitsui_images.py 側の is_class_image())
+  enrich_sekitsui_images.py / enrich_plant_images.py 側の is_class_image())
 
 usage:
   python3 tools/apply_class_images.py            # 全対象リスト
-  python3 tools/apply_class_images.py sekitsui   # リストを指定
+  python3 tools/apply_class_images.py plant      # リストを指定
 """
 
 import csv
@@ -33,10 +33,12 @@ ROOT = Path(__file__).resolve().parent.parent
 RELEASES = "https://github.com/soramimic/soramimic-wordlists/releases"
 
 # リスト名 -> (CSVファイル名, gen_class_images のグループ名, リリースタグ)
-# plant 用のシルエットは gen_class_images に定義済みだが、リリース未作成の
-# ため対象に入れていない(リリースを作ったらここに追加する)
+# タグは「絵柄のバージョン」であってリスト単位ではない。plant の6枚は既存の
+# class-image-v1 に追加アセットとして載せてある(既存URLは変わらない)。
+# 分類不明の class_unknown.svg は sekitsui と共用する
 TARGETS = {
     "sekitsui": ("sekitsui.csv", "sekitsui", "class-image-v1"),
+    "plant": ("plant.csv", "plant", "class-image-v1"),
 }
 # 概念イメージのURLはこの接頭辞で始まる(実写かどうかの判定に使う)
 URL_PREFIX = f"{RELEASES}/download/class-image-"

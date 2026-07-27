@@ -72,8 +72,8 @@ jobs:
         run: python tools/enrich_images.py
 
       # 実写が無い行に class ごとの概念イメージを割り当てる(ネットワーク不要)。
-      # update_sekitsui が追記した新規行にもこの回で画像が付く
-      - name: Apply class images (sekitsui)
+      # update_sekitsui / update_plant が追記した新規行にもこの回で画像が付く
+      - name: Apply class images (sekitsui/plant)
         id: classimg
         continue-on-error: true
         run: python tools/apply_class_images.py
@@ -114,9 +114,10 @@ jobs:
           # enrich_imagesは複数ファイルを触るため巻き戻さない(他updaterの
           # 成果を消すおそれ)。破壊は次の行数チェックとvalidateで検出する
           revert_if_failed enrich_images "$O_IMAGES"
-          # 概念イメージの割り当てはsekitsui.csvのみを書き換えるので巻き戻せる
-          # (同回のupdate_sekitsuiの追記も一緒に戻るが、次回の実行で復帰する)
-          revert_if_failed class_images "$O_CLASSIMG" sekitsui.csv
+          # 概念イメージの割り当てはsekitsui.csv/plant.csvのみを書き換えるので
+          # 巻き戻せる(同回のupdate_sekitsui/update_plantの追記も一緒に戻るが、
+          # 次回の実行で復帰する)
+          revert_if_failed class_images "$O_CLASSIMG" sekitsui.csv plant.csv
           failed="${failed# }"
           echo "failed=$failed" >> "$GITHUB_OUTPUT"
           if [ -n "$failed" ]; then echo "::warning::失敗したupdater: $failed"; fi
