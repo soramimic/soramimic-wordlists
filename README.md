@@ -91,6 +91,9 @@ python3 tools/audit_taxa.py sekitsui  # 既存行が想定した界・門の配�
   振り直されるため、差分だけでなく全枚数を再生成して上書きする):
   ```sh
   python3 tools/gen_pokemon_typecards.py --out build/pokemon_typecards --upload
+  # レート制限で途中終了したら、未アップロード分だけ再開できる
+  python3 tools/gen_pokemon_typecards.py --out build/pokemon_typecards \
+      --upload --only-missing
   ```
   再生成したら `tools/gen_pokemon_typecards.py` の `ASSET_MAX_ID` を
   出力される値に更新する(未生成idの警告に使う)。

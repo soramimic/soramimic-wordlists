@@ -35,6 +35,7 @@ import argparse
 import csv
 import subprocess
 import sys
+import time
 from pathlib import Path
 from xml.sax.saxutils import escape
 
@@ -230,20 +231,41 @@ def load_groups() -> list[tuple[int, str, str, str]]:
     return out
 
 
-def upload(tag: str, files: list[Path], batch: int = 40) -> int:
-    """gh release upload --clobber でアップロードする。失敗数を返す。"""
+def existing_assets(tag: str) -> set[str]:
+    """リリースにアップロード済みのアセット名。"""
+    res = subprocess.run(
+        ["gh", "release", "view", tag, "--json", "assets",
+         "-q", ".assets[].name"],
+        capture_output=True, text=True,
+    )
+    return set(res.stdout.split()) if res.returncode == 0 else set()
+
+
+def upload(tag: str, files: list[Path], batch: int = 40,
+           retries: int = 6) -> int:
+    """gh release upload --clobber でアップロードする。失敗数を返す。
+
+    枚数が多いとGitHubの二次レート制限(HTTP 403)に当たるので、バッチごとに
+    少し待ち、失敗したら指数バックオフで再試行する。
+    """
     failed = 0
     for i in range(0, len(files), batch):
         chunk = files[i:i + batch]
         cmd = ["gh", "release", "upload", tag, *[str(p) for p in chunk],
                "--clobber"]
-        res = subprocess.run(cmd, capture_output=True, text=True)
-        if res.returncode != 0:
-            failed += len(chunk)
-            print(f"  NG {tag} {i}-{i + len(chunk) - 1}: "
-                  f"{res.stderr.strip()[:300]}", file=sys.stderr)
+        for attempt in range(retries):
+            res = subprocess.run(cmd, capture_output=True, text=True)
+            if res.returncode == 0:
+                print(f"  ok {tag} {i + len(chunk)}/{len(files)}", flush=True)
+                break
+            wait = 60 * (attempt + 1)
+            print(f"  retry {tag} {i}-{i + len(chunk) - 1} in {wait}s: "
+                  f"{res.stderr.strip()[:160]}", file=sys.stderr, flush=True)
+            time.sleep(wait)
         else:
-            print(f"  ok {tag} {i + len(chunk)}/{len(files)}", flush=True)
+            failed += len(chunk)
+            print(f"  NG {tag} {i}-{i + len(chunk) - 1}", file=sys.stderr)
+        time.sleep(2)
     return failed
 
 
@@ -254,6 +276,9 @@ def main() -> int:
     ap.add_argument("--upload", action="store_true",
                     help="生成後に gh release upload --clobber でアップロードする"
                          "(リリースは作成済みであること)")
+    ap.add_argument("--only-missing", action="store_true",
+                    help="未アップロードのアセットだけ送る(レート制限で中断した"
+                         "ときの再開用。内容を差し替えたいときは使わないこと)")
     args = ap.parse_args()
 
     out_dir = Path(args.out)
@@ -280,7 +305,13 @@ def main() -> int:
     if args.upload:
         failed = 0
         for tag, files in by_tag.items():
-            print(f"uploading to {tag} ...", flush=True)
+            if args.only_missing:
+                done = existing_assets(tag)
+                files = [p for p in files if p.name not in done]
+                if not files:
+                    print(f"{tag}: すべてアップロード済み")
+                    continue
+            print(f"uploading to {tag} ({len(files)} files) ...", flush=True)
             failed += upload(tag, files)
         if failed:
             print(f"error: {failed}件のアップロードに失敗", file=sys.stderr)
