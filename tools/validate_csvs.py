@@ -6,6 +6,8 @@
 - 改行コードがLFのみ・末尾改行なし(最終空行でパーサが落ちる)
 - 全行がヘッダと同じ列数(素朴なsplitで列ズレしない)
 - 必須列(id, original, surface)が存在し、値が空でない
+- pronunciation にASCII英字の連続が無い(英名をそのまま読みに入れると、利用側の
+  読み解析が異常に遅くなる。実際に3行で辞書構築が193秒かかっていた)
 - image/image_page は生カンマを含まないURL
 - 一意であるべき列の妥当性(stationsのwikidata重複など)
 
@@ -23,6 +25,10 @@ IMAGE_URL_RE = re.compile(
     r"^https?://commons\.wikimedia\.org/"
     r"|^https://github\.com/soramimic/soramimic-wordlists/releases/"
 )
+# 読みにASCII英字が2文字以上続くのは、英名を読みに入れてしまった取り違え
+# (例: sekitsui の "Azara's night monkey")。利用側の読み解析がこの手の行で
+# 暴走するため、混入を止める。読みはカタカナのみが前提
+PRON_ASCII_RE = re.compile(r"[A-Za-z]{2,}")
 
 errors = []
 
@@ -63,6 +69,11 @@ def validate(path: Path):
             v = f[idx[col]]
             if v and not IMAGE_URL_RE.match(v):
                 err(f"{path.name}:{lineno}: {col} が不正なURL: {v[:60]}")
+        if "pronunciation" in idx:
+            v = f[idx["pronunciation"]]
+            if PRON_ASCII_RE.search(v):
+                err(f"{path.name}:{lineno}: pronunciation にASCII英字が連続"
+                    f"(英名の混入?): {v[:40]}")
     print(f"OK: {path.name} ({len(lines) - 1}行)")
 
 
