@@ -79,6 +79,7 @@ python3 tools/update_sekitsui.py   # Wikidataの脊椎動物(rank=種・カタ�
 python3 tools/update_plant.py      # Wikidataの植物(rank=種・カタカナ和名)を追記
 python3 tools/update_youtuber.py   # WikidataのYouTuber/VTuber(ja記事あり)を追記
 python3 tools/enrich_images.py     # 画像が空の人物行にCommons画像を遡及付与
+python3 tools/audit_taxa.py sekitsui  # 既存行が想定した界・門の配下か検査(読み取り専用)
 ```
 
 - pokemon: 全件再生成。フォームは「ライチュウ（アローラのすがた）」形式で
