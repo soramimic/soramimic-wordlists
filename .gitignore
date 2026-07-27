@@ -2,3 +2,5 @@ __pycache__/
 *.pyc
 # 取得結果の途中経過(enrich_*.py の再開用キャッシュ)
 tools/.cache/
+# 生成物(gen_pokemon_typecards.py のSVG出力。配布はGitHub Release)
+build/
