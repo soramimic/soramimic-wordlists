@@ -26,6 +26,11 @@ sekitsui.csv(脊椎動物)と同じ設計。和名(surface)がそのまま読み
   があり、昆虫が被子植物の目の配下として引けてしまう(実例: ヘビトンボ
   Q2481303)。新規追加候補の taxon QID について上位タクソン(P171*)を引き、
   動物界 Q729 に到達するものは追加しない
+- **動物界に到達しない混入は EXCLUDED で恒久除外する**: 植物の taxon に動物の
+  日本語ラベルが付いている場合や、動物の taxon の親が異物同名の植物・藻類の属に
+  なっている場合は上のガードをすり抜ける(実例: セモンジンガサハムシ、
+  ミクロディクティオン・シニクム)。CSV から消すだけでは翌回に再追加されるため、
+  EXCLUDED に理由付きで並べる
 
 usage: python3 tools/update_plant.py
 """
@@ -61,6 +66,25 @@ CLADES = {
     "Q184573": "藻類",       # 褐藻 Phaeophyceae
     "Q9642991": "藻類",      # 珪藻 Bacillariophyta
     "Q133219": "藻類",       # 車軸藻 Charophyta
+}
+
+# 対象外にする和名(CSV の original と同じキー)。動物界ガード(animal_taxa)は
+# 「P171 を辿って動物界 Q729 に到達する」ものしか落とせないので、次の2種類の
+# 上流不整合はすり抜ける。放置すると毎回の自動更新で再追加されるため恒久除外する。
+#   1. Wikidata 側で植物の taxon に動物の日本語ラベル/sitelink が付いている
+#   2. 動物の taxon の親タクソンが異物同名(homonym)の植物・藻類の属になっていて、
+#      系統を辿っても動物界に到達しない
+# 増やすときは「その和名が指す実体が植物・藻類か」を基準にし、和名が植物と動物で
+# 同音異義になっているだけのもの(スギ/サワラ/ハス等)は**残す**こと。
+EXCLUDED = {
+    # ハムシ科の昆虫 Aspidomorpha transparipennis。Wikidata では植物
+    # Senna versicolor (Q15537572) に ja ラベルと ja Wikipedia の
+    # 「セモンジンガサハムシ」が誤って付いており、植物として引けてしまう
+    "セモンジンガサハムシ",
+    # カンブリア紀の葉足動物 Microdictyon sinicum (Q15104318)。化石属
+    # Microdictyon が緑藻の属 Microdictyon と異物同名で、Wikidata では
+    # 緑藻側(シオグサ目)の配下に置かれているため藻類として引けてしまう
+    "ミクロディクティオン・シニクム",
 }
 
 KATAKANA = re.compile(r"^[ァ-ヶー・]+$")
@@ -193,7 +217,12 @@ def main() -> int:
     next_id = (max(int(r["id"]) for r in old_rows) + 1) if old_rows else 0
 
     # 新規追加候補から、系統樹の誤リンクで拾ってしまった動物を除外する
-    candidates = sorted(name_cat.keys() - existing)
+    candidates = sorted(name_cat.keys() - existing - EXCLUDED)
+    hit = name_cat.keys() & EXCLUDED
+    stale = sorted(EXCLUDED - hit)
+    if stale:
+        # ラベル改名等で除外が効かなくなった可能性がある(再混入に気付けるように)
+        print(f"注意: EXCLUDED に未ヒットの項目 {len(stale)}件: {'/'.join(stale)}")
     cand_qids = sorted({q for n in candidates for q in name_qids.get(n, ())})
     bad_qids = animal_taxa(cand_qids) if cand_qids else set()
     # 和名に複数のtaxonがぶら下がる場合は、全てが動物到達のときだけ除外する
