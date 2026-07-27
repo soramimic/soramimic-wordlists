@@ -14,7 +14,7 @@
 | id | 単語のグループID(同じ元単語の行は同じid) |
 | original | 元の単語(表示用) |
 | surface | 変換結果として表示する表層 |
-| pronunciation | 読み(カタカナ)。無い場合はsurfaceから推定される |
+| pronunciation | 読み(カタカナ)。無い場合はsurfaceから推定される。nationsは漢字を含む表記(大韓民国・米国等)で読みが自明でない行に付与し、カタカナだけの行は空 |
 | team, type, org_id | リスト固有の付加情報(野球・サッカー等) |
 | class | sekitsui/plant: 大分類。sekitsuiは魚類/両生類/爬虫類/鳥類/哺乳類、plantは双子葉/単子葉/裸子植物/シダ植物/コケ植物/藻類。分類不明はNA |
 | extinct | sekitsui/plant: 絶滅種か(yes/no)。IUCN絶滅・野生絶滅、または化石タクソンをyesとする |
@@ -38,7 +38,7 @@
 | baseball.csv | プロ野球選手・歴代(type: family/given/full/registered) | Moto(選手表ニキ)様と協力者の皆様。現役の新規追加は[Wikipedia](https://ja.wikipedia.org/) (CC BY-SA 4.0)で自動更新 |
 | football.csv | サッカー選手(J1〜J3・歴代) | ヨロスー様。現役の新規追加はWikipediaで自動更新 |
 | stations.csv | 駅名(現役駅+路面電車・索道。所在地・写真URL付き) | [Wikidata](https://www.wikidata.org/)/[Wikipedia](https://ja.wikipedia.org/) (CC BY-SA 4.0) で自動更新。旧リストはすきやきすきや様 |
-| nations.csv | 国名(国連加盟国) | [mledoze/countries](https://github.com/mledoze/countries) で自動更新 |
+| nations.csv | 国名(国連加盟国。正式名称・通称・漢字略称・別読み・別カナ表記を同一idで併記) | [mledoze/countries](https://github.com/mledoze/countries) で自動更新。別表記は[Wikipedia](https://ja.wikipedia.org/) (CC BY-SA 4.0)等を参照して手動追加 |
 | scientist.csv | 科学者(物理/化学/数学/天文/生物/計算機/地学。分野・時代区分・生没・国・性別・ノーベル賞・業績説明付き。手選び+著名層) | Wikidata/Wikipediaで自動更新 |
 | sekitsui.csv | 動物(脊椎動物) | [Wikidata](https://www.wikidata.org/) (CC0) で自動更新 |
 | plant.csv | 植物(被子/裸子/シダ/コケ/藻類の和名) | [Wikidata](https://www.wikidata.org/) (CC0) で自動更新 |
@@ -86,7 +86,11 @@ python3 tools/audit_taxa.py sekitsui  # 既存行が想定した界・門の配�
   表記ゆれ3行を同一idで収録。種とフォームは別ポケモンとして別id
   (詳細は ADR 00002)
 - nations: 既存行の表記・idは変更しない。新規加盟の追記と status の更新のみ。
-  ISOコードとの対応は `tools/nations_map.csv` で管理(詳細は ADR 00003)
+  ISOコードとの対応は `tools/nations_map.csv` で管理。正式名称(大韓民国)・
+  通称(北朝鮮)・漢字略称(米国)・別読み(ニッポン)・別カナ表記(テュルキエ)は
+  同じ id の行を手動で追加する。追加行は `nations_map.csv` には登録しない
+  (登録済みの original と一致しないので自動更新に巻き込まれない)
+  (詳細は ADR 00003)
 - stations: 1行=1駅(Wikidata QIDが永続キー)。既存行は書き換えず、新駅の追記と
   status の更新のみ。新駅の読みはWikipedia冒頭文から抽出(詳細は ADR 00004)
 - baseball/football: 既存データ(歴代名鑑・手選び)は保持し、
