@@ -57,7 +57,11 @@ ANIMALIA = "Q729"      # 動物界(誤リンク混入の判定用)
 CLADES = {
     "Q133712": "裸子植物",   # 裸子植物 Gymnospermae
     "Q178249": "シダ植物",   # シダ植物 Pteridophyta
-    "Q157819": "シダ植物",   # ヒカゲノカズラ植物 Lycophyta
+    # ヒカゲノカズラ植物(小葉植物) Lycopodiophyta。Wikidata では Pteridophyta
+    # Q178249 の配下に置かれているので現状は上の行と重複するが、将来の再編で
+    # 外れたときの取りこぼしを防ぐために明示しておく
+    # (旧 Q157819 は Valeriana officinalis(セイヨウカノコソウ)を指す誤りだった)
+    "Q215370": "シダ植物",   # 小葉植物 Lycopodiophyta
     "Q25347": "コケ植物",    # 蘚類 Bryophyta
     "Q189808": "コケ植物",   # 苔類 Marchantiophyta
     "Q191156": "コケ植物",   # ツノゴケ類 Anthocerotophyta
