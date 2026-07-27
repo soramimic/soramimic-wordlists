@@ -14,7 +14,9 @@
 - ただし Wikidata の系統樹には界をまたぐ誤リンクがあり、動物が植物の目の配下
   として引けることがある(実例: ヘビトンボ Q2481303)。update_plant.py と同じ
   動物界ガード(`animal_taxa`)を書き込み直前にもう一段かける
-- 既存の image が空の行だけ埋める(冪等)。他の列は変更しない
+- 既存の image が空の行だけ埋める(冪等)。他の列は変更しない。ただし
+  apply_class_images.py が入れた分類の概念イメージは実写で上書きする
+  (概念イメージ→実写は改善方向なので劣化にあたらない)
 - 書き出し列は実ファイルのヘッダーに追随する(ADR 00014・00015 と同じ方針)
 - WDQS 部分応答ガード: 収集画像数が MIN_TOTAL を下回ったら中断する
 - ファイル名はカンマ等を含みうるので必ずURLエンコードする(利用側のCSVパーサは
@@ -34,6 +36,7 @@ import time
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+from apply_class_images import is_class_image  # noqa: E402
 from update_plant import (ANGIOSPERM, CLADES, KATAKANA,  # noqa: E402
                           MONOCOTS, SPECIES, animal_taxa, fetch_orders)
 from wpnames import (commons_urls, sparql,  # noqa: E402
@@ -135,8 +138,11 @@ def main() -> int:
             r.setdefault(c, "")
 
     # 実際に書き込む候補だけに絞って動物界ガードをかける(全和名を検査すると
-    # 無駄な問い合わせが増える)。image が既に埋まっている行は触らない
-    todo = [r for r in rows if not r["image"] and r["original"] in name_cands]
+    # 無駄な問い合わせが増える)。実写が既に入っている行は触らない(概念
+    # イメージの行は空扱いにして実写で差し替える)
+    todo = [r for r in rows
+            if (not r["image"] or is_class_image(r["image"]))
+            and r["original"] in name_cands]
     qids = sorted({c[0] for r in todo for c in name_cands[r["original"]]})
     print(f"動物界ガード: 対象 {len(todo)}行 / taxon QID {len(qids)}件")
     bad = animal_taxa(qids) if qids else set()
@@ -158,8 +164,8 @@ def main() -> int:
               f"{'/'.join(dropped[:20])}")
 
     write_csv_no_trailing_newline(CSV_PATH, cols, rows)
-    have = sum(1 for r in rows if r["image"])
-    print(f"画像を付与: +{filled} (計 {have}/{len(rows)}行に画像 "
+    have = sum(1 for r in rows if r["image"] and not is_class_image(r["image"]))
+    print(f"画像を付与: +{filled} (計 {have}/{len(rows)}行に実写画像 "
           f"= {have / len(rows) * 100:.1f}%)")
     return 0
 
