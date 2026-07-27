@@ -26,8 +26,9 @@ from wpnames import sparql, write_csv_no_trailing_newline  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 CSV_PATH = ROOT / "sekitsui.csv"
-COLS = ["id", "original", "surface", "pronunciation", "class", "extinct",
-        "image", "image_page", "wikidata"]
+# 書き出し列は実ファイルのヘッダーに追随する(order/family等の列追加で
+# 列が落ちないように)。この3列だけは無ければ末尾に足す
+OWN_COLS = ["image", "image_page", "wikidata"]
 
 # update_sekitsui.py と同じ綱(値は使わないがクエリ対象として列挙)
 CLASSES = ["Q7377", "Q5113", "Q10811", "Q10908", "Q127282", "Q25371", "Q161095"]
@@ -79,11 +80,14 @@ def main() -> int:
         return 1
 
     with open(CSV_PATH, encoding="utf-8") as f:
-        rows = [dict(r) for r in csv.DictReader(f)]
+        reader = csv.DictReader(f)
+        rows = [dict(r) for r in reader]
+        cols = list(reader.fieldnames)
+    cols += [c for c in OWN_COLS if c not in cols]
 
     filled = 0
     for r in rows:
-        for c in COLS:
+        for c in cols:
             r.setdefault(c, "")
         if r.get("image"):
             continue  # 既に画像がある行は触らない(冪等)
@@ -92,7 +96,7 @@ def main() -> int:
             r["wikidata"], r["image"], r["image_page"] = hit
             filled += 1
 
-    write_csv_no_trailing_newline(CSV_PATH, COLS, rows)
+    write_csv_no_trailing_newline(CSV_PATH, cols, rows)
     have = sum(1 for r in rows if r["image"])
     print(f"画像を付与: +{filled} (計 {have}/{len(rows)}行に画像)")
     return 0
