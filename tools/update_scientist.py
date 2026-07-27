@@ -24,9 +24,10 @@ sitelinks>=20 ≒ 多言語版20版以上に記事がある著名層)と、Wikip
 - gender:  男性/女性/その他/NA
 - country: 市民権のある国の日本語ラベル(複数は"/"、不明はNA)
 - status:  物故/存命/NA
-- description: 主な業績の短い完結文(記事冒頭の先頭生没年カッコを除去し、「。」
-  区切りで完結文を目安90字まで連結。なければWikidataのja description、どちらも
-  無ければNA。ASCIIカンマ・二重引用符は除去、常に「。」で終わる)
+- description: 主な業績の短い完結文(記事冒頭の先頭生没年カッコと冒頭の
+  「{人名}は、」を除去し、「。」区切りで完結文を目安90字まで連結。なければ
+  Wikidataのja description、どちらも無ければNA。ASCIIカンマ・二重引用符は除去、
+  常に「。」で終わる)
 
 環境変数 SCIENTIST_CACHE を指定すると、Wikidata/Wikipedia の取得結果(属性
 attrs と記事冒頭 extracts)をそのパスに pickle キャッシュし、2回目以降は再取得
@@ -149,6 +150,59 @@ def _strip_lead_paren(text: str) -> str:
     return text
 
 
+# 冒頭の「{人名}は、」除去まわり
+HIRAGANA = re.compile(r"[ぁ-ん]")
+# 残りが名詞述語として自然に完結する語尾(体言止め以外に許可するもの)
+NOUN_PRED_TAIL = ("である", "であった", "だった", "とされる", "といわれる",
+                  "と呼ばれる")
+# 人名の後ろに付きうる短い爵位等(「〜男爵」「〜卿」)。ひらがなは接続助詞なので不可
+NAME_SUFFIX = re.compile(r"^[一-龥]{0,3}$")
+
+
+def _norm_name(s: str) -> str:
+    return s.replace(" ", "").replace("　", "").replace("=", "＝")
+
+
+def _is_name_head(head: str, name: str) -> bool:
+    """「〜は」の「〜」が name の呼称かどうか。ミドルネーム付き・敬称付き
+    (サー・〜)・爵位付き(〜男爵)・姓のみ、といった表記ゆれを許容する。"""
+    if head == name or head.endswith(name):
+        return True
+    if len(head) >= 3 and name.endswith(head):  # 姓のみ等の短縮形
+        return True
+    i = head.find(name)
+    return i >= 0 and bool(NAME_SUFFIX.match(head[i + len(name):]))
+
+
+def strip_name_prefix(desc: str, name: str) -> str:
+    """description 冒頭の「{人名}は、」を除去する。動画キャプションでは人名が
+    別に表示されるため冗長なので落とす。
+
+    ただし除去すると主語を失って壊れる文(「〜は…で、…した。」のように残りの
+    1文目が用言で終わる)や、上流のカッコ対応が壊れている文はそのまま返す。"""
+    if not desc or not name or name == "NA":
+        return desc
+    name = _norm_name(name)
+    end = desc.find("。")
+    end = len(desc) if end == -1 else end
+    for m in re.finditer("は", desc[:end]):
+        head = _norm_name(desc[:m.start()])
+        if not head or len(head) > 30 or "、" in head:
+            continue
+        if not _is_name_head(head, name):
+            continue
+        rest = desc[m.end():].lstrip("、 ").strip()
+        first = rest.split("。")[0]
+        if len(first) < 4:
+            return desc
+        if first.count("）") > first.count("（") or first.count(")") > first.count("("):
+            return desc
+        if HIRAGANA.match(first[-1]) and not first.endswith(NOUN_PRED_TAIL):
+            return desc
+        return rest
+    return desc
+
+
 def _cut_at_comma(s: str, target: int = DESC_TARGET, hard: int = DESC_HARD) -> str:
     """長すぎる1文を「、」境界で切って「。」を付す(中途半端な断片回避)。"""
     pos = s[:hard].rfind("、")
@@ -179,11 +233,12 @@ def _assemble(text: str) -> str:
     return _cut_at_comma(frag) if frag else ""
 
 
-def make_description(intro: str, wd_desc: str) -> str:
+def make_description(intro: str, wd_desc: str, name: str = "") -> str:
     """動画キャプションに使える完結文を作る。Wikipedia 冒頭文を優先し、先頭の
-    生没年カッコを除去してから「。」区切りで完結文を連結。無ければ Wikidata の
-    ja description(完結句)にフォールバック、どちらも無ければ NA。"""
-    text = _strip_lead_paren(_clean_ws(intro))
+    生没年カッコと冒頭の「{人名}は、」を除去してから「。」区切りで完結文を連結。
+    無ければ Wikidata の ja description(完結句)にフォールバック、どちらも
+    無ければ NA。"""
+    text = strip_name_prefix(_strip_lead_paren(_clean_ws(intro)), name)
     desc = _sanitize_desc(_assemble(text)).strip()
     if desc and not desc.endswith("。"):
         desc += "。"
@@ -359,7 +414,8 @@ def main() -> int:
             "qid": qid, "rank": rank, "field": field_value(p["fields"]),
             "attr": attrs.get(qid, {}),
             "desc": make_description(extracts.get(p["title"], ""),
-                                     attrs.get(qid, {}).get("wd_desc", "")),
+                                     attrs.get(qid, {}).get("wd_desc", ""),
+                                     DISAMBIG.sub("", p["title"])),
         }
     if collisions:
         print(f"照合キー衝突(同名別人) {collisions}件: サフィックス無しを優先", flush=True)
