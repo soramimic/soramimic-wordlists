@@ -15,7 +15,7 @@
 | original | 元の単語(表示用) |
 | surface | 変換結果として表示する表層 |
 | pronunciation | 読み(カタカナ)。無い場合はsurfaceから推定される。nationsは漢字を含む表記(大韓民国・米国等)で読みが自明でない行に付与し、カタカナだけの行は空 |
-| team, type, org_id | リスト固有の付加情報(野球・サッカー等) |
+| team, type, org_id | リスト固有の付加情報(野球・サッカー等)。`team` は所属チーム名で、baseball/football 共通(footballは代表的な1クラブ。取得できない行は空。補完は `tools/enrich_football_team.py`) |
 | class | sekitsui/plant: 大分類。sekitsuiは魚類/両生類/爬虫類/鳥類/哺乳類、plantは双子葉/単子葉/裸子植物/シダ植物/コケ植物/藻類。分類不明はNA |
 | extinct | sekitsui/plant: 絶滅種か(yes/no)。IUCN絶滅・野生絶滅、または化石タクソンをyesとする |
 | order, family | sekitsui固有: 分類階級の目・科(`ネコ目`/`ネコ科`)。Wikidataの日本語ラベル(階級付きの別名があればそちら)、無ければ学名。Wikidataに情報が無い行は空。補完は `tools/enrich_sekitsui_taxonomy.py` |
@@ -37,7 +37,7 @@
 | ファイル | 内容 | 出典・クレジット |
 |---|---|---|
 | baseball.csv | プロ野球選手・歴代(type: family/given/full/registered) | Moto(選手表ニキ)様と協力者の皆様。現役の新規追加は[Wikipedia](https://ja.wikipedia.org/) (CC BY-SA 4.0)で自動更新 |
-| football.csv | サッカー選手(J1〜J3・歴代) | ヨロスー様。現役の新規追加はWikipediaで自動更新 |
+| football.csv | サッカー選手(J1〜J3・歴代。所属クラブ付き) | ヨロスー様。現役の新規追加はWikipediaで自動更新。所属クラブはWikipedia/[Wikidata](https://www.wikidata.org/) |
 | stations.csv | 駅名(現役駅+路面電車・索道。所在地・写真URL付き) | [Wikidata](https://www.wikidata.org/)/[Wikipedia](https://ja.wikipedia.org/) (CC BY-SA 4.0) で自動更新。旧リストはすきやきすきや様 |
 | nations.csv | 国名(国連加盟国。正式名称・通称・漢字略称・別読み・別カナ表記を同一idで併記) | [mledoze/countries](https://github.com/mledoze/countries) で自動更新。別表記は[Wikipedia](https://ja.wikipedia.org/) (CC BY-SA 4.0)等を参照して手動追加 |
 | scientist.csv | 科学者(物理/化学/数学/天文/生物/計算機/地学。分野・時代区分・生没・国・性別・ノーベル賞・業績説明付き。手選び+著名層) | Wikidata/Wikipediaで自動更新 |
@@ -98,7 +98,16 @@ python3 tools/audit_taxa.py sekitsui  # 既存行が想定した界・門の配�
   status の更新のみ。新駅の読みはWikipedia冒頭文から抽出(詳細は ADR 00004)
 - baseball/football: 既存データ(歴代名鑑・手選び)は保持し、
   未収録の現役選手だけ追記。姓名分割済みの読みは記事冒頭
-  「姓 名(せい めい、」から取得(詳細は ADR 00005)
+  「姓 名(せい めい、」から取得(詳細は ADR 00005)。
+  football の `team`(所属クラブ)は月次バッチには入れず手動実行で補完する
+  (詳細は ADR 00016):
+  ```sh
+  # 現役はJ1〜J3のロースター、歴代はWikidataの所属クラブ(P54)から
+  # 「最新の所属」を1つ選んで付与(空欄のみ。--refreshで全行)
+  python3 tools/enrich_football_team.py
+  ```
+  取得結果を `tools/.cache/`(Git管理外)に逐次保存するので、中断しても
+  再実行で続きから再開する(全件引き直したいときはキャッシュを消す)
 - scientist: 旧 physicist.csv を広義の科学者リストに拡張・リネーム。Wikidataの
   職業(P106)が物理/化学/数学/天文/生物/計算機科学/地学のいずれかで sitelinks>=20 の
   人物を対象に、分野(field。スラッシュ区切り多値)・時代(era)・生年・ノーベル賞・性別・国・
