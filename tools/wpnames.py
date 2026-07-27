@@ -75,6 +75,22 @@ def sparql_post(query: str) -> dict:
     raise RuntimeError("wdqs failed")
 
 
+def commons_urls(name_or_url: str) -> tuple:
+    """Commonsのファイル名、またはP18のFilePath URL -> (image, image_page)。
+
+    WDQSはP18を `.../Special:FilePath/<encoded>` のURLで返し、wbgetentities は
+    生のファイル名で返すので両方を受ける(ファイル名に "/" は使えないので、
+    "/" を含めばURLとみなして最終セグメントを一旦デコードする)。
+    空白は _ に直し、カンマ等が生のまま残らないよう必ずURLエンコードする
+    (利用側のCSVパーサはクオート非対応の素朴なsplit(",")のため)。"""
+    fname = name_or_url
+    if "/" in fname:
+        fname = urllib.parse.unquote(fname.rsplit("/", 1)[-1])
+    quoted = urllib.parse.quote(fname.replace(" ", "_"))
+    return ("http://commons.wikimedia.org/wiki/Special:FilePath/" + quoted,
+            "https://commons.wikimedia.org/wiki/File:" + quoted)
+
+
 def template_wikitext(title: str):
     data = api({"action": "query", "prop": "revisions", "rvprop": "content",
                 "rvslots": "main", "titles": title})
@@ -175,10 +191,7 @@ def qids_to_images(qids: list) -> dict:
                 dv = c.get("mainsnak", {}).get("datavalue")
                 if dv:
                     # カンマ等を含むファイル名はCSVを壊すので必ずURLエンコード
-                    fname = urllib.parse.quote(dv["value"].replace(" ", "_"))
-                    result[q] = (
-                        "http://commons.wikimedia.org/wiki/Special:FilePath/" + fname,
-                        "https://commons.wikimedia.org/wiki/File:" + fname)
+                    result[q] = commons_urls(dv["value"])
                     break
         time.sleep(0.3)
     return result
