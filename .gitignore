@@ -1,2 +1,4 @@
 __pycache__/
 *.pyc
+# 取得結果の途中経過(enrich_sekitsui_taxonomy.py の再開用キャッシュ)
+tools/.cache/

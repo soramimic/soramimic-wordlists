@@ -18,6 +18,7 @@
 | team, type, org_id | リスト固有の付加情報(野球・サッカー等) |
 | class | sekitsui/plant: 大分類。sekitsuiは魚類/両生類/爬虫類/鳥類/哺乳類、plantは双子葉/単子葉/裸子植物/シダ植物/コケ植物/藻類。分類不明はNA |
 | extinct | sekitsui/plant: 絶滅種か(yes/no)。IUCN絶滅・野生絶滅、または化石タクソンをyesとする |
+| order, family | sekitsui固有: 分類階級の目・科(`ネコ目`/`ネコ科`)。Wikidataの日本語ラベル(階級付きの別名があればそちら)、無ければ学名。Wikidataに情報が無い行は空。補完は `tools/enrich_sekitsui_taxonomy.py` |
 | type1, type2 | pokemon固有: ポケモンのタイプ(でんき等)。単タイプは type2=NA |
 | generation | pokemon固有: 登場世代(1〜9)。フォームはそのフォームが導入された世代 |
 | status | nations/stations: `current`(現存)/`former`(廃止・脱退・旧称)。stationsは改名前の旧駅名を `renamed` で区別する。youtuberは `current`(活動中)/`former`(卒業・引退・活動終了) |
@@ -104,7 +105,18 @@ python3 tools/audit_taxa.py sekitsui  # 既存行が想定した界・門の配�
 - sekitsui: Wikidataの脊椎動物(rank=種・日本語ラベルがカタカナ)を綱ごとに
   取得し、未収録の和名だけ追記。和名がそのまま読みになるので読み抽出は不要。
   `class` 列に大分類(魚類/両生類/爬虫類/鳥類/哺乳類)、`extinct` 列に絶滅種か
-  (yes/no)を付与し、化石種も含める(詳細は ADR 00007)
+  (yes/no)を付与し、化石種も含める(詳細は ADR 00007)。
+  目・科(`order`/`family`)は月次バッチには入れず手動実行で補完する
+  (詳細は ADR 00015):
+  ```sh
+  # Wikidataの親タクソン(P171)を辿って目・科を付与(空欄のみ。--refreshで全行)
+  python3 tools/enrich_sekitsui_taxonomy.py
+  # 画像が空の行にCommons画像(P18)を遡及付与
+  python3 tools/enrich_sekitsui_images.py
+  ```
+  enrich_sekitsui_taxonomy は取得結果を `tools/.cache/`(Git管理外)に逐次
+  保存するので、中断しても再実行で続きから再開する(全件引き直したいときは
+  キャッシュを消す)
 - plant: sekitsuiと同じ方式の植物版。被子植物は巨大で一括取得がタイムアウト
   するため目(order)ごとに分割し、単子葉/双子葉に振り分ける。非被子植物は門
   ごとに取得。`class` 列に大分類(双子葉/単子葉/裸子植物/シダ植物/コケ植物/
