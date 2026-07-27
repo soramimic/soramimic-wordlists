@@ -20,12 +20,12 @@ usage: python3 tools/enrich_sekitsui_images.py
 import csv
 import re
 import sys
-import urllib.parse
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from apply_class_images import is_class_image  # noqa: E402
-from wpnames import sparql, write_csv_no_trailing_newline  # noqa: E402
+from wpnames import (commons_urls, sparql,  # noqa: E402
+                     write_csv_no_trailing_newline)
 
 ROOT = Path(__file__).resolve().parent.parent
 CSV_PATH = ROOT / "sekitsui.csv"
@@ -39,16 +39,6 @@ SPECIES = "wd:Q7432"  # taxon rank = 種
 KATAKANA = re.compile(r"^[ァ-ヶー・]+$")
 # 収集画像総数がこれを下回ったら WDQS 部分応答とみなして中断
 MIN_TOTAL = 500
-
-
-def commons_urls(img: str) -> tuple[str, str]:
-    """WDQS の P18 値(commons Special:FilePath URL)-> (image, image_page)。
-    ファイル名を一旦デコードし、空白を _ にして再エンコードする(カンマ等が
-    生 のままだと素朴なCSVパーサを壊すため)。"""
-    fname = urllib.parse.unquote(img.rsplit("/", 1)[-1]).replace(" ", "_")
-    quoted = urllib.parse.quote(fname)
-    return ("http://commons.wikimedia.org/wiki/Special:FilePath/" + quoted,
-            "https://commons.wikimedia.org/wiki/File:" + quoted)
 
 
 def fetch_images(qid: str) -> dict[str, tuple[str, str, str]]:
