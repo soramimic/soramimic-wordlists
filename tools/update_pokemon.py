@@ -19,11 +19,13 @@ idはポケモン単位(種・各フォームで1つ。種とフォームは別�
 (永続キーには使わないこと)。
 
 image/image_page は「型色カード」(タイプ配色のみで描いたSVG。キャラクター造形は
-使わない)のURLで、id から機械的に組み立てるため全件再生成でも保持される。
+使わない)のURLで、**original(名前)から機械的に組み立てる**ため全件再生成でも
+保持される。id は振り直されうるのでURLのキーには使わない(名前をキーにすることで、
+新種追加でidがずれても既存のURLが別のポケモンのカードを指すことがない)。
 カードの実体は tools/gen_pokemon_typecards.py が生成し GitHub Release で配布する。
-**新ポケモンが増えた回は gen_pokemon_typecards.py を再実行して Release を
-更新すること**(未生成のidは画像が404になる。加えてフォームのidは種が増えると
-振り直されるので、差分だけでなく全枚数を作り直す)。
+**新ポケモンが増えた回は gen_pokemon_typecards.py を再実行して Release へ
+増分をアップロードすること**(アセットが無い名前は画像が404になる。
+取りこぼしは `gen_pokemon_typecards.py --verify` で検出できる)。
 
 usage: python3 tools/update_pokemon.py
 """
@@ -36,11 +38,7 @@ import urllib.request
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from gen_pokemon_typecards import (  # noqa: E402
-    ASSET_MAX_ID,
-    image_page_url,
-    image_url,
-)
+from gen_pokemon_typecards import image_page_url, image_url  # noqa: E402
 
 BASE_URL = "https://raw.githubusercontent.com/PokeAPI/pokeapi/master/data/v2/csv"
 JA_HRKT_LANGUAGE_ID = "1"
@@ -165,24 +163,16 @@ def main() -> int:
             ]:
                 rows.append([gid, original, surface, p, t1, t2, f_gen])
 
-    # 型色カードのURLは id から決定的に組み立てる(全件再生成でも消えない)
-    missing = sorted({int(r[0]) for r in rows if int(r[0]) > ASSET_MAX_ID})
-    if missing:
-        print(
-            f"warn: 型色カード未生成のidが{len(missing)}件ある"
-            f"(id {missing[0]}〜{missing[-1]})。"
-            "tools/gen_pokemon_typecards.py を再実行してReleaseを更新すること",
-            file=sys.stderr,
-        )
-
     buf = io.StringIO()
     writer = csv.writer(buf, lineterminator="\n")
     writer.writerow(
         ["id", "original", "surface", "pronunciation", "type1", "type2",
          "generation", "image", "image_page"]
     )
+    # 型色カードのURLは original(名前)から決定的に組み立てる
+    # (全件再生成でも消えず、idが振り直されても同じカードを指す)
     writer.writerows(
-        [row + [image_url(row[0]), image_page_url(row[0])] for row in rows]
+        [row + [image_url(row[1]), image_page_url(row[1])] for row in rows]
     )
     # 末尾改行なしで書く(soramimic側のパーサが最終空行で落ちるため)
     OUT_PATH.write_text(buf.getvalue().rstrip("\n"), encoding="utf-8")

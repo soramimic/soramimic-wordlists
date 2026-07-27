@@ -85,21 +85,25 @@ python3 tools/audit_taxa.py sekitsui  # 既存行が想定した界・門の配�
 
 - pokemon: 全件再生成。フォームは「ライチュウ（アローラのすがた）」形式で
   表記ゆれ3行を同一idで収録。種とフォームは別ポケモンとして別id
-  (詳細は ADR 00002)。`image`/`image_page` は id から機械的に組み立てるので
-  全件再生成でも消えない。**新ポケモンが追加された回は型色カードを作り直して
-  Release を更新すること**(未生成のidは画像が404。フォームのidは種が増えると
-  振り直されるため、差分だけでなく全枚数を再生成して上書きする):
+  (詳細は ADR 00002)。`image`/`image_page` は `original`(名前)から機械的に
+  組み立てるので全件再生成でも消えない。**カードのファイル名も名前由来
+  (`pkm_<sha1(名前)先頭10桁>.svg`)なので、新種追加で id がずれても既存のURLが
+  別のポケモンのカードを指すことはない。**
+  **新ポケモンが追加された回は型色カードを追加して Release を更新すること**
+  (アセットが無い名前は画像が404。増えた分だけ送ればよく、既存カードの
+  作り直しは不要):
   ```sh
-  python3 tools/gen_pokemon_typecards.py --out build/pokemon_typecards --upload
-  # レート制限で途中終了したら、未アップロード分だけ再開できる
+  # 増分だけアップロード(レート制限で途中終了したときの再開にも使える)
   python3 tools/gen_pokemon_typecards.py --out build/pokemon_typecards \
       --upload --only-missing
+  # CSVの全 original に対応するアセットがReleaseにあるか検査
+  python3 tools/gen_pokemon_typecards.py --verify
   ```
-  再生成したら `tools/gen_pokemon_typecards.py` の `ASSET_MAX_ID` を
-  出力される値に更新する(未生成idの警告に使う)。
-  Releaseは1つあたり1000アセットが上限なので、id 1000枚ごとに
-  `pokemon-typecard-v1` / `pokemon-typecard-v1b` / … と分けている。
-  id が新しい区切りに到達したら、その分のReleaseを先に作っておくこと
+  Releaseは1つあたり1000アセットが上限なので、ハッシュで
+  `pokemon-typecard-v2` / `pokemon-typecard-v2b` の2つに振り分けている
+  (旧 `-v1` / `-v1b` は id 連番のファイル名。参照されていないが残してある)。
+  総枚数が2000枚に近づいたら `RELEASE_BUCKETS` を増やし、タグを v3 に上げて
+  全枚数を再アップロードすること
 - nations: 既存行の表記・idは変更しない。新規加盟の追記と status の更新のみ。
   ISOコードとの対応は `tools/nations_map.csv` で管理。正式名称(大韓民国)・
   通称(北朝鮮)・漢字略称(米国)・別読み(ニッポン)・別カナ表記(テュルキエ)は
