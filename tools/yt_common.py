@@ -137,11 +137,14 @@ def norm(title: str) -> str:
     return DISAMBIG.sub("", title).replace("　", "").replace(" ", "")
 
 
-def build_list(csv_name: str, specs: list, cache_env: str) -> int:
+def build_list(csv_name: str, specs: list, cache_env: str,
+               excluded: set = frozenset()) -> int:
     """リストを生成(初回)または追記・status更新(2回目以降)する。
 
     specs: category ごとの取得仕様
       {category, occ, must, must_not, exclude, guard} の dict のリスト。
+    excluded: 収録しないja記事名(norm()済み)の集合。P106の誤登録や、別業種の
+      著名人が公式チャンネルを持つだけのケースを恒久的に弾く。
     """
     csv_path = Path(__file__).resolve().parent.parent / csv_name
     for s in specs:
@@ -197,7 +200,18 @@ def build_list(csv_name: str, specs: list, cache_env: str) -> int:
     added, flagged = [], []
     entries = [(title, cat, qid)
                for cat, persons in persons_by_cat.items()
-               for qid, title in persons.items()]
+               for qid, title in persons.items()
+               if norm(title) not in excluded]
+    hit = {norm(t) for persons in persons_by_cat.values()
+           for t in persons.values()} & set(excluded)
+    print(f"候補 {len(entries)}件 (EXCLUDED で除外 {len(hit)}件)", flush=True)
+    # 記事名が変わると除外が効かなくなり、静かに再追加されてしまうので気付けるようにする
+    stale = sorted(set(excluded) - hit)
+    if stale:
+        print(f"注意: EXCLUDED に未ヒットの項目 {len(stale)}件"
+              "(記事改名/P106変更で対象外になった可能性): "
+              + ", ".join(stale[:20]), flush=True)
+
     for title, cat, qid in sorted(entries):
         parsed = parse_entry(title, extracts.get(title, ""))
         if parsed is None:

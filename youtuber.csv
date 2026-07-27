@@ -32,7 +32,6 @@ id,original,surface,pronunciation,type,category,org,debut_year,status
 21,IchikaNito,Nito,ニト,given,youtuber,Dios,NA,current
 21,IchikaNito,IchikaNito,イチカニト,full,youtuber,Dios,NA,current
 22,KAZUYA,KAZUYA,カズヤ,full,youtuber,NA,2012,current
-23,KO-ney,KO-ney,コーニー,full,youtuber,NA,2020,current
 24,KUN,KUN,クン,full,youtuber,NA,2013,current
 25,Killin9Hit,Killin9Hit,キリングヒット,full,youtuber,NA,NA,current
 26,LeftyHandCream,LeftyHandCream,レフティーハンドクリーム,full,youtuber,NA,2014,current
@@ -50,7 +49,6 @@ id,original,surface,pronunciation,type,category,org,debut_year,status
 38,NileRed,NileRed,ナイルレッド,full,youtuber,NA,NA,current
 39,POOH熊谷,POOH熊谷,プークマガイ,full,youtuber,NA,NA,current
 40,Philza,Philza,フィルザ,full,youtuber,Dream SMP,NA,current
-41,Pii,Pii,ピィ,full,youtuber,NA,2021,current
 42,P丸様。,P丸様。,ピーマルサマ,full,youtuber,NA,NA,current
 43,QPark,Q,キュー,family,youtuber,メリルリンチ,NA,current
 43,QPark,Park,パーク,given,youtuber,メリルリンチ,NA,current
@@ -94,7 +92,6 @@ id,original,surface,pronunciation,type,category,org,debut_year,status
 76,かこちん,かこちん,カコチン,full,youtuber,NA,NA,current
 77,かざり,かざり,カザリ,full,youtuber,NA,NA,current
 78,かす,かす,カス,full,youtuber,NA,NA,current
-79,かずのこ,かずのこ,カズノコ,full,youtuber,NA,NA,current
 80,かずのすけ,かずのすけ,カズノスケ,full,youtuber,NA,NA,current
 81,かっつー,かっつー,カッツー,full,youtuber,NA,NA,current
 82,かねこあや,かねこあや,カネコアヤ,full,youtuber,NA,NA,current
@@ -116,7 +113,6 @@ id,original,surface,pronunciation,type,category,org,debut_year,status
 98,さくまみお,さくまみお,サクマミオ,full,youtuber,NA,NA,current
 99,さくら,さくら,サクラ,full,youtuber,NA,NA,current
 100,しにがみ,しにがみ,シニガミ,full,youtuber,日常組,NA,current
-101,しののめ,しののめ,シノノメ,full,youtuber,NA,2020,current
 102,しばゆー,しばゆー,シバユー,full,youtuber,東海オンエア,NA,current
 103,しんたろー,しんたろー,シンタロー,full,youtuber,NA,NA,current
 104,しーさー,しーさー,シーサー,full,youtuber,NA,NA,current
@@ -197,17 +193,8 @@ id,original,surface,pronunciation,type,category,org,debut_year,status
 177,アイ・ショー・スピード,スピード,スピード,family,youtuber,NA,2016,current
 177,アイ・ショー・スピード,アイ,アイ,given,youtuber,NA,2016,current
 177,アイ・ショー・スピード,アイ・ショー・スピード,アイ・ショー・スピード,full,youtuber,NA,2016,current
-178,アグスティン・クレービー,クレービー,クレービー,family,youtuber,NA,2005,current
-178,アグスティン・クレービー,アグスティン,アグスティン,given,youtuber,NA,2005,current
-178,アグスティン・クレービー,アグスティン・クレービー,アグスティン・クレービー,full,youtuber,NA,2005,current
-179,アデレード・ケイン,ケイン,ケイン,family,youtuber,NA,2006,current
-179,アデレード・ケイン,アデレード,アデレード,given,youtuber,NA,2006,current
-179,アデレード・ケイン,アデレード・ケイン,アデレード・ケイン,full,youtuber,NA,2006,current
 180,アニメンズ,アニメンズ,アニメンズ,full,youtuber,NA,NA,current
 181,アネソンギブ,アネソンギブ,アネソンギブ,full,youtuber,NA,NA,current
-182,アフシャン・アザド,アザド,アザド,family,youtuber,NA,2005,current
-182,アフシャン・アザド,アフシャン,アフシャン,given,youtuber,NA,2005,current
-182,アフシャン・アザド,アフシャン・アザド,アフシャン・アザド,full,youtuber,NA,2005,current
 183,アライ・ロー,ロー,ロー,family,youtuber,NA,NA,current
 183,アライ・ロー,アライ,アライ,given,youtuber,NA,NA,current
 183,アライ・ロー,アライ・ロー,アライ・ロー,full,youtuber,NA,NA,current
@@ -217,12 +204,6 @@ id,original,surface,pronunciation,type,category,org,debut_year,status
 185,アラン・ベッカー,ベッカー,ベッカー,family,youtuber,NA,NA,current
 185,アラン・ベッカー,アラン,アラン,given,youtuber,NA,NA,current
 185,アラン・ベッカー,アラン・ベッカー,アラン・ベッカー,full,youtuber,NA,NA,current
-186,アレクサンダー・ラエフスキー,ラエフスキー,ラエフスキー,family,youtuber,モスクワ大学心理学部/東北大学,NA,current
-186,アレクサンダー・ラエフスキー,アレクサンダー,アレクサンダー,given,youtuber,モスクワ大学心理学部/東北大学,NA,current
-186,アレクサンダー・ラエフスキー,アレクサンダー・ラエフスキー,アレクサンダー・ラエフスキー,full,youtuber,モスクワ大学心理学部/東北大学,NA,current
-187,アレクシス・フォウクス,フォウクス,フォウクス,family,youtuber,NA,2010,current
-187,アレクシス・フォウクス,アレクシス,アレクシス,given,youtuber,NA,2010,current
-187,アレクシス・フォウクス,アレクシス・フォウクス,アレクシス・フォウクス,full,youtuber,NA,2010,current
 188,アレックス・アイオノ,アイオノ,アイオノ,family,youtuber,NA,2011,current
 188,アレックス・アイオノ,アレックス,アレックス,given,youtuber,NA,2011,current
 188,アレックス・アイオノ,アレックス・アイオノ,アレックス・アイオノ,full,youtuber,NA,2011,current
@@ -254,12 +235,6 @@ id,original,surface,pronunciation,type,category,org,debut_year,status
 198,イ・グン,グン,グン,family,youtuber,NA,NA,current
 198,イ・グン,イ,イ,given,youtuber,NA,NA,current
 198,イ・グン,イ・グン,イ・グン,full,youtuber,NA,NA,current
-199,イ・スヒョン,スヒョン,スヒョン,family,youtuber,楽童ミュージシャン,2014,current
-199,イ・スヒョン,イ,イ,given,youtuber,楽童ミュージシャン,2014,current
-199,イ・スヒョン,イ・スヒョン,イ・スヒョン,full,youtuber,楽童ミュージシャン,2014,current
-200,イ・ドンウク,ドンウク,ドンウク,family,youtuber,NA,1999,current
-200,イ・ドンウク,イ,イ,given,youtuber,NA,1999,current
-200,イ・ドンウク,イ・ドンウク,イ・ドンウク,full,youtuber,NA,1999,current
 201,ウィリアム・スレッド,スレッド,スレッド,family,youtuber,NA,2006,current
 201,ウィリアム・スレッド,ウィリアム,ウィリアム,given,youtuber,NA,2006,current
 201,ウィリアム・スレッド,ウィリアム・スレッド,ウィリアム・スレッド,full,youtuber,NA,2006,current
@@ -307,9 +282,6 @@ id,original,surface,pronunciation,type,category,org,debut_year,status
 220,カイ・トランプ,カイ,カイ,given,youtuber,NA,NA,current
 220,カイ・トランプ,カイ・トランプ,カイ・トランプ,full,youtuber,NA,NA,current
 221,カズ,カズ,カズ,full,youtuber,UUUM,NA,current
-222,カナウット・トライピパタナポン,トライピパタナポン,トライピパタナポン,family,youtuber,NA,2015,current
-222,カナウット・トライピパタナポン,カナウット,カナウット,given,youtuber,NA,2015,current
-222,カナウット・トライピパタナポン,カナウット・トライピパタナポン,カナウット・トライピパタナポン,full,youtuber,NA,2015,current
 223,カネマン,カネマン,カネマン,full,youtuber,NA,NA,current
 224,カノックスター,カノックスター,カノックスター,full,youtuber,NA,2018,current
 225,カブキン,カブキン,カブキン,full,youtuber,NA,NA,current
@@ -321,9 +293,6 @@ id,original,surface,pronunciation,type,category,org,debut_year,status
 229,カール・ジェイコブス,ジェイコブス,ジェイコブス,family,youtuber,ミスタービースト,2017,current
 229,カール・ジェイコブス,カール,カール,given,youtuber,ミスタービースト,2017,current
 229,カール・ジェイコブス,カール・ジェイコブス,カール・ジェイコブス,full,youtuber,ミスタービースト,2017,current
-230,ガス・ケンワージー,ケンワージー,ケンワージー,family,youtuber,NA,NA,current
-230,ガス・ケンワージー,ガス,ガス,given,youtuber,NA,NA,current
-230,ガス・ケンワージー,ガス・ケンワージー,ガス・ケンワージー,full,youtuber,NA,NA,current
 231,ガーシー,ガーシー,ガーシー,full,youtuber,NA,NA,current
 232,キャリー・ホープ・フレッチャー,フレッチャー,フレッチャー,family,youtuber,NA,1997,current
 232,キャリー・ホープ・フレッチャー,キャリー,キャリー,given,youtuber,NA,1997,current
@@ -340,9 +309,6 @@ id,original,surface,pronunciation,type,category,org,debut_year,status
 238,クリスティーナ・グリミー,グリミー,グリミー,family,youtuber,NA,2009,former
 238,クリスティーナ・グリミー,クリスティーナ,クリスティーナ,given,youtuber,NA,2009,former
 238,クリスティーナ・グリミー,クリスティーナ・グリミー,クリスティーナ・グリミー,full,youtuber,NA,2009,former
-239,クリス・エンジェル,エンジェル,エンジェル,family,youtuber,NA,1994,current
-239,クリス・エンジェル,クリス,クリス,given,youtuber,NA,1994,current
-239,クリス・エンジェル,クリス・エンジェル,クリス・エンジェル,full,youtuber,NA,1994,current
 240,クリス・クロッカー,クロッカー,クロッカー,family,youtuber,NA,2005,current
 240,クリス・クロッカー,クリス,クリス,given,youtuber,NA,2005,current
 240,クリス・クロッカー,クリス・クロッカー,クリス・クロッカー,full,youtuber,NA,2005,current
@@ -369,25 +335,15 @@ id,original,surface,pronunciation,type,category,org,debut_year,status
 249,コナー・メイナード,メイナード,メイナード,family,youtuber,NA,2012,current
 249,コナー・メイナード,コナー,コナー,given,youtuber,NA,2012,current
 249,コナー・メイナード,コナー・メイナード,コナー・メイナード,full,youtuber,NA,2012,current
-250,コニー・セレッカ,セレッカ,セレッカ,family,youtuber,NA,1976,current
-250,コニー・セレッカ,コニー,コニー,given,youtuber,NA,1976,current
-250,コニー・セレッカ,コニー・セレッカ,コニー・セレッカ,full,youtuber,NA,1976,current
 251,コリン・ファーズ,ファーズ,ファーズ,family,youtuber,NA,2006,current
 251,コリン・ファーズ,コリン,コリン,given,youtuber,NA,2006,current
 251,コリン・ファーズ,コリン・ファーズ,コリン・ファーズ,full,youtuber,NA,2006,current
 252,コレコレ,コレコレ,コレコレ,full,youtuber,NA,NA,current
-253,ゴーストライダー,ゴーストライダー,ゴーストライダー,full,youtuber,NA,NA,current
 254,サグワ,サグワ,サグワ,full,youtuber,NA,NA,current
-255,サム・チョイ,チョイ,チョイ,family,youtuber,NA,NA,current
-255,サム・チョイ,サム,サム,given,youtuber,NA,NA,current
-255,サム・チョイ,サム・チョイ,サム・チョイ,full,youtuber,NA,NA,current
 256,サラタメ,サラタメ,サラタメ,full,youtuber,NA,NA,current
 257,サル・カーン,カーン,カーン,family,youtuber,NA,NA,current
 257,サル・カーン,サル,サル,given,youtuber,NA,NA,current
 257,サル・カーン,サル・カーン,サル・カーン,full,youtuber,NA,NA,current
-258,サーシャ・ピーターズ,ピーターズ,ピーターズ,family,youtuber,NA,2002,current
-258,サーシャ・ピーターズ,サーシャ,サーシャ,given,youtuber,NA,2002,current
-258,サーシャ・ピーターズ,サーシャ・ピーターズ,サーシャ・ピーターズ,full,youtuber,NA,2002,current
 259,ザック・キング,キング,キング,family,youtuber,NA,2008,current
 259,ザック・キング,ザック,ザック,given,youtuber,NA,2008,current
 259,ザック・キング,ザック・キング,ザック・キング,full,youtuber,NA,2008,current
@@ -404,17 +360,10 @@ id,original,surface,pronunciation,type,category,org,debut_year,status
 264,シェイン・トップ,トップ,トップ,family,youtuber,スモッシュ,2006,current
 264,シェイン・トップ,シェイン,シェイン,given,youtuber,スモッシュ,2006,current
 264,シェイン・トップ,シェイン・トップ,シェイン・トップ,full,youtuber,スモッシュ,2006,current
-265,シェイ・ミッチェル,ミッチェル,ミッチェル,family,youtuber,NA,2009,current
-265,シェイ・ミッチェル,シェイ,シェイ,given,youtuber,NA,2009,current
-265,シェイ・ミッチェル,シェイ・ミッチェル,シェイ・ミッチェル,full,youtuber,NA,2009,current
-266,シェネイ・グライムス,グライムス,グライムス,family,youtuber,NA,2004,current
-266,シェネイ・グライムス,シェネイ,シェネイ,given,youtuber,NA,2004,current
-266,シェネイ・グライムス,シェネイ・グライムス,シェネイ・グライムス,full,youtuber,NA,2004,current
 267,シェーン・ドーソン,ドーソン,ドーソン,family,youtuber,NA,2008,former
 267,シェーン・ドーソン,シェーン,シェーン,given,youtuber,NA,2008,former
 267,シェーン・ドーソン,シェーン・ドーソン,シェーン・ドーソン,full,youtuber,NA,2008,former
 268,シバター,シバター,シバター,full,youtuber,NA,NA,current
-269,シャーシュエ,シャーシュエ,シャーシュエ,full,youtuber,NA,NA,current
 270,シャーリー・カリー,カリー,カリー,family,youtuber,NA,NA,current
 270,シャーリー・カリー,シャーリー,シャーリー,given,youtuber,NA,NA,current
 270,シャーリー・カリー,シャーリー・カリー,シャーリー・カリー,full,youtuber,NA,NA,current
@@ -423,9 +372,6 @@ id,original,surface,pronunciation,type,category,org,debut_year,status
 273,ショアイブ・アクタール,アクタール,アクタール,family,youtuber,NA,NA,current
 273,ショアイブ・アクタール,ショアイブ,ショアイブ,given,youtuber,NA,NA,current
 273,ショアイブ・アクタール,ショアイブ・アクタール,ショアイブ・アクタール,full,youtuber,NA,NA,current
-274,ショーン・マグワイア,マグワイア,マグワイア,family,youtuber,NA,1988,current
-274,ショーン・マグワイア,ショーン,ショーン,given,youtuber,NA,1988,current
-274,ショーン・マグワイア,ショーン・マグワイア,ショーン・マグワイア,full,youtuber,NA,1988,current
 275,シンテイル,シンテイル,シンテイル,full,youtuber,NA,NA,current
 276,シークエンスはやとも,シークエンスはやとも,シークエンスハヤトモ,full,youtuber,NA,NA,current
 277,シーラン・ジェイ・ジャオ,ジャオ,ジャオ,family,youtuber,NA,NA,current
@@ -437,12 +383,6 @@ id,original,surface,pronunciation,type,category,org,debut_year,status
 279,ジェイク・ポール,ポール,ポール,family,youtuber,NA,2013,current
 279,ジェイク・ポール,ジェイク,ジェイク,given,youtuber,NA,2013,current
 279,ジェイク・ポール,ジェイク・ポール,ジェイク・ポール,full,youtuber,NA,2013,current
-280,ジェイミー・オリヴァー,オリヴァー,オリヴァー,family,youtuber,NA,NA,current
-280,ジェイミー・オリヴァー,ジェイミー,ジェイミー,given,youtuber,NA,NA,current
-280,ジェイミー・オリヴァー,ジェイミー・オリヴァー,ジェイミー・オリヴァー,full,youtuber,NA,NA,current
-281,ジェイ・レノ,レノ,レノ,family,youtuber,NA,1973,current
-281,ジェイ・レノ,ジェイ,ジェイ,given,youtuber,NA,1973,current
-281,ジェイ・レノ,ジェイ・レノ,ジェイ・レノ,full,youtuber,NA,1973,current
 282,ジェドソン・ライプリー,ライプリー,ライプリー,family,youtuber,NA,2006,current
 282,ジェドソン・ライプリー,ジェドソン,ジェドソン,given,youtuber,NA,2006,current
 282,ジェドソン・ライプリー,ジェドソン・ライプリー,ジェドソン・ライプリー,full,youtuber,NA,2006,current
@@ -460,32 +400,16 @@ id,original,surface,pronunciation,type,category,org,debut_year,status
 286,ジジ・ゴージャス,ジジ・ゴージャス,ジジ・ゴージャス,full,youtuber,NA,2008,current
 287,ジディオン,ジディオン,ジディオン,full,youtuber,NA,NA,current
 288,ジブおじさん,ジブおじさん,ジブオジサン,full,youtuber,NA,NA,current
-289,ジミー・コンラッド,コンラッド,コンラッド,family,youtuber,NA,1998,former
-289,ジミー・コンラッド,ジミー,ジミー,given,youtuber,NA,1998,former
-289,ジミー・コンラッド,ジミー・コンラッド,ジミー・コンラッド,full,youtuber,NA,1998,former
 290,ジャスティン・エザリック,エザリック,エザリック,family,youtuber,NA,2006,current
 290,ジャスティン・エザリック,ジャスティン,ジャスティン,given,youtuber,NA,2006,current
 290,ジャスティン・エザリック,ジャスティン・エザリック,ジャスティン・エザリック,full,youtuber,NA,2006,current
-291,ジャスティン・チョン,チョン,チョン,family,youtuber,NA,2005,current
-291,ジャスティン・チョン,ジャスティン,ジャスティン,given,youtuber,NA,2005,current
-291,ジャスティン・チョン,ジャスティン・チョン,ジャスティン・チョン,full,youtuber,NA,2005,current
 292,ジャックセプティックアイ,ジャックセプティックアイ,ジャックセプティックアイ,full,youtuber,NA,2007,current
-293,ジャック・ブラック,ブラック,ブラック,family,youtuber,テネイシャスD/西部全米脚本家組合,1982,current
-293,ジャック・ブラック,ジャック,ジャック,given,youtuber,テネイシャスD/西部全米脚本家組合,1982,current
-293,ジャック・ブラック,ジャック・ブラック,ジャック・ブラック,full,youtuber,テネイシャスD/西部全米脚本家組合,1982,current
-294,ジャニー,ジャニー,ジャニー,full,youtuber,NCT/NCT 127/NCT U,2017,current
 295,ジャニーン・ワイゲル,ワイゲル,ワイゲル,family,youtuber,NA,2010,current
 295,ジャニーン・ワイゲル,ジャニーン,ジャニーン,given,youtuber,NA,2010,current
 295,ジャニーン・ワイゲル,ジャニーン・ワイゲル,ジャニーン・ワイゲル,full,youtuber,NA,2010,current
-296,ジュジュ・スミス＝シュスター,シュスター,シュスター,family,youtuber,NA,NA,current
-296,ジュジュ・スミス＝シュスター,ジュジュ,ジュジュ,given,youtuber,NA,NA,current
-296,ジュジュ・スミス＝シュスター,ジュジュ・スミス＝シュスター,ジュジュ・スミス・シュスター,full,youtuber,NA,NA,current
 297,ジュール・ルブラン,ルブラン,ルブラン,family,youtuber,NA,2008,current
 297,ジュール・ルブラン,ジュール,ジュール,given,youtuber,NA,2008,current
 297,ジュール・ルブラン,ジュール・ルブラン,ジュール・ルブラン,full,youtuber,NA,2008,current
-298,ジョイ・ヴィラ,ヴィラ,ヴィラ,family,youtuber,NA,2001,current
-298,ジョイ・ヴィラ,ジョイ,ジョイ,given,youtuber,NA,2001,current
-298,ジョイ・ヴィラ,ジョイ・ヴィラ,ジョイ・ヴィラ,full,youtuber,NA,2001,current
 299,ジョシュ・ペック,ペック,ペック,family,youtuber,NA,1996,current
 299,ジョシュ・ペック,ジョシュ,ジョシュ,given,youtuber,NA,1996,current
 299,ジョシュ・ペック,ジョシュ・ペック,ジョシュ・ペック,full,youtuber,NA,1996,current
@@ -495,9 +419,6 @@ id,original,surface,pronunciation,type,category,org,debut_year,status
 301,ジョン・グリーン,グリーン,グリーン,family,youtuber,グリーン・ブラザーズ/ケニオン大学/ブックリスト,2005,current
 301,ジョン・グリーン,ジョン,ジョン,given,youtuber,グリーン・ブラザーズ/ケニオン大学/ブックリスト,2005,current
 301,ジョン・グリーン,ジョン・グリーン,ジョン・グリーン,full,youtuber,グリーン・ブラザーズ/ケニオン大学/ブックリスト,2005,current
-302,ジョン・ハイロ・ベラスケス,ベラスケス,ベラスケス,family,youtuber,メデジン・カルテル,1986,current
-302,ジョン・ハイロ・ベラスケス,ジョン,ジョン,given,youtuber,メデジン・カルテル,1986,current
-302,ジョン・ハイロ・ベラスケス,ジョン・ハイロ・ベラスケス,ジョン・ハイロ・ベラスケス,full,youtuber,メデジン・カルテル,1986,current
 303,ジョーダン・ピーターソン,ピーターソン,ピーターソン,family,youtuber,インテレクチュアル・ダークウェブ/デイリー・ワイヤー/トロント大学/ハーバード大学/マギル大学,NA,current
 303,ジョーダン・ピーターソン,ジョーダン,ジョーダン,given,youtuber,インテレクチュアル・ダークウェブ/デイリー・ワイヤー/トロント大学/ハーバード大学/マギル大学,NA,current
 303,ジョーダン・ピーターソン,ジョーダン・ピーターソン,ジョーダン・ピーターソン,full,youtuber,インテレクチュアル・ダークウェブ/デイリー・ワイヤー/トロント大学/ハーバード大学/マギル大学,NA,current
@@ -512,7 +433,6 @@ id,original,surface,pronunciation,type,category,org,debut_year,status
 308,スティーブン・ヒー,ヒー,ヒー,family,youtuber,NA,2019,current
 308,スティーブン・ヒー,スティーブン,スティーブン,given,youtuber,NA,2019,current
 308,スティーブン・ヒー,スティーブン・ヒー,スティーブン・ヒー,full,youtuber,NA,2019,current
-309,スティーヴォー,スティーヴォー,スティーヴォー,full,youtuber,NA,1997,current
 310,スラヴァ・マーロウ,マーロウ,マーロウ,family,youtuber,NA,2015,current
 310,スラヴァ・マーロウ,スラヴァ,スラヴァ,given,youtuber,NA,2015,current
 310,スラヴァ・マーロウ,スラヴァ・マーロウ,スラヴァ・マーロウ,full,youtuber,NA,2015,current
@@ -520,9 +440,6 @@ id,original,surface,pronunciation,type,category,org,debut_year,status
 312,セリーヌ・デプト,デプト,デプト,family,youtuber,NA,NA,current
 312,セリーヌ・デプト,セリーヌ,セリーヌ,given,youtuber,NA,NA,current
 312,セリーヌ・デプト,セリーヌ・デプト,セリーヌ・デプト,full,youtuber,NA,NA,current
-313,セルゲイ・クワエフ,クワエフ,クワエフ,family,youtuber,NA,NA,current
-313,セルゲイ・クワエフ,セルゲイ,セルゲイ,given,youtuber,NA,NA,current
-313,セルゲイ・クワエフ,セルゲイ・クワエフ,セルゲイ・クワエフ,full,youtuber,NA,NA,current
 314,ソフィア・シキチェンコ,シキチェンコ,シキチェンコ,family,youtuber,NA,NA,current
 314,ソフィア・シキチェンコ,ソフィア,ソフィア,given,youtuber,NA,NA,current
 314,ソフィア・シキチェンコ,ソフィア・シキチェンコ,ソフィア・シキチェンコ,full,youtuber,NA,NA,current
@@ -532,13 +449,7 @@ id,original,surface,pronunciation,type,category,org,debut_year,status
 317,ソ・スミン,ソ,ソ,given,youtuber,NA,NA,current
 317,ソ・スミン,ソ・スミン,ソ・スミン,full,youtuber,NA,NA,current
 318,ソーダポッピン,ソーダポッピン,ソーダポッピン,full,youtuber,NA,NA,current
-319,タイス・デスキュフォン,デスキュフォン,デスキュフォン,family,youtuber,アクション・フランセーズ,NA,current
-319,タイス・デスキュフォン,タイス,タイス,given,youtuber,アクション・フランセーズ,NA,current
-319,タイス・デスキュフォン,タイス・デスキュフォン,タイス・デスキュフォン,full,youtuber,アクション・フランセーズ,NA,current
 320,タケヤキ翔,タケヤキ翔,タケヤキショウ,full,youtuber,ラトゥラトゥ,NA,current
-321,ターイ・オラタイ,オラタイ,オラタイ,family,youtuber,NA,1999,current
-321,ターイ・オラタイ,ターイ,ターイ,given,youtuber,NA,1999,current
-321,ターイ・オラタイ,ターイ・オラタイ,ターイ・オラタイ,full,youtuber,NA,1999,current
 322,ダクアヴィス,ダクアヴィス,ダクアヴィス,full,youtuber,NA,NA,current
 323,ダコタ・ローズ,ローズ,ローズ,family,youtuber,NA,2011,current
 323,ダコタ・ローズ,ダコタ,ダコタ,given,youtuber,NA,2011,current
@@ -560,12 +471,6 @@ id,original,surface,pronunciation,type,category,org,debut_year,status
 330,テラ・ナオミ,ナオミ,ナオミ,family,youtuber,NA,2002,current
 330,テラ・ナオミ,テラ,テラ,given,youtuber,NA,2002,current
 330,テラ・ナオミ,テラ・ナオミ,テラ・ナオミ,full,youtuber,NA,2002,current
-331,テリー・ハッチャー,ハッチャー,ハッチャー,family,youtuber,NA,1985,current
-331,テリー・ハッチャー,テリー,テリー,given,youtuber,NA,1985,current
-331,テリー・ハッチャー,テリー・ハッチャー,テリー・ハッチャー,full,youtuber,NA,1985,current
-332,ディラン・オブライエン,オブライエン,オブライエン,family,youtuber,NA,2010,current
-332,ディラン・オブライエン,ディラン,ディラン,given,youtuber,NA,2010,current
-332,ディラン・オブライエン,ディラン・オブライエン,ディラン・オブライエン,full,youtuber,NA,2010,current
 333,デイヴ・ルービン,ルービン,ルービン,family,youtuber,インテレクチュアル・ダークウェブ,1998,current
 333,デイヴ・ルービン,デイヴ,デイヴ,given,youtuber,インテレクチュアル・ダークウェブ,1998,current
 333,デイヴ・ルービン,デイヴ・ルービン,デイヴ・ルービン,full,youtuber,インテレクチュアル・ダークウェブ,1998,current
@@ -596,15 +501,9 @@ id,original,surface,pronunciation,type,category,org,debut_year,status
 346,トロイ・シヴァン,シヴァン,シヴァン,family,youtuber,NA,2006,current
 346,トロイ・シヴァン,トロイ,トロイ,given,youtuber,NA,2006,current
 346,トロイ・シヴァン,トロイ・シヴァン,トロイ・シヴァン,full,youtuber,NA,2006,current
-347,トーマス・デーリー,デーリー,デーリー,family,youtuber,NA,NA,current
-347,トーマス・デーリー,トーマス,トーマス,given,youtuber,NA,NA,current
-347,トーマス・デーリー,トーマス・デーリー,トーマス・デーリー,full,youtuber,NA,NA,current
 348,ドズル,ドズル,ドズル,full,youtuber,ドズル社,NA,current
 349,ドリーム,ドリーム,ドリーム,full,youtuber,Dream SMP/ドリーム・チーム,2014,current
 350,ナナオ,ナナオ,ナナオ,full,youtuber,NA,NA,current
-351,ニキータ・ミハルコフ,ミハルコフ,ミハルコフ,family,youtuber,NA,1959,current
-351,ニキータ・ミハルコフ,ニキータ,ニキータ,given,youtuber,NA,1959,current
-351,ニキータ・ミハルコフ,ニキータ・ミハルコフ,ニキータ・ミハルコフ,full,youtuber,NA,1959,current
 352,ニック・ディジョバンニ,ディジョバンニ,ディジョバンニ,family,youtuber,NA,2018,current
 352,ニック・ディジョバンニ,ニック,ニック,given,youtuber,NA,2018,current
 352,ニック・ディジョバンニ,ニック・ディジョバンニ,ニック・ディジョバンニ,full,youtuber,NA,2018,current
@@ -630,9 +529,6 @@ id,original,surface,pronunciation,type,category,org,debut_year,status
 365,パリー・グリップ,パリー,パリー,given,youtuber,ナーフ・ハーダー,1994,current
 365,パリー・グリップ,パリー・グリップ,パリー・グリップ,full,youtuber,ナーフ・ハーダー,1994,current
 366,パーカー,パーカー,パーカー,full,youtuber,NA,NA,current
-367,パース・ナクン,ナクン,ナクン,family,youtuber,NA,NA,current
-367,パース・ナクン,パース,パース,given,youtuber,NA,NA,current
-367,パース・ナクン,パース・ナクン,パース・ナクン,full,youtuber,NA,NA,current
 368,ヒカル・ナカムラ,ナカムラ,ナカムラ,family,youtuber,NA,NA,current
 368,ヒカル・ナカムラ,ヒカル,ヒカル,given,youtuber,NA,NA,current
 368,ヒカル・ナカムラ,ヒカル・ナカムラ,ヒカル・ナカムラ,full,youtuber,NA,NA,current
@@ -649,9 +545,6 @@ id,original,surface,pronunciation,type,category,org,debut_year,status
 375,ピーター・オークレー,オークレー,オークレー,family,youtuber,NA,2006,current
 375,ピーター・オークレー,ピーター,ピーター,given,youtuber,NA,2006,current
 375,ピーター・オークレー,ピーター・オークレー,ピーター・オークレー,full,youtuber,NA,2006,current
-376,ピーター・シフ,シフ,シフ,family,youtuber,NA,NA,current
-376,ピーター・シフ,ピーター,ピーター,given,youtuber,NA,NA,current
-376,ピーター・シフ,ピーター・シフ,ピーター・シフ,full,youtuber,NA,NA,current
 377,ピーター・ホーレンス,ホーレンス,ホーレンス,family,youtuber,NA,2002,current
 377,ピーター・ホーレンス,ピーター,ピーター,given,youtuber,NA,2002,current
 377,ピーター・ホーレンス,ピーター・ホーレンス,ピーター・ホーレンス,full,youtuber,NA,2002,current
@@ -671,13 +564,7 @@ id,original,surface,pronunciation,type,category,org,debut_year,status
 383,不破遥香,不破,フワ,family,youtuber,NA,NA,current
 383,不破遥香,遥香,ハルカ,given,youtuber,NA,NA,current
 383,不破遥香,不破遥香,フワハルカ,full,youtuber,NA,NA,current
-384,ブッチ・ハートマン,ハートマン,ハートマン,family,youtuber,NA,1986,current
-384,ブッチ・ハートマン,ブッチ,ブッチ,given,youtuber,NA,1986,current
-384,ブッチ・ハートマン,ブッチ・ハートマン,ブッチ・ハートマン,full,youtuber,NA,1986,current
 385,ブライアン,ブライアン,ブライアン,full,youtuber,NA,NA,current
-386,ブライアン・メイ,メイ,メイ,family,youtuber,クイーン/スマイル/ブライアン・メイ・バンド/ロック・エイド・アルメニア,1964,current
-386,ブライアン・メイ,ブライアン,ブライアン,given,youtuber,クイーン/スマイル/ブライアン・メイ・バンド/ロック・エイド・アルメニア,1964,current
-386,ブライアン・メイ,ブライアン・メイ,ブライアン・メイ,full,youtuber,クイーン/スマイル/ブライアン・メイ・バンド/ロック・エイド・アルメニア,1964,current
 387,ブランドン・ハーデスティ,ハーデスティ,ハーデスティ,family,youtuber,NA,2006,current
 387,ブランドン・ハーデスティ,ブランドン,ブランドン,given,youtuber,NA,2006,current
 387,ブランドン・ハーデスティ,ブランドン・ハーデスティ,ブランドン・ハーデスティ,full,youtuber,NA,2006,current
@@ -702,9 +589,6 @@ id,original,surface,pronunciation,type,category,org,debut_year,status
 396,ベイビー・アリエル,アリエル,アリエル,family,youtuber,NA,2015,current
 396,ベイビー・アリエル,ベイビー,ベイビー,given,youtuber,NA,2015,current
 396,ベイビー・アリエル,ベイビー・アリエル,ベイビー・アリエル,full,youtuber,NA,2015,current
-397,ベイビー・キーム,キーム,キーム,family,youtuber,NA,2014,current
-397,ベイビー・キーム,ベイビー,ベイビー,given,youtuber,NA,2014,current
-397,ベイビー・キーム,ベイビー・キーム,ベイビー・キーム,full,youtuber,NA,2014,current
 398,ベッキー・クルーエル,クルーエル,クルーエル,family,youtuber,クルーエル・エンジェルス,2007,current
 398,ベッキー・クルーエル,ベッキー,ベッキー,given,youtuber,クルーエル・エンジェルス,2007,current
 398,ベッキー・クルーエル,ベッキー・クルーエル,ベッキー・クルーエル,full,youtuber,クルーエル・エンジェルス,2007,current
@@ -714,16 +598,9 @@ id,original,surface,pronunciation,type,category,org,debut_year,status
 400,ベル・デルフィン,デルフィン,デルフィン,family,youtuber,NA,2015,current
 400,ベル・デルフィン,ベル,ベル,given,youtuber,NA,2015,current
 400,ベル・デルフィン,ベル・デルフィン,ベル・デルフィン,full,youtuber,NA,2015,current
-401,ベンベン,ベンベン,ベンベン,full,youtuber,GOT7,2014,current
 402,ホポップ,ホポップ,ホポップ,full,youtuber,NA,NA,current
 403,ホモサピ,ホモサピ,ホモサピ,full,youtuber,NA,NA,current
 404,ボドカ,ボドカ,ボドカ,full,youtuber,NA,NA,current
-405,ボニー・アーロンズ,アーロンズ,アーロンズ,family,youtuber,NA,1994,current
-405,ボニー・アーロンズ,ボニー,ボニー,given,youtuber,NA,1994,current
-405,ボニー・アーロンズ,ボニー・アーロンズ,ボニー・アーロンズ,full,youtuber,NA,1994,current
-406,ボニー・ライト,ライト,ライト,family,youtuber,NA,2001,current
-406,ボニー・ライト,ボニー,ボニー,given,youtuber,NA,2001,current
-406,ボニー・ライト,ボニー・ライト,ボニー・ライト,full,youtuber,NA,2001,current
 407,ボー・バーナム,バーナム,バーナム,family,youtuber,東部全米脚本家組合,2006,current
 407,ボー・バーナム,ボー,ボー,given,youtuber,東部全米脚本家組合,2006,current
 407,ボー・バーナム,ボー・バーナム,ボー・バーナム,full,youtuber,東部全米脚本家組合,2006,current
@@ -743,9 +620,6 @@ id,original,surface,pronunciation,type,category,org,debut_year,status
 415,マキシミリアン・ドゥード,マキシミリアン・ドゥード,マキシミリアン・ドゥード,full,youtuber,NA,NA,current
 416,マギボン,マギボン,マギボン,full,youtuber,NA,NA,current
 417,マギー,マギー,マギー,full,youtuber,NA,NA,current
-418,マクシム・ガルキン,ガルキン,ガルキン,family,youtuber,NA,1994,current
-418,マクシム・ガルキン,マクシム,マクシム,given,youtuber,NA,1994,current
-418,マクシム・ガルキン,マクシム・ガルキン,マクシム・ガルキン,full,youtuber,NA,1994,current
 419,マットパット,マットパット,マットパット,full,youtuber,NA,2009,current
 420,マット・スローン,スローン,スローン,family,youtuber,NA,1993,current
 420,マット・スローン,マット,マット,given,youtuber,NA,1993,current
@@ -756,9 +630,6 @@ id,original,surface,pronunciation,type,category,org,debut_year,status
 422,マット・ワトソン,ワトソン,ワトソン,family,youtuber,NA,NA,current
 422,マット・ワトソン,マット,マット,given,youtuber,NA,NA,current
 422,マット・ワトソン,マット・ワトソン,マット・ワトソン,full,youtuber,NA,NA,current
-423,マヤ＝レシア・ネイラー,ネイラー,ネイラー,family,youtuber,NA,NA,current
-423,マヤ＝レシア・ネイラー,マヤ,マヤ,given,youtuber,NA,NA,current
-423,マヤ＝レシア・ネイラー,マヤ＝レシア・ネイラー,マヤ・レシア・ネイラー,full,youtuber,NA,NA,current
 424,マリエ・ディグビー,ディグビー,ディグビー,family,youtuber,NA,2004,current
 424,マリエ・ディグビー,マリエ,マリエ,given,youtuber,NA,2004,current
 424,マリエ・ディグビー,マリエ・ディグビー,マリエ・ディグビー,full,youtuber,NA,2004,current
@@ -769,12 +640,6 @@ id,original,surface,pronunciation,type,category,org,debut_year,status
 427,マーク・ローバー,ローバー,ローバー,family,youtuber,Apple Inc./アメリカ航空宇宙局/ジェット推進研究所,NA,current
 427,マーク・ローバー,マーク,マーク,given,youtuber,Apple Inc./アメリカ航空宇宙局/ジェット推進研究所,NA,current
 427,マーク・ローバー,マーク・ローバー,マーク・ローバー,full,youtuber,Apple Inc./アメリカ航空宇宙局/ジェット推進研究所,NA,current
-428,マーティン・シュクレリ,シュクレリ,シュクレリ,family,youtuber,NA,NA,current
-428,マーティン・シュクレリ,マーティン,マーティン,given,youtuber,NA,NA,current
-428,マーティン・シュクレリ,マーティン・シュクレリ,マーティン・シュクレリ,full,youtuber,NA,NA,current
-429,ミア・ハリファ,ハリファ,ハリファ,family,youtuber,NA,2014,former
-429,ミア・ハリファ,ミア,ミア,given,youtuber,NA,2014,former
-429,ミア・ハリファ,ミア・ハリファ,ミア・ハリファ,full,youtuber,NA,2014,former
 430,ミカエラ・ブレスウェート,ブレスウェート,ブレスウェート,family,youtuber,NA,NA,current
 430,ミカエラ・ブレスウェート,ミカエラ,ミカエラ,given,youtuber,NA,NA,current
 430,ミカエラ・ブレスウェート,ミカエラ・ブレスウェート,ミカエラ・ブレスウェート,full,youtuber,NA,NA,current
@@ -787,12 +652,6 @@ id,original,surface,pronunciation,type,category,org,debut_year,status
 435,ミラン・クノル,クノル,クノル,family,youtuber,NA,NA,current
 435,ミラン・クノル,ミラン,ミラン,given,youtuber,NA,NA,current
 435,ミラン・クノル,ミラン・クノル,ミラン・クノル,full,youtuber,NA,NA,current
-436,メアリー・モーサ,モーサ,モーサ,family,youtuber,NA,2004,current
-436,メアリー・モーサ,メアリー,メアリー,given,youtuber,NA,2004,current
-436,メアリー・モーサ,メアリー・モーサ,メアリー・モーサ,full,youtuber,NA,2004,current
-437,メイソン・マッデン,マッデン,マッデン,family,youtuber,NA,2016,current
-437,メイソン・マッデン,メイソン,メイソン,given,youtuber,NA,2016,current
-437,メイソン・マッデン,メイソン・マッデン,メイソン・マッデン,full,youtuber,NA,2016,current
 438,メロディ・オリヴェリア,オリヴェリア,オリヴェリア,family,youtuber,NA,2006,current
 438,メロディ・オリヴェリア,メロディ,メロディ,given,youtuber,NA,2006,current
 438,メロディ・オリヴェリア,メロディ・オリヴェリア,メロディ・オリヴェリア,full,youtuber,NA,2006,current
@@ -801,9 +660,6 @@ id,original,surface,pronunciation,type,category,org,debut_year,status
 441,ユッコ・ミラー,ミラー,ミラー,family,youtuber,NA,NA,current
 441,ユッコ・ミラー,ユッコ,ユッコ,given,youtuber,NA,NA,current
 441,ユッコ・ミラー,ユッコ・ミラー,ユッコ・ミラー,full,youtuber,NA,NA,current
-442,ユ・ヨンソク,ヨンソク,ヨンソク,family,youtuber,NA,2003,current
-442,ユ・ヨンソク,ユ,ユ,given,youtuber,NA,2003,current
-442,ユ・ヨンソク,ユ・ヨンソク,ユ・ヨンソク,full,youtuber,NA,2003,current
 443,ヨビノリたくみ,ヨビノリたくみ,ヨビノリタクミ,full,youtuber,NA,NA,current
 444,ライアン・ヒガ,ヒガ,ヒガ,family,youtuber,NA,2006,current
 444,ライアン・ヒガ,ライアン,ライアン,given,youtuber,NA,2006,current
@@ -811,26 +667,14 @@ id,original,surface,pronunciation,type,category,org,debut_year,status
 445,ライザ・コシ,コシ,コシ,family,youtuber,NA,2013,current
 445,ライザ・コシ,ライザ,ライザ,given,youtuber,NA,2013,current
 445,ライザ・コシ,ライザ・コシ,ライザ・コシ,full,youtuber,NA,2013,current
-446,ライナー・フュルミッヒ,フュルミッヒ,フュルミッヒ,family,youtuber,NA,NA,current
-446,ライナー・フュルミッヒ,ライナー,ライナー,given,youtuber,NA,NA,current
-446,ライナー・フュルミッヒ,ライナー・フュルミッヒ,ライナー・フュルミッヒ,full,youtuber,NA,NA,current
 447,ラッセル・ブランド,ブランド,ブランド,family,youtuber,NA,1994,current
 447,ラッセル・ブランド,ラッセル,ラッセル,given,youtuber,NA,1994,current
 447,ラッセル・ブランド,ラッセル・ブランド,ラッセル・ブランド,full,youtuber,NA,1994,current
 448,ラッセ・イェルツェン,イェルツェン,イェルツェン,family,youtuber,NA,NA,current
 448,ラッセ・イェルツェン,ラッセ,ラッセ,given,youtuber,NA,NA,current
 448,ラッセ・イェルツェン,ラッセ・イェルツェン,ラッセ・イェルツェン,full,youtuber,NA,NA,current
-449,ラナ・コンドル,コンドル,コンドル,family,youtuber,NA,2016,current
-449,ラナ・コンドル,ラナ,ラナ,given,youtuber,NA,2016,current
-449,ラナ・コンドル,ラナ・コンドル,ラナ・コンドル,full,youtuber,NA,2016,current
 450,ラファエル,ラファエル,ラファエル,full,youtuber,NA,NA,current
 451,ラムダ,ラムダ,ラムダ,full,youtuber,NA,NA,current
-452,リェギナ・トドリェンコ,トドリェンコ,トドリェンコ,family,youtuber,NA,2007,current
-452,リェギナ・トドリェンコ,リェギナ,リェギナ,given,youtuber,NA,2007,current
-452,リェギナ・トドリェンコ,リェギナ・トドリェンコ,リェギナ・トドリェンコ,full,youtuber,NA,2007,current
-453,リサ・アン,アン,アン,family,youtuber,映画俳優組合,1994,former
-453,リサ・アン,リサ,リサ,given,youtuber,映画俳優組合,1994,former
-453,リサ・アン,リサ・アン,リサ・アン,full,youtuber,映画俳優組合,1994,former
 454,リサ・ドノヴァン,ドノヴァン,ドノヴァン,family,youtuber,NA,2006,current
 454,リサ・ドノヴァン,リサ,リサ,given,youtuber,NA,2006,current
 454,リサ・ドノヴァン,リサ・ドノヴァン,リサ・ドノヴァン,full,youtuber,NA,2006,current
@@ -840,9 +684,6 @@ id,original,surface,pronunciation,type,category,org,debut_year,status
 456,リッチ・ピアーナ,ピアーナ,ピアーナ,family,youtuber,NA,NA,current
 456,リッチ・ピアーナ,リッチ,リッチ,given,youtuber,NA,NA,current
 456,リッチ・ピアーナ,リッチ・ピアーナ,リッチ・ピアーナ,full,youtuber,NA,NA,current
-457,リビオ・ジャン＝シャルル,シャルル,シャルル,family,youtuber,NA,2011,current
-457,リビオ・ジャン＝シャルル,リビオ,リビオ,given,youtuber,NA,2011,current
-457,リビオ・ジャン＝シャルル,リビオ・ジャン＝シャルル,リビオ・ジャン・シャルル,full,youtuber,NA,2011,current
 458,リュウジ,リュウジ,リュウジ,full,youtuber,NA,NA,current
 459,リリィピチュー,リリィピチュー,リリィピチュー,full,youtuber,NA,NA,current
 460,リリー・シン,シン,シン,family,youtuber,NA,2010,current
@@ -854,9 +695,6 @@ id,original,surface,pronunciation,type,category,org,debut_year,status
 462,ルッカ・ルッカ・アリ,アリ,アリ,family,youtuber,NA,2006,current
 462,ルッカ・ルッカ・アリ,ルッカ,ルッカ,given,youtuber,NA,2006,current
 462,ルッカ・ルッカ・アリ,ルッカ・ルッカ・アリ,ルッカ・ルッカ・アリ,full,youtuber,NA,2006,current
-463,ルビィ・デイ,デイ,デイ,family,youtuber,NA,NA,current
-463,ルビィ・デイ,ルビィ,ルビィ,given,youtuber,NA,NA,current
-463,ルビィ・デイ,ルビィ・デイ,ルビィ・デイ,full,youtuber,NA,NA,current
 464,レイチェル・ゼグラー,ゼグラー,ゼグラー,family,youtuber,NA,2015,current
 464,レイチェル・ゼグラー,レイチェル,レイチェル,given,youtuber,NA,2015,current
 464,レイチェル・ゼグラー,レイチェル・ゼグラー,レイチェル・ゼグラー,full,youtuber,NA,2015,current
@@ -868,38 +706,20 @@ id,original,surface,pronunciation,type,category,org,debut_year,status
 468,レベッカ・ブラック,ブラック,ブラック,family,youtuber,NA,2010,current
 468,レベッカ・ブラック,レベッカ,レベッカ,given,youtuber,NA,2010,current
 468,レベッカ・ブラック,レベッカ・ブラック,レベッカ・ブラック,full,youtuber,NA,2010,current
-469,レベッカ・メイダー,メイダー,メイダー,family,youtuber,NA,2000,current
-469,レベッカ・メイダー,レベッカ,レベッカ,given,youtuber,NA,2000,current
-469,レベッカ・メイダー,レベッカ・メイダー,レベッカ・メイダー,full,youtuber,NA,2000,current
 470,レミ・ガイヤール,ガイヤール,ガイヤール,family,youtuber,NA,1999,current
 470,レミ・ガイヤール,レミ,レミ,given,youtuber,NA,1999,current
 470,レミ・ガイヤール,レミ・ガイヤール,レミ・ガイヤール,full,youtuber,NA,1999,current
 471,レンタルぶさいく,レンタルぶさいく,レンタルブサイク,full,youtuber,NA,NA,current
 472,ロジック,ロジック,ロジック,full,youtuber,NA,2009,current
-473,ロン・ポール,ポール,ポール,family,youtuber,米国医師外科医協会,NA,current
-473,ロン・ポール,ロン,ロン,given,youtuber,米国医師外科医協会,NA,current
-473,ロン・ポール,ロン・ポール,ロン・ポール,full,youtuber,米国医師外科医協会,NA,current
 474,ローガン・ポール,ポール,ポール,family,youtuber,NA,2013,current
 474,ローガン・ポール,ローガン,ローガン,given,youtuber,NA,2013,current
 474,ローガン・ポール,ローガン・ポール,ローガン・ポール,full,youtuber,NA,2013,current
 475,ローレン・グレイ,グレイ,グレイ,family,youtuber,NA,2015,current
 475,ローレン・グレイ,ローレン,ローレン,given,youtuber,NA,2015,current
 475,ローレン・グレイ,ローレン・グレイ,ローレン・グレイ,full,youtuber,NA,2015,current
-476,ワシリーサ・ダワンコワ,ダワンコワ,ダワンコワ,family,youtuber,NA,NA,current
-476,ワシリーサ・ダワンコワ,ワシリーサ,ワシリーサ,given,youtuber,NA,NA,current
-476,ワシリーサ・ダワンコワ,ワシリーサ・ダワンコワ,ワシリーサ・ダワンコワ,full,youtuber,NA,NA,current
-477,ヴァルグ・ヴィーケネス,ヴィーケネス,ヴィーケネス,family,youtuber,オールド・フューネラル/バーズム/メイヘム,1987,current
-477,ヴァルグ・ヴィーケネス,ヴァルグ,ヴァルグ,given,youtuber,オールド・フューネラル/バーズム/メイヘム,1987,current
-477,ヴァルグ・ヴィーケネス,ヴァルグ・ヴィーケネス,ヴァルグ・ヴィーケネス,full,youtuber,オールド・フューネラル/バーズム/メイヘム,1987,current
-478,ヴォックス・デイ,デイ,デイ,family,youtuber,NA,NA,current
-478,ヴォックス・デイ,ヴォックス,ヴォックス,given,youtuber,NA,NA,current
-478,ヴォックス・デイ,ヴォックス・デイ,ヴォックス・デイ,full,youtuber,NA,NA,current
 479,一木花漣,一木,イチキ,family,youtuber,NA,NA,current
 479,一木花漣,花漣,カレン,given,youtuber,NA,NA,current
 479,一木花漣,一木花漣,イチキカレン,full,youtuber,NA,NA,current
-480,一色絢巳,一色,イッシキ,family,youtuber,NA,NA,current
-480,一色絢巳,絢巳,アヤミ,given,youtuber,NA,NA,current
-480,一色絢巳,一色絢巳,イッシキアヤミ,full,youtuber,NA,NA,current
 481,三好美羽,三好,ミヨシ,family,youtuber,NA,NA,current
 481,三好美羽,美羽,ミワ,given,youtuber,NA,NA,current
 481,三好美羽,三好美羽,ミヨシミワ,full,youtuber,NA,NA,current
@@ -952,9 +772,6 @@ id,original,surface,pronunciation,type,category,org,debut_year,status
 498,久保田雅人,久保田,クボタ,family,youtuber,NA,NA,current
 498,久保田雅人,雅人,マサト,given,youtuber,NA,NA,current
 498,久保田雅人,久保田雅人,クボタマサト,full,youtuber,NA,NA,current
-499,久保陽貴,久保,クボ,family,youtuber,NA,NA,current
-499,久保陽貴,陽貴,ハルキ,given,youtuber,NA,NA,current
-499,久保陽貴,久保陽貴,クボハルキ,full,youtuber,NA,NA,current
 500,久慈六郎,久慈,クジ,family,youtuber,NA,NA,current
 500,久慈六郎,六郎,ロクロウ,given,youtuber,NA,NA,current
 500,久慈六郎,久慈六郎,クジロクロウ,full,youtuber,NA,NA,current
@@ -1005,9 +822,6 @@ id,original,surface,pronunciation,type,category,org,debut_year,status
 517,余澎杉,余,エイモス,family,youtuber,NA,NA,current
 517,余澎杉,澎杉,イー,given,youtuber,NA,NA,current
 517,余澎杉,余澎杉,エイモスイー,full,youtuber,NA,NA,current
-518,佳苗るか,佳苗,カナエ,family,youtuber,NA,NA,current
-518,佳苗るか,るか,ルカ,given,youtuber,NA,NA,current
-518,佳苗るか,佳苗るか,カナエルカ,full,youtuber,NA,NA,current
 519,傍島将大,傍島,ソバジマ,family,youtuber,名古屋おもてなし武将隊,NA,current
 519,傍島将大,将大,マサヒロ,given,youtuber,名古屋おもてなし武将隊,NA,current
 519,傍島将大,傍島将大,ソバジママサヒロ,full,youtuber,名古屋おもてなし武将隊,NA,current
@@ -1015,9 +829,6 @@ id,original,surface,pronunciation,type,category,org,debut_year,status
 521,入山杏奈,入山,イリヤマ,family,youtuber,AKB48,2010,current
 521,入山杏奈,杏奈,アンナ,given,youtuber,AKB48,2010,current
 521,入山杏奈,入山杏奈,イリヤマアンナ,full,youtuber,AKB48,2010,current
-522,八木優樹,八木,ヤギ,family,youtuber,NA,2020,current
-522,八木優樹,優樹,ユウキ,given,youtuber,NA,2020,current
-522,八木優樹,八木優樹,ヤギユウキ,full,youtuber,NA,2020,current
 523,八炯,八炯,ハチケイ,full,youtuber,NA,NA,current
 524,六本木キム教授,六本木キム教授,ロッポンギキムキョウジュ,full,youtuber,NA,NA,current
 525,兵藤小百合,兵藤,ヒョウドウ,family,youtuber,NA,NA,current
@@ -1033,9 +844,6 @@ id,original,surface,pronunciation,type,category,org,debut_year,status
 529,加藤純一,加藤,カトウ,family,youtuber,NA,2009,current
 529,加藤純一,純一,ジュンイチ,given,youtuber,NA,2009,current
 529,加藤純一,加藤純一,カトウジュンイチ,full,youtuber,NA,2009,current
-530,加藤綾菜,加藤,カトウ,family,youtuber,NA,NA,current
-530,加藤綾菜,綾菜,アヤナ,given,youtuber,NA,NA,current
-530,加藤綾菜,加藤綾菜,カトウアヤナ,full,youtuber,NA,NA,current
 531,加藤美南,加藤,カトウ,family,youtuber,NGT48,2015,current
 531,加藤美南,美南,ミナミ,given,youtuber,NGT48,2015,current
 531,加藤美南,加藤美南,カトウミナミ,full,youtuber,NGT48,2015,current
@@ -1064,9 +872,6 @@ id,original,surface,pronunciation,type,category,org,debut_year,status
 539,千葉修司,修司,シュウジ,given,youtuber,NA,NA,current
 539,千葉修司,千葉修司,チバシュウジ,full,youtuber,NA,NA,current
 540,午後正午,午後正午,ゴゴショウゴ,full,youtuber,NA,NA,current
-541,南早紀,南,ミナミ,family,youtuber,NA,NA,current
-541,南早紀,早紀,サキ,given,youtuber,NA,NA,current
-541,南早紀,南早紀,ミナミサキ,full,youtuber,NA,NA,current
 542,友金良太,友金,トモガネ,family,youtuber,NA,NA,current
 542,友金良太,良太,リョウタ,given,youtuber,NA,NA,current
 542,友金良太,友金良太,トモガネリョウタ,full,youtuber,NA,NA,current
@@ -1092,9 +897,6 @@ id,original,surface,pronunciation,type,category,org,debut_year,status
 550,喉押さえマン,喉押さえマン,ノドオサエマン,full,youtuber,NA,NA,current
 551,図月つくる,図月つくる,ズツキツクル,full,youtuber,ライヴラリ,2022,former
 552,圧倒的不審者の極み!,圧倒的不審者の極み!,アットウテキフシンシャノキワミ,full,youtuber,NA,NA,current
-553,坂下真心,坂下,サカシタ,family,youtuber,NA,2022,current
-553,坂下真心,真心,マコ,given,youtuber,NA,2022,current
-553,坂下真心,坂下真心,サカシタマコ,full,youtuber,NA,2022,current
 554,坂井古都,坂井,サカイ,family,youtuber,NA,NA,current
 554,坂井古都,古都,コト,given,youtuber,NA,NA,current
 554,坂井古都,坂井古都,サカイコト,full,youtuber,NA,NA,current
@@ -1116,9 +918,6 @@ id,original,surface,pronunciation,type,category,org,debut_year,status
 560,堀田隆一,堀田,ホッタ,family,youtuber,NA,NA,current
 560,堀田隆一,隆一,リュウイチ,given,youtuber,NA,NA,current
 560,堀田隆一,堀田隆一,ホッタリュウイチ,full,youtuber,NA,NA,current
-561,増原裕子,増原,マスハラ,family,youtuber,NA,NA,current
-561,増原裕子,裕子,ヒロコ,given,youtuber,NA,NA,current
-561,増原裕子,増原裕子,マスハラヒロコ,full,youtuber,NA,NA,current
 562,多井隆晴,多井,オオイ,family,youtuber,NA,NA,current
 562,多井隆晴,隆晴,タカハル,given,youtuber,NA,NA,current
 562,多井隆晴,多井隆晴,オオイタカハル,full,youtuber,NA,NA,current
@@ -1158,7 +957,6 @@ id,original,surface,pronunciation,type,category,org,debut_year,status
 574,天使もえ,天使,アマツカ,family,youtuber,NA,2014,current
 574,天使もえ,もえ,モエ,given,youtuber,NA,2014,current
 574,天使もえ,天使もえ,アマツカモエ,full,youtuber,NA,2014,current
-575,天城サリー,天城サリー,アマキサリー,full,youtuber,22/7,2017,current
 576,天津いちは,天津,アマツ,family,youtuber,NA,NA,current
 576,天津いちは,いちは,イチハ,given,youtuber,NA,NA,current
 576,天津いちは,天津いちは,アマツイチハ,full,youtuber,NA,NA,current
@@ -1186,24 +984,15 @@ id,original,surface,pronunciation,type,category,org,debut_year,status
 586,宮迫博之,宮迫,ミヤサコ,family,youtuber,ワンナイR&R/雨上がり決死隊,1989,current
 586,宮迫博之,博之,ヒロユキ,given,youtuber,ワンナイR&R/雨上がり決死隊,1989,current
 586,宮迫博之,宮迫博之,ミヤサコヒロユキ,full,youtuber,ワンナイR&R/雨上がり決死隊,1989,current
-587,寺中友将,寺中,テラナカ,family,youtuber,NA,2020,current
-587,寺中友将,友将,トモマサ,given,youtuber,NA,2020,current
-587,寺中友将,寺中友将,テラナカトモマサ,full,youtuber,NA,2020,current
 588,寺門ジモン,寺門,テラカド,family,youtuber,ダチョウ倶楽部,NA,current
 588,寺門ジモン,ジモン,ジモン,given,youtuber,ダチョウ倶楽部,NA,current
 588,寺門ジモン,寺門ジモン,テラカドジモン,full,youtuber,ダチョウ倶楽部,NA,current
 589,小倉優子,小倉,オグラ,family,youtuber,NA,2001,current
 589,小倉優子,優子,ユウコ,given,youtuber,NA,2001,current
 589,小倉優子,小倉優子,オグラユウコ,full,youtuber,NA,2001,current
-590,小宵こなん,小宵,コヨイ,family,youtuber,NA,NA,current
-590,小宵こなん,こなん,コナン,given,youtuber,NA,NA,current
-590,小宵こなん,小宵こなん,コヨイコナン,full,youtuber,NA,NA,current
 591,小嶋陽菜,小嶋,コジマ,family,youtuber,AKB48/ノースリーブス,1998,current
 591,小嶋陽菜,陽菜,ハルナ,given,youtuber,AKB48/ノースリーブス,1998,current
 591,小嶋陽菜,小嶋陽菜,コジマハルナ,full,youtuber,AKB48/ノースリーブス,1998,current
-592,小川えり,小川,オガワ,family,youtuber,NA,NA,current
-592,小川えり,えり,エリ,given,youtuber,NA,NA,current
-592,小川えり,小川えり,オガワエリ,full,youtuber,NA,NA,current
 593,小畑優奈,小畑,オバタ,family,youtuber,SKE48,NA,current
 593,小畑優奈,優奈,ユナ,given,youtuber,SKE48,NA,current
 593,小畑優奈,小畑優奈,オバタユナ,full,youtuber,SKE48,NA,current
@@ -1263,9 +1052,6 @@ id,original,surface,pronunciation,type,category,org,debut_year,status
 613,廣田あいか,廣田,ヒロタ,family,youtuber,私立恵比寿中学,2005,current
 613,廣田あいか,あいか,アイカ,given,youtuber,私立恵比寿中学,2005,current
 613,廣田あいか,廣田あいか,ヒロタアイカ,full,youtuber,私立恵比寿中学,2005,current
-614,征矢貴,征矢,ソヤ,family,youtuber,NA,NA,current
-614,征矢貴,貴,タカキ,given,youtuber,NA,NA,current
-614,征矢貴,征矢貴,ソヤタカキ,full,youtuber,NA,NA,current
 615,後藤真希,後藤,ゴトウ,family,youtuber,モーニング娘。,1999,current
 615,後藤真希,真希,マキ,given,youtuber,モーニング娘。,1999,current
 615,後藤真希,後藤真希,ゴトウマキ,full,youtuber,モーニング娘。,1999,current
@@ -1321,9 +1107,6 @@ id,original,surface,pronunciation,type,category,org,debut_year,status
 635,本田翼,本田,ホンダ,family,youtuber,NA,2006,current
 635,本田翼,翼,ツバサ,given,youtuber,NA,2006,current
 635,本田翼,本田翼,ホンダツバサ,full,youtuber,NA,2006,current
-636,本間敬人,本間,ホンマ,family,youtuber,NA,NA,current
-636,本間敬人,敬人,ケイト,given,youtuber,NA,NA,current
-636,本間敬人,本間敬人,ホンマケイト,full,youtuber,NA,NA,current
 637,杉山正雄,杉山,スギヤマ,family,youtuber,NA,NA,current
 637,杉山正雄,正雄,マサオ,given,youtuber,NA,NA,current
 637,杉山正雄,杉山正雄,スギヤママサオ,full,youtuber,NA,NA,current
@@ -1361,18 +1144,12 @@ id,original,surface,pronunciation,type,category,org,debut_year,status
 649,松岡純正,松岡,マツオカ,family,youtuber,NA,NA,current
 649,松岡純正,純正,ヨシマサ,given,youtuber,NA,NA,current
 649,松岡純正,松岡純正,マツオカヨシマサ,full,youtuber,NA,NA,current
-650,松本吉弘,松本,マツモト,family,youtuber,日本プロ麻雀協会,NA,current
-650,松本吉弘,吉弘,ヨシヒロ,given,youtuber,日本プロ麻雀協会,NA,current
-650,松本吉弘,松本吉弘,マツモトヨシヒロ,full,youtuber,日本プロ麻雀協会,NA,current
 651,松本晃市郎,松本,マツモト,family,youtuber,NA,NA,current
 651,松本晃市郎,晃市郎,コウイチロウ,given,youtuber,NA,NA,current
 651,松本晃市郎,松本晃市郎,マツモトコウイチロウ,full,youtuber,NA,NA,current
 652,松村沙友理,松村,マツムラ,family,youtuber,乃木坂46,2011,current
 652,松村沙友理,沙友理,サユリ,given,youtuber,乃木坂46,2011,current
 652,松村沙友理,松村沙友理,マツムラサユリ,full,youtuber,乃木坂46,2011,current
-653,板野友美,板野,イタノ,family,youtuber,AKB48,2005,current
-653,板野友美,友美,トモミ,given,youtuber,AKB48,2005,current
-653,板野友美,板野友美,イタノトモミ,full,youtuber,AKB48,2005,current
 654,架乃ゆら,架乃,カノ,family,youtuber,NA,NA,current
 654,架乃ゆら,ゆら,ユラ,given,youtuber,NA,NA,current
 654,架乃ゆら,架乃ゆら,カノユラ,full,youtuber,NA,NA,current
@@ -1386,9 +1163,6 @@ id,original,surface,pronunciation,type,category,org,debut_year,status
 657,柴崎春通,春通,ハルミチ,given,youtuber,NA,NA,current
 657,柴崎春通,柴崎春通,シバサキハルミチ,full,youtuber,NA,NA,current
 658,桃ふじ,桃ふじ,モモフジ,full,youtuber,NA,NA,current
-659,桜井日奈子,桜井,サクライ,family,youtuber,NA,NA,current
-659,桜井日奈子,日奈子,ヒナコ,given,youtuber,NA,NA,current
-659,桜井日奈子,桜井日奈子,サクライヒナコ,full,youtuber,NA,NA,current
 660,桶家武尊,桶家,オケイエ,family,youtuber,NA,NA,current
 660,桶家武尊,武尊,タケル,given,youtuber,NA,NA,current
 660,桶家武尊,桶家武尊,オケイエタケル,full,youtuber,NA,NA,current
@@ -1410,9 +1184,6 @@ id,original,surface,pronunciation,type,category,org,debut_year,status
 666,槙本稔己,槙本,マキモト,family,youtuber,NA,NA,current
 666,槙本稔己,稔己,トシキ,given,youtuber,NA,NA,current
 666,槙本稔己,槙本稔己,マキモトトシキ,full,youtuber,NA,NA,current
-667,横井研二,横井,ヨコイ,family,youtuber,NA,2010,current
-667,横井研二,研二,ケンジ,given,youtuber,NA,2010,current
-667,横井研二,横井研二,ヨコイケンジ,full,youtuber,NA,2010,current
 668,樺沢紫苑,樺沢紫苑,カバサワシオン,full,youtuber,NA,NA,current
 669,橋本京明,橋本,ハシモト,family,youtuber,NA,NA,current
 669,橋本京明,京明,キョウメイ,given,youtuber,NA,NA,current
@@ -1427,7 +1198,6 @@ id,original,surface,pronunciation,type,category,org,debut_year,status
 673,永岡怜子,永岡,ナガオカ,family,youtuber,NA,NA,current
 673,永岡怜子,怜子,レイコ,given,youtuber,NA,NA,current
 673,永岡怜子,永岡怜子,ナガオカレイコ,full,youtuber,NA,NA,current
-674,江尻早紀,江尻早紀,エジリサキ,full,youtuber,NA,2023,current
 675,江田拓寛,江田,エダ,family,youtuber,NA,NA,current
 675,江田拓寛,拓寛,タクヒロ,given,youtuber,NA,NA,current
 675,江田拓寛,江田拓寛,エダタクヒロ,full,youtuber,NA,NA,current
@@ -1476,9 +1246,6 @@ id,original,surface,pronunciation,type,category,org,debut_year,status
 691,玉田響,響,ヒビキ,given,youtuber,NA,NA,current
 691,玉田響,玉田響,タマダヒビキ,full,youtuber,NA,NA,current
 692,王志安,王志安,ワン・ジーアン,full,youtuber,東京風行株式会社,NA,current
-693,環やね,環,タマキ,family,youtuber,きゅるりんってしてみて,NA,current
-693,環やね,やね,ヤネ,given,youtuber,きゅるりんってしてみて,NA,current
-693,環やね,環やね,タマキヤネ,full,youtuber,きゅるりんってしてみて,NA,current
 694,生駒里奈,生駒,イコマ,family,youtuber,乃木坂46,2011,current
 694,生駒里奈,里奈,リナ,given,youtuber,乃木坂46,2011,current
 694,生駒里奈,生駒里奈,イコマリナ,full,youtuber,乃木坂46,2011,current
@@ -1545,9 +1312,6 @@ id,original,surface,pronunciation,type,category,org,debut_year,status
 715,福山あさき,福山,フクヤマ,family,youtuber,NA,NA,current
 715,福山あさき,あさき,アサキ,given,youtuber,NA,NA,current
 715,福山あさき,福山あさき,フクヤマアサキ,full,youtuber,NA,NA,current
-716,福岡みなみ,福岡,フクオカ,family,youtuber,NA,NA,current
-716,福岡みなみ,みなみ,ミナミ,given,youtuber,NA,NA,current
-716,福岡みなみ,福岡みなみ,フクオカミナミ,full,youtuber,NA,NA,current
 717,秋山燿平,秋山,アキヤマ,family,youtuber,NA,NA,current
 717,秋山燿平,燿平,ヨウヘイ,given,youtuber,NA,NA,current
 717,秋山燿平,秋山燿平,アキヤマヨウヘイ,full,youtuber,NA,NA,current
@@ -1574,9 +1338,6 @@ id,original,surface,pronunciation,type,category,org,debut_year,status
 725,篠田直哉,直哉,ナオヤ,given,youtuber,NA,NA,current
 725,篠田直哉,篠田直哉,シノダナオヤ,full,youtuber,NA,NA,current
 726,紗栄子,紗栄子,サエコ,full,youtuber,Think FUTURE/Think The DAY,2001,current
-727,織田奈那,織田,オダ,family,youtuber,NA,NA,current
-727,織田奈那,奈那,ナナ,given,youtuber,NA,NA,current
-727,織田奈那,織田奈那,オダナナ,full,youtuber,NA,NA,current
 728,羽咲みはる,羽咲,ウサ,family,youtuber,NA,NA,current
 728,羽咲みはる,みはる,ミハル,given,youtuber,NA,NA,current
 728,羽咲みはる,羽咲みはる,ウサミハル,full,youtuber,NA,NA,current
@@ -1632,20 +1393,13 @@ id,original,surface,pronunciation,type,category,org,debut_year,status
 750,酒井潤,酒井,サカイ,family,youtuber,NTTドコモ,NA,current
 750,酒井潤,潤,ジュン,given,youtuber,NTTドコモ,NA,current
 750,酒井潤,酒井潤,サカイジュン,full,youtuber,NTTドコモ,NA,current
-751,野中藍,野中,ノナカ,family,youtuber,NA,2000,current
-751,野中藍,藍,アイ,given,youtuber,NA,2000,current
-751,野中藍,野中藍,ノナカアイ,full,youtuber,NA,2000,current
 752,金子真一郎,金子真一郎,カネコシンイチロウ,full,youtuber,NA,NA,current
-753,鈴木みのり,鈴木,スズキ,family,youtuber,NA,2016,current
-753,鈴木みのり,みのり,ミノリ,given,youtuber,NA,2016,current
-753,鈴木みのり,鈴木みのり,スズキミノリ,full,youtuber,NA,2016,current
 754,鈴木ノリアキ,鈴木ノリアキ,スズキノリアキ,full,youtuber,SCARZ/ZETA DIVISION,NA,current
 755,鈴木貫太郎,鈴木,スズキ,family,youtuber,NA,NA,current
 755,鈴木貫太郎,貫太郎,カンタロウ,given,youtuber,NA,NA,current
 755,鈴木貫太郎,鈴木貫太郎,スズキカンタロウ,full,youtuber,NA,NA,current
 756,鐵坊主,鐵坊主,テツボウズ,full,youtuber,NA,NA,current
 757,関優太,関優太,セキユウタ,full,youtuber,ZETA DIVISION,NA,current
-758,関根“シュレック”秀樹,関根“シュレック”秀樹,セキネシュレックヒデキ,full,youtuber,NA,NA,current
 759,関根りさ,関根,セキネ,family,youtuber,NA,NA,current
 759,関根りさ,りさ,リサ,given,youtuber,NA,NA,current
 759,関根りさ,関根りさ,セキネリサ,full,youtuber,NA,NA,current
@@ -1666,9 +1420,6 @@ id,original,surface,pronunciation,type,category,org,debut_year,status
 766,青木歌音,青木,アオキ,family,youtuber,NA,NA,current
 766,青木歌音,歌音,カノン,given,youtuber,NA,NA,current
 766,青木歌音,青木歌音,アオキカノン,full,youtuber,NA,NA,current
-767,青木瑠璃子,青木,アオキ,family,youtuber,NA,NA,current
-767,青木瑠璃子,瑠璃子,ルリコ,given,youtuber,NA,NA,current
-767,青木瑠璃子,青木瑠璃子,アオキルリコ,full,youtuber,NA,NA,current
 768,青松輝,青松,アオマツ,family,youtuber,NA,NA,current
 768,青松輝,輝,アキラ,given,youtuber,NA,NA,current
 768,青松輝,青松輝,アオマツアキラ,full,youtuber,NA,NA,current
@@ -1734,7 +1485,6 @@ id,original,surface,pronunciation,type,category,org,debut_year,status
 808,YNAKAJIMA,YNAKAJIMA,ワイナカジマ,full,youtuber,NA,NA,current
 809,Yunocy,Yunocy,ユノシー,full,youtuber,NA,NA,current
 810,Zelarl,Zelarl,ゼラール,full,youtuber,NA,NA,current
-811,¿?shimon,¿?shimon,シモン,full,youtuber,NA,2019,current
 812,いりぽん先生,いりぽん先生,イリポンセンセイ,full,youtuber,バケモノバケツ委員会,NA,current
 813,おおはらMEN,おおはらMEN,オオハラメン,full,youtuber,ドズル社,NA,current
 814,かなたいむ。,かなたいむ。,カナタイム,full,youtuber,NA,NA,current
@@ -1747,7 +1497,6 @@ id,original,surface,pronunciation,type,category,org,debut_year,status
 821,トミー関口,関口,セキグチ,family,youtuber,NA,NA,current
 821,トミー関口,トミー,トミー,given,youtuber,NA,NA,current
 821,トミー関口,トミー関口,トミーセキグチ,full,youtuber,NA,NA,current
-822,ブアカーオ・ポー.プラムック,ブアカーオ・ポー.プラムック,ブアカーオ・ポー・プラムック,full,youtuber,NA,NA,current
 823,ポコ美,ポコ美,ポコミ,full,youtuber,パチンコ攻略マガジン,NA,current
 824,中町JP,中町JP,ナカマチジェイピー,full,youtuber,中町兄妹,NA,current
 825,中町綾,中町,ナカマチ,family,youtuber,NA,NA,current
@@ -1766,15 +1515,9 @@ id,original,surface,pronunciation,type,category,org,debut_year,status
 830,市岡元気,市岡,イチオカ,family,youtuber,NA,NA,current
 830,市岡元気,元気,ゲンキ,given,youtuber,NA,NA,current
 830,市岡元気,市岡元気,イチオカゲンキ,full,youtuber,NA,NA,current
-831,後藤理花,後藤,ゴトウ,family,youtuber,NA,NA,current
-831,後藤理花,理花,リカ,given,youtuber,NA,NA,current
-831,後藤理花,後藤理花,ゴトウリカ,full,youtuber,NA,NA,current
 832,水野太貴,水野,ミズノ,family,youtuber,集英社,NA,current
 832,水野太貴,太貴,ダイキ,given,youtuber,集英社,NA,current
 832,水野太貴,水野太貴,ミズノダイキ,full,youtuber,集英社,NA,current
-833,胡桃そら,胡桃,クルミ,family,youtuber,NA,NA,current
-833,胡桃そら,そら,ソラ,given,youtuber,NA,NA,current
-833,胡桃そら,胡桃そら,クルミソラ,full,youtuber,NA,NA,current
 834,芝刈機〆夢幻,芝刈機〆夢幻,シバカリキムゲン,full,youtuber,NA,NA,current
 835,陳子見,陳,チン,family,youtuber,NA,NA,current
 835,陳子見,子見,シケン,given,youtuber,NA,NA,current
@@ -1782,9 +1525,6 @@ id,original,surface,pronunciation,type,category,org,debut_year,status
 836,高橋裕樹,高橋,タカハシ,family,youtuber,NA,NA,current
 836,高橋裕樹,裕樹,ユウキ,given,youtuber,NA,NA,current
 836,高橋裕樹,高橋裕樹,タカハシユウキ,full,youtuber,NA,NA,current
-837,髙橋美紗稀,髙橋,タカハシ,family,youtuber,NA,NA,current
-837,髙橋美紗稀,美紗稀,ミサキ,given,youtuber,NA,NA,current
-837,髙橋美紗稀,髙橋美紗稀,タカハシミサキ,full,youtuber,NA,NA,current
 838,AZKi,AZKi,アズキ,full,vtuber,カバー株式会社,2018,current
 839,AmaLee,AmaLee,アマリー,full,vtuber,VShojo,2006,current
 840,AmiYamato,Ami,アミ,family,vtuber,NA,NA,current
@@ -1903,9 +1643,6 @@ id,original,surface,pronunciation,type,category,org,debut_year,status
 913,九条林檎,九条,クジョウ,family,vtuber,Dev-a,2018,current
 913,九条林檎,林檎,リンゴ,given,vtuber,Dev-a,2018,current
 913,九条林檎,九条林檎,クジョウリンゴ,full,vtuber,Dev-a,2018,current
-914,伊月ゆい,伊月,イツキ,family,vtuber,妖精帝國,NA,current
-914,伊月ゆい,ゆい,ユイ,given,vtuber,妖精帝國,NA,current
-914,伊月ゆい,伊月ゆい,イツキユイ,full,vtuber,妖精帝國,NA,current
 915,佃煮のりお,佃煮,ツクダニ,family,vtuber,NA,NA,current
 915,佃煮のりお,のりお,ノリオ,given,vtuber,NA,NA,current
 915,佃煮のりお,佃煮のりお,ツクダニノリオ,full,vtuber,NA,NA,current
@@ -2107,7 +1844,6 @@ id,original,surface,pronunciation,type,category,org,debut_year,status
 994,沙花叉クロヱ,クロヱ,クロヱ,given,vtuber,ホロライブ/ホロライブ6期生,2021,current
 994,沙花叉クロヱ,沙花叉クロヱ,サカマタクロヱ,full,vtuber,ホロライブ/ホロライブ6期生,2021,current
 995,泠鳶yousa,泠鳶yousa,リーンユエンヨウサ,full,vtuber,NA,2008,current
-996,海底囚人,海底囚人,カイテイシュウジン,full,vtuber,NA,NA,current
 997,深影,深影,ミカゲ,full,vtuber,GREY MYTH,NA,current
 998,渋谷ハル,渋谷ハル,シブヤハル,full,vtuber,Neo-Porte,2018,current
 999,湊あくあ,湊,ミナト,family,vtuber,カバー株式会社/ホロライブ2期生,2018,former
@@ -2269,7 +2005,6 @@ id,original,surface,pronunciation,type,category,org,debut_year,status
 1059,龍ヶ崎リン,龍ヶ崎リン,リュウガサキリン,full,vtuber,ななしいんく,2020,current
 1060,Chibidoki,Chibidoki,チビドキ,full,vtuber,NA,NA,current
 1061,IRyS,IRyS,アイリス,full,vtuber,ホロライブプロダクション,2021,current
-1062,Karory,Karory,カロリー,full,vtuber,NA,NA,current
 1063,Kson,Kson,ケイソン,full,vtuber,VShojo,2016,current
 1064,Neuro-sama,Neuro-sama,ネウロサマ,full,vtuber,NA,2022,current
 1065,Rurudo,Rurudo,ルルド,full,vtuber,NA,NA,current
@@ -2324,9 +2059,6 @@ id,original,surface,pronunciation,type,category,org,debut_year,status
 1086,虎金妃笑虎,虎金妃,コガネイ,family,vtuber,FLOW GLOW/hololive DEV_IS,NA,current
 1086,虎金妃笑虎,笑虎,ニコ,given,vtuber,FLOW GLOW/hololive DEV_IS,NA,current
 1086,虎金妃笑虎,虎金妃笑虎,コガネイニコ,full,vtuber,FLOW GLOW/hololive DEV_IS,NA,current
-1087,西沢5ミリ,西沢,ニシザワ,family,vtuber,NA,NA,current
-1087,西沢5ミリ,5ミリ,ゴミリ,given,vtuber,NA,NA,current
-1087,西沢5ミリ,西沢5ミリ,ニシザワゴミリ,full,vtuber,NA,NA,current
 1088,赤見かるび,赤見,アカミ,family,vtuber,Crazy Raccoon,2021,current
 1088,赤見かるび,かるび,カルビ,given,vtuber,Crazy Raccoon,2021,current
 1088,赤見かるび,赤見かるび,アカミカルビ,full,vtuber,Crazy Raccoon,2021,current
