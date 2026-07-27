@@ -18,7 +18,7 @@
 | team, type, org_id | リスト固有の付加情報(野球・サッカー等)。`team` は所属チーム名で、baseball/football 共通(footballは代表的な1クラブ。取得できない行は空。補完は `tools/enrich_football_team.py`) |
 | class | sekitsui/plant: 大分類。sekitsuiは魚類/両生類/爬虫類/鳥類/哺乳類、plantは双子葉/単子葉/裸子植物/シダ植物/コケ植物/藻類。分類不明はNA |
 | extinct | sekitsui/plant: 絶滅種か(yes/no)。IUCN絶滅・野生絶滅、または化石タクソンをyesとする |
-| order, family | sekitsui固有: 分類階級の目・科(`ネコ目`/`ネコ科`)。Wikidataの日本語ラベル(階級付きの別名があればそちら)、無ければ学名。Wikidataに情報が無い行は空。補完は `tools/enrich_sekitsui_taxonomy.py` |
+| order, family, genus | sekitsui/plant: 分類階級。sekitsuiは目・科(`ネコ目`/`ネコ科`)、plantは科・属(`バラ科`/`サクラ属`。植物は目より科・属が一般的な言及単位なので目は持たない)。Wikidataの日本語ラベル(階級付きの別名があればそちら)、無ければ学名。Wikidataに情報が無い行は空。plantは`wikidata`列が空の行も空にする(和名から逆引きすると動物と同名の行で誤った科を拾うため)。補完は `tools/enrich_sekitsui_taxonomy.py` / `tools/enrich_plant_taxonomy.py` |
 | type1, type2 | pokemon固有: ポケモンのタイプ(でんき等)。単タイプは type2=NA |
 | generation | pokemon固有: 登場世代(1〜9)。フォームはそのフォームが導入された世代 |
 | status | nations/stations: `current`(現存)/`former`(廃止・脱退・旧称)。stationsは改名前の旧駅名を `renamed` で区別する。youtuberは `current`(活動中)/`former`(卒業・引退・活動終了) |
@@ -42,7 +42,7 @@
 | nations.csv | 国名(国連加盟国。正式名称・通称・漢字略称・別読み・別カナ表記を同一idで併記) | [mledoze/countries](https://github.com/mledoze/countries) で自動更新。別表記は[Wikipedia](https://ja.wikipedia.org/) (CC BY-SA 4.0)等を参照して手動追加 |
 | scientist.csv | 科学者(物理/化学/数学/天文/生物/計算機/地学。分野・時代区分・生没・国・性別・ノーベル賞・業績説明付き。手選び+著名層) | Wikidata/Wikipediaで自動更新 |
 | sekitsui.csv | 動物(脊椎動物。分類・絶滅フラグ・目/科・画像URL付き) | [Wikidata](https://www.wikidata.org/) (CC0) で自動更新。写真は[Wikimedia Commons](https://commons.wikimedia.org/)(ライセンスは画像ごと。image_page参照)、実写が無い行の分類イメージ画像は本リポジトリのReleaseで配布(CC0・実写ではない) |
-| plant.csv | 植物(被子/裸子/シダ/コケ/藻類の和名。写真URL付き) | [Wikidata](https://www.wikidata.org/) (CC0) で自動更新。写真は[Wikimedia Commons](https://commons.wikimedia.org/)(ライセンスは画像ごと。image_page参照)、実写が無い行の分類イメージ画像は本リポジトリのReleaseで配布(CC0・実写ではない) |
+| plant.csv | 植物(被子/裸子/シダ/コケ/藻類の和名。分類・絶滅フラグ・科/属・写真URL付き) | [Wikidata](https://www.wikidata.org/) (CC0) で自動更新。写真は[Wikimedia Commons](https://commons.wikimedia.org/)(ライセンスは画像ごと。image_page参照)、実写が無い行の分類イメージ画像は本リポジトリのReleaseで配布(CC0・実写ではない) |
 | pokemon.csv | ポケモン(地方のすがた・メガ・キョダイマックス含む。タイプ配色のみで描いた「型色カード」画像付き) | [PokéAPI](https://github.com/PokeAPI/pokeapi) で自動更新。画像は本リポジトリのReleaseで配布(公式アセット・キャラクター造形は使わず配色と文字のみ)。本リポジトリは非公式のファンメイドであり株式会社ポケモン・任天堂等とは無関係 |
 | youtuber.csv | YouTuber・VTuber(ja.wikipediaに記事がある著名層。海外勢含む。活動名のみ、type: family/given/full。category列で区分、所属・活動開始年・status付き) | Wikidata/Wikipedia (CC BY-SA 4.0) で自動更新 |
 | fictional_scientist.csv | AI生成による架空の科学者1000人(名前・読み・生没年・国籍・分野・主な業績・肖像画像。type: family/given/full) | jiroshimaya/fictional-scientists プロジェクトによる自動生成(実在人物とは無関係)、画像は本リポジトリのReleaseで配布 |
@@ -160,14 +160,20 @@ python3 tools/audit_taxa.py sekitsui  # 既存行が想定した界・門の配�
   するため目(order)ごとに分割し、単子葉/双子葉に振り分ける。非被子植物は門
   ごとに取得。`class` 列に大分類(双子葉/単子葉/裸子植物/シダ植物/コケ植物/
   藻類)、`extinct` 列に絶滅種か(yes/no)を付与(詳細は ADR 00008)。
-  画像(`image`/`image_page`/`wikidata`)はsekitsuiと同じく月次バッチには
-  入れず手動実行で補完する:
+  画像(`image`/`image_page`/`wikidata`)と科・属(`family`/`genus`)は
+  sekitsuiと同じく月次バッチには入れず手動実行で補完する(科・属の詳細は
+  ADR 00017):
   ```sh
   # 画像が空の行にCommons画像(P18)を遡及付与(--refreshで全目・全門を引き直す)
   python3 tools/enrich_plant_images.py
+  # Wikidataの親タクソン(P171)を辿って科・属を付与(空欄のみ。--refreshで全行)
+  python3 tools/enrich_plant_taxonomy.py
   ```
-  取得は目・門ごとに `tools/.cache/`(Git管理外)へ逐次保存するので、中断しても
-  再実行で続きから再開する。
+  取得は目・門ごと(画像)/ノードごと(科・属)に `tools/.cache/`(Git管理外)へ
+  逐次保存するので、中断しても再実行で続きから再開する。
+  科・属は `wikidata` 列に QID がある行だけを対象にする(和名から逆引きすると
+  スギ・ハス等で動物側のタクソンを拾うため)。木を辿る処理は
+  `tools/taxonomy.py` にあり、sekitsui の目・科と共通。
   実写画像が取れない行(743行)には、sekitsuiと同じ仕組みで `class` ごとの
   **概念イメージ**SVGを分類単位で共有して割り当てる(画像は `class-image-v1`
   リリースで配布。画像内に「イメージ」と明記。詳細は ADR 00008):
