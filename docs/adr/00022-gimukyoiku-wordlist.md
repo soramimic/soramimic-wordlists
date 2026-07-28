@@ -20,7 +20,7 @@
 
 `id, original, surface, pronunciation, subject, description`
 
-- `id`: 連番。同一概念の別表記(側方倒立回転と側転、つづりとスペルなど)は nations と同じく同じ id で併記する(初回時点で5組)
+- `id`: 連番。同一概念の別表記(側方倒立回転と側転、つづりとスペルなど)は nations と同じく同じ id で併記する(初回時点で9組)
 - `original` / `surface`: 同一の値。学習用語はそれ自体が表示形かつ変換対象
 - `pronunciation`: カタカナ読み
 - `subject`: 教科。facet フィルタ軸
