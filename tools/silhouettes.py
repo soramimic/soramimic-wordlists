@@ -103,6 +103,79 @@ SILHOUETTES = {
 }
 
 
+# カードのどこにどれだけの大きさで敷くか。`split` はカードの帯と下地を
+# またぐ配置で、帯の側と下地の側を別の色・別の濃さで描き分ける必要がある
+# (1色で通すと、帯で読める色が下地では消える)
+SIL_PLACEMENTS = {
+    # 帯の中で最大化。帯の高さいっぱいまで使う
+    "band": {"box": (4, 1, 112), "opacity": 0.26, "split": False},
+    # カード全面のウォーターマーク(既定)。カード高さの9割を使い、左端で
+    # 切れる構図にして、頭文字ディスクと重なる部分を減らす
+    "water": {"box": (-12, 10, 180), "opacity": 0.22, "split": True,
+              "lower_opacity": 0.30},
+    # 右側に大きく置いて右端と下端で切る
+    "edge": {"box": (150, 16, 196), "opacity": 0.22, "split": True,
+             "lower_opacity": 0.30},
+}
+
+
+def silhouette_card_svg(key: str, top_color: str, bottom_color: str,
+                        split_y: float, w: float, h: float,
+                        placement: str = "water", uid: str = "",
+                        stroke_width: float = 8) -> str:
+    """カード1枚ぶんのシルエット。カードの外へはみ出す分は切り落とす。
+
+    切り抜きには `clipPath` ではなく**入れ子の `<svg>`**(ビューポートが
+    そのまま切り抜きになる)を使う。定義を1つも増やさずに済むので、1万枚超を
+    抱えるこのリポジトリではバイト数が効く。
+
+    `split` の配置では帯(`split_y` より上)と下地を別々の入れ子svgで描く。
+    同じ形のまま色と濃さだけが境目で変わるので、1体のシルエットが帯を
+    またいでいるように見える。
+
+    下地側は**主色(チームカラー/イメージカラー)を薄く敷く**のが良い。
+    暗いインクで敷くとカードの色味から浮いた灰色の染みに見えてしまい、
+    主色なら帯と同じ色の家族として馴染む。
+
+    帯側と下地側で同じ形を2度描くことになるので、形は `<defs>` に1つだけ
+    置いて `<use>` で使い回す。色と濃さは `<use>` 側に書けば継承される。
+    パスを2度書くと1枚あたり400〜700バイト増え、1万枚超では数MB効いてくる。
+    `uid` は同じページに複数のカードを並べたときにidが衝突しないための接尾辞。
+    """
+    p = SIL_PLACEMENTS[placement]
+    x, y, size = p["box"]
+    if not p["split"]:
+        return (f'<svg width="{w:g}" height="{split_y:g}">'
+                f'{silhouette_svg(key, top_color, x, y, size, p["opacity"])}'
+                f"</svg>")
+    s = SILHOUETTES.get(key)
+    if not s:
+        return ""
+    k = size / 100
+    sid = f"s{uid}"
+    body = []
+    if s.get("fill"):
+        body.append(f'<g stroke="none">{s["fill"]}</g>')
+    if s.get("stroke"):
+        body.append(f'<g fill="none" stroke-width="{stroke_width:g}" '
+                    f'stroke-linecap="round" stroke-linejoin="round">'
+                    f'{s["stroke"]}</g>')
+
+    def inst(color: str, oy: float, op: float) -> str:
+        # 透明度は `<use>` ではなく**外側の `<g>`** に書く。cairosvg は
+        # `<use>` の opacity を無視してベタ塗りで描いてしまう
+        # (soramimic-video はこのSVGを cairosvg でPNG化するので致命的)
+        return (f'<g opacity="{op:g}"><use href="#{sid}" '
+                f'transform="translate({x:g} {oy:g}) scale({k:g})" '
+                f'fill="{color}" stroke="{color}"/></g>')
+
+    return (f'<defs><g id="{sid}">{"".join(body)}</g></defs>'
+            f'<svg width="{w:g}" height="{split_y:g}">'
+            f'{inst(top_color, y, p["opacity"])}</svg>'
+            f'<svg y="{split_y:g}" width="{w:g}" height="{h - split_y:g}">'
+            f'{inst(bottom_color, y - split_y, p["lower_opacity"])}</svg>')
+
+
 def silhouette_svg(key: str, color: str, x: float, y: float, size: float,
                    opacity: float = 0.26, stroke_width: float = 8) -> str:
     """シルエット1体ぶんのSVG断片。未知のキーなら空文字。

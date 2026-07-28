@@ -50,7 +50,7 @@ from pathlib import Path
 from xml.sax.saxutils import escape
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from silhouettes import silhouette_svg  # noqa: E402
+from silhouettes import silhouette_card_svg  # noqa: E402
 from wpnames import write_csv_no_trailing_newline  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -75,9 +75,8 @@ TEAM_MAX = 10           # チーム名の表示上限(全角換算)
 MIN_DISC_CY = 100
 MIN_DISC_R = 48
 MIN_MARK_SIZES = (56, 44)   # (1文字, 2文字)
-# 職業シルエットは帯の左側に敷く。右端(x=12+90=102)がディスクのハロー
-# (x=107から)に触れない大きさにしてある
-MIN_SIL_BOX = (12, 10, 90)  # (x, y, 一辺)
+# 職業シルエットの既定の配置(silhouettes.SIL_PLACEMENTS のキー)
+MIN_SIL_STYLE = "water"
 
 # リストごとの設定。`hue` はチームカラーが分からないときの基準色相
 LISTS = {
@@ -369,7 +368,7 @@ def num(x: float) -> str:
 
 def build_card(cfg: dict, name: str, team: str, label: str,
                color: dict | None = None, minimal: bool = False,
-               sil: str = "") -> str:
+               sil: str = "", sil_style: str = MIN_SIL_STYLE) -> str:
     """カードのSVGを組む。
 
     `minimal=True` は**文字情報を落とした減量版**(試作)。soramimic-video の
@@ -404,9 +403,10 @@ def build_card(cfg: dict, name: str, team: str, label: str,
         f'<path d="{HERO_PATH}" fill="{p["accent"]}"/>',
     ]
     if minimal:
-        # 区分の文字の代わりに職業シルエット。帯の中に薄く敷く
-        parts.append(silhouette_svg(sil or cfg["sil"]({}), p["fg"],
-                                    *MIN_SIL_BOX))
+        # 区分の文字の代わりに職業シルエット。カードの地紋として大きく敷く
+        parts.append(silhouette_card_svg(
+            sil or cfg["sil"]({}), p["fg"], p["accent"], HERO_H, W, H,
+            sil_style, asset_key(name)))
     else:
         # 抽象的な人型。帯の中に薄く敷くだけなので文字の可読性を下げない
         parts.append(f'<g fill="{p["fg"]}" fill-opacity=".16">{FIGURE}</g>')

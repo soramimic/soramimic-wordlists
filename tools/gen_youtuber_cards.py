@@ -47,7 +47,7 @@ from pathlib import Path
 from xml.sax.saxutils import escape
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from silhouettes import silhouette_svg  # noqa: E402
+from silhouettes import silhouette_card_svg  # noqa: E402
 from wpnames import write_csv_no_trailing_newline  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -84,9 +84,8 @@ ORG_MAX = 13   # 所属名の表示上限(全角換算)
 MIN_DISC_CY = 100
 MIN_DISC_R = 48
 MIN_MARK_SIZES = (56, 44)   # (1文字, 2文字)
-# 職業シルエットは帯の左側に敷く。右端(x=12+90=102)がディスクのハロー
-# (x=107から)に触れない大きさにしてある
-MIN_SIL_BOX = (12, 10, 90)  # (x, y, 一辺)
+# 職業シルエットの既定の配置(silhouettes.SIL_PLACEMENTS のキー)
+MIN_SIL_STYLE = "water"
 
 
 def asset_key(name: str) -> str:
@@ -285,7 +284,8 @@ def initials(name: str) -> str:
 
 
 def build_card(name: str, category: str, org: str,
-               color: dict | None = None, minimal: bool = False) -> str:
+               color: dict | None = None, minimal: bool = False,
+               sil_style: str = MIN_SIL_STYLE) -> str:
     """カードのSVGを組む。
 
     `minimal=True` は**文字情報を落とした減量版**(試作)。soramimic-video の
@@ -329,10 +329,10 @@ def build_card(name: str, category: str, org: str,
         f'<rect x="0" y="0" width="{W}" height="{HERO_H}" fill="url(#{gid})"/>',
     ]
     if minimal:
-        # 区分の文字の代わりに職業シルエット。帯の中に薄く敷く
-        parts.append(silhouette_svg(
+        # 区分の文字の代わりに職業シルエット。カードの地紋として大きく敷く
+        parts.append(silhouette_card_svg(
             "vtuber" if category == "vtuber" else "youtuber",
-            p["fg"], *MIN_SIL_BOX))
+            p["fg"], p["accent"], HERO_H, W, H, sil_style, key))
     if p["band"]:
         # 副色のライン。帯の下端に置くので、白のような淡い副色でもはっきり出る
         parts.append(f'<rect x="0" y="{HERO_H - 8}" width="{W}" height="8" '
