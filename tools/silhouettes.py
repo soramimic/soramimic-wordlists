@@ -4,103 +4,202 @@
 減量版カード(`--style minimal`)は名前・区分・所属の文字を描かないので、
 そのままだと「サッカー選手」と「サッカー監督」と「クラブマスコット」が
 配色と頭文字だけになって見分けが付かない。区分の代わりに**職業が想像できる
-程度の人型シルエット**を帯の中に薄く敷いて、文字を増やさずに区別する。
+人型のシルエット**をカードの地紋として敷き、文字を増やさずに区別する。
 
 図形はすべて自作である。実在のロゴ・エンブレム・マスコット・公式ピクトグラムは
-参照していない(ADR 00018 / 00020 の「素材を一切借りない」方針)。中身は
-**円と、丸い端点を持つ直線・円弧だけ**で、特定の人物・キャラクターを想起させる
-造作(顔・髪型・番号・意匠)は入れていない。
+参照していない(ADR 00018 / 00020 の「素材を一切借りない」方針)。特定の人物・
+キャラクターを想起させる造作(顔・髪型・番号・意匠)も入れていない。
 
-座標系は各シルエットとも 0..100 の正方形で書き、`silhouette_svg()` が
-カードの座標へ平行移動+拡大する。接地はおよそ y=95。
+**線ではなく面で構成する。** 細い棒線で描くと図が痩せて弱く見えるので、
+頭は円、胴とコートは塗りの多角形、手足は太い塗りの帯(`_chain`)で組む。
+関節は帯の幅と同じ直径の円で埋めて欠けを防ぐ。全職業で頭の大きさ・帯の太さ・
+角度の語彙を揃えてあり、並べたときに同じ設計の家族に見える。
+
+座標系は各シルエットとも 0..100 の正方形で、接地はおよそ y=95。
+`silhouette_svg()` がカードの座標へ平行移動+拡大する。
 """
 
-# 各要素は "fill"(塗りつぶす図形)と "stroke"(丸端の線で描く手足・胴)に分ける。
-# 線幅は既定8。細くしたい部品だけ stroke-width を個別に上書きする。
+import math
+
+# --- 共通の寸法(全職業でこの語彙を守る) --------------------------------------
+
+HEAD_R = 11         # 頭の半径
+W_THIGH = 15        # 腿
+W_SHIN = 12         # 脛
+W_UPPER_ARM = 12    # 上腕
+W_FOREARM = 10      # 前腕
+
+
+def _num(v: float) -> str:
+    return f"{v:.1f}".rstrip("0").rstrip(".")
+
+
+def _pts(points) -> str:
+    """点列をパスに。**巻き方向を時計回りに揃える**。
+
+    1体ぶんのパーツを1つの `<path>` に畳むので、巻き方向が混ざると
+    既定の nonzero 規則で重なった所が打ち消し合い、関節に白い穴が空く。
+    """
+    area = sum(x1 * y2 - x2 * y1
+               for (x1, y1), (x2, y2) in zip(points, points[1:] + points[:1]))
+    if area < 0:                      # y下向きの画面座標では正=時計回り
+        points = points[::-1]
+    return "L".join(f"{_num(x)} {_num(y)}" for x, y in points)
+
+
+def _disc(cx: float, cy: float, r: float) -> str:
+    """パスとして書いた円(円弧2つ)。`<circle>` と違いパスにまとめられる。
+
+    sweep=1 は画面座標で時計回り。`_pts` の向きと揃えてある。
+    """
+    return (f"M{_num(cx - r)} {_num(cy)}"
+            f"a{_num(r)} {_num(r)} 0 1 1 {_num(r * 2)} 0"
+            f"a{_num(r)} {_num(r)} 0 1 1 {_num(-r * 2)} 0Z")
+
+
+def _bar(x1: float, y1: float, x2: float, y2: float,
+         w1: float, w2: float) -> str:
+    """2点を結ぶ太い帯(端は直角に切り落とす)。w1/w2 で先細りにできる。"""
+    dx, dy = x2 - x1, y2 - y1
+    length = math.hypot(dx, dy) or 1.0
+    ux, uy = -dy / length, dx / length      # 進行方向に対する法線
+    return "M" + _pts([(x1 + ux * w1 / 2, y1 + uy * w1 / 2),
+                       (x2 + ux * w2 / 2, y2 + uy * w2 / 2),
+                       (x2 - ux * w2 / 2, y2 - uy * w2 / 2),
+                       (x1 - ux * w1 / 2, y1 - uy * w1 / 2)]) + "Z"
+
+
+def _chain(points, widths) -> str:
+    """折れ線に沿った帯。関節と末端は帯の幅と同じ円で埋める。
+
+    `widths` は各区間の (始点幅, 終点幅)。
+    """
+    out = [_bar(*points[i], *points[i + 1], *widths[i])
+           for i in range(len(points) - 1)]
+    for i in range(1, len(points) - 1):     # 関節
+        out.append(_disc(*points[i], max(widths[i - 1][1], widths[i][0]) / 2))
+    out.append(_disc(*points[-1], widths[-1][1] / 2))   # 末端
+    return "".join(out)
+
+
+def _poly(points) -> str:
+    """胴・コートなどの塗りの面。"""
+    return "M" + _pts(points) + "Z"
+
+
+def _arc_band(cx: float, cy: float, r_out: float, r_in: float,
+              a0: float, a1: float) -> str:
+    """円環の一部(ヘッドセットのバンドなど)。角度は度、y下向き、a0→a1は時計回り。
+
+    頭と同じ色で塗るので、頭の円から離した円環にしないと溶けて大きな髪の塊に
+    見えてしまう。`r_in` を頭の半径より大きく取ること。
+    """
+    def pt(r, a):
+        t = math.radians(a)
+        return cx + r * math.cos(t), cy + r * math.sin(t)
+
+    large = 1 if abs(a1 - a0) > 180 else 0
+    ox0, oy0 = pt(r_out, a0)
+    ox1, oy1 = pt(r_out, a1)
+    ix1, iy1 = pt(r_in, a1)
+    ix0, iy0 = pt(r_in, a0)
+    return (f"M{_num(ox0)} {_num(oy0)}"
+            f"A{_num(r_out)} {_num(r_out)} 0 {large} 1 {_num(ox1)} {_num(oy1)}"
+            f"L{_num(ix1)} {_num(iy1)}"
+            f"A{_num(r_in)} {_num(r_in)} 0 {large} 0 {_num(ix0)} {_num(iy0)}Z")
+
+
+def _fig(*parts: str) -> dict:
+    """パス片をまとめて1体のシルエットにする(1つの `<path>` に畳む)。"""
+    return {"fill": f'<path d="{"".join(parts)}"/>'}
+
+
+# --- 造形 --------------------------------------------------------------------
+#
+# 体軸を傾け、手足を大きな対角線に振る。図の対角線がカードの対角線と重なって
+# 動きが出る。関節を45度の倍数へ揃えた端正な案も試したが(compare/styles.png)、
+# 直立して静止した図になり、カードの地紋としては弱かったので採らなかった。
+
 SILHOUETTES = {
-    # サッカー選手: 軸足で立ち、もう一方の脚を前へ振り抜く蹴りの姿勢
-    "football_player": {
-        "fill": '<circle cx="40" cy="13" r="10"/>',
-        "stroke": (
-            '<path d="M40 23 44 52"/>'          # 胴(やや前傾)
-            '<path d="M44 31 26 43"/>'          # 後ろへ引いた腕
-            '<path d="M44 31 61 22"/>'          # 前へ上げた腕
-            '<path d="M44 52 35 90 25 93"/>'    # 軸足
-            '<path d="M44 52 64 63 83 52"/>'    # 蹴り脚(腿→脛を前へ振り抜く)
-        ),
-    },
-    # サッカー監督: 直立し、上着(台形の塗り)を着て、腕を水平に伸ばして指示する
-    "manager": {
-        "fill": '<circle cx="40" cy="13" r="10"/>'
-                '<path d="M22 27Q40 19 58 27L60 61 20 61Z"/>',   # 上着
-        "stroke": (
-            '<path d="M58 33 84 30"/>'          # 指示を出す腕(水平)
-            '<path d="M22 33 18 53"/>'          # もう一方の腕(下ろす)
-            '<path d="M31 61 30 90 21 93"/>'    # 脚(揃えて直立)
-            '<path d="M49 61 50 90 59 93"/>'
-        ),
-    },
-    # クラブマスコット: 頭が大きく耳が付いた着ぐるみ体型。手足は短い
-    "mascot": {
-        "fill": '<circle cx="44" cy="38" r="25"/>'
-                '<circle cx="24" cy="14" r="10"/>'      # 耳
-                '<circle cx="64" cy="14" r="10"/>'
-                '<ellipse cx="44" cy="76" rx="17" ry="14"/>',   # 丸い胴
-        "stroke": (
-            '<path d="M28 70 14 62"/>'          # 短い腕
-            '<path d="M60 70 74 62"/>'
-            '<path d="M36 88 34 97"/>'          # 短い脚
-            '<path d="M52 88 54 97"/>'
-        ),
-    },
-    # プロ野球選手: 脚を大きく開いた打席の構え。帽子のつばと、後ろへ担いだ
-    # バット(先が太い塗りの多角形)で「打者」と読ませる
-    "baseball_batter": {
-        "fill": '<circle cx="36" cy="17" r="10"/>'
-                '<path d="M44 12 58 15 58 20 44 21Z"/>'      # 帽子のつば
-                '<path d="M25 41 31 35 12 7 3 13Z"/>',       # バット
-        "stroke": (
-            '<path d="M36 27 41 55"/>'          # 胴
-            '<path d="M41 34 28 38"/>'          # 腕(グリップへ)
-            '<path d="M41 55 57 89 67 92"/>'    # 前脚
-            '<path d="M41 55 24 89 14 92"/>'    # 後ろ脚
-        ),
-    },
-    # YouTuber: カメラ(長方形)を手に持って掲げ、自分を撮っている姿勢
-    "youtuber": {
-        "fill": '<circle cx="30" cy="19" r="11"/>'
-                '<rect x="53" y="15" width="17" height="25" rx="4"/>',
-        "stroke": (
-            '<path d="M30 30 30 58"/>'          # 胴
-            '<path d="M30 38 51 31"/>'          # カメラを掲げる腕
-            '<path d="M30 38 16 53"/>'          # もう一方の腕
-            '<path d="M30 58 22 90 13 93"/>'
-            '<path d="M30 58 39 90 48 93"/>'
-        ),
-    },
-    # VTuber: ヘッドセット(ヘッドバンド+イヤーカップ+ブームマイク)を着けて
-    # 話している立ち姿。
-    # ヘッドバンドは**頭とひと続きの塗りにせず**、頭の円より一回り大きい
-    # 弧帯(ドーナツの一部)にして間に隙間を作る。同じ色なので、隙間が無いと
-    # 頭と溶けて大きな髪の塊にしか見えない。頭を少し小さめにして隙間を稼ぐ
-    "vtuber": {
-        "fill": '<circle cx="34" cy="24" r="10"/>'
-                # ヘッドバンド(外半径19.5・内半径15の弧帯)
-                '<path d="M14.8 27.4A19.5 19.5 0 1 1 53.2 27.4'
-                'L48.8 26.6A15 15 0 1 0 19.2 26.6Z"/>'
-                '<rect x="11" y="24" width="10" height="16" rx="5"/>'   # 耳当て
-                '<rect x="47" y="24" width="10" height="16" rx="5"/>'
-                '<circle cx="38" cy="44" r="3.5"/>',        # マイクの先
-        "stroke": (
-            '<path d="M53 39Q49 46 41 44" stroke-width="3.5"/>'   # ブームマイク
-            '<path d="M34 38 34 63"/>'          # 胴
-            '<path d="M34 46 18 57"/>'          # 腕
-            '<path d="M34 46 50 57"/>'
-            '<path d="M34 63 26 92 17 95"/>'
-            '<path d="M34 63 42 92 51 95"/>'
-        ),
-    },
+    # サッカー選手: 蹴り脚を右上へ大きく振り上げ、軸足を左下へ流す
+    "football_player": _fig(
+        _disc(30, 17, HEAD_R),
+        _poly([(21, 30), (45, 26), (54, 54), (36, 58)]),           # 傾いた胴
+        _chain([(41, 57), (33, 76), (25, 94)],                     # 軸足
+               [(W_THIGH, W_SHIN), (W_SHIN, W_SHIN - 2)]),
+        _chain([(50, 53), (74, 45), (93, 25)],                     # 蹴り脚
+               [(W_THIGH, W_SHIN), (W_SHIN, W_SHIN - 2)]),
+        _chain([(24, 33), (8, 47)], [(W_UPPER_ARM, W_FOREARM)]),
+        _chain([(43, 29), (58, 9)], [(W_UPPER_ARM, W_FOREARM)]),
+    ),
+    # サッカー監督: 踏み出した歩幅と、翻ったコートの裾
+    "manager": _fig(
+        _disc(35, 15, HEAD_R),
+        _poly([(21, 28), (51, 25), (68, 64), (12, 72)]),           # 翻るコート
+        _chain([(49, 32), (77, 23)], [(W_UPPER_ARM, W_FOREARM)]),
+        _chain([(24, 33), (18, 52)], [(W_UPPER_ARM, W_FOREARM)]),
+        _chain([(34, 66), (28, 94)], [(W_SHIN, W_SHIN - 2)]),
+        _chain([(50, 62), (62, 90)], [(W_SHIN, W_SHIN - 2)]),
+    ),
+    # クラブマスコット: 跳ねて両手を上げた姿勢
+    "mascot": _fig(
+        _disc(42, 32, 24),
+        _disc(22, 11, 10), _disc(62, 11, 10),
+        _poly([(29, 52), (57, 52), (61, 78), (25, 78)]),
+        _chain([(30, 57), (10, 39)], [(W_UPPER_ARM, W_UPPER_ARM)]),
+        _chain([(56, 57), (78, 37)], [(W_UPPER_ARM, W_UPPER_ARM)]),
+        _chain([(33, 76), (23, 95)], [(W_SHIN, W_SHIN)]),
+        _chain([(53, 76), (66, 93)], [(W_SHIN, W_SHIN)]),
+    ),
+    # プロ野球選手: 脚を大きく開いて構え、バットを左上へ引き上げた打席の姿勢。
+    # 帽子のつばで「打者」と読ませる
+    "baseball_batter": _fig(
+        _disc(36, 18, HEAD_R),
+        _poly([(45, 14), (59, 16), (59, 22), (45, 23)]),           # 帽子のつば
+        _poly([(26, 31), (50, 28), (56, 55), (34, 58)]),           # ひねった胴
+        _chain([(38, 57), (26, 76), (18, 94)],                     # 後ろ脚
+               [(W_THIGH, W_SHIN), (W_SHIN, W_SHIN - 2)]),
+        _chain([(50, 55), (66, 74), (77, 92)],                     # 前脚
+               [(W_THIGH, W_SHIN), (W_SHIN, W_SHIN - 2)]),
+        _chain([(32, 33), (20, 28)], [(W_UPPER_ARM, W_FOREARM)]),  # 腕
+        _bar(21, 29, 3, 8, 7, 12),                                 # バット
+    ),
+    # YouTuber: カメラを高く掲げて自分を撮る、踏み出した姿勢
+    "youtuber": _fig(
+        _disc(32, 21, HEAD_R),
+        _poly([(23, 33), (46, 30), (52, 57), (32, 60)]),
+        _chain([(44, 34), (58, 23), (67, 15)],                     # 掲げる腕
+               [(W_UPPER_ARM, W_FOREARM), (W_FOREARM, W_FOREARM)]),
+        _chain([(26, 35), (12, 49)], [(W_UPPER_ARM, W_FOREARM)]),
+        _poly([(63, 3), (86, 3), (86, 25), (63, 25)]),             # カメラ
+        _poly([(56, 9), (63, 9), (63, 19), (56, 19)]),             # レンズ
+        _chain([(36, 59), (30, 77), (24, 94)],
+               [(W_THIGH, W_SHIN), (W_SHIN, W_SHIN - 2)]),
+        _chain([(48, 57), (53, 76), (59, 93)],
+               [(W_THIGH, W_SHIN), (W_SHIN, W_SHIN - 2)]),
+    ),
+    # VTuber: ヘッドセットを着けて身振りしながら配信している姿勢。
+    # 腕は**耳当てより下**でしか振れない。上げるとヘッドセットと繋がって
+    # 頭の周りが1つの塊になり、何の形か読めなくなる。動きは脚の踏み出しと
+    # 胴の傾きで出す。ブームマイクも同じ理由で入れていない(この寸法だと
+    # 耳当ての隣の小さな瘤にしかならず、輪郭を濁すだけだった)
+    "vtuber": _fig(
+        _disc(34, 24, 10),
+        _arc_band(34, 24, 20, 15.5, 170, 370),                     # ヘッドバンド
+        _chain([(16, 27), (16, 36)], [(13, 13)]),                  # 耳当て
+        _chain([(52, 27), (52, 36)], [(13, 13)]),
+        _poly([(25, 39), (47, 36), (53, 63), (32, 66)]),
+        _chain([(28, 44), (14, 57), (8, 71)],                      # 身振りする腕
+               [(W_UPPER_ARM, W_FOREARM), (W_FOREARM, W_FOREARM)]),
+        _chain([(46, 43), (62, 50), (74, 46)],
+               [(W_UPPER_ARM, W_FOREARM), (W_FOREARM, W_FOREARM)]),
+        _chain([(36, 65), (29, 81), (23, 95)],
+               [(W_THIGH, W_SHIN), (W_SHIN, W_SHIN - 2)]),
+        _chain([(48, 63), (54, 80), (61, 94)],
+               [(W_THIGH, W_SHIN), (W_SHIN, W_SHIN - 2)]),
+    ),
 }
+
 
 
 # カードのどこにどれだけの大きさで敷くか。`split` はカードの帯と下地を
@@ -121,8 +220,7 @@ SIL_PLACEMENTS = {
 
 def silhouette_card_svg(key: str, top_color: str, bottom_color: str,
                         split_y: float, w: float, h: float,
-                        placement: str = "water", uid: str = "",
-                        stroke_width: float = 8) -> str:
+                        placement: str = "water", uid: str = "") -> str:
     """カード1枚ぶんのシルエット。カードの外へはみ出す分は切り落とす。
 
     切り抜きには `clipPath` ではなく**入れ子の `<svg>`**(ビューポートが
@@ -138,7 +236,7 @@ def silhouette_card_svg(key: str, top_color: str, bottom_color: str,
     主色なら帯と同じ色の家族として馴染む。
 
     帯側と下地側で同じ形を2度描くことになるので、形は `<defs>` に1つだけ
-    置いて `<use>` で使い回す。色と濃さは `<use>` 側に書けば継承される。
+    置いて `<use>` で使い回す。色は `<use>` 側に書けば継承される。
     パスを2度書くと1枚あたり400〜700バイト増え、1万枚超では数MB効いてくる。
     `uid` は同じページに複数のカードを並べたときにidが衝突しないための接尾辞。
     """
@@ -153,13 +251,6 @@ def silhouette_card_svg(key: str, top_color: str, bottom_color: str,
         return ""
     k = size / 100
     sid = f"s{uid}"
-    body = []
-    if s.get("fill"):
-        body.append(f'<g stroke="none">{s["fill"]}</g>')
-    if s.get("stroke"):
-        body.append(f'<g fill="none" stroke-width="{stroke_width:g}" '
-                    f'stroke-linecap="round" stroke-linejoin="round">'
-                    f'{s["stroke"]}</g>')
 
     def inst(color: str, oy: float, op: float) -> str:
         # 透明度は `<use>` ではなく**外側の `<g>`** に書く。cairosvg は
@@ -167,9 +258,9 @@ def silhouette_card_svg(key: str, top_color: str, bottom_color: str,
         # (soramimic-video はこのSVGを cairosvg でPNG化するので致命的)
         return (f'<g opacity="{op:g}"><use href="#{sid}" '
                 f'transform="translate({x:g} {oy:g}) scale({k:g})" '
-                f'fill="{color}" stroke="{color}"/></g>')
+                f'fill="{color}"/></g>')
 
-    return (f'<defs><g id="{sid}">{"".join(body)}</g></defs>'
+    return (f'<defs><g id="{sid}">{s["fill"]}</g></defs>'
             f'<svg width="{w:g}" height="{split_y:g}">'
             f'{inst(top_color, y, p["opacity"])}</svg>'
             f'<svg y="{split_y:g}" width="{w:g}" height="{h - split_y:g}">'
@@ -177,23 +268,15 @@ def silhouette_card_svg(key: str, top_color: str, bottom_color: str,
 
 
 def silhouette_svg(key: str, color: str, x: float, y: float, size: float,
-                   opacity: float = 0.26, stroke_width: float = 8) -> str:
+                   opacity: float = 0.26) -> str:
     """シルエット1体ぶんのSVG断片。未知のキーなら空文字。
 
-    透明度は**グループにまとめて**掛ける。手足ごとに掛けると重なった所だけ
+    透明度は**グループにまとめて**掛ける。パーツごとに掛けると重なった所だけ
     濃くなって継ぎ目が出るため。
     """
     s = SILHOUETTES.get(key)
     if not s:
         return ""
     k = size / 100
-    parts = [f'<g transform="translate({x:g} {y:g}) scale({k:g})" '
-             f'opacity="{opacity:g}">']
-    if s.get("fill"):
-        parts.append(f'<g fill="{color}" stroke="none">{s["fill"]}</g>')
-    if s.get("stroke"):
-        parts.append(f'<g fill="none" stroke="{color}" '
-                     f'stroke-width="{stroke_width:g}" stroke-linecap="round" '
-                     f'stroke-linejoin="round">{s["stroke"]}</g>')
-    parts.append("</g>")
-    return "".join(parts)
+    return (f'<g transform="translate({x:g} {y:g}) scale({k:g})" '
+            f'fill="{color}" opacity="{opacity:g}">{s["fill"]}</g>')
