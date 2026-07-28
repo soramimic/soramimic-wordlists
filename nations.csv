@@ -159,6 +159,7 @@ id,original,surface,pronunciation,status,image,image_page,wikidata
 80,スリナム,スリナム,,current,http://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Suriname.svg,https://commons.wikimedia.org/wiki/File:Flag_of_Suriname.svg,Q730
 80,スリナム共和国,スリナム共和国,スリナムキョウワコク,current,http://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Suriname.svg,https://commons.wikimedia.org/wiki/File:Flag_of_Suriname.svg,Q730
 81,スワジランド,スワジランド,,former,http://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Eswatini.svg,https://commons.wikimedia.org/wiki/File:Flag_of_Eswatini.svg,Q1050
+81,スワジランド王国,スワジランド王国,スワジランドオウコク,former,http://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Eswatini.svg,https://commons.wikimedia.org/wiki/File:Flag_of_Eswatini.svg,Q1050
 81,エスワティニ,エスワティニ,,current,http://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Eswatini.svg,https://commons.wikimedia.org/wiki/File:Flag_of_Eswatini.svg,Q1050
 81,エスワティニ王国,エスワティニ王国,エスワティニオウコク,current,http://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Eswatini.svg,https://commons.wikimedia.org/wiki/File:Flag_of_Eswatini.svg,Q1050
 82,スウェーデン,スウェーデン,,current,http://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Sweden.svg,https://commons.wikimedia.org/wiki/File:Flag_of_Sweden.svg,Q34
@@ -233,6 +234,7 @@ id,original,surface,pronunciation,status,image,image_page,wikidata
 117,北朝鮮,北朝鮮,キタチョウセン,current,http://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_North_Korea.svg,https://commons.wikimedia.org/wiki/File:Flag_of_North_Korea.svg,Q423
 118,コンゴ,コンゴ,,current,http://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_the_Democratic_Republic_of_the_Congo.svg,https://commons.wikimedia.org/wiki/File:Flag_of_the_Democratic_Republic_of_the_Congo.svg,Q974
 118,ザイール,ザイール,,former,,,
+118,ザイール共和国,ザイール共和国,ザイールキョウワコク,former,,,
 118,コンゴ民主共和国,コンゴ民主共和国,コンゴミンシュキョウワコク,current,http://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_the_Democratic_Republic_of_the_Congo.svg,https://commons.wikimedia.org/wiki/File:Flag_of_the_Democratic_Republic_of_the_Congo.svg,Q974
 119,デンマーク,デンマーク,,current,http://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Denmark.svg,https://commons.wikimedia.org/wiki/File:Flag_of_Denmark.svg,Q35
 119,デンマーク王国,デンマーク王国,デンマークオウコク,current,http://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Denmark.svg,https://commons.wikimedia.org/wiki/File:Flag_of_Denmark.svg,Q35
@@ -293,6 +295,7 @@ id,original,surface,pronunciation,status,image,image_page,wikidata
 147,モザンビーク共和国,モザンビーク共和国,モザンビークキョウワコク,current,http://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Mozambique.svg,https://commons.wikimedia.org/wiki/File:Flag_of_Mozambique.svg,Q1029
 148,ミャンマー,ミャンマー,,current,http://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Myanmar.svg,https://commons.wikimedia.org/wiki/File:Flag_of_Myanmar.svg,Q836
 148,ビルマ,ビルマ,,former,,,
+148,ビルマ連邦,ビルマ連邦,ビルマレンポウ,former,,,
 148,ミャンマー連邦共和国,ミャンマー連邦共和国,ミャンマーレンポウキョウワコク,current,http://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Myanmar.svg,https://commons.wikimedia.org/wiki/File:Flag_of_Myanmar.svg,Q836
 149,ナミビア,ナミビア,,current,http://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Namibia.svg,https://commons.wikimedia.org/wiki/File:Flag_of_Namibia.svg,Q1030
 149,ナミビア共和国,ナミビア共和国,ナミビアキョウワコク,current,http://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Namibia.svg,https://commons.wikimedia.org/wiki/File:Flag_of_Namibia.svg,Q1030
@@ -327,6 +330,7 @@ id,original,surface,pronunciation,status,image,image_page,wikidata
 164,フィリピン,フィリピン,,current,http://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_the_Philippines.svg,https://commons.wikimedia.org/wiki/File:Flag_of_the_Philippines.svg,Q928
 164,フィリピン共和国,フィリピン共和国,フィリピンキョウワコク,current,http://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_the_Philippines.svg,https://commons.wikimedia.org/wiki/File:Flag_of_the_Philippines.svg,Q928
 165,マケドニア,マケドニア,,former,http://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_North_Macedonia.svg,https://commons.wikimedia.org/wiki/File:Flag_of_North_Macedonia.svg,Q221
+165,マケドニア共和国,マケドニア共和国,マケドニアキョウワコク,former,http://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_North_Macedonia.svg,https://commons.wikimedia.org/wiki/File:Flag_of_North_Macedonia.svg,Q221
 165,北マケドニア,北マケドニア,キタマケドニア,current,http://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_North_Macedonia.svg,https://commons.wikimedia.org/wiki/File:Flag_of_North_Macedonia.svg,Q221
 165,北マケドニア共和国,北マケドニア共和国,キタマケドニアキョウワコク,current,http://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_North_Macedonia.svg,https://commons.wikimedia.org/wiki/File:Flag_of_North_Macedonia.svg,Q221
 166,東ティモール,東ティモール,ヒガシティモール,current,http://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_East_Timor.svg,https://commons.wikimedia.org/wiki/File:Flag_of_East_Timor.svg,Q574
@@ -384,7 +388,12 @@ id,original,surface,pronunciation,status,image,image_page,wikidata
 192,ジンバブエ共和国,ジンバブエ共和国,ジンバブエキョウワコク,current,http://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Zimbabwe.svg,https://commons.wikimedia.org/wiki/File:Flag_of_Zimbabwe.svg,Q954
 193,ソ連,ソ連,ソレン,former,,,
 193,ソビエト連邦,ソビエト連邦,ソビエトレンポウ,former,,,
+193,ソビエト社会主義共和国連邦,ソビエト社会主義共和国連邦,ソビエトシャカイシュギキョウワコクレンポウ,former,,,
 194,ユーゴスラビア,ユーゴスラビア,,former,,,
+194,ユーゴスラビア社会主義連邦共和国,ユーゴスラビア社会主義連邦共和国,ユーゴスラビアシャカイシュギレンポウキョウワコク,former,,,
+194,ユーゴスラビア王国,ユーゴスラビア王国,ユーゴスラビアオウコク,former,,,
 195,チェコスロバキア,チェコスロバキア,,former,,,
+195,チェコスロバキア社会主義共和国,チェコスロバキア社会主義共和国,チェコスロバキアシャカイシュギキョウワコク,former,,,
 196,東ドイツ,東ドイツ,ヒガシドイツ,former,,,
+196,ドイツ民主共和国,ドイツ民主共和国,ドイツミンシュキョウワコク,former,,,
 197,西ドイツ,西ドイツ,ニシドイツ,former,,,
