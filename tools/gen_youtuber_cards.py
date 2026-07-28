@@ -78,6 +78,12 @@ CATEGORY_STYLE = {
 DEFAULT_STYLE = {"label": "YouTuber", "hue": 8, "spread": 30}
 ORG_MAX = 13   # 所属名の表示上限(全角換算)
 
+# 減量版(--style minimal)の頭文字ディスク。帯(y=112)の境目にまたがる位置に
+# 置くと、上下どちらの領域にも属さない「記号」として読める
+MIN_DISC_CY = 100
+MIN_DISC_R = 48
+MIN_MARK_SIZES = (56, 44)   # (1文字, 2文字)
+
 
 def asset_key(name: str) -> str:
     """名前から決定的に導く10桁のキー。id には依存しない。"""
@@ -275,7 +281,18 @@ def initials(name: str) -> str:
 
 
 def build_card(name: str, category: str, org: str,
-               color: dict | None = None) -> str:
+               color: dict | None = None, minimal: bool = False) -> str:
+    """カードのSVGを組む。
+
+    `minimal=True` は**文字情報を落とした減量版**(試作)。soramimic-video の
+    `youtuber_card` レイアウトが `{original}`(名前)と `{org}`(所属)を
+    テキストで描くので、カードにも同じ文字が入っていると画面内で二重になる。
+    残すのは
+    「配色(イメージカラー)+頭文字+『イメージ』の札」だけで、名前・区分・
+    所属は描かない。youtuber(暖色)と vtuber(青紫)の別は色相が担うので、
+    区分の文字を落としても見分けは付く。「イメージ」の札は実写と誤認され
+    ないための表示なので減量版でも必ず残す。
+    """
     p = palette(category, org, color)
     key = asset_key(name)
     gid, cid = f"g{key}", f"c{key}"
@@ -287,9 +304,12 @@ def build_card(name: str, category: str, org: str,
         f'width="{W}" height="{H}" role="img" '
         f'aria-label="{escape(name)}のイメージ画像">',
         f"<title>{escape(name)}のイメージ画像</title>",
-        "<desc>本人の写真・チャンネルアイコン・キャラクターデザインは一切"
-        "使っていない、配色と文字だけの記号的なカードです。実写ではありません。"
-        "</desc>",
+        ("<desc>本人の写真・チャンネルアイコン・キャラクターデザインは一切"
+         "使っていない、配色と頭文字だけの記号的なカードです。"
+         "実写ではありません。</desc>" if minimal else
+         "<desc>本人の写真・チャンネルアイコン・キャラクターデザインは一切"
+         "使っていない、配色と文字だけの記号的なカードです。実写ではありません。"
+         "</desc>"),
         "<defs>",
         f'<linearGradient id="{gid}" gradientUnits="userSpaceOnUse" '
         f'x1="0" y1="0" x2="{W}" y2="{HERO_H}">',
@@ -307,33 +327,50 @@ def build_card(name: str, category: str, org: str,
         # 副色のライン。帯の下端に置くので、白のような淡い副色でもはっきり出る
         parts.append(f'<rect x="0" y="{HERO_H - 8}" width="{W}" height="8" '
                      f'fill="{p["band"]}"/>')
-    parts += [
-        # 頭文字のディスク
-        f'<circle cx="58" cy="60" r="36" fill="{p["disc"]}"/>',
-        f'<text x="58" y="{60 + mark_size * 0.36:.1f}" text-anchor="middle" '
-        f'font-size="{mark_size}" font-weight="700" fill="{p["mark"]}">'
-        f"{escape(mark)}</text>",
-        # 区分と所属。帯が淡い色のときは白ではなく濃色で書く
-        f'<text x="108" y="56" font-size="19" font-weight="700" '
-        f'fill="{p["fg"]}">{escape(p["label"])}</text>',
-    ]
-    if p["org"]:
-        parts.append(
-            f'<text x="108" y="80" font-size="13" fill="{p["fg"]}" '
-            f'fill-opacity="0.85">{escape(p["org"])}</text>')
-    # 実写と誤認されないための札
+    if minimal:
+        # 頭文字のディスクだけを帯の境目にまたがるように大きく置く。
+        # ディスクは淡い色にも濃い色にもなるので、地(bg)のハローと
+        # 主色のリングで、帯の上でも下地の上でも輪郭が消えないようにする
+        mark_size = MIN_MARK_SIZES[1] if len(mark) > 1 else MIN_MARK_SIZES[0]
+        parts += [
+            f'<circle cx="{W / 2:g}" cy="{MIN_DISC_CY}" '
+            f'r="{MIN_DISC_R + 5}" fill="{p["bg"]}"/>',
+            f'<circle cx="{W / 2:g}" cy="{MIN_DISC_CY}" r="{MIN_DISC_R}" '
+            f'fill="{p["disc"]}" stroke="{p["accent"]}" stroke-width="2.5"/>',
+            f'<text x="{W / 2:g}" '
+            f'y="{MIN_DISC_CY + mark_size * 0.36:.1f}" text-anchor="middle" '
+            f'font-size="{mark_size}" font-weight="700" fill="{p["mark"]}">'
+            f"{escape(mark)}</text>",
+        ]
+    else:
+        parts += [
+            # 頭文字のディスク
+            f'<circle cx="58" cy="60" r="36" fill="{p["disc"]}"/>',
+            f'<text x="58" y="{60 + mark_size * 0.36:.1f}" '
+            f'text-anchor="middle" font-size="{mark_size}" font-weight="700" '
+            f'fill="{p["mark"]}">{escape(mark)}</text>',
+            # 区分と所属。帯が淡い色のときは白ではなく濃色で書く
+            f'<text x="108" y="56" font-size="19" font-weight="700" '
+            f'fill="{p["fg"]}">{escape(p["label"])}</text>',
+        ]
+        if p["org"]:
+            parts.append(
+                f'<text x="108" y="80" font-size="13" fill="{p["fg"]}" '
+                f'fill-opacity="0.85">{escape(p["org"])}</text>')
+    # 実写と誤認されないための札。減量版でも必ず残す
     parts += [
         f'<rect x="240" y="10" width="70" height="22" rx="11" '
         f'fill="{p["chip_bg"]}" fill-opacity="0.9"/>',
         f'<text x="275" y="26" text-anchor="middle" font-size="13" '
         f'font-weight="600" fill="{p["chip_fg"]}">イメージ</text>',
     ]
-    size, lines = layout_name(name)
-    for line, y in lines:
-        parts.append(
-            f'<text x="{W / 2:g}" y="{y:.1f}" text-anchor="middle" '
-            f'font-size="{size}" font-weight="700" fill="{p["ink"]}">'
-            f"{escape(line)}</text>")
+    if not minimal:
+        size, lines = layout_name(name)
+        for line, y in lines:
+            parts.append(
+                f'<text x="{W / 2:g}" y="{y:.1f}" text-anchor="middle" '
+                f'font-size="{size}" font-weight="700" fill="{p["ink"]}">'
+                f"{escape(line)}</text>")
     parts.append("</g>")
     parts.append(
         f'<rect x="0.5" y="0.5" width="{W - 1}" height="{H - 1}" '
@@ -370,7 +407,10 @@ def main() -> int:
                     help="CSVのimage/image_pageを書き換えない(生成のみ)")
     ap.add_argument("--prune", action="store_true",
                     help="CSVから参照されなくなったSVGを削除する")
+    ap.add_argument("--style", choices=("full", "minimal"), default="full",
+                    help="minimal は名前・区分・所属の文字を描かない減量版")
     args = ap.parse_args()
+    minimal = args.style == "minimal"
 
     people = load_people()
     colors = load_colors()
@@ -384,7 +424,7 @@ def main() -> int:
         if color and color.get("primary"):
             n_color += 1
         path = out_dir / asset_name(name)
-        path.write_text(build_card(name, category, org, color),
+        path.write_text(build_card(name, category, org, color, minimal),
                         encoding="utf-8")
         wanted.add(path.name)
     if len(wanted) != len(people):

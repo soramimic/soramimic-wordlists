@@ -69,6 +69,12 @@ NAME_MAX_W = 232        # 右下のボールを避けるぶん、youtuberより�
 HEAD_MAX_W = 136        # 帯の上の区分・チーム名が使える幅(x=108からボールまで)
 TEAM_MAX = 10           # チーム名の表示上限(全角換算)
 
+# 減量版(--style minimal)の頭文字ディスク。帯(y=112)の境目にまたがる位置に
+# 置くと、上下どちらの領域にも属さない「記号」として読める
+MIN_DISC_CY = 100
+MIN_DISC_R = 48
+MIN_MARK_SIZES = (56, 44)   # (1文字, 2文字)
+
 # リストごとの設定。`hue` はチームカラーが分からないときの基準色相
 LISTS = {
     "baseball": {
@@ -352,7 +358,17 @@ def num(x: float) -> str:
 
 
 def build_card(cfg: dict, name: str, team: str, label: str,
-               color: dict | None = None) -> str:
+               color: dict | None = None, minimal: bool = False) -> str:
+    """カードのSVGを組む。
+
+    `minimal=True` は**文字情報を落とした減量版**(試作)。soramimic-video の
+    `player_card` レイアウトが `{original}`(名前)と `{team}`(所属)を
+    テキストで描くので、カードにも同じ文字が入っていると画面内で二重になる。
+    残すのは
+    「配色(チームカラー)+頭文字+『イメージ』の札+競技のボール」だけで、
+    名前・区分・所属チームは描かない。「イメージ」の札は実写と誤認されない
+    ための表示なので減量版でも必ず残す。
+    """
     p = palette(cfg, team, color)
     mark = initials(name)
     mark_size = 34 if len(mark) > 1 else 40
@@ -363,8 +379,10 @@ def build_card(cfg: dict, name: str, team: str, label: str,
         f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" '
         f'width="{W}" height="{H}">',
         f"<title>{escape(name)}のイメージ画像</title>",
-        "<desc>チームカラーの配色と文字だけで描いたカードです。"
-        "写真・ロゴは使っていません。</desc>",
+        ("<desc>チームカラーの配色と頭文字だけで描いたカードです。"
+         "写真・ロゴは使っていません。</desc>" if minimal else
+         "<desc>チームカラーの配色と文字だけで描いたカードです。"
+         "写真・ロゴは使っていません。</desc>"),
         f'<g font-family="{FONT}">',
         f'<rect x="0" y="0" width="{W}" height="{H}" rx="{RADIUS}" '
         f'fill="{p["bg"]}"/>',
@@ -378,21 +396,37 @@ def build_card(cfg: dict, name: str, team: str, label: str,
         # 副色のライン。帯の下端に置くので、白のような淡い副色でもはっきり出る
         parts.append(f'<rect x="0" y="{HERO_H - 8}" width="{W}" height="8" '
                      f'fill="{p["band"]}"/>')
-    parts += [
-        # 頭文字のディスク
-        f'<circle cx="58" cy="60" r="36" fill="{p["disc"]}"/>',
-        f'<text x="58" y="{num(60 + mark_size * 0.36)}" text-anchor="middle" '
-        f'font-size="{mark_size}" font-weight="700" fill="{p["mark"]}">'
-        f"{escape(mark)}</text>",
-        # 区分と所属。帯が淡い色のときは白ではなく濃色で書く
-        f'<text x="108" y="56" font-size="{label_size:g}" font-weight="700" '
-        f'fill="{p["fg"]}">{escape(label)}</text>',
-    ]
-    if tlabel:
-        parts.append(
-            f'<text x="108" y="80" font-size="13" fill="{p["fg"]}">'
-            f'{escape(tlabel)}</text>')
-    # 実写と誤認されないための札
+    if minimal:
+        # 頭文字のディスクだけを帯の境目にまたがるように大きく置く。
+        # ディスクは淡い色にも濃い色にもなるので、地(bg)のハローと
+        # 主色のリングで、帯の上でも下地の上でも輪郭が消えないようにする
+        mark_size = MIN_MARK_SIZES[1] if len(mark) > 1 else MIN_MARK_SIZES[0]
+        parts += [
+            f'<circle cx="{W / 2:g}" cy="{MIN_DISC_CY}" '
+            f'r="{MIN_DISC_R + 5}" fill="{p["bg"]}"/>',
+            f'<circle cx="{W / 2:g}" cy="{MIN_DISC_CY}" r="{MIN_DISC_R}" '
+            f'fill="{p["disc"]}" stroke="{p["accent"]}" stroke-width="2.5"/>',
+            f'<text x="{W / 2:g}" '
+            f'y="{num(MIN_DISC_CY + mark_size * 0.36)}" '
+            f'text-anchor="middle" font-size="{mark_size}" font-weight="700" '
+            f'fill="{p["mark"]}">{escape(mark)}</text>',
+        ]
+    else:
+        parts += [
+            # 頭文字のディスク
+            f'<circle cx="58" cy="60" r="36" fill="{p["disc"]}"/>',
+            f'<text x="58" y="{num(60 + mark_size * 0.36)}" '
+            f'text-anchor="middle" font-size="{mark_size}" font-weight="700" '
+            f'fill="{p["mark"]}">{escape(mark)}</text>',
+            # 区分と所属。帯が淡い色のときは白ではなく濃色で書く
+            f'<text x="108" y="56" font-size="{label_size:g}" '
+            f'font-weight="700" fill="{p["fg"]}">{escape(label)}</text>',
+        ]
+        if tlabel:
+            parts.append(
+                f'<text x="108" y="80" font-size="13" fill="{p["fg"]}">'
+                f'{escape(tlabel)}</text>')
+    # 実写と誤認されないための札。減量版でも必ず残す
     parts += [
         f'<rect x="240" y="10" width="70" height="22" rx="11" '
         f'fill="{p["chip_bg"]}"/>',
@@ -400,12 +434,13 @@ def build_card(cfg: dict, name: str, team: str, label: str,
         f'font-weight="600" fill="{p["chip_fg"]}">イメージ</text>',
         ball_svg(cfg["ball"], p["ink"]),
     ]
-    size, lines = layout_name(name)
-    for line, y in lines:
-        parts.append(
-            f'<text x="{W / 2:g}" y="{num(y)}" text-anchor="middle" '
-            f'font-size="{size}" font-weight="700" fill="{p["ink"]}">'
-            f"{escape(line)}</text>")
+    if not minimal:
+        size, lines = layout_name(name)
+        for line, y in lines:
+            parts.append(
+                f'<text x="{W / 2:g}" y="{num(y)}" text-anchor="middle" '
+                f'font-size="{size}" font-weight="700" fill="{p["ink"]}">'
+                f"{escape(line)}</text>")
     parts.append(
         f'<rect x=".5" y=".5" width="{W - 1}" height="{H - 1}" '
         f'rx="{RADIUS - 0.5}" fill="none" stroke="{p["edge"]}"/>')
@@ -457,7 +492,7 @@ def team_color(cfg: dict, colors: dict, team: str):
     return None
 
 
-def run(key: str, apply: bool, prune: bool) -> int:
+def run(key: str, apply: bool, prune: bool, minimal: bool = False) -> int:
     cfg = LISTS[key]
     people, n_photo = load_people(cfg)
     colors = load_colors(key)
@@ -471,7 +506,7 @@ def run(key: str, apply: bool, prune: bool) -> int:
         if color:
             n_color += 1
         path = out_dir / asset_name(cfg, name)
-        path.write_text(build_card(cfg, name, team, label, color),
+        path.write_text(build_card(cfg, name, team, label, color, minimal),
                         encoding="utf-8")
         wanted.add(path.name)
     if len(wanted) != len(people):
@@ -535,9 +570,11 @@ def main() -> int:
                     help="CSVのimage/image_pageを書き換えない(生成のみ)")
     ap.add_argument("--prune", action="store_true",
                     help="CSVから参照されなくなったSVGを削除する")
+    ap.add_argument("--style", choices=("full", "minimal"), default="full",
+                    help="minimal は名前・区分・所属の文字を描かない減量版")
     args = ap.parse_args()
     for key in (args.list or sorted(LISTS)):
-        rc = run(key, not args.no_apply, args.prune)
+        rc = run(key, not args.no_apply, args.prune, args.style == "minimal")
         if rc:
             return rc
     return 0
