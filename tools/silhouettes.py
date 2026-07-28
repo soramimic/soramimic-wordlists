@@ -16,8 +16,8 @@
 
 **同じ役割でも1枚ごとに図を変える。** 同じ区分の人が何十人も並ぶので、
 全員が寸分違わぬ同じ絵だと「同じ画像を使い回した」ように見える。役割ごとに
-ポーズのプールを持ち、そこから1つ選んだうえで左右反転・微小な回転・上下
-オフセットを掛ける。
+ポーズのプール(6〜8種)と役割マークのスロット(3か所)を持ち、その組を
+1つ選んだうえで左右反転・微小な回転・上下オフセット・±10%の拡縮を掛ける。
 
 選択は**人物IDのハッシュから決定的に**行う(`variant()`)。乱数にすると
 再生成のたびに1万3千枚すべてが差分になり、レビューできなくなる。同じ人は
@@ -29,15 +29,17 @@
 
 import hashlib
 
-from material_icons import (FLIP_AXIS, MAX_DY, MAX_ROT, ROLE_POSES,
+from material_icons import (FLIP_AXIS, MAX_DY, MAX_ROT, MAX_SCALE,
+                            ROLE_COMBOS, ROLE_FIGURES, ROLE_MARKS,
                             ROT_CX, ROT_CY)
 
-# 役割 -> ポーズのプール(0..100 の座標系のSVG断片)
-SILHOUETTES = ROLE_POSES
+# 役割 -> 人型ごとの (マークの番号, 焼き込む縮小率) の一覧
+SILHOUETTES = ROLE_COMBOS
 
-# 回転と上下オフセットの刻み。奇数にして 0(無変化)を必ず含める
+# 回転・上下オフセット・拡縮の刻み。奇数にして 0(無変化)を必ず含める
 ROT_STEPS = 5
 DY_STEPS = 5
+SCALE_STEPS = 5
 
 # Apache License 2.0 の帰属。カードSVGの `<desc>` に1行入れる。
 # 生成カードは raw URL で1枚ずつ直リンクされる使われ方をするので、
@@ -59,11 +61,13 @@ SIL_PLACEMENTS = {
     # **正方形に収まる完結した図**なので、中央から右を不透明なディスクに
     # 食われると輪郭が壊れて何の図か読めなくなる(compare/placements.png)。
     # そこで左に寄せ、`material_icons.LIMIT` で右端を揃えたアイコンが
-    # ディスクの手前(x=107)でほぼ止まる大きさにする。
-    # 上下は 46..178 で、帯の境目(y=112)を図のほぼ中央でまたぐ
+    # ディスクの左端(x=112)でほぼ止まる大きさにする。
+    # 上下は 46..174 で、帯の境目(y=112)を図のほぼ中央でまたぐ
     # (compare/size_check.png。これ以上大きくするとホイッスルやカメラの
-    #  マークがディスクに掛かって読めなくなる)
-    "water": {"box": (-3, 46, 132), "opacity": 0.22, "split": True,
+    #  マークがディスクに掛かって読めなくなる)。
+    # 左端は 0 に合わせる。以前は -3 で、**左右反転で左に来た役割マークが
+    # カードの左辺で削れていた**(compare/variation.html の3枚目)
+    "water": {"box": (0, 46, 128), "opacity": 0.22, "split": True,
               "lower_opacity": 0.30},
     # 右側に大きく置いて右端と下端で切る
     "edge": {"box": (150, 16, 196), "opacity": 0.22, "split": True,
@@ -80,29 +84,48 @@ def variant(key: str, uid: str = "") -> str:
     差分になってレビューできなくなる。
 
     ハッシュの整数から、下の桁から順に
-    「ポーズ → 左右反転 → 回転 → 上下オフセット」を取り出す。振れ幅は
-    `material_icons` 側の定数で、**その幅なら枠から出ないことが生成時に
-    確かめてある**(`gen_material_icons.worst_case`)。
+    「人型 → マークのスロット → 左右反転 → 回転 → 上下オフセット → 拡縮」を
+    取り出す。振れ幅は `material_icons` 側の定数で、**その幅なら枠から
+    出ないこと**と**人型とマークが食い込まないこと**が生成時に確かめてある
+    (`gen_material_icons.fit_scale` / `overlap_ratio`)。組ごとの縮小率は
+    その検証の結果で、実行時の拡縮はこれに掛かる。
+
+    人型を先に選ぶのは分布のため。ポーズによって使えるスロットの数が違う
+    ので、平らな組の配列から1つ選ぶとスロットが多いポーズばかり出る。
+
+    反転・回転・拡縮はどれも組全体に掛かる相似変換なので、**人型とマークの
+    相対位置は実行時に変わらない**。だから重なりの検証は生成時の1度で足りる。
     """
-    poses = SILHOUETTES.get(key)
-    if not poses:
+    per_pose = SILHOUETTES.get(key)
+    if not per_pose:
         return ""
     h = int(hashlib.sha1(uid.encode("utf-8")).hexdigest(), 16)
-    pose, h = poses[h % len(poses)], h // len(poses)
+    pi, h = h % len(per_pose), h // len(per_pose)
+    slots = per_pose[pi]
+    mi, fit = slots[h % len(slots)]
+    h //= len(slots)
     flip, h = h & 1, h >> 1
     rot = (h % ROT_STEPS - ROT_STEPS // 2) * (MAX_ROT / (ROT_STEPS // 2))
     h //= ROT_STEPS
     dy = (h % DY_STEPS - DY_STEPS // 2) * (MAX_DY / (DY_STEPS // 2))
+    h //= DY_STEPS
+    k = fit * (1 + (h % SCALE_STEPS - SCALE_STEPS // 2)
+               * (MAX_SCALE / (SCALE_STEPS // 2)))
 
-    # 外側から順に:上下移動 → 回転 → 左右反転
+    body = ROLE_FIGURES[key][pi] + (ROLE_MARKS[key][mi] if mi >= 0 else "")
+
+    # 外側から順に:上下移動 → 回転 → 拡縮 → 左右反転
     t = []
     if dy:
         t.append(f"translate(0 {dy:g})")
     if rot:
         t.append(f"rotate({rot:g} {ROT_CX:g} {ROT_CY:g})")
+    if abs(k - 1) > 1e-9:
+        t.append(f"translate({ROT_CX * (1 - k):.4f} {ROT_CY * (1 - k):.4f}) "
+                 f"scale({k:.6f})")
     if flip:
         t.append(f"translate({2 * FLIP_AXIS:g} 0) scale(-1 1)")
-    return f'<g transform="{" ".join(t)}">{pose}</g>' if t else pose
+    return f'<g transform="{" ".join(t)}">{body}</g>' if t else body
 
 
 def silhouette_card_svg(key: str, top_color: str, bottom_color: str,

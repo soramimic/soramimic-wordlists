@@ -59,39 +59,67 @@ ADR 00018 / 00020 では「素材を一切借りず、配色と文字と**自作
 
 | 役割 | 役割マーク | ポーズのプール |
 | --- | --- | --- |
-| サッカー選手 | `sports_soccer`(足元) | `directions_run` / `sports_martial_arts` / `sports_gymnastics` / `directions_walk` |
-| サッカー監督 | `sports`(ホイッスル。手元) | `emoji_people` / `accessibility_new` / `directions_walk` / `hail` |
-| クラブマスコット | (マークなし) | `smart_toy` / `robot` / `robot_2` / `pets` |
-| プロ野球選手 | `sports_cricket`(バット。手元) | `directions_run` / `accessibility_new` / `directions_walk` / `sports_gymnastics` |
-| YouTuber | `videocam`(手元) | `emoji_people` / `accessibility_new` / `directions_walk` / `hail` |
-| VTuber | `headset_mic`(手元) | `self_improvement` / `emoji_people` / `accessibility_new` / `directions_walk` |
+| サッカー選手 | `sports_soccer`(ボール) | `directions_run` / `sprint` / `sports_martial_arts` / `sports_gymnastics` / `sports_kabaddi` / `directions_walk` / `accessibility_new` |
+| サッカー監督 | `sports`(ホイッスル) | `emoji_people` / `accessibility_new` / `accessibility` / `directions_walk` / `hail` / `self_improvement` |
+| クラブマスコット | (マークなし) | `smart_toy` / `robot` / `robot_2` / `pets` / `cruelty_free` / `raven` / `pest_control_rodent` / `heart_smile` / `sound_detection_dog_barking` / `sentiment_very_satisfied` |
+| プロ野球選手 | `sports_cricket`(バット) | `directions_run` / `sprint` / `accessibility_new` / `accessibility` / `directions_walk` / `sports_gymnastics` / `sports_handball` |
+| YouTuber | `videocam`(カメラ) | `emoji_people` / `accessibility_new` / `accessibility` / `directions_walk` / `hail` / `self_improvement` |
+| VTuber | `headset_mic`(ヘッドセット) | `self_improvement` / `emoji_people` / `accessibility_new` / `accessibility` / `directions_walk` / `hail` |
 
 選手系は走る・蹴るといった躍動、監督や配信者は立って指示・挨拶をする姿勢と、
-**体の使い方でも系統を分けて**いる。マークは手元・足元に置くので、腕を伸ばす
-ポーズでは人型がマークに触れて「持っている」ように見える。
+**体の使い方でも系統を分けて**いる。マークは手元・腰元・足元の3か所
+(サッカー選手は足元・中段・頭の高さ)に置き、どこに置くかも人ごとに変える。
+腕を伸ばすポーズでは人型がマークに触れて「持っている」ように見える。
 
 ポーズは**小道具の付いていない全身の人型**に限る。`hiking`(杖)や
 `follow_the_signs`(標識)は元から物を持っていて役割マークと情報がぶつかる。
-`person` 系の胸像は、全身のポーズと並べると別の家族に見える。
+`downhill_skiing` / `surfing` / `roller_skating` のように用具が競技を語る図も、
+サッカー選手のカードに敷くとその競技を誤解させる。`person` 系の胸像は全身の
+ポーズと並べると別の家族に見え、`man` / `woman` のようなトイレ標識型は加えて
+性別を決め打ちしてしまう(女性の YouTuber や監督がいる)。この条件を満たす
+図は Material Symbols 全体で10種ほどしかなく、**6〜7種というプールの大きさは
+上流の在庫で決まっている**。
+
+マスコットはロボット系だけだと同じ顔が並ぶので、実在のクラブマスコットに
+多い動物(うさぎ・鳥・ねずみ・犬)や抽象キャラクター(ハート・スマイル)の図も
+混ぜた。Google 製品のマスコットである `android` / `flutter_dash` は、他社の
+商標を1万枚のカードに敷くことになるので使わない。
 
 ### バリエーション: IDのハッシュで決定的に散らす
 
 同じ区分の人が何十人〜何千人も並ぶので、全員が寸分違わぬ同じ絵だと
-「同じ画像を使い回した」ように見える。役割ごとにポーズのプールを持ち、
-さらに**左右反転・±5度の回転・±3の上下オフセット**を掛ける。
-1役割あたり 4ポーズ x 2反転 x 5回転 x 5オフセット = **200通り**。
+「同じ画像を使い回した」ように見える。振り分けは2段構えで、
+
+- **ひと目で違うと分かる軸**: ポーズ(6〜10種) x 役割マークの位置(3か所) x
+  左右反転
+- **同じ絵に見えるが並べると単調さが消える軸**: ±5度の回転 / ±3の上下
+  オフセット / ±10%の拡縮(各5段)
+
+前者だけで1役割あたり **20〜42通り**(サッカー選手32・監督34・野球42・
+YouTuber 28・VTuber 34・マスコット20)、後者を掛けると2,500〜5,000通りになる。
+マスコットだけ少ないのは役割マークが無く軸が1本足りないためで、
+そのぶん母数も88枚と小さい。
 
 選択は**乱数ではなく人物IDのハッシュ**で行う(`silhouettes.variant()`)。
 `asset_key()`(名前のsha1)をもう一度ハッシュした整数から、下の桁より
-ポーズ・反転・回転・オフセットを順に取り出す。乱数にすると再生成のたびに
-1万3千枚すべてが差分になってレビューできなくなるため、**同じ人は何度
-生成しても必ず同じ図になる**という安定性は必須である。
-実データ全件で分布を確かめてあり、どの役割もポーズはほぼ均等(各21〜35%)。
+ポーズ・マーク位置・反転・回転・オフセット・拡縮を順に取り出す。乱数にすると
+再生成のたびに1万3千枚すべてが差分になってレビューできなくなるため、
+**同じ人は何度生成しても必ず同じ図になる**という安定性は必須である。
 
-振れ幅は `material_icons.py` に定数として書き出し、**その幅で振ってもカードの
-枠から出ないことを生成時に確かめている**(`gen_material_icons.worst_case`。
-ポーズごとに手足の張り出しが違うので、実際に描いてbboxを測り、はみ出す場合は
-中心のまわりに自動で縮める)。
+**ポーズを先に引き、次にそのポーズで使えるマーク位置を引く。**「ポーズと
+位置の組」を平らに並べて1つ引くと、位置が3つ残ったポーズが2つしか残らな
+かったポーズの1.5倍出てしまう。実データ全件(13,583枚)で確かめてあり、
+母数の大きいリストではポーズは均等(サッカー選手・野球とも各13.5〜15.3%)。
+マーク位置の側は、ポーズによって使える数が違うぶん 25〜45% と偏る。
+
+振れ幅は `material_icons.py` に定数として書き出し、**その幅で振っても
+カードの枠から出ないこと**を生成時に確かめている(`fit_scale` が枠に収まる
+縮小率を組ごとに焼き込み、`verify_frame` が振れの端をすべて実際に描いて
+bboxを測り直す)。反転・回転・拡縮はどれも組全体に掛かる相似変換なので、
+**人型とマークの相対位置は実行時に変わらない**。つまり両者が食い込まない
+ことも生成時の1度で確かめれば足りる(`overlap_ratio`。食い込む組は
+プールから落とす)。落ちるのは主に「腕を上げたポーズ x 手元のマーク」で、
+たとえば `hail` x 手元は輪郭が溶けて何の道具か読めなくなる。
 
 ### カード上での見せ方
 
@@ -105,9 +133,11 @@ ADR 00020 のものをそのまま使い、**配置だけ変えた**。
 
 - アイコンはどれも 0..100 の枠の **右端 x=88 までに収める**
   (`material_icons.LIMIT`。生成時に assert で守る)
-- ウォーターマークはカード左半分に敷く(`box=(-3, 46, 132)`)。上下は
-  46..178 で、帯の境目(y=112)を図のほぼ中央でまたぐ。これ以上大きくすると
-  ホイッスルやカメラの役割マークがディスクに掛かって読めなくなる
+- ウォーターマークはカード左半分に敷く(`box=(0, 46, 128)`)。上下は
+  46..174 で、帯の境目(y=112)を図のほぼ中央でまたぐ。これ以上大きくすると
+  ホイッスルやカメラの役割マークがディスクに掛かって読めなくなる。左端を
+  0 に合わせるのは、**左右反転で左に来た役割マークがカードの左辺で削れて
+  いた**ため(以前は -3 だった)
 
 ## Alternatives
 
