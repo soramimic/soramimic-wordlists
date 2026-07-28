@@ -10,9 +10,14 @@ pokemon の「型色カード」(ADR 00002)と同じ考え方で、素材は一�
   カードを共有する
 - **ファイル名は名前(original)から決定的に導出する**: `yt_<sha1(original)の
   先頭10桁>.svg`。id は将来の再採番に耐えないので使わない
-- 配色は `category` と `org` で決まる。youtuberは暖色(赤〜橙)、vtuberは寒色
-  (青紫)の帯に分け、**同じ事務所は同じ色相**になるよう org の表示名から
-  決定的に色相を振る。所属なし(NA)は各カテゴリの基準色
+- 配色は**本人のイメージカラー**を最優先で使う(`tools/youtuber_colors.json`。
+  出典URL付きで管理し、`tools/fetch_youtuber_colors.py` が更新する)。主色・副色の
+  2色があれば、主色を帯に、副色を帯下のラインと頭文字ディスクに使う。
+  色が分からない人は従来どおり `category` と `org` から決める:
+  youtuberは暖色(赤〜橙)、vtuberは寒色(青紫)の帯に分け、**同じ事務所は同じ
+  色相**になるよう org の表示名から決定的に色相を振る。所属なし(NA)は基準色
+- **イメージカラーは「色」という事実だけを使う**。イラストのダウンロードや
+  パレット抽出は一切していない(詳細は ADR 00018)
 - 中央には名前の頭文字、下部にフルネーム、上部にカテゴリと所属を描く。実写と
   誤認されないよう右上に「イメージ」の札を必ず入れる
 - 自己完結SVG(外部フォント・画像を参照しない)。viewBox は 320x200 固定
@@ -34,6 +39,7 @@ import argparse
 import colorsys
 import csv
 import hashlib
+import json
 import sys
 from pathlib import Path
 from xml.sax.saxutils import escape
@@ -45,6 +51,8 @@ ROOT = Path(__file__).resolve().parent.parent
 CSV_PATH = ROOT / "youtuber.csv"
 OUT_DIR = ROOT / "images" / "youtuber"
 REL_DIR = "images/youtuber"
+# 本人のイメージカラー(出典URL付き)。tools/fetch_youtuber_colors.py が更新する
+COLORS_PATH = Path(__file__).resolve().parent / "youtuber_colors.json"
 
 RAW_BASE = "https://raw.githubusercontent.com/soramimic/soramimic-wordlists/main"
 BLOB_BASE = "https://github.com/soramimic/soramimic-wordlists/blob/main"
@@ -91,6 +99,29 @@ def hsl(h: float, s: float, lum: float) -> str:
     return "#%02x%02x%02x" % (round(r * 255), round(g * 255), round(b * 255))
 
 
+def parse_hex(value: str):
+    """`#rgb` / `#rrggbb` -> (色相[度], 彩度, 明度, 鮮やかさ)。読めなければ None。
+
+    4つ目の「鮮やかさ」は RGB の最大-最小(chroma)。HLSの彩度は淡い水色でも
+    1.0 になってしまうので、「どちらの色が主役向きか」の比較にはこちらを使う。
+    """
+    v = (value or "").strip().lstrip("#")
+    if len(v) == 3:
+        v = "".join(c * 2 for c in v)
+    if len(v) != 6:
+        return None
+    try:
+        r, g, b = (int(v[i:i + 2], 16) / 255 for i in (0, 2, 4))
+    except ValueError:
+        return None
+    h, lum, s = colorsys.rgb_to_hls(r, g, b)
+    return h * 360, s, lum, max(r, g, b) - min(r, g, b)
+
+
+def clamp(x: float, lo: float, hi: float) -> float:
+    return lo if x < lo else hi if x > hi else x
+
+
 def org_key(org: str) -> str:
     """org列(スラッシュ区切り多値)から色と表示に使う1つの所属を選ぶ。
 
@@ -114,27 +145,86 @@ def org_label(org: str) -> str:
     return head
 
 
-def palette(category: str, org: str) -> dict:
-    """category と org から配色を決める。同じ(category, 事務所)なら常に同じ色。"""
+def fallback_hue(category: str, org: str) -> float:
+    """イメージカラーが分からない人の色相。category と org から決定的に決める。"""
     st = CATEGORY_STYLE.get(category, DEFAULT_STYLE)
     key = org_key(org)
-    if key:
-        # 事務所名のハッシュで色相を振る。切り詰め前の名前から決めるので、
-        # 表示が「ホロライブプ…」に縮んでも同じ事務所は同じ色になる
-        seed = int(hashlib.sha1(key.encode("utf-8")).hexdigest()[:8], 16)
-        offset = seed % (st["spread"] * 2 + 1) - st["spread"]
+    if not key:
+        return st["hue"]        # 所属なしはカテゴリの基準色
+    # 事務所名のハッシュで色相を振る。切り詰め前の名前から決めるので、
+    # 表示が「ホロライブプ…」に縮んでも同じ事務所は同じ色になる
+    seed = int(hashlib.sha1(key.encode("utf-8")).hexdigest()[:8], 16)
+    return st["hue"] + seed % (st["spread"] * 2 + 1) - st["spread"]
+
+
+ACHROMATIC = 0.06   # chroma がこれ未満なら白・黒・灰(色相に意味が無い)
+LIGHT_BAND = 0.62   # 帯の明るさがこれを超えたら、帯の上の文字を濃色に切り替える
+
+
+def _hex(parsed) -> str:
+    h, s, lum, _chroma = parsed
+    return hsl(h, s, lum)
+
+
+def perceived(h: float, s: float, lum: float) -> float:
+    """人の目に見える明るさ(0..1)。帯の上に白と濃色のどちらを置くかの判定用。"""
+    r, g, b = colorsys.hls_to_rgb((h % 360) / 360, lum, s)
+    return 0.299 * r + 0.587 * g + 0.114 * b
+
+
+def palette(category: str, org: str, color: dict | None = None) -> dict:
+    """カードの配色を決める。
+
+    `color` に本人のイメージカラー(`{"primary": "#rrggbb", "secondary": ...}`)が
+    あればそれを使う。2色あるときは**鮮やかな方を帯**に、もう一方を帯下のラインに
+    回す(「白+ピンク」ならピンクの帯に白のライン、「白+青」なら青の帯に白のライン)。
+
+    帯の色は**色相・彩度をほぼそのまま残す**。淡い色でも暗く沈めたりせず、代わりに
+    帯の上の文字を白/濃色に切り替えて読めるようにする(`light` フラグ)。
+    こうしないと「淡いピンク」が「赤」になってしまい、イメージカラーの意味が消える。
+
+    色が無い人は従来どおり category と org のハッシュから色相を決める。
+    """
+    st = CATEGORY_STYLE.get(category, DEFAULT_STYLE)
+    given = [c for c in (parse_hex((color or {}).get("primary", "")),
+                         parse_hex((color or {}).get("secondary", "")))
+             if c is not None]
+    given.sort(key=lambda c: -c[3])      # 鮮やかな方を帯に回す
+    line = _hex(given[1]) if len(given) > 1 else ""
+
+    if given:
+        h, s, lum, chroma = given[0]
+        s = 0.0 if chroma < ACHROMATIC else clamp(s, 0.25, 0.85)
+        lum = clamp(lum, 0.30, 0.86)     # 真っ黒/真っ白だけは寄せる
     else:
-        offset = 0          # 所属なしはカテゴリの基準色
-    h = st["hue"] + offset
+        h, s, lum = fallback_hue(category, org), 0.50, 0.40
+    light = perceived(h, s, lum) > LIGHT_BAND
+    # 頭文字ディスクは帯と明暗を逆にする(淡い帯には濃いディスク)。
+    # 淡い色をディスクに使うときだけ副色の色相を借りる(濃いディスクを副色の
+    # 色相で塗ると、副色が白のときに無関係な灰色の丸になってしまう)
+    hd, sd = (given[1][0], given[1][1]) if len(given) > 1 else (h, s)
+    if len(given) > 1 and given[1][3] < ACHROMATIC:
+        sd = 0.0
+    dark_ink = hsl(h, min(s, 0.45), 0.22)
+    if light:
+        disc, mark = hsl(h, min(s, 0.55), 0.30), hsl(h, min(s, 0.25), 0.95)
+    else:
+        disc, mark = hsl(hd, clamp(sd, 0.0, 0.46), 0.94), hsl(h, s, 0.40)
     return {
         "label": st["label"],
         "org": org_label(org),
-        "bg": hsl(h, 0.42, 0.965),
-        "accent": hsl(h, 0.50, 0.40),
-        "accent2": hsl(h + 16, 0.54, 0.48),
-        "disc": hsl(h, 0.46, 0.94),
-        "ink": hsl(h, 0.30, 0.20),
-        "edge": hsl(h, 0.25, 0.88),
+        "light": light,
+        "bg": hsl(h, min(s, 0.42), 0.965),
+        "accent": hsl(h, s, lum),
+        "accent2": hsl(h + 16, min(s + 0.04, 0.88), min(lum + 0.08, 0.92)),
+        "band": line,
+        "disc": disc,
+        "mark": mark,
+        "fg": dark_ink if light else "#ffffff",
+        "chip_bg": dark_ink if light else "#ffffff",
+        "chip_fg": "#ffffff" if light else hsl(h, s, min(lum, 0.42)),
+        "ink": hsl(h, min(s, 0.30), 0.20),
+        "edge": hsl(h, min(s, 0.25), 0.88),
     }
 
 
@@ -182,8 +272,9 @@ def initials(name: str) -> str:
     return first
 
 
-def build_card(name: str, category: str, org: str) -> str:
-    p = palette(category, org)
+def build_card(name: str, category: str, org: str,
+               color: dict | None = None) -> str:
+    p = palette(category, org, color)
     key = asset_key(name)
     gid, cid = f"g{key}", f"c{key}"
     mark = initials(name)
@@ -209,25 +300,31 @@ def build_card(name: str, category: str, org: str) -> str:
         f'<g clip-path="url(#{cid})" font-family="{FONT}">',
         f'<rect x="0" y="0" width="{W}" height="{H}" fill="{p["bg"]}"/>',
         f'<rect x="0" y="0" width="{W}" height="{HERO_H}" fill="url(#{gid})"/>',
+    ]
+    if p["band"]:
+        # 副色のライン。帯の下端に置くので、白のような淡い副色でもはっきり出る
+        parts.append(f'<rect x="0" y="{HERO_H - 8}" width="{W}" height="8" '
+                     f'fill="{p["band"]}"/>')
+    parts += [
         # 頭文字のディスク
         f'<circle cx="58" cy="60" r="36" fill="{p["disc"]}"/>',
         f'<text x="58" y="{60 + mark_size * 0.36:.1f}" text-anchor="middle" '
-        f'font-size="{mark_size}" font-weight="700" fill="{p["accent"]}">'
+        f'font-size="{mark_size}" font-weight="700" fill="{p["mark"]}">'
         f"{escape(mark)}</text>",
-        # 区分と所属
+        # 区分と所属。帯が淡い色のときは白ではなく濃色で書く
         f'<text x="108" y="56" font-size="19" font-weight="700" '
-        f'fill="#ffffff">{escape(p["label"])}</text>',
+        f'fill="{p["fg"]}">{escape(p["label"])}</text>',
     ]
     if p["org"]:
         parts.append(
-            f'<text x="108" y="80" font-size="13" fill="#ffffff" '
+            f'<text x="108" y="80" font-size="13" fill="{p["fg"]}" '
             f'fill-opacity="0.85">{escape(p["org"])}</text>')
     # 実写と誤認されないための札
     parts += [
-        '<rect x="240" y="10" width="70" height="22" rx="11" '
-        'fill="#ffffff" fill-opacity="0.9"/>',
+        f'<rect x="240" y="10" width="70" height="22" rx="11" '
+        f'fill="{p["chip_bg"]}" fill-opacity="0.9"/>',
         f'<text x="275" y="26" text-anchor="middle" font-size="13" '
-        f'font-weight="600" fill="{p["accent"]}">イメージ</text>',
+        f'font-weight="600" fill="{p["chip_fg"]}">イメージ</text>',
     ]
     size, lines = layout_name(name)
     for line, y in lines:
@@ -256,6 +353,14 @@ def load_people() -> list:
     return out
 
 
+def load_colors() -> dict:
+    """`tools/youtuber_colors.json` の colors 部分。無ければ空。"""
+    if not COLORS_PATH.exists():
+        return {}
+    data = json.loads(COLORS_PATH.read_text(encoding="utf-8"))
+    return data.get("colors", {})
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--out", default=str(OUT_DIR), help="SVGの出力先")
@@ -266,18 +371,30 @@ def main() -> int:
     args = ap.parse_args()
 
     people = load_people()
+    colors = load_colors()
     out_dir = Path(args.out)
     out_dir.mkdir(parents=True, exist_ok=True)
 
     wanted = set()
+    n_color = 0
     for name, category, org in people:
+        color = colors.get(name)
+        if color and color.get("primary"):
+            n_color += 1
         path = out_dir / asset_name(name)
-        path.write_text(build_card(name, category, org), encoding="utf-8")
+        path.write_text(build_card(name, category, org, color),
+                        encoding="utf-8")
         wanted.add(path.name)
     if len(wanted) != len(people):
         print("error: アセット名が衝突している", file=sys.stderr)
         return 1
-    print(f"{len(people)}枚を生成 -> {out_dir}")
+    unused = sorted(set(colors) - {n for n, _, _ in people})
+    print(f"{len(people)}枚を生成 -> {out_dir}"
+          f"(イメージカラーあり {n_color}人 / 事務所ハッシュ由来 "
+          f"{len(people) - n_color}人)")
+    if unused:
+        print(f"注意: CSVに居ない人の色定義が {len(unused)}件 "
+              f"({'/'.join(unused[:5])})")
 
     stale = sorted(p for p in out_dir.glob("yt_*.svg") if p.name not in wanted)
     if stale:

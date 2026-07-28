@@ -1,0 +1,101 @@
+{
+  "_readme": "youtuber.csv の人物のイメージカラー。tools/fetch_youtuber_colors.py が生成する。色は公式サイトがテキストで公表している値のみを収録し、イラストからの抽出はしていない。primary/secondary は16進表記。source が manual の項目は人手で確認したもの。詳細は docs/adr/00018-youtuber-images.md を参照。",
+  "colors": {
+    "うる虎がーる": {
+      "primary": "#f0aa3c",
+      "source": "official",
+      "source_name": "あおぎり高校公式サイト",
+      "source_url": "https://www.aogirihighschool.com/"
+    },
+    "ぷわぷわぽぷら": {
+      "primary": "#82beaa",
+      "source": "official",
+      "source_name": "あおぎり高校公式サイト",
+      "source_url": "https://www.aogirihighschool.com/"
+    },
+    "エトラ": {
+      "primary": "#555f87",
+      "source": "official",
+      "source_name": "あおぎり高校公式サイト",
+      "source_url": "https://www.aogirihighschool.com/"
+    },
+    "八十科むじな": {
+      "primary": "#6e50a0",
+      "source": "official",
+      "source_name": "あおぎり高校公式サイト",
+      "source_url": "https://www.aogirihighschool.com/"
+    },
+    "千代浦蝶美": {
+      "primary": "#e66ea0",
+      "source": "official",
+      "source_name": "あおぎり高校公式サイト",
+      "source_url": "https://www.aogirihighschool.com/"
+    },
+    "大代真白": {
+      "primary": "#f0eee6",
+      "source": "official",
+      "source_name": "あおぎり高校公式サイト",
+      "source_url": "https://www.aogirihighschool.com/"
+    },
+    "我部りえる": {
+      "primary": "#f5afaf",
+      "source": "official",
+      "source_name": "あおぎり高校公式サイト",
+      "source_url": "https://www.aogirihighschool.com/"
+    },
+    "春雨麗女": {
+      "primary": "#55c3f0",
+      "source": "official",
+      "source_name": "あおぎり高校公式サイト",
+      "source_url": "https://www.aogirihighschool.com/"
+    },
+    "月赴ゐぶき": {
+      "primary": "#8c2341",
+      "source": "official",
+      "source_name": "あおぎり高校公式サイト",
+      "source_url": "https://www.aogirihighschool.com/"
+    },
+    "栗駒こまる": {
+      "primary": "#503c32",
+      "source": "official",
+      "source_name": "あおぎり高校公式サイト",
+      "source_url": "https://www.aogirihighschool.com/"
+    },
+    "渋谷ハル": {
+      "primary": "#f79428",
+      "source": "official",
+      "source_name": "Neo-Porte公式サイト",
+      "source_url": "https://neo-porte.jp/member/"
+    },
+    "緋月ゆい": {
+      "primary": "#cc213e",
+      "source": "official",
+      "source_name": "Neo-Porte公式サイト",
+      "source_url": "https://neo-porte.jp/member/"
+    },
+    "胡桃のあ": {
+      "primary": "#b297d7",
+      "source": "official",
+      "source_name": "ぶいすぽっ！公式サイト",
+      "source_url": "https://vspo.jp/"
+    },
+    "花芽すみれ": {
+      "primary": "#beccff",
+      "source": "official",
+      "source_name": "ぶいすぽっ！公式サイト",
+      "source_url": "https://vspo.jp/"
+    },
+    "萌実": {
+      "primary": "#00a0af",
+      "source": "official",
+      "source_name": "あおぎり高校公式サイト",
+      "source_url": "https://www.aogirihighschool.com/"
+    },
+    "音霊魂子": {
+      "primary": "#681e8a",
+      "source": "official",
+      "source_name": "あおぎり高校公式サイト",
+      "source_url": "https://www.aogirihighschool.com/"
+    }
+  }
+}
