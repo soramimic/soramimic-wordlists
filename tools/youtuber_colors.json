@@ -1,5 +1,5 @@
 {
-  "_readme": "youtuber.csv の人物のイメージカラー。tools/fetch_youtuber_colors.py が生成する。出典は公式が公表している『タレント名と色の対応表』のみ(source=official は色をテキストで書いている公式サイト、official-penlight は公式ライブのペンライトカラー一覧画像、manual は人手で確認したもの)。キャラクターイラストからの色抽出はしていない。primary/secondary は16進表記。詳細は docs/adr/00018-youtuber-images.md を参照。",
+  "_readme": "youtuber.csv の人物のイメージカラー。primary/secondary は16進表記。source=official は色をテキストで公表している公式サイト、official-penlight は公式ライブのペンライトカラー一覧画像、manual は人手で確認したもの(いずれも tools/fetch_youtuber_colors.py)。source=derived-portrait は公式ポートレート画像を情報解析(著作権法30条の4)して求めた代表色(tools/derive_youtuber_colors.py)。解析に使った画像は tools/.cache/ 止まりで再配布しておらず、カードは配色と文字だけの自作SVGのまま。詳細は docs/adr/00018-youtuber-images.md を参照。",
   "colors": {
     "AZKi": {
       "primary": "#eb52aa",
@@ -42,6 +42,13 @@
       "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
       "penlight_color": "LIGHT PINK"
     },
+    "でびでび・でびる": {
+      "primary": "#584953",
+      "secondary": "#c5bfc3",
+      "source": "derived-portrait",
+      "source_name": "にじさんじ公式サイト 所属ライバー一覧",
+      "source_url": "https://www.nijisanji.jp/talents"
+    },
     "ときのそら": {
       "primary": "#487ddd",
       "source": "official-penlight",
@@ -69,11 +76,24 @@
       "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
       "penlight_color": "LIGHT GREEN"
     },
+    "アンジュ・カトリーナ": {
+      "primary": "#b82e44",
+      "source": "derived-portrait",
+      "source_name": "にじさんじ公式サイト 所属ライバー一覧",
+      "source_url": "https://www.nijisanji.jp/talents"
+    },
     "エトラ": {
       "primary": "#555f87",
       "source": "official",
       "source_name": "あおぎり高校公式サイト",
       "source_url": "https://www.aogirihighschool.com/"
+    },
+    "ジョー・力一": {
+      "primary": "#ab5577",
+      "secondary": "#3faea5",
+      "source": "derived-portrait",
+      "source_name": "にじさんじ公式サイト 所属ライバー一覧",
+      "source_url": "https://www.nijisanji.jp/talents"
     },
     "フワワ・アビスガード": {
       "primary": "#8fccda",
@@ -103,12 +123,33 @@
       "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
       "penlight_color": "PURPLE"
     },
+    "リゼ・ヘルエスタ": {
+      "primary": "#f8eff3",
+      "secondary": "#5176a6",
+      "source": "derived-portrait",
+      "source_name": "にじさんじ公式サイト 所属ライバー一覧",
+      "source_url": "https://www.nijisanji.jp/talents"
+    },
+    "ルンルン": {
+      "primary": "#b4b9f9",
+      "secondary": "#f4f9f8",
+      "source": "derived-portrait",
+      "source_name": "にじさんじ公式サイト 所属ライバー一覧",
+      "source_url": "https://www.nijisanji.jp/talents"
+    },
     "ロボ子さん": {
       "primary": "#eb52aa",
       "source": "official-penlight",
       "source_name": "hololive 7th fes. Ridin' on Dreams 公式ペンライトカラー",
       "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
       "penlight_color": "PINK"
+    },
+    "ワトソン・アメリア": {
+      "primary": "#47384b",
+      "secondary": "#ab8076",
+      "source": "derived-portrait",
+      "source_name": "ホロライブプロダクション公式サイト タレント一覧",
+      "source_url": "https://hololive.hololivepro.com/talents/"
     },
     "一伊那尓栖": {
       "primary": "#b170da",
@@ -124,12 +165,26 @@
       "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
       "penlight_color": "PINK"
     },
+    "三枝明那": {
+      "primary": "#312528",
+      "secondary": "#d59f84",
+      "source": "derived-portrait",
+      "source_name": "にじさんじ公式サイト 所属ライバー一覧",
+      "source_url": "https://www.nijisanji.jp/talents"
+    },
     "不知火フレア": {
       "primary": "#ffa400",
       "source": "official-penlight",
       "source_name": "hololive 7th fes. Ridin' on Dreams 公式ペンライトカラー",
       "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
       "penlight_color": "ORANGE"
+    },
+    "健屋花那": {
+      "primary": "#d3c1c7",
+      "secondary": "#fa20b2",
+      "source": "derived-portrait",
+      "source_name": "にじさんじ公式サイト 所属ライバー一覧",
+      "source_url": "https://www.nijisanji.jp/talents"
     },
     "儒烏風亭らでん": {
       "primary": "#008d39",
@@ -151,6 +206,19 @@
       "source_name": "あおぎり高校公式サイト",
       "source_url": "https://www.aogirihighschool.com/"
     },
+    "剣持刀也": {
+      "primary": "#594c6b",
+      "source": "derived-portrait",
+      "source_name": "にじさんじ公式サイト 所属ライバー一覧",
+      "source_url": "https://www.nijisanji.jp/talents"
+    },
+    "加賀美ハヤト": {
+      "primary": "#a48677",
+      "secondary": "#46373d",
+      "source": "derived-portrait",
+      "source_name": "にじさんじ公式サイト 所属ライバー一覧",
+      "source_url": "https://www.nijisanji.jp/talents"
+    },
     "千代浦蝶美": {
       "primary": "#e66ea0",
       "source": "official",
@@ -164,12 +232,52 @@
       "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
       "penlight_color": "LIGHT PINK"
     },
+    "卯月コウ": {
+      "primary": "#e7c274",
+      "source": "derived-portrait",
+      "source_name": "にじさんじ公式サイト 所属ライバー一覧",
+      "source_url": "https://www.nijisanji.jp/talents"
+    },
+    "叶": {
+      "primary": "#8d796c",
+      "secondary": "#423e3f",
+      "source": "derived-portrait",
+      "source_name": "にじさんじ公式サイト 所属ライバー一覧",
+      "source_url": "https://www.nijisanji.jp/talents"
+    },
+    "周央サンゴ": {
+      "primary": "#f9bbc4",
+      "source": "derived-portrait",
+      "source_name": "にじさんじ公式サイト 所属ライバー一覧",
+      "source_url": "https://www.nijisanji.jp/talents"
+    },
+    "壱百満天原サロメ": {
+      "primary": "#ebd7e2",
+      "secondary": "#38172f",
+      "source": "derived-portrait",
+      "source_name": "にじさんじ公式サイト 所属ライバー一覧",
+      "source_url": "https://www.nijisanji.jp/talents"
+    },
     "夏色まつり": {
       "primary": "#ffa400",
       "source": "official-penlight",
       "source_name": "hololive 7th fes. Ridin' on Dreams 公式ペンライトカラー",
       "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
       "penlight_color": "ORANGE"
+    },
+    "夕刻ロベル": {
+      "primary": "#954534",
+      "secondary": "#eb6e00",
+      "source": "derived-portrait",
+      "source_name": "HOLOSTARS公式サイト タレント一覧",
+      "source_url": "https://holostars.hololivepro.com/talent"
+    },
+    "夢追翔": {
+      "primary": "#4a4a52",
+      "secondary": "#cfced9",
+      "source": "derived-portrait",
+      "source_name": "にじさんじ公式サイト 所属ライバー一覧",
+      "source_url": "https://www.nijisanji.jp/talents"
     },
     "大代真白": {
       "primary": "#f0eee6",
@@ -233,6 +341,13 @@
       "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
       "penlight_color": "VIOLET"
     },
+    "戌亥とこ": {
+      "primary": "#3b2834",
+      "secondary": "#88616a",
+      "source": "derived-portrait",
+      "source_name": "にじさんじ公式サイト 所属ライバー一覧",
+      "source_url": "https://www.nijisanji.jp/talents"
+    },
     "戌神ころね": {
       "primary": "#fff100",
       "source": "official-penlight",
@@ -245,6 +360,20 @@
       "source": "official",
       "source_name": "あおぎり高校公式サイト",
       "source_url": "https://www.aogirihighschool.com/"
+    },
+    "文野環": {
+      "primary": "#6d4f47",
+      "secondary": "#f8f4f3",
+      "source": "derived-portrait",
+      "source_name": "にじさんじ公式サイト 所属ライバー一覧",
+      "source_url": "https://www.nijisanji.jp/talents"
+    },
+    "星川サラ": {
+      "primary": "#fdf5bb",
+      "secondary": "#fb9383",
+      "source": "derived-portrait",
+      "source_name": "にじさんじ公式サイト 所属ライバー一覧",
+      "source_url": "https://www.nijisanji.jp/talents"
     },
     "星街すいせい": {
       "primary": "#487ddd",
@@ -259,11 +388,32 @@
       "source_name": "あおぎり高校公式サイト",
       "source_url": "https://www.aogirihighschool.com/"
     },
+    "月ノ美兎": {
+      "primary": "#2c2c2c",
+      "secondary": "#fa7fa7",
+      "source": "derived-portrait",
+      "source_name": "にじさんじ公式サイト 所属ライバー一覧",
+      "source_url": "https://www.nijisanji.jp/talents"
+    },
     "月赴ゐぶき": {
       "primary": "#8c2341",
       "source": "official",
       "source_name": "あおぎり高校公式サイト",
       "source_url": "https://www.aogirihighschool.com/"
+    },
+    "本間ひまわり": {
+      "primary": "#e39c8a",
+      "secondary": "#ae6a91",
+      "source": "derived-portrait",
+      "source_name": "にじさんじ公式サイト 所属ライバー一覧",
+      "source_url": "https://www.nijisanji.jp/talents"
+    },
+    "来栖夏芽": {
+      "primary": "#8d766e",
+      "secondary": "#8ab1cf",
+      "source": "derived-portrait",
+      "source_name": "にじさんじ公式サイト 所属ライバー一覧",
+      "source_url": "https://www.nijisanji.jp/talents"
     },
     "栗駒こまる": {
       "primary": "#503c32",
@@ -285,6 +435,20 @@
       "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
       "penlight_color": "LIGHT PINK"
     },
+    "椎名唯華": {
+      "primary": "#faf7f6",
+      "secondary": "#b64a54",
+      "source": "derived-portrait",
+      "source_name": "にじさんじ公式サイト 所属ライバー一覧",
+      "source_url": "https://www.nijisanji.jp/talents"
+    },
+    "樋口楓": {
+      "primary": "#babbc6",
+      "secondary": "#71768f",
+      "source": "derived-portrait",
+      "source_name": "にじさんじ公式サイト 所属ライバー一覧",
+      "source_url": "https://www.nijisanji.jp/talents"
+    },
     "水宮枢": {
       "primary": "#8fccda",
       "source": "official-penlight",
@@ -292,11 +456,32 @@
       "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
       "penlight_color": "LIGHT BLUE"
     },
+    "水面まどか": {
+      "primary": "#a98079",
+      "secondary": "#ad365e",
+      "source": "derived-portrait",
+      "source_name": "にじさんじ公式サイト 所属ライバー一覧",
+      "source_url": "https://www.nijisanji.jp/talents"
+    },
+    "沙花叉クロヱ": {
+      "primary": "#b94848",
+      "secondary": "#484141",
+      "source": "derived-portrait",
+      "source_name": "ホロライブプロダクション公式サイト タレント一覧",
+      "source_url": "https://hololive.hololivepro.com/talents/"
+    },
     "渋谷ハル": {
       "primary": "#f79428",
       "source": "official",
       "source_name": "Neo-Porte公式サイト",
       "source_url": "https://neo-porte.jp/member/"
+    },
+    "湊あくあ": {
+      "primary": "#444386",
+      "secondary": "#c06aa1",
+      "source": "derived-portrait",
+      "source_name": "ホロライブプロダクション公式サイト タレント一覧",
+      "source_url": "https://hololive.hololivepro.com/talents/"
     },
     "火威青": {
       "primary": "#487ddd",
@@ -304,6 +489,13 @@
       "source_name": "hololive 6th fes. Color Rise Harmony 公式ペンライトカラー",
       "source_url": "https://hololivesuperexpo2025.hololivepro.com/fes/cast",
       "penlight_color": "BLUE"
+    },
+    "物述有栖": {
+      "primary": "#e8b78d",
+      "secondary": "#444253",
+      "source": "derived-portrait",
+      "source_name": "にじさんじ公式サイト 所属ライバー一覧",
+      "source_url": "https://www.nijisanji.jp/talents"
     },
     "猫又おかゆ": {
       "primary": "#6342c6",
@@ -319,6 +511,20 @@
       "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
       "penlight_color": "WHITE"
     },
+    "甲斐田晴": {
+      "primary": "#968a87",
+      "secondary": "#3b6971",
+      "source": "derived-portrait",
+      "source_name": "にじさんじ公式サイト 所属ライバー一覧",
+      "source_url": "https://www.nijisanji.jp/talents"
+    },
+    "町田ちま": {
+      "primary": "#81a9c2",
+      "secondary": "#f6f2f0",
+      "source": "derived-portrait",
+      "source_name": "にじさんじ公式サイト 所属ライバー一覧",
+      "source_url": "https://www.nijisanji.jp/talents"
+    },
     "癒月ちょこ": {
       "primary": "#eb52aa",
       "source": "official-penlight",
@@ -333,6 +539,12 @@
       "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
       "penlight_color": "WHITE"
     },
+    "白砂あやね": {
+      "primary": "#3c5970",
+      "source": "derived-portrait",
+      "source_name": "にじさんじ公式サイト 所属ライバー一覧",
+      "source_url": "https://www.nijisanji.jp/talents"
+    },
     "白銀ノエル": {
       "primary": "#ffffff",
       "source": "official-penlight",
@@ -346,6 +558,20 @@
       "source_name": "hololive 7th fes. Ridin' on Dreams 公式ペンライトカラー",
       "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
       "penlight_color": "RED"
+    },
+    "社築": {
+      "primary": "#c5d1ef",
+      "secondary": "#545353",
+      "source": "derived-portrait",
+      "source_name": "にじさんじ公式サイト 所属ライバー一覧",
+      "source_url": "https://www.nijisanji.jp/talents"
+    },
+    "笹木咲": {
+      "primary": "#f58ea8",
+      "secondary": "#843c60",
+      "source": "derived-portrait",
+      "source_name": "にじさんじ公式サイト 所属ライバー一覧",
+      "source_url": "https://www.nijisanji.jp/talents"
     },
     "紫咲シオン": {
       "primary": "#6342c6",
@@ -367,11 +593,24 @@
       "source_name": "Neo-Porte公式サイト",
       "source_url": "https://neo-porte.jp/member/"
     },
+    "緑仙": {
+      "primary": "#1c7f91",
+      "source": "derived-portrait",
+      "source_name": "にじさんじ公式サイト 所属ライバー一覧",
+      "source_url": "https://www.nijisanji.jp/talents"
+    },
     "胡桃のあ": {
       "primary": "#b297d7",
       "source": "official",
       "source_name": "ぶいすぽっ！公式サイト",
       "source_url": "https://vspo.jp/"
+    },
+    "花畑チャイカ": {
+      "primary": "#2e2b28",
+      "secondary": "#9c816a",
+      "source": "derived-portrait",
+      "source_name": "にじさんじ公式サイト 所属ライバー一覧",
+      "source_url": "https://www.nijisanji.jp/talents"
     },
     "花芽すみれ": {
       "primary": "#beccff",
@@ -385,12 +624,33 @@
       "source_name": "あおぎり高校公式サイト",
       "source_url": "https://www.aogirihighschool.com/"
     },
+    "葉加瀬冬雪": {
+      "primary": "#a8adc4",
+      "secondary": "#343dba",
+      "source": "derived-portrait",
+      "source_name": "にじさんじ公式サイト 所属ライバー一覧",
+      "source_url": "https://www.nijisanji.jp/talents"
+    },
+    "葛葉": {
+      "primary": "#c2c1c1",
+      "secondary": "#393534",
+      "source": "derived-portrait",
+      "source_name": "にじさんじ公式サイト 所属ライバー一覧",
+      "source_url": "https://www.nijisanji.jp/talents"
+    },
     "虎金妃笑虎": {
       "primary": "#ff0100",
       "source": "official-penlight",
       "source_name": "hololive 7th fes. Ridin' on Dreams 公式ペンライトカラー",
       "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
       "penlight_color": "RED"
+    },
+    "蝸堂みかる": {
+      "primary": "#fcf9f8",
+      "secondary": "#a88f72",
+      "source": "derived-portrait",
+      "source_name": "にじさんじ公式サイト 所属ライバー一覧",
+      "source_url": "https://www.nijisanji.jp/talents"
     },
     "角巻わため": {
       "primary": "#fff100",
@@ -420,12 +680,33 @@
       "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
       "penlight_color": "PURPLE"
     },
+    "鈴原るる": {
+      "primary": "#b78b91",
+      "secondary": "#733b66",
+      "source": "derived-portrait",
+      "source_name": "にじさんじ公式サイト 所属ライバー一覧",
+      "source_url": "https://www.nijisanji.jp/talents"
+    },
+    "鈴木勝": {
+      "primary": "#dfdfdf",
+      "secondary": "#464748",
+      "source": "derived-portrait",
+      "source_name": "にじさんじ公式サイト 所属ライバー一覧",
+      "source_url": "https://www.nijisanji.jp/talents"
+    },
     "雪花ラミィ": {
       "primary": "#8fccda",
       "source": "official-penlight",
       "source_name": "hololive 7th fes. Ridin' on Dreams 公式ペンライトカラー",
       "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
       "penlight_color": "LIGHT BLUE"
+    },
+    "静凛": {
+      "primary": "#41425c",
+      "secondary": "#a760b6",
+      "source": "derived-portrait",
+      "source_name": "にじさんじ公式サイト 所属ライバー一覧",
+      "source_url": "https://www.nijisanji.jp/talents"
     },
     "音乃瀬奏": {
       "primary": "#fff100",
