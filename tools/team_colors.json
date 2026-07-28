@@ -1,0 +1,2437 @@
+{
+ "README": "baseball.csv / football.csv のチームカラー。tools/fetch_team_colors.py が生成する。出典はWikipediaのインフォボックスに**テキストで**書かれた色だけ(source=wikipedia-hex は色見本テンプレートの16進値、wikipedia-colorname は色名しか書かれていないものを基本色に写像したもの、manual は人手で確認したもの)。ロゴ・エンブレム・ユニフォームの意匠は一切使っていない。詳細は docs/adr/00019-player-cards.md を参照。",
+ "sources": {
+  "baseball": "en.wikipedia の球団記事インフォボックスの colors",
+  "football": "ja.wikipedia のクラブ記事インフォボックスの「カラー」"
+ },
+ "teams": {
+  "baseball": {
+   "DeNA": {
+    "primary": "#003f8e",
+    "secondary": "#ffffff",
+    "source": "wikipedia-hex",
+    "source_url": "https://en.wikipedia.org/wiki/Yokohama_DeNA_BayStars"
+   },
+   "オリックス": {
+    "primary": "#000020",
+    "secondary": "#a19c80",
+    "source": "wikipedia-hex",
+    "source_url": "https://en.wikipedia.org/wiki/Orix_Buffaloes"
+   },
+   "ソフトバンク": {
+    "primary": "#ffc30f",
+    "secondary": "#000000",
+    "source": "wikipedia-hex",
+    "source_url": "https://en.wikipedia.org/wiki/Fukuoka_SoftBank_Hawks"
+   },
+   "ヤクルト": {
+    "primary": "#05294d",
+    "secondary": "#de1019",
+    "source": "wikipedia-hex",
+    "source_url": "https://en.wikipedia.org/wiki/Tokyo_Yakult_Swallows"
+   },
+   "ロッテ": {
+    "primary": "#000000",
+    "secondary": "#f2f2f2",
+    "source": "wikipedia-hex",
+    "source_url": "https://en.wikipedia.org/wiki/Chiba_Lotte_Marines"
+   },
+   "中日": {
+    "primary": "#003884",
+    "secondary": "#e5001b",
+    "source": "wikipedia-hex",
+    "source_url": "https://en.wikipedia.org/wiki/Chunichi_Dragons"
+   },
+   "巨人": {
+    "primary": "#ed9e21",
+    "secondary": "#000000",
+    "source": "wikipedia-hex",
+    "source_url": "https://en.wikipedia.org/wiki/Yomiuri_Giants"
+   },
+   "広島": {
+    "primary": "#b50a14",
+    "secondary": "#ffffff",
+    "source": "wikipedia-hex",
+    "source_url": "https://en.wikipedia.org/wiki/Hiroshima_Toyo_Carp"
+   },
+   "日本ハム": {
+    "primary": "#006298",
+    "secondary": "#ffffff",
+    "source": "wikipedia-hex",
+    "source_url": "https://en.wikipedia.org/wiki/Hokkaido_Nippon-Ham_Fighters"
+   },
+   "楽天": {
+    "primary": "#870010",
+    "secondary": "#ffffff",
+    "source": "wikipedia-hex",
+    "source_url": "https://en.wikipedia.org/wiki/Tohoku_Rakuten_Golden_Eagles"
+   },
+   "横浜": {
+    "primary": "#003f8e",
+    "secondary": "#ffffff",
+    "source": "wikipedia-hex",
+    "source_url": "https://en.wikipedia.org/wiki/Yokohama_DeNA_BayStars"
+   },
+   "西武": {
+    "primary": "#102951",
+    "secondary": "#0065b3",
+    "source": "wikipedia-hex",
+    "source_url": "https://en.wikipedia.org/wiki/Saitama_Seibu_Lions"
+   },
+   "近鉄": {
+    "primary": "#e73a29",
+    "secondary": "#152336",
+    "source": "wikipedia-hex",
+    "source_url": "https://en.wikipedia.org/wiki/Osaka_Kintetsu_Buffaloes"
+   },
+   "阪神": {
+    "primary": "#ffd101",
+    "secondary": "#060606",
+    "source": "wikipedia-hex",
+    "source_url": "https://en.wikipedia.org/wiki/Hanshin_Tigers"
+   }
+  },
+  "football": {
+   "1.FCウニオン・ベルリン": {
+    "primary": "#eb1923",
+    "secondary": "#ffffff",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/1.FC%E3%82%A6%E3%83%8B%E3%82%AA%E3%83%B3%E3%83%BB%E3%83%99%E3%83%AB%E3%83%AA%E3%83%B3"
+   },
+   "1.FCカイザースラウテルン": {
+    "primary": "#e60012",
+    "secondary": "#ffffff",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/1.FC%E3%82%AB%E3%82%A4%E3%82%B6%E3%83%BC%E3%82%B9%E3%83%A9%E3%82%A6%E3%83%86%E3%83%AB%E3%83%B3"
+   },
+   "1.FCケルン": {
+    "primary": "#e00000",
+    "secondary": "#ffffff",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/1.FC%E3%82%B1%E3%83%AB%E3%83%B3"
+   },
+   "1.FCハイデンハイム": {
+    "primary": "#0068b7",
+    "secondary": "#e60012",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/1.FC%E3%83%8F%E3%82%A4%E3%83%87%E3%83%B3%E3%83%8F%E3%82%A4%E3%83%A0"
+   },
+   "1.FSVマインツ05": {
+    "primary": "#c3141e",
+    "secondary": "#ffffff",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/1.FSV%E3%83%9E%E3%82%A4%E3%83%B3%E3%83%8405"
+   },
+   "AAアルヘンティノス・ジュニアーズ": {
+    "primary": "#e60012",
+    "secondary": "#ffffff",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/AA%E3%82%A2%E3%83%AB%E3%83%98%E3%83%B3%E3%83%86%E3%82%A3%E3%83%8E%E3%82%B9%E3%83%BB%E3%82%B8%E3%83%A5%E3%83%8B%E3%82%A2%E3%83%BC%E3%82%BA"
+   },
+   "AAインテルナシオナル (リメイラ)": {
+    "primary": "#ffffff",
+    "secondary": "#000000",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/AA%E3%82%A4%E3%83%B3%E3%83%86%E3%83%AB%E3%83%8A%E3%82%B7%E3%82%AA%E3%83%8A%E3%83%AB_%28%E3%83%AA%E3%83%A1%E3%82%A4%E3%83%A9%29"
+   },
+   "AAポルトゥゲーザ (サンパウロ州)": {
+    "primary": "#e60012",
+    "secondary": "#009944",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/AA%E3%83%9D%E3%83%AB%E3%83%88%E3%82%A5%E3%82%B2%E3%83%BC%E3%82%B6_%28%E3%82%B5%E3%83%B3%E3%83%91%E3%82%A6%E3%83%AD%E5%B7%9E%29"
+   },
+   "AAポンチ・プレッタ": {
+    "primary": "#000000",
+    "secondary": "#ffffff",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/AA%E3%83%9D%E3%83%B3%E3%83%81%E3%83%BB%E3%83%97%E3%83%AC%E3%83%83%E3%82%BF"
+   },
+   "ABC FC": {
+    "primary": "#ffffff",
+    "secondary": "#000000",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/ABC_FC"
+   },
+   "AC長野パルセイロ": {
+    "primary": "#ed6d00",
+    "secondary": "#001d45",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/AC%E9%95%B7%E9%87%8E%E3%83%91%E3%83%AB%E3%82%BB%E3%82%A4%E3%83%AD"
+   },
+   "ADOデン・ハーグ": {
+    "primary": "#009944",
+    "secondary": "#ffe100",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/ADO%E3%83%87%E3%83%B3%E3%83%BB%E3%83%8F%E3%83%BC%E3%82%B0"
+   },
+   "ADサンカエターノ": {
+    "primary": "#0068b7",
+    "secondary": "#e60012",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/AD%E3%82%B5%E3%83%B3%E3%82%AB%E3%82%A8%E3%82%BF%E3%83%BC%E3%83%8E"
+   },
+   "AFCテュビズ": {
+    "primary": "#e60012",
+    "secondary": "#ffe100",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/AFC%E3%83%86%E3%83%A5%E3%83%93%E3%82%BA"
+   },
+   "ASカンヌ": {
+    "primary": "#e60012",
+    "secondary": "#ffffff",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/AS%E3%82%AB%E3%83%B3%E3%83%8C"
+   },
+   "ASグッビオ1910": {
+    "primary": "#e60012",
+    "secondary": "#0068b7",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/AS%E3%82%B0%E3%83%83%E3%83%93%E3%82%AA1910"
+   },
+   "ASモナコ": {
+    "primary": "#ff0000",
+    "secondary": "#ffffff",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/AS%E3%83%A2%E3%83%8A%E3%82%B3"
+   },
+   "BGパトゥム・ユナイテッドFC": {
+    "primary": "#0068b7",
+    "secondary": "",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/BG%E3%83%91%E3%83%88%E3%82%A5%E3%83%A0%E3%83%BB%E3%83%A6%E3%83%8A%E3%82%A4%E3%83%86%E3%83%83%E3%83%89FC"
+   },
+   "BTOP北海道": {
+    "primary": "#ffffff",
+    "secondary": "#000000",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/BTOP%E5%8C%97%E6%B5%B7%E9%81%93"
+   },
+   "CAジュベントス": {
+    "primary": "#7b1f2b",
+    "secondary": "#ffffff",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/CA%E3%82%B8%E3%83%A5%E3%83%99%E3%83%B3%E3%83%88%E3%82%B9"
+   },
+   "CAティグレ": {
+    "primary": "#0068b7",
+    "secondary": "#e60012",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/CA%E3%83%86%E3%82%A3%E3%82%B0%E3%83%AC"
+   },
+   "CAペニャロール": {
+    "primary": "#ffe100",
+    "secondary": "#000000",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/CA%E3%83%9A%E3%83%8B%E3%83%A3%E3%83%AD%E3%83%BC%E3%83%AB"
+   },
+   "CAボストン・リーベル": {
+    "primary": "#006b3b",
+    "secondary": "#e61f33",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/CA%E3%83%9C%E3%82%B9%E3%83%88%E3%83%B3%E3%83%BB%E3%83%AA%E3%83%BC%E3%83%99%E3%83%AB"
+   },
+   "CAリネンセ": {
+    "primary": "#e60012",
+    "secondary": "#ffffff",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/CA%E3%83%AA%E3%83%8D%E3%83%B3%E3%82%BB"
+   },
+   "CFRクルジュ": {
+    "primary": "#7b1f2b",
+    "secondary": "",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/CFR%E3%82%AF%E3%83%AB%E3%82%B8%E3%83%A5"
+   },
+   "COEDO KAWAGOE F.C": {
+    "primary": "#ffffff",
+    "secondary": "#000000",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/COEDO_KAWAGOE_F.C"
+   },
+   "CRフラメンゴ": {
+    "primary": "#c22a1e",
+    "secondary": "#000000",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/CR%E3%83%95%E3%83%A9%E3%83%A1%E3%83%B3%E3%82%B4"
+   },
+   "CRヴァスコ・ダ・ガマ": {
+    "primary": "#000000",
+    "secondary": "#ffffff",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/CR%E3%83%B4%E3%82%A1%E3%82%B9%E3%82%B3%E3%83%BB%E3%83%80%E3%83%BB%E3%82%AC%E3%83%9E"
+   },
+   "CSエレディアーノ": {
+    "primary": "#ffe100",
+    "secondary": "#e60012",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/CS%E3%82%A8%E3%83%AC%E3%83%87%E3%82%A3%E3%82%A2%E3%83%BC%E3%83%8E"
+   },
+   "CSマリティモ": {
+    "primary": "#009944",
+    "secondary": "#e60012",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/CS%E3%83%9E%E3%83%AA%E3%83%86%E3%82%A3%E3%83%A2"
+   },
+   "Cento Cuore HARIMA": {
+    "primary": "#c5232d",
+    "secondary": "#2b326b",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/Cento_Cuore_HARIMA"
+   },
+   "Criacao Shinjuku": {
+    "primary": "#3c2387",
+    "secondary": "",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/Criacao_Shinjuku"
+   },
+   "D.C. ユナイテッド": {
+    "primary": "#000000",
+    "secondary": "#e60012",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/D.C._%E3%83%A6%E3%83%8A%E3%82%A4%E3%83%86%E3%83%83%E3%83%89"
+   },
+   "ECジュベントゥージ": {
+    "primary": "#009944",
+    "secondary": "#ffffff",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/EC%E3%82%B8%E3%83%A5%E3%83%99%E3%83%B3%E3%83%88%E3%82%A5%E3%83%BC%E3%82%B8"
+   },
+   "ECノヴォ・アンブルゴ": {
+    "primary": "#ffffff",
+    "secondary": "",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/EC%E3%83%8E%E3%83%B4%E3%82%A9%E3%83%BB%E3%82%A2%E3%83%B3%E3%83%96%E3%83%AB%E3%82%B4"
+   },
+   "ECペロタス": {
+    "primary": "#ffe100",
+    "secondary": "#0068b7",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/EC%E3%83%9A%E3%83%AD%E3%82%BF%E3%82%B9"
+   },
+   "ECヴィトーリア": {
+    "primary": "#000000",
+    "secondary": "#e60012",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/EC%E3%83%B4%E3%82%A3%E3%83%88%E3%83%BC%E3%83%AA%E3%82%A2"
+   },
+   "FCSKA-エネルギア・ハバロフスク": {
+    "primary": "#0068b7",
+    "secondary": "#e60012",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/FCSKA-%E3%82%A8%E3%83%8D%E3%83%AB%E3%82%AE%E3%82%A2%E3%83%BB%E3%83%8F%E3%83%90%E3%83%AD%E3%83%95%E3%82%B9%E3%82%AF"
+   },
+   "FCアルジェシュ・ピテシュティ": {
+    "primary": "#ffffff",
+    "secondary": "#8f2d8b",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/FC%E3%82%A2%E3%83%AB%E3%82%B8%E3%82%A7%E3%82%B7%E3%83%A5%E3%83%BB%E3%83%94%E3%83%86%E3%82%B7%E3%83%A5%E3%83%86%E3%82%A3"
+   },
+   "FCアロウカ": {
+    "primary": "#ffe100",
+    "secondary": "#0068b7",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/FC%E3%82%A2%E3%83%AD%E3%82%A6%E3%82%AB"
+   },
+   "FCインゴルシュタット04": {
+    "primary": "#e60012",
+    "secondary": "",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/FC%E3%82%A4%E3%83%B3%E3%82%B4%E3%83%AB%E3%82%B7%E3%83%A5%E3%82%BF%E3%83%83%E3%83%8804"
+   },
+   "FCカルパティ・リヴィウ": {
+    "primary": "#009944",
+    "secondary": "#ffffff",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/FC%E3%82%AB%E3%83%AB%E3%83%91%E3%83%86%E3%82%A3%E3%83%BB%E3%83%AA%E3%83%B4%E3%82%A3%E3%82%A6"
+   },
+   "FCゴア": {
+    "primary": "#ea5404",
+    "secondary": "#014099",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/FC%E3%82%B4%E3%82%A2"
+   },
+   "FCジロンダン・ボルドー": {
+    "primary": "#001b50",
+    "secondary": "#ffffff",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/FC%E3%82%B8%E3%83%AD%E3%83%B3%E3%83%80%E3%83%B3%E3%83%BB%E3%83%9C%E3%83%AB%E3%83%89%E3%83%BC"
+   },
+   "FCソウル": {
+    "primary": "#b5191a",
+    "secondary": "#000000",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/FC%E3%82%BD%E3%82%A6%E3%83%AB"
+   },
+   "FCディナモ・トビリシ": {
+    "primary": "#0068b7",
+    "secondary": "#0b1e5a",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/FC%E3%83%87%E3%82%A3%E3%83%8A%E3%83%A2%E3%83%BB%E3%83%88%E3%83%93%E3%83%AA%E3%82%B7"
+   },
+   "FCデン・ボス": {
+    "primary": "#0068b7",
+    "secondary": "#ffffff",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/FC%E3%83%87%E3%83%B3%E3%83%BB%E3%83%9C%E3%82%B9"
+   },
+   "FCナント": {
+    "primary": "#fcd405",
+    "secondary": "#1b8f3a",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/FC%E3%83%8A%E3%83%B3%E3%83%88"
+   },
+   "FCノアシェラン": {
+    "primary": "#ff0000",
+    "secondary": "#2e3b67",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/FC%E3%83%8E%E3%82%A2%E3%82%B7%E3%82%A7%E3%83%A9%E3%83%B3"
+   },
+   "FCバルセロナ": {
+    "primary": "#0000cc",
+    "secondary": "#cc0000",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/FC%E3%83%90%E3%83%AB%E3%82%BB%E3%83%AD%E3%83%8A"
+   },
+   "FCラハティ": {
+    "primary": "#000000",
+    "secondary": "#e60012",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/FC%E3%83%A9%E3%83%8F%E3%83%86%E3%82%A3"
+   },
+   "FCヴィクトリア・プルゼニ": {
+    "primary": "#1963ac",
+    "secondary": "#ea041b",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/FC%E3%83%B4%E3%82%A3%E3%82%AF%E3%83%88%E3%83%AA%E3%82%A2%E3%83%BB%E3%83%97%E3%83%AB%E3%82%BC%E3%83%8B"
+   },
+   "FC今治": {
+    "primary": "#171c61",
+    "secondary": "#fff100",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/FC%E4%BB%8A%E6%B2%BB"
+   },
+   "FC刈谷": {
+    "primary": "#ffffff",
+    "secondary": "#d6000f",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/FC%E5%88%88%E8%B0%B7"
+   },
+   "FC安養": {
+    "primary": "#4f1b87",
+    "secondary": "",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/FC%E5%AE%89%E9%A4%8A"
+   },
+   "FC岐阜": {
+    "primary": "#16582a",
+    "secondary": "",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/FC%E5%B2%90%E9%98%9C"
+   },
+   "FC東京": {
+    "primary": "#000a6e",
+    "secondary": "#ff0000",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/FC%E6%9D%B1%E4%BA%AC"
+   },
+   "FC琉球OKINAWA": {
+    "primary": "#ca0915",
+    "secondary": "",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/FC%E7%90%89%E7%90%83OKINAWA"
+   },
+   "FC町田ゼルビア": {
+    "primary": "#001c6d",
+    "secondary": "",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/FC%E7%94%BA%E7%94%B0%E3%82%BC%E3%83%AB%E3%83%93%E3%82%A2"
+   },
+   "FC神楽しまね": {
+    "primary": "#e5c300",
+    "secondary": "#1e2e53",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/FC%E7%A5%9E%E6%A5%BD%E3%81%97%E3%81%BE%E3%81%AD"
+   },
+   "FKサラエヴォ": {
+    "primary": "#7b1f2b",
+    "secondary": "",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/FK%E3%82%B5%E3%83%A9%E3%82%A8%E3%83%B4%E3%82%A9"
+   },
+   "FKスパルタク・スボティツァ": {
+    "primary": "#ffffff",
+    "secondary": "",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/FK%E3%82%B9%E3%83%91%E3%83%AB%E3%82%BF%E3%82%AF%E3%83%BB%E3%82%B9%E3%83%9C%E3%83%86%E3%82%A3%E3%83%84%E3%82%A1"
+   },
+   "FKテプリツェ": {
+    "primary": "#ffff3f",
+    "secondary": "#0068b7",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/FK%E3%83%86%E3%83%97%E3%83%AA%E3%83%84%E3%82%A7"
+   },
+   "FKブドゥチノスト・ポドゴリツァ": {
+    "primary": "#0068b7",
+    "secondary": "#ffffff",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/FK%E3%83%96%E3%83%89%E3%82%A5%E3%83%81%E3%83%8E%E3%82%B9%E3%83%88%E3%83%BB%E3%83%9D%E3%83%89%E3%82%B4%E3%83%AA%E3%83%84%E3%82%A1"
+   },
+   "FKルダル・プリイェドル": {
+    "primary": "#009944",
+    "secondary": "#000000",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/FK%E3%83%AB%E3%83%80%E3%83%AB%E3%83%BB%E3%83%97%E3%83%AA%E3%82%A4%E3%82%A7%E3%83%89%E3%83%AB"
+   },
+   "GDエストリル・プライア": {
+    "primary": "#ffe100",
+    "secondary": "#0068b7",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/GD%E3%82%A8%E3%82%B9%E3%83%88%E3%83%AA%E3%83%AB%E3%83%BB%E3%83%97%E3%83%A9%E3%82%A4%E3%82%A2"
+   },
+   "GEブラジウ": {
+    "primary": "#e60012",
+    "secondary": "#000000",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/GE%E3%83%96%E3%83%A9%E3%82%B8%E3%82%A6"
+   },
+   "HJKヘルシンキ": {
+    "primary": "#0068b7",
+    "secondary": "#ffffff",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/HJK%E3%83%98%E3%83%AB%E3%82%B7%E3%83%B3%E3%82%AD"
+   },
+   "HNKリエカ": {
+    "primary": "#ffffff",
+    "secondary": "#00a0e9",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/HNK%E3%83%AA%E3%82%A8%E3%82%AB"
+   },
+   "IFKヨーテボリ": {
+    "primary": "#205090",
+    "secondary": "#ffffff",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/IFK%E3%83%A8%E3%83%BC%E3%83%86%E3%83%9C%E3%83%AA"
+   },
+   "JKタリナ・カレフ": {
+    "primary": "#ffffff",
+    "secondary": "#0068b7",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/JK%E3%82%BF%E3%83%AA%E3%83%8A%E3%83%BB%E3%82%AB%E3%83%AC%E3%83%95"
+   },
+   "JPボルテスFC": {
+    "primary": "#8f2d8b",
+    "secondary": "",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/JP%E3%83%9C%E3%83%AB%E3%83%86%E3%82%B9FC"
+   },
+   "KFスカンデルベウ・コルチャ": {
+    "primary": "#e60012",
+    "secondary": "#ffffff",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/KF%E3%82%B9%E3%82%AB%E3%83%B3%E3%83%87%E3%83%AB%E3%83%99%E3%82%A6%E3%83%BB%E3%82%B3%E3%83%AB%E3%83%81%E3%83%A3"
+   },
+   "KFティラナ": {
+    "primary": "#ffffff",
+    "secondary": "#0068b7",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/KF%E3%83%86%E3%82%A3%E3%83%A9%E3%83%8A"
+   },
+   "KVCウェステルロー": {
+    "primary": "#ffe100",
+    "secondary": "#0068b7",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/KVC%E3%82%A6%E3%82%A7%E3%82%B9%E3%83%86%E3%83%AB%E3%83%AD%E3%83%BC"
+   },
+   "MKSポゴニ・シュチェチン": {
+    "primary": "#0b1e5a",
+    "secondary": "#e60012",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/MKS%E3%83%9D%E3%82%B4%E3%83%8B%E3%83%BB%E3%82%B7%E3%83%A5%E3%83%81%E3%82%A7%E3%83%81%E3%83%B3"
+   },
+   "NACブレダ": {
+    "primary": "#ffe100",
+    "secondary": "#000000",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/NAC%E3%83%96%E3%83%AC%E3%83%80"
+   },
+   "NECナイメヘン": {
+    "primary": "#e60012",
+    "secondary": "#009944",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/NEC%E3%83%8A%E3%82%A4%E3%83%A1%E3%83%98%E3%83%B3"
+   },
+   "NKロコモティヴァ・ザグレブ": {
+    "primary": "#0068b7",
+    "secondary": "",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/NK%E3%83%AD%E3%82%B3%E3%83%A2%E3%83%86%E3%82%A3%E3%83%B4%E3%82%A1%E3%83%BB%E3%82%B6%E3%82%B0%E3%83%AC%E3%83%96"
+   },
+   "OKSストミール・オルシュティン": {
+    "primary": "#0068b7",
+    "secondary": "",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/OKS%E3%82%B9%E3%83%88%E3%83%9F%E3%83%BC%E3%83%AB%E3%83%BB%E3%82%AA%E3%83%AB%E3%82%B7%E3%83%A5%E3%83%86%E3%82%A3%E3%83%B3"
+   },
+   "PSVアイントホーフェン": {
+    "primary": "#e60012",
+    "secondary": "#ffffff",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/PSV%E3%82%A2%E3%82%A4%E3%83%B3%E3%83%88%E3%83%9B%E3%83%BC%E3%83%95%E3%82%A7%E3%83%B3"
+   },
+   "RB大宮アルディージャ": {
+    "primary": "#ed6d00",
+    "secondary": "#001d45",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/RB%E5%A4%A7%E5%AE%AE%E3%82%A2%E3%83%AB%E3%83%87%E3%82%A3%E3%83%BC%E3%82%B8%E3%83%A3"
+   },
+   "RCDエスパニョール": {
+    "primary": "#007fc8",
+    "secondary": "#ffffff",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/RCD%E3%82%A8%E3%82%B9%E3%83%91%E3%83%8B%E3%83%A7%E3%83%BC%E3%83%AB"
+   },
+   "SAGAWA SHIGA FC": {
+    "primary": "#406ab4",
+    "secondary": "",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/SAGAWA_SHIGA_FC"
+   },
+   "SCインテルナシオナル": {
+    "primary": "#e60012",
+    "secondary": "#ffffff",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/SC%E3%82%A4%E3%83%B3%E3%83%86%E3%83%AB%E3%83%8A%E3%82%B7%E3%82%AA%E3%83%8A%E3%83%AB"
+   },
+   "SCコリンチャンス・パウリスタ": {
+    "primary": "#000000",
+    "secondary": "#ffffff",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/SC%E3%82%B3%E3%83%AA%E3%83%B3%E3%83%81%E3%83%A3%E3%83%B3%E3%82%B9%E3%83%BB%E3%83%91%E3%82%A6%E3%83%AA%E3%82%B9%E3%82%BF"
+   },
+   "SCブラガ": {
+    "primary": "#e60012",
+    "secondary": "#ffffff",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/SC%E3%83%96%E3%83%A9%E3%82%AC"
+   },
+   "SC相模原": {
+    "primary": "#278e42",
+    "secondary": "",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/SC%E7%9B%B8%E6%A8%A1%E5%8E%9F"
+   },
+   "SDウエスカ": {
+    "primary": "#000089",
+    "secondary": "#ef0000",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/SD%E3%82%A6%E3%82%A8%E3%82%B9%E3%82%AB"
+   },
+   "SEパルメイラス": {
+    "primary": "#006437",
+    "secondary": "#ffffff",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/SE%E3%83%91%E3%83%AB%E3%83%A1%E3%82%A4%E3%83%A9%E3%82%B9"
+   },
+   "SHIBUYA CITY FC": {
+    "primary": "#ffffff",
+    "secondary": "#0b0b0c",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/SHIBUYA_CITY_FC"
+   },
+   "SP京都FC": {
+    "primary": "#c31b1f",
+    "secondary": "",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/SP%E4%BA%AC%E9%83%BDFC"
+   },
+   "SVホルン": {
+    "primary": "#0068b7",
+    "secondary": "#ffffff",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/SV%E3%83%9B%E3%83%AB%E3%83%B3"
+   },
+   "SVマッテルスブルク": {
+    "primary": "#009944",
+    "secondary": "#ffffff",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/SV%E3%83%9E%E3%83%83%E3%83%86%E3%83%AB%E3%82%B9%E3%83%96%E3%83%AB%E3%82%AF"
+   },
+   "TOT SC": {
+    "primary": "#f39800",
+    "secondary": "",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/TOT_SC"
+   },
+   "TSG1899ホッフェンハイム": {
+    "primary": "#0055ff",
+    "secondary": "#ffffff",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/TSG1899%E3%83%9B%E3%83%83%E3%83%95%E3%82%A7%E3%83%B3%E3%83%8F%E3%82%A4%E3%83%A0"
+   },
+   "TSVショット・マインツ": {
+    "primary": "#0066a4",
+    "secondary": "#ffffff",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/TSV%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%E3%83%BB%E3%83%9E%E3%82%A4%E3%83%B3%E3%83%84"
+   },
+   "TTMチエンマイFC": {
+    "primary": "#000000",
+    "secondary": "#ffffff",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/TTM%E3%83%81%E3%82%A8%E3%83%B3%E3%83%9E%E3%82%A4FC"
+   },
+   "Tonan前橋": {
+    "primary": "#000000",
+    "secondary": "#ffffff",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/Tonan%E5%89%8D%E6%A9%8B"
+   },
+   "UDレイリア": {
+    "primary": "#ffffff",
+    "secondary": "#e60012",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/UD%E3%83%AC%E3%82%A4%E3%83%AA%E3%82%A2"
+   },
+   "VONDS市原": {
+    "primary": "#007d4f",
+    "secondary": "",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/VONDS%E5%B8%82%E5%8E%9F"
+   },
+   "VfBシュトゥットガルト": {
+    "primary": "#e60012",
+    "secondary": "#ffffff",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/VfB%E3%82%B7%E3%83%A5%E3%83%88%E3%82%A5%E3%83%83%E3%83%88%E3%82%AC%E3%83%AB%E3%83%88"
+   },
+   "VfRアーレン": {
+    "primary": "#ffffff",
+    "secondary": "#000000",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/VfR%E3%82%A2%E3%83%BC%E3%83%AC%E3%83%B3"
+   },
+   "V・ファーレン長崎": {
+    "primary": "#003893",
+    "secondary": "#ea6000",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/V%E3%83%BB%E3%83%95%E3%82%A1%E3%83%BC%E3%83%AC%E3%83%B3%E9%95%B7%E5%B4%8E"
+   },
+   "ŁKSウッチ": {
+    "primary": "#ffffff",
+    "secondary": "#e60012",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%C5%81KS%E3%82%A6%E3%83%83%E3%83%81"
+   },
+   "いわきFC": {
+    "primary": "#c01730",
+    "secondary": "#1e2652",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%81%84%E3%82%8F%E3%81%8DFC"
+   },
+   "いわてグルージャ盛岡": {
+    "primary": "#ffffff",
+    "secondary": "#c7000e",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%81%84%E3%82%8F%E3%81%A6%E3%82%B0%E3%83%AB%E3%83%BC%E3%82%B8%E3%83%A3%E7%9B%9B%E5%B2%A1"
+   },
+   "おこしやす京都AC": {
+    "primary": "#460e44",
+    "secondary": "#d5fd44",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%81%8A%E3%81%93%E3%81%97%E3%82%84%E3%81%99%E4%BA%AC%E9%83%BDAC"
+   },
+   "アイントラハト・フランクフルト": {
+    "primary": "#e00914",
+    "secondary": "#000000",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%82%A4%E3%83%B3%E3%83%88%E3%83%A9%E3%83%8F%E3%83%88%E3%83%BB%E3%83%95%E3%83%A9%E3%83%B3%E3%82%AF%E3%83%95%E3%83%AB%E3%83%88"
+   },
+   "アイン食品サッカー部": {
+    "primary": "#ff0000",
+    "secondary": "",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%82%A4%E3%83%B3%E9%A3%9F%E5%93%81%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E9%83%A8"
+   },
+   "アスルクラロ沼津": {
+    "primary": "#465ab3",
+    "secondary": "#009ad7",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%82%B9%E3%83%AB%E3%82%AF%E3%83%A9%E3%83%AD%E6%B2%BC%E6%B4%A5"
+   },
+   "アトランタ・ユナイテッドFC": {
+    "primary": "#80000a",
+    "secondary": "#000000",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%88%E3%83%A9%E3%83%B3%E3%82%BF%E3%83%BB%E3%83%A6%E3%83%8A%E3%82%A4%E3%83%86%E3%83%83%E3%83%89FC"
+   },
+   "アトレチコ・ナシオナル": {
+    "primary": "#009944",
+    "secondary": "#ffffff",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%88%E3%83%AC%E3%83%81%E3%82%B3%E3%83%BB%E3%83%8A%E3%82%B7%E3%82%AA%E3%83%8A%E3%83%AB"
+   },
+   "アトレチコ・パラナエンセ": {
+    "primary": "#cc0000",
+    "secondary": "#000000",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%88%E3%83%AC%E3%83%81%E3%82%B3%E3%83%BB%E3%83%91%E3%83%A9%E3%83%8A%E3%82%A8%E3%83%B3%E3%82%BB"
+   },
+   "アトレチコ鈴鹿クラブ": {
+    "primary": "#0d4da2",
+    "secondary": "#5fbb46",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%88%E3%83%AC%E3%83%81%E3%82%B3%E9%88%B4%E9%B9%BF%E3%82%AF%E3%83%A9%E3%83%96"
+   },
+   "アビスパ福岡": {
+    "primary": "#00205c",
+    "secondary": "#009ca7",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%93%E3%82%B9%E3%83%91%E7%A6%8F%E5%B2%A1"
+   },
+   "アメリカFC (ミナスジェライス州)": {
+    "primary": "#009944",
+    "secondary": "#ffffff",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%A1%E3%83%AA%E3%82%ABFC_%28%E3%83%9F%E3%83%8A%E3%82%B9%E3%82%B8%E3%82%A7%E3%83%A9%E3%82%A4%E3%82%B9%E5%B7%9E%29"
+   },
+   "アヤックス・アムステルダム": {
+    "primary": "#e60012",
+    "secondary": "#ffffff",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%A4%E3%83%83%E3%82%AF%E3%82%B9%E3%83%BB%E3%82%A2%E3%83%A0%E3%82%B9%E3%83%86%E3%83%AB%E3%83%80%E3%83%A0"
+   },
+   "アルテリーヴォ和歌山": {
+    "primary": "#00654f",
+    "secondary": "",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%AB%E3%83%86%E3%83%AA%E3%83%BC%E3%83%B4%E3%82%A9%E5%92%8C%E6%AD%8C%E5%B1%B1"
+   },
+   "アルテ高崎": {
+    "primary": "#ed1a3d",
+    "secondary": "#ffffff",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%AB%E3%83%86%E9%AB%98%E5%B4%8E"
+   },
+   "アルビレックス新潟": {
+    "primary": "#ea5404",
+    "secondary": "#014099",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%AB%E3%83%93%E3%83%AC%E3%83%83%E3%82%AF%E3%82%B9%E6%96%B0%E6%BD%9F"
+   },
+   "アルビレックス新潟シンガポール": {
+    "primary": "#ea5404",
+    "secondary": "#014099",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%AB%E3%83%93%E3%83%AC%E3%83%83%E3%82%AF%E3%82%B9%E6%96%B0%E6%BD%9F%E3%82%B7%E3%83%B3%E3%82%AC%E3%83%9D%E3%83%BC%E3%83%AB"
+   },
+   "アル・イテハド": {
+    "primary": "#fff015",
+    "secondary": "#000000",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%AB%E3%83%BB%E3%82%A4%E3%83%86%E3%83%8F%E3%83%89"
+   },
+   "アル・カーディシーヤFC": {
+    "primary": "#c22220",
+    "secondary": "",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%AB%E3%83%BB%E3%82%AB%E3%83%BC%E3%83%87%E3%82%A3%E3%82%B7%E3%83%BC%E3%83%A4FC"
+   },
+   "アル・シャバブ・リヤド": {
+    "primary": "#ffffff",
+    "secondary": "",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%AB%E3%83%BB%E3%82%B7%E3%83%A3%E3%83%90%E3%83%96%E3%83%BB%E3%83%AA%E3%83%A4%E3%83%89"
+   },
+   "アル・ジャジーラ・クラブ": {
+    "primary": "#ffffff",
+    "secondary": "#000000",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%AB%E3%83%BB%E3%82%B8%E3%83%A3%E3%82%B8%E3%83%BC%E3%83%A9%E3%83%BB%E3%82%AF%E3%83%A9%E3%83%96"
+   },
+   "アル・ドゥハイルSC": {
+    "primary": "#ff0000",
+    "secondary": "",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%AB%E3%83%BB%E3%83%89%E3%82%A5%E3%83%8F%E3%82%A4%E3%83%ABSC"
+   },
+   "アル・ラーヤンSC": {
+    "primary": "#e60012",
+    "secondary": "#000000",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%AB%E3%83%BB%E3%83%A9%E3%83%BC%E3%83%A4%E3%83%B3SC"
+   },
+   "アレマニア・アーヘン": {
+    "primary": "#000000",
+    "secondary": "#ffe100",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%AC%E3%83%9E%E3%83%8B%E3%82%A2%E3%83%BB%E3%82%A2%E3%83%BC%E3%83%98%E3%83%B3"
+   },
+   "アヴァイFC": {
+    "primary": "#ffffff",
+    "secondary": "",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%B4%E3%82%A1%E3%82%A4FC"
+   },
+   "アーセナルFC": {
+    "primary": "#ef0107",
+    "secondary": "#ffffff",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%BC%E3%82%BB%E3%83%8A%E3%83%ABFC"
+   },
+   "イパチンガFC": {
+    "primary": "#ffffff",
+    "secondary": "#009944",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%A4%E3%83%91%E3%83%81%E3%83%B3%E3%82%ACFC"
+   },
+   "インデペンディエンテ・メデジン": {
+    "primary": "#e60012",
+    "secondary": "#0068b7",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%A4%E3%83%B3%E3%83%87%E3%83%9A%E3%83%B3%E3%83%87%E3%82%A3%E3%82%A8%E3%83%B3%E3%83%86%E3%83%BB%E3%83%A1%E3%83%87%E3%82%B8%E3%83%B3"
+   },
+   "ウェスタン・シドニー・ワンダラーズFC": {
+    "primary": "#c60c30",
+    "secondary": "#000000",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%A6%E3%82%A7%E3%82%B9%E3%82%BF%E3%83%B3%E3%83%BB%E3%82%B7%E3%83%89%E3%83%8B%E3%83%BC%E3%83%BB%E3%83%AF%E3%83%B3%E3%83%80%E3%83%A9%E3%83%BC%E3%82%BAFC"
+   },
+   "ウェリントン・フェニックスFC": {
+    "primary": "#000000",
+    "secondary": "#ffe100",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%A6%E3%82%A7%E3%83%AA%E3%83%B3%E3%83%88%E3%83%B3%E3%83%BB%E3%83%95%E3%82%A7%E3%83%8B%E3%83%83%E3%82%AF%E3%82%B9FC"
+   },
+   "ウォリアーズFC": {
+    "primary": "#4169e1",
+    "secondary": "",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%A6%E3%82%A9%E3%83%AA%E3%82%A2%E3%83%BC%E3%82%BAFC"
+   },
+   "エストゥディアンテス・デ・ラ・プラタ": {
+    "primary": "#e60012",
+    "secondary": "#ffffff",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%A8%E3%82%B9%E3%83%88%E3%82%A5%E3%83%87%E3%82%A3%E3%82%A2%E3%83%B3%E3%83%86%E3%82%B9%E3%83%BB%E3%83%87%E3%83%BB%E3%83%A9%E3%83%BB%E3%83%97%E3%83%A9%E3%82%BF"
+   },
+   "エストレーラ宮崎": {
+    "primary": "#e60012",
+    "secondary": "",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%A8%E3%82%B9%E3%83%88%E3%83%AC%E3%83%BC%E3%83%A9%E5%AE%AE%E5%B4%8E"
+   },
+   "エスペランス・スポルティーブ・ドゥ・チュニス": {
+    "primary": "#e60012",
+    "secondary": "#ffe100",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%A8%E3%82%B9%E3%83%9A%E3%83%A9%E3%83%B3%E3%82%B9%E3%83%BB%E3%82%B9%E3%83%9D%E3%83%AB%E3%83%86%E3%82%A3%E3%83%BC%E3%83%96%E3%83%BB%E3%83%89%E3%82%A5%E3%83%BB%E3%83%81%E3%83%A5%E3%83%8B%E3%82%B9"
+   },
+   "エミレーツ・クラブ": {
+    "primary": "#009944",
+    "secondary": "#ffffff",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%A8%E3%83%9F%E3%83%AC%E3%83%BC%E3%83%84%E3%83%BB%E3%82%AF%E3%83%A9%E3%83%96"
+   },
+   "オエステFC": {
+    "primary": "#e60012",
+    "secondary": "#000000",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%AA%E3%82%A8%E3%82%B9%E3%83%86FC"
+   },
+   "オリンピアコスFC": {
+    "primary": "#e60012",
+    "secondary": "#ffffff",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%AA%E3%83%AA%E3%83%B3%E3%83%94%E3%82%A2%E3%82%B3%E3%82%B9FC"
+   },
+   "オリンピア・アスンシオン": {
+    "primary": "#ffffff",
+    "secondary": "#000000",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%AA%E3%83%AA%E3%83%B3%E3%83%94%E3%82%A2%E3%83%BB%E3%82%A2%E3%82%B9%E3%83%B3%E3%82%B7%E3%82%AA%E3%83%B3"
+   },
+   "オークランド・シティFC": {
+    "primary": "#0b1e5a",
+    "secondary": "#ffffff",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%AA%E3%83%BC%E3%82%AF%E3%83%A9%E3%83%B3%E3%83%89%E3%83%BB%E3%82%B7%E3%83%86%E3%82%A3FC"
+   },
+   "オーレスンFK": {
+    "primary": "#f39800",
+    "secondary": "#0068b7",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%AA%E3%83%BC%E3%83%AC%E3%82%B9%E3%83%B3FK"
+   },
+   "カターレ富山": {
+    "primary": "#111987",
+    "secondary": "",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%AB%E3%82%BF%E3%83%BC%E3%83%AC%E5%AF%8C%E5%B1%B1"
+   },
+   "カマタマーレ讃岐": {
+    "primary": "#65aadd",
+    "secondary": "#004471",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%AB%E3%83%9E%E3%82%BF%E3%83%9E%E3%83%BC%E3%83%AC%E8%AE%83%E5%B2%90"
+   },
+   "カールスルーエSC": {
+    "primary": "#0068b7",
+    "secondary": "#ffffff",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%AB%E3%83%BC%E3%83%AB%E3%82%B9%E3%83%AB%E3%83%BC%E3%82%A8SC"
+   },
+   "ガイナーレ鳥取": {
+    "primary": "#32cd32",
+    "secondary": "",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%AC%E3%82%A4%E3%83%8A%E3%83%BC%E3%83%AC%E9%B3%A5%E5%8F%96"
+   },
+   "ガズィアンテプBB": {
+    "primary": "#e60012",
+    "secondary": "#000000",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%AC%E3%82%BA%E3%82%A3%E3%82%A2%E3%83%B3%E3%83%86%E3%83%97BB"
+   },
+   "ガンバ大阪": {
+    "primary": "#003287",
+    "secondary": "#000000",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%AC%E3%83%B3%E3%83%90%E5%A4%A7%E9%98%AA"
+   },
+   "ギラヴァンツ北九州": {
+    "primary": "#fff100",
+    "secondary": "#e60012",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%AE%E3%83%A9%E3%83%B4%E3%82%A1%E3%83%B3%E3%83%84%E5%8C%97%E4%B9%9D%E5%B7%9E"
+   },
+   "クラブ・アメリカ": {
+    "primary": "#f1eb9b",
+    "secondary": "#111d3f",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%AF%E3%83%A9%E3%83%96%E3%83%BB%E3%82%A2%E3%83%A1%E3%83%AA%E3%82%AB"
+   },
+   "クラブ・グアラニー": {
+    "primary": "#ffe100",
+    "secondary": "#000000",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%AF%E3%83%A9%E3%83%96%E3%83%BB%E3%82%B0%E3%82%A2%E3%83%A9%E3%83%8B%E3%83%BC"
+   },
+   "クラブ・ブルッヘ": {
+    "primary": "#000000",
+    "secondary": "#0078bf",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%AF%E3%83%A9%E3%83%96%E3%83%BB%E3%83%96%E3%83%AB%E3%83%83%E3%83%98"
+   },
+   "クラブ・リベルタ": {
+    "primary": "#ffffff",
+    "secondary": "#000000",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%AF%E3%83%A9%E3%83%96%E3%83%BB%E3%83%AA%E3%83%99%E3%83%AB%E3%82%BF"
+   },
+   "クリスタル・パレスFC": {
+    "primary": "#1b458f",
+    "secondary": "#c4122e",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%AF%E3%83%AA%E3%82%B9%E3%82%BF%E3%83%AB%E3%83%BB%E3%83%91%E3%83%AC%E3%82%B9FC"
+   },
+   "クルス・アスル": {
+    "primary": "#0068b7",
+    "secondary": "#ffffff",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%AF%E3%83%AB%E3%82%B9%E3%83%BB%E3%82%A2%E3%82%B9%E3%83%AB"
+   },
+   "クルゼイロEC": {
+    "primary": "#0068b7",
+    "secondary": "#ffffff",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%AF%E3%83%AB%E3%82%BC%E3%82%A4%E3%83%ADEC"
+   },
+   "クルーベ・ジ・レガタス・ブラジル": {
+    "primary": "#e60012",
+    "secondary": "#ffffff",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%AF%E3%83%AB%E3%83%BC%E3%83%99%E3%83%BB%E3%82%B8%E3%83%BB%E3%83%AC%E3%82%AC%E3%82%BF%E3%82%B9%E3%83%BB%E3%83%96%E3%83%A9%E3%82%B8%E3%83%AB"
+   },
+   "クルーベ・ナウチコ・カピバリベ": {
+    "primary": "#e60012",
+    "secondary": "#ffffff",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%AF%E3%83%AB%E3%83%BC%E3%83%99%E3%83%BB%E3%83%8A%E3%82%A6%E3%83%81%E3%82%B3%E3%83%BB%E3%82%AB%E3%83%94%E3%83%90%E3%83%AA%E3%83%99"
+   },
+   "グアラチンゲタ・フチボウ": {
+    "primary": "#e60012",
+    "secondary": "#0068b7",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%B0%E3%82%A2%E3%83%A9%E3%83%81%E3%83%B3%E3%82%B2%E3%82%BF%E3%83%BB%E3%83%95%E3%83%81%E3%83%9C%E3%82%A6"
+   },
+   "グアラニFC": {
+    "primary": "#009944",
+    "secondary": "#ffffff",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%B0%E3%82%A2%E3%83%A9%E3%83%8BFC"
+   },
+   "グルニク・ウェンチナ": {
+    "primary": "#009944",
+    "secondary": "",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%B0%E3%83%AB%E3%83%8B%E3%82%AF%E3%83%BB%E3%82%A6%E3%82%A7%E3%83%B3%E3%83%81%E3%83%8A"
+   },
+   "グレミオ・カタンドゥヴェンセ・ジ・フチボウ": {
+    "primary": "#0068b7",
+    "secondary": "",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%B0%E3%83%AC%E3%83%9F%E3%82%AA%E3%83%BB%E3%82%AB%E3%82%BF%E3%83%B3%E3%83%89%E3%82%A5%E3%83%B4%E3%82%A7%E3%83%B3%E3%82%BB%E3%83%BB%E3%82%B8%E3%83%BB%E3%83%95%E3%83%81%E3%83%9C%E3%82%A6"
+   },
+   "グレミオ・バルエリ": {
+    "primary": "#ffffff",
+    "secondary": "#0b1e5a",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%B0%E3%83%AC%E3%83%9F%E3%82%AA%E3%83%BB%E3%83%90%E3%83%AB%E3%82%A8%E3%83%AA"
+   },
+   "グールニク・ザブジェ": {
+    "primary": "#e60012",
+    "secondary": "#ffffff",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%B0%E3%83%BC%E3%83%AB%E3%83%8B%E3%82%AF%E3%83%BB%E3%82%B6%E3%83%96%E3%82%B8%E3%82%A7"
+   },
+   "ゲイラン・ユナイテッドFC": {
+    "primary": "#009944",
+    "secondary": "#ffffff",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%B2%E3%82%A4%E3%83%A9%E3%83%B3%E3%83%BB%E3%83%A6%E3%83%8A%E3%82%A4%E3%83%86%E3%83%83%E3%83%89FC"
+   },
+   "ゲンチレルビルリイSK": {
+    "primary": "#cc0000",
+    "secondary": "#000000",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%B2%E3%83%B3%E3%83%81%E3%83%AC%E3%83%AB%E3%83%93%E3%83%AB%E3%83%AA%E3%82%A4SK"
+   },
+   "コリチーバFC": {
+    "primary": "#009944",
+    "secondary": "#ffffff",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%B3%E3%83%AA%E3%83%81%E3%83%BC%E3%83%90FC"
+   },
+   "コヴェントリー・シティFC": {
+    "primary": "#00a0e9",
+    "secondary": "",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%B3%E3%83%B4%E3%82%A7%E3%83%B3%E3%83%88%E3%83%AA%E3%83%BC%E3%83%BB%E3%82%B7%E3%83%86%E3%82%A3FC"
+   },
+   "コーンケンFC": {
+    "primary": "#000000",
+    "secondary": "#ffe100",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%B3%E3%83%BC%E3%83%B3%E3%82%B1%E3%83%B3FC"
+   },
+   "サウサンプトンFC": {
+    "primary": "#dd0000",
+    "secondary": "#ffffff",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%B5%E3%82%A6%E3%82%B5%E3%83%B3%E3%83%97%E3%83%88%E3%83%B3FC"
+   },
+   "サウスエンド・ユナイテッドFC": {
+    "primary": "#ffffff",
+    "secondary": "#0068b7",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%B5%E3%82%A6%E3%82%B9%E3%82%A8%E3%83%B3%E3%83%89%E3%83%BB%E3%83%A6%E3%83%8A%E3%82%A4%E3%83%86%E3%83%83%E3%83%89FC"
+   },
+   "サウルコス福井": {
+    "primary": "#00863c",
+    "secondary": "#ef8200",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%B5%E3%82%A6%E3%83%AB%E3%82%B3%E3%82%B9%E7%A6%8F%E4%BA%95"
+   },
+   "サガン鳥栖": {
+    "primary": "#00a1d3",
+    "secondary": "#ea549a",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%B5%E3%82%AC%E3%83%B3%E9%B3%A5%E6%A0%96"
+   },
+   "サントスFC": {
+    "primary": "#ffffff",
+    "secondary": "#000000",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%B5%E3%83%B3%E3%83%88%E3%82%B9FC"
+   },
+   "サンパイオ・コヘイアFC": {
+    "primary": "#009944",
+    "secondary": "#ffe100",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%B5%E3%83%B3%E3%83%91%E3%82%A4%E3%82%AA%E3%83%BB%E3%82%B3%E3%83%98%E3%82%A4%E3%82%A2FC"
+   },
+   "サンパウロFC": {
+    "primary": "#b20d15",
+    "secondary": "#ffffff",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%B5%E3%83%B3%E3%83%91%E3%82%A6%E3%83%ADFC"
+   },
+   "サンフレッチェ広島": {
+    "primary": "#51318f",
+    "secondary": "",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%B5%E3%83%B3%E3%83%95%E3%83%AC%E3%83%83%E3%83%81%E3%82%A7%E5%BA%83%E5%B3%B6"
+   },
+   "サンフレッチェ広島F.C": {
+    "primary": "#51318f",
+    "secondary": "",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%B5%E3%83%B3%E3%83%95%E3%83%AC%E3%83%83%E3%83%81%E3%82%A7%E5%BA%83%E5%B3%B6F.C"
+   },
+   "サン・ジョゼEC": {
+    "primary": "#0068b7",
+    "secondary": "#ffffff",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%B5%E3%83%B3%E3%83%BB%E3%82%B8%E3%83%A7%E3%82%BCEC"
+   },
+   "ザスパクサツ群馬": {
+    "primary": "#013e74",
+    "secondary": "#fedc00",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%B6%E3%82%B9%E3%83%91%E3%82%AF%E3%82%B5%E3%83%84%E7%BE%A4%E9%A6%AC"
+   },
+   "シドニーFC": {
+    "primary": "#87cefa",
+    "secondary": "#002147",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%B7%E3%83%89%E3%83%8B%E3%83%BCFC"
+   },
+   "シャルルロワSC": {
+    "primary": "#000000",
+    "secondary": "#ffffff",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%B7%E3%83%A3%E3%83%AB%E3%83%AB%E3%83%AD%E3%83%AFSC"
+   },
+   "シャン・ユナイテッドFC": {
+    "primary": "#ffffff",
+    "secondary": "",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%B7%E3%83%A3%E3%83%B3%E3%83%BB%E3%83%A6%E3%83%8A%E3%82%A4%E3%83%86%E3%83%83%E3%83%89FC"
+   },
+   "シャーロット・インデペンデンス": {
+    "primary": "#0068b7",
+    "secondary": "",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%B7%E3%83%A3%E3%83%BC%E3%83%AD%E3%83%83%E3%83%88%E3%83%BB%E3%82%A4%E3%83%B3%E3%83%87%E3%83%9A%E3%83%B3%E3%83%87%E3%83%B3%E3%82%B9"
+   },
+   "シント＝トロイデンVV": {
+    "primary": "#ffe100",
+    "secondary": "#0068b7",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%B7%E3%83%B3%E3%83%88%EF%BC%9D%E3%83%88%E3%83%AD%E3%82%A4%E3%83%87%E3%83%B3VV"
+   },
+   "ジェイリースFC": {
+    "primary": "#0079c2",
+    "secondary": "",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%B8%E3%82%A7%E3%82%A4%E3%83%AA%E3%83%BC%E3%82%B9FC"
+   },
+   "ジェフユナイテッド市原・千葉": {
+    "primary": "#fee100",
+    "secondary": "#009261",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%B8%E3%82%A7%E3%83%95%E3%83%A6%E3%83%8A%E3%82%A4%E3%83%86%E3%83%83%E3%83%89%E5%B8%82%E5%8E%9F%E3%83%BB%E5%8D%83%E8%91%89"
+   },
+   "ジムナスティック・タラゴナ": {
+    "primary": "#b22222",
+    "secondary": "",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%B8%E3%83%A0%E3%83%8A%E3%82%B9%E3%83%86%E3%82%A3%E3%83%83%E3%82%AF%E3%83%BB%E3%82%BF%E3%83%A9%E3%82%B4%E3%83%8A"
+   },
+   "ジヤトコサッカー部": {
+    "primary": "#006600",
+    "secondary": "",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%B8%E3%83%A4%E3%83%88%E3%82%B3%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E9%83%A8"
+   },
+   "ジュビロ磐田": {
+    "primary": "#6c8cbd",
+    "secondary": "",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%B8%E3%83%A5%E3%83%93%E3%83%AD%E7%A3%90%E7%94%B0"
+   },
+   "ジョインヴィレEC": {
+    "primary": "#e60012",
+    "secondary": "#000000",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%B8%E3%83%A7%E3%82%A4%E3%83%B3%E3%83%B4%E3%82%A3%E3%83%ACEC"
+   },
+   "ジョホール・ダルル・タクジムFC": {
+    "primary": "#000066",
+    "secondary": "#ff0000",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%B8%E3%83%A7%E3%83%9B%E3%83%BC%E3%83%AB%E3%83%BB%E3%83%80%E3%83%AB%E3%83%AB%E3%83%BB%E3%82%BF%E3%82%AF%E3%82%B8%E3%83%A0FC"
+   },
+   "ジローナFC": {
+    "primary": "#cd2534",
+    "secondary": "",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%B8%E3%83%AD%E3%83%BC%E3%83%8AFC"
+   },
+   "スィヴァススポル": {
+    "primary": "#e60012",
+    "secondary": "#ffffff",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%82%A3%E3%83%B4%E3%82%A1%E3%82%B9%E3%82%B9%E3%83%9D%E3%83%AB"
+   },
+   "スタッド・ランス": {
+    "primary": "#e60012",
+    "secondary": "#ffffff",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%82%BF%E3%83%83%E3%83%89%E3%83%BB%E3%83%A9%E3%83%B3%E3%82%B9"
+   },
+   "スタッド・レンヌ": {
+    "primary": "#e00000",
+    "secondary": "#000000",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%82%BF%E3%83%83%E3%83%89%E3%83%BB%E3%83%AC%E3%83%B3%E3%83%8C"
+   },
+   "スパルタ・ロッテルダム": {
+    "primary": "#e60012",
+    "secondary": "#ffffff",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%91%E3%83%AB%E3%82%BF%E3%83%BB%E3%83%AD%E3%83%83%E3%83%86%E3%83%AB%E3%83%80%E3%83%A0"
+   },
+   "スポルチ・レシフェ": {
+    "primary": "#e60012",
+    "secondary": "#000000",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%9D%E3%83%AB%E3%83%81%E3%83%BB%E3%83%AC%E3%82%B7%E3%83%95%E3%82%A7"
+   },
+   "スポルティボ・ルケーニョ": {
+    "primary": "#0068b7",
+    "secondary": "#ffe100",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%9D%E3%83%AB%E3%83%86%E3%82%A3%E3%83%9C%E3%83%BB%E3%83%AB%E3%82%B1%E3%83%BC%E3%83%8B%E3%83%A7"
+   },
+   "セアラーSC": {
+    "primary": "#000000",
+    "secondary": "#ffffff",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%BB%E3%82%A2%E3%83%A9%E3%83%BCSC"
+   },
+   "セルティックFC": {
+    "primary": "#009944",
+    "secondary": "#ffffff",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%BB%E3%83%AB%E3%83%86%E3%82%A3%E3%83%83%E3%82%AFFC"
+   },
+   "セレッソ大阪": {
+    "primary": "#fa1a82",
+    "secondary": "",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%BB%E3%83%AC%E3%83%83%E3%82%BD%E5%A4%A7%E9%98%AA"
+   },
+   "ソウルイーランドFC": {
+    "primary": "#000130",
+    "secondary": "",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%BD%E3%82%A6%E3%83%AB%E3%82%A4%E3%83%BC%E3%83%A9%E3%83%B3%E3%83%89FC"
+   },
+   "ソニー仙台FC": {
+    "primary": "#00a0e9",
+    "secondary": "#00517e",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%BD%E3%83%8B%E3%83%BC%E4%BB%99%E5%8F%B0FC"
+   },
+   "ソブラジーニョEC": {
+    "primary": "#000000",
+    "secondary": "#ffffff",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%82%BD%E3%83%96%E3%83%A9%E3%82%B8%E3%83%BC%E3%83%8B%E3%83%A7EC"
+   },
+   "チェンライ・ユナイテッドFC": {
+    "primary": "#f39800",
+    "secondary": "#000000",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%81%E3%82%A7%E3%83%B3%E3%83%A9%E3%82%A4%E3%83%BB%E3%83%A6%E3%83%8A%E3%82%A4%E3%83%86%E3%83%83%E3%83%89FC"
+   },
+   "チャイナートFC": {
+    "primary": "#e95098",
+    "secondary": "#ffffff",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%81%E3%83%A3%E3%82%A4%E3%83%8A%E3%83%BC%E3%83%88FC"
+   },
+   "チョンブリーFC": {
+    "primary": "#0068b7",
+    "secondary": "",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%81%E3%83%A7%E3%83%B3%E3%83%96%E3%83%AA%E3%83%BCFC"
+   },
+   "ツエーゲン金沢": {
+    "primary": "#d70c1f",
+    "secondary": "#231815",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%84%E3%82%A8%E3%83%BC%E3%82%B2%E3%83%B3%E9%87%91%E6%B2%A2"
+   },
+   "ティンプーFC": {
+    "primary": "#0068b7",
+    "secondary": "#ffe100",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%86%E3%82%A3%E3%83%B3%E3%83%97%E3%83%BCFC"
+   },
+   "テゲバジャーロ宮崎": {
+    "primary": "#ffffff",
+    "secondary": "#e12a75",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%86%E3%82%B2%E3%83%90%E3%82%B8%E3%83%A3%E3%83%BC%E3%83%AD%E5%AE%AE%E5%B4%8E"
+   },
+   "デッツォーラ島根": {
+    "primary": "#ba0000",
+    "secondary": "#000000",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%87%E3%83%83%E3%83%84%E3%82%A9%E3%83%BC%E3%83%A9%E5%B3%B6%E6%A0%B9"
+   },
+   "デフェンソール・スポルティング": {
+    "primary": "#8f2d8b",
+    "secondary": "#ffffff",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%87%E3%83%95%E3%82%A7%E3%83%B3%E3%82%BD%E3%83%BC%E3%83%AB%E3%83%BB%E3%82%B9%E3%83%9D%E3%83%AB%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0"
+   },
+   "デポルティーボ・ムニシパル": {
+    "primary": "#ffffff",
+    "secondary": "#0b1e5a",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%87%E3%83%9D%E3%83%AB%E3%83%86%E3%82%A3%E3%83%BC%E3%83%9C%E3%83%BB%E3%83%A0%E3%83%8B%E3%82%B7%E3%83%91%E3%83%AB"
+   },
+   "トゥルキェムスポル・ベルリン": {
+    "primary": "#0068b7",
+    "secondary": "#ffffff",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%88%E3%82%A5%E3%83%AB%E3%82%AD%E3%82%A7%E3%83%A0%E3%82%B9%E3%83%9D%E3%83%AB%E3%83%BB%E3%83%99%E3%83%AB%E3%83%AA%E3%83%B3"
+   },
+   "トライアジア プノンペンFC": {
+    "primary": "#ff8000",
+    "secondary": "",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%88%E3%83%A9%E3%82%A4%E3%82%A2%E3%82%B8%E3%82%A2_%E3%83%97%E3%83%8E%E3%83%B3%E3%83%9A%E3%83%B3FC"
+   },
+   "トリノFC": {
+    "primary": "#7b1b02",
+    "secondary": "",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%88%E3%83%AA%E3%83%8EFC"
+   },
+   "ドセ・デ・オクトゥブレ": {
+    "primary": "#0068b7",
+    "secondary": "#ffffff",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%89%E3%82%BB%E3%83%BB%E3%83%87%E3%83%BB%E3%82%AA%E3%82%AF%E3%83%88%E3%82%A5%E3%83%96%E3%83%AC"
+   },
+   "ナガコープFC": {
+    "primary": "#ffe100",
+    "secondary": "",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%8A%E3%82%AC%E3%82%B3%E3%83%BC%E3%83%97FC"
+   },
+   "ネフチ・バクー": {
+    "primary": "#000000",
+    "secondary": "#ffffff",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%8D%E3%83%95%E3%83%81%E3%83%BB%E3%83%90%E3%82%AF%E3%83%BC"
+   },
+   "ハジェルFC": {
+    "primary": "#d9d9d6",
+    "secondary": "",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%8F%E3%82%B8%E3%82%A7%E3%83%ABFC"
+   },
+   "ハノーファー96": {
+    "primary": "#cc0000",
+    "secondary": "#000000",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%8F%E3%83%8E%E3%83%BC%E3%83%95%E3%82%A1%E3%83%BC96"
+   },
+   "ハル・シティAFC": {
+    "primary": "#f18a01",
+    "secondary": "#000000",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%8F%E3%83%AB%E3%83%BB%E3%82%B7%E3%83%86%E3%82%A3AFC"
+   },
+   "ハレルヤFC": {
+    "primary": "#ffffff",
+    "secondary": "#e60012",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%8F%E3%83%AC%E3%83%AB%E3%83%A4FC"
+   },
+   "ハート・オブ・ミドロシアンFC": {
+    "primary": "#7b1f2b",
+    "secondary": "",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%8F%E3%83%BC%E3%83%88%E3%83%BB%E3%82%AA%E3%83%96%E3%83%BB%E3%83%9F%E3%83%89%E3%83%AD%E3%82%B7%E3%82%A2%E3%83%B3FC"
+   },
+   "バンクーバー・ホワイトキャップス": {
+    "primary": "#ffffff",
+    "secondary": "#004094",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%90%E3%83%B3%E3%82%AF%E3%83%BC%E3%83%90%E3%83%BC%E3%83%BB%E3%83%9B%E3%83%AF%E3%82%A4%E3%83%88%E3%82%AD%E3%83%A3%E3%83%83%E3%83%97%E3%82%B9"
+   },
+   "バングーAC": {
+    "primary": "#e60012",
+    "secondary": "#ffffff",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%90%E3%83%B3%E3%82%B0%E3%83%BCAC"
+   },
+   "バーミンガム・シティFC": {
+    "primary": "#0068b7",
+    "secondary": "",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%90%E3%83%BC%E3%83%9F%E3%83%B3%E3%82%AC%E3%83%A0%E3%83%BB%E3%82%B7%E3%83%86%E3%82%A3FC"
+   },
+   "パウリスタFC": {
+    "primary": "#e60012",
+    "secondary": "#000000",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%91%E3%82%A6%E3%83%AA%E3%82%B9%E3%82%BFFC"
+   },
+   "パタヤ・ユナイテッドFC": {
+    "primary": "#ffffff",
+    "secondary": "",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%91%E3%82%BF%E3%83%A4%E3%83%BB%E3%83%A6%E3%83%8A%E3%82%A4%E3%83%86%E3%83%83%E3%83%89FC"
+   },
+   "パナシナイコスFC": {
+    "primary": "#009944",
+    "secondary": "#ffffff",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%91%E3%83%8A%E3%82%B7%E3%83%8A%E3%82%A4%E3%82%B3%E3%82%B9FC"
+   },
+   "パラナ・サッカー・テクニカル・センター": {
+    "primary": "#0b1e5a",
+    "secondary": "",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%91%E3%83%A9%E3%83%8A%E3%83%BB%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%83%BB%E3%83%86%E3%82%AF%E3%83%8B%E3%82%AB%E3%83%AB%E3%83%BB%E3%82%BB%E3%83%B3%E3%82%BF%E3%83%BC"
+   },
+   "パリ・サンジェルマンFC": {
+    "primary": "#0b1e5a",
+    "secondary": "#e60012",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%91%E3%83%AA%E3%83%BB%E3%82%B5%E3%83%B3%E3%82%B8%E3%82%A7%E3%83%AB%E3%83%9E%E3%83%B3FC"
+   },
+   "パルチザン・ベオグラード": {
+    "primary": "#000000",
+    "secondary": "#ffffff",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%91%E3%83%AB%E3%83%81%E3%82%B6%E3%83%B3%E3%83%BB%E3%83%99%E3%82%AA%E3%82%B0%E3%83%A9%E3%83%BC%E3%83%89"
+   },
+   "ヒバーニアンズFC": {
+    "primary": "#000000",
+    "secondary": "#ffffff",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%92%E3%83%90%E3%83%BC%E3%83%8B%E3%82%A2%E3%83%B3%E3%82%BAFC"
+   },
+   "ビンズオンFC": {
+    "primary": "#8f2d8b",
+    "secondary": "#0068b7",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%93%E3%83%B3%E3%82%BA%E3%82%AA%E3%83%B3FC"
+   },
+   "ファジアーノ岡山FC": {
+    "primary": "#b5003c",
+    "secondary": "",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A1%E3%82%B8%E3%82%A2%E3%83%BC%E3%83%8E%E5%B2%A1%E5%B1%B1FC"
+   },
+   "ファジアーノ岡山ネクスト": {
+    "primary": "#cc0066",
+    "secondary": "",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A1%E3%82%B8%E3%82%A2%E3%83%BC%E3%83%8E%E5%B2%A1%E5%B1%B1%E3%83%8D%E3%82%AF%E3%82%B9%E3%83%88"
+   },
+   "フィゲイレンセFC": {
+    "primary": "#000000",
+    "secondary": "#ffffff",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A3%E3%82%B2%E3%82%A4%E3%83%AC%E3%83%B3%E3%82%BBFC"
+   },
+   "フェイエノールト": {
+    "primary": "#e60012",
+    "secondary": "#ffffff",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A7%E3%82%A4%E3%82%A8%E3%83%8E%E3%83%BC%E3%83%AB%E3%83%88"
+   },
+   "フェネルバフチェSK": {
+    "primary": "#ffe100",
+    "secondary": "#0068b7",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A7%E3%83%8D%E3%83%AB%E3%83%90%E3%83%95%E3%83%81%E3%82%A7SK"
+   },
+   "フォルカークFC": {
+    "primary": "#0068b7",
+    "secondary": "#ffffff",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A9%E3%83%AB%E3%82%AB%E3%83%BC%E3%82%AFFC"
+   },
+   "フォルタレーザEC": {
+    "primary": "#074ca1",
+    "secondary": "#e40f18",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A9%E3%83%AB%E3%82%BF%E3%83%AC%E3%83%BC%E3%82%B6EC"
+   },
+   "フォルトゥナ・デュッセルドルフ": {
+    "primary": "#e60012",
+    "secondary": "",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A9%E3%83%AB%E3%83%88%E3%82%A5%E3%83%8A%E3%83%BB%E3%83%87%E3%83%A5%E3%83%83%E3%82%BB%E3%83%AB%E3%83%89%E3%83%AB%E3%83%95"
+   },
+   "フォートローダーデイル・ストライカーズ": {
+    "primary": "#ffe100",
+    "secondary": "#e60012",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A9%E3%83%BC%E3%83%88%E3%83%AD%E3%83%BC%E3%83%80%E3%83%BC%E3%83%87%E3%82%A4%E3%83%AB%E3%83%BB%E3%82%B9%E3%83%88%E3%83%A9%E3%82%A4%E3%82%AB%E3%83%BC%E3%82%BA"
+   },
+   "フルミネンセFC": {
+    "primary": "#8c2a3c",
+    "secondary": "#ffffff",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%95%E3%83%AB%E3%83%9F%E3%83%8D%E3%83%B3%E3%82%BBFC"
+   },
+   "ブラウブリッツ秋田": {
+    "primary": "#005bab",
+    "secondary": "",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%96%E3%83%A9%E3%82%A6%E3%83%96%E3%83%AA%E3%83%83%E3%83%84%E7%A7%8B%E7%94%B0"
+   },
+   "ブラジリエンセFC": {
+    "primary": "#ffe100",
+    "secondary": "",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%96%E3%83%A9%E3%82%B8%E3%83%AA%E3%82%A8%E3%83%B3%E3%82%BBFC"
+   },
+   "ブラックバーン・ローヴァーズFC": {
+    "primary": "#009ee0",
+    "secondary": "#ffffff",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%96%E3%83%A9%E3%83%83%E3%82%AF%E3%83%90%E3%83%BC%E3%83%B3%E3%83%BB%E3%83%AD%E3%83%BC%E3%83%B4%E3%82%A1%E3%83%BC%E3%82%BAFC"
+   },
+   "ブランデュー弘前FC": {
+    "primary": "#e3007f",
+    "secondary": "",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%96%E3%83%A9%E3%83%B3%E3%83%87%E3%83%A5%E3%83%BC%E5%BC%98%E5%89%8DFC"
+   },
+   "ブリオベッカ浦安・市川": {
+    "primary": "#203e8b",
+    "secondary": "",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%96%E3%83%AA%E3%82%AA%E3%83%99%E3%83%83%E3%82%AB%E6%B5%A6%E5%AE%89%E3%83%BB%E5%B8%82%E5%B7%9D"
+   },
+   "ブリスベン・ロアーFC": {
+    "primary": "#f39800",
+    "secondary": "",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%96%E3%83%AA%E3%82%B9%E3%83%99%E3%83%B3%E3%83%BB%E3%83%AD%E3%82%A2%E3%83%BCFC"
+   },
+   "ベガルタ仙台": {
+    "primary": "#ffdf00",
+    "secondary": "#e60012",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%99%E3%82%AC%E3%83%AB%E3%82%BF%E4%BB%99%E5%8F%B0"
+   },
+   "ベシクタシュJK": {
+    "primary": "#000000",
+    "secondary": "#ffffff",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%99%E3%82%B7%E3%82%AF%E3%82%BF%E3%82%B7%E3%83%A5JK"
+   },
+   "ペルセポリスFC": {
+    "primary": "#e60012",
+    "secondary": "#ffffff",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%9A%E3%83%AB%E3%82%BB%E3%83%9D%E3%83%AA%E3%82%B9FC"
+   },
+   "ホウガン・ユナイテッドFC": {
+    "primary": "#ea5404",
+    "secondary": "#014099",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%9B%E3%82%A6%E3%82%AC%E3%83%B3%E3%83%BB%E3%83%A6%E3%83%8A%E3%82%A4%E3%83%86%E3%83%83%E3%83%89FC"
+   },
+   "ボアヴィスタFC": {
+    "primary": "#000000",
+    "secondary": "#ffffff",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%9C%E3%82%A2%E3%83%B4%E3%82%A3%E3%82%B9%E3%82%BFFC"
+   },
+   "ボタフォゴFC (パライバ州)": {
+    "primary": "#000000",
+    "secondary": "#ffffff",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%9C%E3%82%BF%E3%83%95%E3%82%A9%E3%82%B4FC_%28%E3%83%91%E3%83%A9%E3%82%A4%E3%83%90%E5%B7%9E%29"
+   },
+   "ボタフォゴFR": {
+    "primary": "#000000",
+    "secondary": "#ffffff",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%9C%E3%82%BF%E3%83%95%E3%82%A9%E3%82%B4FR"
+   },
+   "ボルシア・ドルトムント": {
+    "primary": "#000000",
+    "secondary": "#ffe100",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%9C%E3%83%AB%E3%82%B7%E3%82%A2%E3%83%BB%E3%83%89%E3%83%AB%E3%83%88%E3%83%A0%E3%83%B3%E3%83%88"
+   },
+   "ボルトン・ワンダラーズFC": {
+    "primary": "#ffffff",
+    "secondary": "#0b1e5a",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%9C%E3%83%AB%E3%83%88%E3%83%B3%E3%83%BB%E3%83%AF%E3%83%B3%E3%83%80%E3%83%A9%E3%83%BC%E3%82%BAFC"
+   },
+   "ポリス・テロFC": {
+    "primary": "#e60012",
+    "secondary": "",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%9D%E3%83%AA%E3%82%B9%E3%83%BB%E3%83%86%E3%83%ADFC"
+   },
+   "ポーツマスFC": {
+    "primary": "#0068b7",
+    "secondary": "",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%9D%E3%83%BC%E3%83%84%E3%83%9E%E3%82%B9FC"
+   },
+   "ポートFC": {
+    "primary": "#f39800",
+    "secondary": "#0068b7",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%9D%E3%83%BC%E3%83%88FC"
+   },
+   "マドゥレイラEC": {
+    "primary": "#0068b7",
+    "secondary": "#ffe100",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%9E%E3%83%89%E3%82%A5%E3%83%AC%E3%82%A4%E3%83%A9EC"
+   },
+   "マリーリアAC": {
+    "primary": "#ffffff",
+    "secondary": "",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%9E%E3%83%AA%E3%83%BC%E3%83%AA%E3%82%A2AC"
+   },
+   "マルヤス工業フットボールクラブ": {
+    "primary": "#f70018",
+    "secondary": "",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%9E%E3%83%AB%E3%83%A4%E3%82%B9%E5%B7%A5%E6%A5%AD%E3%83%95%E3%83%83%E3%83%88%E3%83%9C%E3%83%BC%E3%83%AB%E3%82%AF%E3%83%A9%E3%83%96"
+   },
+   "ミネベアミツミFC": {
+    "primary": "#004b9e",
+    "secondary": "",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%9F%E3%83%8D%E3%83%99%E3%82%A2%E3%83%9F%E3%83%84%E3%83%9FFC"
+   },
+   "ムアントン・ユナイテッドFC": {
+    "primary": "#e60012",
+    "secondary": "#000000",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%A0%E3%82%A2%E3%83%B3%E3%83%88%E3%83%B3%E3%83%BB%E3%83%A6%E3%83%8A%E3%82%A4%E3%83%86%E3%83%83%E3%83%89FC"
+   },
+   "ムンバイ・シティFC": {
+    "primary": "#0068b7",
+    "secondary": "",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%A0%E3%83%B3%E3%83%90%E3%82%A4%E3%83%BB%E3%82%B7%E3%83%86%E3%82%A3FC"
+   },
+   "メルボルン・ビクトリーFC": {
+    "primary": "#05093f",
+    "secondary": "#808080",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%A1%E3%83%AB%E3%83%9C%E3%83%AB%E3%83%B3%E3%83%BB%E3%83%93%E3%82%AF%E3%83%88%E3%83%AA%E3%83%BCFC"
+   },
+   "モジミリンEC": {
+    "primary": "#e60012",
+    "secondary": "#ffffff",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%A2%E3%82%B8%E3%83%9F%E3%83%AA%E3%83%B3EC"
+   },
+   "モフン・バガンAC": {
+    "primary": "#7b1f2b",
+    "secondary": "",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%A2%E3%83%95%E3%83%B3%E3%83%BB%E3%83%90%E3%82%AC%E3%83%B3AC"
+   },
+   "モンテディオ山形": {
+    "primary": "#014099",
+    "secondary": "",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%A2%E3%83%B3%E3%83%86%E3%83%87%E3%82%A3%E3%82%AA%E5%B1%B1%E5%BD%A2"
+   },
+   "ユヴェントスFC": {
+    "primary": "#ffffff",
+    "secondary": "#000000",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%A6%E3%83%B4%E3%82%A7%E3%83%B3%E3%83%88%E3%82%B9FC"
+   },
+   "ラインメール青森FC": {
+    "primary": "#1d2087",
+    "secondary": "",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%A9%E3%82%A4%E3%83%B3%E3%83%A1%E3%83%BC%E3%83%AB%E9%9D%92%E6%A3%AEFC"
+   },
+   "ラシン・クラブ": {
+    "primary": "#ffffff",
+    "secondary": "",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%A9%E3%82%B7%E3%83%B3%E3%83%BB%E3%82%AF%E3%83%A9%E3%83%96"
+   },
+   "ラシン・クラブ・デ・モンテビデオ": {
+    "primary": "#009944",
+    "secondary": "#ffffff",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%A9%E3%82%B7%E3%83%B3%E3%83%BB%E3%82%AF%E3%83%A9%E3%83%96%E3%83%BB%E3%83%87%E3%83%BB%E3%83%A2%E3%83%B3%E3%83%86%E3%83%93%E3%83%87%E3%82%AA"
+   },
+   "ラドミアク・ラドム": {
+    "primary": "#009944",
+    "secondary": "#ffffff",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%A9%E3%83%89%E3%83%9F%E3%82%A2%E3%82%AF%E3%83%BB%E3%83%A9%E3%83%89%E3%83%A0"
+   },
+   "リヴァプールFC": {
+    "primary": "#dd0000",
+    "secondary": "",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%AA%E3%83%B4%E3%82%A1%E3%83%97%E3%83%BC%E3%83%ABFC"
+   },
+   "ルヴェルデンセEC": {
+    "primary": "#ffffff",
+    "secondary": "#009944",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%AB%E3%83%B4%E3%82%A7%E3%83%AB%E3%83%87%E3%83%B3%E3%82%BBEC"
+   },
+   "レアル・ソシエダ": {
+    "primary": "#0067b1",
+    "secondary": "#ffffff",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%AC%E3%82%A2%E3%83%AB%E3%83%BB%E3%82%BD%E3%82%B7%E3%82%A8%E3%83%80"
+   },
+   "レイラック滋賀FC": {
+    "primary": "#5db8e9",
+    "secondary": "#a87bc9",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%AC%E3%82%A4%E3%83%A9%E3%83%83%E3%82%AF%E6%BB%8B%E8%B3%80FC"
+   },
+   "レスター・シティFC": {
+    "primary": "#0152a1",
+    "secondary": "",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%AC%E3%82%B9%E3%82%BF%E3%83%BC%E3%83%BB%E3%82%B7%E3%83%86%E3%82%A3FC"
+   },
+   "レッドスター・ベオグラード": {
+    "primary": "#e60012",
+    "secondary": "#ffffff",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%AC%E3%83%83%E3%83%89%E3%82%B9%E3%82%BF%E3%83%BC%E3%83%BB%E3%83%99%E3%82%AA%E3%82%B0%E3%83%A9%E3%83%BC%E3%83%89"
+   },
+   "レッドブル・ブラガンチーノ": {
+    "primary": "#000000",
+    "secondary": "#ffffff",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%AC%E3%83%83%E3%83%89%E3%83%96%E3%83%AB%E3%83%BB%E3%83%96%E3%83%A9%E3%82%AC%E3%83%B3%E3%83%81%E3%83%BC%E3%83%8E"
+   },
+   "レッドブル・ブラジル": {
+    "primary": "#ffffff",
+    "secondary": "#e60012",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%AC%E3%83%83%E3%83%89%E3%83%96%E3%83%AB%E3%83%BB%E3%83%96%E3%83%A9%E3%82%B8%E3%83%AB"
+   },
+   "レノファ山口FC": {
+    "primary": "#ff6000",
+    "secondary": "",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%AC%E3%83%8E%E3%83%95%E3%82%A1%E5%B1%B1%E5%8F%A3FC"
+   },
+   "レバンテUD": {
+    "primary": "#005ca5",
+    "secondary": "#b4053f",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%AC%E3%83%90%E3%83%B3%E3%83%86UD"
+   },
+   "レヒア・グダニスク": {
+    "primary": "#ffffff",
+    "secondary": "#009944",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%AC%E3%83%92%E3%82%A2%E3%83%BB%E3%82%B0%E3%83%80%E3%83%8B%E3%82%B9%E3%82%AF"
+   },
+   "ロアッソ熊本": {
+    "primary": "#c20020",
+    "secondary": "",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%AD%E3%82%A2%E3%83%83%E3%82%BD%E7%86%8A%E6%9C%AC"
+   },
+   "ロサンゼルス・ギャラクシー": {
+    "primary": "#ffffff",
+    "secondary": "#14284b",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%AD%E3%82%B5%E3%83%B3%E3%82%BC%E3%83%AB%E3%82%B9%E3%83%BB%E3%82%AE%E3%83%A3%E3%83%A9%E3%82%AF%E3%82%B7%E3%83%BC"
+   },
+   "ロンドリーナEC": {
+    "primary": "#ffffff",
+    "secondary": "",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%AD%E3%83%B3%E3%83%89%E3%83%AA%E3%83%BC%E3%83%8AEC"
+   },
+   "ローダJC": {
+    "primary": "#ffe100",
+    "secondary": "#000000",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%AD%E3%83%BC%E3%83%80JC"
+   },
+   "ヴァンフォーレ甲府": {
+    "primary": "#1937b7",
+    "secondary": "",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%B4%E3%82%A1%E3%83%B3%E3%83%95%E3%82%A9%E3%83%BC%E3%83%AC%E7%94%B2%E5%BA%9C"
+   },
+   "ヴァンラーレ八戸": {
+    "primary": "#14a83b",
+    "secondary": "",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%B4%E3%82%A1%E3%83%B3%E3%83%A9%E3%83%BC%E3%83%AC%E5%85%AB%E6%88%B8"
+   },
+   "ヴィアティン三重": {
+    "primary": "#e95119",
+    "secondary": "",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%B4%E3%82%A3%E3%82%A2%E3%83%86%E3%82%A3%E3%83%B3%E4%B8%89%E9%87%8D"
+   },
+   "ヴィジェフ・ウッチ": {
+    "primary": "#e60012",
+    "secondary": "#ffffff",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%B4%E3%82%A3%E3%82%B8%E3%82%A7%E3%83%95%E3%83%BB%E3%82%A6%E3%83%83%E3%83%81"
+   },
+   "ヴィッセル神戸": {
+    "primary": "#9d0020",
+    "secondary": "#ffffff",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%B4%E3%82%A3%E3%83%83%E3%82%BB%E3%83%AB%E7%A5%9E%E6%88%B8"
+   },
+   "ヴィトーリアSC": {
+    "primary": "#ffffff",
+    "secondary": "#000000",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%B4%E3%82%A3%E3%83%88%E3%83%BC%E3%83%AA%E3%82%A2SC"
+   },
+   "ヴィラ・ノヴァAC": {
+    "primary": "#e60012",
+    "secondary": "",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%B4%E3%82%A3%E3%83%A9%E3%83%BB%E3%83%8E%E3%83%B4%E3%82%A1AC"
+   },
+   "ヴェルスパ大分": {
+    "primary": "#d7011d",
+    "secondary": "#ffffff",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%B4%E3%82%A7%E3%83%AB%E3%82%B9%E3%83%91%E5%A4%A7%E5%88%86"
+   },
+   "ヴェロスクロノス都農": {
+    "primary": "#0099bf",
+    "secondary": "",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%B4%E3%82%A7%E3%83%AD%E3%82%B9%E3%82%AF%E3%83%AD%E3%83%8E%E3%82%B9%E9%83%BD%E8%BE%B2"
+   },
+   "ヴォルタ・レドンダFC": {
+    "primary": "#ffe100",
+    "secondary": "#000000",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%B4%E3%82%A9%E3%83%AB%E3%82%BF%E3%83%BB%E3%83%AC%E3%83%89%E3%83%B3%E3%83%80FC"
+   },
+   "ヴッパーターラーSVボルシア": {
+    "primary": "#e60012",
+    "secondary": "#0068b7",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E3%83%B4%E3%83%83%E3%83%91%E3%83%BC%E3%82%BF%E3%83%BC%E3%83%A9%E3%83%BCSV%E3%83%9C%E3%83%AB%E3%82%B7%E3%82%A2"
+   },
+   "三菱水島FC": {
+    "primary": "#e60012",
+    "secondary": "",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E4%B8%89%E8%8F%B1%E6%B0%B4%E5%B3%B6FC"
+   },
+   "上海海港足球倶楽部": {
+    "primary": "#e20e0e",
+    "secondary": "#ffffff",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E4%B8%8A%E6%B5%B7%E6%B5%B7%E6%B8%AF%E8%B6%B3%E7%90%83%E5%80%B6%E6%A5%BD%E9%83%A8"
+   },
+   "京都サンガF.C.": {
+    "primary": "#750069",
+    "secondary": "",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E4%BA%AC%E9%83%BD%E3%82%B5%E3%83%B3%E3%82%ACF.C."
+   },
+   "仁川ユナイテッドFC": {
+    "primary": "#0d509f",
+    "secondary": "#231816",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E4%BB%81%E5%B7%9D%E3%83%A6%E3%83%8A%E3%82%A4%E3%83%86%E3%83%83%E3%83%89FC"
+   },
+   "傑志体育会": {
+    "primary": "#16216a",
+    "secondary": "",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E5%82%91%E5%BF%97%E4%BD%93%E8%82%B2%E4%BC%9A"
+   },
+   "光州FC": {
+    "primary": "#f6bc00",
+    "secondary": "#5f0e0d",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E5%85%89%E5%B7%9EFC"
+   },
+   "全北現代モータース": {
+    "primary": "#034f36",
+    "secondary": "",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E5%85%A8%E5%8C%97%E7%8F%BE%E4%BB%A3%E3%83%A2%E3%83%BC%E3%82%BF%E3%83%BC%E3%82%B9"
+   },
+   "全南ドラゴンズ": {
+    "primary": "#ffdd00",
+    "secondary": "#000000",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E5%85%A8%E5%8D%97%E3%83%89%E3%83%A9%E3%82%B4%E3%83%B3%E3%82%BA"
+   },
+   "八幡製鉄サッカー部": {
+    "primary": "#b3424a",
+    "secondary": "",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E5%85%AB%E5%B9%A1%E8%A3%BD%E9%89%84%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E9%83%A8"
+   },
+   "北京国安足球倶楽部": {
+    "primary": "#046a38",
+    "secondary": "",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E5%8C%97%E4%BA%AC%E5%9B%BD%E5%AE%89%E8%B6%B3%E7%90%83%E5%80%B6%E6%A5%BD%E9%83%A8"
+   },
+   "北海道コンサドーレ札幌": {
+    "primary": "#cc0000",
+    "secondary": "#003850",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E5%8C%97%E6%B5%B7%E9%81%93%E3%82%B3%E3%83%B3%E3%82%B5%E3%83%89%E3%83%BC%E3%83%AC%E6%9C%AD%E5%B9%8C"
+   },
+   "北海道十勝スカイアース": {
+    "primary": "#1f438c",
+    "secondary": "#177240",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E5%8C%97%E6%B5%B7%E9%81%93%E5%8D%81%E5%8B%9D%E3%82%B9%E3%82%AB%E3%82%A4%E3%82%A2%E3%83%BC%E3%82%B9"
+   },
+   "南葛SC": {
+    "primary": "#ffffff",
+    "secondary": "",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E5%8D%97%E8%91%9BSC"
+   },
+   "名古屋グランパス": {
+    "primary": "#d80c18",
+    "secondary": "#f8b500",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E5%90%8D%E5%8F%A4%E5%B1%8B%E3%82%B0%E3%83%A9%E3%83%B3%E3%83%91%E3%82%B9"
+   },
+   "名古屋グランパスエイト": {
+    "primary": "#d80c18",
+    "secondary": "#f8b500",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E5%90%8D%E5%8F%A4%E5%B1%8B%E3%82%B0%E3%83%A9%E3%83%B3%E3%83%91%E3%82%B9%E3%82%A8%E3%82%A4%E3%83%88"
+   },
+   "名古屋サッカークラブ": {
+    "primary": "#fff100",
+    "secondary": "#06348a",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E5%90%8D%E5%8F%A4%E5%B1%8B%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E3%82%AF%E3%83%A9%E3%83%96"
+   },
+   "品川CC横浜": {
+    "primary": "#153460",
+    "secondary": "#223f99",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E5%93%81%E5%B7%9DCC%E6%A8%AA%E6%B5%9C"
+   },
+   "城南FC": {
+    "primary": "#000000",
+    "secondary": "",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E5%9F%8E%E5%8D%97FC"
+   },
+   "大分トリニータ": {
+    "primary": "#140b8c",
+    "secondary": "#ffb606",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E5%A4%A7%E5%88%86%E3%83%88%E3%83%AA%E3%83%8B%E3%83%BC%E3%82%BF"
+   },
+   "大田ハナシチズン": {
+    "primary": "#007d6f",
+    "secondary": "#972a41",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E5%A4%A7%E7%94%B0%E3%83%8F%E3%83%8A%E3%82%B7%E3%83%81%E3%82%BA%E3%83%B3"
+   },
+   "大連実徳足球倶楽部": {
+    "primary": "#000000",
+    "secondary": "",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E5%A4%A7%E9%80%A3%E5%AE%9F%E5%BE%B3%E8%B6%B3%E7%90%83%E5%80%B6%E6%A5%BD%E9%83%A8"
+   },
+   "大邱FC": {
+    "primary": "#90cff1",
+    "secondary": "#ffffff",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E5%A4%A7%E9%82%B1FC"
+   },
+   "奈良クラブ": {
+    "primary": "#013e7f",
+    "secondary": "#ac1244",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E5%A5%88%E8%89%AF%E3%82%AF%E3%83%A9%E3%83%96"
+   },
+   "安山警察庁サッカー団": {
+    "primary": "#0068b7",
+    "secondary": "",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E5%AE%89%E5%B1%B1%E8%AD%A6%E5%AF%9F%E5%BA%81%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E5%9B%A3"
+   },
+   "富山新庄クラブ": {
+    "primary": "#0000cd",
+    "secondary": "",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E5%AF%8C%E5%B1%B1%E6%96%B0%E5%BA%84%E3%82%AF%E3%83%A9%E3%83%96"
+   },
+   "尚州尚武FC": {
+    "primary": "#b91c23",
+    "secondary": "#00264a",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E5%B0%9A%E5%B7%9E%E5%B0%9A%E6%AD%A6FC"
+   },
+   "川崎フロンターレ": {
+    "primary": "#23b1ea",
+    "secondary": "#221615",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E5%B7%9D%E5%B4%8E%E3%83%95%E3%83%AD%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%AC"
+   },
+   "広州足球倶楽部": {
+    "primary": "#ff0000",
+    "secondary": "#ffffff",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E5%BA%83%E5%B7%9E%E8%B6%B3%E7%90%83%E5%80%B6%E6%A5%BD%E9%83%A8"
+   },
+   "徳島ヴォルティス": {
+    "primary": "#01426a",
+    "secondary": "#007749",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E5%BE%B3%E5%B3%B6%E3%83%B4%E3%82%A9%E3%83%AB%E3%83%86%E3%82%A3%E3%82%B9"
+   },
+   "愛媛FC": {
+    "primary": "#f39801",
+    "secondary": "",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E6%84%9B%E5%AA%9BFC"
+   },
+   "慶南FC": {
+    "primary": "#e83827",
+    "secondary": "#f5cd21",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E6%85%B6%E5%8D%97FC"
+   },
+   "慶州韓国水力原子力FC": {
+    "primary": "#009944",
+    "secondary": "",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E6%85%B6%E5%B7%9E%E9%9F%93%E5%9B%BD%E6%B0%B4%E5%8A%9B%E5%8E%9F%E5%AD%90%E5%8A%9BFC"
+   },
+   "日本製鉄釜石シーウェイブス": {
+    "primary": "#d50000",
+    "secondary": "",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E6%97%A5%E6%9C%AC%E8%A3%BD%E9%89%84%E9%87%9C%E7%9F%B3%E3%82%B7%E3%83%BC%E3%82%A6%E3%82%A7%E3%82%A4%E3%83%96%E3%82%B9"
+   },
+   "晨曦体育会": {
+    "primary": "#ff7f00",
+    "secondary": "",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E6%99%A8%E6%9B%A6%E4%BD%93%E8%82%B2%E4%BC%9A"
+   },
+   "本田技研工業フットボールクラブ": {
+    "primary": "#ffffff",
+    "secondary": "#d01009",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E6%9C%AC%E7%94%B0%E6%8A%80%E7%A0%94%E5%B7%A5%E6%A5%AD%E3%83%95%E3%83%83%E3%83%88%E3%83%9C%E3%83%BC%E3%83%AB%E3%82%AF%E3%83%A9%E3%83%96"
+   },
+   "東京23FC": {
+    "primary": "#ffffff",
+    "secondary": "#c60019",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E6%9D%B1%E4%BA%AC23FC"
+   },
+   "東京ユナイテッドFC": {
+    "primary": "#000f64",
+    "secondary": "",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E6%9D%B1%E4%BA%AC%E3%83%A6%E3%83%8A%E3%82%A4%E3%83%86%E3%83%83%E3%83%89FC"
+   },
+   "東京ヴェルディ1969": {
+    "primary": "#046a38",
+    "secondary": "#a89968",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E6%9D%B1%E4%BA%AC%E3%83%B4%E3%82%A7%E3%83%AB%E3%83%87%E3%82%A31969"
+   },
+   "東北電力サッカー部": {
+    "primary": "#008a57",
+    "secondary": "",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E6%9D%B1%E5%8C%97%E9%9B%BB%E5%8A%9B%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E9%83%A8"
+   },
+   "東邦チタニウムサッカー部": {
+    "primary": "#5f1985",
+    "secondary": "",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E6%9D%B1%E9%82%A6%E3%83%81%E3%82%BF%E3%83%8B%E3%82%A6%E3%83%A0%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E9%83%A8"
+   },
+   "松本山雅FC": {
+    "primary": "#006633",
+    "secondary": "",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E6%9D%BE%E6%9C%AC%E5%B1%B1%E9%9B%85FC"
+   },
+   "柏レイソル": {
+    "primary": "#ffe100",
+    "secondary": "#000000",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E6%9F%8F%E3%83%AC%E3%82%A4%E3%82%BD%E3%83%AB"
+   },
+   "栃木SC": {
+    "primary": "#ffff00",
+    "secondary": "",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E6%A0%83%E6%9C%A8SC"
+   },
+   "栃木シティFC": {
+    "primary": "#002955",
+    "secondary": "#ffffff",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E6%A0%83%E6%9C%A8%E3%82%B7%E3%83%86%E3%82%A3FC"
+   },
+   "横河武蔵野FC": {
+    "primary": "#005eae",
+    "secondary": "#fff100",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E6%A8%AA%E6%B2%B3%E6%AD%A6%E8%94%B5%E9%87%8EFC"
+   },
+   "横浜FC": {
+    "primary": "#ffffff",
+    "secondary": "#00a1e9",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E6%A8%AA%E6%B5%9CFC"
+   },
+   "横浜FC香港": {
+    "primary": "#7d14ff",
+    "secondary": "",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E6%A8%AA%E6%B5%9CFC%E9%A6%99%E6%B8%AF"
+   },
+   "横浜F・マリノス": {
+    "primary": "#004094",
+    "secondary": "#dc0038",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E6%A8%AA%E6%B5%9CF%E3%83%BB%E3%83%9E%E3%83%AA%E3%83%8E%E3%82%B9"
+   },
+   "横浜スポーツ&カルチャークラブ": {
+    "primary": "#5bd3e5",
+    "secondary": "#ffffff",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E6%A8%AA%E6%B5%9C%E3%82%B9%E3%83%9D%E3%83%BC%E3%83%84%26%E3%82%AB%E3%83%AB%E3%83%81%E3%83%A3%E3%83%BC%E3%82%AF%E3%83%A9%E3%83%96"
+   },
+   "横浜フリューゲルス": {
+    "primary": "#ffffff",
+    "secondary": "#0033bf",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E6%A8%AA%E6%B5%9C%E3%83%95%E3%83%AA%E3%83%A5%E3%83%BC%E3%82%B2%E3%83%AB%E3%82%B9"
+   },
+   "横浜猛蹴フットボールクラブ": {
+    "primary": "#00469c",
+    "secondary": "",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E6%A8%AA%E6%B5%9C%E7%8C%9B%E8%B9%B4%E3%83%95%E3%83%83%E3%83%88%E3%83%9C%E3%83%BC%E3%83%AB%E3%82%AF%E3%83%A9%E3%83%96"
+   },
+   "水原FC": {
+    "primary": "#ef0027",
+    "secondary": "#013a6f",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E6%B0%B4%E5%8E%9FFC"
+   },
+   "水原三星ブルーウィングス": {
+    "primary": "#074ca1",
+    "secondary": "#ffffff",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E6%B0%B4%E5%8E%9F%E4%B8%89%E6%98%9F%E3%83%96%E3%83%AB%E3%83%BC%E3%82%A6%E3%82%A3%E3%83%B3%E3%82%B0%E3%82%B9"
+   },
+   "水戸ホーリーホック": {
+    "primary": "#000088",
+    "secondary": "#0075c2",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E6%B0%B4%E6%88%B8%E3%83%9B%E3%83%BC%E3%83%AA%E3%83%BC%E3%83%9B%E3%83%83%E3%82%AF"
+   },
+   "江原FC": {
+    "primary": "#dd5828",
+    "secondary": "#006058",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E6%B1%9F%E5%8E%9FFC"
+   },
+   "沖縄SV": {
+    "primary": "#0d215c",
+    "secondary": "#f4c400",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E6%B2%96%E7%B8%84SV"
+   },
+   "河北足球倶楽部": {
+    "primary": "#ff0000",
+    "secondary": "#ffffff",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E6%B2%B3%E5%8C%97%E8%B6%B3%E7%90%83%E5%80%B6%E6%A5%BD%E9%83%A8"
+   },
+   "河南嵩山龍門足球倶楽部": {
+    "primary": "#dd0000",
+    "secondary": "",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E6%B2%B3%E5%8D%97%E5%B5%A9%E5%B1%B1%E9%BE%8D%E9%96%80%E8%B6%B3%E7%90%83%E5%80%B6%E6%A5%BD%E9%83%A8"
+   },
+   "浙江職業足球倶楽部": {
+    "primary": "#009944",
+    "secondary": "",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E6%B5%99%E6%B1%9F%E8%81%B7%E6%A5%AD%E8%B6%B3%E7%90%83%E5%80%B6%E6%A5%BD%E9%83%A8"
+   },
+   "浦和レッドダイヤモンズ": {
+    "primary": "#e6002d",
+    "secondary": "",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E6%B5%A6%E5%92%8C%E3%83%AC%E3%83%83%E3%83%89%E3%83%80%E3%82%A4%E3%83%A4%E3%83%A2%E3%83%B3%E3%82%BA"
+   },
+   "浦項スティーラース": {
+    "primary": "#fa332e",
+    "secondary": "#000000",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E6%B5%A6%E9%A0%85%E3%82%B9%E3%83%86%E3%82%A3%E3%83%BC%E3%83%A9%E3%83%BC%E3%82%B9"
+   },
+   "深圳市足球倶楽部": {
+    "primary": "#ff0000",
+    "secondary": "#ffffff",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E6%B7%B1%E5%9C%B3%E5%B8%82%E8%B6%B3%E7%90%83%E5%80%B6%E6%A5%BD%E9%83%A8"
+   },
+   "清水エスパルス": {
+    "primary": "#ff8709",
+    "secondary": "#003f68",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E6%B8%85%E6%B0%B4%E3%82%A8%E3%82%B9%E3%83%91%E3%83%AB%E3%82%B9"
+   },
+   "済州SK FC": {
+    "primary": "#f58026",
+    "secondary": "#e51937",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E6%B8%88%E5%B7%9ESK_FC"
+   },
+   "湘南ベルマーレ": {
+    "primary": "#6eb92b",
+    "secondary": "#005ca2",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E6%B9%98%E5%8D%97%E3%83%99%E3%83%AB%E3%83%9E%E3%83%BC%E3%83%AC"
+   },
+   "福井ユナイテッドFC": {
+    "primary": "#01479d",
+    "secondary": "",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E7%A6%8F%E4%BA%95%E3%83%A6%E3%83%8A%E3%82%A4%E3%83%86%E3%83%83%E3%83%89FC"
+   },
+   "福島ユナイテッドFC": {
+    "primary": "#e60012",
+    "secondary": "#000000",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E7%A6%8F%E5%B3%B6%E3%83%A6%E3%83%8A%E3%82%A4%E3%83%86%E3%83%83%E3%83%89FC"
+   },
+   "秋田ノーザンハピネッツ": {
+    "primary": "#e40073",
+    "secondary": "#c48f1f",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E7%A7%8B%E7%94%B0%E3%83%8E%E3%83%BC%E3%82%B6%E3%83%B3%E3%83%8F%E3%83%94%E3%83%8D%E3%83%83%E3%83%84"
+   },
+   "蔚山HD FC": {
+    "primary": "#004290",
+    "secondary": "",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E8%94%9A%E5%B1%B1HD_FC"
+   },
+   "蔚山現代尾浦造船": {
+    "primary": "#ffe100",
+    "secondary": "#009944",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E8%94%9A%E5%B1%B1%E7%8F%BE%E4%BB%A3%E5%B0%BE%E6%B5%A6%E9%80%A0%E8%88%B9"
+   },
+   "藤枝MYFC": {
+    "primary": "#86347c",
+    "secondary": "#ffffff",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E8%97%A4%E6%9E%9DMYFC"
+   },
+   "藤枝市役所サッカー部": {
+    "primary": "#704cbc",
+    "secondary": "",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E8%97%A4%E6%9E%9D%E5%B8%82%E5%BD%B9%E6%89%80%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E9%83%A8"
+   },
+   "貴州人和足球倶楽部": {
+    "primary": "#ffa500",
+    "secondary": "#000000",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E8%B2%B4%E5%B7%9E%E4%BA%BA%E5%92%8C%E8%B6%B3%E7%90%83%E5%80%B6%E6%A5%BD%E9%83%A8"
+   },
+   "遼寧足球倶楽部": {
+    "primary": "#e60012",
+    "secondary": "",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E9%81%BC%E5%AF%A7%E8%B6%B3%E7%90%83%E5%80%B6%E6%A5%BD%E9%83%A8"
+   },
+   "金海FC 2008": {
+    "primary": "#c40317",
+    "secondary": "#a5772e",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E9%87%91%E6%B5%B7FC_2008"
+   },
+   "釜山アイパーク": {
+    "primary": "#ca1329",
+    "secondary": "#ffffff",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E9%87%9C%E5%B1%B1%E3%82%A2%E3%82%A4%E3%83%91%E3%83%BC%E3%82%AF"
+   },
+   "長春亜泰足球倶楽部": {
+    "primary": "#ff2400",
+    "secondary": "#fbea0e",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E9%95%B7%E6%98%A5%E4%BA%9C%E6%B3%B0%E8%B6%B3%E7%90%83%E5%80%B6%E6%A5%BD%E9%83%A8"
+   },
+   "青島西海岸足球倶楽部": {
+    "primary": "#ff0000",
+    "secondary": "",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E9%9D%92%E5%B3%B6%E8%A5%BF%E6%B5%B7%E5%B2%B8%E8%B6%B3%E7%90%83%E5%80%B6%E6%A5%BD%E9%83%A8"
+   },
+   "高知ユナイテッドSC": {
+    "primary": "#b81c22",
+    "secondary": "#005731",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E9%AB%98%E7%9F%A5%E3%83%A6%E3%83%8A%E3%82%A4%E3%83%86%E3%83%83%E3%83%89SC"
+   },
+   "高陽ザイクロFC": {
+    "primary": "#ffffff",
+    "secondary": "#e60012",
+    "source": "wikipedia-colorname",
+    "source_url": "https://ja.wikipedia.org/wiki/%E9%AB%98%E9%99%BD%E3%82%B6%E3%82%A4%E3%82%AF%E3%83%ADFC"
+   },
+   "鹿児島ユナイテッドFC": {
+    "primary": "#2e3b67",
+    "secondary": "#ffffff",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E9%B9%BF%E5%85%90%E5%B3%B6%E3%83%A6%E3%83%8A%E3%82%A4%E3%83%86%E3%83%83%E3%83%89FC"
+   },
+   "鹿島アントラーズ": {
+    "primary": "#b8193f",
+    "secondary": "",
+    "source": "wikipedia-hex",
+    "source_url": "https://ja.wikipedia.org/wiki/%E9%B9%BF%E5%B3%B6%E3%82%A2%E3%83%B3%E3%83%88%E3%83%A9%E3%83%BC%E3%82%BA"
+   }
+  }
+ }
+}

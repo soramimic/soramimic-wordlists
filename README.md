@@ -15,7 +15,7 @@
 | original | 元の単語(表示用) |
 | surface | 変換結果として表示する表層 |
 | pronunciation | 読み(カタカナ)。無い場合はsurfaceから推定される。nationsは漢字を含む表記(大韓民国・米国等)で読みが自明でない行に付与し、カタカナだけの行は空 |
-| team, type, org_id | リスト固有の付加情報(野球・サッカー等)。`team` は所属チーム名で、baseball/football 共通(footballは代表的な1クラブ。取得できない行は空。補完は `tools/enrich_football_team.py`) |
+| team, type, org_id | リスト固有の付加情報(野球・サッカー等)。`team` は所属チーム名で、baseball/football 共通。**baseballは球団の変遷を連ねた文字列**(`-` が移籍、`・` が改称。例 `巨人-日本ハム`, `大洋・横浜`)、**footballは代表的な1クラブ**(`横浜F・マリノス` のように `・` を含む名前があるので区切り文字として扱わないこと。取得できない行は空。補完は `tools/enrich_football_team.py`) |
 | class | sekitsui/plant: 大分類。sekitsuiは魚類/両生類/爬虫類/鳥類/哺乳類、plantは双子葉/単子葉/裸子植物/シダ植物/コケ植物/藻類。分類不明はNA |
 | extinct | sekitsui/plant: 絶滅種か(yes/no)。IUCN絶滅・野生絶滅、または化石タクソンをyesとする |
 | order, family, genus | sekitsui/plant: 分類階級。sekitsuiは目・科(`ネコ目`/`ネコ科`)、plantは科・属(`バラ科`/`サクラ属`。植物は目より科・属が一般的な言及単位なので目は持たない)。Wikidataの日本語ラベル(階級付きの別名があればそちら)、無ければ学名。Wikidataに情報が無い行は空。plantは`wikidata`列が空の行も空にする(和名から逆引きすると動物と同名の行で誤った科を拾うため)。補完は `tools/enrich_sekitsui_taxonomy.py` / `tools/enrich_plant_taxonomy.py` |
@@ -25,7 +25,7 @@
 | category, org, debut_year | youtuber固有: 区分(`youtuber`=実在のYouTuber/`vtuber`=VTuber)、所属事務所・グループ(スラッシュ区切り多値、`org~=ホロライブ` で絞り込む前提。無ければNA)、活動開始年(西暦、無ければNA) |
 | prefecture, city | stations固有: 駅の所在都道府県・市区町村(同名駅の区別用。1行=1駅) |
 | lines | stations固有: 乗り入れ路線(「JR東日本 東北本線」形式、複数は「／」区切り)。Wikidata/Wikipediaに情報が無い駅は空。補完は `tools/enrich_lines.py` |
-| image, image_page | 画像のURL(Wikimedia Commons直リンクまたは本リポジトリのGitHub Releaseアセット)と、ライセンス・作者の確認先ページ(stations/baseball/football/scientist/sekitsui/plant/pokemon/fictional_scientist/fictional_anime_character)。画像が無い行は空。利用時はimage_pageのクレジット条件に従うこと。**sekitsui/plantは実写が取れない行に限り、`class`ごとの概念イメージSVG(`class-image-v1` リリース。画像内に「イメージ」と明記)を分類単位で共有して割り当てている**(実写ではないので、実写だけが欲しい利用側は `.../releases/download/class-image-` で始まるURLを除外すること)。**pokemonは写真ではなく全行が「型色カード」SVG**(タイプの配色と文字だけで描いたもの。キャラクター造形は使わない。詳細は ADR 00002)。**youtuberは自由ライセンスの実写(Commons)が取れた人だけ写真で、残りは配色と文字だけで描いた「象徴カード」SVG**(`images/youtuber/` をrawで参照。画像内に「イメージ」と明記。チャンネルアイコン・サムネイル・キャラクターイラストは一切使わない。カードの配色は本人のイメージカラー(公式が公表しているもの、または公式ポートレートの情報解析で求めた代表色)があればそれを使う。詳細は ADR 00018, 00019) |
+| image, image_page | 画像のURL(Wikimedia Commons直リンクまたは本リポジトリのGitHub Releaseアセット)と、ライセンス・作者の確認先ページ(stations/baseball/football/scientist/sekitsui/plant/pokemon/fictional_scientist/fictional_anime_character)。画像が無い行は空。利用時はimage_pageのクレジット条件に従うこと。**sekitsui/plantは実写が取れない行に限り、`class`ごとの概念イメージSVG(`class-image-v1` リリース。画像内に「イメージ」と明記)を分類単位で共有して割り当てている**(実写ではないので、実写だけが欲しい利用側は `.../releases/download/class-image-` で始まるURLを除外すること)。**pokemonは写真ではなく全行が「型色カード」SVG**(タイプの配色と文字だけで描いたもの。キャラクター造形は使わない。詳細は ADR 00002)。**youtuberは自由ライセンスの実写(Commons)が取れた人だけ写真で、残りは配色と文字だけで描いた「象徴カード」SVG**(`images/youtuber/` をrawで参照。画像内に「イメージ」と明記。チャンネルアイコン・サムネイル・キャラクターイラストは一切使わない。カードの配色は本人のイメージカラー(公式が公表しているもの、または公式ポートレートの情報解析で求めた代表色)があればそれを使う。詳細は ADR 00018, 00019) |。**baseball/football も同じく、実写が無い人には所属チームのチームカラーで描いた「選手カード」SVG**を割り当てている(`images/baseball/` `images/football/` をrawで参照。画像内に「イメージ」と明記。ロゴ・エンブレム・マスコット・ユニフォームの意匠は一切使わない。詳細は ADR 00020)。実写だけが欲しい利用側は `https://raw.githubusercontent.com/soramimic/soramimic-wordlists/` で始まるURL(本リポジトリの生成カード)を除外すること |
 | field | scientist固有: 分野を優先順(物理→化学→数学→天文学→生物学→計算機科学→地学)で並べた単一列のスラッシュ区切り多値(例 `物理/数学`)。切り詰めなし、無ければ`NA`。ソラミミックに部分一致演算子`~=`を追加したので、多値を1列で持ち`field~=物理`で絞り込める(app側 setting.json の対応は別リポジトリ soramimic 側で実施) |
 | era, birth_year, nobel, gender, country, status, description | scientist固有: 時代区分(古代/中世/近世/近代/現代/NA。生年basis)・西暦生年(紀元前は「前287」、不明はNA)・科学系ノーベル賞受賞者か(yes/no、照合不能はNA)・性別(男性/女性/その他/NA)・市民権のある国(情報列。複数は"/"、不明はNA)・生死(物故/存命/NA)・主な業績の短い完結文(記事冒頭の先頭生没年カッコを除去し、「。」区切りで完結文を目安90字まで連結。常に「。」で終わる。ASCIIカンマ・引用符除去、無ければNA) |
 | wikidata | stations: 駅のWikidata QID(差分更新の永続キー)。sekitsui/plant: 画像の取得元になったtaxonのQID(実写画像とセットで埋まるので、実写画像が無い行は空。sekitsui/plantの分類イメージ画像はWikidata由来ではないので空のまま)。youtuber: 本人のQID(画像の有無とは独立に埋まる。同名で複数QIDに当たった人は曖昧として空) |
@@ -36,8 +36,8 @@
 
 | ファイル | 内容 | 出典・クレジット |
 |---|---|---|
-| baseball.csv | プロ野球選手・歴代(type: family/given/full/registered) | Moto(選手表ニキ)様と協力者の皆様。現役の新規追加は[Wikipedia](https://ja.wikipedia.org/) (CC BY-SA 4.0)で自動更新 |
-| football.csv | サッカー選手(J1〜J3・歴代。所属クラブ付き) | ヨロスー様。現役の新規追加はWikipediaで自動更新。所属クラブはWikipedia/[Wikidata](https://www.wikidata.org/) |
+| baseball.csv | プロ野球選手・歴代(type: family/given/full/registered。所属球団・画像URL付き) | Moto(選手表ニキ)様と協力者の皆様。現役の新規追加は[Wikipedia](https://ja.wikipedia.org/) (CC BY-SA 4.0)で自動更新。写真は[Wikimedia Commons](https://commons.wikimedia.org/)(ライセンスは画像ごと。image_page参照)、実写が無い人の選手カード画像は本リポジトリの `images/baseball/`(CC0・実写ではない) |
+| football.csv | サッカー選手(J1〜J3・歴代。所属クラブ・画像URL付き) | ヨロスー様。現役の新規追加はWikipediaで自動更新。所属クラブはWikipedia/[Wikidata](https://www.wikidata.org/)。写真は[Wikimedia Commons](https://commons.wikimedia.org/)(ライセンスは画像ごと。image_page参照)、実写が無い人の選手カード画像は本リポジトリの `images/football/`(CC0・実写ではない) |
 | stations.csv | 駅名(現役駅+路面電車・索道。所在地・写真URL付き) | [Wikidata](https://www.wikidata.org/)/[Wikipedia](https://ja.wikipedia.org/) (CC BY-SA 4.0) で自動更新。旧リストはすきやきすきや様 |
 | nations.csv | 国名(国連加盟国。正式名称・通称・漢字略称・別読み・別カナ表記を同一idで併記) | [mledoze/countries](https://github.com/mledoze/countries) で自動更新。別表記は[Wikipedia](https://ja.wikipedia.org/) (CC BY-SA 4.0)等を参照して手動追加 |
 | scientist.csv | 科学者(物理/化学/数学/天文/生物/計算機/地学。分野・時代区分・生没・国・性別・ノーベル賞・業績説明付き。手選び+著名層) | Wikidata/Wikipediaで自動更新 |
@@ -55,6 +55,7 @@
 - 空耳変換の研究・個人利用を想定しています。各リストの元データの帰属・ライセンスは上表の出典欄を参照してください(Wikidata由来はCC0、Wikipedia由来はCC BY-SA 4.0、nationsは[mledoze/countries](https://github.com/mledoze/countries)(ODbL)由来)
 - 実在人物名のリスト(baseball/football/scientist/youtuberのcategory=youtuber)は公表済みの事実情報(名簿)のみで構成しています。氏名の営利的な顧客誘引を目的とする利用(パブリシティ権に触れうる利用)は行わないでください。youtuberは記事名(活動名)のみを収録し、本名は収録しません
 - youtuber.csvのcategory=vtuberの行は各社(カバー・ANYCOLOR等)の知的財産であるキャラクター名です。名称と読みのみを非商用のファンメイド用途で収録しています(キャラクターデザイン・アバターのイラストやスクリーンショットは画像として一切収録していません。詳細は ADR 00018)
+- baseball/football の生成カードは、公表された事実であるチームカラー(色の値)だけを使って自作の図形と文字で描いたものです。球団・クラブのロゴ・エンブレム・マスコット・ユニフォームの意匠は一切含みません(詳細は ADR 00019)
 - 掲載内容について権利者からの申し出があれば速やかに対応します(Issueにてご連絡ください)
 
 ## 自動更新
@@ -125,7 +126,24 @@ python3 tools/audit_taxa.py sekitsui  # 既存行が想定した界・門の配�
   python3 tools/enrich_football_team.py
   ```
   取得結果を `tools/.cache/`(Git管理外)に逐次保存するので、中断しても
-  再実行で続きから再開する(全件引き直したいときはキャッシュを消す)
+  再実行で続きから再開する(全件引き直したいときはキャッシュを消す)。
+  自由ライセンスの実写が取れるのは baseball 37% / football 9% だけなので、
+  **実写が無い人には所属チームのチームカラーで描いた「選手カード」SVG**を
+  割り当てて全行を埋めている。これも月次バッチには入れず手動実行する
+  (詳細は ADR 00019):
+  ```sh
+  # チームカラーを集める(tools/team_colors.json。--report で取れなかったチーム)
+  python3 tools/fetch_team_colors.py
+  # 実写が無い人にカードを生成して割り当てる(実写のある行は触らない)
+  python3 tools/gen_player_cards.py          # --prune で不要SVGを削除
+  ```
+  カードは `images/baseball/` `images/football/` に置き、CSVからは raw URL で
+  参照する。**球団・クラブのロゴ・エンブレム・マスコット・ユニフォームの意匠は
+  一切使わず**、公表されたチームカラーの配色と文字と自作の図形(抽象的な人型と
+  競技のボール)だけで描く。実写と誤認されないよう画像内に「イメージ」と明記する。
+  色の出典は Wikipedia のインフォボックスに**テキストで**書かれた色だけで、
+  消滅球団(南海・阪急・大洋など)は当時の色が引けないため推測せず、チーム名の
+  ハッシュ由来のフォールバック配色にしている
 - scientist: 旧 physicist.csv を広義の科学者リストに拡張・リネーム。Wikidataの
   職業(P106)が物理/化学/数学/天文/生物/計算機科学/地学のいずれかで sitelinks>=20 の
   人物を対象に、分野(field。スラッシュ区切り多値)・時代(era)・生年・ノーベル賞・性別・国・
