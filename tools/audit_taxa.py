@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""生物リスト(sekitsui/plant)の全行が想定した界・門の配下かを検査する(読み取り専用)。
+"""生物リスト(sekitsui/plant/insect)の全行が想定した界・門・綱の配下かを検査する
+(読み取り専用)。
 
 Wikidata の系統樹(P171)には稀に界をまたぐ誤リンクがあり、`update_*.py` の
 取得クエリ経由で異界のタクソンが混入しうる(実例: 昆虫「ヘビトンボ」が
@@ -27,6 +28,7 @@ WDQS への問い合わせは1バッチ100件・バッチ間1秒。sekitsui.csv 
 usage:
   python3 tools/audit_taxa.py sekitsui        # 脊椎動物 Q25241 配下か
   python3 tools/audit_taxa.py plant           # 植物界 Q756 配下か
+  python3 tools/audit_taxa.py insect          # 昆虫綱 Q1390 配下か
   python3 tools/audit_taxa.py sekitsui --root Q729   # ルートを明示指定
 """
 
@@ -45,6 +47,7 @@ ROOT = Path(__file__).resolve().parent.parent
 TARGETS = {
     "sekitsui": ("sekitsui.csv", "Q25241", "脊椎動物"),
     "plant": ("plant.csv", "Q756", "植物界"),
+    "insect": ("insect.csv", "Q1390", "昆虫綱"),
 }
 BATCH = 100
 

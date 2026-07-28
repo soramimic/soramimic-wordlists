@@ -43,6 +43,15 @@ PALETTES = {
                "chip": "#42836a", "chip_ink": "#eef6f2"},
     "moss":   {"bg": "#e9eee6", "halo": "#dae3d5", "fig": "#5c7444", "ink": "#3a4a2b",
                "chip": "#5c7444", "chip_ink": "#f1f4ee"},
+    # 昆虫の8区分を見分けやすくするために足した配色
+    "amber":  {"bg": "#f3ece0", "halo": "#e8ddc9", "fig": "#8a6a2a", "ink": "#57411a",
+               "chip": "#8a6a2a", "chip_ink": "#f7f2e9"},
+    "plum":   {"bg": "#efe9f0", "halo": "#e2d8e4", "fig": "#77517e", "ink": "#4c3351",
+               "chip": "#77517e", "chip_ink": "#f5f0f6"},
+    "slate":  {"bg": "#e9ecef", "halo": "#dbe0e5", "fig": "#556677", "ink": "#36434e",
+               "chip": "#556677", "chip_ink": "#eff2f4"},
+    "rust":   {"bg": "#f3e9e6", "halo": "#e7d8d3", "fig": "#8a4f3d", "ink": "#573026",
+               "chip": "#8a4f3d", "chip_ink": "#f7efec"},
 }
 
 
@@ -53,6 +62,16 @@ def _path(d: str, fill: str) -> str:
 def _stroke(d: str, color: str, width: float) -> str:
     return (f'<path d="{d}" fill="none" stroke="{color}" stroke-width="{width}" '
             f'stroke-linecap="round" stroke-linejoin="round"/>')
+
+
+def _mirror(inner: str) -> str:
+    """ローカル座標(幅200)の左半分を右半分に鏡像コピーする。
+    昆虫は左右対称の図が多く、片側だけ書けば済むようにする。"""
+    return f'<g transform="translate(200 0) scale(-1 1)">{inner}</g>'
+
+
+def _both(inner: str) -> str:
+    return inner + _mirror(inner)
 
 
 # --- シルエット(ローカル座標 200x120、原点は左上) ------------------------
@@ -247,11 +266,177 @@ def shape_algae(p: dict) -> str:
     ])
 
 
+# --- 昆虫(insect.csv の class 区分) ---------------------------------------
+# いずれもその区分の「一般的な姿」。左右対称の図は左半分だけ書いて _both で
+# 鏡像コピーする
+
+def shape_beetle(p: dict) -> str:
+    """甲虫: 背面から見た、上翅が中央で割れた楕円形の体。"""
+    f, bg = p["fig"], p["bg"]
+    return "".join([
+        _both(_stroke("M 80 40 L 52 24", f, 4.5)
+              + _stroke("M 76 58 L 44 56", f, 4.5)
+              + _stroke("M 78 76 L 48 90", f, 4.5)),            # 6本脚
+        _both(_stroke("M 93 16 C 84 6 74 2 64 5", f, 3.2)),     # 触角
+        f'<ellipse cx="100" cy="22" rx="13" ry="10" fill="{f}"/>',   # 頭
+        _path("M 79 45 C 77 30 86 23 100 23 C 114 23 123 30 121 45 Z", f),  # 前胸
+        f'<ellipse cx="100" cy="76" rx="30" ry="36" fill="{f}"/>',   # 上翅
+        _stroke("M 100 43 L 100 110", bg, 2.6),                 # 上翅の合わせ目
+    ])
+
+
+def shape_butterfly(p: dict) -> str:
+    """チョウ: 左右2対の大きな翅と、こん棒状の触角。"""
+    f, bg = p["fig"], p["bg"]
+    wing = "".join([
+        _path("M 97 42 C 78 14 42 4 27 17 C 14 29 30 51 66 57 "
+              "C 80 59 92 52 97 47 Z", f),                      # 前翅
+        _path("M 97 68 C 79 65 53 71 45 87 C 38 101 53 111 69 105 "
+              "C 83 100 93 84 97 74 Z", f),                     # 後翅
+        _stroke("M 88 46 C 70 36 52 28 36 24", bg, 2.2),
+        _stroke("M 88 78 C 74 82 62 90 54 98", bg, 2.2),        # 翅脈
+    ])
+    return "".join([
+        _both(wing),
+        _both(_stroke("M 96 22 C 88 10 80 5 72 5", f, 3)
+              + f'<circle cx="70" cy="5" r="4" fill="{f}"/>'),  # 触角
+        f'<ellipse cx="100" cy="66" rx="6" ry="34" fill="{f}"/>',  # 胴
+        f'<circle cx="100" cy="27" r="8" fill="{f}"/>',         # 頭
+    ])
+
+
+def shape_bee(p: dict) -> str:
+    """ハチ: 横から見た、縞のある腹部とくびれた腰。"""
+    f, bg = p["fig"], p["bg"]
+    stripes = "".join(
+        f'<ellipse cx="{x}" cy="70" rx="5" ry="{ry}" fill="{bg}"/>'
+        for x, ry in ((60, 19), (76, 22), (92, 19)))
+    return "".join([
+        _stroke("M 96 84 L 88 108", f, 4),
+        _stroke("M 116 78 L 112 106", f, 4),
+        _stroke("M 128 72 L 134 100", f, 4),                    # 脚
+        f'<ellipse cx="104" cy="30" rx="32" ry="10" fill="{f}" opacity="0.42" '
+        f'transform="rotate(-20 104 30)"/>',
+        f'<ellipse cx="92" cy="42" rx="26" ry="8" fill="{f}" opacity="0.42" '
+        f'transform="rotate(-4 92 42)"/>',                      # 翅(2枚)
+        _stroke("M 76 20 C 100 24 122 34 130 46", bg, 1.8),     # 翅の境目
+        f'<ellipse cx="76" cy="70" rx="34" ry="24" fill="{f}"/>',  # 腹部
+        stripes,                                                # 縞
+        _path("M 44 70 L 24 66 L 26 76 Z", f),                  # 針
+        f'<rect x="102" y="62" width="14" height="14" rx="6" fill="{f}"/>',  # 腰
+        f'<circle cx="120" cy="62" r="19" fill="{f}"/>',        # 胸部
+        f'<circle cx="148" cy="58" r="13" fill="{f}"/>',        # 頭
+        _stroke("M 155 47 C 162 34 172 28 180 30", f, 3.2),     # 触角
+        f'<circle cx="154" cy="53" r="3.4" fill="{bg}"/>',      # 目
+    ])
+
+
+def shape_fly(p: dict) -> str:
+    """ハエ: 背面から見た、大きな複眼と横に張り出した2枚の翅。"""
+    f, bg = p["fig"], p["bg"]
+    return "".join([
+        _both(_stroke("M 84 48 L 56 34", f, 4)
+              + _stroke("M 82 62 L 50 62", f, 4)
+              + _stroke("M 84 76 L 54 92", f, 4)),              # 脚
+        _both(f'<ellipse cx="58" cy="66" rx="38" ry="14" fill="{f}" '
+              f'opacity="0.42" transform="rotate(-22 58 66)"/>'),  # 翅
+        _path("M 84 74 C 84 62 116 62 116 74 C 118 96 112 112 100 114 "
+              "C 88 112 82 96 84 74 Z", f),                     # 腹部
+        f'<ellipse cx="100" cy="56" rx="21" ry="18" fill="{f}"/>',  # 胸部
+        _both(f'<ellipse cx="88" cy="24" rx="14" ry="15" fill="{f}"/>'),  # 複眼
+        f'<ellipse cx="100" cy="30" rx="10" ry="9" fill="{f}"/>',   # 頭
+        _both(f'<ellipse cx="84" cy="20" rx="4.5" ry="5" fill="{bg}" '
+              f'opacity="0.55"/>'),                             # 複眼の照り
+        _stroke("M 100 100 L 100 66", bg, 2.2),                 # 腹部の中線
+    ])
+
+
+def shape_truebug(p: dict) -> str:
+    """カメムシ: 背面から見た盾形の体。張り出した前胸の肩と、背中の中央に
+    逆三角形の小楯板がある。"""
+    f, bg = p["fig"], p["bg"]
+    return "".join([
+        _both(_stroke("M 72 48 L 44 34", f, 4)
+              + _stroke("M 68 66 L 38 68", f, 4)
+              + _stroke("M 72 84 L 46 100", f, 4)),             # 脚
+        _both(_stroke("M 94 18 C 86 10 74 8 62 12", f, 3)),     # 触角
+        _path("M 100 8 C 106 8 110 14 110 26 L 90 26 C 90 14 94 8 100 8 Z", f),
+        _path("M 100 22 C 114 22 124 26 130 34 L 145 42 C 148 46 145 51 138 53 "
+              "C 140 78 123 101 100 113 C 77 101 60 78 62 53 "
+              "C 55 51 52 46 55 42 L 70 34 C 76 26 86 22 100 22 Z", f),  # 体
+        f'<path d="M 84 50 L 116 50 L 100 82 Z" fill="{bg}" opacity="0.8"/>',  # 小楯板
+        _stroke("M 100 84 L 100 108", bg, 2.4),                 # 左右の翅の境
+    ])
+
+
+def shape_grasshopper(p: dict) -> str:
+    """バッタ: 横から見た細長い体と、くの字に折れた太い後脚(跳躍脚)。"""
+    f, bg = p["fig"], p["bg"]
+    return "".join([
+        _stroke("M 118 74 L 106 104", f, 3.4),
+        _stroke("M 136 70 L 132 100", f, 3.4),                  # 前脚・中脚
+        _stroke("M 55 32 L 33 98", f, 3.6),                     # 後脚の脛節
+        _stroke("M 33 98 L 22 106", f, 3),                      # 跗節
+        _path("M 116 52 C 96 44 74 34 64 24 C 54 24 47 32 50 42 "
+              "C 60 56 88 70 114 72 Z", f),                     # 後脚の腿節
+        _path("M 46 62 C 62 48 94 42 126 44 C 146 46 158 54 158 62 "
+              "C 158 72 146 80 124 82 C 92 84 60 74 46 62 Z", f),  # 体
+        _stroke("M 58 60 C 82 50 110 47 136 50", bg, 2.4),      # 翅の合わせ目
+        _stroke("M 130 46 C 126 56 126 68 130 80", bg, 2.4),    # 前胸の背板
+        f'<circle cx="152" cy="60" r="15" fill="{f}"/>',        # 頭
+        _stroke("M 159 47 C 169 33 181 27 192 28", f, 3),       # 触角
+        f'<circle cx="157" cy="54" r="3.6" fill="{bg}"/>',      # 目
+    ])
+
+
+def shape_dragonfly(p: dict) -> str:
+    """トンボ: 4枚の細長い翅と、まっすぐ伸びた腹部。"""
+    f, bg = p["fig"], p["bg"]
+    wings = "".join([
+        f'<ellipse cx="56" cy="34" rx="44" ry="9" fill="{f}" opacity="0.45" '
+        f'transform="rotate(-7 56 34)"/>',
+        f'<ellipse cx="58" cy="54" rx="40" ry="8" fill="{f}" opacity="0.45" '
+        f'transform="rotate(9 58 54)"/>',
+    ])
+    return "".join([
+        _both(wings),
+        _both(_stroke("M 92 50 L 74 64", f, 3.2)),              # 脚
+        _path("M 94 48 L 106 48 L 103 112 L 97 112 Z", f),      # 腹部
+        "".join(_stroke(f"M 96 {y} L 104 {y}", bg, 1.8)
+                for y in (62, 74, 86, 98)),                     # 腹部の節
+        f'<ellipse cx="100" cy="40" rx="13" ry="15" fill="{f}"/>',  # 胸部
+        _both(f'<circle cx="91" cy="18" r="12" fill="{f}"/>'),  # 複眼
+        f'<rect x="94" y="20" width="12" height="10" rx="4" fill="{f}"/>',
+        _both(f'<circle cx="87" cy="14" r="4" fill="{bg}" opacity="0.5"/>'),
+    ])
+
+
+def shape_insect_other(p: dict) -> str:
+    """その他の昆虫: 頭・胸・腹の3部と6本脚という、昆虫一般の姿。"""
+    f, bg = p["fig"], p["bg"]
+    return "".join([
+        _both(_stroke("M 84 44 L 54 30", f, 4)
+              + _stroke("M 82 58 L 48 58", f, 4)
+              + _stroke("M 84 72 L 52 86", f, 4)),              # 6本脚
+        _both(_stroke("M 92 16 C 84 6 72 2 60 6", f, 3.2)),     # 触角
+        _path("M 84 74 C 84 62 116 62 116 74 C 118 98 112 114 100 116 "
+              "C 88 114 82 98 84 74 Z", f),                     # 腹部
+        "".join(_stroke(f"M {88 + i} {y} L {112 - i} {y}", bg, 2)
+                for i, y in ((1, 82), (2, 94), (5, 105))),      # 腹部の節
+        f'<ellipse cx="100" cy="54" rx="19" ry="17" fill="{f}"/>',  # 胸部
+        f'<ellipse cx="100" cy="26" rx="15" ry="13" fill="{f}"/>',  # 頭
+        _both(f'<circle cx="93" cy="23" r="3.6" fill="{bg}"/>'),  # 目
+    ])
+
+
 SHAPES = {
     "fish": shape_fish, "bird": shape_bird, "reptile": shape_reptile,
     "amphibian": shape_amphibian, "mammal": shape_mammal, "unknown": shape_unknown,
     "dicot": shape_dicot, "monocot": shape_monocot, "gymnosperm": shape_gymnosperm,
     "fern": shape_fern, "moss": shape_moss, "algae": shape_algae,
+    "beetle": shape_beetle, "butterfly": shape_butterfly, "bee": shape_bee,
+    "fly": shape_fly, "truebug": shape_truebug, "grasshopper": shape_grasshopper,
+    "dragonfly": shape_dragonfly, "insect_other": shape_insect_other,
 }
 
 # 分類ごとの定義: (class列の値, ファイル名, シルエット, 配色)
@@ -278,10 +463,25 @@ GROUPS = {
         # sekitsui と同じ絵・同じファイル名で、リリースのアセットも共用する
         ("NA", "class_unknown.svg", "unknown", "gray"),
     ],
+    # insect.csv 用(詳細は ADR 00021)。区分の定義は tools/update_insect.py の
+    # CLASS_BY_ORDER にある
+    "insect": [
+        ("甲虫", "class_beetle.svg", "beetle", "brown"),
+        ("チョウ", "class_butterfly.svg", "butterfly", "plum"),
+        ("ハチ", "class_bee.svg", "bee", "amber"),
+        ("ハエ", "class_fly.svg", "fly", "slate"),
+        ("カメムシ", "class_truebug.svg", "truebug", "rust"),
+        ("バッタ", "class_grasshopper.svg", "grasshopper", "moss"),
+        ("トンボ", "class_dragonfly.svg", "dragonfly", "teal"),
+        ("その他", "class_insect_other.svg", "insect_other", "olive"),
+        # 昆虫綱の配下だが目が引けなかった行の受け皿。sekitsui / plant と
+        # 同じ絵・同じファイル名で、リリースのアセットも共用する
+        ("NA", "class_unknown.svg", "unknown", "gray"),
+    ],
 }
 
-# class列の値をそのまま画面に出すと "NA" になってしまう分類の表示名
-DISPLAY_LABEL = {"NA": "分類不明"}
+# class列の値をそのまま画面に出すと意味が伝わらない分類の表示名
+DISPLAY_LABEL = {"NA": "分類不明", "その他": "その他の昆虫"}
 
 FONT = "Noto Sans JP,Hiragino Sans,Yu Gothic,Meiryo,sans-serif"
 
