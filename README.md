@@ -15,7 +15,7 @@
 | original | 元の単語(表示用) |
 | surface | 変換結果として表示する表層 |
 | pronunciation | 読み(カタカナ)。無い場合はsurfaceから推定される。nationsは漢字を含む表記(大韓民国・米国等)で読みが自明でない行に付与し、カタカナだけの行は空 |
-| team, type, org_id | リスト固有の付加情報(野球・サッカー等)。`team` は所属チーム名で、baseball/football 共通(footballは代表的な1クラブ。取得できない行は空。補完は `tools/enrich_football_team.py`) |
+| team, type, org_id | リスト固有の付加情報(野球・サッカー等)。`team` は所属チーム名で、baseball/football 共通。**baseballは球団の変遷を連ねた文字列**(`-` が移籍、`・` が改称。例 `巨人-日本ハム`, `大洋・横浜`)、**footballは代表的な1クラブ**(`横浜F・マリノス` のように `・` を含む名前があるので区切り文字として扱わないこと。取得できない行は空。補完は `tools/enrich_football_team.py`) |
 | class | sekitsui/plant: 大分類。sekitsuiは魚類/両生類/爬虫類/鳥類/哺乳類、plantは双子葉/単子葉/裸子植物/シダ植物/コケ植物/藻類。分類不明はNA |
 | extinct | sekitsui/plant: 絶滅種か(yes/no)。IUCN絶滅・野生絶滅、または化石タクソンをyesとする |
 | order, family, genus | sekitsui/plant: 分類階級。sekitsuiは目・科(`ネコ目`/`ネコ科`)、plantは科・属(`バラ科`/`サクラ属`。植物は目より科・属が一般的な言及単位なので目は持たない)。Wikidataの日本語ラベル(階級付きの別名があればそちら)、無ければ学名。Wikidataに情報が無い行は空。plantは`wikidata`列が空の行も空にする(和名から逆引きすると動物と同名の行で誤った科を拾うため)。補完は `tools/enrich_sekitsui_taxonomy.py` / `tools/enrich_plant_taxonomy.py` |
