@@ -14,14 +14,30 @@
 実在のロゴ・エンブレム・マスコット・公式競技ピクトグラムは参照していない。
 特定の人物・キャラクターを想起させる造作も入れていない。
 
+**同じ役割でも1枚ごとに図を変える。** 同じ区分の人が何十人も並ぶので、
+全員が寸分違わぬ同じ絵だと「同じ画像を使い回した」ように見える。役割ごとに
+ポーズのプールを持ち、そこから1つ選んだうえで左右反転・微小な回転・上下
+オフセットを掛ける。
+
+選択は**人物IDのハッシュから決定的に**行う(`variant()`)。乱数にすると
+再生成のたびに1万3千枚すべてが差分になり、レビューできなくなる。同じ人は
+何度生成しても必ず同じ図になる。
+
 座標系は各アイコンとも 0..100 の正方形で、`silhouette_svg()` /
 `silhouette_card_svg()` がカードの座標へ平行移動+拡大する。
 """
 
-from material_icons import MATERIAL_ICONS
+import hashlib
 
-# 役割 -> SVG断片(0..100 の座標系)
-SILHOUETTES = MATERIAL_ICONS
+from material_icons import (FLIP_AXIS, MAX_DY, MAX_ROT, ROLE_POSES,
+                            ROT_CX, ROT_CY)
+
+# 役割 -> ポーズのプール(0..100 の座標系のSVG断片)
+SILHOUETTES = ROLE_POSES
+
+# 回転と上下オフセットの刻み。奇数にして 0(無変化)を必ず含める
+ROT_STEPS = 5
+DY_STEPS = 5
 
 # Apache License 2.0 の帰属。カードSVGの `<desc>` に1行入れる。
 # 生成カードは raw URL で1枚ずつ直リンクされる使われ方をするので、
@@ -43,14 +59,50 @@ SIL_PLACEMENTS = {
     # **正方形に収まる完結した図**なので、中央から右を不透明なディスクに
     # 食われると輪郭が壊れて何の図か読めなくなる(compare/placements.png)。
     # そこで左に寄せ、`material_icons.LIMIT` で右端を揃えたアイコンが
-    # ディスクの手前(x=107)で止まる大きさにする。
-    # 上下は 48..172 で、帯の境目(y=112)をほぼ中央でまたぐ
-    "water": {"box": (0, 48, 124), "opacity": 0.22, "split": True,
+    # ディスクの手前(x=107)でほぼ止まる大きさにする。
+    # 上下は 46..178 で、帯の境目(y=112)を図のほぼ中央でまたぐ
+    # (compare/size_check.png。これ以上大きくするとホイッスルやカメラの
+    #  マークがディスクに掛かって読めなくなる)
+    "water": {"box": (-3, 46, 132), "opacity": 0.22, "split": True,
               "lower_opacity": 0.30},
     # 右側に大きく置いて右端と下端で切る
     "edge": {"box": (150, 16, 196), "opacity": 0.22, "split": True,
              "lower_opacity": 0.30},
 }
+
+
+def variant(key: str, uid: str = "") -> str:
+    """役割と人物IDから、敷く図形を**決定的に**1つ選んで返す。
+
+    `uid` は呼び出し側の `asset_key()`(名前のsha1の先頭10桁)を想定するが、
+    どんな文字列でも受けられるようここで改めてハッシュを取る。同じ `uid` なら
+    何度呼んでも同じ図が返る。これが崩れると、再生成のたびに1万3千枚すべてが
+    差分になってレビューできなくなる。
+
+    ハッシュの整数から、下の桁から順に
+    「ポーズ → 左右反転 → 回転 → 上下オフセット」を取り出す。振れ幅は
+    `material_icons` 側の定数で、**その幅なら枠から出ないことが生成時に
+    確かめてある**(`gen_material_icons.worst_case`)。
+    """
+    poses = SILHOUETTES.get(key)
+    if not poses:
+        return ""
+    h = int(hashlib.sha1(uid.encode("utf-8")).hexdigest(), 16)
+    pose, h = poses[h % len(poses)], h // len(poses)
+    flip, h = h & 1, h >> 1
+    rot = (h % ROT_STEPS - ROT_STEPS // 2) * (MAX_ROT / (ROT_STEPS // 2))
+    h //= ROT_STEPS
+    dy = (h % DY_STEPS - DY_STEPS // 2) * (MAX_DY / (DY_STEPS // 2))
+
+    # 外側から順に:上下移動 → 回転 → 左右反転
+    t = []
+    if dy:
+        t.append(f"translate(0 {dy:g})")
+    if rot:
+        t.append(f"rotate({rot:g} {ROT_CX:g} {ROT_CY:g})")
+    if flip:
+        t.append(f"translate({2 * FLIP_AXIS:g} 0) scale(-1 1)")
+    return f'<g transform="{" ".join(t)}">{pose}</g>' if t else pose
 
 
 def silhouette_card_svg(key: str, top_color: str, bottom_color: str,
@@ -78,10 +130,10 @@ def silhouette_card_svg(key: str, top_color: str, bottom_color: str,
     p = SIL_PLACEMENTS[placement]
     x, y, size = p["box"]
     if not p["split"]:
-        return (f'<svg width="{w:g}" height="{split_y:g}">'
-                f'{silhouette_svg(key, top_color, x, y, size, p["opacity"])}'
-                f"</svg>")
-    s = SILHOUETTES.get(key)
+        inner = silhouette_svg(key, top_color, x, y, size,
+                               p["opacity"], uid)
+        return f'<svg width="{w:g}" height="{split_y:g}">{inner}</svg>'
+    s = variant(key, uid)
     if not s:
         return ""
     k = size / 100
@@ -103,13 +155,13 @@ def silhouette_card_svg(key: str, top_color: str, bottom_color: str,
 
 
 def silhouette_svg(key: str, color: str, x: float, y: float, size: float,
-                   opacity: float = 0.26) -> str:
+                   opacity: float = 0.26, uid: str = "") -> str:
     """アイコン1つぶんのSVG断片。未知のキーなら空文字。
 
     透明度は**グループにまとめて**掛ける。パーツごとに掛けると重なった所だけ
     濃くなって継ぎ目が出るため。
     """
-    s = SILHOUETTES.get(key)
+    s = variant(key, uid)
     if not s:
         return ""
     k = size / 100
