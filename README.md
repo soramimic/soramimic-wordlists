@@ -25,7 +25,7 @@
 | category, org, debut_year | youtuber固有: 区分(`youtuber`=実在のYouTuber/`vtuber`=VTuber)、所属事務所・グループ(スラッシュ区切り多値、`org~=ホロライブ` で絞り込む前提。無ければNA)、活動開始年(西暦、無ければNA) |
 | prefecture, city | stations固有: 駅の所在都道府県・市区町村(同名駅の区別用。1行=1駅) |
 | lines | stations固有: 乗り入れ路線(「JR東日本 東北本線」形式、複数は「／」区切り)。Wikidata/Wikipediaに情報が無い駅は空。補完は `tools/enrich_lines.py` |
-| image, image_page | 画像のURL(Wikimedia Commons直リンクまたは本リポジトリのGitHub Releaseアセット)と、ライセンス・作者の確認先ページ(stations/baseball/football/scientist/sekitsui/plant/pokemon/fictional_scientist/fictional_anime_character)。画像が無い行は空。利用時はimage_pageのクレジット条件に従うこと。**sekitsui/plantは実写が取れない行に限り、`class`ごとの概念イメージSVG(`class-image-v1` リリース。画像内に「イメージ」と明記)を分類単位で共有して割り当てている**(実写ではないので、実写だけが欲しい利用側は `.../releases/download/class-image-` で始まるURLを除外すること)。**pokemonは写真ではなく全行が「型色カード」SVG**(タイプの配色と文字だけで描いたもの。キャラクター造形は使わない。詳細は ADR 00002)。**youtuberは自由ライセンスの実写(Commons)が取れた人だけ写真で、残りは配色と文字だけで描いた「象徴カード」SVG**(`images/youtuber/` をrawで参照。画像内に「イメージ」と明記。チャンネルアイコン・サムネイル・キャラクターイラストは一切使わない。カードの配色は公式が公表している本人のイメージカラーがあればそれを使う。詳細は ADR 00018) |
+| image, image_page | 画像のURL(Wikimedia Commons直リンクまたは本リポジトリのGitHub Releaseアセット)と、ライセンス・作者の確認先ページ(stations/baseball/football/scientist/sekitsui/plant/pokemon/fictional_scientist/fictional_anime_character)。画像が無い行は空。利用時はimage_pageのクレジット条件に従うこと。**sekitsui/plantは実写が取れない行に限り、`class`ごとの概念イメージSVG(`class-image-v1` リリース。画像内に「イメージ」と明記)を分類単位で共有して割り当てている**(実写ではないので、実写だけが欲しい利用側は `.../releases/download/class-image-` で始まるURLを除外すること)。**pokemonは写真ではなく全行が「型色カード」SVG**(タイプの配色と文字だけで描いたもの。キャラクター造形は使わない。詳細は ADR 00002)。**youtuberは自由ライセンスの実写(Commons)が取れた人だけ写真で、残りは配色と文字だけで描いた「象徴カード」SVG**(`images/youtuber/` をrawで参照。画像内に「イメージ」と明記。チャンネルアイコン・サムネイル・キャラクターイラストは一切使わない。カードの配色は本人のイメージカラー(公式が公表しているもの、または公式ポートレートの情報解析で求めた代表色)があればそれを使う。詳細は ADR 00018, 00019) |
 | field | scientist固有: 分野を優先順(物理→化学→数学→天文学→生物学→計算機科学→地学)で並べた単一列のスラッシュ区切り多値(例 `物理/数学`)。切り詰めなし、無ければ`NA`。ソラミミックに部分一致演算子`~=`を追加したので、多値を1列で持ち`field~=物理`で絞り込める(app側 setting.json の対応は別リポジトリ soramimic 側で実施) |
 | era, birth_year, nobel, gender, country, status, description | scientist固有: 時代区分(古代/中世/近世/近代/現代/NA。生年basis)・西暦生年(紀元前は「前287」、不明はNA)・科学系ノーベル賞受賞者か(yes/no、照合不能はNA)・性別(男性/女性/その他/NA)・市民権のある国(情報列。複数は"/"、不明はNA)・生死(物故/存命/NA)・主な業績の短い完結文(記事冒頭の先頭生没年カッコを除去し、「。」区切りで完結文を目安90字まで連結。常に「。」で終わる。ASCIIカンマ・引用符除去、無ければNA) |
 | wikidata | stations: 駅のWikidata QID(差分更新の永続キー)。sekitsui/plant: 画像の取得元になったtaxonのQID(実写画像とセットで埋まるので、実写画像が無い行は空。sekitsui/plantの分類イメージ画像はWikidata由来ではないので空のまま)。youtuber: 本人のQID(画像の有無とは独立に埋まる。同名で複数QIDに当たった人は曖昧として空) |
@@ -188,12 +188,14 @@ python3 tools/audit_taxa.py sekitsui  # 既存行が想定した界・門の配�
   書き換えず、未収録者の追記と status(current→former)の一方向更新のみ。
   org(所属)・debut_year(活動開始年)付き(詳細は ADR 00011, 00012)。
   画像(`image`/`image_page`/`wikidata`)は月次バッチには入れず手動実行で補完する
-  (詳細は ADR 00018):
+  (詳細は ADR 00018, 00019):
   ```sh
   # 自由ライセンスの実写(Commons)とQIDを付与。イラスト・アバター・コスプレは採らない
   python3 tools/enrich_youtuber_images.py            # --report で不採用の内訳
-  # 本人のイメージカラーを集める(要 Pillow。tools/youtuber_colors.json)
+  # 公式が公表しているイメージカラーを集める(要 Pillow。tools/youtuber_colors.json)
   python3 tools/fetch_youtuber_colors.py             # --audit で読み取り結果を全件表示
+  # 公式色が無いVTuberは、公式ポートレートを情報解析して代表色を最大2色求める
+  python3 tools/derive_youtuber_colors.py            # --validate で手法の検算(ΔE00)
   # 実写が無い人に「象徴カード」SVGを生成して割り当てる(実写のある行は触らない)
   python3 tools/gen_youtuber_cards.py               # --prune で不要SVGを削除
   ```
@@ -204,10 +206,16 @@ python3 tools/audit_taxa.py sekitsui  # 既存行が想定した界・門の配�
   VTuberはほぼ全員が象徴カードになる。カードは `images/youtuber/` に置き、
   CSVからは raw URL で参照する。
   カードの配色は**本人のイメージカラー**(`tools/youtuber_colors.json`)を優先し、
-  分からない人は category と org から決める。色の出典は「色をテキストで公表して
-  いる公式サイト」と「公式ライブのペンライトカラー一覧画像」の2つで、
-  **キャラクターイラストからの色抽出はしない**。一覧画像は `tools/.cache/` 止まりで
-  リポジトリには置かない
+  分からない人は category と org から決める。色の出典は次の3つで、`source` 列で
+  区別できる。
+  1. 色を**テキストで公表している公式サイト**(`official`)
+  2. 公式ライブの**ペンライトカラー一覧画像**(`official-penlight`)
+  3. 公式サイトの**ポートレート画像を情報解析**(著作権法30条の4)して求めた
+     代表色(`derived-portrait`。VTuberのみ。詳細は ADR 00019)
+
+  3. で解析に使った画像も 2. の一覧画像も `tools/.cache/`(Git管理外)止まりで
+  **リポジトリに置かない・再配布しない**。コミットするのは色の値だけで、
+  カードは配色と文字だけの自作SVGのまま(イラストの貼り込み・トレースはしない)
 - 自動更新の対象外は fictional_scientist(外部プロジェクトで生成したCSVを
   取り込む方式。詳細は ADR 00006)
 
