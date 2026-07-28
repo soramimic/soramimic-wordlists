@@ -90,19 +90,26 @@ def _year(iso: str):
 
 def fetch_attrs(qids: list) -> dict:
     """QID -> {org, debut_year, status}。P108/P463/P1416(所属)と
-    P2031/P2032(活動期間)をバッチ取得。"""
+    P2031/P2032(活動期間)、P2397(YouTubeチャンネルID)の開始時点(P580)を
+    バッチ取得。
+
+    debut_year は P2031(活動開始)を優先し、無ければチャンネル開設年を使う。
+    P2031 が入っている人は2割ほどしかいないのに対し、チャンネルIDの P580 は
+    多くの項目にあり、YouTuberの「活動開始年」としては十分に近い。"""
     attrs = {}
     for i in range(0, len(qids), 200):
         batch = qids[i:i + 200]
         values = " ".join(f"wd:{q}" for q in batch)
         q = f"""
 SELECT ?p (GROUP_CONCAT(DISTINCT ?orgL; SEPARATOR="||") AS ?orgs)
-  (MIN(?start) AS ?s) (MAX(?end) AS ?e) WHERE {{
+  (MIN(?start) AS ?s) (MAX(?end) AS ?e) (MIN(?chan) AS ?c) WHERE {{
   VALUES ?p {{ {values} }}
   OPTIONAL {{ ?p wdt:P108|wdt:P463|wdt:P1416 ?org .
              ?org rdfs:label ?orgL . FILTER(LANG(?orgL)="ja") }}
   OPTIONAL {{ ?p wdt:P2031 ?start . FILTER(isLiteral(?start)) }}
   OPTIONAL {{ ?p wdt:P2032 ?end . FILTER(isLiteral(?end)) }}
+  OPTIONAL {{ ?p p:P2397 ?st . ?st pq:P580 ?chan .
+             FILTER NOT EXISTS {{ ?st wikibase:rank wikibase:DeprecatedRank }} }}
 }} GROUP BY ?p"""
         for b in sparql(q)["results"]["bindings"]:
             qid = b["p"]["value"].rsplit("/", 1)[1]
@@ -115,7 +122,8 @@ SELECT ?p (GROUP_CONCAT(DISTINCT ?orgL; SEPARATOR="||") AS ?orgs)
             attrs[qid] = {
                 # 出力順をソート固定(WDQSのGROUP_CONCAT順は非決定的)
                 "org": "/".join(sorted(orgs)) if orgs else "NA",
-                "debut_year": _year(b.get("s", {}).get("value")) or "NA",
+                "debut_year": (_year(b.get("s", {}).get("value"))
+                               or _year(b.get("c", {}).get("value")) or "NA"),
                 "status": "former" if b.get("e", {}).get("value") else "current",
             }
         print(f"  属性取得 {min(i + 200, len(qids))}/{len(qids)}", flush=True)
@@ -213,17 +221,33 @@ def build_list(csv_name: str, specs: list, cache_env: str,
     existing = {r["original"] for r in old_rows}
     next_id = max((int(r["id"]) for r in old_rows), default=-1) + 1
 
+    wd_attrs = {norm(t): attrs.get(q, {})
+                for persons in persons_by_cat.values()
+                for q, t in persons.items()}
+
     # 既存行の status 一方向更新(current -> former のみ。手動修正は上書きしない)
-    wd_status = {norm(t): attrs.get(q, {}).get("status")
-                 for persons in persons_by_cat.values()
-                 for q, t in persons.items()}
     turned = set()
     for r in old_rows:
-        if r.get("status") == "current" and wd_status.get(r["original"]) == "former":
+        if r.get("status") == "current" and \
+                wd_attrs.get(r["original"], {}).get("status") == "former":
             r["status"] = "former"
             turned.add(r["original"])
     if turned:
         print(f"status更新(current→former): {len(turned)}人", flush=True)
+
+    # 既存行の org/debut_year は空欄補完のみ(ADR 00014)。入っている値は
+    # 取得結果が違っても書き換えない
+    filled = {"org": set(), "debut_year": set()}
+    for r in old_rows:
+        got = wd_attrs.get(r["original"], {})
+        for col in ("org", "debut_year"):
+            new = got.get(col, "NA")
+            if r.get(col, "NA") in ("", "NA") and new not in ("", "NA"):
+                r[col] = new
+                filled[col].add(r["original"])
+    for col, names in filled.items():
+        if names:
+            print(f"{col} の空欄補完: {len(names)}人", flush=True)
 
     added, flagged = [], []
     entries = [(title, cat, qid)
