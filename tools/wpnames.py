@@ -44,18 +44,29 @@ def api(params: dict) -> dict:
     raise RuntimeError("wikipedia api failed")
 
 
-def sparql(query: str) -> dict:
+def sparql(query: str, retries: int = 4) -> dict:
+    """WDQSにGETで問い合わせる。
+
+    retries は総試行回数。既定の4は「一時的な混雑なら待てば通る」前提だが、
+    クエリ自体が重すぎて必ずタイムアウトする場合(例: 昆虫のコウチュウ目)は
+    待っても通らないので、呼び出し側が小さい値にして早く諦め、対象を分割する
+    (update_insect.py の fetch_taxa)。"""
     url = WDQS + "?" + urllib.parse.urlencode({"query": query, "format": "json"})
-    for attempt in range(4):
+    last = ""
+    for attempt in range(retries):
         try:
             req = urllib.request.Request(
                 url, headers={**UA, "Accept": "application/sparql-results+json"})
             with urllib.request.urlopen(req, timeout=120) as res:
                 return json.load(res)
         except Exception as ex:
+            last = str(ex)
             print(f"WDQS retry {attempt}: {ex}")
-            time.sleep(70)
-    raise RuntimeError("wdqs failed")
+            if attempt < retries - 1:
+                time.sleep(70)
+    # 最後のエラーを残す。呼び出し側がレート制限(429)とクエリが重すぎる
+    # タイムアウト(504)を区別できるようにするため(update_insect.try_sparql)
+    raise RuntimeError(f"wdqs failed: {last}")
 
 
 def sparql_post(query: str) -> dict:

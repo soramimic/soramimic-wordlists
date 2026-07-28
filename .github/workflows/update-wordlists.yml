@@ -61,6 +61,11 @@ jobs:
         continue-on-error: true
         run: python tools/update_plant.py
 
+      - name: Update insect.csv (Wikidata taxa)
+        id: insect
+        continue-on-error: true
+        run: python tools/update_insect.py
+
       - name: Update youtuber.csv (Wikidata/Wikipedia)
         id: youtuber
         continue-on-error: true
@@ -72,8 +77,9 @@ jobs:
         run: python tools/enrich_images.py
 
       # 実写が無い行に class ごとの概念イメージを割り当てる(ネットワーク不要)。
-      # update_sekitsui / update_plant が追記した新規行にもこの回で画像が付く
-      - name: Apply class images (sekitsui/plant)
+      # update_sekitsui / update_plant / update_insect が追記した新規行にも
+      # この回で画像が付く
+      - name: Apply class images (sekitsui/plant/insect)
         id: classimg
         continue-on-error: true
         run: python tools/apply_class_images.py
@@ -89,6 +95,7 @@ jobs:
           O_SCIENTIST: ${{ steps.scientist.outcome }}
           O_SEKITSUI: ${{ steps.sekitsui.outcome }}
           O_PLANT: ${{ steps.plant.outcome }}
+          O_INSECT: ${{ steps.insect.outcome }}
           O_YOUTUBER: ${{ steps.youtuber.outcome }}
           O_IMAGES: ${{ steps.images.outcome }}
           O_CLASSIMG: ${{ steps.classimg.outcome }}
@@ -110,14 +117,15 @@ jobs:
           revert_if_failed scientist "$O_SCIENTIST" scientist.csv
           revert_if_failed sekitsui "$O_SEKITSUI" sekitsui.csv
           revert_if_failed plant "$O_PLANT" plant.csv
+          revert_if_failed insect "$O_INSECT" insect.csv
           revert_if_failed youtuber "$O_YOUTUBER" youtuber.csv
           # enrich_imagesは複数ファイルを触るため巻き戻さない(他updaterの
           # 成果を消すおそれ)。破壊は次の行数チェックとvalidateで検出する
           revert_if_failed enrich_images "$O_IMAGES"
-          # 概念イメージの割り当てはsekitsui.csv/plant.csvのみを書き換えるので
-          # 巻き戻せる(同回のupdate_sekitsui/update_plantの追記も一緒に戻るが、
-          # 次回の実行で復帰する)
-          revert_if_failed class_images "$O_CLASSIMG" sekitsui.csv plant.csv
+          # 概念イメージの割り当てはsekitsui/plant/insectのCSVのみを書き換える
+          # ので巻き戻せる(同回のupdate_*の追記も一緒に戻るが、次回の実行で
+          # 復帰する)
+          revert_if_failed class_images "$O_CLASSIMG" sekitsui.csv plant.csv insect.csv
           failed="${failed# }"
           echo "failed=$failed" >> "$GITHUB_OUTPUT"
           if [ -n "$failed" ]; then echo "::warning::失敗したupdater: $failed"; fi
