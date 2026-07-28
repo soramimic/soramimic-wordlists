@@ -59,6 +59,7 @@
 - 実在人物名のリスト(baseball/football/scientist/youtuberのcategory=youtuber)は公表済みの事実情報(名簿)のみで構成しています。氏名の営利的な顧客誘引を目的とする利用(パブリシティ権に触れうる利用)は行わないでください。youtuberは記事名(活動名)のみを収録し、本名は収録しません
 - youtuber.csvのcategory=vtuberの行は各社(カバー・ANYCOLOR等)の知的財産であるキャラクター名です。名称と読みのみを非商用のファンメイド用途で収録しています(キャラクターデザイン・アバターのイラストやスクリーンショットは画像として一切収録していません。詳細は ADR 00018)
 - baseball/football の生成カードは、公表された事実であるチームカラー(色の値)だけを使って自作の図形と文字で描いたものです。球団・クラブのロゴ・エンブレム・マスコット・ユニフォームの意匠は一切含みません(詳細は ADR 00021)
+- **職業アイコンの帰属**: カード生成器(`tools/material_icons.py`)は [Material Symbols](https://github.com/google/material-design-icons)(Google, Apache License 2.0)のアイコンを含みます。ライセンス全文は `LICENSE-APACHE-2.0-material-symbols` です。パスデータは改変しておらず、カードの座標系へ収める `transform` を外側に巻いているだけです。**現在リポジトリに入っている生成カード(`--style full`)はこれを含まないので CC0 のままです**が、職業アイコンを敷く減量版(`--style minimal`, ADR 00022)を採用した時点で、生成カードは Apache License 2.0 の素材を含む二次的著作物になり、下流の利用者にも帰属義務が及びます(その時点で上表の CC0 の記述を改めます)
 - 掲載内容について権利者からの申し出があれば速やかに対応します(Issueにてご連絡ください)
 
 ## 自動更新

@@ -5,8 +5,9 @@
 football 9%)、残りは画像が空のままだった。ソラミミ動画は単語ごとに1枚絵を出す
 ので、画像が無い行は他のリストと同じ見せ方ができない。
 
-youtuber の象徴カード(ADR 00018)と同じ考え方で、**素材を一切借りずに配色と
-文字と自作の図形だけで**描いたカードを割り当てる。
+youtuber の象徴カード(ADR 00018)と同じ考え方で、**権利者の識別標識(ロゴ・
+エンブレム・マスコット・肖像)を一切借りずに、配色と文字と図形だけで**描いた
+カードを割り当てる。
 
 - 1人1枚。同じ人物の複数行(full/family/given)は同じ `original` なので同じ
   カードを共有する
@@ -20,8 +21,10 @@ youtuber の象徴カード(ADR 00018)と同じ考え方で、**素材を一切�
 - 中央左に名前の頭文字、下部にフルネーム、上部に区分と所属チームを描く。
   実写と誤認されないよう右上に「イメージ」の札を必ず入れる
 - 図版は**抽象的な人型のシルエット**(円と自作パスだけ)と**競技のボール**
-  (野球=円と縫い目の曲線、サッカー=円と正五角形)のみ。実在のロゴ・ピクトグラム
-  は参照していない
+  (野球=円と縫い目の曲線、サッカー=円と正五角形)のみ。実在のロゴ・エンブレム・
+  マスコットは参照していない。減量版(`--style minimal`)だけは区分の文字の
+  代わりに職業アイコンを敷き、そこには Material Symbols(Apache License 2.0)を
+  使う(帰属は `<desc>` とリポジトリのLICENSE/README。詳細は ADR 00022)
 - 自己完結SVG(外部フォント・画像を参照しない)。viewBox は 320x200 固定
 - **生成物はリポジトリ内(`images/baseball/`, `images/football/`)に置き**、
   CSVからは raw URL で参照する(youtuber と同じ。詳細は ADR 00020)
@@ -50,7 +53,7 @@ from pathlib import Path
 from xml.sax.saxutils import escape
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from silhouettes import silhouette_card_svg  # noqa: E402
+from silhouettes import ATTRIBUTION, silhouette_card_svg  # noqa: E402
 from wpnames import write_csv_no_trailing_newline  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -391,8 +394,9 @@ def build_card(cfg: dict, name: str, team: str, label: str,
         f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" '
         f'width="{W}" height="{H}">',
         f"<title>{escape(name)}のイメージ画像</title>",
-        ("<desc>チームカラーの配色と頭文字、職業を表す人型のシルエットだけで"
-         "描いたカードです。写真・ロゴは使っていません。</desc>" if minimal else
+        ("<desc>チームカラーの配色と頭文字、職業を表すアイコンだけで"
+         "描いたカードです。写真・ロゴは使っていません。"
+         f"{ATTRIBUTION}</desc>" if minimal else
          "<desc>チームカラーの配色と文字だけで描いたカードです。"
          "写真・ロゴは使っていません。</desc>"),
         f'<g font-family="{FONT}">',

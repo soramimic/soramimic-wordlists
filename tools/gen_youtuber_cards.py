@@ -4,7 +4,9 @@
 YouTuber/VTuberのチャンネルアイコン・サムネイル・キャラクターイラストは本人/
 事務所の著作物なので使えない(詳細は ADR 00018)。自由ライセンスの実写が取れる
 のは1割弱なので、残りには**配色と文字だけで描いた記号的なカード**を割り当てる。
-pokemon の「型色カード」(ADR 00002)と同じ考え方で、素材は一切借りない。
+pokemon の「型色カード」(ADR 00002)と同じ考え方で、本人・事務所の素材は
+一切借りない(減量版に敷く職業アイコンだけは汎用のオープンライセンス素材を
+帰属付きで使う。詳細は ADR 00022)。
 
 - 1人1枚。同じ人物の複数行(full/family/given)は同じ `original` なので同じ
   カードを共有する
@@ -47,7 +49,7 @@ from pathlib import Path
 from xml.sax.saxutils import escape
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from silhouettes import silhouette_card_svg  # noqa: E402
+from silhouettes import ATTRIBUTION, silhouette_card_svg  # noqa: E402
 from wpnames import write_csv_no_trailing_newline  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -310,8 +312,8 @@ def build_card(name: str, category: str, org: str,
         f'aria-label="{escape(name)}のイメージ画像">',
         f"<title>{escape(name)}のイメージ画像</title>",
         ("<desc>本人の写真・チャンネルアイコン・キャラクターデザインは一切"
-         "使っていない、配色と頭文字、職業を表す人型のシルエットだけの記号的な"
-         "カードです。実写ではありません。</desc>" if minimal else
+         "使っていない、配色と頭文字、職業を表すアイコンだけの記号的な"
+         f"カードです。実写ではありません。{ATTRIBUTION}</desc>" if minimal else
          "<desc>本人の写真・チャンネルアイコン・キャラクターデザインは一切"
          "使っていない、配色と文字だけの記号的なカードです。実写ではありません。"
          "</desc>"),
