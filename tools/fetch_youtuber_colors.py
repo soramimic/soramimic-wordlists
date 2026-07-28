@@ -50,6 +50,7 @@ import json
 import re
 import sys
 import time
+import urllib.error
 import urllib.request
 from collections import Counter
 from pathlib import Path
@@ -320,10 +321,15 @@ def fetch(url: str, key: str, refresh: bool) -> str:
     return fetch_bytes(url, key, "html", refresh).decode("utf-8", "replace")
 
 
-def fetch_bytes(url: str, key: str, ext: str, refresh: bool) -> bytes:
-    """URLの中身を取得する(`tools/.cache/` に保存して再開可能・冪等)。"""
-    CACHE_DIR.mkdir(parents=True, exist_ok=True)
-    cache = CACHE_DIR / f"{key}.{ext}"
+def fetch_bytes(url: str, key: str, ext: str, refresh: bool,
+                cache_dir: Path = CACHE_DIR) -> bytes:
+    """URLの中身を取得する(`tools/.cache/` に保存して再開可能・冪等)。
+
+    `cache_dir` は取得元ごとに分けられるようにしてある(derive_youtuber_colors.py
+    はポートレートを別のディレクトリに貯める)。
+    """
+    cache_dir.mkdir(parents=True, exist_ok=True)
+    cache = cache_dir / f"{key}.{ext}"
     if cache.exists() and not refresh:
         return cache.read_bytes()
     for attempt in range(4):
@@ -332,6 +338,11 @@ def fetch_bytes(url: str, key: str, ext: str, refresh: bool) -> bytes:
             with urllib.request.urlopen(req, timeout=60) as res:
                 body = res.read()
             break
+        except urllib.error.HTTPError as ex:
+            if ex.code == 404:
+                raise SystemExit(f"error: 見つからない: {url}")  # 待っても無駄
+            print(f"retry {attempt}: {url} ({ex})", file=sys.stderr)
+            time.sleep(5 * (attempt + 1))
         except Exception as ex:      # noqa: BLE001 (ネットワーク全般)
             print(f"retry {attempt}: {url} ({ex})", file=sys.stderr)
             time.sleep(5 * (attempt + 1))
