@@ -1,0 +1,465 @@
+{
+  "_readme": "youtuber.csv の人物のイメージカラー。tools/fetch_youtuber_colors.py が生成する。出典は公式が公表している『タレント名と色の対応表』のみ(source=official は色をテキストで書いている公式サイト、official-penlight は公式ライブのペンライトカラー一覧画像、manual は人手で確認したもの)。キャラクターイラストからの色抽出はしていない。primary/secondary は16進表記。詳細は docs/adr/00018-youtuber-images.md を参照。",
+  "colors": {
+    "AZKi": {
+      "primary": "#eb52aa",
+      "source": "official-penlight",
+      "source_name": "hololive 7th fes. Ridin' on Dreams 公式ペンライトカラー",
+      "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
+      "penlight_color": "PINK"
+    },
+    "IRyS": {
+      "primary": "#eb52aa",
+      "source": "official-penlight",
+      "source_name": "hololive 7th fes. Ridin' on Dreams 公式ペンライトカラー",
+      "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
+      "penlight_color": "PINK"
+    },
+    "うる虎がーる": {
+      "primary": "#f0aa3c",
+      "source": "official",
+      "source_name": "あおぎり高校公式サイト",
+      "source_url": "https://www.aogirihighschool.com/"
+    },
+    "がうる・ぐら": {
+      "primary": "#487ddd",
+      "source": "official-penlight",
+      "source_name": "hololive 6th fes. Color Rise Harmony 公式ペンライトカラー",
+      "source_url": "https://hololivesuperexpo2025.hololivepro.com/fes/cast",
+      "penlight_color": "BLUE"
+    },
+    "こぼ・かなえる": {
+      "primary": "#8fccda",
+      "source": "official-penlight",
+      "source_name": "hololive 7th fes. Ridin' on Dreams 公式ペンライトカラー",
+      "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
+      "penlight_color": "LIGHT BLUE"
+    },
+    "さくらみこ": {
+      "primary": "#ffbde3",
+      "source": "official-penlight",
+      "source_name": "hololive 7th fes. Ridin' on Dreams 公式ペンライトカラー",
+      "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
+      "penlight_color": "LIGHT PINK"
+    },
+    "ときのそら": {
+      "primary": "#487ddd",
+      "source": "official-penlight",
+      "source_name": "hololive 7th fes. Ridin' on Dreams 公式ペンライトカラー",
+      "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
+      "penlight_color": "BLUE"
+    },
+    "ぷわぷわぽぷら": {
+      "primary": "#82beaa",
+      "source": "official",
+      "source_name": "あおぎり高校公式サイト",
+      "source_url": "https://www.aogirihighschool.com/"
+    },
+    "アイラニ・イオフィフティーン": {
+      "primary": "#008d39",
+      "source": "official-penlight",
+      "source_name": "hololive 7th fes. Ridin' on Dreams 公式ペンライトカラー",
+      "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
+      "penlight_color": "GREEN"
+    },
+    "アキ・ローゼンタール": {
+      "primary": "#56b1a0",
+      "source": "official-penlight",
+      "source_name": "hololive 7th fes. Ridin' on Dreams 公式ペンライトカラー",
+      "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
+      "penlight_color": "LIGHT GREEN"
+    },
+    "エトラ": {
+      "primary": "#555f87",
+      "source": "official",
+      "source_name": "あおぎり高校公式サイト",
+      "source_url": "https://www.aogirihighschool.com/"
+    },
+    "フワワ・アビスガード": {
+      "primary": "#8fccda",
+      "source": "official-penlight",
+      "source_name": "hololive 7th fes. Ridin' on Dreams 公式ペンライトカラー",
+      "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
+      "penlight_color": "LIGHT BLUE"
+    },
+    "ベスティア・ゼータ": {
+      "primary": "#ffffff",
+      "source": "official-penlight",
+      "source_name": "hololive 7th fes. Ridin' on Dreams 公式ペンライトカラー",
+      "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
+      "penlight_color": "WHITE"
+    },
+    "モココ・アビスガード": {
+      "primary": "#ffbde3",
+      "source": "official-penlight",
+      "source_name": "hololive 7th fes. Ridin' on Dreams 公式ペンライトカラー",
+      "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
+      "penlight_color": "LIGHT PINK"
+    },
+    "ラプラス・ダークネス": {
+      "primary": "#6342c6",
+      "source": "official-penlight",
+      "source_name": "hololive 7th fes. Ridin' on Dreams 公式ペンライトカラー",
+      "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
+      "penlight_color": "PURPLE"
+    },
+    "ロボ子さん": {
+      "primary": "#eb52aa",
+      "source": "official-penlight",
+      "source_name": "hololive 7th fes. Ridin' on Dreams 公式ペンライトカラー",
+      "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
+      "penlight_color": "PINK"
+    },
+    "一伊那尓栖": {
+      "primary": "#b170da",
+      "source": "official-penlight",
+      "source_name": "hololive 7th fes. Ridin' on Dreams 公式ペンライトカラー",
+      "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
+      "penlight_color": "VIOLET"
+    },
+    "一条莉々華": {
+      "primary": "#eb52aa",
+      "source": "official-penlight",
+      "source_name": "hololive 7th fes. Ridin' on Dreams 公式ペンライトカラー",
+      "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
+      "penlight_color": "PINK"
+    },
+    "不知火フレア": {
+      "primary": "#ffa400",
+      "source": "official-penlight",
+      "source_name": "hololive 7th fes. Ridin' on Dreams 公式ペンライトカラー",
+      "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
+      "penlight_color": "ORANGE"
+    },
+    "儒烏風亭らでん": {
+      "primary": "#008d39",
+      "source": "official-penlight",
+      "source_name": "hololive 7th fes. Ridin' on Dreams 公式ペンライトカラー",
+      "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
+      "penlight_color": "GREEN"
+    },
+    "兎田ぺこら": {
+      "primary": "#8fccda",
+      "source": "official-penlight",
+      "source_name": "hololive 7th fes. Ridin' on Dreams 公式ペンライトカラー",
+      "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
+      "penlight_color": "LIGHT BLUE"
+    },
+    "八十科むじな": {
+      "primary": "#6e50a0",
+      "source": "official",
+      "source_name": "あおぎり高校公式サイト",
+      "source_url": "https://www.aogirihighschool.com/"
+    },
+    "千代浦蝶美": {
+      "primary": "#e66ea0",
+      "source": "official",
+      "source_name": "あおぎり高校公式サイト",
+      "source_url": "https://www.aogirihighschool.com/"
+    },
+    "博衣こより": {
+      "primary": "#ffbde3",
+      "source": "official-penlight",
+      "source_name": "hololive 7th fes. Ridin' on Dreams 公式ペンライトカラー",
+      "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
+      "penlight_color": "LIGHT PINK"
+    },
+    "夏色まつり": {
+      "primary": "#ffa400",
+      "source": "official-penlight",
+      "source_name": "hololive 7th fes. Ridin' on Dreams 公式ペンライトカラー",
+      "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
+      "penlight_color": "ORANGE"
+    },
+    "大代真白": {
+      "primary": "#f0eee6",
+      "source": "official",
+      "source_name": "あおぎり高校公式サイト",
+      "source_url": "https://www.aogirihighschool.com/"
+    },
+    "大神ミオ": {
+      "primary": "#008d39",
+      "source": "official-penlight",
+      "source_name": "hololive 7th fes. Ridin' on Dreams 公式ペンライトカラー",
+      "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
+      "penlight_color": "GREEN"
+    },
+    "大空スバル": {
+      "primary": "#fff100",
+      "source": "official-penlight",
+      "source_name": "hololive 7th fes. Ridin' on Dreams 公式ペンライトカラー",
+      "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
+      "penlight_color": "YELLOW"
+    },
+    "天音かなた": {
+      "primary": "#8fccda",
+      "source": "official-penlight",
+      "source_name": "hololive 6th fes. Color Rise Harmony 公式ペンライトカラー",
+      "source_url": "https://hololivesuperexpo2025.hololivepro.com/fes/cast",
+      "penlight_color": "LIGHT BLUE"
+    },
+    "姫森ルーナ": {
+      "primary": "#ffbde3",
+      "source": "official-penlight",
+      "source_name": "hololive 7th fes. Ridin' on Dreams 公式ペンライトカラー",
+      "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
+      "penlight_color": "LIGHT PINK"
+    },
+    "宝鐘マリン": {
+      "primary": "#ff0100",
+      "source": "official-penlight",
+      "source_name": "hololive 7th fes. Ridin' on Dreams 公式ペンライトカラー",
+      "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
+      "penlight_color": "RED"
+    },
+    "小鳥遊キアラ": {
+      "primary": "#ffa400",
+      "source": "official-penlight",
+      "source_name": "hololive 7th fes. Ridin' on Dreams 公式ペンライトカラー",
+      "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
+      "penlight_color": "ORANGE"
+    },
+    "尾丸ポルカ": {
+      "primary": "#ff0100",
+      "source": "official-penlight",
+      "source_name": "hololive 7th fes. Ridin' on Dreams 公式ペンライトカラー",
+      "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
+      "penlight_color": "RED"
+    },
+    "常闇トワ": {
+      "primary": "#b170da",
+      "source": "official-penlight",
+      "source_name": "hololive 7th fes. Ridin' on Dreams 公式ペンライトカラー",
+      "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
+      "penlight_color": "VIOLET"
+    },
+    "戌神ころね": {
+      "primary": "#fff100",
+      "source": "official-penlight",
+      "source_name": "hololive 6th fes. Color Rise Harmony 公式ペンライトカラー",
+      "source_url": "https://hololivesuperexpo2025.hololivepro.com/fes/cast",
+      "penlight_color": "YELLOW"
+    },
+    "我部りえる": {
+      "primary": "#f5afaf",
+      "source": "official",
+      "source_name": "あおぎり高校公式サイト",
+      "source_url": "https://www.aogirihighschool.com/"
+    },
+    "星街すいせい": {
+      "primary": "#487ddd",
+      "source": "official-penlight",
+      "source_name": "hololive 7th fes. Ridin' on Dreams 公式ペンライトカラー",
+      "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
+      "penlight_color": "BLUE"
+    },
+    "春雨麗女": {
+      "primary": "#55c3f0",
+      "source": "official",
+      "source_name": "あおぎり高校公式サイト",
+      "source_url": "https://www.aogirihighschool.com/"
+    },
+    "月赴ゐぶき": {
+      "primary": "#8c2341",
+      "source": "official",
+      "source_name": "あおぎり高校公式サイト",
+      "source_url": "https://www.aogirihighschool.com/"
+    },
+    "栗駒こまる": {
+      "primary": "#503c32",
+      "source": "official",
+      "source_name": "あおぎり高校公式サイト",
+      "source_url": "https://www.aogirihighschool.com/"
+    },
+    "桃鈴ねね": {
+      "primary": "#ffa400",
+      "source": "official-penlight",
+      "source_name": "hololive 7th fes. Ridin' on Dreams 公式ペンライトカラー",
+      "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
+      "penlight_color": "ORANGE"
+    },
+    "森カリオペ": {
+      "primary": "#ffbde3",
+      "source": "official-penlight",
+      "source_name": "hololive 7th fes. Ridin' on Dreams 公式ペンライトカラー",
+      "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
+      "penlight_color": "LIGHT PINK"
+    },
+    "水宮枢": {
+      "primary": "#8fccda",
+      "source": "official-penlight",
+      "source_name": "hololive 7th fes. Ridin' on Dreams 公式ペンライトカラー",
+      "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
+      "penlight_color": "LIGHT BLUE"
+    },
+    "渋谷ハル": {
+      "primary": "#f79428",
+      "source": "official",
+      "source_name": "Neo-Porte公式サイト",
+      "source_url": "https://neo-porte.jp/member/"
+    },
+    "火威青": {
+      "primary": "#487ddd",
+      "source": "official-penlight",
+      "source_name": "hololive 6th fes. Color Rise Harmony 公式ペンライトカラー",
+      "source_url": "https://hololivesuperexpo2025.hololivepro.com/fes/cast",
+      "penlight_color": "BLUE"
+    },
+    "猫又おかゆ": {
+      "primary": "#6342c6",
+      "source": "official-penlight",
+      "source_name": "hololive 7th fes. Ridin' on Dreams 公式ペンライトカラー",
+      "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
+      "penlight_color": "PURPLE"
+    },
+    "獅白ぼたん": {
+      "primary": "#ffffff",
+      "source": "official-penlight",
+      "source_name": "hololive 7th fes. Ridin' on Dreams 公式ペンライトカラー",
+      "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
+      "penlight_color": "WHITE"
+    },
+    "癒月ちょこ": {
+      "primary": "#eb52aa",
+      "source": "official-penlight",
+      "source_name": "hololive 7th fes. Ridin' on Dreams 公式ペンライトカラー",
+      "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
+      "penlight_color": "PINK"
+    },
+    "白上フブキ": {
+      "primary": "#ffffff",
+      "source": "official-penlight",
+      "source_name": "hololive 7th fes. Ridin' on Dreams 公式ペンライトカラー",
+      "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
+      "penlight_color": "WHITE"
+    },
+    "白銀ノエル": {
+      "primary": "#ffffff",
+      "source": "official-penlight",
+      "source_name": "hololive 7th fes. Ridin' on Dreams 公式ペンライトカラー",
+      "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
+      "penlight_color": "WHITE"
+    },
+    "百鬼あやめ": {
+      "primary": "#ff0100",
+      "source": "official-penlight",
+      "source_name": "hololive 7th fes. Ridin' on Dreams 公式ペンライトカラー",
+      "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
+      "penlight_color": "RED"
+    },
+    "紫咲シオン": {
+      "primary": "#6342c6",
+      "source": "official-penlight",
+      "source_name": "hololive 6th fes. Color Rise Harmony 公式ペンライトカラー",
+      "source_url": "https://hololivesuperexpo2025.hololivepro.com/fes/cast",
+      "penlight_color": "PURPLE"
+    },
+    "綺々羅々ヴィヴィ": {
+      "primary": "#ffbde3",
+      "source": "official-penlight",
+      "source_name": "hololive 7th fes. Ridin' on Dreams 公式ペンライトカラー",
+      "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
+      "penlight_color": "LIGHT PINK"
+    },
+    "緋月ゆい": {
+      "primary": "#cc213e",
+      "source": "official",
+      "source_name": "Neo-Porte公式サイト",
+      "source_url": "https://neo-porte.jp/member/"
+    },
+    "胡桃のあ": {
+      "primary": "#b297d7",
+      "source": "official",
+      "source_name": "ぶいすぽっ！公式サイト",
+      "source_url": "https://vspo.jp/"
+    },
+    "花芽すみれ": {
+      "primary": "#beccff",
+      "source": "official",
+      "source_name": "ぶいすぽっ！公式サイト",
+      "source_url": "https://vspo.jp/"
+    },
+    "萌実": {
+      "primary": "#00a0af",
+      "source": "official",
+      "source_name": "あおぎり高校公式サイト",
+      "source_url": "https://www.aogirihighschool.com/"
+    },
+    "虎金妃笑虎": {
+      "primary": "#ff0100",
+      "source": "official-penlight",
+      "source_name": "hololive 7th fes. Ridin' on Dreams 公式ペンライトカラー",
+      "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
+      "penlight_color": "RED"
+    },
+    "角巻わため": {
+      "primary": "#fff100",
+      "source": "official-penlight",
+      "source_name": "hololive 7th fes. Ridin' on Dreams 公式ペンライトカラー",
+      "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
+      "penlight_color": "YELLOW"
+    },
+    "赤井はあと": {
+      "primary": "#ff0100",
+      "source": "official-penlight",
+      "source_name": "hololive 6th fes. Color Rise Harmony 公式ペンライトカラー",
+      "source_url": "https://hololivesuperexpo2025.hololivepro.com/fes/cast",
+      "penlight_color": "RED"
+    },
+    "輪堂千速": {
+      "primary": "#56b1a0",
+      "source": "official-penlight",
+      "source_name": "hololive 7th fes. Ridin' on Dreams 公式ペンライトカラー",
+      "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
+      "penlight_color": "LIGHT GREEN"
+    },
+    "轟はじめ": {
+      "primary": "#6342c6",
+      "source": "official-penlight",
+      "source_name": "hololive 7th fes. Ridin' on Dreams 公式ペンライトカラー",
+      "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
+      "penlight_color": "PURPLE"
+    },
+    "雪花ラミィ": {
+      "primary": "#8fccda",
+      "source": "official-penlight",
+      "source_name": "hololive 7th fes. Ridin' on Dreams 公式ペンライトカラー",
+      "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
+      "penlight_color": "LIGHT BLUE"
+    },
+    "音乃瀬奏": {
+      "primary": "#fff100",
+      "source": "official-penlight",
+      "source_name": "hololive 7th fes. Ridin' on Dreams 公式ペンライトカラー",
+      "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
+      "penlight_color": "YELLOW"
+    },
+    "音霊魂子": {
+      "primary": "#681e8a",
+      "source": "official",
+      "source_name": "あおぎり高校公式サイト",
+      "source_url": "https://www.aogirihighschool.com/"
+    },
+    "響咲リオナ": {
+      "primary": "#eb52aa",
+      "source": "official-penlight",
+      "source_name": "hololive 7th fes. Ridin' on Dreams 公式ペンライトカラー",
+      "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
+      "penlight_color": "PINK"
+    },
+    "風真いろは": {
+      "primary": "#56b1a0",
+      "source": "official-penlight",
+      "source_name": "hololive 7th fes. Ridin' on Dreams 公式ペンライトカラー",
+      "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
+      "penlight_color": "LIGHT GREEN"
+    },
+    "鷹嶺ルイ": {
+      "primary": "#ff0100",
+      "source": "official-penlight",
+      "source_name": "hololive 7th fes. Ridin' on Dreams 公式ペンライトカラー",
+      "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
+      "penlight_color": "RED"
+    }
+  }
+}
