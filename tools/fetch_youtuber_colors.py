@@ -8,19 +8,20 @@
 
 - 取るのは**色そのもの(16進値)というテキスト情報だけ**。色はアイデア・事実の
   領域で著作物ではないので、イラストの複製とは別物として扱える
-- **イラスト画像のダウンロードやパレット抽出は一切しない**。取得元は「色を
-  テキストとして公表している公式サイト」に限る(HTMLのdata属性・CSS変数・
-  inline style)。画像の中にしか色が無いものは**取得不可として諦める**
+- 取得元は2種類。どちらも「タレント名と色の対応表」を公式が公表しているもの:
+  1. 色を**テキスト**で書いている公式サイト(HTMLのdata属性・CSS変数・inline style)
+  2. 公式ライブの**ペンライトカラー一覧画像**。これは対応表を画像で提示している
+     だけで表現ではないので、色見本の矩形から代表色を読み取ってよい
+- **キャラクターイラスト/アバターからのパレット抽出は一切しない**。イラストは
+  創作的表現であり、そこから色を採ると表現に依拠している疑いが残る
+- 取得した画像は `tools/.cache/`(Git管理外)止まり。**リポジトリに置かない・
+  再配布しない**。コミットするのは色の値だけ
 - ファンwikiやまとめサイトは出典にしない(公式の発表ではないため)
 - **youtuber.csv に載っている人の分だけを保存する**。事務所のメンバー一覧を
   丸ごと複製する形にはしない
 
 ## 取得できないことが分かっているもの
 
-- **ホロライブ / にじさんじ**: 公式が発表しているのは大型ライブの「公式ペン
-  ライトカラー」だが、実体は1枚のバナー画像で、HTML/CSS/JSONに色のテキストが
-  無い。タレント個別ページや共通CSSにもタレント色のフックが無い。画像からの
-  抽出はしない方針なので**取得しない**(推測色は入れない)
 - **ホロスターズ / KAMITSUBAKI / ドズル社 / のりプロ**: 公式サイトにタレント色
   の記載が無い(WordPress既定パレットの色しか出てこない)
 - **774inc. / .LIVE(vrlive.party)**: メンバー一覧がクライアントサイドJSで
@@ -31,16 +32,22 @@
 usage:
   python3 tools/fetch_youtuber_colors.py            # 取得して JSON を更新
   python3 tools/fetch_youtuber_colors.py --report   # 照合結果を1件ずつ表示
-  python3 tools/fetch_youtuber_colors.py --refresh  # HTMLキャッシュを捨てて再取得
+  python3 tools/fetch_youtuber_colors.py --audit    # 画像から読んだ色を全件表示
+  python3 tools/fetch_youtuber_colors.py --refresh  # キャッシュを捨てて再取得
+
+ペンライトカラー一覧画像の読み取りには Pillow が要る(`pip install Pillow`)。
+入っていなければ画像由来のソースだけを飛ばして続行する。
 """
 
 import argparse
 import csv
+import io
 import json
 import re
 import sys
 import time
 import urllib.request
+from collections import Counter
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -53,8 +60,11 @@ UA = {"User-Agent": "soramimic-wordlists-updater/1.0 "
 
 README = (
     "youtuber.csv の人物のイメージカラー。tools/fetch_youtuber_colors.py が生成する。"
-    "色は公式サイトがテキストで公表している値のみを収録し、イラストからの抽出はしていない。"
-    "primary/secondary は16進表記。source が manual の項目は人手で確認したもの。"
+    "出典は公式が公表している『タレント名と色の対応表』のみ("
+    "source=official は色をテキストで書いている公式サイト、"
+    "official-penlight は公式ライブのペンライトカラー一覧画像、"
+    "manual は人手で確認したもの)。"
+    "キャラクターイラストからの色抽出はしていない。primary/secondary は16進表記。"
     "詳細は docs/adr/00018-youtuber-images.md を参照。"
 )
 
@@ -130,6 +140,93 @@ SOURCES = [
     },
 ]
 
+# --- 公式ライブのペンライトカラー一覧画像 ------------------------------------
+#
+# 「タレント名 → ペンライトの色」の対応表を1枚の画像で公表しているもの。
+# 画像は行×列のカードが並んだ表で、各カードの左側に色見本(色名を白抜きした
+# 単色の矩形)が置かれている。その矩形の代表色(最頻色)を読み取る。
+#
+# CELLS はカードの並び順そのままの (行, 列, タレント名, 色名)。**タレント名と
+# 色名は画像を目視して書き写したもの**で、色名は読み取り精度の検算に使う
+# (同じ色名のカードから違う色が出たら、座標がずれているのでエラーにする)。
+HOLOLIVE_7TH_FES = {
+    "key": "hololive7thfes",
+    "name": "hololive 7th fes. Ridin' on Dreams 公式ペンライトカラー",
+    "url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
+    "image": "https://hololivesuperexpo.hololivepro.com/2026/wp-content/"
+             "themes/expofes2026/images/contents/"
+             "7thfes_penlightcolors_banner_260114.webp",
+    "ext": "webp",
+    # 色見本の矩形。x0,y0 は左上のカードの矩形の左上角、px,py はカードの間隔
+    "grid": {"x0": 45, "y0": 52, "px": 265.0, "py": 111.14, "w": 80, "h": 88},
+    "cells": [
+        (0, 2, "ときのそら", "BLUE"),
+        (0, 3, "ロボ子さん", "PINK"),
+        (0, 4, "AZKi", "PINK"),
+        (0, 5, "さくらみこ", "LIGHT PINK"),
+        (0, 6, "星街すいせい", "BLUE"),
+        (1, 0, "アキ・ローゼンタール", "LIGHT GREEN"),
+        (1, 1, "白上フブキ", "WHITE"),
+        (1, 2, "夏色まつり", "ORANGE"),
+        (1, 3, "百鬼あやめ", "RED"),
+        (1, 4, "癒月ちょこ", "PINK"),
+        (1, 5, "大空スバル", "YELLOW"),
+        (1, 6, "大神ミオ", "GREEN"),
+        (2, 0, "猫又おかゆ", "PURPLE"),
+        (2, 1, "兎田ぺこら", "LIGHT BLUE"),
+        (2, 2, "不知火フレア", "ORANGE"),
+        (2, 3, "白銀ノエル", "WHITE"),
+        (2, 4, "宝鐘マリン", "RED"),
+        (2, 5, "角巻わため", "YELLOW"),
+        (2, 6, "常闇トワ", "VIOLET"),
+        (3, 0, "姫森ルーナ", "LIGHT PINK"),
+        (3, 1, "雪花ラミィ", "LIGHT BLUE"),
+        (3, 2, "桃鈴ねね", "ORANGE"),
+        (3, 3, "獅白ぼたん", "WHITE"),
+        (3, 4, "尾丸ポルカ", "RED"),
+        (3, 5, "ラプラス・ダークネス", "PURPLE"),
+        (3, 6, "鷹嶺ルイ", "RED"),
+        (4, 0, "博衣こより", "LIGHT PINK"),
+        (4, 1, "風真いろは", "LIGHT GREEN"),
+        (4, 2, "アユンダ・リス", "LIGHT PINK"),
+        (4, 3, "ムーナ・ホシノヴァ", "PURPLE"),
+        (4, 4, "アイラニ・イオフィフティーン", "GREEN"),
+        (4, 5, "クレイジー・オリー", "RED"),
+        (4, 6, "アーニャ・メルフィッサ", "YELLOW"),
+        (5, 0, "パヴォリア・レイネ", "BLUE"),
+        (5, 1, "ベスティア・ゼータ", "WHITE"),
+        (5, 2, "カエラ・コヴァルスキア", "RED"),
+        (5, 3, "こぼ・かなえる", "LIGHT BLUE"),
+        (5, 4, "森カリオペ", "LIGHT PINK"),
+        (5, 5, "小鳥遊キアラ", "ORANGE"),
+        (5, 6, "一伊那尓栖", "VIOLET"),
+        (6, 0, "IRyS", "PINK"),
+        (6, 1, "オーロ・クロニー", "BLUE"),
+        (6, 2, "ハコス・ベールズ", "RED"),
+        (6, 3, "シオリ・ノヴェラ", "WHITE"),
+        (6, 4, "古石ビジュー", "PURPLE"),
+        (6, 5, "ネリッサ・レイヴンクロフト", "BLUE"),
+        (6, 6, "フワワ・アビスガード", "LIGHT BLUE"),
+        (7, 0, "モココ・アビスガード", "LIGHT PINK"),
+        (7, 1, "エリザベス・ローズ・ブラッドフレイム", "RED"),
+        (7, 2, "ジジ・ムリン", "ORANGE"),
+        (7, 3, "セシリア・イマーグリーン", "GREEN"),
+        (7, 4, "ラオーラ・パンテーラ", "PINK"),
+        (7, 5, "音乃瀬奏", "YELLOW"),
+        (7, 6, "一条莉々華", "PINK"),
+        (8, 0, "儒烏風亭らでん", "GREEN"),
+        (8, 1, "轟はじめ", "PURPLE"),
+        (8, 2, "響咲リオナ", "PINK"),
+        (8, 3, "虎金妃笑虎", "RED"),
+        (8, 4, "水宮枢", "LIGHT BLUE"),
+        (8, 5, "輪堂千速", "LIGHT GREEN"),
+        (8, 6, "綺々羅々ヴィヴィ", "LIGHT PINK"),
+    ],
+}
+
+PENLIGHT_SOURCES = [HOLOLIVE_7TH_FES]
+SWATCH_TOLERANCE = 12   # 同じ色名から読んだ色のチャンネル差の許容値
+
 # 自動取得できないが、公式の**テキスト**の記載を人手で確認できたもの。
 # 形式: original -> {"primary": "#rrggbb", "secondary": "#rrggbb"(任意),
 #                    "source_name": "...", "source_url": "..."}
@@ -139,32 +236,81 @@ MANUAL: dict[str, dict] = {}
 
 def fetch(url: str, key: str, refresh: bool) -> str:
     """HTMLを取得する(`tools/.cache/` に保存して再開可能・冪等)。"""
+    return fetch_bytes(url, key, "html", refresh).decode("utf-8", "replace")
+
+
+def fetch_bytes(url: str, key: str, ext: str, refresh: bool) -> bytes:
+    """URLの中身を取得する(`tools/.cache/` に保存して再開可能・冪等)。"""
     CACHE_DIR.mkdir(parents=True, exist_ok=True)
-    cache = CACHE_DIR / f"{key}.html"
+    cache = CACHE_DIR / f"{key}.{ext}"
     if cache.exists() and not refresh:
-        return cache.read_text(encoding="utf-8")
+        return cache.read_bytes()
     for attempt in range(4):
         try:
             req = urllib.request.Request(url, headers=UA)
             with urllib.request.urlopen(req, timeout=60) as res:
-                html = res.read().decode("utf-8", "replace")
+                body = res.read()
             break
         except Exception as ex:      # noqa: BLE001 (ネットワーク全般)
             print(f"retry {attempt}: {url} ({ex})", file=sys.stderr)
             time.sleep(5 * (attempt + 1))
     else:
         raise SystemExit(f"error: 取得に失敗: {url}")
-    cache.write_text(html, encoding="utf-8")
+    cache.write_bytes(body)
     time.sleep(1)                    # 連続アクセスを避ける
-    return html
+    return body
+
+
+def read_penlight(src: dict, refresh: bool) -> dict:
+    """ペンライトカラー一覧画像から「タレント名 -> (色, 色名)」を読み取る。
+
+    各カードの色見本の矩形を少し内側に切って最頻色を採る(色名が白抜きで
+    乗っているので、平均ではなく最頻色を使う)。同じ色名のカードからは同じ色が
+    出るはずなので、それを検算にして座標ずれを検出する。
+    """
+    try:
+        from PIL import Image
+    except ImportError:
+        print(f"warn: Pillow が無いので {src['name']} を飛ばす"
+              "(pip install Pillow)", file=sys.stderr)
+        return {}
+    data = fetch_bytes(src["image"], src["key"], src["ext"], refresh)
+    im = Image.open(io.BytesIO(data)).convert("RGB")
+    g = src["grid"]
+    px = im.load()
+    samples: dict[str, list] = {}
+    for row, col, name, colorname in src["cells"]:
+        x0, y0 = int(g["x0"] + col * g["px"]), int(g["y0"] + row * g["py"])
+        # 縁の丸み・枠線を避けるため矩形を内側に寄せる
+        cnt = Counter(px[x, y]
+                      for x in range(x0 + 6, x0 + g["w"] - 6)
+                      for y in range(y0 + 8, y0 + g["h"] - 8))
+        samples.setdefault(colorname, []).append((name, cnt.most_common(1)[0][0]))
+
+    out = {}
+    for colorname, got in sorted(samples.items()):
+        rgbs = [rgb for _, rgb in got]
+        base = Counter(rgbs).most_common(1)[0][0]
+        for name, rgb in got:
+            if max(abs(a - b) for a, b in zip(rgb, base)) > SWATCH_TOLERANCE:
+                raise SystemExit(
+                    f"error: {src['name']} の読み取りがずれている: "
+                    f"{name} は {colorname} のはずだが #{rgb[0]:02x}"
+                    f"{rgb[1]:02x}{rgb[2]:02x} を読んだ(基準は "
+                    f"#{base[0]:02x}{base[1]:02x}{base[2]:02x})")
+            out[norm_name(name)] = ("#%02x%02x%02x" % base, colorname)
+    return out
 
 
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--refresh", action="store_true",
-                    help="HTMLキャッシュを無視して取り直す")
+                    help="キャッシュを無視して取り直す")
     ap.add_argument("--report", action="store_true",
                     help="サイト側にいてCSVに載っていない名前も表示する")
+    ap.add_argument("--audit", action="store_true",
+                    help="ペンライトカラー画像から読んだ色を全件表示する"
+                         "(画像と見比べて検算するため)")
     args = ap.parse_args()
 
     originals = {r["original"] for r in
@@ -191,6 +337,30 @@ def main() -> int:
               f"youtuber.csv と一致 {len(hit)}人")
         if args.report and miss:
             print(f"  CSVに居ない(保存しない): {', '.join(miss)}")
+
+    for src in PENLIGHT_SOURCES:
+        found = read_penlight(src, args.refresh)
+        if not found:
+            continue
+        hit = {n: v for n, v in found.items() if n in originals}
+        miss = sorted(set(found) - set(hit))
+        for name, (hexcolor, colorname) in sorted(hit.items()):
+            # テキストで色を公表しているソースの方が細かいので上書きしない
+            colors.setdefault(name, {
+                "primary": hexcolor,
+                "source": "official-penlight",
+                "source_name": src["name"],
+                "source_url": src["url"],
+                "penlight_color": colorname,
+            })
+        print(f"{src['name']}: 一覧 {len(found)}人 -> "
+              f"youtuber.csv と一致 {len(hit)}人")
+        if args.report and miss:
+            print(f"  CSVに居ない(保存しない): {', '.join(miss)}")
+        if args.audit:
+            for name, (hexcolor, colorname) in sorted(found.items()):
+                mark = " " if name in hit else "-"
+                print(f"  {mark} {hexcolor}  {colorname:<12} {name}")
 
     for name, entry in MANUAL.items():
         if name not in originals:

@@ -192,8 +192,8 @@ python3 tools/audit_taxa.py sekitsui  # 既存行が想定した界・門の配�
   ```sh
   # 自由ライセンスの実写(Commons)とQIDを付与。イラスト・アバター・コスプレは採らない
   python3 tools/enrich_youtuber_images.py            # --report で不採用の内訳
-  # 本人のイメージカラーを公式サイトから集める(tools/youtuber_colors.json)
-  python3 tools/fetch_youtuber_colors.py             # --report で照合結果
+  # 本人のイメージカラーを集める(要 Pillow。tools/youtuber_colors.json)
+  python3 tools/fetch_youtuber_colors.py             # --audit で読み取り結果を全件表示
   # 実写が無い人に「象徴カード」SVGを生成して割り当てる(実写のある行は触らない)
   python3 tools/gen_youtuber_cards.py               # --prune で不要SVGを削除
   ```
@@ -203,9 +203,11 @@ python3 tools/audit_taxa.py sekitsui  # 既存行が想定した界・門の配�
   **チャンネルアイコン・動画サムネイル・キャラクターイラストは使わない**方針で、
   VTuberはほぼ全員が象徴カードになる。カードは `images/youtuber/` に置き、
   CSVからは raw URL で参照する。
-  カードの配色は**本人のイメージカラー**(`tools/youtuber_colors.json`。色を
-  テキストで公表している公式サイトのみを出典にし、イラストからの抽出はしない)を
-  優先し、分からない人は category と org から決める
+  カードの配色は**本人のイメージカラー**(`tools/youtuber_colors.json`)を優先し、
+  分からない人は category と org から決める。色の出典は「色をテキストで公表して
+  いる公式サイト」と「公式ライブのペンライトカラー一覧画像」の2つで、
+  **キャラクターイラストからの色抽出はしない**。一覧画像は `tools/.cache/` 止まりで
+  リポジトリには置かない
 - 自動更新の対象外は fictional_scientist(外部プロジェクトで生成したCSVを
   取り込む方式。詳細は ADR 00006)
 
