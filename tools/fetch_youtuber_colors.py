@@ -36,7 +36,7 @@ usage:
   python3 tools/fetch_youtuber_colors.py --refresh  # キャッシュを捨てて再取得
 
 ペンライトカラー一覧画像の読み取りには Pillow が要る(`pip install Pillow`)。
-入っていなければ画像由来のソースだけを飛ばして続行する。
+無いときはエラーで止まる。黙って飛ばすとJSONから色が静かに消えるため。
 """
 
 import argparse
@@ -271,9 +271,10 @@ def read_penlight(src: dict, refresh: bool) -> dict:
     try:
         from PIL import Image
     except ImportError:
-        print(f"warn: Pillow が無いので {src['name']} を飛ばす"
-              "(pip install Pillow)", file=sys.stderr)
-        return {}
+        # ここで黙って飛ばすと、JSONから46人分の色が静かに消えてしまう
+        raise SystemExit(
+            f"error: {src['name']} の読み取りには Pillow が要る"
+            "(pip install Pillow)")
     data = fetch_bytes(src["image"], src["key"], src["ext"], refresh)
     im = Image.open(io.BytesIO(data)).convert("RGB")
     g = src["grid"]
@@ -340,8 +341,6 @@ def main() -> int:
 
     for src in PENLIGHT_SOURCES:
         found = read_penlight(src, args.refresh)
-        if not found:
-            continue
         hit = {n: v for n, v in found.items() if n in originals}
         miss = sorted(set(found) - set(hit))
         for name, (hexcolor, colorname) in sorted(hit.items()):
