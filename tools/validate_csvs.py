@@ -24,8 +24,9 @@ REQUIRED = ("id", "original", "surface")
 IMAGE_URL_RE = re.compile(
     r"^https?://commons\.wikimedia\.org/"
     r"|^https://github\.com/soramimic/soramimic-wordlists/releases/"
-    # youtuber の生成カードはリポジトリ内(images/)に置いて raw で参照する
-    # (枚数が少なく1枚1KB程度なのでReleaseを介さない。詳細は ADR 00018)
+    # youtuber の象徴カードと baseball/football の選手カードは、リポジトリ内
+    # (images/)に置いて raw で参照する(1枚1〜1.5KB程度のSVGで、CSVと同じ
+    # コミットに入る利点を採ってReleaseを介さない。詳細は ADR 00018, 00019)
     r"|^https://raw\.githubusercontent\.com/soramimic/soramimic-wordlists/"
     r"|^https://github\.com/soramimic/soramimic-wordlists/blob/"
 )
