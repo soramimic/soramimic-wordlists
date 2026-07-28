@@ -22,7 +22,7 @@
 | type1, type2 | pokemon固有: ポケモンのタイプ(でんき等)。単タイプは type2=NA |
 | generation | pokemon固有: 登場世代(1〜9)。フォームはそのフォームが導入された世代 |
 | status | nations/stations: `current`(現存)/`former`(廃止・脱退・旧称)。stationsは改名前の旧駅名を `renamed` で区別する。youtuberは `current`(活動中)/`former`(卒業・引退・活動終了) |
-| category, org, debut_year | youtuber固有: 区分(`youtuber`=実在のYouTuber/`vtuber`=VTuber)、所属事務所・グループ(スラッシュ区切り多値、`org~=ホロライブ` で絞り込む前提。無ければNA)、活動開始年(西暦、無ければNA) |
+| category, org, debut_year | youtuber固有: 区分(`youtuber`=実在のYouTuber/`vtuber`=VTuber)、所属事務所・グループ(スラッシュ区切り多値、`org~=ホロライブ` で絞り込む前提。無ければNA)、活動開始年(西暦、無ければNA。Wikidataの活動開始(P2031)が無い人はチャンネル開設年で代用しているので、両者が混在する) |
 | prefecture, city | stations固有: 駅の所在都道府県・市区町村(同名駅の区別用。1行=1駅) |
 | lines | stations固有: 乗り入れ路線(「JR東日本 東北本線」形式、複数は「／」区切り)。Wikidata/Wikipediaに情報が無い駅は空。補完は `tools/enrich_lines.py` |
 | image, image_page | 画像のURL(Wikimedia Commons直リンクまたは本リポジトリのGitHub Releaseアセット)と、ライセンス・作者の確認先ページ(stations/baseball/football/scientist/sekitsui/plant/insect/pokemon/fictional_scientist/fictional_anime_character)。画像が無い行は空。利用時はimage_pageのクレジット条件に従うこと。**sekitsui/plant/insectは実写が取れない行に限り、`class`ごとの概念イメージSVG(`class-image-v1` リリース。画像内に「イメージ」と明記)を分類単位で共有して割り当てている**(実写ではないので、実写だけが欲しい利用側は `.../releases/download/class-image-` で始まるURLを除外すること)。**pokemonは写真ではなく全行が「型色カード」SVG**(タイプの配色と文字だけで描いたもの。キャラクター造形は使わない。詳細は ADR 00002)。**youtuberは自由ライセンスの実写(Commons)が取れた人だけ写真で、残りは配色と文字だけで描いた「象徴カード」SVG**(`images/youtuber/` をrawで参照。画像内に「イメージ」と明記。チャンネルアイコン・サムネイル・キャラクターイラストは一切使わない。カードの配色は本人のイメージカラー(公式が公表しているもの、または公式ポートレートの情報解析で求めた代表色)があればそれを使う。詳細は ADR 00018, 00019) |。**baseball/football も同じく、実写が無い人には所属チームのチームカラーで描いた「選手カード」SVG**を割り当てている(`images/baseball/` `images/football/` をrawで参照。画像内に「イメージ」と明記。ロゴ・エンブレム・マスコット・ユニフォームの意匠は一切使わない。詳細は ADR 00020)。実写だけが欲しい利用側は `https://raw.githubusercontent.com/soramimic/soramimic-wordlists/` で始まるURL(本リポジトリの生成カード)を除外すること |
@@ -228,8 +228,16 @@ python3 tools/audit_taxa.py sekitsui  # 既存行が想定した界・門・綱�
   ja.wikipediaに記事がある人物のみ。1ファイルに収録し category 列
   (youtuber/vtuber)で区別する。記事名(活動名)のみ収録し本名は取得しない。
   読みは記事冒頭「名前（よみ、」から抽出(かな名は自身から変換)。既存行は
-  書き換えず、未収録者の追記と status(current→former)の一方向更新のみ。
-  org(所属)・debut_year(活動開始年)付き(詳細は ADR 00011, 00012)。
+  書き換えず、未収録者の追記と status(current→former)の一方向更新、
+  org/debut_year の空欄補完のみ。org(所属)・debut_year(活動開始年)付き
+  (debut_year は P2031(活動開始)を優先し、無ければ P2397 の修飾子 P580 =
+  チャンネル開設年を使う。詳細は ADR 00011, 00012, 00023)。
+  **成人向け(アダルト)業界の職業(AV女優・ポルノ俳優・アダルトモデル・
+  セックスワーカー等)がP106に付いている人物は、YouTube/VTuber活動があっても
+  収録しない**(一般向けアプリのサンプル単語リストとして使うため。P106は現職と
+  元職を区別しないので元AV女優も対象。除外職業のQIDは
+  `tools/update_youtuber.py` の `EXCLUDED_OCCUPATIONS`。グラビアアイドル・
+  グラビアモデルは成人向け業界とは別カテゴリなので除外しない)。
   画像(`image`/`image_page`/`wikidata`)は月次バッチには入れず手動実行で補完する
   (詳細は ADR 00018, 00019):
   ```sh
