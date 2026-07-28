@@ -24,6 +24,10 @@ REQUIRED = ("id", "original", "surface")
 IMAGE_URL_RE = re.compile(
     r"^https?://commons\.wikimedia\.org/"
     r"|^https://github\.com/soramimic/soramimic-wordlists/releases/"
+    # youtuber の生成カードはリポジトリ内(images/)に置いて raw で参照する
+    # (枚数が少なく1枚1KB程度なのでReleaseを介さない。詳細は ADR 00018)
+    r"|^https://raw\.githubusercontent\.com/soramimic/soramimic-wordlists/"
+    r"|^https://github\.com/soramimic/soramimic-wordlists/blob/"
 )
 # 読みにASCII英字が2文字以上続くのは、英名を読みに入れてしまった取り違え
 # (例: sekitsui の "Azara's night monkey")。利用側の読み解析がこの手の行で
