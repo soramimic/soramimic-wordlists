@@ -45,13 +45,13 @@ SELECT ?l WHERE {{ wd:{qid} rdfs:label ?l . FILTER(LANG(?l) IN ("ja", "en")) }}"
             f"must_not={must_not})と合わない。QIDを確認してください")
 
 
-def fetch_persons(occ: str, exclude: str = None) -> dict:
-    """QID -> ja記事タイトル(職業P106=occ かつ ja.wikipediaに記事がある人物)。"""
+def _persons(occ: str, exclude: str = None, extra: str = "") -> dict:
     minus = f"MINUS {{ ?p wdt:P106 wd:{exclude} }}" if exclude else ""
     q = f"""
 SELECT ?p ?title WHERE {{
   ?p wdt:P106 wd:{occ} .
   {minus}
+  {extra}
   ?a schema:about ?p ; schema:isPartOf <https://ja.wikipedia.org/> ;
      schema:name ?title .
 }}"""
@@ -59,7 +59,25 @@ SELECT ?p ?title WHERE {{
     for b in sparql(q)["results"]["bindings"]:
         qid = b["p"]["value"].rsplit("/", 1)[1]
         persons[qid] = b["title"]["value"]
+    return persons
+
+
+def fetch_persons(occ: str, exclude: str = None,
+                  excluded_occs: dict = None) -> dict:
+    """QID -> ja記事タイトル(職業P106=occ かつ ja.wikipediaに記事がある人物)。
+
+    excluded_occs(QID -> ラベル)のいずれかを P106 に持つ人物は除外する。
+    黙って消えると気付けないので、該当者は名前をログに出す。"""
+    persons = _persons(occ, exclude)
     print(f"対象(wd:{occ}): {len(persons)}人(distinct QID)", flush=True)
+    if excluded_occs:
+        vals = " ".join(f"wd:{q}" for q in sorted(excluded_occs))
+        dropped = _persons(occ, exclude,
+                           f"VALUES ?bad {{ {vals} }} ?p wdt:P106 ?bad .")
+        for qid in dropped:
+            persons.pop(qid, None)
+        print(f"  除外職業(P106)で除外: {len(dropped)}人: "
+              + ", ".join(sorted(dropped.values())), flush=True)
     return persons
 
 
@@ -138,19 +156,24 @@ def norm(title: str) -> str:
 
 
 def build_list(csv_name: str, specs: list, cache_env: str,
-               excluded: set = frozenset()) -> int:
+               excluded: set = frozenset(),
+               excluded_occs: dict = None) -> int:
     """リストを生成(初回)または追記・status更新(2回目以降)する。
 
     specs: category ごとの取得仕様
       {category, occ, must, must_not, exclude, guard} の dict のリスト。
     excluded: 収録しないja記事名(norm()済み)の集合。P106の誤登録や、別業種の
       著名人が公式チャンネルを持つだけのケースを恒久的に弾く。
+    excluded_occs: 収録しない職業の QID -> ラベル。P106 にこの職業を持つ人物を
+      属性ごと弾く。値はラベルの期待キーワード(QID取り違えのフェイルセーフ)。
     """
     csv_path = Path(__file__).resolve().parent.parent / csv_name
     for s in specs:
         assert_occupation(s["occ"], s["must"], s["must_not"])
         if s.get("exclude"):
             assert_occupation(s["exclude"], ("youtuber", "ユーチューバー"), ())
+    for qid, label in (excluded_occs or {}).items():
+        assert_occupation(qid, (label,), ())
 
     cache = os.environ.get(cache_env)  # 開発用: 取得結果の pickle キャッシュ先
     if cache and Path(cache).exists():
@@ -160,7 +183,7 @@ def build_list(csv_name: str, specs: list, cache_env: str,
     else:
         persons_by_cat = {}
         for s in specs:
-            persons = fetch_persons(s["occ"], s.get("exclude"))
+            persons = fetch_persons(s["occ"], s.get("exclude"), excluded_occs)
             lo, hi = s["guard"]
             if not lo <= len(persons) <= hi:
                 print(f"error: implausible count for {s['category']}: "
@@ -179,9 +202,14 @@ def build_list(csv_name: str, specs: list, cache_env: str,
             print(f"キャッシュ保存: {cache}", flush=True)
 
     if csv_path.exists():
-        old_rows = list(csv.DictReader(csv_path.open(encoding="utf-8")))
+        with csv_path.open(encoding="utf-8") as fh:
+            reader = csv.DictReader(fh)
+            old_rows = list(reader)
+            # 他のスクリプトが足した付加列(image/image_page/wikidata: ADR 00018)を
+            # 落とさない。新規行は空にしておき、enrich 側が後から埋める
+            cols = list(reader.fieldnames or COLS)
     else:
-        old_rows = []
+        old_rows, cols = [], list(COLS)
     existing = {r["original"] for r in old_rows}
     next_id = max((int(r["id"]) for r in old_rows), default=-1) + 1
 
@@ -226,7 +254,8 @@ def build_list(csv_name: str, specs: list, cache_env: str,
         existing.add(original)
         a = attrs.get(qid, {})
         for surface, pron, typ in rows:
-            added.append({"id": str(next_id), "original": original,
+            added.append({**{c: "" for c in cols},
+                          "id": str(next_id), "original": original,
                           "surface": surface, "pronunciation": pron,
                           "type": typ, "category": cat,
                           "org": a.get("org", "NA"),
@@ -234,7 +263,7 @@ def build_list(csv_name: str, specs: list, cache_env: str,
                           "status": a.get("status", "current")})
         next_id += 1
 
-    write_csv_no_trailing_newline(csv_path, COLS, old_rows + added)
+    write_csv_no_trailing_newline(csv_path, cols, old_rows + added)
 
     n_people = len({r["id"] for r in added})
     print(f"\n{csv_name}: 既存{len(old_rows)}行 + 新規{n_people}人({len(added)}行) "
