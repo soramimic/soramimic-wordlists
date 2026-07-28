@@ -31,6 +31,7 @@
 | wikidata | stations: 駅のWikidata QID(差分更新の永続キー)。sekitsui/plant: 画像の取得元になったtaxonのQID(実写画像とセットで埋まるので、実写画像が無い行は空。sekitsui/plantの分類イメージ画像はWikidata由来ではないので空のまま)。youtuber: 本人のQID(画像の有無とは独立に埋まる。同名で複数QIDに当たった人は曖昧として空) |
 | birth_year, death_year, nationality, field, achievement | fictional_scientist固有: 生年・没年・国籍・分野・主な業績(AI生成の架空人物情報) |
 | title, org_name, role_in_org, first_year, species, cv_name, description | fictional_anime_character固有: 作品名・所属・役割・初登場年・種族・声優名・紹介文(AI生成の架空キャラ情報) |
+| subject | gimukyoiku固有: 教科(国語/社会/数学/理科/英語/音楽/美術/保健体育/技術・家庭の9区分。小学校の算数・図工等は対応する中学教科に吸収)。複数教科にまたがる語はスラッシュ区切り多値で `subject~=美術` で絞り込む。descriptionは授業でどう登場する語かの短い説明(「。」終わり) |
 
 ## リスト一覧
 
@@ -49,6 +50,7 @@
 | fictional_scientist.csv | AI生成による架空の科学者1000人(名前・読み・生没年・国籍・分野・主な業績・肖像画像。type: family/given/full) | jiroshimaya/fictional-scientists プロジェクトによる自動生成(実在人物とは無関係)、画像は本リポジトリのReleaseで配布 |
 | fictional_anime_character.csv | AI生成による架空アニメ『蒼穹の螺旋航路』の登場キャラ1000人(名前・読み・所属・初登場年・種族・声優名・紹介文・肖像画像。type: family/given/full/call/nick。callは作中で使われる呼び名(敬称込み)、nickはあだ名) | jiroshimaya/fictional-scientists プロジェクトによる自動生成(実在の作品・人物とは無関係)、画像は本リポジトリのReleaseで配布 |
 | fictional_daily_anime_character.csv | AI生成による架空日常アニメ『まちまる！』の住人1025人(名前・読み・所属・初登場年・種族・声優名・紹介文・肖像画像。type: family/given/full/call/nick。callは作中で使われる呼び名(敬称込み)、nickはあだ名) | jiroshimaya/fictional-scientists プロジェクトによる自動生成(実在の作品・人物とは無関係)、画像は本リポジトリのReleaseで配布 |
+| gimukyoiku.csv | 義務教育(小中学校)の教科書・授業に登場する単語(教科フィルタ・説明文付き。学習用語に加え授業で扱う人名・作品名・事件名を含む) | AI生成による手動キュレーション(本リポジトリ内で作成、自動更新なし。詳細は ADR 00022) |
 
 ## 利用上の注意
 
@@ -260,7 +262,8 @@ python3 tools/audit_taxa.py sekitsui  # 既存行が想定した界・門・綱�
   **リポジトリに置かない・再配布しない**。コミットするのは色の値だけで、
   カードは配色と文字だけの自作SVGのまま(イラストの貼り込み・トレースはしない)
 - 自動更新の対象外は fictional_scientist(外部プロジェクトで生成したCSVを
-  取り込む方式。詳細は ADR 00006)
+  取り込む方式。詳細は ADR 00006)と gimukyoiku(AI生成による手動キュレーション。
+  追加・修正は通常のPRで行う。詳細は ADR 00022)
 
 設計判断の記録は [docs/adr/](docs/adr/) を参照。
 
