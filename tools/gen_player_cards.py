@@ -50,6 +50,7 @@ from pathlib import Path
 from xml.sax.saxutils import escape
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+from silhouettes import silhouette_svg  # noqa: E402
 from wpnames import write_csv_no_trailing_newline  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -74,6 +75,9 @@ TEAM_MAX = 10           # チーム名の表示上限(全角換算)
 MIN_DISC_CY = 100
 MIN_DISC_R = 48
 MIN_MARK_SIZES = (56, 44)   # (1文字, 2文字)
+# 職業シルエットは帯の左側に敷く。右端(x=12+90=102)がディスクのハロー
+# (x=107から)に触れない大きさにしてある
+MIN_SIL_BOX = (12, 10, 90)  # (x, y, 一辺)
 
 # リストごとの設定。`hue` はチームカラーが分からないときの基準色相
 LISTS = {
@@ -86,6 +90,8 @@ LISTS = {
         "ball": "baseball",
         "career": True,     # team列が「巨人-日本ハム」のような球団変遷の文字列
         "label": lambda row: "プロ野球選手",
+        # 減量版に敷く職業シルエット。baseball は区分の列が無いので全員打者
+        "sil": lambda row: "baseball_batter",
     },
     "football": {
         "csv": "football.csv",
@@ -99,6 +105,10 @@ LISTS = {
             "manager": "サッカー監督",
             "mascot": "クラブマスコット",
         }.get(row.get("category", ""), "サッカー選手"),
+        "sil": lambda row: {
+            "manager": "manager",
+            "mascot": "mascot",
+        }.get(row.get("category", ""), "football_player"),
     },
 }
 
@@ -358,16 +368,19 @@ def num(x: float) -> str:
 
 
 def build_card(cfg: dict, name: str, team: str, label: str,
-               color: dict | None = None, minimal: bool = False) -> str:
+               color: dict | None = None, minimal: bool = False,
+               sil: str = "") -> str:
     """カードのSVGを組む。
 
     `minimal=True` は**文字情報を落とした減量版**(試作)。soramimic-video の
     `player_card` レイアウトが `{original}`(名前)と `{team}`(所属)を
     テキストで描くので、カードにも同じ文字が入っていると画面内で二重になる。
     残すのは
-    「配色(チームカラー)+頭文字+『イメージ』の札+競技のボール」だけで、
-    名前・区分・所属チームは描かない。「イメージ」の札は実写と誤認されない
-    ための表示なので減量版でも必ず残す。
+    「配色(チームカラー)+頭文字+職業シルエット+『イメージ』の札+
+    競技のボール」だけで、名前・区分・所属チームは描かない。
+    区分の文字を落とす代わりに、帯の左へ職業シルエット(`sil`)を薄く敷いて
+    選手・監督・マスコットを見分けられるようにする。「イメージ」の札は実写と
+    誤認されないための表示なので減量版でも必ず残す。
     """
     p = palette(cfg, team, color)
     mark = initials(name)
@@ -379,8 +392,8 @@ def build_card(cfg: dict, name: str, team: str, label: str,
         f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" '
         f'width="{W}" height="{H}">',
         f"<title>{escape(name)}のイメージ画像</title>",
-        ("<desc>チームカラーの配色と頭文字だけで描いたカードです。"
-         "写真・ロゴは使っていません。</desc>" if minimal else
+        ("<desc>チームカラーの配色と頭文字、職業を表す人型のシルエットだけで"
+         "描いたカードです。写真・ロゴは使っていません。</desc>" if minimal else
          "<desc>チームカラーの配色と文字だけで描いたカードです。"
          "写真・ロゴは使っていません。</desc>"),
         f'<g font-family="{FONT}">',
@@ -389,9 +402,14 @@ def build_card(cfg: dict, name: str, team: str, label: str,
         # 帯はチームカラーのベタ塗り。グラデーションにすると1枚あたり200バイト
         # 増え、1万枚超では2MB以上効いてくるので使わない
         f'<path d="{HERO_PATH}" fill="{p["accent"]}"/>',
-        # 抽象的な人型。帯の中に薄く敷くだけなので文字の可読性を下げない
-        f'<g fill="{p["fg"]}" fill-opacity=".16">{FIGURE}</g>',
     ]
+    if minimal:
+        # 区分の文字の代わりに職業シルエット。帯の中に薄く敷く
+        parts.append(silhouette_svg(sil or cfg["sil"]({}), p["fg"],
+                                    *MIN_SIL_BOX))
+    else:
+        # 抽象的な人型。帯の中に薄く敷くだけなので文字の可読性を下げない
+        parts.append(f'<g fill="{p["fg"]}" fill-opacity=".16">{FIGURE}</g>')
     if p["band"]:
         # 副色のライン。帯の下端に置くので、白のような淡い副色でもはっきり出る
         parts.append(f'<rect x="0" y="{HERO_H - 8}" width="{W}" height="8" '
@@ -470,7 +488,8 @@ def load_people(cfg: dict) -> tuple:
             img = r.get("image", "")
             if img and not img.startswith(prefix):
                 rows_by_name[name] = None
-    out = [(n, rows_by_name[n].get("team", ""), cfg["label"](rows_by_name[n]))
+    out = [(n, rows_by_name[n].get("team", ""), cfg["label"](rows_by_name[n]),
+            cfg["sil"](rows_by_name[n]))
            for n in order if rows_by_name[n] is not None]
     return out, len(order) - len(out)
 
@@ -501,13 +520,14 @@ def run(key: str, apply: bool, prune: bool, minimal: bool = False) -> int:
 
     wanted = set()
     n_color = 0
-    for name, team, label in people:
+    for name, team, label, sil in people:
         color = team_color(cfg, colors, team)
         if color:
             n_color += 1
         path = out_dir / asset_name(cfg, name)
-        path.write_text(build_card(cfg, name, team, label, color, minimal),
-                        encoding="utf-8")
+        path.write_text(
+            build_card(cfg, name, team, label, color, minimal, sil),
+            encoding="utf-8")
         wanted.add(path.name)
     if len(wanted) != len(people):
         print(f"error: {key}: アセット名が衝突している", file=sys.stderr)

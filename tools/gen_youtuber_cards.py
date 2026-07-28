@@ -47,6 +47,7 @@ from pathlib import Path
 from xml.sax.saxutils import escape
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+from silhouettes import silhouette_svg  # noqa: E402
 from wpnames import write_csv_no_trailing_newline  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -83,6 +84,9 @@ ORG_MAX = 13   # 所属名の表示上限(全角換算)
 MIN_DISC_CY = 100
 MIN_DISC_R = 48
 MIN_MARK_SIZES = (56, 44)   # (1文字, 2文字)
+# 職業シルエットは帯の左側に敷く。右端(x=12+90=102)がディスクのハロー
+# (x=107から)に触れない大きさにしてある
+MIN_SIL_BOX = (12, 10, 90)  # (x, y, 一辺)
 
 
 def asset_key(name: str) -> str:
@@ -288,10 +292,11 @@ def build_card(name: str, category: str, org: str,
     `youtuber_card` レイアウトが `{original}`(名前)と `{org}`(所属)を
     テキストで描くので、カードにも同じ文字が入っていると画面内で二重になる。
     残すのは
-    「配色(イメージカラー)+頭文字+『イメージ』の札」だけで、名前・区分・
-    所属は描かない。youtuber(暖色)と vtuber(青紫)の別は色相が担うので、
-    区分の文字を落としても見分けは付く。「イメージ」の札は実写と誤認され
-    ないための表示なので減量版でも必ず残す。
+    「配色(イメージカラー)+頭文字+職業シルエット+『イメージ』の札」だけで、
+    名前・区分・所属は描かない。区分の文字の代わりに、帯の左へ職業シルエットを
+    薄く敷く(YouTuber=カメラを掲げる人型、VTuber=ヘッドセットを着けた人型)。
+    youtuber(暖色)と vtuber(青紫)の色相の別と合わせて二重に区別が付く。
+    「イメージ」の札は実写と誤認されないための表示なので減量版でも必ず残す。
     """
     p = palette(category, org, color)
     key = asset_key(name)
@@ -305,8 +310,8 @@ def build_card(name: str, category: str, org: str,
         f'aria-label="{escape(name)}のイメージ画像">',
         f"<title>{escape(name)}のイメージ画像</title>",
         ("<desc>本人の写真・チャンネルアイコン・キャラクターデザインは一切"
-         "使っていない、配色と頭文字だけの記号的なカードです。"
-         "実写ではありません。</desc>" if minimal else
+         "使っていない、配色と頭文字、職業を表す人型のシルエットだけの記号的な"
+         "カードです。実写ではありません。</desc>" if minimal else
          "<desc>本人の写真・チャンネルアイコン・キャラクターデザインは一切"
          "使っていない、配色と文字だけの記号的なカードです。実写ではありません。"
          "</desc>"),
@@ -323,6 +328,11 @@ def build_card(name: str, category: str, org: str,
         f'<rect x="0" y="0" width="{W}" height="{H}" fill="{p["bg"]}"/>',
         f'<rect x="0" y="0" width="{W}" height="{HERO_H}" fill="url(#{gid})"/>',
     ]
+    if minimal:
+        # 区分の文字の代わりに職業シルエット。帯の中に薄く敷く
+        parts.append(silhouette_svg(
+            "vtuber" if category == "vtuber" else "youtuber",
+            p["fg"], *MIN_SIL_BOX))
     if p["band"]:
         # 副色のライン。帯の下端に置くので、白のような淡い副色でもはっきり出る
         parts.append(f'<rect x="0" y="{HERO_H - 8}" width="{W}" height="8" '
