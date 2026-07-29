@@ -3,8 +3,11 @@
 
 YouTuber/VTuberのチャンネルアイコン・サムネイル・キャラクターイラストは本人/
 事務所の著作物なので使えない(詳細は ADR 00018)。自由ライセンスの実写が取れる
-のは1割弱なので、残りには**配色と文字だけで描いた記号的なカード**を割り当てる。
-pokemon の「型色カード」(ADR 00002)と同じ考え方で、素材は一切借りない。
+のは1割弱なので、残りには**配色と頭文字と職業アイコンで描いた記号的なカード**を
+割り当てる。
+pokemon の「型色カード」(ADR 00002)と同じ考え方で、本人・事務所の素材は
+一切借りない(地紋に敷く職業アイコンだけは汎用のオープンライセンス素材を
+帰属付きで使う。詳細は ADR 00024)。
 
 - 1人1枚。同じ人物の複数行(full/family/given)は同じ `original` なので同じ
   カードを共有する
@@ -20,11 +23,18 @@ pokemon の「型色カード」(ADR 00002)と同じ考え方で、素材は一�
   色相**になるよう org の表示名から決定的に色相を振る。所属なし(NA)は基準色
 - **使うのは色という事実だけ**で、イラストそのものはリポジトリに入らない。
   解析に使った画像は `tools/.cache/` 止まりで再配布しない(詳細は ADR 00018, 00019)
-- 中央には名前の頭文字、下部にフルネーム、上部にカテゴリと所属を描く。実写と
-  誤認されないよう右上に「イメージ」の札を必ず入れる
+- 中央に名前の頭文字だけを大きく置く。**名前・区分・所属の文字は描かない**。
+  soramimic-video の `youtuber_card` レイアウトが同じ文字をテキストで描くので、
+  カードにも入れると画面内で二重になるため(詳細は ADR 00024)。
+  実写と誤認されないよう右上に「イメージ」の札を必ず入れる
+- 文字で書いていた区分の代わりに、**職業アイコン**をカードの地紋(ウォーター
+  マーク)として敷き、YouTuber と VTuber を見分けさせる。アイコンは
+  Material Symbols(Apache License 2.0)で、同じ区分の人が何百人も並ぶので
+  ポーズ・向き・マーク位置を**人物IDのハッシュ**で決定的に散らす
+  (帰属は `<desc>` とリポジトリのLICENSE/README。詳細は ADR 00024)
 - 自己完結SVG(外部フォント・画像を参照しない)。viewBox は 320x200 固定
 - **生成物はリポジトリ内(`images/youtuber/`)に置き**、CSVからは raw URL で
-  参照する。枚数が1000枚弱と少なく、1枚1KB程度なのでReleaseを介す必要がない
+  参照する。枚数が1000枚弱と少なく、1枚3KB前後なのでReleaseを介す必要がない
 
 usage:
   # 生成してCSVのimage/image_pageを埋める(実写のある行は触らない)
@@ -47,6 +57,7 @@ from pathlib import Path
 from xml.sax.saxutils import escape
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+from silhouettes import ATTRIBUTION, silhouette_card_svg  # noqa: E402
 from wpnames import write_csv_no_trailing_newline  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -63,20 +74,24 @@ URL_PREFIX = f"{RAW_BASE}/{REL_DIR}/"
 
 W, H = 320, 200
 HERO_H = 112
-PAD = 16
 RADIUS = 16
 FONT = "'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif"
-NAME_SIZES_1LINE = (23, 21, 19)
-NAME_SIZES_2LINE = (17, 15, 13, 11)
 
 # カテゴリごとの基準色相と、org で振る色相の幅(度)。範囲が重ならないので
 # youtuber(暖色)と vtuber(青紫)はひと目で見分けられる
 CATEGORY_STYLE = {
-    "youtuber": {"label": "YouTuber", "hue": 8, "spread": 30},
-    "vtuber": {"label": "VTuber", "hue": 268, "spread": 40},
+    "youtuber": {"hue": 8, "spread": 30},
+    "vtuber": {"hue": 268, "spread": 40},
 }
-DEFAULT_STYLE = {"label": "YouTuber", "hue": 8, "spread": 30}
-ORG_MAX = 13   # 所属名の表示上限(全角換算)
+DEFAULT_STYLE = {"hue": 8, "spread": 30}
+
+# 頭文字ディスク。帯(y=112)の境目にまたがる位置に置くと、上下どちらの領域にも
+# 属さない「記号」として読める
+DISC_CY = 100
+DISC_R = 48
+MARK_SIZES = (56, 44)   # (1文字, 2文字)
+# 職業アイコンの配置(silhouettes.SIL_PLACEMENTS のキー)
+SIL_STYLE = "water"
 
 
 def asset_key(name: str) -> str:
@@ -137,16 +152,6 @@ def org_key(org: str) -> str:
     return min(parts, key=lambda p: (len(p), p)) if parts else ""
 
 
-def org_label(org: str) -> str:
-    """カードに描く所属名(長すぎるものは切り詰める)。無ければ空。"""
-    head = org_key(org)
-    if head and text_width(head, 1.0) > ORG_MAX:
-        while head and text_width(head + "…", 1.0) > ORG_MAX:
-            head = head[:-1]
-        head += "…"
-    return head
-
-
 def fallback_hue(category: str, org: str) -> float:
     """イメージカラーが分からない人の色相。category と org から決定的に決める。"""
     st = CATEGORY_STYLE.get(category, DEFAULT_STYLE)
@@ -187,7 +192,6 @@ def palette(category: str, org: str, color: dict | None = None) -> dict:
 
     色が無い人は従来どおり category と org のハッシュから色相を決める。
     """
-    st = CATEGORY_STYLE.get(category, DEFAULT_STYLE)
     given = [c for c in (parse_hex((color or {}).get("primary", "")),
                          parse_hex((color or {}).get("secondary", "")))
              if c is not None]
@@ -213,8 +217,6 @@ def palette(category: str, org: str, color: dict | None = None) -> dict:
     else:
         disc, mark = hsl(hd, clamp(sd, 0.0, 0.46), 0.94), hsl(h, s, 0.40)
     return {
-        "label": st["label"],
-        "org": org_label(org),
         "light": light,
         "bg": hsl(h, min(s, 0.42), 0.965),
         "accent": hsl(h, s, lum),
@@ -225,45 +227,8 @@ def palette(category: str, org: str, color: dict | None = None) -> dict:
         "fg": dark_ink if light else "#ffffff",
         "chip_bg": dark_ink if light else "#ffffff",
         "chip_fg": "#ffffff" if light else hsl(h, s, min(lum, 0.42)),
-        "ink": hsl(h, min(s, 0.30), 0.20),
         "edge": hsl(h, min(s, 0.25), 0.88),
     }
-
-
-def text_width(text: str, size: float) -> float:
-    """描画幅の見積り。CJK・かなは1em、ASCIIは0.6em(多めに見る)。"""
-    return sum(0.6 if ord(c) < 128 else 1.0 for c in text) * size
-
-
-def wrap_two(text: str, size: float, max_w: float):
-    """max_w に収まる2行へ分割する(行長が均等になる位置を選ぶ)。無理ならNone。"""
-    best = None
-    for cut in range(1, len(text)):
-        head, tail = text[:cut], text[cut:]
-        wh, wt = text_width(head, size), text_width(tail, size)
-        if wh > max_w or wt > max_w:
-            continue
-        if best is None or abs(wh - wt) < best[0]:
-            best = (abs(wh - wt), [head, tail])
-    return best[1] if best else None
-
-
-def layout_name(name: str):
-    """(font_size, [(行テキスト, ベースラインy), ...]) を返す。"""
-    max_w = W - PAD * 2
-    for size in NAME_SIZES_1LINE:
-        if text_width(name, size) <= max_w:
-            return size, [(name, 163.0)]
-    for size in NAME_SIZES_2LINE:
-        lines = wrap_two(name, size, max_w)
-        if lines:
-            step = size * 1.3
-            first = 168.0 - step
-            return size, [(lines[0], first), (lines[1], first + step)]
-    size = NAME_SIZES_2LINE[-1]
-    half = len(name) // 2 or 1
-    step = size * 1.3
-    return size, [(name[:half], 168.0 - step), (name[half:], 168.0)]
 
 
 def initials(name: str) -> str:
@@ -275,12 +240,24 @@ def initials(name: str) -> str:
 
 
 def build_card(name: str, category: str, org: str,
-               color: dict | None = None) -> str:
+               color: dict | None = None,
+               sil_style: str = SIL_STYLE) -> str:
+    """カードのSVGを組む。
+
+    描くのは「配色(イメージカラー)+頭文字+職業アイコン+『イメージ』の札」
+    だけで、**名前・区分・所属の文字は描かない**。soramimic-video の
+    `youtuber_card` レイアウトが名前と所属をテキストで描くので、カードにも
+    同じ文字が入っていると画面内で二重になるため(詳細は ADR 00024)。
+    区分の文字の代わりに職業アイコンを地紋として敷く(YouTuber=カメラを持つ
+    人型、VTuber=ヘッドセットを着けた人型)。youtuber(暖色)と vtuber(青紫)の
+    色相の別と合わせて二重に区別が付く。「イメージ」の札は実写と誤認されない
+    ための表示なので必ず残す。
+    """
     p = palette(category, org, color)
     key = asset_key(name)
     gid, cid = f"g{key}", f"c{key}"
     mark = initials(name)
-    mark_size = 34 if len(mark) > 1 else 40
+    mark_size = MARK_SIZES[1] if len(mark) > 1 else MARK_SIZES[0]
 
     parts = [
         f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" '
@@ -288,8 +265,8 @@ def build_card(name: str, category: str, org: str,
         f'aria-label="{escape(name)}のイメージ画像">',
         f"<title>{escape(name)}のイメージ画像</title>",
         "<desc>本人の写真・チャンネルアイコン・キャラクターデザインは一切"
-        "使っていない、配色と文字だけの記号的なカードです。実写ではありません。"
-        "</desc>",
+        "使っていない、配色と頭文字、職業を表すアイコンだけの記号的な"
+        f"カードです。実写ではありません。{ATTRIBUTION}</desc>",
         "<defs>",
         f'<linearGradient id="{gid}" gradientUnits="userSpaceOnUse" '
         f'x1="0" y1="0" x2="{W}" y2="{HERO_H}">',
@@ -302,38 +279,31 @@ def build_card(name: str, category: str, org: str,
         f'<g clip-path="url(#{cid})" font-family="{FONT}">',
         f'<rect x="0" y="0" width="{W}" height="{H}" fill="{p["bg"]}"/>',
         f'<rect x="0" y="0" width="{W}" height="{HERO_H}" fill="url(#{gid})"/>',
+        # 区分の文字の代わりに職業アイコン。カードの地紋として大きく敷く
+        silhouette_card_svg("vtuber" if category == "vtuber" else "youtuber",
+                            p["fg"], p["accent"], HERO_H, W, H, sil_style, key),
     ]
     if p["band"]:
         # 副色のライン。帯の下端に置くので、白のような淡い副色でもはっきり出る
         parts.append(f'<rect x="0" y="{HERO_H - 8}" width="{W}" height="8" '
                      f'fill="{p["band"]}"/>')
+    # 頭文字のディスクは帯の境目にまたがるように大きく置く。
+    # ディスクは淡い色にも濃い色にもなるので、地(bg)のハローと
+    # 主色のリングで、帯の上でも下地の上でも輪郭が消えないようにする
     parts += [
-        # 頭文字のディスク
-        f'<circle cx="58" cy="60" r="36" fill="{p["disc"]}"/>',
-        f'<text x="58" y="{60 + mark_size * 0.36:.1f}" text-anchor="middle" '
-        f'font-size="{mark_size}" font-weight="700" fill="{p["mark"]}">'
-        f"{escape(mark)}</text>",
-        # 区分と所属。帯が淡い色のときは白ではなく濃色で書く
-        f'<text x="108" y="56" font-size="19" font-weight="700" '
-        f'fill="{p["fg"]}">{escape(p["label"])}</text>',
-    ]
-    if p["org"]:
-        parts.append(
-            f'<text x="108" y="80" font-size="13" fill="{p["fg"]}" '
-            f'fill-opacity="0.85">{escape(p["org"])}</text>')
-    # 実写と誤認されないための札
-    parts += [
+        f'<circle cx="{W / 2:g}" cy="{DISC_CY}" '
+        f'r="{DISC_R + 5}" fill="{p["bg"]}"/>',
+        f'<circle cx="{W / 2:g}" cy="{DISC_CY}" r="{DISC_R}" '
+        f'fill="{p["disc"]}" stroke="{p["accent"]}" stroke-width="2.5"/>',
+        f'<text x="{W / 2:g}" y="{DISC_CY + mark_size * 0.36:.1f}" '
+        f'text-anchor="middle" font-size="{mark_size}" font-weight="700" '
+        f'fill="{p["mark"]}">{escape(mark)}</text>',
+        # 実写と誤認されないための札
         f'<rect x="240" y="10" width="70" height="22" rx="11" '
         f'fill="{p["chip_bg"]}" fill-opacity="0.9"/>',
         f'<text x="275" y="26" text-anchor="middle" font-size="13" '
         f'font-weight="600" fill="{p["chip_fg"]}">イメージ</text>',
     ]
-    size, lines = layout_name(name)
-    for line, y in lines:
-        parts.append(
-            f'<text x="{W / 2:g}" y="{y:.1f}" text-anchor="middle" '
-            f'font-size="{size}" font-weight="700" fill="{p["ink"]}">'
-            f"{escape(line)}</text>")
     parts.append("</g>")
     parts.append(
         f'<rect x="0.5" y="0.5" width="{W - 1}" height="{H - 1}" '
