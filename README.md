@@ -25,7 +25,7 @@
 | category, org, debut_year | youtuber固有: 区分(`youtuber`=実在のYouTuber/`vtuber`=VTuber)、所属事務所・グループ(スラッシュ区切り多値、`org~=ホロライブ` で絞り込む前提。無ければNA)、活動開始年(西暦、無ければNA。Wikidataの活動開始(P2031)が無い人はチャンネル開設年で代用しているので、両者が混在する) |
 | prefecture, city | stations固有: 駅の所在都道府県・市区町村(同名駅の区別用。1行=1駅) |
 | lines | stations固有: 乗り入れ路線(「JR東日本 東北本線」形式、複数は「／」区切り)。Wikidata/Wikipediaに情報が無い駅は空。補完は `tools/enrich_lines.py` |
-| image, image_page | 画像のURL(Wikimedia Commons直リンクまたは本リポジトリのGitHub Releaseアセット)と、ライセンス・作者の確認先ページ(stations/baseball/football/scientist/sekitsui/plant/insect/pokemon/fictional_scientist/fictional_anime_character)。画像が無い行は空。利用時はimage_pageのクレジット条件に従うこと。**sekitsui/plant/insectは実写が取れない行に限り、`class`ごとの概念イメージSVG(`class-image-v1` リリース。画像内に「イメージ」と明記)を分類単位で共有して割り当てている**(実写ではないので、実写だけが欲しい利用側は `.../releases/download/class-image-` で始まるURLを除外すること)。**pokemonは写真ではなく全行が「型色カード」SVG**(タイプの配色と文字だけで描いたもの。キャラクター造形は使わない。詳細は ADR 00002)。**youtuberは自由ライセンスの実写(Commons)が取れた人だけ写真で、残りは配色と頭文字と職業アイコンで描いた「象徴カード」SVG**(`images/youtuber/` をrawで参照。画像内に「イメージ」と明記。チャンネルアイコン・サムネイル・キャラクターイラストは一切使わない。カードの配色は本人のイメージカラー(公式が公表しているもの、または公式ポートレートの情報解析で求めた代表色)があればそれを使う。詳細は ADR 00018, 00019) |。**baseball/football も同じく、実写が無い人には所属チームのチームカラーで描いた「選手カード」SVG**を割り当てている(`images/baseball/` `images/football/` をrawで参照。画像内に「イメージ」と明記。ロゴ・エンブレム・マスコット・ユニフォームの意匠は一切使わない。詳細は ADR 00020)。実写だけが欲しい利用側は `https://raw.githubusercontent.com/soramimic/soramimic-wordlists/` で始まるURL(本リポジトリの生成カード)を除外すること |
+| image, image_page | 画像のURL(Wikimedia Commons直リンクまたは本リポジトリのGitHub Releaseアセット)と、ライセンス・作者の確認先ページ(stations/baseball/football/scientist/sekitsui/plant/insect/pokemon/fictional_scientist/fictional_anime_character)。画像が無い行は空。利用時はimage_pageのクレジット条件に従うこと。**sekitsui/plant/insectは実写が取れない行に限り、`class`ごとの概念イメージSVG(`class-image-v1` リリース。画像内に「イメージ」と明記)を分類単位で共有して割り当てている**(実写ではないので、実写だけが欲しい利用側は `.../releases/download/class-image-` で始まるURLを除外すること)。**pokemonは写真ではなく全行が「型色カード」SVG**(タイプの配色と文字だけで描いたもの。キャラクター造形は使わない。詳細は ADR 00002)。**youtuberは自由ライセンスの実写(Commons)が取れた人だけ写真で、残りは配色と頭文字と職業アイコンで描いた「象徴カード」SVG**(`images/youtuber/` をrawで参照。画像内に「イメージ」と明記。チャンネルアイコン・サムネイル・キャラクターイラストは一切使わない。カードの配色は本人のイメージカラー(公式が公表しているもの、または公式ポートレートの情報解析で求めた代表色)があればそれを使う。詳細は ADR 00018, 00019) |。**baseball/football も同じく、実写が無い人には所属チームのチームカラーで描いた「選手カード」SVG**を割り当てている(`images/baseball/` `images/football/` をrawで参照。画像内に「イメージ」と明記。ロゴ・エンブレム・マスコット・ユニフォームの意匠は一切使わない。詳細は ADR 00020)。**scientist は肖像が取れない人に分野の配色で描いた「象徴カード」SVG**(`images/scientist/` をrawで参照。肖像画・肖像写真は使わない。分野の色に出典は無い。詳細は ADR 00025)、**stations は写真が取れない駅に汎用の「駅名標」SVG**(`images/station/` をrawで参照。鉄道会社のロゴ・社章・駅ナンバリング・ラインカラーは使わない。詳細は ADR 00026)を割り当てている。**nations は全行がCommonsの国旗**で、消滅国はその国が最後に使っていた旗(詳細は ADR 00026)。実写だけが欲しい利用側は `https://raw.githubusercontent.com/soramimic/soramimic-wordlists/` で始まるURL(本リポジトリの生成カード)を除外すること |
 | field | scientist固有: 分野を優先順(物理→化学→数学→天文学→生物学→計算機科学→地学)で並べた単一列のスラッシュ区切り多値(例 `物理/数学`)。切り詰めなし、無ければ`NA`。ソラミミックに部分一致演算子`~=`を追加したので、多値を1列で持ち`field~=物理`で絞り込める(app側 setting.json の対応は別リポジトリ soramimic 側で実施) |
 | era, birth_year, nobel, gender, country, status, description | scientist固有: 時代区分(古代/中世/近世/近代/現代/NA。生年basis)・西暦生年(紀元前は「前287」、不明はNA)・科学系ノーベル賞受賞者か(yes/no、照合不能はNA)・性別(男性/女性/その他/NA)・市民権のある国(情報列。複数は"/"、不明はNA)・生死(物故/存命/NA)・主な業績の短い完結文(記事冒頭の先頭生没年カッコを除去し、「。」区切りで完結文を目安90字まで連結。常に「。」で終わる。ASCIIカンマ・引用符除去、無ければNA) |
 | wikidata | stations: 駅のWikidata QID(差分更新の永続キー)。sekitsui/plant: 画像の取得元になったtaxonのQID(実写画像とセットで埋まるので、実写画像が無い行は空。sekitsui/plantの分類イメージ画像はWikidata由来ではないので空のまま)。youtuber: 本人のQID(画像の有無とは独立に埋まる。同名で複数QIDに当たった人は曖昧として空) |
@@ -39,9 +39,9 @@
 |---|---|---|
 | baseball.csv | プロ野球選手・歴代(type: family/given/full/registered。所属球団・画像URL付き) | Moto(選手表ニキ)様と協力者の皆様。現役の新規追加は[Wikipedia](https://ja.wikipedia.org/) (CC BY-SA 4.0)で自動更新。写真は[Wikimedia Commons](https://commons.wikimedia.org/)(ライセンスは画像ごと。image_page参照)、実写が無い人の選手カード画像は本リポジトリの `images/baseball/`(Apache License 2.0 の職業アイコンを含む。実写ではない。下の「利用上の注意」参照) |
 | football.csv | サッカー選手(J1〜J3・歴代。所属クラブ・画像URL付き) | ヨロスー様。現役の新規追加はWikipediaで自動更新。所属クラブはWikipedia/[Wikidata](https://www.wikidata.org/)。写真は[Wikimedia Commons](https://commons.wikimedia.org/)(ライセンスは画像ごと。image_page参照)、実写が無い人の選手カード画像は本リポジトリの `images/football/`(Apache License 2.0 の職業アイコンを含む。実写ではない。下の「利用上の注意」参照) |
-| stations.csv | 駅名(現役駅+路面電車・索道。所在地・写真URL付き) | [Wikidata](https://www.wikidata.org/)/[Wikipedia](https://ja.wikipedia.org/) (CC BY-SA 4.0) で自動更新。旧リストはすきやきすきや様 |
-| nations.csv | 国名(国連加盟国。正式名称・通称・漢字略称・別読み・別カナ表記を同一idで併記) | [mledoze/countries](https://github.com/mledoze/countries) で自動更新。別表記は[Wikipedia](https://ja.wikipedia.org/) (CC BY-SA 4.0)等を参照して手動追加 |
-| scientist.csv | 科学者(物理/化学/数学/天文/生物/計算機/地学。分野・時代区分・生没・国・性別・ノーベル賞・業績説明付き。手選び+著名層) | Wikidata/Wikipediaで自動更新 |
+| stations.csv | 駅名(現役駅+路面電車・索道。所在地・写真URL付き) | [Wikidata](https://www.wikidata.org/)/[Wikipedia](https://ja.wikipedia.org/) (CC BY-SA 4.0) で自動更新。旧リストはすきやきすきや様。写真は[Wikimedia Commons](https://commons.wikimedia.org/)(ライセンスは画像ごと。image_page参照)、写真が無い駅の駅名標画像は本リポジトリの `images/station/`(実写ではない。鉄道会社の意匠は含まない。詳細は ADR 00026) |
+| nations.csv | 国名(国連加盟国+消滅国・旧称。正式名称・通称・漢字略称・別読み・別カナ表記を同一idで併記。国旗URL付き) | [mledoze/countries](https://github.com/mledoze/countries) で自動更新。別表記は[Wikipedia](https://ja.wikipedia.org/) (CC BY-SA 4.0)等を参照して手動追加。国旗は[Wikidata](https://www.wikidata.org/)(P41)経由で[Wikimedia Commons](https://commons.wikimedia.org/)(ライセンスは画像ごと。image_page参照。国旗はほぼすべてPD) |
+| scientist.csv | 科学者(物理/化学/数学/天文/生物/計算機/地学。分野・時代区分・生没・国・性別・ノーベル賞・業績説明・画像URL付き。手選び+著名層) | Wikidata/Wikipediaで自動更新。肖像は[Wikimedia Commons](https://commons.wikimedia.org/)(ライセンスは画像ごと。image_page参照)、肖像が無い人の象徴カード画像は本リポジトリの `images/scientist/`(Apache License 2.0 の分野アイコンを含む。実写ではない。下の「利用上の注意」参照) |
 | sekitsui.csv | 動物(脊椎動物。分類・絶滅フラグ・目/科・画像URL付き) | [Wikidata](https://www.wikidata.org/) (CC0) で自動更新。写真は[Wikimedia Commons](https://commons.wikimedia.org/)(ライセンスは画像ごと。image_page参照)、実写が無い行の分類イメージ画像は本リポジトリのReleaseで配布(CC0・実写ではない) |
 | plant.csv | 植物(被子/裸子/シダ/コケ/藻類の和名。分類・絶滅フラグ・科/属・写真URL付き) | [Wikidata](https://www.wikidata.org/) (CC0) で自動更新。写真は[Wikimedia Commons](https://commons.wikimedia.org/)(ライセンスは画像ごと。image_page参照)、実写が無い行の分類イメージ画像は本リポジトリのReleaseで配布(CC0・実写ではない) |
 | insect.csv | 昆虫(昆虫綱の和名。粗い区分・絶滅フラグ・目/科・写真URL付き。クモ・ムカデ等の非昆虫は含まない) | [Wikidata](https://www.wikidata.org/) (CC0) で自動更新。写真は[Wikimedia Commons](https://commons.wikimedia.org/)(ライセンスは画像ごと。image_page参照)、実写が無い行の分類イメージ画像は本リポジトリのReleaseで配布(CC0・実写ではない) |
@@ -59,7 +59,9 @@
 - 実在人物名のリスト(baseball/football/scientist/youtuberのcategory=youtuber)は公表済みの事実情報(名簿)のみで構成しています。氏名の営利的な顧客誘引を目的とする利用(パブリシティ権に触れうる利用)は行わないでください。youtuberは記事名(活動名)のみを収録し、本名は収録しません
 - youtuber.csvのcategory=vtuberの行は各社(カバー・ANYCOLOR等)の知的財産であるキャラクター名です。名称と読みのみを非商用のファンメイド用途で収録しています(キャラクターデザイン・アバターのイラストやスクリーンショットは画像として一切収録していません。詳細は ADR 00018)
 - baseball/football の生成カードは、公表された事実であるチームカラー(色の値)と、職業を表す汎用アイコンだけで描いたものです。球団・クラブのロゴ・エンブレム・マスコット・ユニフォームの意匠は一切含みません(詳細は ADR 00020, 00024)
-- **生成カード画像(職業アイコン)の帰属**: `images/baseball/` `images/football/` `images/youtuber/` の生成カードSVGは、職業を表すアイコンとして [Material Symbols](https://github.com/google/material-design-icons)(Google, **Apache License 2.0**)を含みます(カード生成器 `tools/material_icons.py` も同様)。ライセンス全文は `LICENSE-APACHE-2.0-material-symbols` です。パスデータは改変しておらず、カードの座標系へ収める `transform` を外側に巻いているだけです。**これらのカード画像は CC0 ではありません**。再配布・二次利用の際は Apache License 2.0 の帰属表示に従ってください(各SVGの `<desc>` にも1行の帰属を埋めてあります)。**CSVのテキストデータそのものは従来どおり**で、この帰属義務は生成カード画像にのみ及びます(詳細は ADR 00024)
+- scientist の生成カードは、分野の配色と姓の頭文字と分野を表す汎用アイコンだけで描いたものです。肖像画・肖像写真は一切含みません。**分野の配色はこのリポジトリが見分けやすさのために決めたもので、学問分野の標準的な色ではありません**(詳細は ADR 00025)
+- stations の生成画像は、白地の板に駅名とかな読みを置いただけの汎用の駅名標です。**実在の鉄道会社のロゴ・社章・駅ナンバリング・専用書体・ラインカラーは一切含みません**。帯の色は路線名から機械的に決めたもので、路線の実際のラインカラーではありません(詳細は ADR 00026)
+- **生成カード画像(職業アイコン・分野アイコン)の帰属**: `images/baseball/` `images/football/` `images/youtuber/` `images/scientist/` の生成カードSVGは、職業・分野を表すアイコンとして [Material Symbols](https://github.com/google/material-design-icons)(Google, **Apache License 2.0**)を含みます(カード生成器 `tools/material_icons.py` も同様)。ライセンス全文は `LICENSE-APACHE-2.0-material-symbols` です。パスデータは改変しておらず、カードの座標系へ収める `transform` を外側に巻いているだけです。**これらのカード画像は CC0 ではありません**。再配布・二次利用の際は Apache License 2.0 の帰属表示に従ってください(各SVGの `<desc>` にも1行の帰属を埋めてあります)。**CSVのテキストデータそのものは従来どおり**で、この帰属義務は生成カード画像にのみ及びます(詳細は ADR 00024, 00025)。`images/station/` の駅名標SVGは Material Symbols を含まないので、この帰属義務は生じません
 - 掲載内容について権利者からの申し出があれば速やかに対応します(Issueにてご連絡ください)
 
 ## 自動更新
@@ -117,9 +119,31 @@ python3 tools/audit_taxa.py sekitsui  # 既存行が想定した界・門・綱�
   国に付与する(ブルンジ共和国のような定型の「〜共和国」も、長い名称も足す)。
   追加行は `nations_map.csv` には登録しない
   (登録済みの original と一致しないので自動更新に巻き込まれない)
-  (詳細は ADR 00003)
+  (詳細は ADR 00003)。国旗は月次バッチには入れず手動実行で補完する:
+  ```sh
+  # Wikidata(P41)経由でCommonsの国旗を付与(image列が空の行だけ)
+  python3 tools/enrich_nation_flags.py
+  ```
+  消滅した国(ソ連・ユーゴスラビア・チェコスロバキア・東西ドイツ)と旧称
+  (セイロン・ザイール・ビルマ)には cca3 が無いので、`enrich_nation_flags.py` の
+  `FORMER_STATES` で表記ごとにWikidataのitemを直接指し、**その国が最後に使っていた旗**
+  (P41の優先ランク→適用終了が最も新しいもの)を選ぶ。ユーゴスラビア王国と
+  ユーゴスラビア社会主義連邦共和国のように、同じidでも表記ごとに旗が違う
+  (詳細は ADR 00026)
 - stations: 1行=1駅(Wikidata QIDが永続キー)。既存行は書き換えず、新駅の追記と
-  status の更新のみ。新駅の読みはWikipedia冒頭文から抽出(詳細は ADR 00004)
+  status の更新のみ。新駅の読みはWikipedia冒頭文から抽出(詳細は ADR 00004)。
+  自由ライセンスの写真が無い駅(160駅)には、**どの鉄道会社のものでもない汎用の
+  駅名標**SVGを割り当てて全行を埋めている。これは月次バッチには入れず手動実行する
+  (詳細は ADR 00026):
+  ```sh
+  # 写真が無い駅に駅名標を生成して割り当てる(写真のある行は触らない)
+  python3 tools/gen_station_signs.py         # --prune で不要SVGを削除
+  ```
+  画像は `images/station/` に置き、CSVからは raw URL で参照する。**ロゴ・社章・
+  駅ナンバリングの丸・専用書体・ラインカラーは一切使わず**、白地の板に駅名と
+  かな読み、上下の帯、支柱だけで描く。帯の色は路線名のハッシュで、路線の実際の
+  ラインカラーではない(このリポジトリは路線カラーの出典を持たないため)。
+  実写と誤認されないよう画像内に「イメージ」と明記する
 - baseball/football: 既存データ(歴代名鑑・手選び)は保持し、
   未収録の現役選手だけ追記。姓名分割済みの読みは記事冒頭
   「姓 名(せい めい、」から取得(詳細は ADR 00005)。
@@ -155,7 +179,19 @@ python3 tools/audit_taxa.py sekitsui  # 既存行が想定した界・門・綱�
   職業(P106)が物理/化学/数学/天文/生物/計算機科学/地学のいずれかで sitelinks>=20 の
   人物を対象に、分野(field。スラッシュ区切り多値)・時代(era)・生年・ノーベル賞・性別・国・
   生死・業績説明(description)を付与。既存の手選び行は保持し、未収録者を追記。読みは
-  記事冒頭から取得(詳細は ADR 00009)
+  記事冒頭から取得(詳細は ADR 00009)。
+  自由ライセンスの肖像が取れない289人には、**分野の配色で描いた「象徴カード」SVG**を
+  割り当てて全行を埋めている。これも月次バッチには入れず手動実行する
+  (詳細は ADR 00025, 00024):
+  ```sh
+  # 肖像が無い人にカードを生成して割り当てる(肖像のある行は触らない)
+  python3 tools/gen_scientist_cards.py       # --prune で不要SVGを削除
+  ```
+  カードは `images/scientist/` に置き、CSVからは raw URL で参照する。**肖像画・肖像写真は
+  一切使わず**、分野の配色と姓の頭文字、分野を表す汎用アイコン(Material Symbols)
+  だけで描く。名前・分野・国の文字はカードに入れない(動画側のレイアウトが描くため。
+  詳細は ADR 00024)。ノーベル賞受賞者だけ右下に自作の星を置く。
+  分野の色に出典は無く、7分野を見分けるためにこのリポジトリが決めたものである
 - sekitsui: Wikidataの脊椎動物(rank=種・日本語ラベルがカタカナ)を綱ごとに
   取得し、未収録の和名だけ追記。和名がそのまま読みになるので読み抽出は不要。
   `class` 列に大分類(魚類/両生類/爬虫類/鳥類/哺乳類)、`extinct` 列に絶滅種か
