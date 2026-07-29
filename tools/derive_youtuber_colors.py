@@ -740,7 +740,7 @@ README = (
     "source=derived-portrait は公式ポートレート画像を情報解析(著作権法30条の4)"
     "して求めた代表色(tools/derive_youtuber_colors.py)。"
     "解析に使った画像は tools/.cache/ 止まりで再配布しておらず、"
-    "カードは配色と文字だけの自作SVGのまま。"
+    "カードは配色と頭文字と汎用アイコンだけのSVGのまま。"
     "詳細は docs/adr/00018-youtuber-images.md を参照。"
 )
 

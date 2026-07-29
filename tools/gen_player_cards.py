@@ -6,8 +6,8 @@ football 9%)、残りは画像が空のままだった。ソラミミ動画は�
 ので、画像が無い行は他のリストと同じ見せ方ができない。
 
 youtuber の象徴カード(ADR 00018)と同じ考え方で、**権利者の識別標識(ロゴ・
-エンブレム・マスコット・肖像)を一切借りずに、配色と文字と図形だけで**描いた
-カードを割り当てる。
+エンブレム・マスコット・肖像)を一切借りずに、配色と頭文字と汎用の図形だけで**
+描いたカードを割り当てる。
 
 - 1人1枚。同じ人物の複数行(full/family/given)は同じ `original` なので同じ
   カードを共有する
@@ -18,13 +18,18 @@ youtuber の象徴カード(ADR 00018)と同じ考え方で、**権利者の識�
   ユニフォームの意匠(縦縞など)も模倣しない。帯とラインだけの単純な構成にする
 - チームカラーが分からないチームは、チーム名のハッシュから色相を振る
   (youtuber の事務所ハッシュと同じ考え方)
-- 中央左に名前の頭文字、下部にフルネーム、上部に区分と所属チームを描く。
+- 中央に名前の頭文字だけを大きく置く。**名前・区分・所属チームの文字は描かない**。
+  soramimic-video の `player_card` レイアウトが同じ文字をテキストで描くので、
+  カードにも入れると画面内で二重になるため(詳細は ADR 00024)。
   実写と誤認されないよう右上に「イメージ」の札を必ず入れる
-- 図版は**抽象的な人型のシルエット**(円と自作パスだけ)と**競技のボール**
-  (野球=円と縫い目の曲線、サッカー=円と正五角形)のみ。実在のロゴ・エンブレム・
-  マスコットは参照していない。減量版(`--style minimal`)だけは区分の文字の
-  代わりに職業アイコンを敷き、そこには Material Symbols(Apache License 2.0)を
-  使う(帰属は `<desc>` とリポジトリのLICENSE/README。詳細は ADR 00022)
+- 文字で書いていた区分の代わりに、**職業アイコン**をカードの地紋(ウォーター
+  マーク)として敷き、選手・監督・マスコットを見分けさせる。アイコンは
+  Material Symbols(Apache License 2.0)で、同じ区分の人が何千人も並ぶので
+  ポーズ・向き・マーク位置を**人物IDのハッシュ**で決定的に散らす
+  (帰属は `<desc>` とリポジトリのLICENSE/README。詳細は ADR 00024)
+- ほかの図版は右下の**競技のボール**(野球=円と縫い目の曲線、サッカー=円と
+  正五角形)だけで、これは自作。実在のロゴ・エンブレム・マスコットは
+  参照していない
 - 自己完結SVG(外部フォント・画像を参照しない)。viewBox は 320x200 固定
 - **生成物はリポジトリ内(`images/baseball/`, `images/football/`)に置き**、
   CSVからは raw URL で参照する(youtuber と同じ。詳細は ADR 00020)
@@ -64,22 +69,16 @@ BLOB_BASE = "https://github.com/soramimic/soramimic-wordlists/blob/main"
 
 W, H = 320, 200
 HERO_H = 112
-PAD = 16
 RADIUS = 16
 FONT = "'Hiragino Sans','Noto Sans JP',sans-serif"
-NAME_SIZES_1LINE = (23, 21, 19)
-NAME_SIZES_2LINE = (17, 15, 13, 11)
-NAME_MAX_W = 232        # 右下のボールを避けるぶん、youtuberより狭い
-HEAD_MAX_W = 136        # 帯の上の区分・チーム名が使える幅(x=108からボールまで)
-TEAM_MAX = 10           # チーム名の表示上限(全角換算)
 
-# 減量版(--style minimal)の頭文字ディスク。帯(y=112)の境目にまたがる位置に
-# 置くと、上下どちらの領域にも属さない「記号」として読める
-MIN_DISC_CY = 100
-MIN_DISC_R = 48
-MIN_MARK_SIZES = (56, 44)   # (1文字, 2文字)
-# 職業シルエットの既定の配置(silhouettes.SIL_PLACEMENTS のキー)
-MIN_SIL_STYLE = "water"
+# 頭文字ディスク。帯(y=112)の境目にまたがる位置に置くと、上下どちらの領域にも
+# 属さない「記号」として読める
+DISC_CY = 100
+DISC_R = 48
+MARK_SIZES = (56, 44)   # (1文字, 2文字)
+# 職業アイコンの配置(silhouettes.SIL_PLACEMENTS のキー)
+SIL_STYLE = "water"
 
 # リストごとの設定。`hue` はチームカラーが分からないときの基準色相
 LISTS = {
@@ -91,8 +90,7 @@ LISTS = {
         "spread": 40,
         "ball": "baseball",
         "career": True,     # team列が「巨人-日本ハム」のような球団変遷の文字列
-        "label": lambda row: "プロ野球選手",
-        # 減量版に敷く職業シルエット。baseball は区分の列が無いので全員打者
+        # 地紋に敷く職業アイコン。baseball は区分の列が無いので全員打者
         "sil": lambda row: "baseball_batter",
     },
     "football": {
@@ -103,10 +101,7 @@ LISTS = {
         "spread": 60,
         "ball": "football",
         "career": False,    # team列は単一のクラブ名(`横浜F・マリノス` など)
-        "label": lambda row: {
-            "manager": "サッカー監督",
-            "mascot": "クラブマスコット",
-        }.get(row.get("category", ""), "サッカー選手"),
+        # 地紋に敷く職業アイコン。category は選手/監督/マスコットの3値
         "sil": lambda row: {
             "manager": "manager",
             "mascot": "mascot",
@@ -132,23 +127,6 @@ def team_names(team: str, career: bool = False) -> list:
         return [team]
     first = team.split("-")[0]
     return [p for p in (x.strip() for x in first.split("・")) if p]
-
-
-def team_label(team: str, career: bool = False) -> str:
-    """カードに描く所属チーム名。移籍がある場合は「ほか」を付ける。"""
-    if not team:
-        return ""
-    head = team
-    if career:
-        parts = team.split("-")
-        head = parts[0]
-        if len(parts) > 1:
-            head += "ほか"
-    if text_width(head, 1.0) > TEAM_MAX:
-        while head and text_width(head + "…", 1.0) > TEAM_MAX:
-            head = head[:-1]
-        head += "…"
-    return head
 
 
 def asset_key(name: str) -> str:
@@ -278,49 +256,7 @@ def palette(cfg: dict, team: str, color: dict | None = None) -> dict:
     }
 
 
-# --- 文字組み ----------------------------------------------------------------
-
-def text_width(text: str, size: float) -> float:
-    """描画幅の見積り。CJK・かなは1em、ASCIIは0.6em(多めに見る)。"""
-    return sum(0.6 if ord(c) < 128 else 1.0 for c in text) * size
-
-
-def fit_size(text: str, sizes, max_w: float) -> float:
-    for s in sizes:
-        if text_width(text, s) <= max_w:
-            return s
-    return sizes[-1]
-
-
-def wrap_two(text: str, size: float, max_w: float):
-    """max_w に収まる2行へ分割する(行長が均等になる位置を選ぶ)。無理ならNone。"""
-    best = None
-    for cut in range(1, len(text)):
-        head, tail = text[:cut], text[cut:]
-        wh, wt = text_width(head, size), text_width(tail, size)
-        if wh > max_w or wt > max_w:
-            continue
-        if best is None or abs(wh - wt) < best[0]:
-            best = (abs(wh - wt), [head, tail])
-    return best[1] if best else None
-
-
-def layout_name(name: str):
-    """(font_size, [(行テキスト, ベースラインy), ...]) を返す。"""
-    for size in NAME_SIZES_1LINE:
-        if text_width(name, size) <= NAME_MAX_W:
-            return size, [(name, 163.0)]
-    for size in NAME_SIZES_2LINE:
-        lines = wrap_two(name, size, NAME_MAX_W)
-        if lines:
-            step = size * 1.3
-            first = 168.0 - step
-            return size, [(lines[0], first), (lines[1], first + step)]
-    size = NAME_SIZES_2LINE[-1]
-    half = len(name) // 2 or 1
-    step = size * 1.3
-    return size, [(name[:half], 168.0 - step), (name[half:], 168.0)]
-
+# --- 頭文字 ------------------------------------------------------------------
 
 def initials(name: str) -> str:
     """カードの中央に置く頭文字。ラテン文字名は2文字、それ以外は1文字。"""
@@ -333,11 +269,7 @@ def initials(name: str) -> str:
 # --- 自作の図形 --------------------------------------------------------------
 #
 # 実在のロゴ・エンブレム・マスコット・公式ピクトグラムは参照していない。
-# 円と自分で書いたパスだけで組んだ、一般的な「人型」と「ボール」である。
-
-# 抽象的な人型(頭 + 肩から上)。帯の右側に薄く敷く背景装飾
-FIGURE = ('<circle cx="266" cy="48" r="20"/>'
-          '<path d="M266 69c-27 0-48 18-52 43h104c-4-25-25-43-52-43Z"/>')
+# 円と自分で書いたパスだけで組んだ、一般的な「ボール」である。
 
 # 野球のボール: 円 + 縫い目の曲線2本(破線にすると縫い目に見える)
 BALL_BASEBALL = ('<path stroke-dasharray="2 3" d="M284.5 165q-9 10 0 20'
@@ -369,100 +301,62 @@ def num(x: float) -> str:
     return f"{x:.1f}".rstrip("0").rstrip(".")
 
 
-def build_card(cfg: dict, name: str, team: str, label: str,
-               color: dict | None = None, minimal: bool = False,
-               sil: str = "", sil_style: str = MIN_SIL_STYLE) -> str:
+def build_card(cfg: dict, name: str, team: str,
+               color: dict | None = None, sil: str = "",
+               sil_style: str = SIL_STYLE) -> str:
     """カードのSVGを組む。
 
-    `minimal=True` は**文字情報を落とした減量版**(試作)。soramimic-video の
-    `player_card` レイアウトが `{original}`(名前)と `{team}`(所属)を
-    テキストで描くので、カードにも同じ文字が入っていると画面内で二重になる。
-    残すのは
-    「配色(チームカラー)+頭文字+職業シルエット+『イメージ』の札+
-    競技のボール」だけで、名前・区分・所属チームは描かない。
-    区分の文字を落とす代わりに、帯の左へ職業シルエット(`sil`)を薄く敷いて
+    描くのは「配色(チームカラー)+頭文字+職業アイコン+『イメージ』の札+
+    競技のボール」だけで、**名前・区分・所属チームの文字は描かない**。
+    soramimic-video の `player_card` レイアウトが名前と所属をテキストで描くので、
+    カードにも同じ文字が入っていると画面内で二重になるため(詳細は ADR 00024)。
+    区分の文字を落とす代わりに、職業アイコン(`sil`)を地紋として敷いて
     選手・監督・マスコットを見分けられるようにする。「イメージ」の札は実写と
-    誤認されないための表示なので減量版でも必ず残す。
+    誤認されないための表示なので必ず残す。
     """
     p = palette(cfg, team, color)
     mark = initials(name)
-    mark_size = 34 if len(mark) > 1 else 40
-    tlabel = team_label(team, cfg["career"])
-    label_size = fit_size(label, (19, 18, 17, 16, 15), HEAD_MAX_W)
+    mark_size = MARK_SIZES[1] if len(mark) > 1 else MARK_SIZES[0]
 
     parts = [
         f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" '
         f'width="{W}" height="{H}">',
         f"<title>{escape(name)}のイメージ画像</title>",
-        ("<desc>チームカラーの配色と頭文字、職業を表すアイコンだけで"
-         "描いたカードです。写真・ロゴは使っていません。"
-         f"{ATTRIBUTION}</desc>" if minimal else
-         "<desc>チームカラーの配色と文字だけで描いたカードです。"
-         "写真・ロゴは使っていません。</desc>"),
+        "<desc>チームカラーの配色と頭文字、職業を表すアイコンだけで"
+        "描いたカードです。写真・ロゴは使っていません。"
+        f"{ATTRIBUTION}</desc>",
         f'<g font-family="{FONT}">',
         f'<rect x="0" y="0" width="{W}" height="{H}" rx="{RADIUS}" '
         f'fill="{p["bg"]}"/>',
         # 帯はチームカラーのベタ塗り。グラデーションにすると1枚あたり200バイト
         # 増え、1万枚超では2MB以上効いてくるので使わない
         f'<path d="{HERO_PATH}" fill="{p["accent"]}"/>',
+        # 区分の文字の代わりに職業アイコン。カードの地紋として大きく敷く
+        silhouette_card_svg(sil or cfg["sil"]({}), p["fg"], p["accent"],
+                            HERO_H, W, H, sil_style, asset_key(name)),
     ]
-    if minimal:
-        # 区分の文字の代わりに職業シルエット。カードの地紋として大きく敷く
-        parts.append(silhouette_card_svg(
-            sil or cfg["sil"]({}), p["fg"], p["accent"], HERO_H, W, H,
-            sil_style, asset_key(name)))
-    else:
-        # 抽象的な人型。帯の中に薄く敷くだけなので文字の可読性を下げない
-        parts.append(f'<g fill="{p["fg"]}" fill-opacity=".16">{FIGURE}</g>')
     if p["band"]:
         # 副色のライン。帯の下端に置くので、白のような淡い副色でもはっきり出る
         parts.append(f'<rect x="0" y="{HERO_H - 8}" width="{W}" height="8" '
                      f'fill="{p["band"]}"/>')
-    if minimal:
-        # 頭文字のディスクだけを帯の境目にまたがるように大きく置く。
-        # ディスクは淡い色にも濃い色にもなるので、地(bg)のハローと
-        # 主色のリングで、帯の上でも下地の上でも輪郭が消えないようにする
-        mark_size = MIN_MARK_SIZES[1] if len(mark) > 1 else MIN_MARK_SIZES[0]
-        parts += [
-            f'<circle cx="{W / 2:g}" cy="{MIN_DISC_CY}" '
-            f'r="{MIN_DISC_R + 5}" fill="{p["bg"]}"/>',
-            f'<circle cx="{W / 2:g}" cy="{MIN_DISC_CY}" r="{MIN_DISC_R}" '
-            f'fill="{p["disc"]}" stroke="{p["accent"]}" stroke-width="2.5"/>',
-            f'<text x="{W / 2:g}" '
-            f'y="{num(MIN_DISC_CY + mark_size * 0.36)}" '
-            f'text-anchor="middle" font-size="{mark_size}" font-weight="700" '
-            f'fill="{p["mark"]}">{escape(mark)}</text>',
-        ]
-    else:
-        parts += [
-            # 頭文字のディスク
-            f'<circle cx="58" cy="60" r="36" fill="{p["disc"]}"/>',
-            f'<text x="58" y="{num(60 + mark_size * 0.36)}" '
-            f'text-anchor="middle" font-size="{mark_size}" font-weight="700" '
-            f'fill="{p["mark"]}">{escape(mark)}</text>',
-            # 区分と所属。帯が淡い色のときは白ではなく濃色で書く
-            f'<text x="108" y="56" font-size="{label_size:g}" '
-            f'font-weight="700" fill="{p["fg"]}">{escape(label)}</text>',
-        ]
-        if tlabel:
-            parts.append(
-                f'<text x="108" y="80" font-size="13" fill="{p["fg"]}">'
-                f'{escape(tlabel)}</text>')
-    # 実写と誤認されないための札。減量版でも必ず残す
+    # 頭文字のディスクは帯の境目にまたがるように大きく置く。
+    # ディスクは淡い色にも濃い色にもなるので、地(bg)のハローと
+    # 主色のリングで、帯の上でも下地の上でも輪郭が消えないようにする
     parts += [
+        f'<circle cx="{W / 2:g}" cy="{DISC_CY}" '
+        f'r="{DISC_R + 5}" fill="{p["bg"]}"/>',
+        f'<circle cx="{W / 2:g}" cy="{DISC_CY}" r="{DISC_R}" '
+        f'fill="{p["disc"]}" stroke="{p["accent"]}" stroke-width="2.5"/>',
+        f'<text x="{W / 2:g}" y="{num(DISC_CY + mark_size * 0.36)}" '
+        f'text-anchor="middle" font-size="{mark_size}" font-weight="700" '
+        f'fill="{p["mark"]}">{escape(mark)}</text>',
+        # 実写と誤認されないための札
         f'<rect x="240" y="10" width="70" height="22" rx="11" '
         f'fill="{p["chip_bg"]}"/>',
         f'<text x="275" y="26" text-anchor="middle" font-size="13" '
         f'font-weight="600" fill="{p["chip_fg"]}">イメージ</text>',
         ball_svg(cfg["ball"], p["ink"]),
     ]
-    if not minimal:
-        size, lines = layout_name(name)
-        for line, y in lines:
-            parts.append(
-                f'<text x="{W / 2:g}" y="{num(y)}" text-anchor="middle" '
-                f'font-size="{size}" font-weight="700" fill="{p["ink"]}">'
-                f"{escape(line)}</text>")
     parts.append(
         f'<rect x=".5" y=".5" width="{W - 1}" height="{H - 1}" '
         f'rx="{RADIUS - 0.5}" fill="none" stroke="{p["edge"]}"/>')
@@ -492,8 +386,7 @@ def load_people(cfg: dict) -> tuple:
             img = r.get("image", "")
             if img and not img.startswith(prefix):
                 rows_by_name[name] = None
-    out = [(n, rows_by_name[n].get("team", ""), cfg["label"](rows_by_name[n]),
-            cfg["sil"](rows_by_name[n]))
+    out = [(n, rows_by_name[n].get("team", ""), cfg["sil"](rows_by_name[n]))
            for n in order if rows_by_name[n] is not None]
     return out, len(order) - len(out)
 
@@ -515,7 +408,7 @@ def team_color(cfg: dict, colors: dict, team: str):
     return None
 
 
-def run(key: str, apply: bool, prune: bool, minimal: bool = False) -> int:
+def run(key: str, apply: bool, prune: bool) -> int:
     cfg = LISTS[key]
     people, n_photo = load_people(cfg)
     colors = load_colors(key)
@@ -524,14 +417,13 @@ def run(key: str, apply: bool, prune: bool, minimal: bool = False) -> int:
 
     wanted = set()
     n_color = 0
-    for name, team, label, sil in people:
+    for name, team, sil in people:
         color = team_color(cfg, colors, team)
         if color:
             n_color += 1
         path = out_dir / asset_name(cfg, name)
-        path.write_text(
-            build_card(cfg, name, team, label, color, minimal, sil),
-            encoding="utf-8")
+        path.write_text(build_card(cfg, name, team, color, sil),
+                        encoding="utf-8")
         wanted.add(path.name)
     if len(wanted) != len(people):
         print(f"error: {key}: アセット名が衝突している", file=sys.stderr)
@@ -594,11 +486,9 @@ def main() -> int:
                     help="CSVのimage/image_pageを書き換えない(生成のみ)")
     ap.add_argument("--prune", action="store_true",
                     help="CSVから参照されなくなったSVGを削除する")
-    ap.add_argument("--style", choices=("full", "minimal"), default="full",
-                    help="minimal は名前・区分・所属の文字を描かない減量版")
     args = ap.parse_args()
     for key in (args.list or sorted(LISTS)):
-        rc = run(key, not args.no_apply, args.prune, args.style == "minimal")
+        rc = run(key, not args.no_apply, args.prune)
         if rc:
             return rc
     return 0
