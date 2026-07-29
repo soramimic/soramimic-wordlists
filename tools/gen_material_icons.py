@@ -148,6 +148,64 @@ ROLES = {
         "mark": "headset_mic",
         "slots": [(74, 19, 28), (76, 52, 24), (74, 84, 24)],
     },
+    # --- 科学者の分野アイコン(scientist.csv の field 列) -------------------
+    #
+    # ほかの役割と違って**人型は使わない**。科学者のカードで区別したいのは
+    # 「どんな人か」ではなく「どの分野か」で、人型を敷くと分野によらず同じ
+    # 図になってしまう。研究対象・道具そのものの図を敷く。
+    #
+    # 職業アイコンは「人型 x マークのスロット」でバリエーションを出すが、
+    # 分野アイコンにはその軸が無い。代わりに**1分野につき6個の図のプール**を
+    # 持ち、そこから人物IDのハッシュで1つ選ぶ(そのうえで反転・回転・上下・
+    # 拡縮が掛かるのは他の役割と同じ)。同じ分野の科学者が100人並んでも
+    # 全員が同じ絵にはならない。
+    #
+    # 図は**分野を素直に表す一般的な図**だけにする。実在の研究機関・学会・
+    # 企業のロゴやマークは使わない(`polymer` のような製品ロゴのアイコンは
+    # 名前が一般名詞でも中身が他社の商標なので選ばない)。
+    "field_physics": {
+        # 物理: 原子の軌道・電気・波・力学
+        "poses": ["orbit", "bolt", "waves", "speed", "vibration", "blur_on"],
+        "figure_box": (4, 6, 80, 86), "mark": None, "slots": [],
+    },
+    "field_chemistry": {
+        # 化学: フラスコ・試験管・六角形(環状構造)
+        "poses": ["science", "experiment", "labs", "lab_panel", "hexagon",
+                  "water_drop"],
+        "figure_box": (4, 6, 80, 86), "mark": None, "slots": [],
+    },
+    "field_math": {
+        # 数学: 関数記号・計算・図形・作図の道具
+        "poses": ["functions", "calculate", "percent", "square_foot",
+                  "architecture", "change_history"],
+        "figure_box": (4, 6, 80, 86), "mark": None, "slots": [],
+    },
+    "field_astronomy": {
+        # 天文学: 惑星・恒星・月・探査機
+        "poses": ["planet", "star", "bedtime", "satellite_alt",
+                  "rocket_launch", "brightness_5"],
+        "figure_box": (4, 6, 80, 86), "mark": None, "slots": [],
+    },
+    "field_biology": {
+        # 生物学: DNA・顕微鏡・微生物・植物
+        "poses": ["genetics", "biotech", "microbiology", "eco",
+                  "local_florist", "forest"],
+        "figure_box": (4, 6, 80, 86), "mark": None, "slots": [],
+    },
+    "field_cs": {
+        # 計算機科学: 端末・コード・チップ・データ構造
+        "poses": ["terminal", "code", "memory", "developer_board",
+                  "data_object", "account_tree"],
+        "figure_box": (4, 6, 80, 86), "mark": None, "slots": [],
+    },
+    "field_earth": {
+        # 地学: 地球・地層・山・火山・地震・気象
+        # (`landscape` は塗りつぶし版だと `filter_hdr` とパスが完全に同じ
+        #  なので入れない。同じ図が2枚あってもバリエーションにならない)
+        "poses": ["public", "layers", "filter_hdr", "volcano", "cyclone",
+                  "earthquake"],
+        "figure_box": (4, 6, 80, 86), "mark": None, "slots": [],
+    },
 }
 
 
