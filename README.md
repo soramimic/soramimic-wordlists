@@ -114,10 +114,12 @@ python3 tools/audit_taxa.py sekitsui  # 既存行が想定した界・門・綱�
   `images/pokemon_motifs/` に自作シルエットを描いて台帳に `"source": "self"` で
   登録する。詳細は ADR 00033):
   ```sh
-  # 増分だけアップロード(レート制限で途中終了したときの再開にも使える)
+  # 生成してアップロード。既定でReleaseとサイズが違うもの・無いものだけを送るので、
+  # 増分追加にも意匠変更の全枚数差し替えにも同じコマンドでよく、
+  # レート制限で途中終了しても再実行すれば続きから進む
   python3 tools/gen_pokemon_typecards.py --out build/pokemon_typecards \
-      --upload --only-missing
-  # CSVの全 original に対応するアセットがReleaseにあるか検査
+      --upload
+  # Releaseのアセットがいま生成されるカードと一致するか(サイズで)検査
   python3 tools/gen_pokemon_typecards.py --verify
   ```
   Releaseは1つあたり1000アセットが上限なので、ハッシュで
