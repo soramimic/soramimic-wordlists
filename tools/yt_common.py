@@ -21,6 +21,12 @@
 - description: 記事冒頭からの短い完結文(無ければWikidataのja description。
               生成は wpnames.make_description で scientist と共用。記事冒頭に
               よく書かれている本名は deidentify で落とす。ADR 00029)
+
+subscribers(メインチャンネルの登録者数)列も youtuber.csv にあるが、値の管理は
+このモジュールの外(tools/update_youtuber_subscribers.py)で行う。時変値なので
+毎回全行を上書きする列で、空欄補完のみの上記の付加列とは規則が違う(ADR 00030)。
+このモジュールは既存CSVの列を読んでそのまま書き戻すので、subscribers の値には
+触らない(新規追加した人の行は空になり、次に登録者数スクリプトが走ると埋まる)。
 """
 
 import csv

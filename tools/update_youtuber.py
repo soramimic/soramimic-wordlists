@@ -13,6 +13,12 @@ status(current/former)・channel(メインYouTubeチャンネル名。P2397の�
 無ければWikidataのja description。本名の記述は落とす)。いずれも無ければNAで、
 既存行は空欄補完のみ(詳細は docs/adr/00023, 00029)。
 
+subscribers(メインチャンネルの登録者数)列の値はこのスクリプトでは扱わない。
+時変値なので毎回全行を上書きする別スクリプト
+`tools/update_youtuber_subscribers.py` が管理する(詳細は docs/adr/00030)。
+このスクリプトが追記した新規行の subscribers は空のままで、登録者数スクリプトが
+次に走ったときに埋まる(月次バッチでは同じ回の直後のステップで走る)。
+
 環境変数 YOUTUBER_CACHE を指定すると取得結果をpickleキャッシュする(開発用)。
 attrs のキーが増えた回は古いキャッシュを使い回さないこと。
 

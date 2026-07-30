@@ -22,7 +22,7 @@
 | type1, type2 | pokemon固有: ポケモンのタイプ(でんき等)。単タイプは type2=NA |
 | generation | pokemon固有: 登場世代(1〜9)。フォームはそのフォームが導入された世代 |
 | status | nations/stations: `current`(現存)/`former`(廃止・脱退・旧称)。stationsは改名前の旧駅名を `renamed` で区別する。youtuberは `current`(活動中)/`former`(卒業・引退・活動終了) |
-| category, org, debut_year, channel | youtuber固有: 区分(`youtuber`=実在のYouTuber/`vtuber`=VTuber)、所属事務所・グループ(スラッシュ区切り多値、`org~=ホロライブ` で絞り込む前提。無ければNA)、活動開始年(西暦、無ければNA。Wikidataの活動開始(P2031)が無い人はチャンネル開設年で代用しているので、両者が混在する)、メインYouTubeチャンネル名(活動名と違う場合があるので表示・照合用の情報列。読みは付かない。複数チャンネルを持つ人は登録者数が最大の1本を採るので、本人の主戦場と一致しないことがある。無ければNA。詳細は ADR 00029) |
+| category, org, debut_year, channel, subscribers | youtuber固有: 区分(`youtuber`=実在のYouTuber/`vtuber`=VTuber)、所属事務所・グループ(スラッシュ区切り多値、`org~=ホロライブ` で絞り込む前提。無ければNA)、活動開始年(西暦、無ければNA。Wikidataの活動開始(P2031)が無い人はチャンネル開設年で代用しているので、両者が混在する)、メインYouTubeチャンネル名(活動名と違う場合があるので表示・照合用の情報列。読みは付かない。複数チャンネルを持つ人は登録者数が最大の1本を採るので、本人の主戦場と一致しないことがある。無ければNA。詳細は ADR 00029)、**メインチャンネルの登録者数**(出典は YouTube Data API v3。**YouTubeが公開している概数(有効数字3桁)なので正確な人数ではなく、桁の比較・並べ替えに使う**。時変値なので月次バッチで**毎回全行を上書きする**(既存値を書き換えないという方針の明示的な例外)。WikidataにチャンネルID(P2397)が無い人・登録者数を非公開にしている人はNA。詳細は ADR 00030) |
 | prefecture, city | stations固有: 駅の所在都道府県・市区町村(同名駅の区別用。1行=1駅) |
 | lines | stations固有: 乗り入れ路線(「JR東日本 東北本線」形式、複数は「／」区切り)。Wikidata/Wikipediaに情報が無い駅は空。補完は `tools/enrich_lines.py` |
 | image, image_page | 画像のURL(Wikimedia Commons直リンクまたは本リポジトリのGitHub Releaseアセット)と、ライセンス・作者の確認先ページ(stations/baseball/football/scientist/sekitsui/plant/insect/pokemon/fictional_scientist/fictional_anime_character)。画像が無い行は空。利用時はimage_pageのクレジット条件に従うこと。**sekitsui/plant/insectは実写が取れない行に限り、`class`ごとの概念イメージSVG(`class-image-v1` リリース。画像内に「イメージ」と明記)を分類単位で共有して割り当てている**(実写ではないので、実写だけが欲しい利用側は `.../releases/download/class-image-` で始まるURLを除外すること)。**pokemonは写真ではなく全行が「型色カード」SVG**(タイプの配色と文字だけで描いたもの。キャラクター造形は使わない。詳細は ADR 00002)。**youtuberは自由ライセンスの実写(Commons)が取れた人だけ写真で、残りは配色と頭文字と職業アイコンで描いた「象徴カード」SVG**(`images/youtuber/` をrawで参照。画像内に「イメージ」と明記。チャンネルアイコン・サムネイル・キャラクターイラストは一切使わない。カードの配色は本人のイメージカラー(公式が公表しているもの、または公式ポートレートの情報解析で求めた代表色)があればそれを使う。詳細は ADR 00018, 00019) |。**baseball/football も同じく、実写が無い人には所属チームのチームカラーで描いた「選手カード」SVG**を割り当てている(`images/baseball/` `images/football/` をrawで参照。画像内に「イメージ」と明記。ロゴ・エンブレム・マスコット・ユニフォームの意匠は一切使わない。詳細は ADR 00020)。**scientist は肖像が取れない人に分野の配色で描いた「象徴カード」SVG**(`images/scientist/` をrawで参照。肖像画・肖像写真は使わない。分野の色に出典は無い。詳細は ADR 00025)、**stations は写真が取れない駅に汎用の「駅名標」SVG**(`images/station/` をrawで参照。鉄道会社のロゴ・社章・駅ナンバリング・ラインカラーは使わない。詳細は ADR 00026)を割り当てている。**nations は全行がCommonsの国旗**で、消滅国はその国が最後に使っていた旗(詳細は ADR 00026)。実写だけが欲しい利用側は `https://raw.githubusercontent.com/soramimic/soramimic-wordlists/` で始まるURL(本リポジトリの生成カード)を除外すること |
@@ -46,7 +46,7 @@
 | plant.csv | 植物(被子/裸子/シダ/コケ/藻類の和名。分類・絶滅フラグ・科/属・写真URL付き) | [Wikidata](https://www.wikidata.org/) (CC0) で自動更新。写真は[Wikimedia Commons](https://commons.wikimedia.org/)(ライセンスは画像ごと。image_page参照)、実写が無い行の分類イメージ画像は本リポジトリのReleaseで配布(CC0・実写ではない) |
 | insect.csv | 昆虫(昆虫綱の和名。粗い区分・絶滅フラグ・目/科・写真URL付き。クモ・ムカデ等の非昆虫は含まない) | [Wikidata](https://www.wikidata.org/) (CC0) で自動更新。写真は[Wikimedia Commons](https://commons.wikimedia.org/)(ライセンスは画像ごと。image_page参照)、実写が無い行の分類イメージ画像は本リポジトリのReleaseで配布(CC0・実写ではない) |
 | pokemon.csv | ポケモン(地方のすがた・メガ・キョダイマックス含む。タイプ配色のみで描いた「型色カード」画像付き) | [PokéAPI](https://github.com/PokeAPI/pokeapi) で自動更新。画像は本リポジトリのReleaseで配布(公式アセット・キャラクター造形は使わず配色と文字のみ)。本リポジトリは非公式のファンメイドであり株式会社ポケモン・任天堂等とは無関係 |
-| youtuber.csv | YouTuber・VTuber(ja.wikipediaに記事がある著名層。海外勢含む。活動名のみ、type: family/given/full。category列で区分、所属・活動開始年・status・チャンネル名・説明文・画像URL付き) | Wikidata/Wikipedia (CC BY-SA 4.0) で自動更新。写真は[Wikimedia Commons](https://commons.wikimedia.org/)の自由ライセンスの実写のみ(ライセンスは画像ごと。image_page参照)、実写が無い人の象徴カード画像は本リポジトリの `images/youtuber/`(Apache License 2.0 の職業アイコンを含む。実写ではない。下の「利用上の注意」参照) |
+| youtuber.csv | YouTuber・VTuber(ja.wikipediaに記事がある著名層。海外勢含む。活動名のみ、type: family/given/full。category列で区分、所属・活動開始年・status・チャンネル名・登録者数・説明文・画像URL付き) | Wikidata/Wikipedia (CC BY-SA 4.0) で自動更新。登録者数(`subscribers`)のみ [YouTube Data API v3](https://developers.google.com/youtube/v3) から取得(YouTubeが公開している概数)。写真は[Wikimedia Commons](https://commons.wikimedia.org/)の自由ライセンスの実写のみ(ライセンスは画像ごと。image_page参照)、実写が無い人の象徴カード画像は本リポジトリの `images/youtuber/`(Apache License 2.0 の職業アイコンを含む。実写ではない。下の「利用上の注意」参照) |
 | fictional_scientist.csv | AI生成による架空の科学者1000人(名前・読み・生没年・国籍・分野・主な業績・肖像画像。type: family/given/full) | jiroshimaya/fictional-scientists プロジェクトによる自動生成(実在人物とは無関係)、画像は本リポジトリのReleaseで配布 |
 | fictional_anime_character.csv | AI生成による架空アニメ『蒼穹の螺旋航路』の登場キャラ1000人(名前・読み・所属・初登場年・種族・声優名・紹介文・肖像画像。type: family/given/full/call/nick。callは作中で使われる呼び名(敬称込み)、nickはあだ名) | jiroshimaya/fictional-scientists プロジェクトによる自動生成(実在の作品・人物とは無関係)、画像は本リポジトリのReleaseで配布 |
 | fictional_daily_anime_character.csv | AI生成による架空日常アニメ『まちまる！』の住人1025人(名前・読み・所属・初登場年・種族・声優名・紹介文・肖像画像。type: family/given/full/call/nick。callは作中で使われる呼び名(敬称込み)、nickはあだ名) | jiroshimaya/fictional-scientists プロジェクトによる自動生成(実在の作品・人物とは無関係)、画像は本リポジトリのReleaseで配布 |
@@ -74,6 +74,9 @@
 要 `GEMINI_API_KEY` シークレット)が追加行の品質を確認し、問題なければCI通過後に
 automergeで自動マージされる。不安があればPRコメントで報告され、マージは
 人間の確認待ちになる。
+youtuber.csv の登録者数(`subscribers`)の更新には `YOUTUBE_API_KEY` シークレット
+(YouTube Data API v3 のAPIキー)が要る。未設定でもバッチは壊れず、そのステップだけ
+がスキップされる。
 手動実行は Actions タブの workflow_dispatch から。ローカルでは:
 
 ```sh
@@ -87,6 +90,7 @@ python3 tools/update_sekitsui.py   # Wikidataの脊椎動物(rank=種・カタ�
 python3 tools/update_plant.py      # Wikidataの植物(rank=種・カタカナ和名)を追記
 python3 tools/update_insect.py    # Wikidataの昆虫(rank=種・カタカナ和名)を追記
 python3 tools/update_youtuber.py   # WikidataのYouTuber/VTuber(ja記事あり)を追記
+python3 tools/update_youtuber_subscribers.py  # 登録者数を全行上書き(要 YOUTUBE_API_KEY)
 python3 tools/enrich_images.py     # 画像が空の人物行にCommons画像を遡及付与
 python3 tools/audit_taxa.py sekitsui  # 既存行が想定した界・門・綱の配下か検査(読み取り専用)
 ```
@@ -278,6 +282,18 @@ python3 tools/audit_taxa.py sekitsui  # 既存行が想定した界・門・綱�
   記事冒頭から目安90字の完結文。**記事冒頭には本名がよく書かれているので、
   「本名は〜」の文と「{本名}は、活動名として知られる〜」の主語は description に
   入れる前に機械的に落としている**。詳細は ADR 00011, 00012, 00023, 00029)。
+  **`subscribers`(メインチャンネルの登録者数)だけは別スクリプトで、毎回全行を
+  上書きする**(登録者数は時変値なので、古い値を残すと「いつの値か分からない列」に
+  なる。空欄補完のみという方針の明示的な例外。詳細は ADR 00030):
+  ```sh
+  # 要 YouTube Data API v3 のキー。環境変数 YOUTUBE_API_KEY か
+  # ~/.config/soramimic/youtube_api_key に置く(キーが無ければスキップして正常終了)
+  python3 tools/update_youtuber_subscribers.py
+  ```
+  チャンネルIDはWikidataのP2397から引き、1人が複数チャンネルを持つ場合は
+  **最大の登録者数**を採る(`channel` のメイン判定と同じ基準)。値はYouTubeが
+  公開している**概数(有効数字3桁)**で、取得できない人はNA。全チャンネルの取得が
+  成功してから1回だけ書くので、途中で失敗しても書きかけは残らない。
   **成人向け(アダルト)業界の職業(AV女優・ポルノ俳優・アダルトモデル・
   セックスワーカー等)がP106に付いている人物は、YouTube/VTuber活動があっても
   収録しない**(一般向けアプリのサンプル単語リストとして使うため。P106は現職と
