@@ -96,7 +96,7 @@
 {"word": "叫び", "file": "gk_df05308969.jpg", "bucket": "v1b", "method": "sd", "prompt": "a swirling orange and red sunset sky over a quiet fjord, seen past the diagonal railing of an empty wooden walkway"}
 {"word": "ロダン", "file": "gk_1121cfa083.jpg", "bucket": "v1", "method": "sd", "prompt": "an imaginary portrait of a nineteenth century European sculptor in a work apron and beard, shaping a clay figure on a stand with a modeling tool"}
 {"word": "考える人", "file": "gk_9aee1a9c07.jpg", "bucket": "v1b", "method": "sd", "prompt": "a single bronze statue of a seated man resting his chin on his hand, side view, plain background"}
-{"word": "アルファベット", "file": "gk_56816d5016.jpg", "bucket": "v1", "method": "sd", "prompt": "a curved row of colorful wooden alphabet letter blocks with a few loose letter tiles scattered in front"}
+{"word": "アルファベット", "file": "gk_56816d5016.jpg", "bucket": "v1", "method": "card", "card_main": "A B C … X Y Z", "card_sub": ""}
 {"word": "ブロック体", "file": "gk_79e9da395c.jpg", "bucket": "v1", "method": "card", "card_main": "ABC abc", "card_sub": "ブロック体"}
 {"word": "四線", "file": "gk_df974b3426.jpg", "bucket": "v1b", "method": "sd", "prompt": "an open English practice notebook page ruled with four parallel horizontal guideline stripes, a pencil laid across it"}
 {"word": "大文字", "file": "gk_114f11cdbf.jpg", "bucket": "v1", "method": "sd", "prompt": "a large tall capital letter card standing beside a much smaller letter card, a height comparison arrow between them"}
@@ -813,7 +813,7 @@
 {"word": "電気抵抗", "file": "gk_9cc918b121.jpg", "bucket": "v1b", "method": "card", "card_main": "Ω", "card_sub": "電気抵抗(オーム)"}
 {"word": "慣性の法則", "file": "gk_0f1c22a416.jpg", "bucket": "v1", "method": "sd", "prompt": "a ball resting on a small cart, the cart suddenly stopped by a block while the ball keeps sliding forward, motion lines behind the ball"}
 {"word": "作用反作用", "file": "gk_6ebcb87fac.jpg", "bucket": "v1", "method": "card", "card_main": "→ ←", "card_sub": "作用と反作用"}
-{"word": "等速直線運動", "file": "gk_b3bcd74cb5.jpg", "bucket": "v1b", "method": "sd", "prompt": "a cart rolling straight along a level track with a paper record tape trailing behind showing evenly spaced dots, equal arrows of constant length"}
+{"word": "等速直線運動", "file": "gk_b3bcd74cb5.jpg", "bucket": "v1b", "method": "card", "card_main": "v = 一定", "card_sub": ""}
 {"word": "位置エネルギー", "file": "gk_d8cc472867.jpg", "bucket": "v1b", "method": "sd", "prompt": "a ball held at the top of a tall ramp with a dashed height line down to the ground, a soft glowing aura around the ball"}
 {"word": "運動エネルギー", "file": "gk_db94db00b3.jpg", "bucket": "v1b", "method": "sd", "prompt": "a ball rolling fast at the bottom of a ramp with speed lines and a glowing aura, knocking over a small block"}
 {"word": "示相化石", "file": "gk_e6b2ba3a9c.jpg", "bucket": "v1b", "method": "sd", "prompt": "a rock slab containing a coral fossil and a clam shell fossil, a small warm shallow sea scene shown above it"}
@@ -1029,7 +1029,7 @@
 {"word": "公約数", "file": "gk_201d8afc81.jpg", "bucket": "v1", "method": "sd", "prompt": "two large overlapping circles forming a venn diagram, round tokens scattered in each outer part and a few tokens in the shared overlapping middle highlighted in a bright accent color"}
 {"word": "公倍数", "file": "gk_c7db63e768.jpg", "bucket": "v1b", "method": "sd", "prompt": "two parallel horizontal number lines aligned one above the other, the top with small equal hop arrows and the bottom with larger equal hop arrows, vertical dashed lines marking the ticks where both land together"}
 {"word": "偶数", "file": "gk_a3685ea6fa.jpg", "bucket": "v1b", "method": "sd", "prompt": "eight round tokens arranged as two neat equal rows of four, every token paired with a partner directly below it and each pair circled, nothing left over"}
-{"word": "奇数", "file": "gk_0cf1d841bd.jpg", "bucket": "v1", "method": "sd", "prompt": "nine round tokens arranged in pairs in two rows with each pair circled, and one single leftover token standing alone at the end inside a dashed circle"}
+{"word": "奇数", "file": "gk_0cf1d841bd.jpg", "bucket": "v1", "method": "card", "card_main": "1 3 5 7 9 …", "card_sub": ""}
 {"word": "結合法則", "file": "gk_2ce338f334.jpg", "bucket": "v1", "method": "card", "card_main": "(2+3)+4 = 2+(3+4)", "card_sub": "結合法則"}
 {"word": "等号", "file": "gk_9a1dd4507b.jpg", "bucket": "v1b", "method": "card", "card_main": "=", "card_sub": "等号"}
 {"word": "不等号", "file": "gk_a64ea03280.jpg", "bucket": "v1b", "method": "card", "card_main": "< >", "card_sub": "不等号"}
@@ -1062,7 +1062,7 @@
 {"word": "正多面体", "file": "gk_470b72d2c3.jpg", "bucket": "v1", "method": "sd", "prompt": "five regular polyhedron solids lined up in a row, a tetrahedron, a cube, an octahedron, a dodecahedron and an icosahedron, each in a different pastel color with visible edges"}
 {"word": "拡大図", "file": "gk_5e997f4373.jpg", "bucket": "v1", "method": "sd", "prompt": "a small triangle and a much larger triangle of exactly the same shape drawn side by side, with outward pointing expansion arrows around the large one and dashed corresponding lines linking their matching corners"}
 {"word": "縮図", "file": "gk_0343fb19c1.jpg", "bucket": "v1", "method": "sd", "prompt": "a large house shape outline and a much smaller copy of exactly the same shape beside it, with inward pointing shrinking arrows around the small one and dashed lines linking their matching corners"}
-{"word": "縮尺", "file": "gk_e5b851e3ab.jpg", "bucket": "v1b", "method": "sd", "prompt": "a folded paper map with roads and a river, and a segmented black and white scale bar in the corner with a small ruler and a pair of dividers resting on the map"}
+{"word": "縮尺", "file": "gk_e5b851e3ab.jpg", "bucket": "v1b", "method": "card", "card_main": "1 : 25000", "card_sub": ""}
 {"word": "回転移動", "file": "gk_37c5aaa450.jpg", "bucket": "v1", "method": "sd", "prompt": "a triangle and a faded ghost copy of the same triangle turned about a marked center dot, with a curved arrow sweeping between them and dashed radius lines from the center dot to matching corners"}
 {"word": "対称移動", "file": "gk_1ee1f7d2a4.jpg", "bucket": "v1", "method": "sd", "prompt": "a shape and its mirrored copy facing each other across a vertical dashed fold line, with dashed perpendicular connector lines between matching corners and equal tick marks on each side of the fold"}
 {"word": "底面積", "file": "gk_5fe3ab85f5.jpg", "bucket": "v1", "method": "sd", "prompt": "a single upright triangular prism with only its bottom face shaded solid, thick outline"}
