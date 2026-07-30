@@ -1,0 +1,2304 @@
+{
+ "かぼちゃ": {
+  "file": "9c24f5bf45.svg",
+  "source": "phylopic",
+  "taxon": "Cucurbita",
+  "node": "Cucurbita",
+  "phylopic": "ae78e758-6c65-4446-a860-344728b845ba",
+  "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+  "contributor": "T. Michael Keesey",
+  "title": "Cucurbita maxima",
+  "ink": {
+   "ink": 0.646,
+   "open": 0.243,
+   "solidity": 0.853
+  }
+ },
+ "アザラシ": {
+  "file": "19d39ef132.svg",
+  "source": "phylopic",
+  "taxon": "Phocidae",
+  "node": "Phocidae",
+  "phylopic": "5a79b072-fee4-46c4-bf13-a74c9c54e857",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Leonardo Hostos Olivera",
+  "title": "Piscophoca pacifica",
+  "ink": {
+   "ink": 0.445,
+   "open": 0.555,
+   "solidity": 1.0
+  }
+ },
+ "アナグマ": {
+  "file": "b481c00e16.svg",
+  "source": "phylopic",
+  "taxon": "Meles",
+  "node": "Meles",
+  "phylopic": "b12cf541-4d6d-43a0-94c2-37f6f397050d",
+  "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+  "contributor": "T. Michael Keesey",
+  "title": "Meles",
+  "ink": {
+   "ink": 0.612,
+   "open": 0.388,
+   "solidity": 1.0
+  }
+ },
+ "アリ": {
+  "file": "93640c24d6.svg",
+  "source": "phylopic",
+  "taxon": "Formicidae",
+  "node": "Formicidae",
+  "phylopic": "028577c7-8fb7-4c0e-83ee-5f8035c6e3df",
+  "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+  "contributor": "T. Michael Keesey",
+  "title": "Doryloformicia",
+  "ink": {
+   "ink": 0.235,
+   "open": 0.765,
+   "solidity": 1.0
+  }
+ },
+ "アリクイ": {
+  "file": "fbe4650d2b.svg",
+  "source": "phylopic",
+  "taxon": "Tamandua",
+  "node": "Tamandua",
+  "phylopic": "3aa5aecb-bee4-4ae7-b3e6-fe445081eedc",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Margot Michaud",
+  "title": "Tamandua mexicana",
+  "ink": {
+   "ink": 0.374,
+   "open": 0.626,
+   "solidity": 1.0
+  }
+ },
+ "アンコウ": {
+  "file": "30e9756789.svg",
+  "source": "phylopic",
+  "taxon": "Lophiiformes",
+  "node": "Lophiiformes",
+  "phylopic": "a1933d3f-43ee-47ec-a15b-e4bf0d83b21a",
+  "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+  "contributor": "T. Michael Keesey",
+  "title": "Lophius piscatorius",
+  "ink": {
+   "ink": 0.4,
+   "open": 0.6,
+   "solidity": 0.999
+  }
+ },
+ "イカ": {
+  "file": "645de62e09.svg",
+  "source": "phylopic",
+  "taxon": "Teuthida",
+  "node": "Teuthida",
+  "phylopic": "22a8e316-7f4d-4270-b6af-b5ef9e84c2c2",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Cagri CEVRIM",
+  "title": "Loligo vulgaris",
+  "ink": {
+   "ink": 0.099,
+   "open": 0.9,
+   "solidity": 0.993
+  }
+ },
+ "イタチ": {
+  "file": "ca10c47860.svg",
+  "source": "phylopic",
+  "taxon": "Mustela",
+  "node": "Mustela",
+  "phylopic": "a69bb26c-a153-49cd-b52b-a5a31760e9d9",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Margot Michaud",
+  "title": "Mustela nudipes",
+  "ink": {
+   "ink": 0.356,
+   "open": 0.644,
+   "solidity": 0.999
+  }
+ },
+ "イヌ": {
+  "file": "cbdb67a235.svg",
+  "source": "phylopic",
+  "taxon": "Canis lupus familiaris",
+  "node": "Canis familiaris familiaris",
+  "phylopic": "04d035a5-e667-434e-95d1-1df6747b8e91",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Margot Michaud",
+  "title": "Canis familiaris familiaris",
+  "ink": {
+   "ink": 0.572,
+   "open": 0.428,
+   "solidity": 1.0
+  }
+ },
+ "イノシシ": {
+  "file": "3a4a4124c3.svg",
+  "source": "phylopic",
+  "taxon": "Sus scrofa",
+  "node": "Sus scrofa",
+  "phylopic": "87047da1-b40e-4b31-8492-4db262f129f5",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Ferran Sayol",
+  "title": "Sus scrofa",
+  "ink": {
+   "ink": 0.097,
+   "open": 0.903,
+   "solidity": 1.0
+  }
+ },
+ "イルカ": {
+  "file": "c65ace438d.svg",
+  "source": "phylopic",
+  "taxon": "Delphinidae",
+  "node": "Delphinidae",
+  "phylopic": "10af79a9-36b4-4be3-8a5d-dadea9cea810",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Guillaume Dera",
+  "title": "Tursiops truncatus",
+  "ink": {
+   "ink": 0.108,
+   "open": 0.892,
+   "solidity": 1.0
+  }
+ },
+ "インコ": {
+  "file": "ac7ae273bd.svg",
+  "source": "phylopic",
+  "taxon": "Psittacidae",
+  "node": "Psittacidae",
+  "phylopic": "07a8ddc3-6440-4ca8-80e6-ccdaa988a968",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Ferran Sayol",
+  "title": "Amazona aestiva",
+  "ink": {
+   "ink": 0.182,
+   "open": 0.818,
+   "solidity": 1.0
+  }
+ },
+ "ウサギ": {
+  "file": "14416cb882.svg",
+  "source": "phylopic",
+  "taxon": "Oryctolagus cuniculus",
+  "node": "Oryctolagus cuniculus",
+  "phylopic": "1e15411c-5394-4a9d-a209-76c8ac0c331d",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Steven Traver",
+  "title": "Oryctolagus cuniculus",
+  "ink": {
+   "ink": 0.423,
+   "open": 0.577,
+   "solidity": 1.0
+  }
+ },
+ "ウシ": {
+  "file": "62b00fd8d8.svg",
+  "source": "phylopic",
+  "taxon": "Bos taurus",
+  "node": "Bos primigenius",
+  "phylopic": "415714b4-859c-4d1c-9ce0-9e1081613df7",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Steven Traver",
+  "title": "Bos primigenius taurus",
+  "ink": {
+   "ink": 0.565,
+   "open": 0.43,
+   "solidity": 0.99
+  }
+ },
+ "ウナギ": {
+  "file": "406692dfe3.svg",
+  "source": "phylopic",
+  "taxon": "Anguilla",
+  "node": "Anguilla",
+  "phylopic": "629e1135-d0c5-4f02-bb13-8cbf63e48692",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Steven Traver",
+  "title": "Anguilla rostrata",
+  "ink": {
+   "ink": 0.382,
+   "open": 0.618,
+   "solidity": 1.0
+  }
+ },
+ "ウニ": {
+  "file": "69ada0108b.svg",
+  "source": "phylopic",
+  "taxon": "Echinoidea",
+  "node": "Echinoidea",
+  "phylopic": "e5da6b25-f72b-43b5-ba79-3b8b9933116f",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Guillaume Dera",
+  "title": "Prionocidaris baculosa",
+  "ink": {
+   "ink": 0.226,
+   "open": 0.773,
+   "solidity": 0.995
+  }
+ },
+ "ウマ": {
+  "file": "d36c341a34.svg",
+  "source": "phylopic",
+  "taxon": "Equus ferus caballus",
+  "node": "Equus ferus caballus",
+  "phylopic": "b302ceef-072c-471c-bc7d-164c428dd57a",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Mozillian",
+  "title": "Equus ferus caballus",
+  "ink": {
+   "ink": 0.42,
+   "open": 0.58,
+   "solidity": 1.0
+  }
+ },
+ "ウミウシ": {
+  "file": "b518028c00.svg",
+  "source": "phylopic",
+  "taxon": "Nudibranchia",
+  "node": "Nudibranchia",
+  "phylopic": "a52a3f75-9f2d-4b20-832f-49e9d884b114",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Kate Otter",
+  "title": "Berghia stephanieae",
+  "ink": {
+   "ink": 0.433,
+   "open": 0.567,
+   "solidity": 1.0
+  }
+ },
+ "ウミユリ": {
+  "file": "e265b42d39.svg",
+  "source": "phylopic",
+  "taxon": "Crinoidea",
+  "node": "Crinoidea",
+  "phylopic": "ab36081a-9d02-4d3a-9f18-feaddb440302",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Lauren Sumner-Rooney",
+  "title": "Articulata",
+  "ink": {
+   "ink": 0.408,
+   "open": 0.59,
+   "solidity": 0.997
+  }
+ },
+ "エイ": {
+  "file": "2228cfdaf8.svg",
+  "source": "phylopic",
+  "taxon": "Batoidea",
+  "node": "Batoidea",
+  "phylopic": "0596f8ce-e9a5-4481-9982-ad7599fc2cba",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Guillaume Dera",
+  "title": "Amblyraja radiata",
+  "ink": {
+   "ink": 0.143,
+   "open": 0.857,
+   "solidity": 0.999
+  }
+ },
+ "エビ": {
+  "file": "f43c7fd894.svg",
+  "source": "phylopic",
+  "taxon": "Caridea",
+  "node": "Caridea",
+  "phylopic": "a8dc4f0a-5b17-4ed4-bc4a-8af69db73c16",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "MBARI and FathomVerse",
+  "title": "Caridea",
+  "ink": {
+   "ink": 0.118,
+   "open": 0.878,
+   "solidity": 0.969
+  }
+ },
+ "オウム": {
+  "file": "e9fc9c6b24.svg",
+  "source": "phylopic",
+  "taxon": "Cacatuidae",
+  "node": "Cacatuidae",
+  "phylopic": "2236b809-b54a-45a2-932f-47b2ca4b8b7e",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Ferran Sayol",
+  "title": "Cacatua sulphurea",
+  "ink": {
+   "ink": 0.172,
+   "open": 0.828,
+   "solidity": 1.0
+  }
+ },
+ "オウムガイ": {
+  "file": "366bfd47dd.svg",
+  "source": "phylopic",
+  "taxon": "Nautilus",
+  "node": "Nautilus",
+  "phylopic": "201c6030-3bff-43fc-8547-dac6e2d50227",
+  "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+  "contributor": "T. Michael Keesey",
+  "title": "Nautilus",
+  "ink": {
+   "ink": 0.649,
+   "open": 0.351,
+   "solidity": 1.0
+  }
+ },
+ "オオカミ": {
+  "file": "d4c05a1653.svg",
+  "source": "phylopic",
+  "taxon": "Canis lupus",
+  "node": "Canis lupus",
+  "phylopic": "5036f260-5a0d-42c5-a0bd-9eb0729e54e0",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Steven Traver",
+  "title": "Canis lupus",
+  "ink": {
+   "ink": 0.422,
+   "open": 0.578,
+   "solidity": 1.0
+  }
+ },
+ "オオグソクムシ": {
+  "file": "0efa99d34c.svg",
+  "source": "phylopic",
+  "taxon": "Isopoda",
+  "node": "Isopoda",
+  "phylopic": "639a8581-cf15-4ab0-a81a-d4319f7078d7",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Stefano Mammola",
+  "title": "Proasellus",
+  "ink": {
+   "ink": 0.137,
+   "open": 0.861,
+   "solidity": 0.982
+  }
+ },
+ "オオハシ": {
+  "file": "15a8d911e9.svg",
+  "source": "phylopic",
+  "taxon": "Ramphastidae",
+  "node": "Ramphastidae",
+  "phylopic": "e2de1a4e-864b-499a-967a-016f08a10294",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Federico Degrange",
+  "title": "Ramphastidae",
+  "ink": {
+   "ink": 0.291,
+   "open": 0.709,
+   "solidity": 1.0
+  }
+ },
+ "オタマジャクシ": {
+  "file": "dd640dd222.svg",
+  "source": "phylopic",
+  "taxon": "Anura",
+  "node": "Anura",
+  "phylopic": "c387bde8-a9de-4101-928b-e99f2a7a33e5",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Jose Carlos Arenas-Monroy",
+  "title": "Leiopelma archeyi",
+  "ink": {
+   "ink": 0.5,
+   "open": 0.5,
+   "solidity": 1.0
+  }
+ },
+ "オランウータン": {
+  "file": "2179805efa.svg",
+  "source": "phylopic",
+  "taxon": "Pongo",
+  "node": "Pongo",
+  "phylopic": "2f701a27-2f0b-4a97-9caa-206251edfe90",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Rowan Sherwood",
+  "title": "Pongo pygmaeus",
+  "ink": {
+   "ink": 0.467,
+   "open": 0.467,
+   "solidity": 0.877
+  }
+ },
+ "カ": {
+  "file": "00ed9f08e2.svg",
+  "source": "phylopic",
+  "taxon": "Culex",
+  "node": "Culex",
+  "phylopic": "1e3b68f7-5423-489e-b16c-af36a44892ba",
+  "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+  "contributor": "T. Michael Keesey",
+  "title": "Culex",
+  "ink": {
+   "ink": 0.131,
+   "open": 0.856,
+   "solidity": 0.91
+  }
+ },
+ "カエル": {
+  "file": "e30cceba92.svg",
+  "source": "phylopic",
+  "taxon": "Anura",
+  "node": "Anura",
+  "phylopic": "c387bde8-a9de-4101-928b-e99f2a7a33e5",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Jose Carlos Arenas-Monroy",
+  "title": "Leiopelma archeyi",
+  "ink": {
+   "ink": 0.5,
+   "open": 0.5,
+   "solidity": 1.0
+  }
+ },
+ "カタツムリ": {
+  "file": "6aa9caf046.svg",
+  "source": "phylopic",
+  "taxon": "Helix aspersa",
+  "node": "Helix aspersa",
+  "phylopic": "6ee19bb9-2f22-4c45-89dc-48e82818da7f",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Yan Wong",
+  "title": "Helix aspersa",
+  "ink": {
+   "ink": 0.503,
+   "open": 0.497,
+   "solidity": 1.0
+  }
+ },
+ "カニ": {
+  "file": "d346acb239.svg",
+  "source": "phylopic",
+  "taxon": "Brachyura",
+  "node": "Brachyura",
+  "phylopic": "c80c9f0a-4370-404c-8716-38a684d52239",
+  "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+  "contributor": "T. Michael Keesey",
+  "title": "Dicranodromia mahieuxii",
+  "ink": {
+   "ink": 0.305,
+   "open": 0.652,
+   "solidity": 0.877
+  }
+ },
+ "カバ": {
+  "file": "71551454a5.svg",
+  "source": "phylopic",
+  "taxon": "Hippopotamus amphibius",
+  "node": "Hippopotamus amphibius",
+  "phylopic": "bab03f09-73ba-45ea-8534-ea176c82a1a0",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Steven Traver",
+  "title": "Hippopotamus amphibius",
+  "ink": {
+   "ink": 0.677,
+   "open": 0.323,
+   "solidity": 1.0
+  }
+ },
+ "カブトガニ": {
+  "file": "f52e907791.svg",
+  "source": "phylopic",
+  "taxon": "Limulidae",
+  "node": "Limulidae",
+  "phylopic": "05945d69-1921-42b1-a256-ce39d248a05d",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Guillaume Dera",
+  "title": "Limulus",
+  "ink": {
+   "ink": 0.13,
+   "open": 0.87,
+   "solidity": 0.999
+  }
+ },
+ "カブトムシ": {
+  "file": "c7efb5a5ab.svg",
+  "source": "phylopic",
+  "taxon": "Dynastinae",
+  "node": "Dynastinae",
+  "phylopic": "db741d09-5f75-49db-91aa-cd803f5b9dfa",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "YA",
+  "title": "Oryctes rhinoceros",
+  "ink": {
+   "ink": 0.296,
+   "open": 0.704,
+   "solidity": 1.0
+  }
+ },
+ "カマキリ": {
+  "file": "849c56edf9.svg",
+  "source": "phylopic",
+  "taxon": "Mantodea",
+  "node": "Mantodea",
+  "phylopic": "21b1e81d-52bf-44de-aba7-79adff1ae7f0",
+  "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+  "contributor": "T. Michael Keesey",
+  "title": "Mantoida nitida",
+  "ink": {
+   "ink": 0.132,
+   "open": 0.868,
+   "solidity": 1.0
+  }
+ },
+ "カメ": {
+  "file": "d6f4c72cdb.svg",
+  "source": "phylopic",
+  "taxon": "Testudines",
+  "node": "Testudines",
+  "phylopic": "820a5ef2-3e99-4335-9522-4b5af1746c17",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Andy Wilson",
+  "title": "Phrynops hilarii",
+  "ink": {
+   "ink": 0.147,
+   "open": 0.853,
+   "solidity": 1.0
+  }
+ },
+ "カメレオン": {
+  "file": "9c00f5e204.svg",
+  "source": "phylopic",
+  "taxon": "Chamaeleonidae",
+  "node": "Chamaeleonidae",
+  "phylopic": "49f03d01-54f9-4e4e-a3dd-8af92ca07e7b",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Guillaume Dera",
+  "title": "Brookesia brunoi",
+  "ink": {
+   "ink": 0.112,
+   "open": 0.883,
+   "solidity": 0.962
+  }
+ },
+ "カモ": {
+  "file": "cb99250852.svg",
+  "source": "phylopic",
+  "taxon": "Anas",
+  "node": "Anas",
+  "phylopic": "1c044a03-f1ba-49fd-857e-f10aa8778e30",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Andy Wilson",
+  "title": "Anas platyrhynchos",
+  "ink": {
+   "ink": 0.151,
+   "open": 0.849,
+   "solidity": 1.0
+  }
+ },
+ "カモメ": {
+  "file": "41c28be67d.svg",
+  "source": "phylopic",
+  "taxon": "Larus",
+  "node": "Larus",
+  "phylopic": "0871b630-2dcd-4d35-b0a4-6a6551140553",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Sharon Wegner-Larsen",
+  "title": "Larus argentatus",
+  "ink": {
+   "ink": 0.361,
+   "open": 0.639,
+   "solidity": 1.0
+  }
+ },
+ "カラス": {
+  "file": "324956ca81.svg",
+  "source": "phylopic",
+  "taxon": "Corvus",
+  "node": "Corvus",
+  "phylopic": "2db31c7c-b0a9-460f-807e-da9181f21cf6",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "T. Michael Keesey",
+  "title": "Corvus brachyrhynchos",
+  "ink": {
+   "ink": 0.452,
+   "open": 0.548,
+   "solidity": 1.0
+  }
+ },
+ "カワウ": {
+  "file": "a468445a19.svg",
+  "source": "phylopic",
+  "taxon": "Phalacrocorax",
+  "node": "Phalacrocorax",
+  "phylopic": "21a3420c-8d7a-4bd2-8ff7-b89fe7f5add5",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Ferran Sayol",
+  "title": "Phalacrocorax carbo",
+  "ink": {
+   "ink": 0.095,
+   "open": 0.903,
+   "solidity": 0.979
+  }
+ },
+ "カワウソ": {
+  "file": "a88bce2f37.svg",
+  "source": "phylopic",
+  "taxon": "Lutrinae",
+  "node": "Lutrinae",
+  "phylopic": "1ff6d0be-3c7a-4908-8125-ff5eb879e1e0",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Margot Michaud",
+  "title": "Pteronura brasiliensis",
+  "ink": {
+   "ink": 0.322,
+   "open": 0.678,
+   "solidity": 1.0
+  }
+ },
+ "カンガルー": {
+  "file": "2ff92e04c0.svg",
+  "source": "phylopic",
+  "taxon": "Macropus",
+  "node": "Macropus",
+  "phylopic": "46cc984c-240f-461f-a8d4-7dcf3e0088d9",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "T. Michael Keesey",
+  "title": "Macropus",
+  "ink": {
+   "ink": 0.242,
+   "open": 0.758,
+   "solidity": 1.0
+  }
+ },
+ "ガ": {
+  "file": "2cf8934dec.svg",
+  "source": "phylopic",
+  "taxon": "Actias",
+  "node": "Actias",
+  "phylopic": "8bd1dca6-cc08-4445-8590-3c8c73d44078",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Andy Wilson",
+  "title": "Actias luna",
+  "ink": {
+   "ink": 0.205,
+   "open": 0.795,
+   "solidity": 1.0
+  }
+ },
+ "キジ": {
+  "file": "3e8eea3803.svg",
+  "source": "phylopic",
+  "taxon": "Phasianidae",
+  "node": "Phasianidae",
+  "phylopic": "14269801-89fe-405c-a425-2286c54ee60d",
+  "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+  "contributor": "T. Michael Keesey",
+  "title": "Arborophila hyperythra",
+  "ink": {
+   "ink": 0.453,
+   "open": 0.539,
+   "solidity": 0.983
+  }
+ },
+ "キツツキ": {
+  "file": "f46121a5e0.svg",
+  "source": "phylopic",
+  "taxon": "Picidae",
+  "node": "Picidae",
+  "phylopic": "092f230e-ed1c-4a61-ad1d-31f47349f438",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Federico Degrange",
+  "title": "Colaptes campestris",
+  "ink": {
+   "ink": 0.39,
+   "open": 0.61,
+   "solidity": 1.0
+  }
+ },
+ "キツネ": {
+  "file": "6fb774f6c3.svg",
+  "source": "phylopic",
+  "taxon": "Vulpes",
+  "node": "Vulpes",
+  "phylopic": "d67d3bf6-3509-4ab6-819a-cd409985347e",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Anthony Caravaggi",
+  "title": "Vulpes vulpes",
+  "ink": {
+   "ink": 0.41,
+   "open": 0.564,
+   "solidity": 0.941
+  }
+ },
+ "キノコ": {
+  "file": "bf3d4468e6.svg",
+  "source": "phylopic",
+  "taxon": "Agaricomycetes",
+  "node": "Agaricomycetes",
+  "phylopic": "0ec7e6e6-e115-450a-b346-c40685ed3b1a",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "riccardo percudani",
+  "title": "Laccaria",
+  "ink": {
+   "ink": 0.17,
+   "open": 0.77,
+   "solidity": 0.74
+  }
+ },
+ "キリン": {
+  "file": "d89deddf24.svg",
+  "source": "phylopic",
+  "taxon": "Giraffa",
+  "node": "Giraffa",
+  "phylopic": "a0b3548c-3757-48e5-8b3f-5c42d212a4a8",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Steven Traver",
+  "title": "Giraffa",
+  "ink": {
+   "ink": 0.274,
+   "open": 0.726,
+   "solidity": 1.0
+  }
+ },
+ "クジラ": {
+  "file": "4380d1c03b.svg",
+  "source": "phylopic",
+  "taxon": "Cetacea",
+  "node": "Cetacea",
+  "phylopic": "4329f267-5a5c-4fa8-9876-cebdec6f2aad",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "T. Michael Keesey",
+  "title": "Aetiocetus",
+  "ink": {
+   "ink": 0.182,
+   "open": 0.818,
+   "solidity": 1.0
+  }
+ },
+ "クマ": {
+  "file": "3e1ce95e92.svg",
+  "source": "phylopic",
+  "taxon": "Ursidae",
+  "node": "Ursidae",
+  "phylopic": "53c6a4c4-8428-4394-9e90-56e49fbe2b57",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Andy Wilson",
+  "title": "Tremarctos ornatus",
+  "ink": {
+   "ink": 0.316,
+   "open": 0.683,
+   "solidity": 0.996
+  }
+ },
+ "クモ": {
+  "file": "4af0a0c73d.svg",
+  "source": "phylopic",
+  "taxon": "Araneae",
+  "node": "Araneae",
+  "phylopic": "882a9d18-5724-44a9-b439-1b2686339a00",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "T. Michael Keesey",
+  "title": "Liphistius desultor",
+  "ink": {
+   "ink": 0.248,
+   "open": 0.751,
+   "solidity": 0.997
+  }
+ },
+ "クラゲ": {
+  "file": "650f17f169.svg",
+  "source": "phylopic",
+  "taxon": "Scyphozoa",
+  "node": "Scyphozoa",
+  "phylopic": "6f25228d-34f6-4a84-b52d-ce03d3fcd152",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Guillaume Dera",
+  "title": "Chrysaora quinquecirrha",
+  "ink": {
+   "ink": 0.173,
+   "open": 0.795,
+   "solidity": 0.848
+  }
+ },
+ "クリオネ": {
+  "file": "89704d486d.svg",
+  "source": "phylopic",
+  "taxon": "Gymnosomata",
+  "node": "Gymnosomata",
+  "phylopic": "6e8650ea-ec2b-4b74-919d-35a24959dd05",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "MBARI and FathomVerse",
+  "title": "Clionidae",
+  "ink": {
+   "ink": 0.189,
+   "open": 0.805,
+   "solidity": 0.968
+  }
+ },
+ "クワガタ": {
+  "file": "7660ded661.svg",
+  "source": "phylopic",
+  "taxon": "Lucanidae",
+  "node": "Lucanidae",
+  "phylopic": "db05bb59-7f1f-4a97-b259-7705f27386ad",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Andy Wilson",
+  "title": "Lucanus cervus",
+  "ink": {
+   "ink": 0.095,
+   "open": 0.905,
+   "solidity": 1.0
+  }
+ },
+ "グンカンドリ": {
+  "file": "8e6a308c0f.svg",
+  "source": "phylopic",
+  "taxon": "Fregata",
+  "node": "Fregata",
+  "phylopic": "44dcfdfc-6879-42ef-ae02-8df23a174efd",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Antonio Medina",
+  "title": "Fregata magnificens",
+  "ink": {
+   "ink": 0.216,
+   "open": 0.784,
+   "solidity": 1.0
+  }
+ },
+ "コアラ": {
+  "file": "c44109bd7f.svg",
+  "source": "phylopic",
+  "taxon": "Phascolarctos cinereus",
+  "node": "Phascolarctos cinereus",
+  "phylopic": "132e695c-a23a-4e82-93c0-5ca8e8982844",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Margot Michaud",
+  "title": "Phascolarctos cinereus",
+  "ink": {
+   "ink": 0.512,
+   "open": 0.488,
+   "solidity": 1.0
+  }
+ },
+ "コイ": {
+  "file": "d4eada2a77.svg",
+  "source": "phylopic",
+  "taxon": "Cyprinus carpio",
+  "node": "Cyprinus carpio",
+  "phylopic": "25a76141-cca2-4b56-bd9f-9f5fdcd8efa1",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Carlos Cano-Barbacil",
+  "title": "Cyprinus carpio",
+  "ink": {
+   "ink": 0.176,
+   "open": 0.824,
+   "solidity": 1.0
+  }
+ },
+ "コウモリ": {
+  "file": "137be29174.svg",
+  "source": "phylopic",
+  "taxon": "Chiroptera",
+  "node": "Chiroptera",
+  "phylopic": "78213f34-703a-4730-87c9-fdc933a3e00b",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Guillaume Dera",
+  "title": "Asellia tridens",
+  "ink": {
+   "ink": 0.139,
+   "open": 0.861,
+   "solidity": 1.0
+  }
+ },
+ "コオロギ": {
+  "file": "4ee7ac96fe.svg",
+  "source": "phylopic",
+  "taxon": "Gryllidae",
+  "node": "Gryllidae",
+  "phylopic": "6e42ac62-37f4-458c-bf44-3f7decb1f14e",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Guillaume Dera",
+  "title": "Acheta domestica",
+  "ink": {
+   "ink": 0.082,
+   "open": 0.918,
+   "solidity": 1.0
+  }
+ },
+ "コブラ": {
+  "file": "4d37390072.svg",
+  "source": "phylopic",
+  "taxon": "Elapidae",
+  "node": "Elapidae",
+  "phylopic": "d16f0671-d2a1-45d5-8649-ca31b660fcbd",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Beth Reinke",
+  "title": "Simoselaps bertholdi",
+  "ink": {
+   "ink": 0.18,
+   "open": 0.815,
+   "solidity": 0.974
+  }
+ },
+ "ゴリラ": {
+  "file": "b534f7ec31.svg",
+  "source": "phylopic",
+  "taxon": "Gorilla",
+  "node": "Gorilla",
+  "phylopic": "dd10acd5-fef8-41b4-b7af-fd8f651cc8b3",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Andy Wilson",
+  "title": "Gorilla gorilla",
+  "ink": {
+   "ink": 0.269,
+   "open": 0.715,
+   "solidity": 0.943
+  }
+ },
+ "ゴースト": {
+  "file": "f78f75232a.svg",
+  "source": "self",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "soramimic/wordlists",
+  "title": "ゴースト(本リポジトリ自作のシルエット)"
+ },
+ "サイ": {
+  "file": "252e104683.svg",
+  "source": "phylopic",
+  "taxon": "Rhinocerotidae",
+  "node": "Rhinocerotidae",
+  "phylopic": "0f140008-ea45-48a8-b868-9235db6fbddb",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Christophe Mallet",
+  "title": "Diceros bicornis",
+  "ink": {
+   "ink": 0.375,
+   "open": 0.623,
+   "solidity": 0.995
+  }
+ },
+ "サカナ": {
+  "file": "899567b0f6.svg",
+  "source": "phylopic",
+  "taxon": "Actinopterygii",
+  "node": "Actinopterygii",
+  "phylopic": "7360374f-8860-44c5-b74b-af53ca1a8af4",
+  "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+  "contributor": "T. Michael Keesey",
+  "title": "Palaeoniscum freieslebeni",
+  "ink": {
+   "ink": 0.492,
+   "open": 0.508,
+   "solidity": 1.0
+  }
+ },
+ "サソリ": {
+  "file": "3c13c5bbe2.svg",
+  "source": "phylopic",
+  "taxon": "Scorpiones",
+  "node": "Scorpiones",
+  "phylopic": "19022130-eca4-452c-b0c6-5fde820d2d10",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Christoph Schomburg",
+  "title": "Centruroides",
+  "ink": {
+   "ink": 0.205,
+   "open": 0.795,
+   "solidity": 1.0
+  }
+ },
+ "サボテン": {
+  "file": "179ac0b17e.svg",
+  "source": "phylopic",
+  "taxon": "Cactaceae",
+  "node": "Cactaceae",
+  "phylopic": "985e5bbd-0662-49ac-bf5b-6d5312123eee",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Guillaume Dera",
+  "title": "Lophophora williamsii",
+  "ink": {
+   "ink": 0.277,
+   "open": 0.722,
+   "solidity": 0.996
+  }
+ },
+ "サメ": {
+  "file": "18d6c32333.svg",
+  "source": "phylopic",
+  "taxon": "Selachimorpha",
+  "node": "Selachii",
+  "phylopic": "76d77c63-d04e-4667-846d-0e80db46c654",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Birgit Lang",
+  "title": "Scyliorhinus canicula",
+  "ink": {
+   "ink": 0.192,
+   "open": 0.808,
+   "solidity": 1.0
+  }
+ },
+ "サル": {
+  "file": "6dbd98ca83.svg",
+  "source": "phylopic",
+  "taxon": "Cercopithecidae",
+  "node": "Cercopithecidae",
+  "phylopic": "eccbb404-c99f-41f9-8785-01a7f57f1269",
+  "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+  "contributor": "T. Michael Keesey",
+  "title": "Papionini",
+  "ink": {
+   "ink": 0.414,
+   "open": 0.586,
+   "solidity": 1.0
+  }
+ },
+ "サンゴ": {
+  "file": "e595660402.svg",
+  "source": "phylopic",
+  "taxon": "Anthozoa",
+  "node": "Anthozoa",
+  "phylopic": "23e078d5-e7d3-42e6-b747-16345db5379c",
+  "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+  "contributor": "T. Michael Keesey",
+  "title": "Anthozoa",
+  "ink": {
+   "ink": 0.521,
+   "open": 0.478,
+   "solidity": 0.997
+  }
+ },
+ "サンショウウオ": {
+  "file": "9c3fd3d8b4.svg",
+  "source": "phylopic",
+  "taxon": "Caudata",
+  "node": "Caudata",
+  "phylopic": "f00121ab-a5c5-4bb4-8b88-51bd16122916",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Yan Wong",
+  "title": "Caudata",
+  "ink": {
+   "ink": 0.246,
+   "open": 0.754,
+   "solidity": 1.0
+  }
+ },
+ "ザリガニ": {
+  "file": "f9da1ea21e.svg",
+  "source": "phylopic",
+  "taxon": "Astacoidea",
+  "node": "Astacoidea",
+  "phylopic": "2d4426e4-048b-480e-80c9-31d882dae7f4",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Kamil S. Jaron",
+  "title": "Procambarus virginalis",
+  "ink": {
+   "ink": 0.159,
+   "open": 0.832,
+   "solidity": 0.951
+  }
+ },
+ "シカ": {
+  "file": "3467d09d08.svg",
+  "source": "phylopic",
+  "taxon": "Cervidae",
+  "node": "Cervidae",
+  "phylopic": "b36a215a-adb3-445d-b364-1e63dddd6950",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Steven Traver",
+  "title": "Capreolus capreolus",
+  "ink": {
+   "ink": 0.284,
+   "open": 0.716,
+   "solidity": 1.0
+  }
+ },
+ "シマウマ": {
+  "file": "20dc5df053.svg",
+  "source": "phylopic",
+  "taxon": "Equus quagga",
+  "node": "Equus quagga",
+  "phylopic": "f7d817d0-d733-493d-bd4a-3f178e0760a8",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Andy Wilson",
+  "title": "Equus quagga chapmani",
+  "ink": {
+   "ink": 0.222,
+   "open": 0.776,
+   "solidity": 0.994
+  }
+ },
+ "シーラカンス": {
+  "file": "cf9042a622.svg",
+  "source": "phylopic",
+  "taxon": "Latimeria",
+  "node": "Latimeria",
+  "phylopic": "54d7cfdf-9ff5-48a3-b8b9-f3b315414c66",
+  "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+  "contributor": "Yan Wong",
+  "title": "Latimeria chalumnae",
+  "ink": {
+   "ink": 0.548,
+   "open": 0.452,
+   "solidity": 1.0
+  }
+ },
+ "スカンク": {
+  "file": "4792a0954f.svg",
+  "source": "phylopic",
+  "taxon": "Mephitidae",
+  "node": "Mephitidae",
+  "phylopic": "281db5fb-1253-40f4-b281-500674d0a64c",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Margot Michaud",
+  "title": "Mydaus javanensis",
+  "ink": {
+   "ink": 0.576,
+   "open": 0.424,
+   "solidity": 1.0
+  }
+ },
+ "スズメ": {
+  "file": "f5ebe2fe80.svg",
+  "source": "phylopic",
+  "taxon": "Passer",
+  "node": "Passer",
+  "phylopic": "1f13537d-6c37-4179-a127-710218b97072",
+  "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+  "contributor": "Pascal Abel",
+  "title": "Passer montanus",
+  "ink": {
+   "ink": 0.326,
+   "open": 0.674,
+   "solidity": 1.0
+  }
+ },
+ "セイウチ": {
+  "file": "193dc47b02.svg",
+  "source": "phylopic",
+  "taxon": "Odobenus rosmarus",
+  "node": "Odobenus rosmarus",
+  "phylopic": "16cfde1b-d577-4de8-82b9-62b760aacba5",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Steven Traver",
+  "title": "Odobenus rosmarus",
+  "ink": {
+   "ink": 0.575,
+   "open": 0.425,
+   "solidity": 1.0
+  }
+ },
+ "セミ": {
+  "file": "84beec4928.svg",
+  "source": "phylopic",
+  "taxon": "Cicadidae",
+  "node": "Cicadidae",
+  "phylopic": "29af591e-9d31-4fef-8942-391367b542c5",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Caleb M. Gordon",
+  "title": "Magicicada",
+  "ink": {
+   "ink": 0.226,
+   "open": 0.774,
+   "solidity": 1.0
+  }
+ },
+ "センザンコウ": {
+  "file": "6d486854f4.svg",
+  "source": "phylopic",
+  "taxon": "Manis",
+  "node": "Manis",
+  "phylopic": "f628f6fe-6e2d-4173-a20f-265dc7d2d04f",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Steven Traver",
+  "title": "Manis culionensis",
+  "ink": {
+   "ink": 0.508,
+   "open": 0.492,
+   "solidity": 1.0
+  }
+ },
+ "ゾウ": {
+  "file": "494c18c4d9.svg",
+  "source": "phylopic",
+  "taxon": "Elephantidae",
+  "node": "Elephantidae",
+  "phylopic": "a15244a4-ecaa-4891-b870-31e5c8d9b5b3",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "T. Michael Keesey",
+  "title": "Primelephas gomphotheroides",
+  "ink": {
+   "ink": 0.356,
+   "open": 0.644,
+   "solidity": 1.0
+  }
+ },
+ "タカ": {
+  "file": "299d7a7143.svg",
+  "source": "phylopic",
+  "taxon": "Accipitridae",
+  "node": "Accipitridae",
+  "phylopic": "e00734a7-e8a8-4fe5-b5a9-58d927ca451a",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Lauren Anderson",
+  "title": "Buteo jamaicensis",
+  "ink": {
+   "ink": 0.455,
+   "open": 0.545,
+   "solidity": 1.0
+  }
+ },
+ "タコ": {
+  "file": "1b898110e2.svg",
+  "source": "phylopic",
+  "taxon": "Octopus",
+  "node": "Octopus",
+  "phylopic": "d115b40d-efe3-487e-bed1-4f6aace5c814",
+  "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+  "contributor": "T. Michael Keesey",
+  "title": "Octopus bimaculatus",
+  "ink": {
+   "ink": 0.457,
+   "open": 0.54,
+   "solidity": 0.993
+  }
+ },
+ "タツノオトシゴ": {
+  "file": "e686784b20.svg",
+  "source": "phylopic",
+  "taxon": "Hippocampus",
+  "node": "Hippocampus",
+  "phylopic": "6cf73e55-4e10-47ad-9b7e-33645536863f",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Corrine Avidan",
+  "title": "Hippocampus",
+  "ink": {
+   "ink": 0.247,
+   "open": 0.753,
+   "solidity": 1.0
+  }
+ },
+ "タヌキ": {
+  "file": "f3257c6c6e.svg",
+  "source": "phylopic",
+  "taxon": "Nyctereutes procyonoides",
+  "node": "Nyctereutes procyonoides",
+  "phylopic": "bf7c91a9-e7c5-4f2d-bfd6-1668d48e695e",
+  "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+  "contributor": "T. Michael Keesey",
+  "title": "Nyctereutes procyonoides",
+  "ink": {
+   "ink": 0.577,
+   "open": 0.423,
+   "solidity": 1.0
+  }
+ },
+ "タネ": {
+  "file": "060f1dedd9.svg",
+  "source": "self",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "soramimic/wordlists",
+  "title": "タネ(本リポジトリ自作のシルエット)"
+ },
+ "タマゴ": {
+  "file": "252601dd7d.svg",
+  "source": "self",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "soramimic/wordlists",
+  "title": "タマゴ(本リポジトリ自作のシルエット)"
+ },
+ "ダチョウ": {
+  "file": "5c3445e8e2.svg",
+  "source": "phylopic",
+  "taxon": "Struthio camelus",
+  "node": "Struthio camelus",
+  "phylopic": "df5979fc-7cdd-41c7-ac47-7107ba3f7e1a",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Ferran Sayol",
+  "title": "Struthio camelus",
+  "ink": {
+   "ink": 0.13,
+   "open": 0.87,
+   "solidity": 1.0
+  }
+ },
+ "ダンゴムシ": {
+  "file": "fcd0cb36fe.svg",
+  "source": "phylopic",
+  "taxon": "Armadillidiidae",
+  "node": "Armadillidiidae",
+  "phylopic": "cc116ca2-836f-41b2-995e-fe6e778e673a",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Christoph Schomburg",
+  "title": "Armadillidium vulgare",
+  "ink": {
+   "ink": 0.546,
+   "open": 0.441,
+   "solidity": 0.978
+  }
+ },
+ "チョウ": {
+  "file": "e0c837c4bc.svg",
+  "source": "phylopic",
+  "taxon": "Papilionoidea",
+  "node": "Rhopalocera",
+  "phylopic": "0d0f9700-3e70-46dc-b115-5158599f94f4",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Eliza Grames",
+  "title": "Polites sabuleti",
+  "ink": {
+   "ink": 0.64,
+   "open": 0.36,
+   "solidity": 1.0
+  }
+ },
+ "チンチラ": {
+  "file": "8d1735d524.svg",
+  "source": "phylopic",
+  "taxon": "Chinchillidae",
+  "node": "Chinchillidae",
+  "phylopic": "c1b1a1bc-cbe0-4531-843f-f90ab70ce1d5",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Daniel Stadtmauer",
+  "title": "Lagostomus maximus",
+  "ink": {
+   "ink": 0.599,
+   "open": 0.4,
+   "solidity": 0.999
+  }
+ },
+ "ツバメ": {
+  "file": "240ff04449.svg",
+  "source": "phylopic",
+  "taxon": "Hirundinidae",
+  "node": "Hirundinidae",
+  "phylopic": "394d5586-e36c-4bea-ad82-ffffff9273ea",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Andy Wilson",
+  "title": "Progne subis",
+  "ink": {
+   "ink": 0.181,
+   "open": 0.819,
+   "solidity": 1.0
+  }
+ },
+ "テントウムシ": {
+  "file": "049a356680.svg",
+  "source": "phylopic",
+  "taxon": "Coccinellidae",
+  "node": "Coccinellidae",
+  "phylopic": "c44522ad-12c1-4830-94e7-1d7803563f0a",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Jan V",
+  "title": "Coccinella",
+  "ink": {
+   "ink": 0.421,
+   "open": 0.578,
+   "solidity": 0.996
+  }
+ },
+ "トカゲ": {
+  "file": "76870c7e14.svg",
+  "source": "phylopic",
+  "taxon": "Lacertilia",
+  "node": "Squamata",
+  "phylopic": "02811a3f-1a4f-4bbf-b4bb-b9ad7b60ecc0",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Gopal Murali",
+  "title": "Sphenomorphus dussumieri",
+  "ink": {
+   "ink": 0.095,
+   "open": 0.903,
+   "solidity": 0.983
+  }
+ },
+ "トラ": {
+  "file": "7ecb1fc4c1.svg",
+  "source": "phylopic",
+  "taxon": "Panthera tigris",
+  "node": "Panthera tigris",
+  "phylopic": "e148eabb-f138-43c6-b1e4-5cda2180485a",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Steven Traver",
+  "title": "Panthera tigris altaica",
+  "ink": {
+   "ink": 0.549,
+   "open": 0.451,
+   "solidity": 1.0
+  }
+ },
+ "トリ": {
+  "file": "91253c15ea.svg",
+  "source": "phylopic",
+  "taxon": "Aves",
+  "node": "Aves",
+  "phylopic": "c001637a-6463-43aa-a0f6-e97cb41d13ab",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "T. Michael Keesey",
+  "title": "Foro panarium",
+  "ink": {
+   "ink": 0.375,
+   "open": 0.624,
+   "solidity": 0.999
+  }
+ },
+ "トンボ": {
+  "file": "843d36bab6.svg",
+  "source": "phylopic",
+  "taxon": "Anisoptera",
+  "node": "Anisoptera",
+  "phylopic": "2ef6d810-dc60-4dd2-aaba-bc0313c66ff6",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Guillaume Dera",
+  "title": "Anax imperator",
+  "ink": {
+   "ink": 0.198,
+   "open": 0.801,
+   "solidity": 0.995
+  }
+ },
+ "ドラゴン": {
+  "file": "ba8c67df93.svg",
+  "source": "self",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "soramimic/wordlists",
+  "title": "ドラゴン(本リポジトリ自作のシルエット)"
+ },
+ "ナナフシ": {
+  "file": "c8b09744f3.svg",
+  "source": "phylopic",
+  "taxon": "Phasmatodea",
+  "node": "Phasmatodea",
+  "phylopic": "9737da2b-f2b2-4f6b-aca8-b965fe4df499",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Kamil S. Jaron",
+  "title": "Timema cristinae",
+  "ink": {
+   "ink": 0.143,
+   "open": 0.857,
+   "solidity": 1.0
+  }
+ },
+ "ナマケモノ": {
+  "file": "b2693603c7.svg",
+  "source": "phylopic",
+  "taxon": "Bradypus",
+  "node": "Bradypus",
+  "phylopic": "2f1f0dfb-20ac-4a68-b865-81bbd5be0b32",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Guillaume Dera",
+  "title": "Bradypus tridactylus",
+  "ink": {
+   "ink": 0.227,
+   "open": 0.773,
+   "solidity": 1.0
+  }
+ },
+ "ナマコ": {
+  "file": "8bd7e0683f.svg",
+  "source": "phylopic",
+  "taxon": "Holothuroidea",
+  "node": "Holothuroidea",
+  "phylopic": "249f4533-e205-4e65-bfa8-c0926939716e",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Guillaume Dera",
+  "title": "Elpidia glacialis",
+  "ink": {
+   "ink": 0.281,
+   "open": 0.719,
+   "solidity": 1.0
+  }
+ },
+ "ナマズ": {
+  "file": "ddd1c335a7.svg",
+  "source": "phylopic",
+  "taxon": "Siluriformes",
+  "node": "Siluriformes",
+  "phylopic": "ae1d3ca5-f6d9-49dd-a431-e1bea5a3bdf3",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "T. Michael Keesey",
+  "title": "Corydoras aeneus",
+  "ink": {
+   "ink": 0.454,
+   "open": 0.546,
+   "solidity": 1.0
+  }
+ },
+ "ナメクジ": {
+  "file": "288af4431f.svg",
+  "source": "phylopic",
+  "taxon": "Limacidae",
+  "node": "Limacidae",
+  "phylopic": "b9ab23f2-8771-4f67-8a44-215ef7d74a9d",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Caleb M. Gordon",
+  "title": "Limax maximus",
+  "ink": {
+   "ink": 0.151,
+   "open": 0.849,
+   "solidity": 1.0
+  }
+ },
+ "ニワトリ": {
+  "file": "1c5c5c7153.svg",
+  "source": "phylopic",
+  "taxon": "Gallus gallus domesticus",
+  "node": "Gallus gallus domesticus",
+  "phylopic": "aff847b0-ecbd-4d41-98ce-665921a6d96e",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Steven Traver",
+  "title": "Gallus gallus domesticus",
+  "ink": {
+   "ink": 0.374,
+   "open": 0.622,
+   "solidity": 0.988
+  }
+ },
+ "ネコ": {
+  "file": "20cd908a6f.svg",
+  "source": "phylopic",
+  "taxon": "Felis catus",
+  "node": "Felis lybica",
+  "phylopic": "e9f41f59-d708-47aa-a705-ba9b8826ebc6",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Steven Traver",
+  "title": "Felis lybica catus",
+  "ink": {
+   "ink": 0.389,
+   "open": 0.611,
+   "solidity": 1.0
+  }
+ },
+ "ネズミ": {
+  "file": "36ca2dff0a.svg",
+  "source": "phylopic",
+  "taxon": "Mus",
+  "node": "Mus",
+  "phylopic": "6b2b98f6-f879-445f-9ac2-2c2563157025",
+  "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+  "contributor": "T. Michael Keesey",
+  "title": "Mus musculus domesticus",
+  "ink": {
+   "ink": 0.418,
+   "open": 0.582,
+   "solidity": 1.0
+  }
+ },
+ "ハエトリグサ": {
+  "file": "f863f073a6.svg",
+  "source": "phylopic",
+  "taxon": "Droseraceae",
+  "node": "Droseraceae",
+  "phylopic": "d13dfb14-acd7-46ee-8467-1cef833d4aaf",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "T. Michael Keesey",
+  "title": "Drosera spatulata",
+  "ink": {
+   "ink": 0.509,
+   "open": 0.46,
+   "solidity": 0.942
+  }
+ },
+ "ハクチョウ": {
+  "file": "3486fff0c2.svg",
+  "source": "phylopic",
+  "taxon": "Cygnus",
+  "node": "Cygnus",
+  "phylopic": "197883f7-80d0-4d27-b1a0-c3c5d7d8dfa3",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Caleb M. Gordon",
+  "title": "Cygnus olor",
+  "ink": {
+   "ink": 0.395,
+   "open": 0.605,
+   "solidity": 1.0
+  }
+ },
+ "ハゲワシ": {
+  "file": "0bec79a6b0.svg",
+  "source": "phylopic",
+  "taxon": "Cathartidae",
+  "node": "Cathartidae",
+  "phylopic": "10c5b55f-9fa1-415f-838d-4b5ed6746e51",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Andy Wilson",
+  "title": "Coragyps atratus",
+  "ink": {
+   "ink": 0.172,
+   "open": 0.828,
+   "solidity": 1.0
+  }
+ },
+ "ハチ": {
+  "file": "69f43fca47.svg",
+  "source": "phylopic",
+  "taxon": "Apidae",
+  "node": "Apidae",
+  "phylopic": "5fdc4327-2881-4664-9e42-f176d95568c9",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Kamil S. Jaron",
+  "title": "Apis mellifera",
+  "ink": {
+   "ink": 0.463,
+   "open": 0.535,
+   "solidity": 0.996
+  }
+ },
+ "ハト": {
+  "file": "6f91e32ccf.svg",
+  "source": "phylopic",
+  "taxon": "Columba livia",
+  "node": "Columba livia",
+  "phylopic": "93124ce1-73c9-4278-bfd4-a29886bc7ca7",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Steven Traver",
+  "title": "Columba livia",
+  "ink": {
+   "ink": 0.389,
+   "open": 0.611,
+   "solidity": 1.0
+  }
+ },
+ "ハヤブサ": {
+  "file": "913ea875df.svg",
+  "source": "phylopic",
+  "taxon": "Falco peregrinus",
+  "node": "Falco peregrinus",
+  "phylopic": "1d5f26b6-4a9a-48ad-b799-a83eadb078ca",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Ferran Sayol",
+  "title": "Falco peregrinus peregrinus",
+  "ink": {
+   "ink": 0.13,
+   "open": 0.87,
+   "solidity": 1.0
+  }
+ },
+ "ハリネズミ": {
+  "file": "650c21ac66.svg",
+  "source": "phylopic",
+  "taxon": "Erinaceus",
+  "node": "Erinaceus",
+  "phylopic": "6ecff71e-fcfc-4cb9-b773-9e6e21607587",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Steven Traver",
+  "title": "Erinaceus europaeus",
+  "ink": {
+   "ink": 0.528,
+   "open": 0.471,
+   "solidity": 0.997
+  }
+ },
+ "バク": {
+  "file": "fe0f1315c2.svg",
+  "source": "phylopic",
+  "taxon": "Tapirus",
+  "node": "Tapirus",
+  "phylopic": "8f6b8802-52f9-4f16-8429-0b86ea4a4aa8",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Steven Traver",
+  "title": "Tapirus pinchaque",
+  "ink": {
+   "ink": 0.55,
+   "open": 0.45,
+   "solidity": 1.0
+  }
+ },
+ "バッタ": {
+  "file": "2191bacd09.svg",
+  "source": "phylopic",
+  "taxon": "Caelifera",
+  "node": "Caelifera",
+  "phylopic": "1690cd12-3cb6-48ae-a9b7-92a22ce7516f",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Ferran Sayol",
+  "title": "Tetrigidae",
+  "ink": {
+   "ink": 0.348,
+   "open": 0.627,
+   "solidity": 0.932
+  }
+ },
+ "パンダ": {
+  "file": "672d843799.svg",
+  "source": "phylopic",
+  "taxon": "Ailuropoda melanoleuca",
+  "node": "Ailuropoda melanoleuca",
+  "phylopic": "4b1f7a58-8713-4d6e-a130-4c8a1ac2f749",
+  "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+  "contributor": "T. Michael Keesey",
+  "title": "Ailuropoda melanoleuca",
+  "ink": {
+   "ink": 0.543,
+   "open": 0.457,
+   "solidity": 1.0
+  }
+ },
+ "ヒツジ": {
+  "file": "5382cae9db.svg",
+  "source": "phylopic",
+  "taxon": "Ovis aries",
+  "node": "Ovis aries",
+  "phylopic": "cd7c624f-d93d-45fb-86a3-052885af2471",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Laura Barbero-Palacios",
+  "title": "Ovis aries",
+  "ink": {
+   "ink": 0.261,
+   "open": 0.736,
+   "solidity": 0.992
+  }
+ },
+ "ヒトデ": {
+  "file": "ba4b8d6e9e.svg",
+  "source": "phylopic",
+  "taxon": "Asteroidea",
+  "node": "Asteroidea",
+  "phylopic": "7e27ce06-1f4f-45d8-a359-dcba8fc54b9b",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Birgit Lang",
+  "title": "Tethyaster subinermis",
+  "ink": {
+   "ink": 0.213,
+   "open": 0.787,
+   "solidity": 1.0
+  }
+ },
+ "ヒト型": {
+  "file": "1cd329ffad.svg",
+  "source": "phylopic",
+  "taxon": "Homo sapiens",
+  "node": "Homo sapiens",
+  "phylopic": "c089caae-43ef-4e4e-bf26-973dd4cb65c5",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "T. Michael Keesey",
+  "title": "Homo sapiens idaltu",
+  "ink": {
+   "ink": 0.511,
+   "open": 0.488,
+   "solidity": 1.0
+  }
+ },
+ "ヒョウ": {
+  "file": "82be86bff6.svg",
+  "source": "phylopic",
+  "taxon": "Panthera pardus",
+  "node": "Panthera pardus",
+  "phylopic": "78dbe564-bcba-4dc3-8bdc-fb95fc288580",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Margot Michaud",
+  "title": "Panthera pardus",
+  "ink": {
+   "ink": 0.452,
+   "open": 0.548,
+   "solidity": 1.0
+  }
+ },
+ "ビーバー": {
+  "file": "70e6a64b40.svg",
+  "source": "phylopic",
+  "taxon": "Castor",
+  "node": "Castor",
+  "phylopic": "0b9b783b-b537-4fa6-b387-a9ca2d3f7a12",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Steven Traver",
+  "title": "Castor fiber",
+  "ink": {
+   "ink": 0.495,
+   "open": 0.503,
+   "solidity": 0.996
+  }
+ },
+ "フクロウ": {
+  "file": "5f91371938.svg",
+  "source": "phylopic",
+  "taxon": "Strigiformes",
+  "node": "Strigiformes",
+  "phylopic": "b4f3d9fb-4b03-4cba-89ee-039256936b6a",
+  "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+  "contributor": "T. Michael Keesey",
+  "title": "Phodilus badius",
+  "ink": {
+   "ink": 0.523,
+   "open": 0.477,
+   "solidity": 1.0
+  }
+ },
+ "フグ": {
+  "file": "c760a2cbb4.svg",
+  "source": "phylopic",
+  "taxon": "Tetraodontidae",
+  "node": "Tetraodontidae",
+  "phylopic": "3f1f3768-7b12-4228-952f-010e50b87b47",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Bruno Serranito",
+  "title": "Lagocephalus sceleratus",
+  "ink": {
+   "ink": 0.438,
+   "open": 0.562,
+   "solidity": 1.0
+  }
+ },
+ "フジツボ": {
+  "file": "e225e351a9.svg",
+  "source": "phylopic",
+  "taxon": "Cirripedia",
+  "node": "Cirripedia",
+  "phylopic": "a0071924-dae4-43f0-bb26-f42efb55db74",
+  "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+  "contributor": "T. Michael Keesey",
+  "title": "Trypetesa lampas",
+  "ink": {
+   "ink": 0.722,
+   "open": 0.278,
+   "solidity": 1.0
+  }
+ },
+ "フラミンゴ": {
+  "file": "ba7c2b866c.svg",
+  "source": "phylopic",
+  "taxon": "Phoenicopterus",
+  "node": "Phoenicopterus",
+  "phylopic": "13c0e1b9-e3b2-461d-ba61-1ff8b9daee39",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Shreyas Arashanapalli",
+  "title": "Phoenicopterus chilensis",
+  "ink": {
+   "ink": 0.303,
+   "open": 0.657,
+   "solidity": 0.884
+  }
+ },
+ "フンコロガシ": {
+  "file": "7a1d578f7c.svg",
+  "source": "phylopic",
+  "taxon": "Scarabaeidae",
+  "node": "Scarabaeidae",
+  "phylopic": "262290a3-16ae-40ac-9c6c-4c8a02b526f0",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Alvaro Gaytan",
+  "title": "Aphodius fimetarius",
+  "ink": {
+   "ink": 0.198,
+   "open": 0.802,
+   "solidity": 0.999
+  }
+ },
+ "ブタ": {
+  "file": "8daf9d5ada.svg",
+  "source": "phylopic",
+  "taxon": "Sus scrofa domesticus",
+  "node": "Sus scrofa domestica",
+  "phylopic": "2e857d0f-a2de-493d-aa51-e182dc3ee2ba",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Arcadia Science",
+  "title": "Sus scrofa domestica",
+  "ink": {
+   "ink": 0.58,
+   "open": 0.419,
+   "solidity": 0.998
+  }
+ },
+ "ヘビ": {
+  "file": "5ec056f8d2.svg",
+  "source": "phylopic",
+  "taxon": "Serpentes",
+  "node": "Serpentes",
+  "phylopic": "73bbff9f-ddea-4478-b32b-27ba61327a30",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Jessica Tingle",
+  "title": "Anilios endoterus",
+  "ink": {
+   "ink": 0.179,
+   "open": 0.821,
+   "solidity": 1.0
+  }
+ },
+ "ペリカン": {
+  "file": "ae8b55f2d9.svg",
+  "source": "phylopic",
+  "taxon": "Pelecanus",
+  "node": "Pelecanus",
+  "phylopic": "2a168f51-4016-4a32-ba72-64a53bee31ca",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Ferran Sayol",
+  "title": "Pelecanus",
+  "ink": {
+   "ink": 0.141,
+   "open": 0.859,
+   "solidity": 1.0
+  }
+ },
+ "ペンギン": {
+  "file": "d53f6c6b5e.svg",
+  "source": "phylopic",
+  "taxon": "Spheniscidae",
+  "node": "Spheniscidae",
+  "phylopic": "4c20cc68-1acd-4c5a-adfe-86a61609748b",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Alexandre Vong",
+  "title": "Aptenodytes patagonicus",
+  "ink": {
+   "ink": 0.41,
+   "open": 0.59,
+   "solidity": 1.0
+  }
+ },
+ "ホタル": {
+  "file": "ef76207ae3.svg",
+  "source": "phylopic",
+  "taxon": "Lampyridae",
+  "node": "Lampyridae",
+  "phylopic": "c97833d5-a6d8-4170-ad5f-f7b6d2186bb6",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Steven Haddock",
+  "title": "Photinus pyralis",
+  "ink": {
+   "ink": 0.306,
+   "open": 0.694,
+   "solidity": 1.0
+  }
+ },
+ "マングース": {
+  "file": "e0544d6e0a.svg",
+  "source": "phylopic",
+  "taxon": "Herpestidae",
+  "node": "Herpestidae",
+  "phylopic": "d8d7eb8f-2f0d-429d-9cf3-d63544cb3a7e",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Margot Michaud",
+  "title": "Urva edwardsii",
+  "ink": {
+   "ink": 0.444,
+   "open": 0.556,
+   "solidity": 1.0
+  }
+ },
+ "ミミズ": {
+  "file": "51d98874dc.svg",
+  "source": "phylopic",
+  "taxon": "Lumbricina",
+  "node": "Lumbricina",
+  "phylopic": "e6194bfe-ba82-4f79-b3e0-15c9b239e94c",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Nathan Jay Baker",
+  "title": "Eiseniella tetraedra",
+  "ink": {
+   "ink": 0.387,
+   "open": 0.57,
+   "solidity": 0.901
+  }
+ },
+ "ムカデ": {
+  "file": "9d53ff2da5.svg",
+  "source": "phylopic",
+  "taxon": "Chilopoda",
+  "node": "Chilopoda",
+  "phylopic": "e23d4b14-1e0a-423f-9b45-95118abdf07b",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Yan Wong",
+  "title": "Scutigeridae",
+  "ink": {
+   "ink": 0.325,
+   "open": 0.675,
+   "solidity": 1.0
+  }
+ },
+ "ムシ": {
+  "file": "b0f68aca22.svg",
+  "source": "phylopic",
+  "taxon": "Insecta",
+  "node": "Insecta",
+  "phylopic": "e3b82449-ddd8-423e-ae5c-6fc278f0d6b1",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "T. Michael Keesey",
+  "title": "Carbotriplura kukalovae",
+  "ink": {
+   "ink": 0.217,
+   "open": 0.783,
+   "solidity": 1.0
+  }
+ },
+ "モグラ": {
+  "file": "908fdf8c07.svg",
+  "source": "phylopic",
+  "taxon": "Talpidae",
+  "node": "Talpidae",
+  "phylopic": "09ca6201-fd21-4d68-b0d0-af649c74d3cc",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Guillaume Dera",
+  "title": "Urotrichus talpoides",
+  "ink": {
+   "ink": 0.145,
+   "open": 0.855,
+   "solidity": 0.999
+  }
+ },
+ "モモンガ": {
+  "file": "cdcf73ae72.svg",
+  "source": "phylopic",
+  "taxon": "Pteromys",
+  "node": "Pteromys",
+  "phylopic": "6997107a-287b-4c0f-956a-d527ba5e0868",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Margot Michaud",
+  "title": "Pteromys volans",
+  "ink": {
+   "ink": 0.39,
+   "open": 0.61,
+   "solidity": 1.0
+  }
+ },
+ "ヤギ": {
+  "file": "31d0789f05.svg",
+  "source": "phylopic",
+  "taxon": "Capra aegagrus hircus",
+  "node": "Capra aegagrus hircus",
+  "phylopic": "c39a1d31-eb36-4b62-ba4d-32e29e0e5a8d",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Steven Traver",
+  "title": "Capra aegagrus hircus",
+  "ink": {
+   "ink": 0.328,
+   "open": 0.671,
+   "solidity": 0.994
+  }
+ },
+ "ヤドカリ": {
+  "file": "2c429fd4b5.svg",
+  "source": "phylopic",
+  "taxon": "Paguroidea",
+  "node": "Paguroidea",
+  "phylopic": "79b7c6f7-0b2a-4d4b-a7e4-e2eb7dd09b63",
+  "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+  "contributor": "T. Michael Keesey",
+  "title": "Birgus latro",
+  "ink": {
+   "ink": 0.398,
+   "open": 0.558,
+   "solidity": 0.901
+  }
+ },
+ "ヤモリ": {
+  "file": "7438a01a7b.svg",
+  "source": "phylopic",
+  "taxon": "Gekkota",
+  "node": "Gekkota",
+  "phylopic": "b915aa26-40dd-4283-8ce4-d2dec024aa07",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Jose Carlos Arenas-Monroy",
+  "title": "Coleonyx fasciatus",
+  "ink": {
+   "ink": 0.293,
+   "open": 0.705,
+   "solidity": 0.995
+  }
+ },
+ "ライオン": {
+  "file": "d848a29c44.svg",
+  "source": "phylopic",
+  "taxon": "Panthera leo",
+  "node": "Panthera leo",
+  "phylopic": "e2015ba3-4f7e-4950-9bde-005e8678d77b",
+  "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+  "contributor": "T. Michael Keesey",
+  "title": "Panthera leo",
+  "ink": {
+   "ink": 0.472,
+   "open": 0.528,
+   "solidity": 1.0
+  }
+ },
+ "ラクダ": {
+  "file": "159726dd58.svg",
+  "source": "phylopic",
+  "taxon": "Camelus",
+  "node": "Camelus",
+  "phylopic": "e52676dd-272c-4b14-8c99-ea5dc98942e5",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Steven Traver",
+  "title": "Camelus dromedarius",
+  "ink": {
+   "ink": 0.442,
+   "open": 0.558,
+   "solidity": 1.0
+  }
+ },
+ "リス": {
+  "file": "1ae0ae9c2c.svg",
+  "source": "phylopic",
+  "taxon": "Sciurus",
+  "node": "Sciurus",
+  "phylopic": "23c700c9-e695-404a-8d0c-146e1fc4bada",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Ferran Sayol",
+  "title": "Sciurus vulgaris",
+  "ink": {
+   "ink": 0.087,
+   "open": 0.913,
+   "solidity": 1.0
+  }
+ },
+ "ロボット": {
+  "file": "10f3e14d01.svg",
+  "source": "self",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "soramimic/wordlists",
+  "title": "ロボット(本リポジトリ自作のシルエット)"
+ },
+ "ワシ": {
+  "file": "acb5612399.svg",
+  "source": "phylopic",
+  "taxon": "Aquila",
+  "node": "Aquila",
+  "phylopic": "4b094583-9af1-46cc-bc7d-fe475f09a2d8",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Andy Wilson",
+  "title": "Aquila heliaca",
+  "ink": {
+   "ink": 0.117,
+   "open": 0.882,
+   "solidity": 1.0
+  }
+ },
+ "ワニ": {
+  "file": "df56af4a89.svg",
+  "source": "phylopic",
+  "taxon": "Crocodylia",
+  "node": "Crocodylia",
+  "phylopic": "dffda000-77cb-4251-b837-0cd2ab21ed5b",
+  "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+  "contributor": "Yan Wong",
+  "title": "Crocodylia",
+  "ink": {
+   "ink": 0.319,
+   "open": 0.681,
+   "solidity": 1.0
+  }
+ },
+ "二枚貝": {
+  "file": "b6142446e7.svg",
+  "source": "phylopic",
+  "taxon": "Bivalvia",
+  "node": "Bivalvia",
+  "phylopic": "affabed9-2f18-4f6e-8e93-cd17193dd70c",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Traci DuBose",
+  "title": "Lampsilis cardium",
+  "ink": {
+   "ink": 0.568,
+   "open": 0.432,
+   "solidity": 1.0
+  }
+ },
+ "剣": {
+  "file": "8cc4957ea1.svg",
+  "source": "self",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "soramimic/wordlists",
+  "title": "剣(本リポジトリ自作のシルエット)"
+ },
+ "天体": {
+  "file": "b696d98041.svg",
+  "source": "self",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "soramimic/wordlists",
+  "title": "天体(本リポジトリ自作のシルエット)"
+ },
+ "妖精": {
+  "file": "1dfcca540d.svg",
+  "source": "self",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "soramimic/wordlists",
+  "title": "妖精(本リポジトリ自作のシルエット)"
+ },
+ "岩": {
+  "file": "9ba9dc86b0.svg",
+  "source": "self",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "soramimic/wordlists",
+  "title": "岩(本リポジトリ自作のシルエット)"
+ },
+ "恐竜": {
+  "file": "42db123cf7.svg",
+  "source": "phylopic",
+  "taxon": "Stegosauria",
+  "node": "Stegosauria",
+  "phylopic": "429d71d8-2940-449b-838b-a5b7f1733eba",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Olivia Binfield",
+  "title": "Stegosaurus stenops",
+  "ink": {
+   "ink": 0.121,
+   "open": 0.879,
+   "solidity": 1.0
+  }
+ },
+ "木": {
+  "file": "8294db3a20.svg",
+  "source": "self",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "soramimic/wordlists",
+  "title": "木(本リポジトリ自作のシルエット)"
+ },
+ "果実": {
+  "file": "abe0618e8d.svg",
+  "source": "self",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "soramimic/wordlists",
+  "title": "果実(本リポジトリ自作のシルエット)"
+ },
+ "歯車": {
+  "file": "348efc34c4.svg",
+  "source": "self",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "soramimic/wordlists",
+  "title": "歯車(本リポジトリ自作のシルエット)"
+ },
+ "氷": {
+  "file": "19ffed6948.svg",
+  "source": "self",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "soramimic/wordlists",
+  "title": "氷(本リポジトリ自作のシルエット)"
+ },
+ "磁石": {
+  "file": "502060c4b3.svg",
+  "source": "self",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "soramimic/wordlists",
+  "title": "磁石(本リポジトリ自作のシルエット)"
+ },
+ "花": {
+  "file": "9be4611e16.svg",
+  "source": "phylopic",
+  "taxon": "Asteraceae",
+  "node": "Compositae",
+  "phylopic": "05a9b017-7828-496c-b921-8bdea66c601c",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "Ferran Sayol",
+  "title": "Senecio",
+  "ink": {
+   "ink": 0.118,
+   "open": 0.882,
+   "solidity": 1.0
+  }
+ },
+ "草": {
+  "file": "6744771609.svg",
+  "source": "phylopic",
+  "taxon": "Poaceae",
+  "node": "Gramineae",
+  "phylopic": "2af0a13e-69a8-4245-832e-ee3d981089b7",
+  "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+  "contributor": "T. Michael Keesey",
+  "title": "Anomochloa marantoidea",
+  "ink": {
+   "ink": 0.279,
+   "open": 0.677,
+   "solidity": 0.863
+  }
+ },
+ "野菜": {
+  "file": "dac5927ab5.svg",
+  "source": "self",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "soramimic/wordlists",
+  "title": "野菜(本リポジトリ自作のシルエット)"
+ },
+ "雲": {
+  "file": "a5c0790365.svg",
+  "source": "self",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "contributor": "soramimic/wordlists",
+  "title": "雲(本リポジトリ自作のシルエット)"
+ }
+}

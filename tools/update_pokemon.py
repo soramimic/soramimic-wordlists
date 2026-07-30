@@ -25,6 +25,9 @@ idはポケモン単位(種・各フォームで1つ。種とフォームは別�
 - rarity: 伝説 / 幻 / ウルトラビースト / NA(通常)。種レベル属性
 - height_m / weight_kg: 高さ(m)・重さ(kg)を小数1桁で。フォームは自身の
   pokemonエントリの値(メガ・キョダイマックスは本体と別の体格を持つ)
+- evolves_from: 進化前の日本語の種名(フシギソウ→フシギダネ)。進化前が無い種は
+  NA。出典は pokemon_species.csv の evolves_from_species_id。種レベルの属性なので
+  フォーム行は親種の値を継承する(メガリザードンX→リザード)
 - description: 上記の事実を並べた機械生成の説明文。**PokéAPIのフレーバー
   テキスト(pokemon_species_flavor_text.csv)は著作物なので取得も収録もしない**
 
@@ -48,7 +51,11 @@ import urllib.request
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from gen_pokemon_typecards import image_page_url, image_url  # noqa: E402
+from gen_pokemon_typecards import (  # noqa: E402
+    GENERATION_VERSIONS,
+    image_page_url,
+    image_url,
+)
 
 BASE_URL = "https://raw.githubusercontent.com/PokeAPI/pokeapi/master/data/v2/csv"
 JA_HRKT_LANGUAGE_ID = "1"
@@ -60,20 +67,10 @@ SUGATA_FORM_NAMES = {
     "パルデアのすがた",
     "キョダイマックスのすがた",
 }
-# description に入れる「初登場のバージョン対」。PokéAPIの version_names から引くと
-# 日本の初代が「赤・青」(海外版の対)になってしまうため、日本の慣習に合わせて
-# ハードコードする。各世代の代表的な2バージョン(対になるソフト)のみを載せる
-GENERATION_VERSIONS = {
-    "1": "赤・緑",
-    "2": "金・銀",
-    "3": "ルビー・サファイア",
-    "4": "ダイヤモンド・パール",
-    "5": "ブラック・ホワイト",
-    "6": "X・Y",
-    "7": "サン・ムーン",
-    "8": "ソード・シールド",
-    "9": "スカーレット・バイオレット",
-}
+# description に入れる「初登場のバージョン対」(GENERATION_VERSIONS)は
+# **gen_pokemon_typecards.py に置いてある**(カードでも初登場を表示するため。
+# update_pokemon.py → gen_pokemon_typecards.py の依存方向に合わせて、あちらを
+# 正とし上の import で借りている)
 # ja-Hrkt の分類名が PokéAPI に未登録の種(第9世代DLC)の暫定フォールバック。
 # 出典: 公式サイト(pokemon.co.jp のDLC紹介ページ)等で確認。PokéAPI側に値が
 # 入ればそちらを優先するので、埋まったらこのマップは削除してよい
@@ -149,6 +146,13 @@ def main() -> int:
         return "NA"
 
     species_rarity = {int(r["id"]): rarity_of(r) for r in species_rows}
+    # 進化前の種名(進化前が無い種は type2 と同じ慣例で NA)。
+    # 出典は pokemon_species.csv の evolves_from_species_id(新規fetchは不要)
+    def evolves_from_of(r: dict) -> str:
+        pre = r["evolves_from_species_id"]
+        return species_names.get(int(pre), "NA") if pre else "NA"
+
+    species_evolves_from = {int(r["id"]): evolves_from_of(r) for r in species_rows}
     vg_generation = {
         r["id"]: r["generation_id"] for r in fetch_csv("version_groups")
     }
@@ -179,7 +183,8 @@ def main() -> int:
         return f"{int(p['height']) / 10:.1f}", f"{int(p['weight']) / 10:.1f}"
 
     def description(
-        genus: str, t1: str, t2: str, gen: str, rarity: str, height: str, weight: str
+        genus: str, t1: str, t2: str, gen: str, rarity: str, evolves_from: str,
+        height: str, weight: str
     ) -> str:
         # 事実の羅列のみで組み立てる(公式のフレーバーテキストは収録しない)
         parts = []
@@ -192,6 +197,8 @@ def main() -> int:
             parts.append("ウルトラビースト。")
         elif rarity != "NA":
             parts.append(f"{rarity}のポケモン。")
+        if evolves_from != "NA":
+            parts.append(f"{evolves_from}から進化。")
         parts.append(f"高さ{height}m、重さ{weight}kg。")
         return "".join(parts)
 
@@ -225,12 +232,16 @@ def main() -> int:
     for sid in species_ids:
         s_name = species_names[sid]
         s_gen = species_generation[sid]
-        # genus/rarity は種レベルの属性なのでフォーム行も親種の値を継承する
+        # genus/rarity/evolves_from は種レベルの属性なのでフォーム行も親種の値を継承する
         genus = species_genus[sid]
         rarity = species_rarity[sid]
+        evo = species_evolves_from[sid]
         t1, t2 = type_cols(default_pokemon[sid])
         h, w = size_cols(default_pokemon[sid])
-        facts = [genus, rarity, h, w, description(genus, t1, t2, s_gen, rarity, h, w)]
+        facts = [
+            genus, rarity, h, w, evo,
+            description(genus, t1, t2, s_gen, rarity, evo, h, w),
+        ]
         rows.append([str(sid - 1), s_name, s_name, pron(s_name), t1, t2, s_gen] + facts)
         for form_name, is_mega, pokemon_id, f_gen in form_groups.get(sid, []):
             gid = str(next_form_id)
@@ -245,7 +256,8 @@ def main() -> int:
                 rarity,
                 h,
                 w,
-                description(genus, t1, t2, f_gen, rarity, h, w),
+                evo,
+                description(genus, t1, t2, f_gen, rarity, evo, h, w),
             ]
             if is_mega:
                 # メガリザードンX 等はフォーム名が完結した名前
@@ -266,8 +278,8 @@ def main() -> int:
     writer = csv.writer(buf, lineterminator="\n")
     writer.writerow(
         ["id", "original", "surface", "pronunciation", "type1", "type2",
-         "generation", "genus", "rarity", "height_m", "weight_kg", "description",
-         "image", "image_page"]
+         "generation", "genus", "rarity", "height_m", "weight_kg",
+         "evolves_from", "description", "image", "image_page"]
     )
     # 型色カードのURLは original(名前)から決定的に組み立てる
     # (全件再生成でも消えず、idが振り直されても同じカードを指す)

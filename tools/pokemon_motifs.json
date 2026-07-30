@@ -1,0 +1,5127 @@
+{
+ "1": {
+  "name": "フシギダネ",
+  "motif": "カエル",
+  "confidence": "medium"
+ },
+ "2": {
+  "name": "フシギソウ",
+  "motif": "カエル",
+  "confidence": "medium"
+ },
+ "3": {
+  "name": "フシギバナ",
+  "motif": "カエル",
+  "confidence": "medium"
+ },
+ "4": {
+  "name": "ヒトカゲ",
+  "motif": "トカゲ",
+  "confidence": "high"
+ },
+ "5": {
+  "name": "リザード",
+  "motif": "トカゲ",
+  "confidence": "high"
+ },
+ "6": {
+  "name": "リザードン",
+  "motif": "ドラゴン",
+  "confidence": "high"
+ },
+ "7": {
+  "name": "ゼニガメ",
+  "motif": "カメ",
+  "confidence": "high"
+ },
+ "8": {
+  "name": "カメール",
+  "motif": "カメ",
+  "confidence": "high"
+ },
+ "9": {
+  "name": "カメックス",
+  "motif": "カメ",
+  "confidence": "high"
+ },
+ "10": {
+  "name": "キャタピー",
+  "motif": "イモムシ",
+  "confidence": "high"
+ },
+ "11": {
+  "name": "トランセル",
+  "motif": "サナギ",
+  "confidence": "high"
+ },
+ "12": {
+  "name": "バタフリー",
+  "motif": "チョウ",
+  "confidence": "high"
+ },
+ "13": {
+  "name": "ビードル",
+  "motif": "イモムシ",
+  "confidence": "high"
+ },
+ "14": {
+  "name": "コクーン",
+  "motif": "サナギ",
+  "confidence": "high"
+ },
+ "15": {
+  "name": "スピアー",
+  "motif": "ハチ",
+  "confidence": "high"
+ },
+ "16": {
+  "name": "ポッポ",
+  "motif": "ハト",
+  "confidence": "medium"
+ },
+ "17": {
+  "name": "ピジョン",
+  "motif": "ハト",
+  "confidence": "medium"
+ },
+ "18": {
+  "name": "ピジョット",
+  "motif": "ハト",
+  "confidence": "medium"
+ },
+ "19": {
+  "name": "コラッタ",
+  "motif": "ネズミ",
+  "confidence": "high"
+ },
+ "20": {
+  "name": "ラッタ",
+  "motif": "ネズミ",
+  "confidence": "high"
+ },
+ "21": {
+  "name": "オニスズメ",
+  "motif": "スズメ",
+  "confidence": "high"
+ },
+ "22": {
+  "name": "オニドリル",
+  "motif": "トリ",
+  "confidence": "medium"
+ },
+ "23": {
+  "name": "アーボ",
+  "motif": "ヘビ",
+  "confidence": "high"
+ },
+ "24": {
+  "name": "アーボック",
+  "motif": "コブラ",
+  "confidence": "high"
+ },
+ "25": {
+  "name": "ピカチュウ",
+  "motif": "ネズミ",
+  "confidence": "high"
+ },
+ "26": {
+  "name": "ライチュウ",
+  "motif": "ネズミ",
+  "confidence": "high"
+ },
+ "27": {
+  "name": "サンド",
+  "motif": "センザンコウ",
+  "confidence": "high"
+ },
+ "28": {
+  "name": "サンドパン",
+  "motif": "センザンコウ",
+  "confidence": "high"
+ },
+ "29": {
+  "name": "ニドラン♀",
+  "motif": "ウサギ",
+  "confidence": "medium"
+ },
+ "30": {
+  "name": "ニドリーナ",
+  "motif": "ウサギ",
+  "confidence": "medium"
+ },
+ "31": {
+  "name": "ニドクイン",
+  "motif": "サイ",
+  "confidence": "medium"
+ },
+ "32": {
+  "name": "ニドラン♂",
+  "motif": "ウサギ",
+  "confidence": "medium"
+ },
+ "33": {
+  "name": "ニドリーノ",
+  "motif": "サイ",
+  "confidence": "low"
+ },
+ "34": {
+  "name": "ニドキング",
+  "motif": "サイ",
+  "confidence": "medium"
+ },
+ "35": {
+  "name": "ピッピ",
+  "motif": "妖精",
+  "confidence": "high"
+ },
+ "36": {
+  "name": "ピクシー",
+  "motif": "妖精",
+  "confidence": "high"
+ },
+ "37": {
+  "name": "ロコン",
+  "motif": "キツネ",
+  "confidence": "high"
+ },
+ "38": {
+  "name": "キュウコン",
+  "motif": "キツネ",
+  "confidence": "high"
+ },
+ "39": {
+  "name": "プリン",
+  "motif": "ウサギ",
+  "confidence": "medium"
+ },
+ "40": {
+  "name": "プクリン",
+  "motif": "ウサギ",
+  "confidence": "medium"
+ },
+ "41": {
+  "name": "ズバット",
+  "motif": "コウモリ",
+  "confidence": "high"
+ },
+ "42": {
+  "name": "ゴルバット",
+  "motif": "コウモリ",
+  "confidence": "high"
+ },
+ "43": {
+  "name": "ナゾノクサ",
+  "motif": "草",
+  "confidence": "high"
+ },
+ "44": {
+  "name": "クサイハナ",
+  "motif": "草",
+  "confidence": "high"
+ },
+ "45": {
+  "name": "ラフレシア",
+  "motif": "花",
+  "confidence": "high"
+ },
+ "46": {
+  "name": "パラス",
+  "motif": "キノコ",
+  "confidence": "medium"
+ },
+ "47": {
+  "name": "パラセクト",
+  "motif": "キノコ",
+  "confidence": "medium"
+ },
+ "48": {
+  "name": "コンパン",
+  "motif": "ガ",
+  "confidence": "medium"
+ },
+ "49": {
+  "name": "モルフォン",
+  "motif": "ガ",
+  "confidence": "high"
+ },
+ "50": {
+  "name": "ディグダ",
+  "motif": "モグラ",
+  "confidence": "high"
+ },
+ "51": {
+  "name": "ダグトリオ",
+  "motif": "モグラ",
+  "confidence": "high"
+ },
+ "52": {
+  "name": "ニャース",
+  "motif": "ネコ",
+  "confidence": "high"
+ },
+ "53": {
+  "name": "ペルシアン",
+  "motif": "ネコ",
+  "confidence": "high"
+ },
+ "54": {
+  "name": "コダック",
+  "motif": "カモ",
+  "confidence": "high"
+ },
+ "55": {
+  "name": "ゴルダック",
+  "motif": "カモ",
+  "confidence": "high"
+ },
+ "56": {
+  "name": "マンキー",
+  "motif": "サル",
+  "confidence": "high"
+ },
+ "57": {
+  "name": "オコリザル",
+  "motif": "サル",
+  "confidence": "high"
+ },
+ "58": {
+  "name": "ガーディ",
+  "motif": "イヌ",
+  "confidence": "high"
+ },
+ "59": {
+  "name": "ウインディ",
+  "motif": "イヌ",
+  "confidence": "high"
+ },
+ "60": {
+  "name": "ニョロモ",
+  "motif": "オタマジャクシ",
+  "confidence": "high"
+ },
+ "61": {
+  "name": "ニョロゾ",
+  "motif": "オタマジャクシ",
+  "confidence": "medium"
+ },
+ "62": {
+  "name": "ニョロボン",
+  "motif": "カエル",
+  "confidence": "medium"
+ },
+ "63": {
+  "name": "ケーシィ",
+  "motif": "キツネ",
+  "confidence": "medium"
+ },
+ "64": {
+  "name": "ユンゲラー",
+  "motif": "ヒト型",
+  "confidence": "medium"
+ },
+ "65": {
+  "name": "フーディン",
+  "motif": "ヒト型",
+  "confidence": "medium"
+ },
+ "66": {
+  "name": "ワンリキー",
+  "motif": "ヒト型",
+  "confidence": "medium"
+ },
+ "67": {
+  "name": "ゴーリキー",
+  "motif": "ヒト型",
+  "confidence": "medium"
+ },
+ "68": {
+  "name": "カイリキー",
+  "motif": "ヒト型",
+  "confidence": "medium"
+ },
+ "69": {
+  "name": "マダツボミ",
+  "motif": "花",
+  "confidence": "high"
+ },
+ "70": {
+  "name": "ウツドン",
+  "motif": "花",
+  "confidence": "high"
+ },
+ "71": {
+  "name": "ウツボット",
+  "motif": "花",
+  "confidence": "high"
+ },
+ "72": {
+  "name": "メノクラゲ",
+  "motif": "クラゲ",
+  "confidence": "high"
+ },
+ "73": {
+  "name": "ドククラゲ",
+  "motif": "クラゲ",
+  "confidence": "high"
+ },
+ "74": {
+  "name": "イシツブテ",
+  "motif": "岩",
+  "confidence": "high"
+ },
+ "75": {
+  "name": "ゴローン",
+  "motif": "岩",
+  "confidence": "high"
+ },
+ "76": {
+  "name": "ゴローニャ",
+  "motif": "岩",
+  "confidence": "high"
+ },
+ "77": {
+  "name": "ポニータ",
+  "motif": "ウマ",
+  "confidence": "high"
+ },
+ "78": {
+  "name": "ギャロップ",
+  "motif": "ウマ",
+  "confidence": "high"
+ },
+ "79": {
+  "name": "ヤドン",
+  "motif": "カバ",
+  "confidence": "medium"
+ },
+ "80": {
+  "name": "ヤドラン",
+  "motif": "カバ",
+  "confidence": "medium"
+ },
+ "81": {
+  "name": "コイル",
+  "motif": "磁石",
+  "confidence": "high"
+ },
+ "82": {
+  "name": "レアコイル",
+  "motif": "磁石",
+  "confidence": "high"
+ },
+ "83": {
+  "name": "カモネギ",
+  "motif": "カモ",
+  "confidence": "high"
+ },
+ "84": {
+  "name": "ドードー",
+  "motif": "ダチョウ",
+  "confidence": "high"
+ },
+ "85": {
+  "name": "ドードリオ",
+  "motif": "ダチョウ",
+  "confidence": "high"
+ },
+ "86": {
+  "name": "パウワウ",
+  "motif": "アザラシ",
+  "confidence": "high"
+ },
+ "87": {
+  "name": "ジュゴン",
+  "motif": "アザラシ",
+  "confidence": "medium"
+ },
+ "88": {
+  "name": "ベトベター",
+  "motif": "ヘドロ",
+  "confidence": "high"
+ },
+ "89": {
+  "name": "ベトベトン",
+  "motif": "ヘドロ",
+  "confidence": "high"
+ },
+ "90": {
+  "name": "シェルダー",
+  "motif": "二枚貝",
+  "confidence": "high"
+ },
+ "91": {
+  "name": "パルシェン",
+  "motif": "二枚貝",
+  "confidence": "high"
+ },
+ "92": {
+  "name": "ゴース",
+  "motif": "ゴースト",
+  "confidence": "high"
+ },
+ "93": {
+  "name": "ゴースト",
+  "motif": "ゴースト",
+  "confidence": "high"
+ },
+ "94": {
+  "name": "ゲンガー",
+  "motif": "ゴースト",
+  "confidence": "high"
+ },
+ "95": {
+  "name": "イワーク",
+  "motif": "岩",
+  "confidence": "medium"
+ },
+ "96": {
+  "name": "スリープ",
+  "motif": "バク",
+  "confidence": "medium"
+ },
+ "97": {
+  "name": "スリーパー",
+  "motif": "バク",
+  "confidence": "medium"
+ },
+ "98": {
+  "name": "クラブ",
+  "motif": "カニ",
+  "confidence": "high"
+ },
+ "99": {
+  "name": "キングラー",
+  "motif": "カニ",
+  "confidence": "high"
+ },
+ "100": {
+  "name": "ビリリダマ",
+  "motif": "ボール",
+  "confidence": "high"
+ },
+ "101": {
+  "name": "マルマイン",
+  "motif": "ボール",
+  "confidence": "high"
+ },
+ "102": {
+  "name": "タマタマ",
+  "motif": "タマゴ",
+  "confidence": "high"
+ },
+ "103": {
+  "name": "ナッシー",
+  "motif": "果実",
+  "confidence": "high"
+ },
+ "104": {
+  "name": "カラカラ",
+  "motif": "恐竜",
+  "confidence": "medium"
+ },
+ "105": {
+  "name": "ガラガラ",
+  "motif": "恐竜",
+  "confidence": "medium"
+ },
+ "106": {
+  "name": "サワムラー",
+  "motif": "ヒト型",
+  "confidence": "medium"
+ },
+ "107": {
+  "name": "エビワラー",
+  "motif": "ヒト型",
+  "confidence": "medium"
+ },
+ "108": {
+  "name": "ベロリンガ",
+  "motif": "アリクイ",
+  "confidence": "low"
+ },
+ "109": {
+  "name": "ドガース",
+  "motif": "その他",
+  "confidence": "high"
+ },
+ "110": {
+  "name": "マタドガス",
+  "motif": "その他",
+  "confidence": "high"
+ },
+ "111": {
+  "name": "サイホーン",
+  "motif": "サイ",
+  "confidence": "high"
+ },
+ "112": {
+  "name": "サイドン",
+  "motif": "サイ",
+  "confidence": "high"
+ },
+ "113": {
+  "name": "ラッキー",
+  "motif": "タマゴ",
+  "confidence": "medium"
+ },
+ "114": {
+  "name": "モンジャラ",
+  "motif": "ツタ",
+  "confidence": "high"
+ },
+ "115": {
+  "name": "ガルーラ",
+  "motif": "カンガルー",
+  "confidence": "high"
+ },
+ "116": {
+  "name": "タッツー",
+  "motif": "タツノオトシゴ",
+  "confidence": "high"
+ },
+ "117": {
+  "name": "シードラ",
+  "motif": "タツノオトシゴ",
+  "confidence": "high"
+ },
+ "118": {
+  "name": "トサキント",
+  "motif": "コイ",
+  "confidence": "high"
+ },
+ "119": {
+  "name": "アズマオウ",
+  "motif": "コイ",
+  "confidence": "high"
+ },
+ "120": {
+  "name": "ヒトデマン",
+  "motif": "ヒトデ",
+  "confidence": "high"
+ },
+ "121": {
+  "name": "スターミー",
+  "motif": "ヒトデ",
+  "confidence": "high"
+ },
+ "122": {
+  "name": "バリヤード",
+  "motif": "ヒト型",
+  "confidence": "high"
+ },
+ "123": {
+  "name": "ストライク",
+  "motif": "カマキリ",
+  "confidence": "high"
+ },
+ "124": {
+  "name": "ルージュラ",
+  "motif": "ヒト型",
+  "confidence": "high"
+ },
+ "125": {
+  "name": "エレブー",
+  "motif": "ヒト型",
+  "confidence": "medium"
+ },
+ "126": {
+  "name": "ブーバー",
+  "motif": "サンショウウオ",
+  "confidence": "low"
+ },
+ "127": {
+  "name": "カイロス",
+  "motif": "クワガタ",
+  "confidence": "high"
+ },
+ "128": {
+  "name": "ケンタロス",
+  "motif": "ウシ",
+  "confidence": "high"
+ },
+ "129": {
+  "name": "コイキング",
+  "motif": "コイ",
+  "confidence": "high"
+ },
+ "130": {
+  "name": "ギャラドス",
+  "motif": "ドラゴン",
+  "confidence": "high"
+ },
+ "131": {
+  "name": "ラプラス",
+  "motif": "恐竜",
+  "confidence": "medium"
+ },
+ "132": {
+  "name": "メタモン",
+  "motif": "その他",
+  "confidence": "high"
+ },
+ "133": {
+  "name": "イーブイ",
+  "motif": "イヌ",
+  "confidence": "medium"
+ },
+ "134": {
+  "name": "シャワーズ",
+  "motif": "イヌ",
+  "confidence": "low"
+ },
+ "135": {
+  "name": "サンダース",
+  "motif": "イヌ",
+  "confidence": "low"
+ },
+ "136": {
+  "name": "ブースター",
+  "motif": "キツネ",
+  "confidence": "medium"
+ },
+ "137": {
+  "name": "ポリゴン",
+  "motif": "ロボット",
+  "confidence": "high"
+ },
+ "138": {
+  "name": "オムナイト",
+  "motif": "オウムガイ",
+  "confidence": "high"
+ },
+ "139": {
+  "name": "オムスター",
+  "motif": "オウムガイ",
+  "confidence": "high"
+ },
+ "140": {
+  "name": "カブト",
+  "motif": "カブトガニ",
+  "confidence": "high"
+ },
+ "141": {
+  "name": "カブトプス",
+  "motif": "カブトガニ",
+  "confidence": "high"
+ },
+ "142": {
+  "name": "プテラ",
+  "motif": "恐竜",
+  "confidence": "high"
+ },
+ "143": {
+  "name": "カビゴン",
+  "motif": "クマ",
+  "confidence": "medium"
+ },
+ "144": {
+  "name": "フリーザー",
+  "motif": "トリ",
+  "confidence": "high"
+ },
+ "145": {
+  "name": "サンダー",
+  "motif": "トリ",
+  "confidence": "high"
+ },
+ "146": {
+  "name": "ファイヤー",
+  "motif": "トリ",
+  "confidence": "high"
+ },
+ "147": {
+  "name": "ミニリュウ",
+  "motif": "ドラゴン",
+  "confidence": "high"
+ },
+ "148": {
+  "name": "ハクリュー",
+  "motif": "ドラゴン",
+  "confidence": "high"
+ },
+ "149": {
+  "name": "カイリュー",
+  "motif": "ドラゴン",
+  "confidence": "high"
+ },
+ "150": {
+  "name": "ミュウツー",
+  "motif": "ネコ",
+  "confidence": "medium"
+ },
+ "151": {
+  "name": "ミュウ",
+  "motif": "ネコ",
+  "confidence": "medium"
+ },
+ "152": {
+  "name": "チコリータ",
+  "motif": "恐竜",
+  "confidence": "high"
+ },
+ "153": {
+  "name": "ベイリーフ",
+  "motif": "恐竜",
+  "confidence": "high"
+ },
+ "154": {
+  "name": "メガニウム",
+  "motif": "恐竜",
+  "confidence": "high"
+ },
+ "155": {
+  "name": "ヒノアラシ",
+  "motif": "ネズミ",
+  "confidence": "high"
+ },
+ "156": {
+  "name": "マグマラシ",
+  "motif": "アナグマ",
+  "confidence": "low"
+ },
+ "157": {
+  "name": "バクフーン",
+  "motif": "アナグマ",
+  "confidence": "medium"
+ },
+ "158": {
+  "name": "ワニノコ",
+  "motif": "ワニ",
+  "confidence": "high"
+ },
+ "159": {
+  "name": "アリゲイツ",
+  "motif": "ワニ",
+  "confidence": "high"
+ },
+ "160": {
+  "name": "オーダイル",
+  "motif": "ワニ",
+  "confidence": "high"
+ },
+ "161": {
+  "name": "オタチ",
+  "motif": "ミーアキャット",
+  "confidence": "medium"
+ },
+ "162": {
+  "name": "オオタチ",
+  "motif": "イタチ",
+  "confidence": "high"
+ },
+ "163": {
+  "name": "ホーホー",
+  "motif": "フクロウ",
+  "confidence": "high"
+ },
+ "164": {
+  "name": "ヨルノズク",
+  "motif": "フクロウ",
+  "confidence": "high"
+ },
+ "165": {
+  "name": "レディバ",
+  "motif": "テントウムシ",
+  "confidence": "high"
+ },
+ "166": {
+  "name": "レディアン",
+  "motif": "テントウムシ",
+  "confidence": "high"
+ },
+ "167": {
+  "name": "イトマル",
+  "motif": "クモ",
+  "confidence": "high"
+ },
+ "168": {
+  "name": "アリアドス",
+  "motif": "クモ",
+  "confidence": "high"
+ },
+ "169": {
+  "name": "クロバット",
+  "motif": "コウモリ",
+  "confidence": "high"
+ },
+ "170": {
+  "name": "チョンチー",
+  "motif": "アンコウ",
+  "confidence": "high"
+ },
+ "171": {
+  "name": "ランターン",
+  "motif": "アンコウ",
+  "confidence": "high"
+ },
+ "172": {
+  "name": "ピチュー",
+  "motif": "ネズミ",
+  "confidence": "high"
+ },
+ "173": {
+  "name": "ピィ",
+  "motif": "天体",
+  "confidence": "medium"
+ },
+ "174": {
+  "name": "ププリン",
+  "motif": "その他",
+  "confidence": "medium"
+ },
+ "175": {
+  "name": "トゲピー",
+  "motif": "タマゴ",
+  "confidence": "high"
+ },
+ "176": {
+  "name": "トゲチック",
+  "motif": "妖精",
+  "confidence": "medium"
+ },
+ "177": {
+  "name": "ネイティ",
+  "motif": "トリ",
+  "confidence": "high"
+ },
+ "178": {
+  "name": "ネイティオ",
+  "motif": "トリ",
+  "confidence": "medium"
+ },
+ "179": {
+  "name": "メリープ",
+  "motif": "ヒツジ",
+  "confidence": "high"
+ },
+ "180": {
+  "name": "モココ",
+  "motif": "ヒツジ",
+  "confidence": "high"
+ },
+ "181": {
+  "name": "デンリュウ",
+  "motif": "ヒツジ",
+  "confidence": "medium"
+ },
+ "182": {
+  "name": "キレイハナ",
+  "motif": "花",
+  "confidence": "high"
+ },
+ "183": {
+  "name": "マリル",
+  "motif": "ネズミ",
+  "confidence": "high"
+ },
+ "184": {
+  "name": "マリルリ",
+  "motif": "ウサギ",
+  "confidence": "high"
+ },
+ "185": {
+  "name": "ウソッキー",
+  "motif": "木",
+  "confidence": "high"
+ },
+ "186": {
+  "name": "ニョロトノ",
+  "motif": "カエル",
+  "confidence": "high"
+ },
+ "187": {
+  "name": "ハネッコ",
+  "motif": "タネ",
+  "confidence": "medium"
+ },
+ "188": {
+  "name": "ポポッコ",
+  "motif": "タネ",
+  "confidence": "medium"
+ },
+ "189": {
+  "name": "ワタッコ",
+  "motif": "タネ",
+  "confidence": "medium"
+ },
+ "190": {
+  "name": "エイパム",
+  "motif": "サル",
+  "confidence": "high"
+ },
+ "191": {
+  "name": "ヒマナッツ",
+  "motif": "タネ",
+  "confidence": "high"
+ },
+ "192": {
+  "name": "キマワリ",
+  "motif": "花",
+  "confidence": "high"
+ },
+ "193": {
+  "name": "ヤンヤンマ",
+  "motif": "トンボ",
+  "confidence": "high"
+ },
+ "194": {
+  "name": "ウパー",
+  "motif": "サンショウウオ",
+  "confidence": "high"
+ },
+ "195": {
+  "name": "ヌオー",
+  "motif": "サンショウウオ",
+  "confidence": "high"
+ },
+ "196": {
+  "name": "エーフィ",
+  "motif": "ネコ",
+  "confidence": "medium"
+ },
+ "197": {
+  "name": "ブラッキー",
+  "motif": "ネコ",
+  "confidence": "medium"
+ },
+ "198": {
+  "name": "ヤミカラス",
+  "motif": "カラス",
+  "confidence": "high"
+ },
+ "199": {
+  "name": "ヤドキング",
+  "motif": "カバ",
+  "confidence": "medium"
+ },
+ "200": {
+  "name": "ムウマ",
+  "motif": "ゴースト",
+  "confidence": "high"
+ },
+ "201": {
+  "name": "アンノーン",
+  "motif": "文字",
+  "confidence": "high"
+ },
+ "202": {
+  "name": "ソーナンス",
+  "motif": "その他",
+  "confidence": "medium"
+ },
+ "203": {
+  "name": "キリンリキ",
+  "motif": "キリン",
+  "confidence": "high"
+ },
+ "204": {
+  "name": "クヌギダマ",
+  "motif": "ミノムシ",
+  "confidence": "high"
+ },
+ "205": {
+  "name": "フォレトス",
+  "motif": "ミノムシ",
+  "confidence": "high"
+ },
+ "206": {
+  "name": "ノコッチ",
+  "motif": "ヘビ",
+  "confidence": "high"
+ },
+ "207": {
+  "name": "グライガー",
+  "motif": "サソリ",
+  "confidence": "high"
+ },
+ "208": {
+  "name": "ハガネール",
+  "motif": "ヘビ",
+  "confidence": "high"
+ },
+ "209": {
+  "name": "ブルー",
+  "motif": "イヌ",
+  "confidence": "high"
+ },
+ "210": {
+  "name": "グランブル",
+  "motif": "イヌ",
+  "confidence": "high"
+ },
+ "211": {
+  "name": "ハリーセン",
+  "motif": "フグ",
+  "confidence": "medium"
+ },
+ "212": {
+  "name": "ハッサム",
+  "motif": "クワガタ",
+  "confidence": "medium"
+ },
+ "213": {
+  "name": "ツボツボ",
+  "motif": "カメ",
+  "confidence": "low"
+ },
+ "214": {
+  "name": "ヘラクロス",
+  "motif": "カブトムシ",
+  "confidence": "high"
+ },
+ "215": {
+  "name": "ニューラ",
+  "motif": "イタチ",
+  "confidence": "high"
+ },
+ "216": {
+  "name": "ヒメグマ",
+  "motif": "クマ",
+  "confidence": "high"
+ },
+ "217": {
+  "name": "リングマ",
+  "motif": "クマ",
+  "confidence": "high"
+ },
+ "218": {
+  "name": "マグマッグ",
+  "motif": "ナメクジ",
+  "confidence": "high"
+ },
+ "219": {
+  "name": "マグカルゴ",
+  "motif": "カタツムリ",
+  "confidence": "high"
+ },
+ "220": {
+  "name": "ウリムー",
+  "motif": "イノシシ",
+  "confidence": "high"
+ },
+ "221": {
+  "name": "イノムー",
+  "motif": "イノシシ",
+  "confidence": "high"
+ },
+ "222": {
+  "name": "サニーゴ",
+  "motif": "サンゴ",
+  "confidence": "high"
+ },
+ "223": {
+  "name": "テッポウオ",
+  "motif": "サカナ",
+  "confidence": "medium"
+ },
+ "224": {
+  "name": "オクタン",
+  "motif": "タコ",
+  "confidence": "high"
+ },
+ "225": {
+  "name": "デリバード",
+  "motif": "ペンギン",
+  "confidence": "high"
+ },
+ "226": {
+  "name": "マンタイン",
+  "motif": "エイ",
+  "confidence": "high"
+ },
+ "227": {
+  "name": "エアームド",
+  "motif": "トリ",
+  "confidence": "medium"
+ },
+ "228": {
+  "name": "デルビル",
+  "motif": "イヌ",
+  "confidence": "high"
+ },
+ "229": {
+  "name": "ヘルガー",
+  "motif": "イヌ",
+  "confidence": "high"
+ },
+ "230": {
+  "name": "キングドラ",
+  "motif": "タツノオトシゴ",
+  "confidence": "high"
+ },
+ "231": {
+  "name": "ゴマゾウ",
+  "motif": "ゾウ",
+  "confidence": "high"
+ },
+ "232": {
+  "name": "ドンファン",
+  "motif": "ゾウ",
+  "confidence": "high"
+ },
+ "233": {
+  "name": "ポリゴン2",
+  "motif": "ロボット",
+  "confidence": "high"
+ },
+ "234": {
+  "name": "オドシシ",
+  "motif": "シカ",
+  "confidence": "high"
+ },
+ "235": {
+  "name": "ドーブル",
+  "motif": "イヌ",
+  "confidence": "high"
+ },
+ "236": {
+  "name": "バルキー",
+  "motif": "ヒト型",
+  "confidence": "medium"
+ },
+ "237": {
+  "name": "カポエラー",
+  "motif": "ヒト型",
+  "confidence": "medium"
+ },
+ "238": {
+  "name": "ムチュール",
+  "motif": "ヒト型",
+  "confidence": "medium"
+ },
+ "239": {
+  "name": "エレキッド",
+  "motif": "ヒト型",
+  "confidence": "medium"
+ },
+ "240": {
+  "name": "ブビィ",
+  "motif": "サンショウウオ",
+  "confidence": "low"
+ },
+ "241": {
+  "name": "ミルタンク",
+  "motif": "ウシ",
+  "confidence": "high"
+ },
+ "242": {
+  "name": "ハピナス",
+  "motif": "タマゴ",
+  "confidence": "medium"
+ },
+ "243": {
+  "name": "ライコウ",
+  "motif": "トラ",
+  "confidence": "high"
+ },
+ "244": {
+  "name": "エンテイ",
+  "motif": "ライオン",
+  "confidence": "medium"
+ },
+ "245": {
+  "name": "スイクン",
+  "motif": "オオカミ",
+  "confidence": "medium"
+ },
+ "246": {
+  "name": "ヨーギラス",
+  "motif": "恐竜",
+  "confidence": "medium"
+ },
+ "247": {
+  "name": "サナギラス",
+  "motif": "サナギ",
+  "confidence": "high"
+ },
+ "248": {
+  "name": "バンギラス",
+  "motif": "恐竜",
+  "confidence": "high"
+ },
+ "249": {
+  "name": "ルギア",
+  "motif": "ドラゴン",
+  "confidence": "medium"
+ },
+ "250": {
+  "name": "ホウオウ",
+  "motif": "トリ",
+  "confidence": "high"
+ },
+ "251": {
+  "name": "セレビィ",
+  "motif": "妖精",
+  "confidence": "medium"
+ },
+ "252": {
+  "name": "キモリ",
+  "motif": "トカゲ",
+  "confidence": "high"
+ },
+ "253": {
+  "name": "ジュプトル",
+  "motif": "トカゲ",
+  "confidence": "high"
+ },
+ "254": {
+  "name": "ジュカイン",
+  "motif": "トカゲ",
+  "confidence": "high"
+ },
+ "255": {
+  "name": "アチャモ",
+  "motif": "ニワトリ",
+  "confidence": "high"
+ },
+ "256": {
+  "name": "ワカシャモ",
+  "motif": "ニワトリ",
+  "confidence": "high"
+ },
+ "257": {
+  "name": "バシャーモ",
+  "motif": "ニワトリ",
+  "confidence": "high"
+ },
+ "258": {
+  "name": "ミズゴロウ",
+  "motif": "サンショウウオ",
+  "confidence": "high"
+ },
+ "259": {
+  "name": "ヌマクロー",
+  "motif": "サンショウウオ",
+  "confidence": "high"
+ },
+ "260": {
+  "name": "ラグラージ",
+  "motif": "サンショウウオ",
+  "confidence": "high"
+ },
+ "261": {
+  "name": "ポチエナ",
+  "motif": "オオカミ",
+  "confidence": "high"
+ },
+ "262": {
+  "name": "グラエナ",
+  "motif": "オオカミ",
+  "confidence": "high"
+ },
+ "263": {
+  "name": "ジグザグマ",
+  "motif": "タヌキ",
+  "confidence": "high"
+ },
+ "264": {
+  "name": "マッスグマ",
+  "motif": "アナグマ",
+  "confidence": "medium"
+ },
+ "265": {
+  "name": "ケムッソ",
+  "motif": "イモムシ",
+  "confidence": "high"
+ },
+ "266": {
+  "name": "カラサリス",
+  "motif": "サナギ",
+  "confidence": "high"
+ },
+ "267": {
+  "name": "アゲハント",
+  "motif": "チョウ",
+  "confidence": "high"
+ },
+ "268": {
+  "name": "マユルド",
+  "motif": "サナギ",
+  "confidence": "high"
+ },
+ "269": {
+  "name": "ドクケイル",
+  "motif": "ガ",
+  "confidence": "high"
+ },
+ "270": {
+  "name": "ハスボー",
+  "motif": "カエル",
+  "confidence": "medium"
+ },
+ "271": {
+  "name": "ハスブレロ",
+  "motif": "カエル",
+  "confidence": "medium"
+ },
+ "272": {
+  "name": "ルンパッパ",
+  "motif": "カエル",
+  "confidence": "medium"
+ },
+ "273": {
+  "name": "タネボー",
+  "motif": "タネ",
+  "confidence": "high"
+ },
+ "274": {
+  "name": "コノハナ",
+  "motif": "ヒト型",
+  "confidence": "medium"
+ },
+ "275": {
+  "name": "ダーテング",
+  "motif": "ヒト型",
+  "confidence": "medium"
+ },
+ "276": {
+  "name": "スバメ",
+  "motif": "ツバメ",
+  "confidence": "high"
+ },
+ "277": {
+  "name": "オオスバメ",
+  "motif": "ツバメ",
+  "confidence": "high"
+ },
+ "278": {
+  "name": "キャモメ",
+  "motif": "カモメ",
+  "confidence": "high"
+ },
+ "279": {
+  "name": "ペリッパー",
+  "motif": "ペリカン",
+  "confidence": "high"
+ },
+ "280": {
+  "name": "ラルトス",
+  "motif": "妖精",
+  "confidence": "medium"
+ },
+ "281": {
+  "name": "キルリア",
+  "motif": "妖精",
+  "confidence": "medium"
+ },
+ "282": {
+  "name": "サーナイト",
+  "motif": "妖精",
+  "confidence": "medium"
+ },
+ "283": {
+  "name": "アメタマ",
+  "motif": "アメンボ",
+  "confidence": "high"
+ },
+ "284": {
+  "name": "アメモース",
+  "motif": "カ",
+  "confidence": "medium"
+ },
+ "285": {
+  "name": "キノココ",
+  "motif": "キノコ",
+  "confidence": "high"
+ },
+ "286": {
+  "name": "キノガッサ",
+  "motif": "キノコ",
+  "confidence": "high"
+ },
+ "287": {
+  "name": "ナマケロ",
+  "motif": "ナマケモノ",
+  "confidence": "high"
+ },
+ "288": {
+  "name": "ヤルキモノ",
+  "motif": "サル",
+  "confidence": "high"
+ },
+ "289": {
+  "name": "ケッキング",
+  "motif": "ナマケモノ",
+  "confidence": "high"
+ },
+ "290": {
+  "name": "ツチニン",
+  "motif": "セミ",
+  "confidence": "high"
+ },
+ "291": {
+  "name": "テッカニン",
+  "motif": "セミ",
+  "confidence": "high"
+ },
+ "292": {
+  "name": "ヌケニン",
+  "motif": "セミ",
+  "confidence": "medium"
+ },
+ "293": {
+  "name": "ゴニョニョ",
+  "motif": "ウサギ",
+  "confidence": "medium"
+ },
+ "294": {
+  "name": "ドゴーム",
+  "motif": "スピーカー",
+  "confidence": "low"
+ },
+ "295": {
+  "name": "バクオング",
+  "motif": "スピーカー",
+  "confidence": "low"
+ },
+ "296": {
+  "name": "マクノシタ",
+  "motif": "ヒト型",
+  "confidence": "high"
+ },
+ "297": {
+  "name": "ハリテヤマ",
+  "motif": "ヒト型",
+  "confidence": "high"
+ },
+ "298": {
+  "name": "ルリリ",
+  "motif": "ネズミ",
+  "confidence": "high"
+ },
+ "299": {
+  "name": "ノズパス",
+  "motif": "岩",
+  "confidence": "high"
+ },
+ "300": {
+  "name": "エネコ",
+  "motif": "ネコ",
+  "confidence": "high"
+ },
+ "301": {
+  "name": "エネコロロ",
+  "motif": "ネコ",
+  "confidence": "high"
+ },
+ "302": {
+  "name": "ヤミラミ",
+  "motif": "ゴースト",
+  "confidence": "medium"
+ },
+ "303": {
+  "name": "クチート",
+  "motif": "ヒト型",
+  "confidence": "low"
+ },
+ "304": {
+  "name": "ココドラ",
+  "motif": "恐竜",
+  "confidence": "medium"
+ },
+ "305": {
+  "name": "コドラ",
+  "motif": "恐竜",
+  "confidence": "medium"
+ },
+ "306": {
+  "name": "ボスゴドラ",
+  "motif": "恐竜",
+  "confidence": "medium"
+ },
+ "307": {
+  "name": "アサナン",
+  "motif": "ヒト型",
+  "confidence": "high"
+ },
+ "308": {
+  "name": "チャーレム",
+  "motif": "ヒト型",
+  "confidence": "high"
+ },
+ "309": {
+  "name": "ラクライ",
+  "motif": "イヌ",
+  "confidence": "high"
+ },
+ "310": {
+  "name": "ライボルト",
+  "motif": "イヌ",
+  "confidence": "medium"
+ },
+ "311": {
+  "name": "プラスル",
+  "motif": "ネズミ",
+  "confidence": "medium"
+ },
+ "312": {
+  "name": "マイナン",
+  "motif": "ネズミ",
+  "confidence": "medium"
+ },
+ "313": {
+  "name": "バルビート",
+  "motif": "ホタル",
+  "confidence": "high"
+ },
+ "314": {
+  "name": "イルミーゼ",
+  "motif": "ホタル",
+  "confidence": "high"
+ },
+ "315": {
+  "name": "ロゼリア",
+  "motif": "花",
+  "confidence": "high"
+ },
+ "316": {
+  "name": "ゴクリン",
+  "motif": "胃袋",
+  "confidence": "medium"
+ },
+ "317": {
+  "name": "マルノーム",
+  "motif": "胃袋",
+  "confidence": "medium"
+ },
+ "318": {
+  "name": "キバニア",
+  "motif": "サカナ",
+  "confidence": "high"
+ },
+ "319": {
+  "name": "サメハダー",
+  "motif": "サメ",
+  "confidence": "high"
+ },
+ "320": {
+  "name": "ホエルコ",
+  "motif": "クジラ",
+  "confidence": "high"
+ },
+ "321": {
+  "name": "ホエルオー",
+  "motif": "クジラ",
+  "confidence": "high"
+ },
+ "322": {
+  "name": "ドンメル",
+  "motif": "ラクダ",
+  "confidence": "high"
+ },
+ "323": {
+  "name": "バクーダ",
+  "motif": "ラクダ",
+  "confidence": "high"
+ },
+ "324": {
+  "name": "コータス",
+  "motif": "カメ",
+  "confidence": "high"
+ },
+ "325": {
+  "name": "バネブー",
+  "motif": "ブタ",
+  "confidence": "high"
+ },
+ "326": {
+  "name": "ブーピッグ",
+  "motif": "ブタ",
+  "confidence": "high"
+ },
+ "327": {
+  "name": "パッチール",
+  "motif": "パンダ",
+  "confidence": "high"
+ },
+ "328": {
+  "name": "ナックラー",
+  "motif": "アリジゴク",
+  "confidence": "medium"
+ },
+ "329": {
+  "name": "ビブラーバ",
+  "motif": "トンボ",
+  "confidence": "medium"
+ },
+ "330": {
+  "name": "フライゴン",
+  "motif": "トンボ",
+  "confidence": "high"
+ },
+ "331": {
+  "name": "サボネア",
+  "motif": "サボテン",
+  "confidence": "high"
+ },
+ "332": {
+  "name": "ノクタス",
+  "motif": "カカシ",
+  "confidence": "medium"
+ },
+ "333": {
+  "name": "チルット",
+  "motif": "トリ",
+  "confidence": "high"
+ },
+ "334": {
+  "name": "チルタリス",
+  "motif": "トリ",
+  "confidence": "medium"
+ },
+ "335": {
+  "name": "ザングース",
+  "motif": "イタチ",
+  "confidence": "high"
+ },
+ "336": {
+  "name": "ハブネーク",
+  "motif": "ヘビ",
+  "confidence": "high"
+ },
+ "337": {
+  "name": "ルナトーン",
+  "motif": "天体",
+  "confidence": "high"
+ },
+ "338": {
+  "name": "ソルロック",
+  "motif": "天体",
+  "confidence": "high"
+ },
+ "339": {
+  "name": "ドジョッチ",
+  "motif": "ナマズ",
+  "confidence": "high"
+ },
+ "340": {
+  "name": "ナマズン",
+  "motif": "ナマズ",
+  "confidence": "high"
+ },
+ "341": {
+  "name": "ヘイガニ",
+  "motif": "ザリガニ",
+  "confidence": "high"
+ },
+ "342": {
+  "name": "シザリガー",
+  "motif": "ザリガニ",
+  "confidence": "high"
+ },
+ "343": {
+  "name": "ヤジロン",
+  "motif": "土偶",
+  "confidence": "medium"
+ },
+ "344": {
+  "name": "ネンドール",
+  "motif": "土偶",
+  "confidence": "medium"
+ },
+ "345": {
+  "name": "リリーラ",
+  "motif": "ウミユリ",
+  "confidence": "high"
+ },
+ "346": {
+  "name": "ユレイドル",
+  "motif": "ウミユリ",
+  "confidence": "high"
+ },
+ "347": {
+  "name": "アノプス",
+  "motif": "エビ",
+  "confidence": "high"
+ },
+ "348": {
+  "name": "アーマルド",
+  "motif": "カニ",
+  "confidence": "medium"
+ },
+ "349": {
+  "name": "ヒンバス",
+  "motif": "サカナ",
+  "confidence": "high"
+ },
+ "350": {
+  "name": "ミロカロス",
+  "motif": "ウナギ",
+  "confidence": "medium"
+ },
+ "351": {
+  "name": "ポワルン",
+  "motif": "雲",
+  "confidence": "medium"
+ },
+ "352": {
+  "name": "カクレオン",
+  "motif": "カメレオン",
+  "confidence": "high"
+ },
+ "353": {
+  "name": "カゲボウズ",
+  "motif": "人形",
+  "confidence": "medium"
+ },
+ "354": {
+  "name": "ジュペッタ",
+  "motif": "ぬいぐるみ",
+  "confidence": "high"
+ },
+ "355": {
+  "name": "ヨマワル",
+  "motif": "ゴースト",
+  "confidence": "high"
+ },
+ "356": {
+  "name": "サマヨール",
+  "motif": "ゴースト",
+  "confidence": "high"
+ },
+ "357": {
+  "name": "トロピウス",
+  "motif": "恐竜",
+  "confidence": "medium"
+ },
+ "358": {
+  "name": "チリーン",
+  "motif": "風鈴",
+  "confidence": "high"
+ },
+ "359": {
+  "name": "アブソル",
+  "motif": "オオカミ",
+  "confidence": "medium"
+ },
+ "360": {
+  "name": "ソーナノ",
+  "motif": "その他",
+  "confidence": "low"
+ },
+ "361": {
+  "name": "ユキワラシ",
+  "motif": "妖精",
+  "confidence": "medium"
+ },
+ "362": {
+  "name": "オニゴーリ",
+  "motif": "氷",
+  "confidence": "high"
+ },
+ "363": {
+  "name": "タマザラシ",
+  "motif": "アザラシ",
+  "confidence": "high"
+ },
+ "364": {
+  "name": "トドグラー",
+  "motif": "アザラシ",
+  "confidence": "high"
+ },
+ "365": {
+  "name": "トドゼルガ",
+  "motif": "セイウチ",
+  "confidence": "high"
+ },
+ "366": {
+  "name": "パールル",
+  "motif": "二枚貝",
+  "confidence": "high"
+ },
+ "367": {
+  "name": "ハンテール",
+  "motif": "ウナギ",
+  "confidence": "high"
+ },
+ "368": {
+  "name": "サクラビス",
+  "motif": "タツノオトシゴ",
+  "confidence": "medium"
+ },
+ "369": {
+  "name": "ジーランス",
+  "motif": "シーラカンス",
+  "confidence": "high"
+ },
+ "370": {
+  "name": "ラブカス",
+  "motif": "サカナ",
+  "confidence": "high"
+ },
+ "371": {
+  "name": "タツベイ",
+  "motif": "ドラゴン",
+  "confidence": "high"
+ },
+ "372": {
+  "name": "コモルー",
+  "motif": "ドラゴン",
+  "confidence": "medium"
+ },
+ "373": {
+  "name": "ボーマンダ",
+  "motif": "ドラゴン",
+  "confidence": "high"
+ },
+ "374": {
+  "name": "ダンバル",
+  "motif": "ロボット",
+  "confidence": "medium"
+ },
+ "375": {
+  "name": "メタング",
+  "motif": "ロボット",
+  "confidence": "medium"
+ },
+ "376": {
+  "name": "メタグロス",
+  "motif": "クモ",
+  "confidence": "medium"
+ },
+ "377": {
+  "name": "レジロック",
+  "motif": "岩",
+  "confidence": "high"
+ },
+ "378": {
+  "name": "レジアイス",
+  "motif": "氷",
+  "confidence": "high"
+ },
+ "379": {
+  "name": "レジスチル",
+  "motif": "ロボット",
+  "confidence": "medium"
+ },
+ "380": {
+  "name": "ラティアス",
+  "motif": "ドラゴン",
+  "confidence": "high"
+ },
+ "381": {
+  "name": "ラティオス",
+  "motif": "ドラゴン",
+  "confidence": "high"
+ },
+ "382": {
+  "name": "カイオーガ",
+  "motif": "クジラ",
+  "confidence": "medium"
+ },
+ "383": {
+  "name": "グラードン",
+  "motif": "恐竜",
+  "confidence": "medium"
+ },
+ "384": {
+  "name": "レックウザ",
+  "motif": "ドラゴン",
+  "confidence": "high"
+ },
+ "385": {
+  "name": "ジラーチ",
+  "motif": "天体",
+  "confidence": "medium"
+ },
+ "386": {
+  "name": "デオキシス",
+  "motif": "ウイルス",
+  "confidence": "medium"
+ },
+ "387": {
+  "name": "ナエトル",
+  "motif": "カメ",
+  "confidence": "high"
+ },
+ "388": {
+  "name": "ハヤシガメ",
+  "motif": "カメ",
+  "confidence": "high"
+ },
+ "389": {
+  "name": "ドダイトス",
+  "motif": "カメ",
+  "confidence": "high"
+ },
+ "390": {
+  "name": "ヒコザル",
+  "motif": "サル",
+  "confidence": "high"
+ },
+ "391": {
+  "name": "モウカザル",
+  "motif": "サル",
+  "confidence": "high"
+ },
+ "392": {
+  "name": "ゴウカザル",
+  "motif": "サル",
+  "confidence": "high"
+ },
+ "393": {
+  "name": "ポッチャマ",
+  "motif": "ペンギン",
+  "confidence": "high"
+ },
+ "394": {
+  "name": "ポッタイシ",
+  "motif": "ペンギン",
+  "confidence": "high"
+ },
+ "395": {
+  "name": "エンペルト",
+  "motif": "ペンギン",
+  "confidence": "high"
+ },
+ "396": {
+  "name": "ムックル",
+  "motif": "トリ",
+  "confidence": "high"
+ },
+ "397": {
+  "name": "ムクバード",
+  "motif": "トリ",
+  "confidence": "high"
+ },
+ "398": {
+  "name": "ムクホーク",
+  "motif": "タカ",
+  "confidence": "high"
+ },
+ "399": {
+  "name": "ビッパ",
+  "motif": "ネズミ",
+  "confidence": "high"
+ },
+ "400": {
+  "name": "ビーダル",
+  "motif": "ビーバー",
+  "confidence": "high"
+ },
+ "401": {
+  "name": "コロボーシ",
+  "motif": "コオロギ",
+  "confidence": "high"
+ },
+ "402": {
+  "name": "コロトック",
+  "motif": "コオロギ",
+  "confidence": "high"
+ },
+ "403": {
+  "name": "コリンク",
+  "motif": "ライオン",
+  "confidence": "high"
+ },
+ "404": {
+  "name": "ルクシオ",
+  "motif": "ライオン",
+  "confidence": "high"
+ },
+ "405": {
+  "name": "レントラー",
+  "motif": "ライオン",
+  "confidence": "high"
+ },
+ "406": {
+  "name": "スボミー",
+  "motif": "花",
+  "confidence": "high"
+ },
+ "407": {
+  "name": "ロズレイド",
+  "motif": "花",
+  "confidence": "high"
+ },
+ "408": {
+  "name": "ズガイドス",
+  "motif": "恐竜",
+  "confidence": "high"
+ },
+ "409": {
+  "name": "ラムパルド",
+  "motif": "恐竜",
+  "confidence": "high"
+ },
+ "410": {
+  "name": "タテトプス",
+  "motif": "恐竜",
+  "confidence": "high"
+ },
+ "411": {
+  "name": "トリデプス",
+  "motif": "恐竜",
+  "confidence": "high"
+ },
+ "412": {
+  "name": "ミノムッチ",
+  "motif": "ミノムシ",
+  "confidence": "high"
+ },
+ "413": {
+  "name": "ミノマダム",
+  "motif": "イモムシ",
+  "confidence": "medium"
+ },
+ "414": {
+  "name": "ガーメイル",
+  "motif": "ガ",
+  "confidence": "high"
+ },
+ "415": {
+  "name": "ミツハニー",
+  "motif": "ハチ",
+  "confidence": "high"
+ },
+ "416": {
+  "name": "ビークイン",
+  "motif": "ハチ",
+  "confidence": "high"
+ },
+ "417": {
+  "name": "パチリス",
+  "motif": "リス",
+  "confidence": "high"
+ },
+ "418": {
+  "name": "ブイゼル",
+  "motif": "イタチ",
+  "confidence": "medium"
+ },
+ "419": {
+  "name": "フローゼル",
+  "motif": "イタチ",
+  "confidence": "medium"
+ },
+ "420": {
+  "name": "チェリンボ",
+  "motif": "果実",
+  "confidence": "high"
+ },
+ "421": {
+  "name": "チェリム",
+  "motif": "花",
+  "confidence": "high"
+ },
+ "422": {
+  "name": "カラナクシ",
+  "motif": "ウミウシ",
+  "confidence": "high"
+ },
+ "423": {
+  "name": "トリトドン",
+  "motif": "ウミウシ",
+  "confidence": "high"
+ },
+ "424": {
+  "name": "エテボース",
+  "motif": "サル",
+  "confidence": "high"
+ },
+ "425": {
+  "name": "フワンテ",
+  "motif": "風船",
+  "confidence": "high"
+ },
+ "426": {
+  "name": "フワライド",
+  "motif": "気球",
+  "confidence": "high"
+ },
+ "427": {
+  "name": "ミミロル",
+  "motif": "ウサギ",
+  "confidence": "high"
+ },
+ "428": {
+  "name": "ミミロップ",
+  "motif": "ウサギ",
+  "confidence": "high"
+ },
+ "429": {
+  "name": "ムウマージ",
+  "motif": "ゴースト",
+  "confidence": "medium"
+ },
+ "430": {
+  "name": "ドンカラス",
+  "motif": "カラス",
+  "confidence": "high"
+ },
+ "431": {
+  "name": "ニャルマー",
+  "motif": "ネコ",
+  "confidence": "high"
+ },
+ "432": {
+  "name": "ブニャット",
+  "motif": "ネコ",
+  "confidence": "high"
+ },
+ "433": {
+  "name": "リーシャン",
+  "motif": "鈴",
+  "confidence": "high"
+ },
+ "434": {
+  "name": "スカンプー",
+  "motif": "スカンク",
+  "confidence": "high"
+ },
+ "435": {
+  "name": "スカタンク",
+  "motif": "スカンク",
+  "confidence": "high"
+ },
+ "436": {
+  "name": "ドーミラー",
+  "motif": "鏡",
+  "confidence": "high"
+ },
+ "437": {
+  "name": "ドータクン",
+  "motif": "銅鐸",
+  "confidence": "high"
+ },
+ "438": {
+  "name": "ウソハチ",
+  "motif": "木",
+  "confidence": "medium"
+ },
+ "439": {
+  "name": "マネネ",
+  "motif": "ヒト型",
+  "confidence": "high"
+ },
+ "440": {
+  "name": "ピンプク",
+  "motif": "タマゴ",
+  "confidence": "medium"
+ },
+ "441": {
+  "name": "ペラップ",
+  "motif": "オウム",
+  "confidence": "high"
+ },
+ "442": {
+  "name": "ミカルゲ",
+  "motif": "ゴースト",
+  "confidence": "medium"
+ },
+ "443": {
+  "name": "フカマル",
+  "motif": "サメ",
+  "confidence": "high"
+ },
+ "444": {
+  "name": "ガバイト",
+  "motif": "サメ",
+  "confidence": "medium"
+ },
+ "445": {
+  "name": "ガブリアス",
+  "motif": "サメ",
+  "confidence": "medium"
+ },
+ "446": {
+  "name": "ゴンベ",
+  "motif": "クマ",
+  "confidence": "medium"
+ },
+ "447": {
+  "name": "リオル",
+  "motif": "イヌ",
+  "confidence": "medium"
+ },
+ "448": {
+  "name": "ルカリオ",
+  "motif": "イヌ",
+  "confidence": "medium"
+ },
+ "449": {
+  "name": "ヒポポタス",
+  "motif": "カバ",
+  "confidence": "high"
+ },
+ "450": {
+  "name": "カバルドン",
+  "motif": "カバ",
+  "confidence": "high"
+ },
+ "451": {
+  "name": "スコルピ",
+  "motif": "サソリ",
+  "confidence": "high"
+ },
+ "452": {
+  "name": "ドラピオン",
+  "motif": "サソリ",
+  "confidence": "high"
+ },
+ "453": {
+  "name": "グレッグル",
+  "motif": "カエル",
+  "confidence": "high"
+ },
+ "454": {
+  "name": "ドクロッグ",
+  "motif": "カエル",
+  "confidence": "high"
+ },
+ "455": {
+  "name": "マスキッパ",
+  "motif": "ハエトリグサ",
+  "confidence": "high"
+ },
+ "456": {
+  "name": "ケイコウオ",
+  "motif": "サカナ",
+  "confidence": "high"
+ },
+ "457": {
+  "name": "ネオラント",
+  "motif": "サカナ",
+  "confidence": "high"
+ },
+ "458": {
+  "name": "タマンタ",
+  "motif": "エイ",
+  "confidence": "high"
+ },
+ "459": {
+  "name": "ユキカブリ",
+  "motif": "木",
+  "confidence": "high"
+ },
+ "460": {
+  "name": "ユキノオー",
+  "motif": "木",
+  "confidence": "high"
+ },
+ "461": {
+  "name": "マニューラ",
+  "motif": "イタチ",
+  "confidence": "high"
+ },
+ "462": {
+  "name": "ジバコイル",
+  "motif": "UFO",
+  "confidence": "medium"
+ },
+ "463": {
+  "name": "ベロベルト",
+  "motif": "アリクイ",
+  "confidence": "low"
+ },
+ "464": {
+  "name": "ドサイドン",
+  "motif": "サイ",
+  "confidence": "high"
+ },
+ "465": {
+  "name": "モジャンボ",
+  "motif": "ツタ",
+  "confidence": "high"
+ },
+ "466": {
+  "name": "エレキブル",
+  "motif": "ヒト型",
+  "confidence": "medium"
+ },
+ "467": {
+  "name": "ブーバーン",
+  "motif": "サンショウウオ",
+  "confidence": "low"
+ },
+ "468": {
+  "name": "トゲキッス",
+  "motif": "ハト",
+  "confidence": "medium"
+ },
+ "469": {
+  "name": "メガヤンマ",
+  "motif": "トンボ",
+  "confidence": "high"
+ },
+ "470": {
+  "name": "リーフィア",
+  "motif": "キツネ",
+  "confidence": "medium"
+ },
+ "471": {
+  "name": "グレイシア",
+  "motif": "キツネ",
+  "confidence": "medium"
+ },
+ "472": {
+  "name": "グライオン",
+  "motif": "サソリ",
+  "confidence": "medium"
+ },
+ "473": {
+  "name": "マンムー",
+  "motif": "ゾウ",
+  "confidence": "high"
+ },
+ "474": {
+  "name": "ポリゴンZ",
+  "motif": "デジタル生物",
+  "confidence": "medium"
+ },
+ "475": {
+  "name": "エルレイド",
+  "motif": "ヒト型",
+  "confidence": "high"
+ },
+ "476": {
+  "name": "ダイノーズ",
+  "motif": "コンパス",
+  "confidence": "high"
+ },
+ "477": {
+  "name": "ヨノワール",
+  "motif": "ゴースト",
+  "confidence": "high"
+ },
+ "478": {
+  "name": "ユキメノコ",
+  "motif": "雪女",
+  "confidence": "high"
+ },
+ "479": {
+  "name": "ロトム",
+  "motif": "ゴースト",
+  "confidence": "medium"
+ },
+ "480": {
+  "name": "ユクシー",
+  "motif": "妖精",
+  "confidence": "medium"
+ },
+ "481": {
+  "name": "エムリット",
+  "motif": "妖精",
+  "confidence": "medium"
+ },
+ "482": {
+  "name": "アグノム",
+  "motif": "妖精",
+  "confidence": "medium"
+ },
+ "483": {
+  "name": "ディアルガ",
+  "motif": "ドラゴン",
+  "confidence": "high"
+ },
+ "484": {
+  "name": "パルキア",
+  "motif": "ドラゴン",
+  "confidence": "high"
+ },
+ "485": {
+  "name": "ヒードラン",
+  "motif": "サンショウウオ",
+  "confidence": "medium"
+ },
+ "486": {
+  "name": "レジギガス",
+  "motif": "ゴーレム",
+  "confidence": "medium"
+ },
+ "487": {
+  "name": "ギラティナ",
+  "motif": "ドラゴン",
+  "confidence": "high"
+ },
+ "488": {
+  "name": "クレセリア",
+  "motif": "ハクチョウ",
+  "confidence": "medium"
+ },
+ "489": {
+  "name": "フィオネ",
+  "motif": "クリオネ",
+  "confidence": "medium"
+ },
+ "490": {
+  "name": "マナフィ",
+  "motif": "クリオネ",
+  "confidence": "medium"
+ },
+ "491": {
+  "name": "ダークライ",
+  "motif": "ゴースト",
+  "confidence": "medium"
+ },
+ "492": {
+  "name": "シェイミ",
+  "motif": "ハリネズミ",
+  "confidence": "high"
+ },
+ "493": {
+  "name": "アルセウス",
+  "motif": "ウマ",
+  "confidence": "medium"
+ },
+ "494": {
+  "name": "ビクティニ",
+  "motif": "妖精",
+  "confidence": "low"
+ },
+ "495": {
+  "name": "ツタージャ",
+  "motif": "ヘビ",
+  "confidence": "high"
+ },
+ "496": {
+  "name": "ジャノビー",
+  "motif": "ヘビ",
+  "confidence": "high"
+ },
+ "497": {
+  "name": "ジャローダ",
+  "motif": "ヘビ",
+  "confidence": "high"
+ },
+ "498": {
+  "name": "ポカブ",
+  "motif": "ブタ",
+  "confidence": "high"
+ },
+ "499": {
+  "name": "チャオブー",
+  "motif": "ブタ",
+  "confidence": "high"
+ },
+ "500": {
+  "name": "エンブオー",
+  "motif": "ブタ",
+  "confidence": "high"
+ },
+ "501": {
+  "name": "ミジュマル",
+  "motif": "カワウソ",
+  "confidence": "high"
+ },
+ "502": {
+  "name": "フタチマル",
+  "motif": "カワウソ",
+  "confidence": "high"
+ },
+ "503": {
+  "name": "ダイケンキ",
+  "motif": "カワウソ",
+  "confidence": "high"
+ },
+ "504": {
+  "name": "ミネズミ",
+  "motif": "ネズミ",
+  "confidence": "high"
+ },
+ "505": {
+  "name": "ミルホッグ",
+  "motif": "ネズミ",
+  "confidence": "medium"
+ },
+ "506": {
+  "name": "ヨーテリー",
+  "motif": "イヌ",
+  "confidence": "high"
+ },
+ "507": {
+  "name": "ハーデリア",
+  "motif": "イヌ",
+  "confidence": "high"
+ },
+ "508": {
+  "name": "ムーランド",
+  "motif": "イヌ",
+  "confidence": "high"
+ },
+ "509": {
+  "name": "チョロネコ",
+  "motif": "ネコ",
+  "confidence": "high"
+ },
+ "510": {
+  "name": "レパルダス",
+  "motif": "ヒョウ",
+  "confidence": "high"
+ },
+ "511": {
+  "name": "ヤナップ",
+  "motif": "サル",
+  "confidence": "high"
+ },
+ "512": {
+  "name": "ヤナッキー",
+  "motif": "サル",
+  "confidence": "high"
+ },
+ "513": {
+  "name": "バオップ",
+  "motif": "サル",
+  "confidence": "high"
+ },
+ "514": {
+  "name": "バオッキー",
+  "motif": "サル",
+  "confidence": "high"
+ },
+ "515": {
+  "name": "ヒヤップ",
+  "motif": "サル",
+  "confidence": "high"
+ },
+ "516": {
+  "name": "ヒヤッキー",
+  "motif": "サル",
+  "confidence": "high"
+ },
+ "517": {
+  "name": "ムンナ",
+  "motif": "バク",
+  "confidence": "high"
+ },
+ "518": {
+  "name": "ムシャーナ",
+  "motif": "バク",
+  "confidence": "high"
+ },
+ "519": {
+  "name": "マメパト",
+  "motif": "ハト",
+  "confidence": "high"
+ },
+ "520": {
+  "name": "ハトーボー",
+  "motif": "ハト",
+  "confidence": "high"
+ },
+ "521": {
+  "name": "ケンホロウ",
+  "motif": "キジ",
+  "confidence": "medium"
+ },
+ "522": {
+  "name": "シママ",
+  "motif": "シマウマ",
+  "confidence": "high"
+ },
+ "523": {
+  "name": "ゼブライカ",
+  "motif": "シマウマ",
+  "confidence": "high"
+ },
+ "524": {
+  "name": "ダンゴロ",
+  "motif": "岩",
+  "confidence": "high"
+ },
+ "525": {
+  "name": "ガントル",
+  "motif": "岩",
+  "confidence": "high"
+ },
+ "526": {
+  "name": "ギガイアス",
+  "motif": "岩",
+  "confidence": "high"
+ },
+ "527": {
+  "name": "コロモリ",
+  "motif": "コウモリ",
+  "confidence": "high"
+ },
+ "528": {
+  "name": "ココロモリ",
+  "motif": "コウモリ",
+  "confidence": "high"
+ },
+ "529": {
+  "name": "モグリュー",
+  "motif": "モグラ",
+  "confidence": "high"
+ },
+ "530": {
+  "name": "ドリュウズ",
+  "motif": "モグラ",
+  "confidence": "high"
+ },
+ "531": {
+  "name": "タブンネ",
+  "motif": "ウサギ",
+  "confidence": "medium"
+ },
+ "532": {
+  "name": "ドッコラー",
+  "motif": "ヒト型",
+  "confidence": "high"
+ },
+ "533": {
+  "name": "ドテッコツ",
+  "motif": "ヒト型",
+  "confidence": "high"
+ },
+ "534": {
+  "name": "ローブシン",
+  "motif": "ヒト型",
+  "confidence": "high"
+ },
+ "535": {
+  "name": "オタマロ",
+  "motif": "オタマジャクシ",
+  "confidence": "high"
+ },
+ "536": {
+  "name": "ガマガル",
+  "motif": "カエル",
+  "confidence": "high"
+ },
+ "537": {
+  "name": "ガマゲロゲ",
+  "motif": "カエル",
+  "confidence": "high"
+ },
+ "538": {
+  "name": "ナゲキ",
+  "motif": "ヒト型",
+  "confidence": "high"
+ },
+ "539": {
+  "name": "ダゲキ",
+  "motif": "ヒト型",
+  "confidence": "high"
+ },
+ "540": {
+  "name": "クルミル",
+  "motif": "イモムシ",
+  "confidence": "high"
+ },
+ "541": {
+  "name": "クルマユ",
+  "motif": "イモムシ",
+  "confidence": "high"
+ },
+ "542": {
+  "name": "ハハコモリ",
+  "motif": "カマキリ",
+  "confidence": "medium"
+ },
+ "543": {
+  "name": "フシデ",
+  "motif": "ムカデ",
+  "confidence": "high"
+ },
+ "544": {
+  "name": "ホイーガ",
+  "motif": "ムカデ",
+  "confidence": "high"
+ },
+ "545": {
+  "name": "ペンドラー",
+  "motif": "ムカデ",
+  "confidence": "high"
+ },
+ "546": {
+  "name": "モンメン",
+  "motif": "タネ",
+  "confidence": "medium"
+ },
+ "547": {
+  "name": "エルフーン",
+  "motif": "妖精",
+  "confidence": "medium"
+ },
+ "548": {
+  "name": "チュリネ",
+  "motif": "野菜",
+  "confidence": "medium"
+ },
+ "549": {
+  "name": "ドレディア",
+  "motif": "花",
+  "confidence": "high"
+ },
+ "550": {
+  "name": "バスラオ",
+  "motif": "サカナ",
+  "confidence": "high"
+ },
+ "551": {
+  "name": "メグロコ",
+  "motif": "ワニ",
+  "confidence": "high"
+ },
+ "552": {
+  "name": "ワルビル",
+  "motif": "ワニ",
+  "confidence": "high"
+ },
+ "553": {
+  "name": "ワルビアル",
+  "motif": "ワニ",
+  "confidence": "high"
+ },
+ "554": {
+  "name": "ダルマッカ",
+  "motif": "だるま",
+  "confidence": "high"
+ },
+ "555": {
+  "name": "ヒヒダルマ",
+  "motif": "だるま",
+  "confidence": "high"
+ },
+ "556": {
+  "name": "マラカッチ",
+  "motif": "サボテン",
+  "confidence": "high"
+ },
+ "557": {
+  "name": "イシズマイ",
+  "motif": "ヤドカリ",
+  "confidence": "high"
+ },
+ "558": {
+  "name": "イワパレス",
+  "motif": "ヤドカリ",
+  "confidence": "high"
+ },
+ "559": {
+  "name": "ズルッグ",
+  "motif": "トカゲ",
+  "confidence": "high"
+ },
+ "560": {
+  "name": "ズルズキン",
+  "motif": "トカゲ",
+  "confidence": "high"
+ },
+ "561": {
+  "name": "シンボラー",
+  "motif": "トリ",
+  "confidence": "medium"
+ },
+ "562": {
+  "name": "デスマス",
+  "motif": "ゴースト",
+  "confidence": "high"
+ },
+ "563": {
+  "name": "デスカーン",
+  "motif": "ゴースト",
+  "confidence": "high"
+ },
+ "564": {
+  "name": "プロトーガ",
+  "motif": "カメ",
+  "confidence": "high"
+ },
+ "565": {
+  "name": "アバゴーラ",
+  "motif": "カメ",
+  "confidence": "high"
+ },
+ "566": {
+  "name": "アーケン",
+  "motif": "恐竜",
+  "confidence": "high"
+ },
+ "567": {
+  "name": "アーケオス",
+  "motif": "恐竜",
+  "confidence": "high"
+ },
+ "568": {
+  "name": "ヤブクロン",
+  "motif": "ゴミ",
+  "confidence": "high"
+ },
+ "569": {
+  "name": "ダストダス",
+  "motif": "ゴミ",
+  "confidence": "high"
+ },
+ "570": {
+  "name": "ゾロア",
+  "motif": "キツネ",
+  "confidence": "high"
+ },
+ "571": {
+  "name": "ゾロアーク",
+  "motif": "キツネ",
+  "confidence": "high"
+ },
+ "572": {
+  "name": "チラーミィ",
+  "motif": "チンチラ",
+  "confidence": "high"
+ },
+ "573": {
+  "name": "チラチーノ",
+  "motif": "チンチラ",
+  "confidence": "high"
+ },
+ "574": {
+  "name": "ゴチム",
+  "motif": "ヒト型",
+  "confidence": "medium"
+ },
+ "575": {
+  "name": "ゴチミル",
+  "motif": "ヒト型",
+  "confidence": "medium"
+ },
+ "576": {
+  "name": "ゴチルゼル",
+  "motif": "ヒト型",
+  "confidence": "medium"
+ },
+ "577": {
+  "name": "ユニラン",
+  "motif": "細胞",
+  "confidence": "high"
+ },
+ "578": {
+  "name": "ダブラン",
+  "motif": "細胞",
+  "confidence": "high"
+ },
+ "579": {
+  "name": "ランクルス",
+  "motif": "細胞",
+  "confidence": "high"
+ },
+ "580": {
+  "name": "コアルヒー",
+  "motif": "カモ",
+  "confidence": "high"
+ },
+ "581": {
+  "name": "スワンナ",
+  "motif": "ハクチョウ",
+  "confidence": "high"
+ },
+ "582": {
+  "name": "バニプッチ",
+  "motif": "アイスクリーム",
+  "confidence": "high"
+ },
+ "583": {
+  "name": "バニリッチ",
+  "motif": "アイスクリーム",
+  "confidence": "high"
+ },
+ "584": {
+  "name": "バイバニラ",
+  "motif": "アイスクリーム",
+  "confidence": "high"
+ },
+ "585": {
+  "name": "シキジカ",
+  "motif": "シカ",
+  "confidence": "high"
+ },
+ "586": {
+  "name": "メブキジカ",
+  "motif": "シカ",
+  "confidence": "high"
+ },
+ "587": {
+  "name": "エモンガ",
+  "motif": "モモンガ",
+  "confidence": "high"
+ },
+ "588": {
+  "name": "カブルモ",
+  "motif": "カブトムシ",
+  "confidence": "medium"
+ },
+ "589": {
+  "name": "シュバルゴ",
+  "motif": "カブトムシ",
+  "confidence": "medium"
+ },
+ "590": {
+  "name": "タマゲタケ",
+  "motif": "キノコ",
+  "confidence": "high"
+ },
+ "591": {
+  "name": "モロバレル",
+  "motif": "キノコ",
+  "confidence": "high"
+ },
+ "592": {
+  "name": "プルリル",
+  "motif": "クラゲ",
+  "confidence": "high"
+ },
+ "593": {
+  "name": "ブルンゲル",
+  "motif": "クラゲ",
+  "confidence": "high"
+ },
+ "594": {
+  "name": "ママンボウ",
+  "motif": "マンボウ",
+  "confidence": "high"
+ },
+ "595": {
+  "name": "バチュル",
+  "motif": "クモ",
+  "confidence": "high"
+ },
+ "596": {
+  "name": "デンチュラ",
+  "motif": "クモ",
+  "confidence": "high"
+ },
+ "597": {
+  "name": "テッシード",
+  "motif": "タネ",
+  "confidence": "high"
+ },
+ "598": {
+  "name": "ナットレイ",
+  "motif": "タネ",
+  "confidence": "high"
+ },
+ "599": {
+  "name": "ギアル",
+  "motif": "歯車",
+  "confidence": "high"
+ },
+ "600": {
+  "name": "ギギアル",
+  "motif": "歯車",
+  "confidence": "high"
+ },
+ "601": {
+  "name": "ギギギアル",
+  "motif": "歯車",
+  "confidence": "high"
+ },
+ "602": {
+  "name": "シビシラス",
+  "motif": "ウナギ",
+  "confidence": "high"
+ },
+ "603": {
+  "name": "シビビール",
+  "motif": "ウナギ",
+  "confidence": "high"
+ },
+ "604": {
+  "name": "シビルドン",
+  "motif": "ウナギ",
+  "confidence": "high"
+ },
+ "605": {
+  "name": "リグレー",
+  "motif": "エイリアン",
+  "confidence": "high"
+ },
+ "606": {
+  "name": "オーベム",
+  "motif": "エイリアン",
+  "confidence": "high"
+ },
+ "607": {
+  "name": "ヒトモシ",
+  "motif": "ろうそく",
+  "confidence": "high"
+ },
+ "608": {
+  "name": "ランプラー",
+  "motif": "ランプ",
+  "confidence": "high"
+ },
+ "609": {
+  "name": "シャンデラ",
+  "motif": "シャンデリア",
+  "confidence": "high"
+ },
+ "610": {
+  "name": "キバゴ",
+  "motif": "ドラゴン",
+  "confidence": "high"
+ },
+ "611": {
+  "name": "オノンド",
+  "motif": "ドラゴン",
+  "confidence": "high"
+ },
+ "612": {
+  "name": "オノノクス",
+  "motif": "ドラゴン",
+  "confidence": "high"
+ },
+ "613": {
+  "name": "クマシュン",
+  "motif": "クマ",
+  "confidence": "high"
+ },
+ "614": {
+  "name": "ツンベアー",
+  "motif": "クマ",
+  "confidence": "high"
+ },
+ "615": {
+  "name": "フリージオ",
+  "motif": "氷",
+  "confidence": "high"
+ },
+ "616": {
+  "name": "チョボマキ",
+  "motif": "カタツムリ",
+  "confidence": "high"
+ },
+ "617": {
+  "name": "アギルダー",
+  "motif": "ナメクジ",
+  "confidence": "medium"
+ },
+ "618": {
+  "name": "マッギョ",
+  "motif": "サカナ",
+  "confidence": "high"
+ },
+ "619": {
+  "name": "コジョフー",
+  "motif": "ヒト型",
+  "confidence": "high"
+ },
+ "620": {
+  "name": "コジョンド",
+  "motif": "ヒト型",
+  "confidence": "high"
+ },
+ "621": {
+  "name": "クリムガン",
+  "motif": "ドラゴン",
+  "confidence": "high"
+ },
+ "622": {
+  "name": "ゴビット",
+  "motif": "ロボット",
+  "confidence": "medium"
+ },
+ "623": {
+  "name": "ゴルーグ",
+  "motif": "ロボット",
+  "confidence": "medium"
+ },
+ "624": {
+  "name": "コマタナ",
+  "motif": "ヒト型",
+  "confidence": "medium"
+ },
+ "625": {
+  "name": "キリキザン",
+  "motif": "ヒト型",
+  "confidence": "medium"
+ },
+ "626": {
+  "name": "バッフロン",
+  "motif": "ウシ",
+  "confidence": "high"
+ },
+ "627": {
+  "name": "ワシボン",
+  "motif": "ワシ",
+  "confidence": "high"
+ },
+ "628": {
+  "name": "ウォーグル",
+  "motif": "ワシ",
+  "confidence": "high"
+ },
+ "629": {
+  "name": "バルチャイ",
+  "motif": "ハゲワシ",
+  "confidence": "high"
+ },
+ "630": {
+  "name": "バルジーナ",
+  "motif": "ハゲワシ",
+  "confidence": "high"
+ },
+ "631": {
+  "name": "クイタラン",
+  "motif": "アリクイ",
+  "confidence": "high"
+ },
+ "632": {
+  "name": "アイアント",
+  "motif": "アリ",
+  "confidence": "high"
+ },
+ "633": {
+  "name": "モノズ",
+  "motif": "ドラゴン",
+  "confidence": "high"
+ },
+ "634": {
+  "name": "ジヘッド",
+  "motif": "ドラゴン",
+  "confidence": "high"
+ },
+ "635": {
+  "name": "サザンドラ",
+  "motif": "ドラゴン",
+  "confidence": "high"
+ },
+ "636": {
+  "name": "メラルバ",
+  "motif": "イモムシ",
+  "confidence": "high"
+ },
+ "637": {
+  "name": "ウルガモス",
+  "motif": "ガ",
+  "confidence": "high"
+ },
+ "638": {
+  "name": "コバルオン",
+  "motif": "シカ",
+  "confidence": "medium"
+ },
+ "639": {
+  "name": "テラキオン",
+  "motif": "ウシ",
+  "confidence": "medium"
+ },
+ "640": {
+  "name": "ビリジオン",
+  "motif": "ヤギ",
+  "confidence": "medium"
+ },
+ "641": {
+  "name": "トルネロス",
+  "motif": "ヒト型",
+  "confidence": "medium"
+ },
+ "642": {
+  "name": "ボルトロス",
+  "motif": "ヒト型",
+  "confidence": "medium"
+ },
+ "643": {
+  "name": "レシラム",
+  "motif": "ドラゴン",
+  "confidence": "high"
+ },
+ "644": {
+  "name": "ゼクロム",
+  "motif": "ドラゴン",
+  "confidence": "high"
+ },
+ "645": {
+  "name": "ランドロス",
+  "motif": "ヒト型",
+  "confidence": "medium"
+ },
+ "646": {
+  "name": "キュレム",
+  "motif": "ドラゴン",
+  "confidence": "high"
+ },
+ "647": {
+  "name": "ケルディオ",
+  "motif": "ウマ",
+  "confidence": "high"
+ },
+ "648": {
+  "name": "メロエッタ",
+  "motif": "ヒト型",
+  "confidence": "medium"
+ },
+ "649": {
+  "name": "ゲノセクト",
+  "motif": "ムシ",
+  "confidence": "medium"
+ },
+ "650": {
+  "name": "ハリマロン",
+  "motif": "ハリネズミ",
+  "confidence": "high"
+ },
+ "651": {
+  "name": "ハリボーグ",
+  "motif": "ハリネズミ",
+  "confidence": "medium"
+ },
+ "652": {
+  "name": "ブリガロン",
+  "motif": "ハリネズミ",
+  "confidence": "medium"
+ },
+ "653": {
+  "name": "フォッコ",
+  "motif": "キツネ",
+  "confidence": "high"
+ },
+ "654": {
+  "name": "テールナー",
+  "motif": "キツネ",
+  "confidence": "high"
+ },
+ "655": {
+  "name": "マフォクシー",
+  "motif": "キツネ",
+  "confidence": "high"
+ },
+ "656": {
+  "name": "ケロマツ",
+  "motif": "カエル",
+  "confidence": "high"
+ },
+ "657": {
+  "name": "ゲコガシラ",
+  "motif": "カエル",
+  "confidence": "high"
+ },
+ "658": {
+  "name": "ゲッコウガ",
+  "motif": "カエル",
+  "confidence": "high"
+ },
+ "659": {
+  "name": "ホルビー",
+  "motif": "ウサギ",
+  "confidence": "high"
+ },
+ "660": {
+  "name": "ホルード",
+  "motif": "ウサギ",
+  "confidence": "high"
+ },
+ "661": {
+  "name": "ヤヤコマ",
+  "motif": "トリ",
+  "confidence": "medium"
+ },
+ "662": {
+  "name": "ヒノヤコマ",
+  "motif": "トリ",
+  "confidence": "medium"
+ },
+ "663": {
+  "name": "ファイアロー",
+  "motif": "ハヤブサ",
+  "confidence": "high"
+ },
+ "664": {
+  "name": "コフキムシ",
+  "motif": "イモムシ",
+  "confidence": "high"
+ },
+ "665": {
+  "name": "コフーライ",
+  "motif": "サナギ",
+  "confidence": "high"
+ },
+ "666": {
+  "name": "ビビヨン",
+  "motif": "チョウ",
+  "confidence": "high"
+ },
+ "667": {
+  "name": "シシコ",
+  "motif": "ライオン",
+  "confidence": "high"
+ },
+ "668": {
+  "name": "カエンジシ",
+  "motif": "ライオン",
+  "confidence": "high"
+ },
+ "669": {
+  "name": "フラベベ",
+  "motif": "花",
+  "confidence": "high"
+ },
+ "670": {
+  "name": "フラエッテ",
+  "motif": "花",
+  "confidence": "high"
+ },
+ "671": {
+  "name": "フラージェス",
+  "motif": "花",
+  "confidence": "high"
+ },
+ "672": {
+  "name": "メェークル",
+  "motif": "ヤギ",
+  "confidence": "high"
+ },
+ "673": {
+  "name": "ゴーゴート",
+  "motif": "ヤギ",
+  "confidence": "high"
+ },
+ "674": {
+  "name": "ヤンチャム",
+  "motif": "パンダ",
+  "confidence": "high"
+ },
+ "675": {
+  "name": "ゴロンダ",
+  "motif": "パンダ",
+  "confidence": "high"
+ },
+ "676": {
+  "name": "トリミアン",
+  "motif": "イヌ",
+  "confidence": "high"
+ },
+ "677": {
+  "name": "ニャスパー",
+  "motif": "ネコ",
+  "confidence": "high"
+ },
+ "678": {
+  "name": "ニャオニクス",
+  "motif": "ネコ",
+  "confidence": "high"
+ },
+ "679": {
+  "name": "ヒトツキ",
+  "motif": "剣",
+  "confidence": "high"
+ },
+ "680": {
+  "name": "ニダンギル",
+  "motif": "剣",
+  "confidence": "high"
+ },
+ "681": {
+  "name": "ギルガルド",
+  "motif": "剣",
+  "confidence": "high"
+ },
+ "682": {
+  "name": "シュシュプ",
+  "motif": "香水瓶",
+  "confidence": "medium"
+ },
+ "683": {
+  "name": "フレフワン",
+  "motif": "香水瓶",
+  "confidence": "medium"
+ },
+ "684": {
+  "name": "ペロッパフ",
+  "motif": "わたあめ",
+  "confidence": "high"
+ },
+ "685": {
+  "name": "ペロリーム",
+  "motif": "ホイップクリーム",
+  "confidence": "high"
+ },
+ "686": {
+  "name": "マーイーカ",
+  "motif": "イカ",
+  "confidence": "high"
+ },
+ "687": {
+  "name": "カラマネロ",
+  "motif": "イカ",
+  "confidence": "high"
+ },
+ "688": {
+  "name": "カメテテ",
+  "motif": "フジツボ",
+  "confidence": "high"
+ },
+ "689": {
+  "name": "ガメノデス",
+  "motif": "フジツボ",
+  "confidence": "high"
+ },
+ "690": {
+  "name": "クズモー",
+  "motif": "タツノオトシゴ",
+  "confidence": "medium"
+ },
+ "691": {
+  "name": "ドラミドロ",
+  "motif": "タツノオトシゴ",
+  "confidence": "medium"
+ },
+ "692": {
+  "name": "ウデッポウ",
+  "motif": "エビ",
+  "confidence": "high"
+ },
+ "693": {
+  "name": "ブロスター",
+  "motif": "エビ",
+  "confidence": "high"
+ },
+ "694": {
+  "name": "エリキテル",
+  "motif": "トカゲ",
+  "confidence": "medium"
+ },
+ "695": {
+  "name": "エレザード",
+  "motif": "トカゲ",
+  "confidence": "medium"
+ },
+ "696": {
+  "name": "チゴラス",
+  "motif": "恐竜",
+  "confidence": "high"
+ },
+ "697": {
+  "name": "ガチゴラス",
+  "motif": "恐竜",
+  "confidence": "high"
+ },
+ "698": {
+  "name": "アマルス",
+  "motif": "恐竜",
+  "confidence": "high"
+ },
+ "699": {
+  "name": "アマルルガ",
+  "motif": "恐竜",
+  "confidence": "high"
+ },
+ "700": {
+  "name": "ニンフィア",
+  "motif": "キツネ",
+  "confidence": "medium"
+ },
+ "701": {
+  "name": "ルチャブル",
+  "motif": "ワシ",
+  "confidence": "high"
+ },
+ "702": {
+  "name": "デデンネ",
+  "motif": "ネズミ",
+  "confidence": "high"
+ },
+ "703": {
+  "name": "メレシー",
+  "motif": "宝石",
+  "confidence": "high"
+ },
+ "704": {
+  "name": "ヌメラ",
+  "motif": "ナメクジ",
+  "confidence": "high"
+ },
+ "705": {
+  "name": "ヌメイル",
+  "motif": "ナメクジ",
+  "confidence": "high"
+ },
+ "706": {
+  "name": "ヌメルゴン",
+  "motif": "ドラゴン",
+  "confidence": "high"
+ },
+ "707": {
+  "name": "クレッフィ",
+  "motif": "鍵",
+  "confidence": "high"
+ },
+ "708": {
+  "name": "ボクレー",
+  "motif": "木",
+  "confidence": "high"
+ },
+ "709": {
+  "name": "オーロット",
+  "motif": "木",
+  "confidence": "high"
+ },
+ "710": {
+  "name": "バケッチャ",
+  "motif": "かぼちゃ",
+  "confidence": "high"
+ },
+ "711": {
+  "name": "パンプジン",
+  "motif": "かぼちゃ",
+  "confidence": "high"
+ },
+ "712": {
+  "name": "カチコール",
+  "motif": "氷",
+  "confidence": "high"
+ },
+ "713": {
+  "name": "クレベース",
+  "motif": "氷",
+  "confidence": "high"
+ },
+ "714": {
+  "name": "オンバット",
+  "motif": "コウモリ",
+  "confidence": "high"
+ },
+ "715": {
+  "name": "オンバーン",
+  "motif": "コウモリ",
+  "confidence": "high"
+ },
+ "716": {
+  "name": "ゼルネアス",
+  "motif": "シカ",
+  "confidence": "high"
+ },
+ "717": {
+  "name": "イベルタル",
+  "motif": "トリ",
+  "confidence": "medium"
+ },
+ "718": {
+  "name": "ジガルデ",
+  "motif": "ヘビ",
+  "confidence": "high"
+ },
+ "719": {
+  "name": "ディアンシー",
+  "motif": "宝石",
+  "confidence": "high"
+ },
+ "720": {
+  "name": "フーパ",
+  "motif": "妖精",
+  "confidence": "low"
+ },
+ "721": {
+  "name": "ボルケニオン",
+  "motif": "カメ",
+  "confidence": "low"
+ },
+ "722": {
+  "name": "モクロー",
+  "motif": "フクロウ",
+  "confidence": "high"
+ },
+ "723": {
+  "name": "フクスロー",
+  "motif": "フクロウ",
+  "confidence": "high"
+ },
+ "724": {
+  "name": "ジュナイパー",
+  "motif": "フクロウ",
+  "confidence": "high"
+ },
+ "725": {
+  "name": "ニャビー",
+  "motif": "ネコ",
+  "confidence": "high"
+ },
+ "726": {
+  "name": "ニャヒート",
+  "motif": "ネコ",
+  "confidence": "high"
+ },
+ "727": {
+  "name": "ガオガエン",
+  "motif": "トラ",
+  "confidence": "medium"
+ },
+ "728": {
+  "name": "アシマリ",
+  "motif": "アザラシ",
+  "confidence": "medium"
+ },
+ "729": {
+  "name": "オシャマリ",
+  "motif": "アザラシ",
+  "confidence": "medium"
+ },
+ "730": {
+  "name": "アシレーヌ",
+  "motif": "アザラシ",
+  "confidence": "medium"
+ },
+ "731": {
+  "name": "ツツケラ",
+  "motif": "キツツキ",
+  "confidence": "high"
+ },
+ "732": {
+  "name": "ケララッパ",
+  "motif": "キツツキ",
+  "confidence": "high"
+ },
+ "733": {
+  "name": "ドデカバシ",
+  "motif": "オオハシ",
+  "confidence": "high"
+ },
+ "734": {
+  "name": "ヤングース",
+  "motif": "マングース",
+  "confidence": "high"
+ },
+ "735": {
+  "name": "デカグース",
+  "motif": "マングース",
+  "confidence": "high"
+ },
+ "736": {
+  "name": "アゴジムシ",
+  "motif": "イモムシ",
+  "confidence": "medium"
+ },
+ "737": {
+  "name": "デンヂムシ",
+  "motif": "ムシ",
+  "confidence": "medium"
+ },
+ "738": {
+  "name": "クワガノン",
+  "motif": "クワガタ",
+  "confidence": "high"
+ },
+ "739": {
+  "name": "マケンカニ",
+  "motif": "カニ",
+  "confidence": "high"
+ },
+ "740": {
+  "name": "ケケンカニ",
+  "motif": "カニ",
+  "confidence": "high"
+ },
+ "741": {
+  "name": "オドリドリ",
+  "motif": "トリ",
+  "confidence": "medium"
+ },
+ "742": {
+  "name": "アブリー",
+  "motif": "ハチ",
+  "confidence": "medium"
+ },
+ "743": {
+  "name": "アブリボン",
+  "motif": "ハチ",
+  "confidence": "medium"
+ },
+ "744": {
+  "name": "イワンコ",
+  "motif": "イヌ",
+  "confidence": "high"
+ },
+ "745": {
+  "name": "ルガルガン",
+  "motif": "オオカミ",
+  "confidence": "high"
+ },
+ "746": {
+  "name": "ヨワシ",
+  "motif": "サカナ",
+  "confidence": "high"
+ },
+ "747": {
+  "name": "ヒドイデ",
+  "motif": "ヒトデ",
+  "confidence": "high"
+ },
+ "748": {
+  "name": "ドヒドイデ",
+  "motif": "ヒトデ",
+  "confidence": "high"
+ },
+ "749": {
+  "name": "ドロバンコ",
+  "motif": "ウマ",
+  "confidence": "medium"
+ },
+ "750": {
+  "name": "バンバドロ",
+  "motif": "ウマ",
+  "confidence": "high"
+ },
+ "751": {
+  "name": "シズクモ",
+  "motif": "クモ",
+  "confidence": "high"
+ },
+ "752": {
+  "name": "オニシズクモ",
+  "motif": "クモ",
+  "confidence": "high"
+ },
+ "753": {
+  "name": "カリキリ",
+  "motif": "カマキリ",
+  "confidence": "medium"
+ },
+ "754": {
+  "name": "ラランテス",
+  "motif": "カマキリ",
+  "confidence": "high"
+ },
+ "755": {
+  "name": "ネマシュ",
+  "motif": "キノコ",
+  "confidence": "high"
+ },
+ "756": {
+  "name": "マシェード",
+  "motif": "キノコ",
+  "confidence": "high"
+ },
+ "757": {
+  "name": "ヤトウモリ",
+  "motif": "ヤモリ",
+  "confidence": "high"
+ },
+ "758": {
+  "name": "エンニュート",
+  "motif": "トカゲ",
+  "confidence": "medium"
+ },
+ "759": {
+  "name": "ヌイコグマ",
+  "motif": "クマ",
+  "confidence": "high"
+ },
+ "760": {
+  "name": "キテルグマ",
+  "motif": "クマ",
+  "confidence": "high"
+ },
+ "761": {
+  "name": "アマカジ",
+  "motif": "果実",
+  "confidence": "high"
+ },
+ "762": {
+  "name": "アママイコ",
+  "motif": "果実",
+  "confidence": "high"
+ },
+ "763": {
+  "name": "アマージョ",
+  "motif": "果実",
+  "confidence": "high"
+ },
+ "764": {
+  "name": "キュワワー",
+  "motif": "花",
+  "confidence": "high"
+ },
+ "765": {
+  "name": "ヤレユータン",
+  "motif": "オランウータン",
+  "confidence": "high"
+ },
+ "766": {
+  "name": "ナゲツケサル",
+  "motif": "サル",
+  "confidence": "high"
+ },
+ "767": {
+  "name": "コソクムシ",
+  "motif": "ダンゴムシ",
+  "confidence": "medium"
+ },
+ "768": {
+  "name": "グソクムシャ",
+  "motif": "オオグソクムシ",
+  "confidence": "high"
+ },
+ "769": {
+  "name": "スナバァ",
+  "motif": "砂の城",
+  "confidence": "medium"
+ },
+ "770": {
+  "name": "シロデスナ",
+  "motif": "砂の城",
+  "confidence": "medium"
+ },
+ "771": {
+  "name": "ナマコブシ",
+  "motif": "ナマコ",
+  "confidence": "high"
+ },
+ "772": {
+  "name": "タイプ:ヌル",
+  "motif": "人工生物",
+  "confidence": "medium"
+ },
+ "773": {
+  "name": "シルヴァディ",
+  "motif": "人工生物",
+  "confidence": "medium"
+ },
+ "774": {
+  "name": "メテノ",
+  "motif": "天体",
+  "confidence": "high"
+ },
+ "775": {
+  "name": "ネッコアラ",
+  "motif": "コアラ",
+  "confidence": "high"
+ },
+ "776": {
+  "name": "バクガメス",
+  "motif": "カメ",
+  "confidence": "high"
+ },
+ "777": {
+  "name": "トゲデマル",
+  "motif": "ハリネズミ",
+  "confidence": "medium"
+ },
+ "778": {
+  "name": "ミミッキュ",
+  "motif": "ゴースト",
+  "confidence": "high"
+ },
+ "779": {
+  "name": "ハギギシリ",
+  "motif": "サカナ",
+  "confidence": "high"
+ },
+ "780": {
+  "name": "ジジーロン",
+  "motif": "ドラゴン",
+  "confidence": "high"
+ },
+ "781": {
+  "name": "ダダリン",
+  "motif": "ゴースト",
+  "confidence": "medium"
+ },
+ "782": {
+  "name": "ジャラコ",
+  "motif": "ドラゴン",
+  "confidence": "medium"
+ },
+ "783": {
+  "name": "ジャランゴ",
+  "motif": "ドラゴン",
+  "confidence": "medium"
+ },
+ "784": {
+  "name": "ジャラランガ",
+  "motif": "ドラゴン",
+  "confidence": "medium"
+ },
+ "785": {
+  "name": "カプ・コケコ",
+  "motif": "トリ",
+  "confidence": "medium"
+ },
+ "786": {
+  "name": "カプ・テテフ",
+  "motif": "チョウ",
+  "confidence": "medium"
+ },
+ "787": {
+  "name": "カプ・ブルル",
+  "motif": "ウシ",
+  "confidence": "medium"
+ },
+ "788": {
+  "name": "カプ・レヒレ",
+  "motif": "サカナ",
+  "confidence": "medium"
+ },
+ "789": {
+  "name": "コスモッグ",
+  "motif": "天体",
+  "confidence": "high"
+ },
+ "790": {
+  "name": "コスモウム",
+  "motif": "天体",
+  "confidence": "high"
+ },
+ "791": {
+  "name": "ソルガレオ",
+  "motif": "ライオン",
+  "confidence": "high"
+ },
+ "792": {
+  "name": "ルナアーラ",
+  "motif": "コウモリ",
+  "confidence": "high"
+ },
+ "793": {
+  "name": "ウツロイド",
+  "motif": "クラゲ",
+  "confidence": "high"
+ },
+ "794": {
+  "name": "マッシブーン",
+  "motif": "カ",
+  "confidence": "medium"
+ },
+ "795": {
+  "name": "フェローチェ",
+  "motif": "ナナフシ",
+  "confidence": "medium"
+ },
+ "796": {
+  "name": "デンジュモク",
+  "motif": "木",
+  "confidence": "high"
+ },
+ "797": {
+  "name": "テッカグヤ",
+  "motif": "ロケット",
+  "confidence": "medium"
+ },
+ "798": {
+  "name": "カミツルギ",
+  "motif": "折り紙",
+  "confidence": "medium"
+ },
+ "799": {
+  "name": "アクジキング",
+  "motif": "怪獣",
+  "confidence": "low"
+ },
+ "800": {
+  "name": "ネクロズマ",
+  "motif": "プリズム",
+  "confidence": "low"
+ },
+ "801": {
+  "name": "マギアナ",
+  "motif": "ロボット",
+  "confidence": "high"
+ },
+ "802": {
+  "name": "マーシャドー",
+  "motif": "ゴースト",
+  "confidence": "medium"
+ },
+ "803": {
+  "name": "ベベノム",
+  "motif": "ハチ",
+  "confidence": "low"
+ },
+ "804": {
+  "name": "アーゴヨン",
+  "motif": "ドラゴン",
+  "confidence": "medium"
+ },
+ "805": {
+  "name": "ツンデツンデ",
+  "motif": "岩",
+  "confidence": "medium"
+ },
+ "806": {
+  "name": "ズガドーン",
+  "motif": "道化師",
+  "confidence": "medium"
+ },
+ "807": {
+  "name": "ゼラオラ",
+  "motif": "イタチ",
+  "confidence": "medium"
+ },
+ "808": {
+  "name": "メルタン",
+  "motif": "ナット",
+  "confidence": "high"
+ },
+ "809": {
+  "name": "メルメタル",
+  "motif": "ナット",
+  "confidence": "high"
+ },
+ "810": {
+  "name": "サルノリ",
+  "motif": "サル",
+  "confidence": "high"
+ },
+ "811": {
+  "name": "バチンキー",
+  "motif": "サル",
+  "confidence": "high"
+ },
+ "812": {
+  "name": "ゴリランダー",
+  "motif": "ゴリラ",
+  "confidence": "high"
+ },
+ "813": {
+  "name": "ヒバニー",
+  "motif": "ウサギ",
+  "confidence": "high"
+ },
+ "814": {
+  "name": "ラビフット",
+  "motif": "ウサギ",
+  "confidence": "high"
+ },
+ "815": {
+  "name": "エースバーン",
+  "motif": "ウサギ",
+  "confidence": "high"
+ },
+ "816": {
+  "name": "メッソン",
+  "motif": "トカゲ",
+  "confidence": "high"
+ },
+ "817": {
+  "name": "ジメレオン",
+  "motif": "トカゲ",
+  "confidence": "high"
+ },
+ "818": {
+  "name": "インテレオン",
+  "motif": "トカゲ",
+  "confidence": "medium"
+ },
+ "819": {
+  "name": "ホシガリス",
+  "motif": "リス",
+  "confidence": "high"
+ },
+ "820": {
+  "name": "ヨクバリス",
+  "motif": "リス",
+  "confidence": "high"
+ },
+ "821": {
+  "name": "ココガラ",
+  "motif": "トリ",
+  "confidence": "high"
+ },
+ "822": {
+  "name": "アオガラス",
+  "motif": "カラス",
+  "confidence": "high"
+ },
+ "823": {
+  "name": "アーマーガア",
+  "motif": "カラス",
+  "confidence": "high"
+ },
+ "824": {
+  "name": "サッチムシ",
+  "motif": "イモムシ",
+  "confidence": "medium"
+ },
+ "825": {
+  "name": "レドームシ",
+  "motif": "サナギ",
+  "confidence": "medium"
+ },
+ "826": {
+  "name": "イオルブ",
+  "motif": "テントウムシ",
+  "confidence": "high"
+ },
+ "827": {
+  "name": "クスネ",
+  "motif": "キツネ",
+  "confidence": "high"
+ },
+ "828": {
+  "name": "フォクスライ",
+  "motif": "キツネ",
+  "confidence": "high"
+ },
+ "829": {
+  "name": "ヒメンカ",
+  "motif": "花",
+  "confidence": "high"
+ },
+ "830": {
+  "name": "ワタシラガ",
+  "motif": "花",
+  "confidence": "medium"
+ },
+ "831": {
+  "name": "ウールー",
+  "motif": "ヒツジ",
+  "confidence": "high"
+ },
+ "832": {
+  "name": "バイウールー",
+  "motif": "ヒツジ",
+  "confidence": "high"
+ },
+ "833": {
+  "name": "カムカメ",
+  "motif": "カメ",
+  "confidence": "high"
+ },
+ "834": {
+  "name": "カジリガメ",
+  "motif": "カメ",
+  "confidence": "high"
+ },
+ "835": {
+  "name": "ワンパチ",
+  "motif": "イヌ",
+  "confidence": "high"
+ },
+ "836": {
+  "name": "パルスワン",
+  "motif": "イヌ",
+  "confidence": "high"
+ },
+ "837": {
+  "name": "タンドン",
+  "motif": "石炭",
+  "confidence": "high"
+ },
+ "838": {
+  "name": "トロッゴン",
+  "motif": "トロッコ",
+  "confidence": "medium"
+ },
+ "839": {
+  "name": "セキタンザン",
+  "motif": "機関車",
+  "confidence": "medium"
+ },
+ "840": {
+  "name": "カジッチュ",
+  "motif": "果実",
+  "confidence": "high"
+ },
+ "841": {
+  "name": "アップリュー",
+  "motif": "果実",
+  "confidence": "high"
+ },
+ "842": {
+  "name": "タルップル",
+  "motif": "果実",
+  "confidence": "high"
+ },
+ "843": {
+  "name": "スナヘビ",
+  "motif": "ヘビ",
+  "confidence": "high"
+ },
+ "844": {
+  "name": "サダイジャ",
+  "motif": "ヘビ",
+  "confidence": "high"
+ },
+ "845": {
+  "name": "ウッウ",
+  "motif": "カワウ",
+  "confidence": "high"
+ },
+ "846": {
+  "name": "サシカマス",
+  "motif": "サカナ",
+  "confidence": "high"
+ },
+ "847": {
+  "name": "カマスジョー",
+  "motif": "サカナ",
+  "confidence": "high"
+ },
+ "848": {
+  "name": "エレズン",
+  "motif": "オタマジャクシ",
+  "confidence": "medium"
+ },
+ "849": {
+  "name": "ストリンダー",
+  "motif": "カエル",
+  "confidence": "medium"
+ },
+ "850": {
+  "name": "ヤクデ",
+  "motif": "ムカデ",
+  "confidence": "high"
+ },
+ "851": {
+  "name": "マルヤクデ",
+  "motif": "ムカデ",
+  "confidence": "high"
+ },
+ "852": {
+  "name": "タタッコ",
+  "motif": "タコ",
+  "confidence": "high"
+ },
+ "853": {
+  "name": "オトスパス",
+  "motif": "タコ",
+  "confidence": "high"
+ },
+ "854": {
+  "name": "ヤバチャ",
+  "motif": "ゴースト",
+  "confidence": "high"
+ },
+ "855": {
+  "name": "ポットデス",
+  "motif": "ゴースト",
+  "confidence": "high"
+ },
+ "856": {
+  "name": "ミブリム",
+  "motif": "妖精",
+  "confidence": "medium"
+ },
+ "857": {
+  "name": "テブリム",
+  "motif": "妖精",
+  "confidence": "medium"
+ },
+ "858": {
+  "name": "ブリムオン",
+  "motif": "妖精",
+  "confidence": "medium"
+ },
+ "859": {
+  "name": "ベロバー",
+  "motif": "妖精",
+  "confidence": "medium"
+ },
+ "860": {
+  "name": "ギモー",
+  "motif": "妖精",
+  "confidence": "medium"
+ },
+ "861": {
+  "name": "オーロンゲ",
+  "motif": "トロール",
+  "confidence": "medium"
+ },
+ "862": {
+  "name": "タチフサグマ",
+  "motif": "アナグマ",
+  "confidence": "medium"
+ },
+ "863": {
+  "name": "ニャイキング",
+  "motif": "ネコ",
+  "confidence": "high"
+ },
+ "864": {
+  "name": "サニゴーン",
+  "motif": "サンゴ",
+  "confidence": "high"
+ },
+ "865": {
+  "name": "ネギガナイト",
+  "motif": "カモ",
+  "confidence": "high"
+ },
+ "866": {
+  "name": "バリコオル",
+  "motif": "ペンギン",
+  "confidence": "medium"
+ },
+ "867": {
+  "name": "デスバーン",
+  "motif": "ゴースト",
+  "confidence": "high"
+ },
+ "868": {
+  "name": "マホミル",
+  "motif": "クリーム",
+  "confidence": "high"
+ },
+ "869": {
+  "name": "マホイップ",
+  "motif": "クリーム",
+  "confidence": "high"
+ },
+ "870": {
+  "name": "タイレーツ",
+  "motif": "アリ",
+  "confidence": "medium"
+ },
+ "871": {
+  "name": "バチンウニ",
+  "motif": "ウニ",
+  "confidence": "high"
+ },
+ "872": {
+  "name": "ユキハミ",
+  "motif": "イモムシ",
+  "confidence": "high"
+ },
+ "873": {
+  "name": "モスノウ",
+  "motif": "ガ",
+  "confidence": "high"
+ },
+ "874": {
+  "name": "イシヘンジン",
+  "motif": "岩",
+  "confidence": "high"
+ },
+ "875": {
+  "name": "コオリッポ",
+  "motif": "ペンギン",
+  "confidence": "high"
+ },
+ "876": {
+  "name": "イエッサン",
+  "motif": "ヒツジ",
+  "confidence": "high"
+ },
+ "877": {
+  "name": "モルペコ",
+  "motif": "ネズミ",
+  "confidence": "medium"
+ },
+ "878": {
+  "name": "ゾウドウ",
+  "motif": "ゾウ",
+  "confidence": "high"
+ },
+ "879": {
+  "name": "ダイオウドウ",
+  "motif": "ゾウ",
+  "confidence": "high"
+ },
+ "880": {
+  "name": "パッチラゴン",
+  "motif": "恐竜",
+  "confidence": "medium"
+ },
+ "881": {
+  "name": "パッチルドン",
+  "motif": "恐竜",
+  "confidence": "medium"
+ },
+ "882": {
+  "name": "ウオノラゴン",
+  "motif": "恐竜",
+  "confidence": "medium"
+ },
+ "883": {
+  "name": "ウオチルドン",
+  "motif": "恐竜",
+  "confidence": "medium"
+ },
+ "884": {
+  "name": "ジュラルドン",
+  "motif": "ドラゴン",
+  "confidence": "high"
+ },
+ "885": {
+  "name": "ドラメシヤ",
+  "motif": "ドラゴン",
+  "confidence": "medium"
+ },
+ "886": {
+  "name": "ドロンチ",
+  "motif": "ドラゴン",
+  "confidence": "medium"
+ },
+ "887": {
+  "name": "ドラパルト",
+  "motif": "ドラゴン",
+  "confidence": "high"
+ },
+ "888": {
+  "name": "ザシアン",
+  "motif": "オオカミ",
+  "confidence": "high"
+ },
+ "889": {
+  "name": "ザマゼンタ",
+  "motif": "オオカミ",
+  "confidence": "high"
+ },
+ "890": {
+  "name": "ムゲンダイナ",
+  "motif": "ドラゴン",
+  "confidence": "medium"
+ },
+ "891": {
+  "name": "ダクマ",
+  "motif": "クマ",
+  "confidence": "high"
+ },
+ "892": {
+  "name": "ウーラオス",
+  "motif": "パンダ",
+  "confidence": "high"
+ },
+ "893": {
+  "name": "ザルード",
+  "motif": "サル",
+  "confidence": "high"
+ },
+ "894": {
+  "name": "レジエレキ",
+  "motif": "ゴーレム",
+  "confidence": "medium"
+ },
+ "895": {
+  "name": "レジドラゴ",
+  "motif": "ドラゴン",
+  "confidence": "medium"
+ },
+ "896": {
+  "name": "ブリザポス",
+  "motif": "ウマ",
+  "confidence": "high"
+ },
+ "897": {
+  "name": "レイスポス",
+  "motif": "ウマ",
+  "confidence": "high"
+ },
+ "898": {
+  "name": "バドレックス",
+  "motif": "ウサギ",
+  "confidence": "medium"
+ },
+ "899": {
+  "name": "アヤシシ",
+  "motif": "シカ",
+  "confidence": "high"
+ },
+ "900": {
+  "name": "バサギリ",
+  "motif": "クワガタ",
+  "confidence": "medium"
+ },
+ "901": {
+  "name": "ガチグマ",
+  "motif": "クマ",
+  "confidence": "high"
+ },
+ "902": {
+  "name": "イダイトウ",
+  "motif": "サカナ",
+  "confidence": "high"
+ },
+ "903": {
+  "name": "オオニューラ",
+  "motif": "イタチ",
+  "confidence": "high"
+ },
+ "904": {
+  "name": "ハリーマン",
+  "motif": "フグ",
+  "confidence": "high"
+ },
+ "905": {
+  "name": "ラブトロス",
+  "motif": "ヒト型",
+  "confidence": "low"
+ },
+ "906": {
+  "name": "ニャオハ",
+  "motif": "ネコ",
+  "confidence": "high"
+ },
+ "907": {
+  "name": "ニャローテ",
+  "motif": "ネコ",
+  "confidence": "high"
+ },
+ "908": {
+  "name": "マスカーニャ",
+  "motif": "ネコ",
+  "confidence": "high"
+ },
+ "909": {
+  "name": "ホゲータ",
+  "motif": "ワニ",
+  "confidence": "high"
+ },
+ "910": {
+  "name": "アチゲータ",
+  "motif": "ワニ",
+  "confidence": "high"
+ },
+ "911": {
+  "name": "ラウドボーン",
+  "motif": "ワニ",
+  "confidence": "medium"
+ },
+ "912": {
+  "name": "クワッス",
+  "motif": "カモ",
+  "confidence": "high"
+ },
+ "913": {
+  "name": "ウェルカモ",
+  "motif": "カモ",
+  "confidence": "high"
+ },
+ "914": {
+  "name": "ウェーニバル",
+  "motif": "カモ",
+  "confidence": "high"
+ },
+ "915": {
+  "name": "グルトン",
+  "motif": "ブタ",
+  "confidence": "high"
+ },
+ "916": {
+  "name": "パフュートン",
+  "motif": "ブタ",
+  "confidence": "high"
+ },
+ "917": {
+  "name": "タマンチュラ",
+  "motif": "クモ",
+  "confidence": "high"
+ },
+ "918": {
+  "name": "ワナイダー",
+  "motif": "クモ",
+  "confidence": "high"
+ },
+ "919": {
+  "name": "マメバッタ",
+  "motif": "バッタ",
+  "confidence": "high"
+ },
+ "920": {
+  "name": "エクスレッグ",
+  "motif": "バッタ",
+  "confidence": "high"
+ },
+ "921": {
+  "name": "パモ",
+  "motif": "ネズミ",
+  "confidence": "high"
+ },
+ "922": {
+  "name": "パモット",
+  "motif": "ネズミ",
+  "confidence": "high"
+ },
+ "923": {
+  "name": "パーモット",
+  "motif": "ネズミ",
+  "confidence": "high"
+ },
+ "924": {
+  "name": "ワッカネズミ",
+  "motif": "ネズミ",
+  "confidence": "high"
+ },
+ "925": {
+  "name": "イッカネズミ",
+  "motif": "ネズミ",
+  "confidence": "high"
+ },
+ "926": {
+  "name": "パピモッチ",
+  "motif": "イヌ",
+  "confidence": "high"
+ },
+ "927": {
+  "name": "バウッツェル",
+  "motif": "イヌ",
+  "confidence": "high"
+ },
+ "928": {
+  "name": "ミニーブ",
+  "motif": "果実",
+  "confidence": "high"
+ },
+ "929": {
+  "name": "オリーニョ",
+  "motif": "果実",
+  "confidence": "high"
+ },
+ "930": {
+  "name": "オリーヴァ",
+  "motif": "果実",
+  "confidence": "medium"
+ },
+ "931": {
+  "name": "イキリンコ",
+  "motif": "インコ",
+  "confidence": "high"
+ },
+ "932": {
+  "name": "コジオ",
+  "motif": "岩",
+  "confidence": "medium"
+ },
+ "933": {
+  "name": "ジオヅム",
+  "motif": "岩",
+  "confidence": "medium"
+ },
+ "934": {
+  "name": "キョジオーン",
+  "motif": "岩",
+  "confidence": "medium"
+ },
+ "935": {
+  "name": "カルボウ",
+  "motif": "炭",
+  "confidence": "medium"
+ },
+ "936": {
+  "name": "グレンアルマ",
+  "motif": "ヒト型",
+  "confidence": "medium"
+ },
+ "937": {
+  "name": "ソウブレイズ",
+  "motif": "ヒト型",
+  "confidence": "medium"
+ },
+ "938": {
+  "name": "ズピカ",
+  "motif": "オタマジャクシ",
+  "confidence": "high"
+ },
+ "939": {
+  "name": "ハラバリー",
+  "motif": "カエル",
+  "confidence": "high"
+ },
+ "940": {
+  "name": "カイデン",
+  "motif": "ツバメ",
+  "confidence": "high"
+ },
+ "941": {
+  "name": "タイカイデン",
+  "motif": "グンカンドリ",
+  "confidence": "medium"
+ },
+ "942": {
+  "name": "オラチフ",
+  "motif": "イヌ",
+  "confidence": "high"
+ },
+ "943": {
+  "name": "マフィティフ",
+  "motif": "イヌ",
+  "confidence": "high"
+ },
+ "944": {
+  "name": "シルシュルー",
+  "motif": "ネズミ",
+  "confidence": "high"
+ },
+ "945": {
+  "name": "タギングル",
+  "motif": "サル",
+  "confidence": "high"
+ },
+ "946": {
+  "name": "アノクサ",
+  "motif": "草",
+  "confidence": "high"
+ },
+ "947": {
+  "name": "アノホラグサ",
+  "motif": "草",
+  "confidence": "high"
+ },
+ "948": {
+  "name": "ノノクラゲ",
+  "motif": "キノコ",
+  "confidence": "high"
+ },
+ "949": {
+  "name": "リククラゲ",
+  "motif": "キノコ",
+  "confidence": "high"
+ },
+ "950": {
+  "name": "ガケガニ",
+  "motif": "カニ",
+  "confidence": "high"
+ },
+ "951": {
+  "name": "カプサイジ",
+  "motif": "野菜",
+  "confidence": "high"
+ },
+ "952": {
+  "name": "スコヴィラン",
+  "motif": "野菜",
+  "confidence": "high"
+ },
+ "953": {
+  "name": "シガロコ",
+  "motif": "フンコロガシ",
+  "confidence": "medium"
+ },
+ "954": {
+  "name": "ベラカス",
+  "motif": "フンコロガシ",
+  "confidence": "medium"
+ },
+ "955": {
+  "name": "ヒラヒナ",
+  "motif": "トリ",
+  "confidence": "medium"
+ },
+ "956": {
+  "name": "クエスパトラ",
+  "motif": "ダチョウ",
+  "confidence": "high"
+ },
+ "957": {
+  "name": "カヌチャン",
+  "motif": "妖精",
+  "confidence": "medium"
+ },
+ "958": {
+  "name": "ナカヌチャン",
+  "motif": "妖精",
+  "confidence": "medium"
+ },
+ "959": {
+  "name": "デカヌチャン",
+  "motif": "妖精",
+  "confidence": "medium"
+ },
+ "960": {
+  "name": "ウミディグダ",
+  "motif": "ウナギ",
+  "confidence": "high"
+ },
+ "961": {
+  "name": "ウミトリオ",
+  "motif": "ウナギ",
+  "confidence": "high"
+ },
+ "962": {
+  "name": "オトシドリ",
+  "motif": "トリ",
+  "confidence": "high"
+ },
+ "963": {
+  "name": "ナミイルカ",
+  "motif": "イルカ",
+  "confidence": "high"
+ },
+ "964": {
+  "name": "イルカマン",
+  "motif": "イルカ",
+  "confidence": "high"
+ },
+ "965": {
+  "name": "ブロロン",
+  "motif": "カート",
+  "confidence": "medium"
+ },
+ "966": {
+  "name": "ブロロローム",
+  "motif": "カート",
+  "confidence": "medium"
+ },
+ "967": {
+  "name": "モトトカゲ",
+  "motif": "トカゲ",
+  "confidence": "medium"
+ },
+ "968": {
+  "name": "ミミズズ",
+  "motif": "ミミズ",
+  "confidence": "high"
+ },
+ "969": {
+  "name": "キラーメ",
+  "motif": "岩",
+  "confidence": "medium"
+ },
+ "970": {
+  "name": "キラフロル",
+  "motif": "岩",
+  "confidence": "medium"
+ },
+ "971": {
+  "name": "ボチ",
+  "motif": "イヌ",
+  "confidence": "high"
+ },
+ "972": {
+  "name": "ハカドッグ",
+  "motif": "イヌ",
+  "confidence": "high"
+ },
+ "973": {
+  "name": "カラミンゴ",
+  "motif": "フラミンゴ",
+  "confidence": "high"
+ },
+ "974": {
+  "name": "アルクジラ",
+  "motif": "クジラ",
+  "confidence": "high"
+ },
+ "975": {
+  "name": "ハルクジラ",
+  "motif": "クジラ",
+  "confidence": "high"
+ },
+ "976": {
+  "name": "ミガルーサ",
+  "motif": "サカナ",
+  "confidence": "high"
+ },
+ "977": {
+  "name": "ヘイラッシャ",
+  "motif": "ナマズ",
+  "confidence": "high"
+ },
+ "978": {
+  "name": "シャリタツ",
+  "motif": "サカナ",
+  "confidence": "medium"
+ },
+ "979": {
+  "name": "コノヨザル",
+  "motif": "サル",
+  "confidence": "high"
+ },
+ "980": {
+  "name": "ドオー",
+  "motif": "サンショウウオ",
+  "confidence": "medium"
+ },
+ "981": {
+  "name": "リキキリン",
+  "motif": "キリン",
+  "confidence": "high"
+ },
+ "982": {
+  "name": "ノココッチ",
+  "motif": "ヘビ",
+  "confidence": "high"
+ },
+ "983": {
+  "name": "ドドゲザン",
+  "motif": "イヌ",
+  "confidence": "medium"
+ },
+ "984": {
+  "name": "イダイナキバ",
+  "motif": "ゾウ",
+  "confidence": "high"
+ },
+ "985": {
+  "name": "サケブシッポ",
+  "motif": "風船",
+  "confidence": "low"
+ },
+ "986": {
+  "name": "アラブルタケ",
+  "motif": "キノコ",
+  "confidence": "high"
+ },
+ "987": {
+  "name": "ハバタクカミ",
+  "motif": "ゴースト",
+  "confidence": "high"
+ },
+ "988": {
+  "name": "チヲハウハネ",
+  "motif": "ガ",
+  "confidence": "medium"
+ },
+ "989": {
+  "name": "スナノケガワ",
+  "motif": "磁石",
+  "confidence": "medium"
+ },
+ "990": {
+  "name": "テツノワダチ",
+  "motif": "ゾウ",
+  "confidence": "high"
+ },
+ "991": {
+  "name": "テツノツツミ",
+  "motif": "ペンギン",
+  "confidence": "medium"
+ },
+ "992": {
+  "name": "テツノカイナ",
+  "motif": "ヒト型",
+  "confidence": "high"
+ },
+ "993": {
+  "name": "テツノコウベ",
+  "motif": "ドラゴン",
+  "confidence": "medium"
+ },
+ "994": {
+  "name": "テツノドクガ",
+  "motif": "ガ",
+  "confidence": "high"
+ },
+ "995": {
+  "name": "テツノイバラ",
+  "motif": "恐竜",
+  "confidence": "medium"
+ },
+ "996": {
+  "name": "セビエ",
+  "motif": "ドラゴン",
+  "confidence": "medium"
+ },
+ "997": {
+  "name": "セゴール",
+  "motif": "ドラゴン",
+  "confidence": "medium"
+ },
+ "998": {
+  "name": "セグレイブ",
+  "motif": "ドラゴン",
+  "confidence": "medium"
+ },
+ "999": {
+  "name": "コレクレー",
+  "motif": "宝箱",
+  "confidence": "high"
+ },
+ "1000": {
+  "name": "サーフゴー",
+  "motif": "コイン",
+  "confidence": "high"
+ },
+ "1001": {
+  "name": "チオンジェン",
+  "motif": "ヘビ",
+  "confidence": "medium"
+ },
+ "1002": {
+  "name": "パオジアン",
+  "motif": "トラ",
+  "confidence": "medium"
+ },
+ "1003": {
+  "name": "ディンルー",
+  "motif": "シカ",
+  "confidence": "medium"
+ },
+ "1004": {
+  "name": "イーユイ",
+  "motif": "サカナ",
+  "confidence": "medium"
+ },
+ "1005": {
+  "name": "トドロクツキ",
+  "motif": "ドラゴン",
+  "confidence": "high"
+ },
+ "1006": {
+  "name": "テツノブジン",
+  "motif": "ヒト型",
+  "confidence": "high"
+ },
+ "1007": {
+  "name": "コライドン",
+  "motif": "恐竜",
+  "confidence": "medium"
+ },
+ "1008": {
+  "name": "ミライドン",
+  "motif": "ドラゴン",
+  "confidence": "medium"
+ },
+ "1009": {
+  "name": "ウネルミナモ",
+  "motif": "恐竜",
+  "confidence": "medium"
+ },
+ "1010": {
+  "name": "テツノイサハ",
+  "motif": "ヤギ",
+  "confidence": "medium"
+ },
+ "1011": {
+  "name": "カミッチュ",
+  "motif": "果実",
+  "confidence": "high"
+ },
+ "1012": {
+  "name": "チャデス",
+  "motif": "茶筅",
+  "confidence": "medium"
+ },
+ "1013": {
+  "name": "ヤバソチャ",
+  "motif": "急須",
+  "confidence": "medium"
+ },
+ "1014": {
+  "name": "イイネイヌ",
+  "motif": "イヌ",
+  "confidence": "high"
+ },
+ "1015": {
+  "name": "マシマシラ",
+  "motif": "サル",
+  "confidence": "high"
+ },
+ "1016": {
+  "name": "キチキギス",
+  "motif": "キジ",
+  "confidence": "high"
+ },
+ "1017": {
+  "name": "オーガポン",
+  "motif": "ヒト型",
+  "confidence": "medium"
+ },
+ "1018": {
+  "name": "ブリジュラス",
+  "motif": "橋",
+  "confidence": "medium"
+ },
+ "1019": {
+  "name": "カミツオロチ",
+  "motif": "ヘビ",
+  "confidence": "medium"
+ },
+ "1020": {
+  "name": "ウガツホムラ",
+  "motif": "ライオン",
+  "confidence": "medium"
+ },
+ "1021": {
+  "name": "タケルライコ",
+  "motif": "恐竜",
+  "confidence": "medium"
+ },
+ "1022": {
+  "name": "テツノイワオ",
+  "motif": "ウシ",
+  "confidence": "medium"
+ },
+ "1023": {
+  "name": "テツノカシラ",
+  "motif": "ヤギ",
+  "confidence": "medium"
+ },
+ "1024": {
+  "name": "テラパゴス",
+  "motif": "カメ",
+  "confidence": "high"
+ },
+ "1025": {
+  "name": "モモワロウ",
+  "motif": "果実",
+  "confidence": "medium"
+ }
+}
