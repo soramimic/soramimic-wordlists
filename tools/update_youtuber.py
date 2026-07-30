@@ -7,7 +7,20 @@ category列(youtuber/vtuber)で区別し、両方の職業を持つ者は vtuber
 収録は記事名(=活動名)のみで、本名は取得しない。
 成人向け業界の職業(EXCLUDED_OCCUPATIONS)を P106 に持つ人物は収録しない。
 
+付加列: category(youtuber/vtuber)・org(所属)・debut_year(活動開始年)・
+status(current/former)・channel(メインYouTubeチャンネル名。P2397の修飾子P1810で、
+複数チャンネルは登録者数P3744が最大の1本)・description(記事冒頭からの短い完結文。
+無ければWikidataのja description。本名の記述は落とす)。いずれも無ければNAで、
+既存行は空欄補完のみ(詳細は docs/adr/00023, 00029)。
+
+subscribers(メインチャンネルの登録者数)列の値はこのスクリプトでは扱わない。
+時変値なので毎回全行を上書きする別スクリプト
+`tools/update_youtuber_subscribers.py` が管理する(詳細は docs/adr/00030)。
+このスクリプトが追記した新規行の subscribers は空のままで、登録者数スクリプトが
+次に走ったときに埋まる(月次バッチでは同じ回の直後のステップで走る)。
+
 環境変数 YOUTUBER_CACHE を指定すると取得結果をpickleキャッシュする(開発用)。
+attrs のキーが増えた回は古いキャッシュを使い回さないこと。
 
 usage: python3 tools/update_youtuber.py
 """
@@ -51,6 +64,7 @@ EXCLUDED = {
     "桜井日奈子",  # 日本の女優。公式YouTubeチャンネル開設の記載のみ
     # 歌手・音楽家(著名性は音楽活動。YouTube発ではない)
     "KO-ney",  # フィンガードラマー・トラックメイカー。記事全文にYouTubeの言及なし
+    "XXXテンタシオン",  # アメリカのラッパー。著名性は音楽活動
     "Pii",  # Awesome City Club・PORINのソロプロジェクトの歌手
     "¿?shimon",  # 日本の作詞家・作曲家・ボカロP
     "しののめ",  # 日本のシンガーソングライター。YouTube言及は1件のみ

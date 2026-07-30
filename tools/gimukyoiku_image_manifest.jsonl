@@ -96,17 +96,17 @@
 {"word": "叫び", "file": "gk_df05308969.jpg", "bucket": "v1b", "method": "sd", "prompt": "a swirling orange and red sunset sky over a quiet fjord, seen past the diagonal railing of an empty wooden walkway"}
 {"word": "ロダン", "file": "gk_1121cfa083.jpg", "bucket": "v1", "method": "sd", "prompt": "an imaginary portrait of a nineteenth century European sculptor in a work apron and beard, shaping a clay figure on a stand with a modeling tool"}
 {"word": "考える人", "file": "gk_9aee1a9c07.jpg", "bucket": "v1b", "method": "sd", "prompt": "a single bronze statue of a seated man resting his chin on his hand, side view, plain background"}
-{"word": "アルファベット", "file": "gk_56816d5016.jpg", "bucket": "v1", "method": "sd", "prompt": "a curved row of colorful wooden alphabet letter blocks with a few loose letter tiles scattered in front"}
+{"word": "アルファベット", "file": "gk_56816d5016.jpg", "bucket": "v1", "method": "card", "card_main": "A B C … X Y Z", "card_sub": ""}
 {"word": "ブロック体", "file": "gk_79e9da395c.jpg", "bucket": "v1", "method": "card", "card_main": "ABC abc", "card_sub": "ブロック体"}
 {"word": "四線", "file": "gk_df974b3426.jpg", "bucket": "v1b", "method": "sd", "prompt": "an open English practice notebook page ruled with four parallel horizontal guideline stripes, a pencil laid across it"}
 {"word": "大文字", "file": "gk_114f11cdbf.jpg", "bucket": "v1", "method": "sd", "prompt": "a large tall capital letter card standing beside a much smaller letter card, a height comparison arrow between them"}
-{"word": "小文字", "file": "gk_185abce880.jpg", "bucket": "v1", "method": "sd", "prompt": "a small rounded lowercase letter card paired with a taller capital letter card on a ruled baseline"}
+{"word": "小文字", "file": "gk_185abce880.jpg", "bucket": "v1", "method": "card", "card_main": "a b c", "card_sub": "↔ A B C"}
 {"word": "母音", "file": "gk_e0bba60940.jpg", "bucket": "v1b", "method": "card", "card_main": "A E I O U", "card_sub": "母音"}
 {"word": "子音", "file": "gk_cbb0429aaa.jpg", "bucket": "v1b", "method": "card", "card_main": "B C D F G", "card_sub": "子音"}
-{"word": "発音記号", "file": "gk_cd41a29894.jpg", "bucket": "v1b", "method": "sd", "prompt": "an open dictionary page with a bracketed row of small abstract symbol marks, a magnifying glass hovering over it"}
-{"word": "アクセント", "file": "gk_77ac0b8a02.jpg", "bucket": "v1", "method": "sd", "prompt": "a musical accent wedge mark above a row of circles, one circle glowing much larger and brighter than the rest"}
+{"word": "発音記号", "file": "gk_cd41a29894.jpg", "bucket": "v1b", "method": "card", "card_main": "/æ/ /θ/ /ʃ/", "card_sub": "音を表す記号"}
+{"word": "アクセント", "file": "gk_77ac0b8a02.jpg", "bucket": "v1", "method": "card", "card_main": "ˈæp·l", "card_sub": "強く読む位置"}
 {"word": "イントネーション", "file": "gk_4ded551cff.jpg", "bucket": "v1", "method": "card", "card_main": "Yes↗ / Yes↘", "card_sub": "イントネーション"}
-{"word": "リエゾン", "file": "gk_8a86a7a25b.jpg", "bucket": "v1b", "method": "sd", "prompt": "two word cards joined by a chain link, their sound waves merging into one continuous flowing ribbon"}
+{"word": "リエゾン", "file": "gk_8a86a7a25b.jpg", "bucket": "v1b", "method": "card", "card_main": "an apple → a-napple", "card_sub": "音がつながる"}
 {"word": "リスニング", "file": "gk_6e174bbfd7.jpg", "bucket": "v1", "method": "sd", "prompt": "a pair of headphones with concentric sound waves and a small ear icon beside them"}
 {"word": "シャドーイング", "file": "gk_ccbf92654c.jpg", "bucket": "v1b", "method": "sd", "prompt": "a student wearing headphones speaking aloud while a soft shadow silhouette repeats the same pose behind, sound waves around both"}
 {"word": "リピートアフターミー", "file": "gk_bf56d418bb.jpg", "bucket": "v1b", "method": "sd", "prompt": "a teacher at the front of a classroom with a speech bubble and students echoing back with their own speech bubbles"}
@@ -115,54 +115,54 @@
 {"word": "単語テスト", "file": "gk_260f2dc703.jpg", "bucket": "v1", "method": "sd", "prompt": "a small quiz sheet with rows of blank answer boxes, a red pen and a circled score mark"}
 {"word": "書き取り", "file": "gk_7e0e7b1729.jpg", "bucket": "v1", "method": "sd", "prompt": "an open notebook with rows of ruled writing lines, a pencil in motion and an eraser with shavings"}
 {"word": "熟語", "file": "gk_da14c5b844.jpg", "bucket": "v1b", "method": "card", "card_main": "get up / look for", "card_sub": "熟語"}
-{"word": "イディオム", "file": "gk_8e5cf1f170.jpg", "bucket": "v1b", "method": "sd", "prompt": "a speech bubble containing a puzzle of unrelated small icons fitted together, a question mark floating beside it"}
+{"word": "イディオム", "file": "gk_8e5cf1f170.jpg", "bucket": "v1b", "method": "card", "card_main": "raining cats and dogs", "card_sub": "直訳できない言い回し"}
 {"word": "英訳", "file": "gk_68874e4eb4.jpg", "bucket": "v1", "method": "card", "card_main": "犬 → dog", "card_sub": "英訳"}
-{"word": "前置詞", "file": "gk_4c0331f981.jpg", "bucket": "v1", "method": "sd", "prompt": "a small cube shown three times around an open box, inside it, on top of it and beside it, each marked with a pointing arrow"}
+{"word": "前置詞", "file": "gk_4c0331f981.jpg", "bucket": "v1", "method": "card", "card_main": "in on at", "card_sub": "場所・時を表す"}
 {"word": "代名詞", "file": "gk_348e6732a3.jpg", "bucket": "v1", "method": "card", "card_main": "I you he she it", "card_sub": "代名詞"}
-{"word": "感嘆詞", "file": "gk_2278984a96.jpg", "bucket": "v1", "method": "sd", "prompt": "a burst shaped speech bubble packed with exclamation marks and sparkling star shapes"}
+{"word": "感嘆詞", "file": "gk_2278984a96.jpg", "bucket": "v1", "method": "card", "card_main": "Oh! Wow! Ah!", "card_sub": "気持ちを表す語"}
 {"word": "目的語", "file": "gk_2f0e4de353.jpg", "bucket": "v1", "method": "card", "card_main": "I play tennis.", "card_sub": "目的語 = tennis"}
-{"word": "補語", "file": "gk_fec75c9dec.jpg", "bucket": "v1b", "method": "sd", "prompt": "two blocks joined by a large equal sign, a spotlight beam falling on the second block"}
-{"word": "文型", "file": "gk_ceed2fb260.jpg", "bucket": "v1b", "method": "sd", "prompt": "a chart showing five rows of colored building blocks stacked in different repeating patterns"}
-{"word": "語順", "file": "gk_aee81bd66b.jpg", "bucket": "v1b", "method": "sd", "prompt": "numbered colored blocks lining up in sequence, one block being slid into its correct slot by a curved arrow"}
+{"word": "補語", "file": "gk_fec75c9dec.jpg", "bucket": "v1b", "method": "card", "card_main": "S V C", "card_sub": "He is a teacher."}
+{"word": "文型", "file": "gk_ceed2fb260.jpg", "bucket": "v1b", "method": "card", "card_main": "S V O C", "card_sub": "文の組み立ての型"}
+{"word": "語順", "file": "gk_aee81bd66b.jpg", "bucket": "v1b", "method": "card", "card_main": "S → V → O", "card_sub": "並べる順番"}
 {"word": "be動詞", "file": "gk_6d7db5ca79.jpg", "bucket": "v1", "method": "card", "card_main": "am is are", "card_sub": "be動詞"}
-{"word": "一般動詞", "file": "gk_47e355c336.jpg", "bucket": "v1", "method": "sd", "prompt": "a cluster of action icons, a running shoe, an open book and a drinking cup, orbiting a central gear"}
+{"word": "一般動詞", "file": "gk_47e355c336.jpg", "bucket": "v1", "method": "card", "card_main": "play run like", "card_sub": "↔ be動詞"}
 {"word": "三人称単数現在", "file": "gk_bcdf311475.jpg", "bucket": "v1b", "method": "card", "card_main": "He plays.", "card_sub": "三単現の s"}
-{"word": "現在形", "file": "gk_22211bfec9.jpg", "bucket": "v1", "method": "sd", "prompt": "a clock with its hands at the present moment, a bright sun and a repeating cycle arrow circling around it"}
+{"word": "現在形", "file": "gk_22211bfec9.jpg", "bucket": "v1", "method": "card", "card_main": "I play / He plays", "card_sub": "今の状態・習慣"}
 {"word": "過去形", "file": "gk_cba0512d21.jpg", "bucket": "v1b", "method": "card", "card_main": "-ed", "card_sub": "過去形 (played)"}
-{"word": "未来形", "file": "gk_95b22bd446.jpg", "bucket": "v1b", "method": "sd", "prompt": "a clock with a forward arrow and a small rocket flying toward a bright horizon with a calendar behind"}
-{"word": "現在進行形", "file": "gk_7eb37c2a03.jpg", "bucket": "v1", "method": "sd", "prompt": "a person running in mid stride with motion lines, a clock beside them showing the present moment"}
-{"word": "過去進行形", "file": "gk_f79e98c05e.jpg", "bucket": "v1b", "method": "sd", "prompt": "a person running in mid stride shown inside a faded framed photograph, an old clock with a backward arrow beside it"}
-{"word": "現在完了形", "file": "gk_ff8492e33a.jpg", "bucket": "v1b", "method": "sd", "prompt": "a timeline arrow stretching from a small past marker to a present clock, a checkered finish flag planted at the end"}
-{"word": "過去分詞", "file": "gk_8eeb83b238.jpg", "bucket": "v1b", "method": "sd", "prompt": "three numbered verb cards in a row with the third card glowing, transformation arrows curving between them"}
-{"word": "不規則動詞", "file": "gk_1c89084192.jpg", "bucket": "v1", "method": "sd", "prompt": "a long three column chart where every row holds oddly different shaped blocks, some marked with warning stars"}
-{"word": "規則動詞", "file": "gk_68dca58872.jpg", "bucket": "v1", "method": "sd", "prompt": "a neat chart of identical blocks each with the same small tag stamped onto its end, a repeating orderly pattern"}
+{"word": "未来形", "file": "gk_95b22bd446.jpg", "bucket": "v1b", "method": "card", "card_main": "will ~ / be going to ~", "card_sub": "これからのこと"}
+{"word": "現在進行形", "file": "gk_7eb37c2a03.jpg", "bucket": "v1", "method": "card", "card_main": "am/is/are + ~ing", "card_sub": "今している最中"}
+{"word": "過去進行形", "file": "gk_f79e98c05e.jpg", "bucket": "v1b", "method": "card", "card_main": "was/were + ~ing", "card_sub": "そのときしていた最中"}
+{"word": "現在完了形", "file": "gk_ff8492e33a.jpg", "bucket": "v1b", "method": "card", "card_main": "have/has + 過去分詞", "card_sub": "継続・経験"}
+{"word": "過去分詞", "file": "gk_8eeb83b238.jpg", "bucket": "v1b", "method": "card", "card_main": "gone / seen / eaten", "card_sub": "have + ___"}
+{"word": "不規則動詞", "file": "gk_1c89084192.jpg", "bucket": "v1", "method": "card", "card_main": "go — went — gone", "card_sub": "↔ -ed"}
+{"word": "規則動詞", "file": "gk_68dca58872.jpg", "bucket": "v1", "method": "card", "card_main": "play → played", "card_sub": "-ed をつける"}
 {"word": "原形", "file": "gk_ca15fb77bd.jpg", "bucket": "v1b", "method": "card", "card_main": "play  go  eat", "card_sub": "動詞の原形"}
-{"word": "to不定詞", "file": "gk_ea4a5209ea.jpg", "bucket": "v1b", "method": "sd", "prompt": "a signpost arrow pointing toward a plain block, three branching paths spreading out behind the post"}
+{"word": "to不定詞", "file": "gk_ea4a5209ea.jpg", "bucket": "v1b", "method": "card", "card_main": "to + 動詞の原形", "card_sub": "to play / to eat"}
 {"word": "動名詞", "file": "gk_5398a57759.jpg", "bucket": "v1", "method": "card", "card_main": "playing", "card_sub": "動名詞 (-ing)"}
 {"word": "分詞", "file": "gk_41a8b8882b.jpg", "bucket": "v1", "method": "card", "card_main": "-ing / -ed", "card_sub": "分詞"}
-{"word": "受動態", "file": "gk_100c186cf6.jpg", "bucket": "v1", "method": "sd", "prompt": "a ball being struck, with a bold reversed arrow running backward from the ball toward the bat"}
-{"word": "能動態", "file": "gk_26285ee6df.jpg", "bucket": "v1", "method": "sd", "prompt": "a bold forward arrow sweeping from a spotlighted starting block straight into a target mark"}
-{"word": "比較級", "file": "gk_221217cd8c.jpg", "bucket": "v1", "method": "sd", "prompt": "two bars of clearly different height side by side with a greater than sign between them"}
-{"word": "最上級", "file": "gk_23380c386e.jpg", "bucket": "v1", "method": "sd", "prompt": "three bars of rising height, the tallest topped with a golden crown and a first place trophy"}
-{"word": "原級", "file": "gk_2ea890c3ad.jpg", "bucket": "v1", "method": "sd", "prompt": "two bars of exactly equal height side by side with a large equal sign between them"}
-{"word": "関係代名詞", "file": "gk_cd78c02edc.jpg", "bucket": "v1b", "method": "sd", "prompt": "two sentence blocks fastened together by a hook shaped connector, a curved arrow looping back from the connector to the first card"}
-{"word": "間接疑問文", "file": "gk_67132e44ca.jpg", "bucket": "v1", "method": "sd", "prompt": "a small question mark bubble nested inside a larger plain speech bubble"}
+{"word": "受動態", "file": "gk_100c186cf6.jpg", "bucket": "v1", "method": "card", "card_main": "be + 過去分詞", "card_sub": "It is used."}
+{"word": "能動態", "file": "gk_26285ee6df.jpg", "bucket": "v1", "method": "card", "card_main": "I use it.", "card_sub": "↔ It is used."}
+{"word": "比較級", "file": "gk_221217cd8c.jpg", "bucket": "v1", "method": "card", "card_main": "-er / more ~", "card_sub": "より〜だ"}
+{"word": "最上級", "file": "gk_23380c386e.jpg", "bucket": "v1", "method": "card", "card_main": "the -est / the most ~", "card_sub": "いちばん〜だ"}
+{"word": "原級", "file": "gk_2ea890c3ad.jpg", "bucket": "v1", "method": "card", "card_main": "as tall as", "card_sub": "変化しないもとの形"}
+{"word": "関係代名詞", "file": "gk_cd78c02edc.jpg", "bucket": "v1b", "method": "card", "card_main": "who / which / that", "card_sub": "名詞をうしろから説明"}
+{"word": "間接疑問文", "file": "gk_67132e44ca.jpg", "bucket": "v1", "method": "card", "card_main": "I know what this is.", "card_sub": "↔ What is this?"}
 {"word": "先行詞", "file": "gk_c16905cbc3.jpg", "bucket": "v1b", "method": "card", "card_main": "the boy who runs", "card_sub": "先行詞 = the boy"}
-{"word": "疑問詞", "file": "gk_e715838832.jpg", "bucket": "v1b", "method": "sd", "prompt": "five question marks of different sizes fanned out in an arc with a magnifying glass in front"}
-{"word": "疑問文", "file": "gk_c62380a763.jpg", "bucket": "v1b", "method": "sd", "prompt": "a large question mark inside a speech bubble, two word blocks swapping places along curved arrows"}
-{"word": "否定文", "file": "gk_51102f6c02.jpg", "bucket": "v1", "method": "sd", "prompt": "a speech bubble with a red circle slash symbol crossing over a word block"}
-{"word": "肯定文", "file": "gk_13a60471fa.jpg", "bucket": "v1", "method": "sd", "prompt": "a speech bubble with a green check mark and a tidy row of aligned word blocks"}
-{"word": "命令文", "file": "gk_6072e6162a.jpg", "bucket": "v1", "method": "sd", "prompt": "a megaphone with a bold exclamation mark in a speech bubble and a pointing hand icon"}
-{"word": "感嘆文", "file": "gk_29d7a45695.jpg", "bucket": "v1", "method": "sd", "prompt": "a starburst shaped speech bubble bursting with exclamation marks, sparkles and confetti"}
-{"word": "付加疑問", "file": "gk_5efe9645f6.jpg", "bucket": "v1", "method": "sd", "prompt": "a speech bubble with a small tag shaped question mark bubble clipped onto its tail, a check mark beside it"}
-{"word": "可算名詞", "file": "gk_fd1f48b8d8.jpg", "bucket": "v1b", "method": "sd", "prompt": "three identical apples in a row with counting dots and small numbered tags above each"}
-{"word": "不可算名詞", "file": "gk_128902c164.jpg", "bucket": "v1", "method": "sd", "prompt": "a pitcher pouring water into a glass, a crossed out counting number tag beside it"}
-{"word": "所有格", "file": "gk_b15a651ebc.jpg", "bucket": "v1b", "method": "sd", "prompt": "a name tag tied to a school bag with a small apostrophe mark badge floating above"}
-{"word": "主格", "file": "gk_2429df064a.jpg", "bucket": "v1", "method": "sd", "prompt": "a pronoun chart with the first cell glowing, an arrow leading out of it into a verb block"}
+{"word": "疑問詞", "file": "gk_e715838832.jpg", "bucket": "v1b", "method": "card", "card_main": "what why how", "card_sub": "5W1H"}
+{"word": "疑問文", "file": "gk_c62380a763.jpg", "bucket": "v1b", "method": "card", "card_main": "Do you like dogs?", "card_sub": "?"}
+{"word": "否定文", "file": "gk_51102f6c02.jpg", "bucket": "v1", "method": "card", "card_main": "I don't like dogs.", "card_sub": "not"}
+{"word": "肯定文", "file": "gk_13a60471fa.jpg", "bucket": "v1", "method": "card", "card_main": "I like dogs.", "card_sub": "↔ 否定文・疑問文"}
+{"word": "命令文", "file": "gk_6072e6162a.jpg", "bucket": "v1", "method": "card", "card_main": "Stand up!", "card_sub": "動詞の原形で始める"}
+{"word": "感嘆文", "file": "gk_29d7a45695.jpg", "bucket": "v1", "method": "card", "card_main": "How nice! / What a ~!", "card_sub": "何て〜だろう"}
+{"word": "付加疑問", "file": "gk_5efe9645f6.jpg", "bucket": "v1", "method": "card", "card_main": "…, isn't it?", "card_sub": "〜ですよね"}
+{"word": "可算名詞", "file": "gk_fd1f48b8d8.jpg", "bucket": "v1b", "method": "card", "card_main": "a book / two books", "card_sub": "数えられる"}
+{"word": "不可算名詞", "file": "gk_128902c164.jpg", "bucket": "v1", "method": "card", "card_main": "water / information", "card_sub": "× two waters"}
+{"word": "所有格", "file": "gk_b15a651ebc.jpg", "bucket": "v1b", "method": "card", "card_main": "my / your / his", "card_sub": "〜の"}
+{"word": "主格", "file": "gk_2429df064a.jpg", "bucket": "v1", "method": "card", "card_main": "I / you / he", "card_sub": "主語になる形"}
 {"word": "目的格", "file": "gk_926b1df422.jpg", "bucket": "v1b", "method": "sd", "prompt": "a pronoun chart with the last cell glowing, an arrow arriving into it from a verb block"}
 {"word": "語彙", "file": "gk_143846674e.jpg", "bucket": "v1", "method": "sd", "prompt": "an open treasure chest overflowing with word cards and floating letter tiles"}
-{"word": "つづり", "file": "gk_184d53da4e.jpg", "bucket": "v1", "method": "sd", "prompt": "letter tiles being arranged in order along a wooden rack, a magnifying glass checking one tile"}
-{"word": "スペル", "file": "gk_bbe44b4299.jpg", "bucket": "v1b", "method": "sd", "prompt": "letter tiles dropping into empty slots on a word card, one slot marked with a check stamp"}
+{"word": "つづり", "file": "gk_184d53da4e.jpg", "bucket": "v1", "method": "card", "card_main": "a-p-p-l-e", "card_sub": "文字の並び"}
+{"word": "スペル", "file": "gk_bbe44b4299.jpg", "bucket": "v1b", "method": "card", "card_main": "b-o-o-k", "card_sub": "つづりのこと"}
 {"word": "プリント", "file": "gk_0087f71210.jpg", "bucket": "v1", "method": "sd", "prompt": "a stack of printed worksheet sheets with rows of blank boxes, a pencil resting on the top sheet"}
 {"word": "穴埋め", "file": "gk_ad6605073d.jpg", "bucket": "v1b", "method": "sd", "prompt": "a worksheet with empty rounded blank boxes in a line, a pencil filling one of them in"}
 {"word": "並べかえ", "file": "gk_50a95966b9.jpg", "bucket": "v1", "method": "sd", "prompt": "scattered word cards being swept into a straight ordered line by curved arrows"}
@@ -184,19 +184,19 @@
 {"word": "サンキュー", "file": "gk_a1a559bf45.jpg", "bucket": "v1b", "method": "sd", "prompt": "a person bowing slightly in thanks with a heart filled speech bubble and a small wrapped gift"}
 {"word": "グッバイ", "file": "gk_e3e2fa3c6f.jpg", "bucket": "v1b", "method": "sd", "prompt": "a person waving goodbye in a doorway with the evening sun setting behind"}
 {"word": "現在分詞", "file": "gk_670fc89a3a.jpg", "bucket": "v1", "method": "card", "card_main": "running", "card_sub": "現在分詞 (-ing)"}
-{"word": "仮定法", "file": "gk_b2c0f1dfdc.jpg", "bucket": "v1b", "method": "sd", "prompt": "a forked road where one branch fades into a translucent dream cloud, a wishing star shining above it"}
+{"word": "仮定法", "file": "gk_b2c0f1dfdc.jpg", "bucket": "v1b", "method": "card", "card_main": "If I were ~, I would ~", "card_sub": "現実と違う仮定"}
 {"word": "短縮形", "file": "gk_d931471094.jpg", "bucket": "v1b", "method": "card", "card_main": "I am → I'm", "card_sub": "短縮形"}
-{"word": "人称代名詞", "file": "gk_4ccbf314c4.jpg", "bucket": "v1", "method": "sd", "prompt": "a chart of small character icons arranged in rows and columns, each cell framed and linked by arrows"}
-{"word": "指示代名詞", "file": "gk_2cf1e11c7d.jpg", "bucket": "v1", "method": "sd", "prompt": "a pointing hand icon indicating a near object and a far object, dotted distance lines between them"}
-{"word": "疑問代名詞", "file": "gk_271933aaa0.jpg", "bucket": "v1", "method": "sd", "prompt": "a magnifying glass with a large question mark hovering over a shadowed mystery box"}
-{"word": "再帰代名詞", "file": "gk_bc2a1ab7cd.jpg", "bucket": "v1b", "method": "sd", "prompt": "a person facing a mirror and looking at their own reflection, a curved arrow looping back to themselves"}
+{"word": "人称代名詞", "file": "gk_4ccbf314c4.jpg", "bucket": "v1", "method": "card", "card_main": "I / you / he / she", "card_sub": "人を指す語"}
+{"word": "指示代名詞", "file": "gk_2cf1e11c7d.jpg", "bucket": "v1", "method": "card", "card_main": "this / that", "card_sub": "これ・あれ"}
+{"word": "疑問代名詞", "file": "gk_271933aaa0.jpg", "bucket": "v1", "method": "card", "card_main": "Who? What? Which?", "card_sub": "だれ・なに"}
+{"word": "再帰代名詞", "file": "gk_bc2a1ab7cd.jpg", "bucket": "v1b", "method": "card", "card_main": "myself / yourself", "card_sub": "自分自身"}
 {"word": "不定代名詞", "file": "gk_78ee875a38.jpg", "bucket": "v1", "method": "card", "card_main": "someone  something", "card_sub": "不定代名詞"}
-{"word": "基数", "file": "gk_080e485aa9.jpg", "bucket": "v1", "method": "sd", "prompt": "colorful number cards lined up in order with matching counting dots beneath each card"}
-{"word": "序数", "file": "gk_b55362487f.jpg", "bucket": "v1b", "method": "sd", "prompt": "a three step podium with ribbon rosettes on each place and a calendar page with a circled date"}
-{"word": "音節", "file": "gk_e31126abbb.jpg", "bucket": "v1b", "method": "sd", "prompt": "a long block divided into three segments by dotted lines, clapping rhythm marks and beat dots above it"}
+{"word": "基数", "file": "gk_080e485aa9.jpg", "bucket": "v1", "method": "card", "card_main": "one two three", "card_sub": "1 2 3"}
+{"word": "序数", "file": "gk_b55362487f.jpg", "bucket": "v1b", "method": "card", "card_main": "1st 2nd 3rd", "card_sub": "first second third"}
+{"word": "音節", "file": "gk_e31126abbb.jpg", "bucket": "v1b", "method": "card", "card_main": "ba·na·na", "card_sub": "3音節"}
 {"word": "発音", "file": "gk_7f2efa3c73.jpg", "bucket": "v1", "method": "sd", "prompt": "an open mouth icon with sound waves spreading out and a small speaker symbol beside it"}
-{"word": "二重母音", "file": "gk_c90e644cf3.jpg", "bucket": "v1b", "method": "sd", "prompt": "two vowel circles gliding together into one smooth merged curve with a flowing sound ribbon"}
-{"word": "フォニックス", "file": "gk_0cec4798dc.jpg", "bucket": "v1", "method": "sd", "prompt": "letter tiles paired with matching picture cards, small sound wave marks linking each pair"}
+{"word": "二重母音", "file": "gk_c90e644cf3.jpg", "bucket": "v1b", "method": "card", "card_main": "/ai/ /ou/ /ei/", "card_sub": "二つの母音が一つに"}
+{"word": "フォニックス", "file": "gk_0cec4798dc.jpg", "bucket": "v1", "method": "card", "card_main": "c-a-t → /kæt/", "card_sub": "つづりと音の対応"}
 {"word": "句読点", "file": "gk_517c78ed91.jpg", "bucket": "v1", "method": "sd", "prompt": "a set of punctuation mark cards, a round period dot, a comma, a question mark and an exclamation mark"}
 {"word": "ピリオド", "file": "gk_d1df59021f.jpg", "bucket": "v1b", "method": "card", "card_main": ".", "card_sub": "ピリオド"}
 {"word": "クエスチョンマーク", "file": "gk_724b4399ef.jpg", "bucket": "v1", "method": "sd", "prompt": "a large bold question mark on a card with a small speech bubble behind it"}
@@ -813,7 +813,7 @@
 {"word": "電気抵抗", "file": "gk_9cc918b121.jpg", "bucket": "v1b", "method": "card", "card_main": "Ω", "card_sub": "電気抵抗(オーム)"}
 {"word": "慣性の法則", "file": "gk_0f1c22a416.jpg", "bucket": "v1", "method": "sd", "prompt": "a ball resting on a small cart, the cart suddenly stopped by a block while the ball keeps sliding forward, motion lines behind the ball"}
 {"word": "作用反作用", "file": "gk_6ebcb87fac.jpg", "bucket": "v1", "method": "card", "card_main": "→ ←", "card_sub": "作用と反作用"}
-{"word": "等速直線運動", "file": "gk_b3bcd74cb5.jpg", "bucket": "v1b", "method": "sd", "prompt": "a cart rolling straight along a level track with a paper record tape trailing behind showing evenly spaced dots, equal arrows of constant length"}
+{"word": "等速直線運動", "file": "gk_b3bcd74cb5.jpg", "bucket": "v1b", "method": "card", "card_main": "v = 一定", "card_sub": ""}
 {"word": "位置エネルギー", "file": "gk_d8cc472867.jpg", "bucket": "v1b", "method": "sd", "prompt": "a ball held at the top of a tall ramp with a dashed height line down to the ground, a soft glowing aura around the ball"}
 {"word": "運動エネルギー", "file": "gk_db94db00b3.jpg", "bucket": "v1b", "method": "sd", "prompt": "a ball rolling fast at the bottom of a ramp with speed lines and a glowing aura, knocking over a small block"}
 {"word": "示相化石", "file": "gk_e6b2ba3a9c.jpg", "bucket": "v1b", "method": "sd", "prompt": "a rock slab containing a coral fossil and a clam shell fossil, a small warm shallow sea scene shown above it"}
@@ -1029,7 +1029,7 @@
 {"word": "公約数", "file": "gk_201d8afc81.jpg", "bucket": "v1", "method": "sd", "prompt": "two large overlapping circles forming a venn diagram, round tokens scattered in each outer part and a few tokens in the shared overlapping middle highlighted in a bright accent color"}
 {"word": "公倍数", "file": "gk_c7db63e768.jpg", "bucket": "v1b", "method": "sd", "prompt": "two parallel horizontal number lines aligned one above the other, the top with small equal hop arrows and the bottom with larger equal hop arrows, vertical dashed lines marking the ticks where both land together"}
 {"word": "偶数", "file": "gk_a3685ea6fa.jpg", "bucket": "v1b", "method": "sd", "prompt": "eight round tokens arranged as two neat equal rows of four, every token paired with a partner directly below it and each pair circled, nothing left over"}
-{"word": "奇数", "file": "gk_0cf1d841bd.jpg", "bucket": "v1", "method": "sd", "prompt": "nine round tokens arranged in pairs in two rows with each pair circled, and one single leftover token standing alone at the end inside a dashed circle"}
+{"word": "奇数", "file": "gk_0cf1d841bd.jpg", "bucket": "v1", "method": "card", "card_main": "1 3 5 7 9 …", "card_sub": ""}
 {"word": "結合法則", "file": "gk_2ce338f334.jpg", "bucket": "v1", "method": "card", "card_main": "(2+3)+4 = 2+(3+4)", "card_sub": "結合法則"}
 {"word": "等号", "file": "gk_9a1dd4507b.jpg", "bucket": "v1b", "method": "card", "card_main": "=", "card_sub": "等号"}
 {"word": "不等号", "file": "gk_a64ea03280.jpg", "bucket": "v1b", "method": "card", "card_main": "< >", "card_sub": "不等号"}
@@ -1062,7 +1062,7 @@
 {"word": "正多面体", "file": "gk_470b72d2c3.jpg", "bucket": "v1", "method": "sd", "prompt": "five regular polyhedron solids lined up in a row, a tetrahedron, a cube, an octahedron, a dodecahedron and an icosahedron, each in a different pastel color with visible edges"}
 {"word": "拡大図", "file": "gk_5e997f4373.jpg", "bucket": "v1", "method": "sd", "prompt": "a small triangle and a much larger triangle of exactly the same shape drawn side by side, with outward pointing expansion arrows around the large one and dashed corresponding lines linking their matching corners"}
 {"word": "縮図", "file": "gk_0343fb19c1.jpg", "bucket": "v1", "method": "sd", "prompt": "a large house shape outline and a much smaller copy of exactly the same shape beside it, with inward pointing shrinking arrows around the small one and dashed lines linking their matching corners"}
-{"word": "縮尺", "file": "gk_e5b851e3ab.jpg", "bucket": "v1b", "method": "sd", "prompt": "a folded paper map with roads and a river, and a segmented black and white scale bar in the corner with a small ruler and a pair of dividers resting on the map"}
+{"word": "縮尺", "file": "gk_e5b851e3ab.jpg", "bucket": "v1b", "method": "card", "card_main": "1 : 25000", "card_sub": ""}
 {"word": "回転移動", "file": "gk_37c5aaa450.jpg", "bucket": "v1", "method": "sd", "prompt": "a triangle and a faded ghost copy of the same triangle turned about a marked center dot, with a curved arrow sweeping between them and dashed radius lines from the center dot to matching corners"}
 {"word": "対称移動", "file": "gk_1ee1f7d2a4.jpg", "bucket": "v1", "method": "sd", "prompt": "a shape and its mirrored copy facing each other across a vertical dashed fold line, with dashed perpendicular connector lines between matching corners and equal tick marks on each side of the fold"}
 {"word": "底面積", "file": "gk_5fe3ab85f5.jpg", "bucket": "v1", "method": "sd", "prompt": "a single upright triangular prism with only its bottom face shaded solid, thick outline"}

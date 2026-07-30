@@ -4,6 +4,10 @@
 方針(ADR 00027):
 - ja.wikipedia の「語と完全一致する記事」(リダイレクト追従あり)のリード画像
   (pageimages、自由ライセンスのみ)を採用する
+- リード画像が無い記事は、Wikidata の画像プロパティ(P18)をフォールバックとして
+  引く(記事の代表画像が未設定でも P18 が付いていることが多い。火成岩など)
+- 生成イメージ(Release配布)の行は、実写・図版が取れたら上書きする
+  (実写の方が良い改善方向。ADR 00021 の概念イメージと同じ扱い)
 - 曖昧さ回避ページ・記事なし・画像なしの行は空のまま(同名異義の取り違えを
   避けるため、検索や部分一致では引かない)
 - 画像は Wikimedia Commons にあるファイルだけ使う(jawiki ローカルの
@@ -91,6 +95,46 @@ EXCLUDED = {
     "和歌": "画像が原稿用紙の文學の文字",
     "自由民権運動": "画像が汎用の黄色い旗",
     "市場経済": "画像が汎用の黄色い旗",
+    # 2026-07-30 P18フォールバック分のAIレビューによる追加
+    "体言止め": "P18が海神の絵画(修辞技法と無関係)",
+    "類義語": "P18が同音異義語のベン図(別概念)",
+    "休符": "P18が全音符の和音譜(休符が写っていない)",
+    "四分の四拍子": "P18の譜例が2/2拍子",
+    "運命": "P18が運命の三女神の絵画(交響曲の通称と同名異義)",
+    "星座早見": "P18が1502年の世界海図(planisphereの同名異義)",
+    "発音": "P18がブラジル上院本会議場(pronunciamentoとの誤結合)",
+    "暗記": "P18がボードゲーム大会の写真(同名異義)",
+    "共同制作": "P18がカタルーニャの人間の塔(美術の共同制作ではない)",
+    "ブロック": "P18がソ連の組立玩具(バレーボールのブロックではない)",
+    "防具": "P18が産業用保護具の棚(剣道の防具ではない)",
+    "ファスナー": "P18がネジの集合写真(fastenerとの誤結合)",
+    "悪質商法": "P18が列車のビジネス個室(無関係)",
+    "消費電力": "P18が世界の発電量グラフ(別概念)",
+    "全数調査": "P18が系統抽出の図(標本調査と同一で逆の内容)",
+    "過密": "P18が兵員輸送船内の米兵(都市の過密ではない)",
+    "まつり縫い": "P18がミシン前のモデル写真(手縫いを表さない)",
+    "木ねじ": "P18がメートル機械ねじ(木ねじではない)",
+    "奇数": "P18がメイテイ数字の奇数表(判読不能)",
+    "石膏": "P18が透明な鉱物結晶標本(美術の石膏の印象と乖離)",
+    "縮尺": "P18が装飾的な古地図(概念が伝わらない)",
+    "献立": "P18が居酒屋のメニュー黒板(栄養バランスの献立ではない)",
+    "等速直線運動": "P18がプリンキピアのラテン語原文(語を表さない)",
+    "アルファベット": "P18が世界の文字体系分布図(英語の26文字ではない)",
+}
+
+
+# 手動キュレーション(語 → Commonsファイル名)。完全一致記事にもP18にも無いが、
+# Commonsを検索すれば教科書的な画像が実在する語。AIレビューでライセンス・被写体を
+# 確認済み(2026-07-30)。EXCLUDED より優先する
+MANUAL_FILES = {
+    "木ねじ": "Wood screws.jpg",
+    "防具": "Bogu.jpg",
+    "ファスナー": "Zipper - metal - blue 01.jpg",
+    "石膏": "Adriano joven - RABASF.jpg",
+    "献立": "SchoolLunchJapanese.jpg",
+    "星座早見": "星座 早見 渡辺教具製作所 (42414938381).jpg",
+    "ブロック": "Volleyball block.jpg",
+    "過密": "A crowded platform - rush hour - yurakucho - July 2014.jpg",
 }
 
 
@@ -106,8 +150,9 @@ def api_get(url, params):
         except Exception as e:  # noqa: BLE001 - リトライして最後に伝播
             if attempt == 2:
                 raise
+            wait = 15 if "429" in str(e) else 5
             print(f"  retry {attempt + 1}: {e}", file=sys.stderr)
-            time.sleep(5)
+            time.sleep(wait)
 
 
 def lookup_batch(titles):
@@ -146,6 +191,29 @@ def lookup_batch(titles):
                 "qid": p.get("pageprops", {}).get("wikibase_item", ""),
                 "article": resolved,
             }
+    return out
+
+
+WIKIDATA_API = "https://www.wikidata.org/w/api.php"
+
+
+def fetch_p18(qids):
+    """QID -> P18ファイル名。無いQIDは含めない。50件ずつ引く。"""
+    out = {}
+    qids = sorted(set(qids))
+    for i in range(0, len(qids), 50):
+        batch = qids[i : i + 50]
+        data = api_get(
+            WIKIDATA_API,
+            {"action": "wbgetentities", "props": "claims", "ids": "|".join(batch)},
+        )
+        for q in batch:
+            p18 = data.get("entities", {}).get(q, {}).get("claims", {}).get("P18")
+            if p18:
+                f = p18[0].get("mainsnak", {}).get("datavalue", {}).get("value")
+                if f:
+                    out[q] = f
+        time.sleep(2)
     return out
 
 
@@ -189,13 +257,20 @@ def main():
         cache = json.loads(CACHE.read_text(encoding="utf-8"))
 
     # 空欄と Commons 由来の行は毎回引き直す(EXCLUDED 追加を反映できるように)。
-    # Release 等の他ソースの URL(将来のAI生成画像)は触らない
+    # 生成イメージ(gimukyoiku-image-*)の行も対象にし、実写が取れたら上書きする。
+    # それ以外のソースの URL は触らない
+    GEN_PREFIX = "https://github.com/soramimic/soramimic-wordlists/releases/download/gimukyoiku-image-"
     targets = [
         r
         for r in rows
-        if not r[idx["image"]] or "commons.wikimedia.org" in r[idx["image"]]
+        if not r[idx["image"]]
+        or "commons.wikimedia.org" in r[idx["image"]]
+        or r[idx["image"]].startswith(GEN_PREFIX)
     ]
+    kept_generated = {}
     for r in targets:
+        if r[idx["image"]].startswith(GEN_PREFIX):
+            kept_generated[r[idx["original"]]] = (r[idx["image"]], r[idx["image_page"]])
         r[idx["image"]] = r[idx["image_page"]] = r[idx["wikidata"]] = ""
     pending = sorted({r[idx["original"]] for r in targets if r[idx["original"]] not in cache})
     print(f"対象 {len(targets)} 行 / 問い合わせ {len(pending)} 語(キャッシュ済み {len(targets) - len(pending)})")
@@ -208,13 +283,30 @@ def main():
         print(f"  jawiki {min(i + BATCH, len(pending))}/{len(pending)}")
         time.sleep(1)
 
-    candidates = {
-        w: c
+    # リード画像が無い記事は P18 をフォールバックで引く(結果はキャッシュに保存)
+    need_p18 = {
+        w: c["qid"]
         for w, c in cache.items()
-        if c.get("status") == "ok"
-        and w not in EXCLUDED
-        and c["file"].lower().endswith(IMAGE_EXT)
+        if c.get("status") == "noimage" and c.get("qid") and "p18" not in c
     }
+    if need_p18:
+        print(f"P18フォールバック問い合わせ: {len(need_p18)} 語")
+        p18 = fetch_p18(list(need_p18.values()))
+        for w, q in need_p18.items():
+            cache[w]["p18"] = p18.get(q, "")
+        CACHE.write_text(json.dumps(cache, ensure_ascii=False, indent=1), encoding="utf-8")
+
+    candidates = {}
+    for w, c in cache.items():
+        if w in EXCLUDED:
+            continue
+        if c.get("status") == "ok" and c["file"].lower().endswith(IMAGE_EXT):
+            candidates[w] = c
+        elif c.get("status") == "noimage" and c.get("p18", "").lower().endswith(IMAGE_EXT):
+            candidates[w] = dict(c, status="ok", file=c["p18"])
+            cache[w] = candidates[w]
+    for w, f in MANUAL_FILES.items():
+        candidates[w] = {"status": "ok", "file": f, "qid": ""}
     commons_ok = on_commons([c["file"] for c in candidates.values()])
 
     stats = {}
@@ -225,7 +317,9 @@ def main():
         c = cache.get(word, {})
         st = stats.setdefault(subj.split("/")[0], dict(n=0, ok=0))
         st["n"] += 1
-        if word in EXCLUDED or c.get("status") != "ok" or c["file"] not in commons_ok:
+        if word in MANUAL_FILES:
+            c = candidates[word]
+        elif word in EXCLUDED or c.get("status") != "ok" or c["file"] not in commons_ok:
             continue
         fname = c["file"].replace(" ", "_")
         quoted = urllib.parse.quote(fname, safe="")
@@ -234,6 +328,10 @@ def main():
         r[idx["wikidata"]] = c.get("qid", "")
         st["ok"] += 1
         report.append(f"{word}\t{subj}\t{c['file']}\t{r[idx['description']]}")
+
+    for r in targets:
+        if not r[idx["image"]] and r[idx["original"]] in kept_generated:
+            r[idx["image"]], r[idx["image_page"]] = kept_generated[r[idx["original"]]]
 
     CSV.write_text("\n".join([",".join(header)] + [",".join(r) for r in rows]), encoding="utf-8")
     REPORT.write_text("\n".join(report), encoding="utf-8")

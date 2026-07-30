@@ -29,7 +29,7 @@
   台帳の `"source": "self"` のエントリだけは**このリポジトリの自作シルエット**
   (CC0)を手で置いている(tools/motif_taxa.json では学名 null のまま)。
   このスクリプトは `--refresh` でも自作エントリとファイルには一切触らない。
-  自作素材の描き起こしについては ADR 00030 を参照
+  自作素材の描き起こしについては ADR 00033 を参照
 
 usage:
     python3 tools/fetch_motif_silhouettes.py            # 未取得分だけ取得
