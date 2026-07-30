@@ -22,12 +22,12 @@
 | type1, type2 | pokemon固有: ポケモンのタイプ(でんき等)。単タイプは type2=NA |
 | generation | pokemon固有: 登場世代(1〜9)。フォームはそのフォームが導入された世代 |
 | status | nations/stations: `current`(現存)/`former`(廃止・脱退・旧称)。stationsは改名前の旧駅名を `renamed` で区別する。youtuberは `current`(活動中)/`former`(卒業・引退・活動終了) |
-| category, org, debut_year | youtuber固有: 区分(`youtuber`=実在のYouTuber/`vtuber`=VTuber)、所属事務所・グループ(スラッシュ区切り多値、`org~=ホロライブ` で絞り込む前提。無ければNA)、活動開始年(西暦、無ければNA。Wikidataの活動開始(P2031)が無い人はチャンネル開設年で代用しているので、両者が混在する) |
+| category, org, debut_year, channel | youtuber固有: 区分(`youtuber`=実在のYouTuber/`vtuber`=VTuber)、所属事務所・グループ(スラッシュ区切り多値、`org~=ホロライブ` で絞り込む前提。無ければNA)、活動開始年(西暦、無ければNA。Wikidataの活動開始(P2031)が無い人はチャンネル開設年で代用しているので、両者が混在する)、メインYouTubeチャンネル名(活動名と違う場合があるので表示・照合用の情報列。読みは付かない。複数チャンネルを持つ人は登録者数が最大の1本を採るので、本人の主戦場と一致しないことがある。無ければNA。詳細は ADR 00029) |
 | prefecture, city | stations固有: 駅の所在都道府県・市区町村(同名駅の区別用。1行=1駅) |
 | lines | stations固有: 乗り入れ路線(「JR東日本 東北本線」形式、複数は「／」区切り)。Wikidata/Wikipediaに情報が無い駅は空。補完は `tools/enrich_lines.py` |
 | image, image_page | 画像のURL(Wikimedia Commons直リンクまたは本リポジトリのGitHub Releaseアセット)と、ライセンス・作者の確認先ページ(stations/baseball/football/scientist/sekitsui/plant/insect/pokemon/fictional_scientist/fictional_anime_character)。画像が無い行は空。利用時はimage_pageのクレジット条件に従うこと。**sekitsui/plant/insectは実写が取れない行に限り、`class`ごとの概念イメージSVG(`class-image-v1` リリース。画像内に「イメージ」と明記)を分類単位で共有して割り当てている**(実写ではないので、実写だけが欲しい利用側は `.../releases/download/class-image-` で始まるURLを除外すること)。**pokemonは写真ではなく全行が「型色カード」SVG**(タイプの配色と文字だけで描いたもの。キャラクター造形は使わない。詳細は ADR 00002)。**youtuberは自由ライセンスの実写(Commons)が取れた人だけ写真で、残りは配色と頭文字と職業アイコンで描いた「象徴カード」SVG**(`images/youtuber/` をrawで参照。画像内に「イメージ」と明記。チャンネルアイコン・サムネイル・キャラクターイラストは一切使わない。カードの配色は本人のイメージカラー(公式が公表しているもの、または公式ポートレートの情報解析で求めた代表色)があればそれを使う。詳細は ADR 00018, 00019) |。**baseball/football も同じく、実写が無い人には所属チームのチームカラーで描いた「選手カード」SVG**を割り当てている(`images/baseball/` `images/football/` をrawで参照。画像内に「イメージ」と明記。ロゴ・エンブレム・マスコット・ユニフォームの意匠は一切使わない。詳細は ADR 00020)。**scientist は肖像が取れない人に分野の配色で描いた「象徴カード」SVG**(`images/scientist/` をrawで参照。肖像画・肖像写真は使わない。分野の色に出典は無い。詳細は ADR 00025)、**stations は写真が取れない駅に汎用の「駅名標」SVG**(`images/station/` をrawで参照。鉄道会社のロゴ・社章・駅ナンバリング・ラインカラーは使わない。詳細は ADR 00026)を割り当てている。**nations は全行がCommonsの国旗**で、消滅国はその国が最後に使っていた旗(詳細は ADR 00026)。実写だけが欲しい利用側は `https://raw.githubusercontent.com/soramimic/soramimic-wordlists/` で始まるURL(本リポジトリの生成カード)を除外すること |
 | field | scientist固有: 分野を優先順(物理→化学→数学→天文学→生物学→計算機科学→地学)で並べた単一列のスラッシュ区切り多値(例 `物理/数学`)。切り詰めなし、無ければ`NA`。ソラミミックに部分一致演算子`~=`を追加したので、多値を1列で持ち`field~=物理`で絞り込める(app側 setting.json の対応は別リポジトリ soramimic 側で実施) |
-| era, birth_year, nobel, gender, country, status, description | scientist固有: 時代区分(古代/中世/近世/近代/現代/NA。生年basis)・西暦生年(紀元前は「前287」、不明はNA)・科学系ノーベル賞受賞者か(yes/no、照合不能はNA)・性別(男性/女性/その他/NA)・市民権のある国(情報列。複数は"/"、不明はNA)・生死(物故/存命/NA)・主な業績の短い完結文(記事冒頭の先頭生没年カッコを除去し、「。」区切りで完結文を目安90字まで連結。常に「。」で終わる。ASCIIカンマ・引用符除去、無ければNA) |
+| era, birth_year, nobel, gender, country, status, description | scientist固有: 時代区分(古代/中世/近世/近代/現代/NA。生年basis)・西暦生年(紀元前は「前287」、不明はNA)・科学系ノーベル賞受賞者か(yes/no、照合不能はNA)・性別(男性/女性/その他/NA)・市民権のある国(情報列。複数は"/"、不明はNA)・生死(物故/存命/NA)・主な業績の短い完結文(記事冒頭の先頭生没年カッコを除去し、「。」区切りで完結文を目安90字まで連結。常に「。」で終わる。ASCIIカンマ・引用符除去、無ければNA)。**youtuberの `description` も同じ生成方式**(どんな人かの短い完結文。記事冒頭が無い人はWikidataのja description。詳細は ADR 00029) |
 | wikidata | stations: 駅のWikidata QID(差分更新の永続キー)。sekitsui/plant: 画像の取得元になったtaxonのQID(実写画像とセットで埋まるので、実写画像が無い行は空。sekitsui/plantの分類イメージ画像はWikidata由来ではないので空のまま)。youtuber: 本人のQID(画像の有無とは独立に埋まる。同名で複数QIDに当たった人は曖昧として空) |
 | birth_year, death_year, nationality, field, achievement | fictional_scientist固有: 生年・没年・国籍・分野・主な業績(AI生成の架空人物情報) |
 | title, org_name, role_in_org, first_year, species, cv_name, description | fictional_anime_character固有: 作品名・所属・役割・初登場年・種族・声優名・紹介文(AI生成の架空キャラ情報) |
@@ -46,7 +46,7 @@
 | plant.csv | 植物(被子/裸子/シダ/コケ/藻類の和名。分類・絶滅フラグ・科/属・写真URL付き) | [Wikidata](https://www.wikidata.org/) (CC0) で自動更新。写真は[Wikimedia Commons](https://commons.wikimedia.org/)(ライセンスは画像ごと。image_page参照)、実写が無い行の分類イメージ画像は本リポジトリのReleaseで配布(CC0・実写ではない) |
 | insect.csv | 昆虫(昆虫綱の和名。粗い区分・絶滅フラグ・目/科・写真URL付き。クモ・ムカデ等の非昆虫は含まない) | [Wikidata](https://www.wikidata.org/) (CC0) で自動更新。写真は[Wikimedia Commons](https://commons.wikimedia.org/)(ライセンスは画像ごと。image_page参照)、実写が無い行の分類イメージ画像は本リポジトリのReleaseで配布(CC0・実写ではない) |
 | pokemon.csv | ポケモン(地方のすがた・メガ・キョダイマックス含む。タイプ配色のみで描いた「型色カード」画像付き) | [PokéAPI](https://github.com/PokeAPI/pokeapi) で自動更新。画像は本リポジトリのReleaseで配布(公式アセット・キャラクター造形は使わず配色と文字のみ)。本リポジトリは非公式のファンメイドであり株式会社ポケモン・任天堂等とは無関係 |
-| youtuber.csv | YouTuber・VTuber(ja.wikipediaに記事がある著名層。海外勢含む。活動名のみ、type: family/given/full。category列で区分、所属・活動開始年・status・画像URL付き) | Wikidata/Wikipedia (CC BY-SA 4.0) で自動更新。写真は[Wikimedia Commons](https://commons.wikimedia.org/)の自由ライセンスの実写のみ(ライセンスは画像ごと。image_page参照)、実写が無い人の象徴カード画像は本リポジトリの `images/youtuber/`(Apache License 2.0 の職業アイコンを含む。実写ではない。下の「利用上の注意」参照) |
+| youtuber.csv | YouTuber・VTuber(ja.wikipediaに記事がある著名層。海外勢含む。活動名のみ、type: family/given/full。category列で区分、所属・活動開始年・status・チャンネル名・説明文・画像URL付き) | Wikidata/Wikipedia (CC BY-SA 4.0) で自動更新。写真は[Wikimedia Commons](https://commons.wikimedia.org/)の自由ライセンスの実写のみ(ライセンスは画像ごと。image_page参照)、実写が無い人の象徴カード画像は本リポジトリの `images/youtuber/`(Apache License 2.0 の職業アイコンを含む。実写ではない。下の「利用上の注意」参照) |
 | fictional_scientist.csv | AI生成による架空の科学者1000人(名前・読み・生没年・国籍・分野・主な業績・肖像画像。type: family/given/full) | jiroshimaya/fictional-scientists プロジェクトによる自動生成(実在人物とは無関係)、画像は本リポジトリのReleaseで配布 |
 | fictional_anime_character.csv | AI生成による架空アニメ『蒼穹の螺旋航路』の登場キャラ1000人(名前・読み・所属・初登場年・種族・声優名・紹介文・肖像画像。type: family/given/full/call/nick。callは作中で使われる呼び名(敬称込み)、nickはあだ名) | jiroshimaya/fictional-scientists プロジェクトによる自動生成(実在の作品・人物とは無関係)、画像は本リポジトリのReleaseで配布 |
 | fictional_daily_anime_character.csv | AI生成による架空日常アニメ『まちまる！』の住人1025人(名前・読み・所属・初登場年・種族・声優名・紹介文・肖像画像。type: family/given/full/call/nick。callは作中で使われる呼び名(敬称込み)、nickはあだ名) | jiroshimaya/fictional-scientists プロジェクトによる自動生成(実在の作品・人物とは無関係)、画像は本リポジトリのReleaseで配布 |
@@ -56,7 +56,7 @@
 
 - 本リポジトリは非公式のファンメイド・データ集であり、各作品・団体・人物とは無関係です
 - 空耳変換の研究・個人利用を想定しています。各リストの元データの帰属・ライセンスは上表の出典欄を参照してください(Wikidata由来はCC0、Wikipedia由来はCC BY-SA 4.0、nationsは[mledoze/countries](https://github.com/mledoze/countries)(ODbL)由来)
-- 実在人物名のリスト(baseball/football/scientist/youtuberのcategory=youtuber)は公表済みの事実情報(名簿)のみで構成しています。氏名の営利的な顧客誘引を目的とする利用(パブリシティ権に触れうる利用)は行わないでください。youtuberは記事名(活動名)のみを収録し、本名は収録しません
+- 実在人物名のリスト(baseball/football/scientist/youtuberのcategory=youtuber)は公表済みの事実情報(名簿)のみで構成しています。氏名の営利的な顧客誘引を目的とする利用(パブリシティ権に触れうる利用)は行わないでください。youtuberは記事名(活動名)のみを収録し、本名は収録しません(`description` も本名の記述を落としてから収録しています。詳細は ADR 00029)
 - youtuber.csvのcategory=vtuberの行は各社(カバー・ANYCOLOR等)の知的財産であるキャラクター名です。名称と読みのみを非商用のファンメイド用途で収録しています(キャラクターデザイン・アバターのイラストやスクリーンショットは画像として一切収録していません。詳細は ADR 00018)
 - baseball/football の生成カードは、公表された事実であるチームカラー(色の値)と、職業を表す汎用アイコンだけで描いたものです。球団・クラブのロゴ・エンブレム・マスコット・ユニフォームの意匠は一切含みません(詳細は ADR 00020, 00024)
 - scientist の生成カードは、分野の配色と姓の頭文字と分野を表す汎用アイコンだけで描いたものです。肖像画・肖像写真は一切含みません。**分野の配色はこのリポジトリが見分けやすさのために決めたもので、学問分野の標準的な色ではありません**(詳細は ADR 00025)
@@ -270,9 +270,14 @@ python3 tools/audit_taxa.py sekitsui  # 既存行が想定した界・門・綱�
   (youtuber/vtuber)で区別する。記事名(活動名)のみ収録し本名は取得しない。
   読みは記事冒頭「名前（よみ、」から抽出(かな名は自身から変換)。既存行は
   書き換えず、未収録者の追記と status(current→former)の一方向更新、
-  org/debut_year の空欄補完のみ。org(所属)・debut_year(活動開始年)付き
+  org/debut_year/channel/description の空欄補完のみ。org(所属)・
+  debut_year(活動開始年)・channel(メインチャンネル名)・description(短い説明文)付き
   (debut_year は P2031(活動開始)を優先し、無ければ P2397 の修飾子 P580 =
-  チャンネル開設年を使う。詳細は ADR 00011, 00012, 00023)。
+  チャンネル開設年を使う。channel は P2397 の修飾子 P1810 で、複数チャンネルは
+  登録者数 P3744 が最大の1本。description は scientist と同じ生成方式で
+  記事冒頭から目安90字の完結文。**記事冒頭には本名がよく書かれているので、
+  「本名は〜」の文と「{本名}は、活動名として知られる〜」の主語は description に
+  入れる前に機械的に落としている**。詳細は ADR 00011, 00012, 00023, 00029)。
   **成人向け(アダルト)業界の職業(AV女優・ポルノ俳優・アダルトモデル・
   セックスワーカー等)がP106に付いている人物は、YouTube/VTuber活動があっても
   収録しない**(一般向けアプリのサンプル単語リストとして使うため。P106は現職と
