@@ -32,6 +32,7 @@
 | birth_year, death_year, nationality, field, achievement | fictional_scientist固有: 生年・没年・国籍・分野・主な業績(AI生成の架空人物情報) |
 | title, org_name, role_in_org, first_year, species, cv_name, description | fictional_anime_character固有: 作品名・所属・役割・初登場年・種族・声優名・紹介文(AI生成の架空キャラ情報) |
 | subject | gimukyoiku固有: 教科(国語/社会/数学/理科/英語/音楽/美術/保健体育/技術・家庭の9区分。小学校の算数・図工等は対応する中学教科に吸収)。複数教科にまたがる語はスラッシュ区切り多値で `subject~=美術` で絞り込む。descriptionは授業でどう登場する語かの短い説明(「。」終わり)。imageは全行にあり、実写・図版(語と完全一致するja.wikipedia記事のリード画像。777行、wikidataはその記事のQID)と、実写が無い語の**生成イメージ**(`gimukyoiku-image-v1`/`-v1b` リリース。SD生成の「AIイメージ」またはタイポグラフィカードの「イメージ」を画像内に明記。歴史上の人物は想像画、近現代の実在人物の肖像は含まない。詳細は ADR 00027/00028)。補完は `tools/enrich_gimukyoiku_images.py` と `tools/apply_gimukyoiku_ai_images.py` |
+| category, decade, era, year | ryuko固有: 流行の種類(`word`=流行語・言い回し/`item`=モノ・商品/`fashion`=服装・髪型・化粧/`play`=遊び・娯楽・芸能/`food`=飲食/`other`)、流行のピークの10年区切り(「1980年代」形式。前近代はピークが幅でしか分からないので代表的な10年。`decade=1980年代` の完全一致で絞り込む)、時代区分(平安/鎌倉/室町/安土桃山/江戸/明治/大正/昭和/平成/令和)、代表的な流行年(西暦4桁、特定できない語はNA)。descriptionは何がどう流行ったかの短い説明(「。」終わり)。収録・除外基準は ADR 00031 |
 
 ## リスト一覧
 
@@ -50,6 +51,7 @@
 | fictional_scientist.csv | AI生成による架空の科学者1000人(名前・読み・生没年・国籍・分野・主な業績・肖像画像。type: family/given/full) | jiroshimaya/fictional-scientists プロジェクトによる自動生成(実在人物とは無関係)、画像は本リポジトリのReleaseで配布 |
 | fictional_anime_character.csv | AI生成による架空アニメ『蒼穹の螺旋航路』の登場キャラ1000人(名前・読み・所属・初登場年・種族・声優名・紹介文・肖像画像。type: family/given/full/call/nick。callは作中で使われる呼び名(敬称込み)、nickはあだ名) | jiroshimaya/fictional-scientists プロジェクトによる自動生成(実在の作品・人物とは無関係)、画像は本リポジトリのReleaseで配布 |
 | fictional_daily_anime_character.csv | AI生成による架空日常アニメ『まちまる！』の住人1025人(名前・読み・所属・初登場年・種族・声優名・紹介文・肖像画像。type: family/given/full/call/nick。callは作中で使われる呼び名(敬称込み)、nickはあだ名) | jiroshimaya/fictional-scientists プロジェクトによる自動生成(実在の作品・人物とは無関係)、画像は本リポジトリのReleaseで配布 |
+| ryuko.csv | 年代別の流行(平安〜令和。流行語・モノ・遊び・ファッション・食べ物。10年区切りのdecade・時代区分era・流行年・説明文付き。災害・事件由来や成人向けの語は収録しない。詳細は ADR 00031) | 新語・流行語大賞受賞語(1984〜)は[Wikipedia](https://ja.wikipedia.org/wiki/%E6%96%B0%E8%AA%9E%E3%83%BB%E6%B5%81%E8%A1%8C%E8%AA%9E%E5%A4%A7%E8%B3%9E) (CC BY-SA 4.0)から機械抽出。それ以外はWikipedia等で裏取りしたAIキュレーション(自動更新なし) |
 | gimukyoiku.csv | 義務教育(小中学校)の教科書・授業に登場する単語(教科フィルタ・説明文・画像URL付き。学習用語に加え授業で扱う人名・作品名・事件名を含む) | AI生成による手動キュレーション(本リポジトリ内で作成、自動更新なし。詳細は ADR 00022)。写真・図版は[Wikimedia Commons](https://commons.wikimedia.org/)(ライセンスは画像ごと。image_page参照)、実写が無い語は本リポジトリのReleaseで配布する生成イメージ(CC0・実写ではない。画像内に「AIイメージ」等と明記。詳細は ADR 00027/00028) |
 
 ## 利用上の注意
