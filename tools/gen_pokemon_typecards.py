@@ -37,17 +37,29 @@ usage:
     # 生成のみ(既定の出力先は build/pokemon_typecards/)
     python3 tools/gen_pokemon_typecards.py --out build/pokemon_typecards
 
-    # 生成してリリースへアップロード(gh CLIが必要。リリースは作成済みのこと)
+    # 生成してリリースへアップロード(gh CLIが必要。リリースは作成済みのこと)。
+    # 既定は**再開可能**で、Release のアセットのサイズがローカルと違うもの・
+    # 存在しないものだけを送る。レート制限などで途中で落ちても、同じコマンドを
+    # もう一度打てば続きから進む
     python3 tools/gen_pokemon_typecards.py --out build/pokemon_typecards \
         --upload
 
-    # CSVの全 original に対応するアセットがReleaseに存在するか検査する
+    # 全枚数を無条件で送り直す(サイズが同じでも中身が違う疑いがあるとき)
+    python3 tools/gen_pokemon_typecards.py --out build/pokemon_typecards \
+        --upload --force
+
+    # Release のアセットが「いま生成されるカード」と同じかをサイズで検査する
     python3 tools/gen_pokemon_typecards.py --verify
 
-新ポケモン(新種・新フォーム)が追加されたら本スクリプトを再実行して
-Release を更新する。ファイル名が名前由来なので**増えた分だけ**送ればよく
-(`--upload --only-missing`)、既存カードの作り直しは不要。取りこぼしは
-`--verify` で検出できる。
+新ポケモン(新種・新フォーム)が追加されたら、意匠を変えたときと同じく
+本スクリプトを再実行して `--upload` するだけでよい。既定の差分判定が
+「増えた分」も「中身が変わった分」もまとめて拾う。取りこぼしは `--verify`
+で検出できる。
+
+**かつてあった `--only-missing` は削除した。** アセット*名*があれば送らない
+という判定だったため、意匠を変えて全枚数を送り直したいときに「すべて
+アップロード済み」と言って何もせず、旧意匠が配信され続ける事故を起こした。
+新しい既定(サイズ差分)は「増えた分だけ送る」用途の上位互換になる。
 """
 
 import argparse
@@ -585,69 +597,186 @@ def load_groups() -> list[Entry]:
     return out
 
 
-def existing_assets(tag: str) -> set[str]:
-    """リリースにアップロード済みのアセット名。"""
+def build_cards(groups: list[Entry]) -> list[tuple[Entry, str, bool]]:
+    """全カードのSVGをメモリ上で組む。[(entry, svg, シルエットの有無), ...]
+
+    生成(`--out`)と検査(`--verify`)で**同じ経路**を通すための共通処理。
+    検査が出力ディレクトリの中身ではなく「いま生成されるカード」を基準に
+    できるのはこのため。
+    """
+    motifs = load_motifs()
+    silhouettes = load_silhouettes()
+    embedded = {label: silhouette_svg(svg) for label, svg in silhouettes.items()}
+    out: list[tuple[Entry, str, bool]] = []
+    for e in groups:
+        sil = (embedded.get(motifs.get(e.dex_no, ""))
+               if e.dex_no is not None else None)
+        out.append((e, build_card(e, sil), sil is not None))
+    return out
+
+
+def remote_asset_sizes(tag: str) -> dict[str, int] | None:
+    """リリースにあるアセットの 名前 -> バイト数。取得できなければ None。
+
+    「取得できない(認証エラー・タグが無い・レート制限)」と「アセットが0件」は
+    区別する必要があるので、失敗は空dictではなく None で返す。
+    """
     res = subprocess.run(
         ["gh", "release", "view", tag, "--json", "assets",
-         "-q", ".assets[].name"],
+         "-q", '.assets[] | "\\(.name) \\(.size)"'],
         capture_output=True, text=True,
     )
-    return set(res.stdout.split()) if res.returncode == 0 else set()
+    if res.returncode != 0:
+        return None
+    out: dict[str, int] = {}
+    for line in res.stdout.splitlines():
+        name, _, size = line.rpartition(" ")
+        if name and size.isdigit():
+            out[name] = int(size)
+    return out
+
+
+# レート制限で待つときの上限。core制限(5000/h)のリセットは最大60分先なので、
+# 60分+余裕を見る。これを超える待ちが必要ならリトライを諦める
+RATE_LIMIT_MAX_WAIT = 70 * 60
+
+
+def is_rate_limited(stderr: str) -> bool:
+    low = stderr.lower()
+    return "rate limit" in low or "403" in low
+
+
+def rate_limit_wait() -> int | None:
+    """core制限のリセットまでの秒数(上限 RATE_LIMIT_MAX_WAIT)。不明なら None。
+
+    固定バックオフでは足りない(60分先のリセットを15分待って諦めていた)ので、
+    実際のリセット時刻を GitHub に聞く。
+    """
+    res = subprocess.run(
+        ["gh", "api", "rate_limit", "-q", ".resources.core.reset"],
+        capture_output=True, text=True,
+    )
+    if res.returncode != 0:
+        return None
+    try:
+        reset = int(res.stdout.strip())
+    except ValueError:
+        return None
+    # リセット直後のわずかなずれで再び弾かれないよう10秒足す
+    wait = reset - int(time.time()) + 10
+    if wait > RATE_LIMIT_MAX_WAIT:
+        return None
+    return max(wait, 0)
 
 
 def upload(tag: str, files: list[Path], batch: int = 40,
            retries: int = 6) -> int:
     """gh release upload --clobber でアップロードする。失敗数を返す。
 
-    枚数が多いとGitHubの二次レート制限(HTTP 403)に当たるので、バッチごとに
-    少し待ち、失敗したら指数バックオフで再試行する。
+    枚数が多いとGitHubのレート制限(HTTP 403)に当たる。**レート制限のときは
+    固定バックオフではなく `gh api rate_limit` が返すリセット時刻まで待つ**
+    (core制限のリセットは最大60分先なので、従来の 60*(n+1) 秒 × 6回 =
+    最大15分では足りず、待ち切れずに黙って諦めていた)。それ以外の失敗は
+    従来どおり指数バックオフで再試行する。
+
+    再試行を使い切ったぶんは失敗数に数える。呼び出し側はこれが 0 でなければ
+    終了コードを 1 にすること(失敗したまま正常終了しない)。
     """
     failed = 0
     for i in range(0, len(files), batch):
         chunk = files[i:i + batch]
         cmd = ["gh", "release", "upload", tag, *[str(p) for p in chunk],
                "--clobber"]
+        ok = False
         for attempt in range(retries):
             res = subprocess.run(cmd, capture_output=True, text=True)
             if res.returncode == 0:
+                ok = True
                 print(f"  ok {tag} {i + len(chunk)}/{len(files)}", flush=True)
                 break
-            wait = 60 * (attempt + 1)
-            print(f"  retry {tag} {i}-{i + len(chunk) - 1} in {wait}s: "
-                  f"{res.stderr.strip()[:160]}", file=sys.stderr, flush=True)
+            err = (res.stderr or "").strip()
+            if attempt == retries - 1:
+                break
+            wait = rate_limit_wait() if is_rate_limited(err) else None
+            reason = "rate limit" if wait is not None else "retry"
+            if wait is None:
+                wait = 60 * (attempt + 1)
+            print(f"  {reason} {tag} {i}-{i + len(chunk) - 1}: "
+                  f"あと {wait}s 待つ ({wait / 60:.1f}分): {err[:160]}",
+                  file=sys.stderr, flush=True)
             time.sleep(wait)
-        else:
+        if not ok:
             failed += len(chunk)
             print(f"  NG {tag} {i}-{i + len(chunk) - 1}", file=sys.stderr)
         time.sleep(2)
     return failed
 
 
+def pending_uploads(tag: str, files: list[Path],
+                    force: bool = False) -> list[Path]:
+    """`tag` へ送るべきファイル。Releaseとサイズが違うもの・無いものだけ返す。
+
+    `force` なら全件返す。リリースの一覧が取れないときも安全側に倒して全件返す
+    (「取れなかったから送らない」で取りこぼすのが今回の事故の形なので、
+    分からないときは送る)。
+    """
+    if force:
+        return list(files)
+    remote = remote_asset_sizes(tag)
+    if remote is None:
+        print(f"warn: {tag} のアセット一覧を取得できないので全件送る",
+              file=sys.stderr)
+        return list(files)
+    return [p for p in files if remote.get(p.name) != p.stat().st_size]
+
+
 def verify(groups: list[Entry]) -> int:
-    """CSVの全 original に対応するアセットがReleaseにあるか確かめる。"""
-    want: dict[str, dict[str, str]] = {}
-    for e in groups:
-        want.setdefault(release_tag(e.name), {})[asset_name(e.name)] = e.name
-    ng = 0
+    """Releaseのアセットが「いま生成されるカード」と一致するかを検査する。
+
+    期待値は `--out` の出力ディレクトリではなく、**その場で `build_card()` を
+    呼んで測ったバイト長**。この関数は生成もアップロードもしない。
+
+    **サイズ比較は同一性の保証ではない**: 偶然バイト数が一致する別内容は
+    ありえるので、厳密には「サイズが違えば確実に古い / 同じならたぶん同じ」
+    でしかない。それでも実用上これで足りると判断している。意匠やデータを
+    変えれば SVG の文字列は必ず変わり、1バイトも増減しないことはまず無い
+    ため。名前の集合だけを見ていた旧実装は、旧意匠のアセットが残っていても
+    `all assets present` と報告して事故を隠した。
+    """
+    want: dict[str, dict[str, tuple[int, str]]] = {}
+    for e, svg, _ in build_cards(groups):
+        want.setdefault(release_tag(e.name), {})[asset_name(e.name)] = (
+            len(svg.encode("utf-8")), e.name,
+        )
+    n_missing = 0
+    n_stale = 0
     for tag, wanted in sorted(want.items()):
-        have = existing_assets(tag)
-        if not have:
+        have = remote_asset_sizes(tag)
+        if have is None:
             print(f"error: {tag} のアセットを取得できない", file=sys.stderr)
-            ng += len(wanted)
+            n_missing += len(wanted)
             continue
         missing = sorted(n for n in wanted if n not in have)
-        extra = sorted(have - set(wanted))
-        print(f"{tag}: {len(wanted) - len(missing)}/{len(wanted)} ok"
-              f"{f', 未生成 {len(missing)}' if missing else ''}"
+        stale = sorted(n for n, (size, _) in wanted.items()
+                       if n in have and have[n] != size)
+        extra = sorted(set(have) - set(wanted))
+        n_ok = len(wanted) - len(missing) - len(stale)
+        print(f"{tag}: {n_ok}/{len(wanted)} 一致"
+              f"{f', 欠落 {len(missing)}' if missing else ''}"
+              f"{f', 中身が古い {len(stale)}' if stale else ''}"
               f"{f', 余分 {len(extra)}' if extra else ''}")
         for n in missing[:20]:
-            print(f"  missing {n} ({wanted[n]})", file=sys.stderr)
-        ng += len(missing)
-    if ng:
-        print(f"error: {ng}件のカードがReleaseに無い。--upload --only-missing "
-              "で送ること", file=sys.stderr)
+            print(f"  missing {n} ({wanted[n][1]})", file=sys.stderr)
+        for n in stale[:20]:
+            print(f"  stale {n} ({wanted[n][1]}): release {have[n]}B != "
+                  f"生成 {wanted[n][0]}B", file=sys.stderr)
+        n_missing += len(missing)
+        n_stale += len(stale)
+    if n_missing or n_stale:
+        print(f"error: 欠落 {n_missing}件 / 中身が古い {n_stale}件。"
+              "--upload で送り直すこと(差分だけ送る)", file=sys.stderr)
         return 1
-    print("all assets present")
+    print("all assets up to date")
     return 0
 
 
@@ -657,13 +786,14 @@ def main() -> int:
                     help="SVGの出力先ディレクトリ")
     ap.add_argument("--upload", action="store_true",
                     help="生成後に gh release upload --clobber でアップロードする"
-                         "(リリースは作成済みであること)")
-    ap.add_argument("--only-missing", action="store_true",
-                    help="未アップロードのアセットだけ送る(レート制限で中断した"
-                         "ときの再開用。内容を差し替えたいときは使わないこと)")
+                         "(リリースは作成済みであること)。既定はReleaseとサイズが"
+                         "違うもの・無いものだけを送るので、途中で落ちても"
+                         "再実行すれば続きから進む")
+    ap.add_argument("--force", action="store_true",
+                    help="--upload の差分判定をやめて全枚数を送り直す")
     ap.add_argument("--verify", action="store_true",
-                    help="CSVの全 original に対応するアセットがReleaseに"
-                         "存在するか検査して終了する(生成もアップロードもしない)")
+                    help="Releaseのアセットがいま生成されるカードと一致するかを"
+                         "サイズで検査して終了する(生成もアップロードもしない)")
     args = ap.parse_args()
 
     groups = load_groups()
@@ -679,19 +809,13 @@ def main() -> int:
     out_dir.mkdir(parents=True, exist_ok=True)
 
     # モチーフのシルエット。ラベルは種単位なのでフォームも種の図鑑Noで引く
-    motifs = load_motifs()
-    silhouettes = load_silhouettes()
-    embedded = {label: silhouette_svg(svg) for label, svg in silhouettes.items()}
-
     by_tag: dict[str, list[Path]] = {}
     n = 0
     n_sil = 0
-    for e in groups:
-        sil = (embedded.get(motifs.get(e.dex_no, ""))
-               if e.dex_no is not None else None)
-        n_sil += sil is not None
+    for e, svg, has_sil in build_cards(groups):
+        n_sil += has_sil
         path = out_dir / asset_name(e.name)
-        path.write_text(build_card(e, sil), encoding="utf-8")
+        path.write_text(svg, encoding="utf-8")
         by_tag.setdefault(release_tag(e.name), []).append(path)
         n += 1
     if len({p.name for files in by_tag.values() for p in files}) != n:
@@ -707,19 +831,24 @@ def main() -> int:
 
     if args.upload:
         failed = 0
+        sent = 0
         for tag, files in by_tag.items():
-            if args.only_missing:
-                done = existing_assets(tag)
-                files = [p for p in files if p.name not in done]
-                if not files:
-                    print(f"{tag}: すべてアップロード済み")
-                    continue
-            print(f"uploading to {tag} ({len(files)} files) ...", flush=True)
-            failed += upload(tag, files)
+            targets = pending_uploads(tag, files, force=args.force)
+            if not targets:
+                print(f"{tag}: すべて最新 ({len(files)} assets)")
+                continue
+            print(f"uploading to {tag} ({len(targets)}/{len(files)} files) ...",
+                  flush=True)
+            failed += upload(tag, targets)
+            sent += len(targets)
         if failed:
-            print(f"error: {failed}件のアップロードに失敗", file=sys.stderr)
+            print(f"error: {failed}件のアップロードに失敗。"
+                  "再実行すれば残りだけ送る", file=sys.stderr)
             return 1
-        print(f"uploaded {n} assets")
+        if sent:
+            print(f"uploaded {sent} assets")
+        else:
+            print("すべて最新なので送るものは無い")
     return 0
 
 
