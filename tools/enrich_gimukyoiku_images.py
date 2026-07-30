@@ -123,6 +123,21 @@ EXCLUDED = {
 }
 
 
+# 手動キュレーション(語 → Commonsファイル名)。完全一致記事にもP18にも無いが、
+# Commonsを検索すれば教科書的な画像が実在する語。AIレビューでライセンス・被写体を
+# 確認済み(2026-07-30)。EXCLUDED より優先する
+MANUAL_FILES = {
+    "木ねじ": "Wood screws.jpg",
+    "防具": "Bogu.jpg",
+    "ファスナー": "Zipper - metal - blue 01.jpg",
+    "石膏": "Adriano joven - RABASF.jpg",
+    "献立": "SchoolLunchJapanese.jpg",
+    "星座早見": "星座 早見 渡辺教具製作所 (42414938381).jpg",
+    "ブロック": "Volleyball block.jpg",
+    "過密": "A crowded platform - rush hour - yurakucho - July 2014.jpg",
+}
+
+
 def api_get(url, params):
     params = dict(params, format="json", maxlag=5)
     req = urllib.request.Request(
@@ -290,6 +305,8 @@ def main():
         elif c.get("status") == "noimage" and c.get("p18", "").lower().endswith(IMAGE_EXT):
             candidates[w] = dict(c, status="ok", file=c["p18"])
             cache[w] = candidates[w]
+    for w, f in MANUAL_FILES.items():
+        candidates[w] = {"status": "ok", "file": f, "qid": ""}
     commons_ok = on_commons([c["file"] for c in candidates.values()])
 
     stats = {}
@@ -300,7 +317,9 @@ def main():
         c = cache.get(word, {})
         st = stats.setdefault(subj.split("/")[0], dict(n=0, ok=0))
         st["n"] += 1
-        if word in EXCLUDED or c.get("status") != "ok" or c["file"] not in commons_ok:
+        if word in MANUAL_FILES:
+            c = candidates[word]
+        elif word in EXCLUDED or c.get("status") != "ok" or c["file"] not in commons_ok:
             continue
         fname = c["file"].replace(" ", "_")
         quoted = urllib.parse.quote(fname, safe="")
