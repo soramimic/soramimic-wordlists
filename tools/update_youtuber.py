@@ -7,7 +7,14 @@ category列(youtuber/vtuber)で区別し、両方の職業を持つ者は vtuber
 収録は記事名(=活動名)のみで、本名は取得しない。
 成人向け業界の職業(EXCLUDED_OCCUPATIONS)を P106 に持つ人物は収録しない。
 
+付加列: category(youtuber/vtuber)・org(所属)・debut_year(活動開始年)・
+status(current/former)・channel(メインYouTubeチャンネル名。P2397の修飾子P1810で、
+複数チャンネルは登録者数P3744が最大の1本)・description(記事冒頭からの短い完結文。
+無ければWikidataのja description。本名の記述は落とす)。いずれも無ければNAで、
+既存行は空欄補完のみ(詳細は docs/adr/00023, 00029)。
+
 環境変数 YOUTUBER_CACHE を指定すると取得結果をpickleキャッシュする(開発用)。
+attrs のキーが増えた回は古いキャッシュを使い回さないこと。
 
 usage: python3 tools/update_youtuber.py
 """
