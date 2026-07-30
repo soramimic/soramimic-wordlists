@@ -1,4 +1,4 @@
-# ADR 00029: pokemon.csv の事実列(genus/rarity/height_m/weight_kg/description)
+# ADR 00032: pokemon.csv の事実列(genus/rarity/height_m/weight_kg/description)
 
 - Status: accepted
 - Date: 2026-07-30

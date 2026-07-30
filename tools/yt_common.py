@@ -11,6 +11,22 @@
   「名前（よみ、」から抽出。機械決定できない名前はスキップして「要確認」に報告
 - 既存行の表記・読み・idは書き換えない。自動で行うのは未収録者の追記と
   status の current→former 一方向更新(P2032: 活動終了)のみ
+
+付加列(いずれも無ければ NA。既存行は空欄補完のみ行う: ADR 00014)
+- org:        所属事務所・グループ(P108/P463/P1416、スラッシュ区切り多値)
+- debut_year: 活動開始年(P2031、無ければチャンネル開設年 P2397+P580。ADR 00023)
+- status:     current(活動中)/former(活動終了。P2032)
+- channel:    メインYouTubeチャンネル名(P2397の修飾子P1810)。複数チャンネルを
+              持つ人は登録者数(P3744)が最大の1本を採る(ADR 00029)
+- description: 記事冒頭からの短い完結文(無ければWikidataのja description。
+              生成は wpnames.make_description で scientist と共用。記事冒頭に
+              よく書かれている本名は deidentify で落とす。ADR 00029)
+
+subscribers(メインチャンネルの登録者数)列も youtuber.csv にあるが、値の管理は
+このモジュールの外(tools/update_youtuber_subscribers.py)で行う。時変値なので
+毎回全行を上書きする列で、空欄補完のみの上記の付加列とは規則が違う(ADR 00030)。
+このモジュールは既存CSVの列を読んでそのまま書き戻すので、subscribers の値には
+触らない(新規追加した人の行は空になり、次に登録者数スクリプトが走ると埋まる)。
 """
 
 import csv
@@ -19,11 +35,14 @@ import pickle
 import re
 from pathlib import Path
 
-from wpnames import (DISAMBIG, HIRA2KATA, fetch_extracts, parse_person, sparql,
+from wpnames import (DISAMBIG, HIRA2KATA, clean_ws, fetch_extracts,
+                     make_description, parse_person, sparql, strip_lead_paren,
                      write_csv_no_trailing_newline)
 
 COLS = ["id", "original", "surface", "pronunciation", "type",
-        "category", "org", "debut_year", "status"]
+        "category", "org", "debut_year", "status", "channel", "description"]
+# 既存CSVに無ければ末尾に足す付加列(列順は既存ファイルの並びを崩さない)
+NEW_COLS = ["channel", "description"]
 
 # かな・カタカナだけのハンドル名(読みが自明)。wpnames.KATAKANA のひらがな込み版
 KANA_ONLY = re.compile(r"^[ぁ-ゖァ-ヶー・=＝\s]+$")
@@ -88,10 +107,36 @@ def _year(iso: str):
         return None
 
 
+def _clean_label(s: str) -> str:
+    """CSVパーサ(素朴なsplit)を壊す文字を除去し、空白を1つに潰す。"""
+    return re.sub(r"[\s　]+", " ",
+                  s.replace(",", " ").replace('"', "")).strip()
+
+
+def _main_channel(pairs: str) -> str:
+    """"登録者数@@チャンネル名" の連結から、メインチャンネル名を1本選ぶ。
+
+    サブチャンネル・切り抜き・自動生成の Topic チャンネルまで P2397 に並ぶので、
+    登録者数(P3744)が最大のものを本人のメインチャンネルとみなす。登録者数が
+    無いチャンネルしか無い場合は名前の昇順で先頭(実行ごとに揺れないため)。"""
+    cands = []
+    for pair in pairs.split("||"):
+        subs, _, name = pair.partition("@@")
+        name = _clean_label(name)
+        if not name:
+            continue
+        try:
+            n = int(float(subs))
+        except ValueError:  # 登録者数の修飾子が無いチャンネル
+            n = -1
+        cands.append((-n, name))
+    return sorted(cands)[0][1] if cands else "NA"
+
+
 def fetch_attrs(qids: list) -> dict:
-    """QID -> {org, debut_year, status}。P108/P463/P1416(所属)と
-    P2031/P2032(活動期間)、P2397(YouTubeチャンネルID)の開始時点(P580)を
-    バッチ取得。
+    """QID -> {org, debut_year, status, channel, wd_desc}。P108/P463/P1416(所属)、
+    P2031/P2032(活動期間)、P2397(YouTubeチャンネルID)の修飾子(開始時点P580・
+    チャンネル名P1810・登録者数P3744)、ja description をバッチ取得。
 
     debut_year は P2031(活動開始)を優先し、無ければチャンネル開設年を使う。
     P2031 が入っている人は2割ほどしかいないのに対し、チャンネルIDの P580 は
@@ -100,9 +145,14 @@ def fetch_attrs(qids: list) -> dict:
     for i in range(0, len(qids), 200):
         batch = qids[i:i + 200]
         values = " ".join(f"wd:{q}" for q in batch)
+        # チャンネル名と登録者数は同じ P2397 文の修飾子なので、別々に集約すると
+        # 対応が失われる。「登録者数@@名前」に連結して1変数で集約し、どれが
+        # メインかは Python 側(_main_channel)で決める
         q = f"""
 SELECT ?p (GROUP_CONCAT(DISTINCT ?orgL; SEPARATOR="||") AS ?orgs)
-  (MIN(?start) AS ?s) (MAX(?end) AS ?e) (MIN(?chan) AS ?c) WHERE {{
+  (MIN(?start) AS ?s) (MAX(?end) AS ?e) (MIN(?chan) AS ?c)
+  (GROUP_CONCAT(DISTINCT ?chpair; SEPARATOR="||") AS ?chans)
+  (SAMPLE(?wdesc) AS ?desc) WHERE {{
   VALUES ?p {{ {values} }}
   OPTIONAL {{ ?p wdt:P108|wdt:P463|wdt:P1416 ?org .
              ?org rdfs:label ?orgL . FILTER(LANG(?orgL)="ja") }}
@@ -110,13 +160,19 @@ SELECT ?p (GROUP_CONCAT(DISTINCT ?orgL; SEPARATOR="||") AS ?orgs)
   OPTIONAL {{ ?p wdt:P2032 ?end . FILTER(isLiteral(?end)) }}
   OPTIONAL {{ ?p p:P2397 ?st . ?st pq:P580 ?chan .
              FILTER NOT EXISTS {{ ?st wikibase:rank wikibase:DeprecatedRank }} }}
+  OPTIONAL {{ ?p p:P2397 ?cst . ?cst pq:P1810 ?cname .
+             FILTER NOT EXISTS {{ ?cst wikibase:rank wikibase:DeprecatedRank }}
+             OPTIONAL {{ ?cst pq:P3744 ?csubs }}
+             BIND(CONCAT(COALESCE(STR(?csubs), ""), "@@", STR(?cname))
+                  AS ?chpair) }}
+  OPTIONAL {{ ?p schema:description ?wdesc . FILTER(LANG(?wdesc)="ja") }}
 }} GROUP BY ?p"""
         for b in sparql(q)["results"]["bindings"]:
             qid = b["p"]["value"].rsplit("/", 1)[1]
             orgs = set()
             for o in b.get("orgs", {}).get("value", "").split("||"):
                 # ラベル内のカンマ・引用符はCSVパーサを壊すので除去
-                o = o.replace(",", " ").replace('"', "").strip()
+                o = _clean_label(o)
                 if o:
                     orgs.add(o)
             attrs[qid] = {
@@ -125,9 +181,67 @@ SELECT ?p (GROUP_CONCAT(DISTINCT ?orgL; SEPARATOR="||") AS ?orgs)
                 "debut_year": (_year(b.get("s", {}).get("value"))
                                or _year(b.get("c", {}).get("value")) or "NA"),
                 "status": "former" if b.get("e", {}).get("value") else "current",
+                "channel": _main_channel(b.get("chans", {}).get("value", "")),
+                "wd_desc": b.get("desc", {}).get("value", ""),
             }
         print(f"  属性取得 {min(i + 200, len(qids))}/{len(qids)}", flush=True)
     return attrs
+
+
+# description に本名を持ち込まないためのフィルタ(このリストは活動名のみを
+# 収録する。ADR 00011, 00029)。記事冒頭には本名がよく書かれている
+REALNAME = re.compile(r"本名|実名|戸籍名|出生名|旧姓")
+# 文頭の「〜は、」(カッコを外した後の冒頭。「、」「。」を跨がない範囲)
+LEAD_SUBJ = re.compile(r"^(.{2,30}?)は[、 ]")
+# 人名らしさの判定に使う区切り(姓名の空白、カタカナ名の中黒)
+NAME_SEP = re.compile(r"[ 　・＝=]")
+# 「{本名}は、{活動名}として知られる〜」の言い換え表現。主語が1語の名前
+# (「アレクサンダーは、テクノブレードとして知られる〜」)でも本名なので落とす
+KNOWN_AS = re.compile(r"として(も|オンラインで)?(よく)?知られ|の名で知られ"
+                      r"|を名乗|の芸名|の活動名|通称")
+
+
+def _plain(s: str) -> str:
+    return NAME_SEP.sub("", s)
+
+
+def _balanced(s: str) -> bool:
+    """カッコの対応が取れているか。読みカッコの中に「〜は、」がある名前
+    (「風真 いろは（かざま いろは、英: …）は、」)で主語の切り出しを誤らないため。"""
+    return s.count("（") == s.count("）") and s.count("(") == s.count(")")
+
+
+def deidentify(intro: str, original: str) -> str:
+    """記事冒頭文から本名の記述を落とす。
+
+    - 「本名は〜」「本名：〜」を含む文は丸ごと捨てる
+    - 冒頭が活動名ではない人名の「{本名}は、〜」形式なら、その主語を落として
+      述部だけ残す。人名とみなすのは姓名の空白・中黒を含む語(「水戸 由菜は、」
+      「アラン・オラフ・ウォーカーは、」)か、「〜として知られる」等が続く1語の名前
+      (「アレクサンダーは、テクノブレードとして知られる〜」)。「コムドットは、〜」
+      のようなグループ名・屋号は残す
+    """
+    text = strip_lead_paren(clean_ws(intro))
+    # 文末の「。」を保ったまま分割する(最後が未完の断片かどうかを make_description
+    # が見るため、勝手に「。」を足さない)
+    segs = [s for s in re.split(r"(?<=。)", text) if s.strip()]
+    kept = [s for s in segs if not REALNAME.search(s)]
+    if not kept:
+        return ""
+    m = LEAD_SUBJ.match(kept[0])
+    if m:
+        head = m.group(1)
+        rest = kept[0][m.end():]
+        if _plain(head) != _plain(original) and _balanced(head) \
+                and _balanced(rest) \
+                and (NAME_SEP.search(head) or KNOWN_AS.search(kept[0])):
+            kept[0] = rest.lstrip("、 ")
+    return "".join(kept).strip()
+
+
+def safe_wd_desc(s: str) -> str:
+    """Wikidataのja descriptionも本名を含むものは使わない(フォールバック用)。"""
+    return "" if REALNAME.search(s or "") else (s or "")
 
 
 def parse_entry(title: str, text: str):
@@ -216,14 +330,24 @@ def build_list(csv_name: str, specs: list, cache_env: str,
             # 他のスクリプトが足した付加列(image/image_page/wikidata: ADR 00018)を
             # 落とさない。新規行は空にしておき、enrich 側が後から埋める
             cols = list(reader.fieldnames or COLS)
+        # 後から増えた付加列(channel/description: ADR 00029)は既存の列順を崩さず
+        # 末尾に足す。利用側は列名で読むので位置は問わない
+        cols += [c for c in COLS if c not in cols]
     else:
         old_rows, cols = [], list(COLS)
     existing = {r["original"] for r in old_rows}
     next_id = max((int(r["id"]) for r in old_rows), default=-1) + 1
 
-    wd_attrs = {norm(t): attrs.get(q, {})
+    # 記事タイトル -> description(記事冒頭文が無ければWikidataのja description)。
+    # 記事冒頭は deidentify で本名の記述を落としてから使う
+    descs = {t: make_description(deidentify(extracts.get(t, ""), norm(t)),
+                                 safe_wd_desc(attrs.get(q, {}).get("wd_desc")),
+                                 norm(t))
+             for persons in persons_by_cat.values()
+             for q, t in sorted(persons.items())}
+    wd_attrs = {norm(t): {**attrs.get(q, {}), "description": descs[t]}
                 for persons in persons_by_cat.values()
-                for q, t in persons.items()}
+                for q, t in sorted(persons.items())}
 
     # 既存行の status 一方向更新(current -> former のみ。手動修正は上書きしない)
     turned = set()
@@ -235,16 +359,21 @@ def build_list(csv_name: str, specs: list, cache_env: str,
     if turned:
         print(f"status更新(current→former): {len(turned)}人", flush=True)
 
-    # 既存行の org/debut_year は空欄補完のみ(ADR 00014)。入っている値は
-    # 取得結果が違っても書き換えない
-    filled = {"org": set(), "debut_year": set()}
+    # 既存行の付加列は空欄補完のみ(ADR 00014)。入っている値は取得結果が違っても
+    # 書き換えない。channel/description は新設列なので実質全行が補完対象になる
+    backfill = ("org", "debut_year", "channel", "description")
+    filled = {c: set() for c in backfill}
     for r in old_rows:
         got = wd_attrs.get(r["original"], {})
-        for col in ("org", "debut_year"):
+        for col in backfill:
             new = got.get(col, "NA")
             if r.get(col, "NA") in ("", "NA") and new not in ("", "NA"):
                 r[col] = new
                 filled[col].add(r["original"])
+        # 照合できなかった行の新設列は空ではなく NA にする(列の意味を揃える)
+        for col in NEW_COLS:
+            if not r.get(col):
+                r[col] = "NA"
     for col, names in filled.items():
         if names:
             print(f"{col} の空欄補完: {len(names)}人", flush=True)
@@ -284,7 +413,9 @@ def build_list(csv_name: str, specs: list, cache_env: str,
                           "type": typ, "category": cat,
                           "org": a.get("org", "NA"),
                           "debut_year": a.get("debut_year", "NA"),
-                          "status": a.get("status", "current")})
+                          "status": a.get("status", "current"),
+                          "channel": a.get("channel", "NA"),
+                          "description": descs.get(title, "NA")})
         next_id += 1
 
     write_csv_no_trailing_newline(csv_path, cols, old_rows + added)
@@ -292,6 +423,12 @@ def build_list(csv_name: str, specs: list, cache_env: str,
     n_people = len({r["id"] for r in added})
     print(f"\n{csv_name}: 既存{len(old_rows)}行 + 新規{n_people}人({len(added)}行) "
           f"= {len(old_rows) + len(added)}行", flush=True)
+    all_rows = old_rows + added
+    ids = {r["id"] for r in all_rows}
+    for col in NEW_COLS + ["org", "debut_year"]:
+        have = [r for r in all_rows if r.get(col) not in ("", "NA", None)]
+        print(f"{col} 充足: {len(have)}/{len(all_rows)}行 "
+              f"({len({r['id'] for r in have})}/{len(ids)}人)", flush=True)
     print(f"要確認(読み機械決定不能) {len(flagged)}件", flush=True)
     for t in flagged[:50]:
         print(f"  要確認: {t}", flush=True)

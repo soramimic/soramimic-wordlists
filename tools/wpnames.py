@@ -4,6 +4,8 @@
 - 「本名:姓 名〈せい めい〉」パターン(登録名が記事名の場合)に対応
 - 台湾選手等の「姓 名(カタカナ・カタカナ、」にも対応
 - 異体字(髙/高等)は照合時のみ正規化する
+- 記事冒頭文/Wikidataのja descriptionから短い完結文(description列)を作る
+  (make_description。scientist と youtuber で共用)
 """
 
 import json
@@ -160,6 +162,155 @@ def parse_person(name: str, text: str):
             return (m.group(1), m2.group(1), m.group(2), m2.group(2),
                     m.group(1) + m.group(2), m2.group(1) + m2.group(2), None)
     return None
+
+
+# ---- description(記事冒頭文からの短い完結文)----------------------------
+# scientist / youtuber で共用する(詳細は docs/adr/00009, 00029)。
+DESC_TARGET = 90  # description の目安文字数(完結文をここまで連結)
+DESC_HARD = 120   # 1文がこれを超える場合のみ「、」境界で切る
+
+# 冒頭の「{人名}は、」除去まわり
+HIRAGANA = re.compile(r"[ぁ-ん]")
+# 残りが名詞述語として自然に完結する語尾(体言止め以外に許可するもの)
+NOUN_PRED_TAIL = ("である", "であった", "だった", "とされる", "といわれる",
+                  "と呼ばれる")
+# 人名の後ろに付きうる短い爵位等(「〜男爵」「〜卿」)。ひらがなは接続助詞なので不可
+NAME_SUFFIX = re.compile(r"^[一-龥]{0,3}$")
+
+
+def clean_ws(s: str) -> str:
+    """改行・タブ・連続空白を1つの半角空白に潰して1行にする。"""
+    return re.sub(r"[\s　]+", " ", (s or "").replace("\n", " ")
+                  .replace("\t", " ").replace("\r", " ")).strip()
+
+
+def _sanitize_desc(s: str) -> str:
+    """CSVパーサを壊す文字を除去(ASCIIカンマ・二重引用符を削除)。日本語の
+    「、」「。」「（）」「：」は残す。連続空白は1つに。"""
+    s = s.replace('"', "").replace(",", " ")
+    return re.sub(r"[\s　]+", " ", s).strip()
+
+
+def strip_lead_paren(text: str) -> str:
+    """記事名直後の生没年・原語表記カッコ（…）/(…) を1つ除去する。
+    典型は「名前（…）は、…」。閉じカッコ直後に「は」が来る位置をアンカーにして
+    除去する(元記事のカッコ対応が壊れていても暴走しないため)。"""
+    opens, closes = "（(", "）)"
+    idx = next((i for i, c in enumerate(text) if c in opens), None)
+    if idx is None:
+        return text
+    ha, period = text.find("は"), text.find("。")
+    limit = min([x for x in (ha, period) if x != -1], default=len(text))
+    if idx > limit:  # カッコが「は」「。」より後 = 本文中のカッコなので触らない
+        return text
+    # 1) 「）は」を優先アンカーにする(name（…）は、… の閉じカッコ)
+    m = re.search(r"[）)]\s*は", text)
+    if m and m.start() >= idx:
+        return (text[:idx].rstrip() + text[m.start() + 1:].lstrip()).strip()
+    # 2) フォールバック: 対応の取れたブロック。ただし最初の「。」を越えたら暴走と
+    #    みなして除去しない(壊れたカッコ対策)
+    end = period if period != -1 else len(text)
+    depth, j = 0, idx
+    while j < len(text):
+        if text[j] in opens:
+            depth += 1
+        elif text[j] in closes:
+            depth -= 1
+            if depth == 0:
+                return (text[:idx].rstrip() + text[j + 1:].lstrip()).strip()
+        if j >= end and depth > 0:
+            return text
+        j += 1
+    return text
+
+
+def _norm_name(s: str) -> str:
+    return s.replace(" ", "").replace("　", "").replace("=", "＝")
+
+
+def _is_name_head(head: str, name: str) -> bool:
+    """「〜は」の「〜」が name の呼称かどうか。ミドルネーム付き・敬称付き
+    (サー・〜)・爵位付き(〜男爵)・姓のみ、といった表記ゆれを許容する。"""
+    if head == name or head.endswith(name):
+        return True
+    if len(head) >= 3 and name.endswith(head):  # 姓のみ等の短縮形
+        return True
+    i = head.find(name)
+    return i >= 0 and bool(NAME_SUFFIX.match(head[i + len(name):]))
+
+
+def strip_name_prefix(desc: str, name: str) -> str:
+    """description 冒頭の「{人名}は、」を除去する。動画キャプションでは人名が
+    別に表示されるため冗長なので落とす。
+
+    ただし除去すると主語を失って壊れる文(「〜は…で、…した。」のように残りの
+    1文目が用言で終わる)や、上流のカッコ対応が壊れている文はそのまま返す。"""
+    if not desc or not name or name == "NA":
+        return desc
+    name = _norm_name(name)
+    end = desc.find("。")
+    end = len(desc) if end == -1 else end
+    for m in re.finditer("は", desc[:end]):
+        head = _norm_name(desc[:m.start()])
+        if not head or len(head) > 30 or "、" in head:
+            continue
+        if not _is_name_head(head, name):
+            continue
+        rest = desc[m.end():].lstrip("、 ").strip()
+        first = rest.split("。")[0]
+        if len(first) < 4:
+            return desc
+        if first.count("）") > first.count("（") or first.count(")") > first.count("("):
+            return desc
+        if HIRAGANA.match(first[-1]) and not first.endswith(NOUN_PRED_TAIL):
+            return desc
+        return rest
+    return desc
+
+
+def _cut_at_comma(s: str, target: int = DESC_TARGET, hard: int = DESC_HARD) -> str:
+    """長すぎる1文を「、」境界で切って「。」を付す(中途半端な断片回避)。"""
+    pos = s[:hard].rfind("、")
+    return (s[:pos] if pos >= 30 else s[:target]).rstrip("、 ") + "。"
+
+
+def _assemble(text: str) -> str:
+    """完結した文(「。」区切り)だけを目安 DESC_TARGET 字まで連結する。常に
+    「。」で終わる。1文目が長すぎる場合のみ「、」境界で切る。"""
+    text = text.strip("、 ").strip()
+    if not text:
+        return ""
+    ends_complete = text.endswith("。")
+    segs = [s.strip() for s in text.split("。")]
+    complete = [s for s in (segs if ends_complete else segs[:-1]) if s]
+    if complete:
+        out = ""
+        for s in complete:
+            cand = out + s + "。"
+            if out and len(cand) > DESC_TARGET:
+                break
+            out = cand
+            if len(out) >= DESC_TARGET:
+                break
+        return out if len(out) <= DESC_HARD else _cut_at_comma(complete[0])
+    # 完結文が無い(冒頭抽出が1文目の途中で切れている)場合は「、」で整形
+    frag = (segs[0] if segs else text).strip()
+    return _cut_at_comma(frag) if frag else ""
+
+
+def make_description(intro: str, wd_desc: str, name: str = "") -> str:
+    """動画キャプションに使える完結文を作る。Wikipedia 冒頭文を優先し、先頭の
+    生没年カッコと冒頭の「{人名}は、」を除去してから「。」区切りで完結文を連結。
+    無ければ Wikidata の ja description(完結句)にフォールバック、どちらも
+    無ければ NA。"""
+    text = strip_name_prefix(strip_lead_paren(clean_ws(intro)), name)
+    desc = _sanitize_desc(_assemble(text)).strip()
+    if desc and not desc.endswith("。"):
+        desc += "。"
+    if not desc:
+        wd = _sanitize_desc(clean_ws(wd_desc)).strip()
+        desc = (wd + "。") if wd and not wd.endswith("。") else wd
+    return desc or "NA"
 
 
 def titles_to_qids(titles: list) -> dict:

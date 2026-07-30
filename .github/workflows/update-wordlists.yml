@@ -71,6 +71,16 @@ jobs:
         continue-on-error: true
         run: python tools/update_youtuber.py
 
+      # 登録者数は時変値なので毎回全行を上書きする(ADR 00030)。
+      # secrets.YOUTUBE_API_KEY が未設定(forkなど)ならスクリプト側が
+      # 「スキップ」を出して正常終了する
+      - name: Update youtuber subscribers (YouTube Data API)
+        id: ytsubs
+        continue-on-error: true
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+        run: python tools/update_youtuber_subscribers.py
+
       - name: Backfill images (Wikidata P18)
         id: images
         continue-on-error: true
@@ -97,6 +107,7 @@ jobs:
           O_PLANT: ${{ steps.plant.outcome }}
           O_INSECT: ${{ steps.insect.outcome }}
           O_YOUTUBER: ${{ steps.youtuber.outcome }}
+          O_YTSUBS: ${{ steps.ytsubs.outcome }}
           O_IMAGES: ${{ steps.images.outcome }}
           O_CLASSIMG: ${{ steps.classimg.outcome }}
         run: |
@@ -119,6 +130,11 @@ jobs:
           revert_if_failed plant "$O_PLANT" plant.csv
           revert_if_failed insect "$O_INSECT" insect.csv
           revert_if_failed youtuber "$O_YOUTUBER" youtuber.csv
+          # update_youtuber_subscribers は全チャンネルの取得が成功してから
+          # youtuber.csv を1回だけ書くので、失敗した回に書きかけは残らない。
+          # ここで youtuber.csv を巻き戻すと同じ回の update_youtuber の追記まで
+          # 消えてしまうため、巻き戻すファイルは指定しない(失敗の記録だけ残す)
+          revert_if_failed youtuber_subscribers "$O_YTSUBS"
           # enrich_imagesは複数ファイルを触るため巻き戻さない(他updaterの
           # 成果を消すおそれ)。破壊は次の行数チェックとvalidateで検出する
           revert_if_failed enrich_images "$O_IMAGES"
