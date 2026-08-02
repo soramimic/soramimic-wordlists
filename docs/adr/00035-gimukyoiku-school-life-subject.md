@@ -1,9 +1,9 @@
 # ADR 00035: gimukyoiku.csv に非教科の subject「学校生活」を置き、既定では含めない
 
-- Status: accepted
+- Status: superseded
 - Date: 2026-08-02
 - Supersedes: none
-- Superseded by: none
+- Superseded by: 00036
 - Related: 00022(gimukyoiku の収録基準。学校生活の一般語を収録しないと決めた) / 00034(level列と高校への拡張)
 
 ## Context
