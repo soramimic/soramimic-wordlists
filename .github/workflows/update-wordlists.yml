@@ -86,6 +86,13 @@ jobs:
           YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
         run: python tools/update_youtuber_subscribers.py
 
+      # 文科省の学校コード一覧(約6万校)から全件再生成する。Wikipediaの冒頭文
+      # 取得が支配的で30分前後かかるので、他のupdaterの後に置く
+      - name: Update school.csv (文科省 学校コード/Wikidata/Wikipedia)
+        id: school
+        continue-on-error: true
+        run: python tools/update_school.py
+
       - name: Backfill images (Wikidata P18)
         id: images
         continue-on-error: true
@@ -114,6 +121,7 @@ jobs:
           O_MUNICIPALITY: ${{ steps.municipality.outcome }}
           O_YOUTUBER: ${{ steps.youtuber.outcome }}
           O_YTSUBS: ${{ steps.ytsubs.outcome }}
+          O_SCHOOL: ${{ steps.school.outcome }}
           O_IMAGES: ${{ steps.images.outcome }}
           O_CLASSIMG: ${{ steps.classimg.outcome }}
         run: |
@@ -142,6 +150,7 @@ jobs:
           # ここで youtuber.csv を巻き戻すと同じ回の update_youtuber の追記まで
           # 消えてしまうため、巻き戻すファイルは指定しない(失敗の記録だけ残す)
           revert_if_failed youtuber_subscribers "$O_YTSUBS"
+          revert_if_failed school "$O_SCHOOL" school.csv
           # enrich_imagesは複数ファイルを触るため巻き戻さない(他updaterの
           # 成果を消すおそれ)。破壊は次の行数チェックとvalidateで検出する
           revert_if_failed enrich_images "$O_IMAGES"
