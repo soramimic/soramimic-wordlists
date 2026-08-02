@@ -66,6 +66,11 @@ jobs:
         continue-on-error: true
         run: python tools/update_insect.py
 
+      - name: Update municipality.csv (総務省コード表/Wikidata/Wikipedia)
+        id: municipality
+        continue-on-error: true
+        run: python tools/update_municipality.py
+
       - name: Update youtuber.csv (Wikidata/Wikipedia)
         id: youtuber
         continue-on-error: true
@@ -106,6 +111,7 @@ jobs:
           O_SEKITSUI: ${{ steps.sekitsui.outcome }}
           O_PLANT: ${{ steps.plant.outcome }}
           O_INSECT: ${{ steps.insect.outcome }}
+          O_MUNICIPALITY: ${{ steps.municipality.outcome }}
           O_YOUTUBER: ${{ steps.youtuber.outcome }}
           O_YTSUBS: ${{ steps.ytsubs.outcome }}
           O_IMAGES: ${{ steps.images.outcome }}
@@ -129,6 +135,7 @@ jobs:
           revert_if_failed sekitsui "$O_SEKITSUI" sekitsui.csv
           revert_if_failed plant "$O_PLANT" plant.csv
           revert_if_failed insect "$O_INSECT" insect.csv
+          revert_if_failed municipality "$O_MUNICIPALITY" municipality.csv
           revert_if_failed youtuber "$O_YOUTUBER" youtuber.csv
           # update_youtuber_subscribers は全チャンネルの取得が成功してから
           # youtuber.csv を1回だけ書くので、失敗した回に書きかけは残らない。

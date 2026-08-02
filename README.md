@@ -22,18 +22,19 @@
 | type1, type2 | pokemon固有: ポケモンのタイプ(でんき等)。単タイプは type2=NA |
 | generation | pokemon固有: 登場世代(1〜9)。フォームはそのフォームが導入された世代 |
 | genus, rarity, height_m, weight_kg, evolves_from, description | pokemon固有: 分類名(`ねずみポケモン`。上の`genus`(生物の属)とは別物。PokéAPI未登録の7種は公式サイト出典の暫定値で補完)・`伝説`/`幻`/`ウルトラビースト`/`NA`(通常)・高さ(m)・重さ(kg)(いずれも小数1桁。メガ・キョダイマックスはそのフォーム自身の体格)・進化前の種名(`フシギソウ`なら`フシギダネ`。進化前が無い種はNA)・これらを並べた説明文(例「いでんしポケモン。エスパータイプ。初登場は赤・緑。伝説のポケモン。高さ2.0m、重さ122.0kg。」「かえるポケモン。くさ・どくタイプ。初登場は赤・緑。フシギダネから進化。高さ1.0m、重さ13.0kg。」)。**説明文は事実の機械生成のみで、公式の図鑑説明文(フレーバーテキスト)は収録しない**(著作物のため)。genus/rarity/evolves_fromは種の属性なのでフォーム行は親種の値。詳細は ADR 00032 |
-| status | nations/stations: `current`(現存)/`former`(廃止・脱退・旧称)。stationsは改名前の旧駅名を `renamed` で区別する。youtuberは `current`(活動中)/`former`(卒業・引退・活動終了) |
+| status | nations/stations: `current`(現存)/`former`(廃止・脱退・旧称)。stationsは改名前の旧駅名を `renamed` で区別する。youtuberは `current`(活動中)/`former`(卒業・引退・活動終了)。municipalityは `current`(現存する市区町村)/`former`(廃止・合併消滅・改称前の旧名) |
 | category, org, debut_year, channel, subscribers | youtuber固有: 区分(`youtuber`=実在のYouTuber/`vtuber`=VTuber)、所属事務所・グループ(スラッシュ区切り多値、`org~=ホロライブ` で絞り込む前提。無ければNA)、活動開始年(西暦、無ければNA。Wikidataの活動開始(P2031)が無い人はチャンネル開設年で代用しているので、両者が混在する)、メインYouTubeチャンネル名(活動名と違う場合があるので表示・照合用の情報列。読みは付かない。複数チャンネルを持つ人は登録者数が最大の1本を採るので、本人の主戦場と一致しないことがある。無ければNA。詳細は ADR 00029)、**メインチャンネルの登録者数**(出典は YouTube Data API v3。**YouTubeが公開している概数(有効数字3桁)なので正確な人数ではなく、桁の比較・並べ替えに使う**。時変値なので月次バッチで**毎回全行を上書きする**(既存値を書き換えないという方針の明示的な例外)。WikidataにチャンネルID(P2397)が無い人・登録者数を非公開にしている人はNA。詳細は ADR 00030) |
 | prefecture, city | stations固有: 駅の所在都道府県・市区町村(同名駅の区別用。1行=1駅) |
 | lines | stations固有: 乗り入れ路線(「JR東日本 東北本線」形式、複数は「／」区切り)。Wikidata/Wikipediaに情報が無い駅は空。補完は `tools/enrich_lines.py` |
 | image, image_page | 画像のURL(Wikimedia Commons直リンクまたは本リポジトリのGitHub Releaseアセット)と、ライセンス・作者の確認先ページ(stations/baseball/football/scientist/sekitsui/plant/insect/pokemon/fictional_scientist/fictional_anime_character)。画像が無い行は空。利用時はimage_pageのクレジット条件に従うこと。**sekitsui/plant/insectは実写が取れない行に限り、`class`ごとの概念イメージSVG(`class-image-v1` リリース。画像内に「イメージ」と明記)を分類単位で共有して割り当てている**(実写ではないので、実写だけが欲しい利用側は `.../releases/download/class-image-` で始まるURLを除外すること)。**pokemonは写真ではなく全行が「図鑑端末風カード」SVG**(タイプの配色と文字と、モチーフになった生物の汎用シルエットで描いたもの。シルエットは[PhyloPic](https://www.phylopic.org/)のパブリックドメイン素材で、ポケモン自身のキャラクター造形は一切使わない。モチーフの判定はこのリポジトリの解釈で公式の設定ではない。詳細は ADR 00002, 00033)。**youtuberは自由ライセンスの実写(Commons)が取れた人だけ写真で、残りは配色と頭文字と職業アイコンで描いた「象徴カード」SVG**(`images/youtuber/` をrawで参照。画像内に「イメージ」と明記。チャンネルアイコン・サムネイル・キャラクターイラストは一切使わない。カードの配色は本人のイメージカラー(公式が公表しているもの、または公式ポートレートの情報解析で求めた代表色)があればそれを使う。詳細は ADR 00018, 00019) |。**baseball/football も同じく、実写が無い人には所属チームのチームカラーで描いた「選手カード」SVG**を割り当てている(`images/baseball/` `images/football/` をrawで参照。画像内に「イメージ」と明記。ロゴ・エンブレム・マスコット・ユニフォームの意匠は一切使わない。詳細は ADR 00020)。**scientist は肖像が取れない人に分野の配色で描いた「象徴カード」SVG**(`images/scientist/` をrawで参照。肖像画・肖像写真は使わない。分野の色に出典は無い。詳細は ADR 00025)、**stations は写真が取れない駅に汎用の「駅名標」SVG**(`images/station/` をrawで参照。鉄道会社のロゴ・社章・駅ナンバリング・ラインカラーは使わない。詳細は ADR 00026)を割り当てている。**nations は全行がCommonsの国旗**で、消滅国はその国が最後に使っていた旗(詳細は ADR 00026)。実写だけが欲しい利用側は `https://raw.githubusercontent.com/soramimic/soramimic-wordlists/` で始まるURL(本リポジトリの生成カード)を除外すること |
 | field | scientist固有: 分野を優先順(物理→化学→数学→天文学→生物学→計算機科学→地学)で並べた単一列のスラッシュ区切り多値(例 `物理/数学`)。切り詰めなし、無ければ`NA`。ソラミミックに部分一致演算子`~=`を追加したので、多値を1列で持ち`field~=物理`で絞り込める(app側 setting.json の対応は別リポジトリ soramimic 側で実施) |
 | era, birth_year, nobel, gender, country, status, description | scientist固有: 時代区分(古代/中世/近世/近代/現代/NA。生年basis)・西暦生年(紀元前は「前287」、不明はNA)・科学系ノーベル賞受賞者か(yes/no、照合不能はNA)・性別(男性/女性/その他/NA)・市民権のある国(情報列。複数は"/"、不明はNA)・生死(物故/存命/NA)・主な業績の短い完結文(記事冒頭の先頭生没年カッコを除去し、「。」区切りで完結文を目安90字まで連結。常に「。」で終わる。ASCIIカンマ・引用符除去、無ければNA)。**youtuberの `description` も同じ生成方式**(どんな人かの短い完結文。記事冒頭が無い人はWikidataのja description。詳細は ADR 00029) |
-| wikidata | stations: 駅のWikidata QID(差分更新の永続キー)。sekitsui/plant: 画像の取得元になったtaxonのQID(実写画像とセットで埋まるので、実写画像が無い行は空。sekitsui/plantの分類イメージ画像はWikidata由来ではないので空のまま)。youtuber: 本人のQID(画像の有無とは独立に埋まる。同名で複数QIDに当たった人は曖昧として空) |
+| wikidata | stations: 駅のWikidata QID(差分更新の永続キー)。municipality: 自治体のQID(現存は団体コード経由、廃止はWikidata側が出典なので直接。引けない行は空)。sekitsui/plant: 画像の取得元になったtaxonのQID(実写画像とセットで埋まるので、実写画像が無い行は空。sekitsui/plantの分類イメージ画像はWikidata由来ではないので空のまま)。youtuber: 本人のQID(画像の有無とは独立に埋まる。同名で複数QIDに当たった人は曖昧として空) |
 | birth_year, death_year, nationality, field, achievement | fictional_scientist固有: 生年・没年・国籍・分野・主な業績(AI生成の架空人物情報) |
 | title, org_name, role_in_org, first_year, species, cv_name, description | fictional_anime_character固有: 作品名・所属・役割・初登場年・種族・声優名・紹介文(AI生成の架空キャラ情報) |
 | subject, level | gimukyoiku固有: 教科(国語/社会/数学/理科/英語/音楽/美術/保健体育/技術・家庭の9区分。小学校の算数・図工等は対応する中学教科に吸収。高校の科目もこの9区分に寄せる(物理/化学/生物/地学→理科、歴史総合/地理総合/公共→社会、情報I/家庭基礎→技術・家庭、書道I→美術))と、**学校段階**(小学校/中学校/高等学校。その語が初めて本格的に扱われる段階。学年までは持たない)。どちらも複数にまたがる語はスラッシュ区切り多値で `subject~=美術` `level~=小学校` で絞り込む。**subjectには非教科の区分 `学校生活` が1つあり(運動会など教科に紐づかない行事の語)、これは既定では含めない前提**なので、利用側は教科を明示して絞ること(詳細は ADR 00035)。descriptionは授業でどう登場する語かの短い説明(「。」終わり)。imageは実写・図版(語と完全一致するja.wikipedia記事のリード画像。wikidataはその記事のQID)と、実写が無い語の**生成イメージ**(`gimukyoiku-image-v1`/`-v1b` リリース。SD生成の「AIイメージ」またはタイポグラフィカードの「イメージ」を画像内に明記。歴史上の人物は想像画、近現代の実在人物の肖像は含まない。詳細は ADR 00027/00028)。四字熟語・文学作品名・文法用語のように語を表す画像が取れない行は空。補完は `tools/enrich_gimukyoiku_images.py` と `tools/apply_gimukyoiku_ai_images.py`。列構成・収録範囲は ADR 00022/00034 |
 | category, decade, era, year, sensitive | ryuko固有: 流行の種類(`word`=流行語・言い回し/`item`=モノ・商品/`fashion`=服装・髪型・化粧/`play`=遊び・娯楽・芸能/`food`=飲食/`other`)、流行のピークの10年区切り(「1980年代」形式。前近代はピークが幅でしか分からないので代表的な10年。`decade=1980年代` の完全一致で絞り込む)、時代区分(平安/鎌倉/室町/安土桃山/江戸/明治/大正/昭和/平成/令和)、代表的な流行年(西暦4桁、特定できない語はNA)、センシティブな語か(yes/no。災害・事件・戦争・死・疫病・政治・個人スキャンダル・性的/侮蔑的な含みのいずれかに由来する語がyes。無難な語だけ使うなら `sensitive=no` で絞る)。descriptionは何がどう流行ったかの短い説明(「。」終わり)。収録基準・フラグ基準は ADR 00031 |
+| type, prefecture, parent, population, code | municipality固有: 表層の作り方(`full`=正式名称そのまま(`札幌市`)/`short`=末尾の 市/区/町/村 を落とした形(`札幌`)。落とすと空になる・fullと同じになる・同じid内で表層が重複する場合はshort行を作らない)、所在都道府県(現行47都道府県名。廃止自治体で特定できない行は空)、**政令指定都市の行政区にだけ入る親の市名**(`札幌市`。特別区・市町村は空。行政区の`original`は`中央区`のように区名だけなので、同名の区はこの列で見分ける)、人口(整数・カンマなし。現存は2020年(令和2年)国勢調査、廃止自治体はWikidataの人口(P1082)のうち時点(P585)が最新のもの。取れない行は空)、全国地方公共団体コード(総務省の6桁。検査数字込み。廃止自治体はWikidataのP429がある行のみ)。descriptionはja.wikipediaの記事冒頭から作った短い説明(scientistと同じ生成方式。「。」終わり、無ければ空)。列構成・収録基準は ADR 00036 |
 
 ## リスト一覧
 
@@ -54,6 +55,7 @@
 | fictional_daily_anime_character.csv | AI生成による架空日常アニメ『まちまる！』の住人1025人(名前・読み・所属・初登場年・種族・声優名・紹介文・肖像画像。type: family/given/full/call/nick。callは作中で使われる呼び名(敬称込み)、nickはあだ名) | jiroshimaya/fictional-scientists プロジェクトによる自動生成(実在の作品・人物とは無関係)、画像は本リポジトリのReleaseで配布 |
 | ryuko.csv | 年代別の流行(平安〜令和。流行語・モノ・遊び・ファッション・食べ物。10年区切りのdecade・時代区分era・流行年・説明文付き。災害・事件・政治・成人向け等に由来する語は `sensitive=yes` でフラグ。詳細は ADR 00031) | 新語・流行語大賞受賞語(1984〜)は[Wikipedia](https://ja.wikipedia.org/wiki/%E6%96%B0%E8%AA%9E%E3%83%BB%E6%B5%81%E8%A1%8C%E8%AA%9E%E5%A4%A7%E8%B3%9E) (CC BY-SA 4.0)から機械抽出。それ以外はWikipedia等で裏取りしたAIキュレーション(自動更新なし) |
 | gimukyoiku.csv | 小中学校の教科書・授業に登場する単語を中核に、高校の教科書の語も収録(教科フィルタ・学校段階フィルタ・説明文・画像URL付き。学習用語に加え授業で扱う人名・作品名・事件名を含む)。**名前のとおり義務教育を中核にしているが、収録範囲は `level=高等学校` の語まで広げている**(詳細は ADR 00034) | AI生成による手動キュレーション(本リポジトリ内で作成、自動更新なし。詳細は ADR 00022)。収録漏れの点検には[教科書LOD](https://jp-textbook.github.io/)の単元情報(CC BY 4.0。文部科学省「教科書編修趣意書」の加工物)を突き合わせに使っている。写真・図版は[Wikimedia Commons](https://commons.wikimedia.org/)(ライセンスは画像ごと。image_page参照)、実写が無い語は本リポジトリのReleaseで配布する生成イメージ(CC0・実写ではない。画像内に「AIイメージ」等と明記。詳細は ADR 00027/00028) |
+| municipality.csv | 市区町村(現存する市町村・特別区・政令指定都市の行政区と、廃止・合併消滅した旧自治体。正式名称`札幌市`と接尾辞を落とした`札幌`を同一idで併記。都道府県・親の市名・人口・団体コード・説明文付き。`status=current` で現存だけに絞れる。詳細は ADR 00036) | 現存の市区町村・団体コード・カナは[総務省「全国地方公共団体コード」](https://www.soumu.go.jp/denshijiti/code.html)(政府標準利用規約。CC BY 4.0 互換)。人口は[e-Stat](https://www.e-stat.go.jp/)の令和2年国勢調査「都道府県・市区町村別の主な結果」(政府標準利用規約)。廃止自治体・QID・読み仮名は[Wikidata](https://www.wikidata.org/) (CC0)。説明文(description)は[Wikipedia](https://ja.wikipedia.org/) (CC BY-SA 4.0)の記事冒頭から機械生成。画像は無し |
 
 ## 利用上の注意
 
@@ -93,6 +95,7 @@ python3 tools/update_scientist.py  # Wikidataの著名科学者(7分野・siteli
 python3 tools/update_sekitsui.py   # Wikidataの脊椎動物(rank=種・カタカナ和名)を追記
 python3 tools/update_plant.py      # Wikidataの植物(rank=種・カタカナ和名)を追記
 python3 tools/update_insect.py    # Wikidataの昆虫(rank=種・カタカナ和名)を追記
+python3 tools/update_municipality.py  # 総務省コード表+Wikidataで市区町村を再生成
 python3 tools/update_youtuber.py   # WikidataのYouTuber/VTuber(ja記事あり)を追記
 python3 tools/update_youtuber_subscribers.py  # 登録者数を全行上書き(要 YOUTUBE_API_KEY)
 python3 tools/enrich_images.py     # 画像が空の人物行にCommons画像を遡及付与
@@ -280,6 +283,22 @@ python3 tools/audit_taxa.py sekitsui  # 既存行が想定した界・門・綱�
   ```
   取得は対象ごとに `tools/.cache/`(Git管理外)へ逐次保存するので、中断しても
   再実行で続きから再開する
+- municipality: 現存の市区町村は**総務省「全国地方公共団体コード」の現行コード表**
+  (xlsx)が母集団で、団体コード・都道府県・カナをそのまま採る。政令指定都市の
+  行政区は同じコード表の政令市シートから拾い、`original` は区名だけ(`中央区`)、
+  `parent` に親の市名(`札幌市`)を入れる。廃止自治体はWikidataの
+  「廃止された日本の市町村」(Q18663566)のサブクラス閉包で、ラベルの括弧注記を
+  落として末尾が 市/区/町/村 の日本語名だけを採る。人口は2020年国勢調査
+  (e-Stat)を優先し、取れない行(北方領土の6村・2020年以降にできた区など)だけ
+  WikidataのP1082で補う。descriptionはscientistと同じ生成方式で記事冒頭から
+  目安90字の完結文。**openpyxlは使わず、xlsx(zip+XML)を標準ライブラリで読む**
+  (updaterは依存パッケージ無しで動かす方針)。id は既存CSVのキー(現存は団体
+  コード、廃止はQID。**改称した自治体は旧名と新名で団体コードが同じ**なので
+  名前空間を分ける)から引き継ぎ、既存の値は今回取得できた列だけ上書きする
+  (ADR 00014)。母集団から消えた現存行は status=former に落として残す。
+  取得結果は `tools/.cache/municipality/`(Git管理外)に貯め、再実行では
+  Wikipediaの記事冒頭を引き直さない(全件引き直しは `--refresh`)
+  (詳細は ADR 00036)
 - youtuber: Wikidataの職業(P106)がYouTuber/バーチャルYouTuberで
   ja.wikipediaに記事がある人物のみ。1ファイルに収録し category 列
   (youtuber/vtuber)で区別する。記事名(活動名)のみ収録し本名は取得しない。
