@@ -31,6 +31,8 @@ import time
 import unicodedata
 import urllib.parse
 import urllib.request
+import xml.etree.ElementTree as ET
+import zipfile
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
@@ -44,6 +46,11 @@ MEXT_FALLBACK = {
 }
 WDQS = "https://query.wikidata.org/sparql"
 WP_API = "https://ja.wikipedia.org/w/api.php"
+# 総務省「全国地方公共団体コード」現行コード表。市区町村名のホワイトリストに使う
+# (住所を正規表現で切ると「洋野町種市」「多可町中区」のような大字・地域自治区を
+# 市区町村名として拾ってしまうため)
+SOUMU_PAGE = "https://www.soumu.go.jp/denshijiti/code.html"
+SOUMU_XLSX_FALLBACK = "https://www.soumu.go.jp/main_content/000925835.xlsx"
 
 ROOT = Path(__file__).resolve().parent.parent
 CSV_PATH = ROOT / "school.csv"
@@ -101,13 +108,18 @@ TYPE_WORDS = [
     "高等支援学校", "総合支援学校", "視覚支援学校", "聴覚支援学校",
     "高等専修学校", "専修学校", "専門学校", "各種学校", "短期大学部", "短期大学",
     "小中学校", "高等学校", "中学校", "小学校", "養護学校", "支援学校", "聾学校",
-    "盲学校", "こども園", "保育園", "保育所", "幼稚園", "大学校", "大学",
-    "高専", "中等", "高校", "短大", "小中", "小", "中",
+    "盲学校", "幼稚園・保育園", "幼稚園・保育所", "こども園", "保育園", "保育所",
+    "幼稚園", "大学校", "大学", "高専", "中等", "高校", "短大", "小中", "小", "中",
 ]
+# 繰り返し適用してよい長い校種語(短い「小」「中」は固有名を削るので1回だけ)
+TYPE_WORDS_LONG = [w for w in TYPE_WORDS if len(w) >= 3]
 # 校種語が名前の前に来る形(専門学校○○ / 認定こども園○○ など)
 TYPE_PREFIX = ["幼保連携型認定こども園", "幼稚園型認定こども園", "保育所型認定こども園",
                "地方裁量型認定こども園", "認定こども園", "こども園", "高等専修学校",
-               "専修学校", "専門学校", "各種学校"]
+               "専修学校", "専門学校", "各種学校", "幼稚園", "保育園", "保育所"]
+# 「学校法人〇〇学園△△幼稚園」の法人名。法人名の切れ目(学園/学院/会など)まで
+# 落とす。切れ目が見つからないときは「学校法人」の4文字だけ落とす
+CORP_PREFIX = re.compile(r"^学校法人.{1,14}?(?:学園|学院|育英会|育栄会|会|財団|法人)(?=.)")
 # 設置者の接頭辞(○○県立 / ○○市立 / ○○町外二ヶ村組合立 …)。
 # 「国立音楽大学」「東京立正中学校」を壊さないよう、「立」の直前が
 # 行政単位を表す字であることを必ず要求する
@@ -143,6 +155,7 @@ SCHOOL_WORD = re.compile(r"学校|大学|学園|学院|幼稚園|こども園|�
 FOUNDER_WORDS = ("県立", "都立", "府立", "道立", "市立", "町立", "村立", "区立",
                  "私立", "国立", "公立", "組合立")
 
+COMPAT_KANJI = re.compile(r"[豈-﫿\U0002F800-\U0002FA1F]")
 HIRA = re.compile(r"^[ぁ-ゖー・\s]+$")
 KATA_ONLY = re.compile(r"^[ァ-ヴーゝゞヽヾ・]+$")
 HIRA2KATA = str.maketrans({chr(k): chr(k + 0x60) for k in range(ord("ぁ"), ord("ゖ") + 1)})
@@ -163,6 +176,15 @@ def to_kata(s: str) -> str:
     s = re.sub(r"[\s　]", "", s).translate(HIRA2KATA)
     s = s.replace("‐", "ー").replace("−", "ー").replace("-", "ー")
     return s if s and KATA_ONLY.match(s) else ""
+
+
+def normalize_compat(s: str) -> str:
+    """CJK互換漢字(U+F900-FAFF, U+2F800-2FA1F)だけをNFKCで統合する。
+
+    文科省の住所には互換漢字が混ざっていて「宇都宮市」が2種類の表記に割れる。
+    prefecture/city は絞り込みに使う列なのでここで統合する。全体にNFKCを
+    かけると「ＥＣＣコンピュータ専門学校」まで半角化されるので対象を限る"""
+    return COMPAT_KANJI.sub(lambda m: unicodedata.normalize("NFKC", m.group()), s)
 
 
 def clean_field(s: str) -> str:
@@ -228,6 +250,81 @@ def fetch_mext(refresh: bool) -> list:
                 "closed": bool(r[9].strip()),
             })
     return rows
+
+
+# ------------------------------------------------------- 総務省(市区町村名簿)
+XL_NS = "{http://schemas.openxmlformats.org/spreadsheetml/2006/main}"
+XL_NSR = "{http://schemas.openxmlformats.org/officeDocument/2006/relationships}"
+
+
+def read_xlsx_sheet1(data: bytes) -> list:
+    """xlsx(zip+XML)の最初のシートを 行(列文字 -> 値) のリストで読む。
+
+    openpyxl を入れずに標準ライブラリだけで読むための最小実装。総務省の
+    Excelはセルにふりがな(rPh)が埋まっていて、素朴に全ての t を連結すると
+    「熊本市西区クマモトシニシク」になるので、rPh の下の t は読まない。"""
+    z = zipfile.ZipFile(io.BytesIO(data))
+    shared = []
+    if "xl/sharedStrings.xml" in z.namelist():
+        for si in ET.fromstring(z.read("xl/sharedStrings.xml")).findall(XL_NS + "si"):
+            parts = [t.text or "" for t in si.findall(XL_NS + "t")]
+            for r in si.findall(XL_NS + "r"):
+                parts += [t.text or "" for t in r.findall(XL_NS + "t")]
+            shared.append("".join(parts))
+    wb = ET.fromstring(z.read("xl/workbook.xml"))
+    rels = {r.get("Id"): r.get("Target")
+            for r in ET.fromstring(z.read("xl/_rels/workbook.xml.rels"))}
+    sheet = wb.find(XL_NS + "sheets")[0]
+    target = rels[sheet.get(XL_NSR + "id")]
+    target = target.lstrip("/") if target.startswith("/") else "xl/" + target
+    rows = []
+    for row in ET.fromstring(z.read(target)).iter(XL_NS + "row"):
+        cells = {}
+        for c in row.findall(XL_NS + "c"):
+            col = re.match(r"[A-Z]+", c.get("r")).group()
+            if c.get("t") == "s":
+                v = c.find(XL_NS + "v")
+                cells[col] = shared[int(v.text)] if v is not None else ""
+            elif c.get("t") == "inlineStr":
+                cells[col] = "".join(x.text or "" for x in c.iter(XL_NS + "t"))
+            else:
+                v = c.find(XL_NS + "v")
+                cells[col] = (v.text or "") if v is not None else ""
+        rows.append(cells)
+    return rows
+
+
+def fetch_municipalities(refresh: bool) -> dict:
+    """都道府県 -> 市区町村名のリスト(長い順)。
+
+    現行コード表の1枚目(都道府県+市区町村)を使う。政令指定都市の行政区は
+    2枚目にしか無いので、このホワイトリストで前方一致させると自動的に
+    「札幌市中央区…」→「札幌市」に丸まる(stations.csv の粒度)。
+    東京23区は1枚目に載っているので区のまま残る。"""
+    path = CACHE / "school_municipalities.json"
+    if not refresh and path.exists():
+        return json.loads(path.read_text(encoding="utf-8"))
+    url = SOUMU_XLSX_FALLBACK
+    try:
+        html = http(SOUMU_PAGE, binary=True).decode("cp932", "replace")
+        m = re.search(r'href="(/main_content/\d+\.xlsx)"', html)
+        if m:
+            url = "https://www.soumu.go.jp" + m.group(1)
+    except Exception as ex:
+        print(f"warn: {SOUMU_PAGE}: {ex} -> フォールバックURLを使う", file=sys.stderr)
+    rows = read_xlsx_sheet1(http(url, binary=True))
+    out: dict = {}
+    for r in rows[1:]:
+        pref, name = normalize_compat(r.get("B", "")), normalize_compat(r.get("C", ""))
+        if pref in PREFS and name:  # 市区町村名が空の行は都道府県そのもの
+            out.setdefault(pref, []).append(name)
+    total = sum(len(v) for v in out.values())
+    if not 1500 <= total <= 2200:
+        raise RuntimeError(f"総務省コード表の市区町村数が異常: {total}")
+    out = {p: sorted(set(v), key=len, reverse=True) for p, v in out.items()}
+    path.write_text(json.dumps(out, ensure_ascii=False), encoding="utf-8")
+    print(f"soumu: {total} 市区町村 ({url.rsplit('/', 1)[1]})")
+    return out
 
 
 # ---------------------------------------------------------------- Wikidata
@@ -379,21 +476,37 @@ def shorten(name: str) -> str:
 
 
 def strip_founder(name: str) -> str:
-    """設置者接頭辞(○○県立/○○市立/学校法人…)を落とす"""
+    """設置者接頭辞(○○県立/○○市立/学校法人○○学園…)を落とす"""
+    m = CORP_PREFIX.match(name)
+    if m:
+        name = name[m.end():]
     m = FOUNDER_PREFIX.match(name)
     rest = name[m.end():] if m else name
     return rest or name
 
 
 def strip_type_words(name: str) -> str:
-    """校種語(接頭・接尾どちらでも)を落として固有部分だけにする"""
+    """校種語(接頭・接尾どちらでも)を落として固有部分だけにする。
+
+    「幼稚園型認定こども園将軍野幼稚園・保育園」のように校種語が前後に
+    重なる園があるので、接尾側は変化しなくなるまで(最大3回)繰り返す"""
+    m = CORP_PREFIX.match(name)
+    if m:
+        name = name[m.end():]
     for w in TYPE_PREFIX:
-        if name.startswith(w):
+        if name.startswith(w) and len(name) > len(w):
             name = name[len(w):]
             break
-    for w in TYPE_WORDS:
-        if name.endswith(w):
-            return name[: -len(w)]
+    for round_ in range(3):
+        # 短い校種語(小・中・高校…)を当てるのは1回目だけ。繰り返し当てると
+        # 「田中小学校」→「田中」→「田」のように固有名を削ってしまう
+        words = TYPE_WORDS if round_ == 0 else TYPE_WORDS_LONG
+        cut = next((name[: -len(w)] for w in words if name.endswith(w)), None)
+        if cut is None:
+            break
+        name = cut.rstrip("・ 　-")
+        if not name:
+            break
     return name
 
 
@@ -428,23 +541,39 @@ def strip_pron_type(p: str) -> str:
     return ""
 
 
-def parse_address(addr: str, pref_hint: str = "") -> tuple:
-    """住所から (都道府県, 市区町村)。政令市は区を落として市に丸める
-    (stations.csv の city 列と同じ粒度。東京23区は区のまま)"""
+def kana_variants(s: str) -> str:
+    """自治体名の照合用の表記ゆれ吸収。「駒ヶ根市」と「駒ケ根市」のような
+    かなの大小と、互換漢字では吸収できない異体字(檮原町/梼原町)を揃える"""
+    return (s.replace("ヶ", "ケ").replace("ヵ", "カ").replace("ゕ", "カ")
+             .replace("檮", "梼"))
+
+
+def parse_address(addr: str, pref_hint: str, munis: dict) -> tuple:
+    """住所から (都道府県, 市区町村)。市区町村は総務省の名簿に実在する名前の
+    うち、住所の先頭に前方一致する最長のものを採る(正規表現で「市区町村で
+    終わる最長の文字列」を切ると「洋野町種市」「多可町中区」を拾ってしまう)。
+    政令市の行政区は名簿の1枚目に無いので自動的に市に丸まる"""
+    addr = normalize_compat(addr)
     pref = next((p for p in PREFS if addr.startswith(p)), "") or pref_hint
     # 「字北海道」のような小字を都道府県と誤認しないよう、先頭一致を優先する
     i = addr.find(pref) if pref else -1
     rest = addr[i + len(pref):] if i >= 0 else addr
-    # 郡・支庁は落とす(郡山市の「郡」を誤って落とさないよう、郡名は2字以上・
-    # 後ろに町村が続くことを要求する)
-    m = re.match(r"^.{2,8}?郡(?=.{1,8}?[町村])|^.{2,6}?支庁", rest)
+    names = munis.get(pref, [])
+    # 郡・支庁が入っている住所は、それを落とした形でも照合する
+    cands = [rest]
+    m = re.match(r"^.{1,8}?郡|^.{1,8}?支庁", rest)
     if m:
-        rest = rest[m.end():]
-    # 「四日市市」「野々市市」を切らないよう貪欲に、ただし先頭8字までで探す
-    for suffix in ("市", "区", "町", "村"):
-        m = re.match(r"^(.{0,7}" + suffix + ")", rest)
-        if m:
-            return pref, m.group(1)
+        cands.append(rest[m.end():])
+    for cand in cands:
+        c = kana_variants(cand)
+        for name in names:  # 長い順なので最初に当たったものが最長一致
+            if c.startswith(kana_variants(name)):
+                return pref, name
+    # 「東京都三宅島三宅村」のように島名が先に来る住所は、先頭14字の中から探す
+    head = kana_variants(rest[:14])
+    for name in names:
+        if kana_variants(name) in head:
+            return pref, name
     return pref, ""
 
 
@@ -496,7 +625,7 @@ def char_subset(cand: str, pool: str) -> bool:
     return all(c in pool for c in cand)
 
 
-def add_nick(add, cand: str, pool: str, yomi: str) -> None:
+def add_nick(add, cand: str, pool: str, core: str, yomi: str) -> None:
     """通称候補を検査してから追加する。
     - 2〜8文字。長い異表記(「県立○○高等学校」など)は採らない
     - 校種語で終わるものは通称ではなく正式名称の言い換えなので採らない
@@ -509,18 +638,24 @@ def add_nick(add, cand: str, pool: str, yomi: str) -> None:
     # 「埼玉県立浦和高校」「県立浦和」のような設置者付きの異表記は通称ではない
     if FOUNDER_PREFIX.match(cand).end() > 0 or cand.startswith(FOUNDER_WORDS):
         return
+    # 固有部分をまるごと含む長い候補は、口語的な通称ではなく正式名称を
+    # 縮めただけの異表記(「有田工業高」「埼玉県児玉高校」)なので採らない。
+    # 「大垣日大高校」のように固有部分自体を縮めたものは通称として残る
+    if core and len(cand) >= 5 and kana_variants(core) in kana_variants(cand):
+        return
     if not char_subset(cand, pool):
         return
     add(cand, "nick", yomi)
 
 
-def build_rows(rec: dict, wd: dict, extracts: dict, next_id: int, fixed_id) -> list:
+def build_rows(rec: dict, wd: dict, extracts: dict, munis: dict,
+               next_id: int, fixed_id) -> list:
     full = rec["name"]
     stype = SCHOOL_TYPE.get(rec["kind"], "")
     founder = FOUNDER.get(rec["founder"], "")
     no = int(rec["pref_no"]) if rec["pref_no"].isdigit() else 0
     hint = PREFS[no - 1] if 1 <= no <= 47 else ""
-    pref, city = parse_address(rec["address"], hint)
+    pref, city = parse_address(rec["address"], hint, munis)
     status = "former" if (rec["branch"] == "9" or rec["closed"]) else "current"
     w = wd.get(rec["code"], {})
     qid = w.get("qid", "")
@@ -567,12 +702,12 @@ def build_rows(rec: dict, wd: dict, extracts: dict, next_id: int, fixed_id) -> l
     # ---- 通称(Wikipedia)
     pool = full + title + core
     for cand, yomi in parse_nicks(text):
-        add_nick(add, clean_field(cand), pool, to_kata(yomi))
+        add_nick(add, clean_field(cand), pool, core, to_kata(yomi))
     # ---- 別名(Wikidata)
     for a in w.get("alt", []):
         a = clean_field(a)
         if a and not HIRA.match(a) and not re.search(r"[（()）「」旧称]", a):
-            add_nick(add, a, pool, "")
+            add_nick(add, a, pool, core, "")
 
     gid = fixed_id if fixed_id is not None else next_id
     return [{"id": str(gid), "original": full, "surface": s, "pronunciation": p,
@@ -601,6 +736,7 @@ def main() -> int:
     records = sorted(uniq, key=lambda r: r["code"])
     print(f"mext: {len(records)} schools")
 
+    munis = fetch_municipalities(refresh)
     wd = fetch_wikidata(refresh)
     titles = sorted({t for t in (lookup_title(r, wd.get(r["code"], {})) for r in records) if t})
     extracts = fetch_extracts(titles, refresh)
@@ -618,7 +754,7 @@ def main() -> int:
     rows = []
     for rec in records:
         fixed = old_ids.get(rec["code"])
-        rs = build_rows(rec, wd, extracts, next_id, int(fixed) if fixed else None)
+        rs = build_rows(rec, wd, extracts, munis, next_id, int(fixed) if fixed else None)
         if fixed is None:
             next_id += 1
         rows.extend(rs)

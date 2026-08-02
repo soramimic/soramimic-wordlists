@@ -57,7 +57,7 @@
 | ryuko.csv | 年代別の流行(平安〜令和。流行語・モノ・遊び・ファッション・食べ物。10年区切りのdecade・時代区分era・流行年・説明文付き。災害・事件・政治・成人向け等に由来する語は `sensitive=yes` でフラグ。詳細は ADR 00031) | 新語・流行語大賞受賞語(1984〜)は[Wikipedia](https://ja.wikipedia.org/wiki/%E6%96%B0%E8%AA%9E%E3%83%BB%E6%B5%81%E8%A1%8C%E8%AA%9E%E5%A4%A7%E8%B3%9E) (CC BY-SA 4.0)から機械抽出。それ以外はWikipedia等で裏取りしたAIキュレーション(自動更新なし) |
 | gimukyoiku.csv | 小中学校の教科書・授業に登場する単語を中核に、高校の教科書の語も収録(教科フィルタ・学校段階フィルタ・説明文・画像URL付き。学習用語に加え授業で扱う人名・作品名・事件名を含む)。**名前のとおり義務教育を中核にしているが、収録範囲は `level=高等学校` の語まで広げている**(詳細は ADR 00034) | AI生成による手動キュレーション(本リポジトリ内で作成、自動更新なし。詳細は ADR 00022)。収録漏れの点検には[教科書LOD](https://jp-textbook.github.io/)の単元情報(CC BY 4.0。文部科学省「教科書編修趣意書」の加工物)を突き合わせに使っている。写真・図版は[Wikimedia Commons](https://commons.wikimedia.org/)(ライセンスは画像ごと。image_page参照)、実写が無い語は本リポジトリのReleaseで配布する生成イメージ(CC0・実写ではない。画像内に「AIイメージ」等と明記。詳細は ADR 00027/00028) |
 | municipality.csv | 市区町村(現存する市町村・特別区・政令指定都市の行政区と、廃止・合併消滅した旧自治体。正式名称`札幌市`と接尾辞を落とした`札幌`を同一idで併記。都道府県・親の市名・人口・団体コード・説明文付き。`status=current` で現存だけに絞れる。詳細は ADR 00036) | 現存の市区町村・団体コード・カナは[総務省「全国地方公共団体コード」](https://www.soumu.go.jp/denshijiti/code.html)(政府標準利用規約。CC BY 4.0 互換)。人口は[e-Stat](https://www.e-stat.go.jp/)の令和2年国勢調査「都道府県・市区町村別の主な結果」(政府標準利用規約)。廃止自治体・QID・読み仮名は[Wikidata](https://www.wikidata.org/) (CC0)。説明文(description)は[Wikipedia](https://ja.wikipedia.org/) (CC BY-SA 4.0)の記事冒頭から機械生成。画像は無し |
-| school.csv | 学校名(全国の幼稚園〜大学。廃校含む。校種・設置区分・所在地・学校コード付き。表層は通用形`common`(札幌南高校)・固有部分`name`(札幌南)・通称`nick`(札南)の3種類で、正式名称は`original`列。詳細は ADR 00037) | [文部科学省 学校コード](https://www.mext.go.jp/b_menu/toukei/mext_01087.html)(政府標準利用規約2.0)で自動更新。読み・別名・QIDは[Wikidata](https://www.wikidata.org/)(CC0。P11127=学校コードで突き合わせ)、通称・略称とその読みは[Wikipedia](https://ja.wikipedia.org/)日本語版の記事冒頭 (CC BY-SA 4.0) |
+| school.csv | 学校名(全国の幼稚園〜大学。廃校含む。校種・設置区分・所在地・学校コード付き。表層は通用形`common`(札幌南高校)・固有部分`name`(札幌南)・通称`nick`(札南)の3種類で、正式名称は`original`列。詳細は ADR 00037) | [文部科学省 学校コード](https://www.mext.go.jp/b_menu/toukei/mext_01087.html)(政府標準利用規約2.0)で自動更新。読み・別名・QIDは[Wikidata](https://www.wikidata.org/)(CC0。P11127=学校コードで突き合わせ)、通称・略称とその読みは[Wikipedia](https://ja.wikipedia.org/)日本語版の記事冒頭 (CC BY-SA 4.0)。所在地の市区町村名は[総務省 全国地方公共団体コード](https://www.soumu.go.jp/denshijiti/code.html)(政府標準利用規約2.0)の名簿に照合 |
 
 ## 利用上の注意
 
@@ -371,6 +371,11 @@ python3 tools/audit_taxa.py sekitsui  # 既存行が想定した界・門・綱�
   長い正式名称は `original` 列にだけ持つ。**`nick`(通称・略称)は機械生成せず**、
   ja.wikipedia 冒頭の「通称は『札南(さつなん)』」パターンと Wikidata の altLabel
   から取れたものだけを入れる(詳細は ADR 00037)。
+  所在地の市区町村は、住所を正規表現で切らず**総務省「全国地方公共団体コード」の
+  市区町村名に前方一致(最長一致)させて**決める(正規表現だと「洋野町種市」
+  「大阪市城東区古市」のように大字まで飲み込む)。政令市は区を落として市に丸まり、
+  東京23区は区のまま残る。`prefecture`/`city` はCJK互換漢字だけをNFKCで統合して
+  表記の割れを防ぐ(`original`/`surface` は正式名称なので原文のまま)。
   **保育所は学校教育法の学校ではなく学校コードが無いので収録しない**
   (幼保連携型認定こども園は収録するので「〜保育園」を名乗る園は入る)。
   取得結果は `tools/.cache/`(Git管理外)に保存するので、ローカルでの再実行は
