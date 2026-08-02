@@ -530,16 +530,16 @@
 {"word": "係り結び", "file": "gk_0b6a2cd502.jpg", "bucket": "v1", "method": "card", "card_main": "ぞ・なむ・や・か → 連体形", "card_sub": "係り結び"}
 {"word": "和歌", "file": "gk_a958897c56.jpg", "bucket": "v1b", "method": "sd", "prompt": "a single vertical paper poem strip with flowing brushstroke lines, an ink brush and inkstone beside it, cherry blossoms and a full moon, centered, large"}
 {"word": "短歌", "file": "gk_771b75ffd7.jpg", "bucket": "v1", "method": "card", "card_main": "5・7・5・7・7", "card_sub": "短歌"}
-{"word": "切れ字", "file": "gk_fee0134a5c.jpg", "bucket": "v1b", "method": "sd", "prompt": "a vertical paper poem strip with a bold pause mark cutting across its middle, a small pair of scissors and a snipped edge, centered, large"}
-{"word": "枕詞", "file": "gk_012d33e770.jpg", "bucket": "v1", "method": "sd", "prompt": "a small round Japanese pillow resting at the top end of a vertical paper poem strip with brushed ink lines below it, centered, large"}
+{"word": "切れ字", "file": "gk_fee0134a5c.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "枕詞", "file": "gk_012d33e770.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "体言止め", "file": "gk_d02a89e527.jpg", "bucket": "v1b", "method": "card", "card_main": "静かな朝。", "card_sub": "体言止め"}
-{"word": "五段活用", "file": "gk_838f270038.jpg", "bucket": "v1b", "method": "sd", "prompt": "a five-step pastel staircase of equal blocks ascending from left to right, a curved arrow following the steps, centered, large"}
+{"word": "五段活用", "file": "gk_838f270038.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "上一段活用", "file": "gk_13afd1321c.jpg", "bucket": "v1", "method": "card", "card_main": "見る → み・み・みる", "card_sub": "上一段活用"}
-{"word": "下一段活用", "file": "gk_49156a2884.jpg", "bucket": "v1", "method": "sd", "prompt": "a two-tier platform with a single block placed on the lower tier and a downward arrow beside it, a small bowl and spoon on the block, centered, large"}
+{"word": "下一段活用", "file": "gk_49156a2884.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "カ行変格活用", "file": "gk_7c1c0c8611.jpg", "bucket": "v1", "method": "card", "card_main": "来る → こ・き・くる", "card_sub": "カ行変格活用"}
 {"word": "サ行変格活用", "file": "gk_aad5c4321a.jpg", "bucket": "v1b", "method": "card", "card_main": "する → し・し・する", "card_sub": "サ行変格活用"}
 {"word": "連体形", "file": "gk_55a2477c63.jpg", "bucket": "v1", "method": "card", "card_main": "咲く + 花", "card_sub": "連体形"}
-{"word": "未然形", "file": "gk_bf893205c7.jpg", "bucket": "v1b", "method": "sd", "prompt": "a single seed just beginning to sprout from soil, a faint dotted outline of the future grown plant above it, centered, large"}
+{"word": "未然形", "file": "gk_bf893205c7.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "主語", "file": "gk_c53b797895.jpg", "bucket": "v1b", "method": "sd", "prompt": "a row of plain blank tiles with the leading tile highlighted and lifted, a spotlight beam shining down on it, centered, large"}
 {"word": "述語", "file": "gk_c3f561609f.jpg", "bucket": "v1b", "method": "card", "card_main": "花が 咲く。", "card_sub": "述語 = 咲く"}
 {"word": "修飾語", "file": "gk_8f72842aab.jpg", "bucket": "v1b", "method": "sd", "prompt": "a small decorative tile covered in sparkles attached by a short line to a larger plain block, a magnifying glass hovering nearby, centered, large"}
@@ -555,15 +555,15 @@
 {"word": "送り仮名", "file": "gk_204337a582.jpg", "bucket": "v1", "method": "sd", "prompt": "a large square block followed by two smaller rounded tiles trailing behind it along a baseline, a short arrow linking them, centered, large"}
 {"word": "原稿用紙", "file": "gk_7e35b12318.jpg", "bucket": "v1", "method": "sd", "prompt": "a single sheet of Japanese manuscript paper with an empty grid of small squares and a red ruled border, a pencil laid across it, centered, large"}
 {"word": "対義語", "file": "gk_9859b4dad6.jpg", "bucket": "v1b", "method": "sd", "prompt": "two tiles facing away from each other with arrows pointing in opposite directions, one large circle and one small circle balanced on a seesaw, centered, large"}
-{"word": "類義語", "file": "gk_51c8e6bc94.jpg", "bucket": "v1", "method": "sd", "prompt": "two nearly identical overlapping rounded tiles joined by an equal-sign connector, an open dictionary beneath them, centered, large"}
+{"word": "類義語", "file": "gk_51c8e6bc94.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "比喩", "file": "gk_23f0f2f85b.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "比喩表現を直感的に理解する学習用図版の背景素材。夜空の丸い月と銀色の丸皿を並べ、形と輝きの共通点を柔らかな点線で結ぶ。現実の物とたとえられた物の対応が一目で分かり、中央に後で接続語を重ねるための空白を残す。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
 {"word": "擬人法", "file": "gk_a68911389a.jpg", "bucket": "v1b", "method": "sd", "prompt": "a smiling sun and a cheerful flower with little waving arms and friendly faces, a tree with a happy expression, centered, large"}
-{"word": "倒置法", "file": "gk_633b69050b.jpg", "bucket": "v1", "method": "sd", "prompt": "two labeled blocks swapping places with two curved crossing arrows arcing between them, centered, large"}
-{"word": "反復法", "file": "gk_26898b45de.jpg", "bucket": "v1", "method": "sd", "prompt": "three identical blocks lined up in a row with echoing ripple lines repeating outward behind them, centered, large"}
-{"word": "対句", "file": "gk_3a9d5cb26f.jpg", "bucket": "v1", "method": "sd", "prompt": "two symmetrical vertical paper strips of equal length side by side with mirrored brushstroke patterns, a center mirror line, centered, large"}
+{"word": "倒置法", "file": "gk_633b69050b.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "反復法", "file": "gk_26898b45de.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "対句", "file": "gk_3a9d5cb26f.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "起承転結", "file": "gk_279cc6769d.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "作文の四段構成を直感的に理解するための四コマ図版。一つの物語を左上から右上、左下、右下へ読む。種をまく、芽が育つ、突然の嵐で鉢が倒れる、皆で直して花が咲く、という四つの明確な場面。各コマ上部に後で見出しを重ねられる空白帯を残す。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
-{"word": "五言絶句", "file": "gk_910158b914.jpg", "bucket": "v1b", "method": "sd", "prompt": "a paper grid of four vertical columns each holding five empty squares, an ink brush and inkstone beside it, centered, large"}
-{"word": "七言律詩", "file": "gk_0986e3c2e6.jpg", "bucket": "v1", "method": "sd", "prompt": "a paper grid of eight vertical columns each holding seven empty squares, an ink brush and a scroll edge, centered, large"}
+{"word": "五言絶句", "file": "gk_910158b914.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "七言律詩", "file": "gk_0986e3c2e6.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "返り点", "file": "gk_43274bbcd6.jpg", "bucket": "v1", "method": "card", "card_main": "レ ・ 一 二 ・ 上 下", "card_sub": "返り点"}
 {"word": "レ点", "file": "gk_7e00217a41.jpg", "bucket": "v1", "method": "card", "card_main": "レ", "card_sub": "レ点"}
 {"word": "一二点", "file": "gk_4ec62ed375.jpg", "bucket": "v1", "method": "card", "card_main": "一 二", "card_sub": "一二点"}
@@ -637,12 +637,12 @@
 {"word": "撥音便", "file": "gk_b2e6c350b2.jpg", "bucket": "v1b", "method": "card", "card_main": "読みて → 読んで", "card_sub": "撥音便"}
 {"word": "促音便", "file": "gk_0cfbb88ab7.jpg", "bucket": "v1", "method": "card", "card_main": "立ちて → 立って", "card_sub": "促音便"}
 {"word": "格助詞", "file": "gk_5505e63c02.jpg", "bucket": "v1", "method": "card", "card_main": "が・を・に・へ・と", "card_sub": "格助詞"}
-{"word": "接続助詞", "file": "gk_cda3e74726.jpg", "bucket": "v1b", "method": "sd", "prompt": "a small clip attached to the tail end of one block hooking onto the next block, a short link chain between them, centered, large"}
+{"word": "接続助詞", "file": "gk_cda3e74726.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "副助詞", "file": "gk_d8a7ed8b05.jpg", "bucket": "v1b", "method": "card", "card_main": "は・も・こそ・さえ", "card_sub": "副助詞"}
 {"word": "終助詞", "file": "gk_1e1aac6bcf.jpg", "bucket": "v1", "method": "card", "card_main": "か・ね・よ・な", "card_sub": "終助詞"}
-{"word": "文節", "file": "gk_d258747049.jpg", "bucket": "v1b", "method": "sd", "prompt": "a long paper strip divided into several segments by dotted cut lines with small scissors and pause markers between the segments, centered, large"}
+{"word": "文節", "file": "gk_d258747049.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "可能動詞", "file": "gk_48e35fa8d3.jpg", "bucket": "v1", "method": "card", "card_main": "読む → 読める", "card_sub": "可能動詞"}
-{"word": "掛詞", "file": "gk_c92d07a3ae.jpg", "bucket": "v1b", "method": "sd", "prompt": "a single tile splitting into two overlapping images at once, a pine tree on one side and an hourglass on the other sharing the same outline, double exposure, centered, large"}
+{"word": "掛詞", "file": "gk_c92d07a3ae.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "序詞", "file": "gk_088643569e.jpg", "bucket": "v1", "method": "card", "card_main": "序詞", "card_sub": "じょことば"}
 {"word": "句切れ", "file": "gk_5fe5ddde72.jpg", "bucket": "v1", "method": "card", "card_main": "五七五 ‖ 七七", "card_sub": "句切れ"}
 {"word": "上の句", "file": "gk_03dd24cd1c.jpg", "bucket": "v1", "method": "card", "card_main": "5・7・5", "card_sub": "上の句"}
@@ -670,34 +670,34 @@
 {"word": "リズム", "file": "gk_3829134f74.jpg", "bucket": "v1", "method": "sd", "prompt": "a repeating pattern of note and rest symbols in a row, long and short beat blocks alternating"}
 {"word": "メロディー", "file": "gk_cb03da8dde.jpg", "bucket": "v1b", "method": "sd", "prompt": "a flowing wavy line of note heads rising and falling like a gentle wave across a staff"}
 {"word": "ハーモニー", "file": "gk_7b2ef22aa0.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "音楽の「ハーモニー」を説明する教育用イラスト。小中学生の小さな合唱団が三つの異なる音の高さで同時に歌い、各パートから出る三本のなめらかな色付きの音の波が中央で重なって一つの美しい和音になる様子。そばで先生が指揮している。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
-{"word": "フォルテ", "file": "gk_76398c15d9.jpg", "bucket": "v1", "method": "sd", "prompt": "a single huge italic letter f music dynamic mark, centered, large, with bold burst lines around it"}
-{"word": "フォルテシモ", "file": "gk_ee8ce3535d.jpg", "bucket": "v1b", "method": "sd", "prompt": "a huge doubled italic dynamic mark ff, centered, large, with strong radiating burst lines"}
-{"word": "ピアニシモ", "file": "gk_840e4f065a.jpg", "bucket": "v1b", "method": "sd", "prompt": "a huge doubled italic dynamic mark pp, centered, large, with tiny soft sound waves and a feather"}
+{"word": "フォルテ", "file": "gk_76398c15d9.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "フォルテシモ", "file": "gk_ee8ce3535d.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "ピアニシモ", "file": "gk_840e4f065a.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "メゾフォルテ", "file": "gk_646ed30818.jpg", "bucket": "v1", "method": "card", "card_main": "mf", "card_sub": "メゾフォルテ"}
 {"word": "メゾピアノ", "file": "gk_8cb3bf136d.jpg", "bucket": "v1b", "method": "card", "card_main": "mp", "card_sub": "メゾピアノ"}
-{"word": "クレッシェンド", "file": "gk_4582d76473.jpg", "bucket": "v1", "method": "sd", "prompt": "a single huge crescendo hairpin symbol, centered, large, an opening wedge of two diverging lines with notes growing bigger"}
-{"word": "デクレッシェンド", "file": "gk_2ada091b55.jpg", "bucket": "v1", "method": "sd", "prompt": "a single huge decrescendo hairpin symbol, centered, large, a closing wedge of two converging lines with notes shrinking"}
-{"word": "ディミヌエンド", "file": "gk_566e45553d.jpg", "bucket": "v1", "method": "sd", "prompt": "a huge closing wedge diminuendo hairpin above a staff, sound waves fading smaller from left to right"}
-{"word": "スタッカート", "file": "gk_976f58345c.jpg", "bucket": "v1b", "method": "sd", "prompt": "a row of separated note heads each with a big dot underneath, short detached notes with gaps between them"}
+{"word": "クレッシェンド", "file": "gk_4582d76473.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "デクレッシェンド", "file": "gk_2ada091b55.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "ディミヌエンド", "file": "gk_566e45553d.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "スタッカート", "file": "gk_976f58345c.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "スラー", "file": "gk_7676d02510.jpg", "bucket": "v1", "method": "sd", "prompt": "a huge curved arc line joining two note heads of different pitch on a staff, smooth connecting curve"}
-{"word": "タイ", "file": "gk_d9b6ded59a.jpg", "bucket": "v1b", "method": "sd", "prompt": "a huge curved tie line joining two note heads of the same pitch on a staff, held single sound"}
-{"word": "フェルマータ", "file": "gk_432b801d90.jpg", "bucket": "v1", "method": "sd", "prompt": "a single huge fermata symbol, centered, large, an arc with a dot underneath placed above one note head"}
+{"word": "タイ", "file": "gk_d9b6ded59a.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "フェルマータ", "file": "gk_432b801d90.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "レガート", "file": "gk_b4a8c726a2.jpg", "bucket": "v1b", "method": "sd", "prompt": "a long smooth curved line arching over a row of connected note heads, seamless flowing ribbon of sound"}
 {"word": "テンポ", "file": "gk_7061bee1c8.jpg", "bucket": "v1", "method": "sd", "prompt": "a single pyramid-shaped mechanical metronome, centered, large, with its pendulum swinging and motion arcs"}
 {"word": "アンダンテ", "file": "gk_6cf4381688.jpg", "bucket": "v1", "method": "card", "card_main": "Andante", "card_sub": "アンダンテ(歩く速さで)"}
 {"word": "アレグロ", "file": "gk_5e02a51f6d.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "音楽の「アレグロ」を説明する教育用イラスト。中学生の弦楽四重奏が、生き生きとした速いテンポで演奏している。指揮役の手元と四人の弓の動きがきびきびそろい、横に置いたメトロノームの振り子が速く往復する様子を二重の軌跡で示す。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
-{"word": "モデラート", "file": "gk_bcc6cd0101.jpg", "bucket": "v1b", "method": "sd", "prompt": "a metronome with its pendulum upright at the center, a balance scale evenly level beside it, moderate steady pace"}
+{"word": "モデラート", "file": "gk_bcc6cd0101.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "リタルダンド", "file": "gk_989785ae00.jpg", "bucket": "v1b", "method": "card", "card_main": "rit.", "card_sub": "リタルダンド"}
 {"word": "アダージョ", "file": "gk_45a5b1631e.jpg", "bucket": "v1", "method": "card", "card_main": "Adagio", "card_sub": "アダージョ(ゆるやかに)"}
-{"word": "ダルセーニョ", "file": "gk_e7b9b486da.jpg", "bucket": "v1b", "method": "sd", "prompt": "a single huge segno sign, centered, large, an ornate slanted S crossed by a diagonal line with two dots"}
-{"word": "ダカーポ", "file": "gk_9c5ca8940c.jpg", "bucket": "v1b", "method": "sd", "prompt": "a huge curved arrow looping back from the end of a staff to its very beginning, return to the start"}
-{"word": "反復記号", "file": "gk_20241375c3.jpg", "bucket": "v1", "method": "sd", "prompt": "a huge repeat sign at the end of a staff, thick and thin double barline with two big dots, centered, large"}
+{"word": "ダルセーニョ", "file": "gk_e7b9b486da.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "ダカーポ", "file": "gk_9c5ca8940c.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "反復記号", "file": "gk_20241375c3.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "シャープ", "file": "gk_9779d31ce1.jpg", "bucket": "v1b", "method": "card", "card_main": "♯", "card_sub": "シャープ"}
 {"word": "フラット", "file": "gk_64ce72be02.jpg", "bucket": "v1", "method": "card", "card_main": "♭", "card_sub": "フラット"}
 {"word": "ナチュラル", "file": "gk_5ba8974da7.jpg", "bucket": "v1", "method": "card", "card_main": "♮", "card_sub": "ナチュラル"}
-{"word": "長調", "file": "gk_c15ef2cbeb.jpg", "bucket": "v1b", "method": "sd", "prompt": "a bright cheerful ascending scale of note heads climbing toward a shining sun, warm sunny sky"}
-{"word": "短調", "file": "gk_aa83af3450.jpg", "bucket": "v1b", "method": "sd", "prompt": "a descending line of note heads under a rainy blue-grey sky with a crescent moon, melancholy mood"}
-{"word": "音階", "file": "gk_433129ea04.jpg", "bucket": "v1", "method": "sd", "prompt": "note heads placed on ascending stair steps from low to high, a ladder of eight rising pitches"}
+{"word": "長調", "file": "gk_c15ef2cbeb.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "短調", "file": "gk_aa83af3450.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "音階", "file": "gk_433129ea04.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "和音", "file": "gk_47f586ae8d.jpg", "bucket": "v1", "method": "sd", "prompt": "three note heads stacked in a vertical chord on a staff, sounded together with a single burst of rings"}
 {"word": "主旋律", "file": "gk_d3b972f615.jpg", "bucket": "v1b", "method": "card", "card_main": "♪♪♪", "card_sub": "主旋律(メロディー)"}
 {"word": "大太鼓", "file": "gk_24c5da5346.jpg", "bucket": "v1", "method": "sd", "prompt": "a single large orchestral bass drum on its stand with a soft-headed mallet, centered, large"}
@@ -713,7 +713,7 @@
 {"word": "二部合唱", "file": "gk_e39377bd52.jpg", "bucket": "v1b", "method": "gpt-image", "prompt": "音楽の「二部合唱」を説明する教育用イラスト。中学校の合唱練習で生徒を二つのグループに分け、左の高音パートと右の低音パートが異なる旋律を同時に歌っている。二本の色違いの旋律線がそれぞれのグループから出て、中央の指揮者の前で美しく重なる。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
 {"word": "混声合唱", "file": "gk_6e43043ce2.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "中学校の音楽学習用図版。ソプラノ、アルト、テノール、バスの生徒たちが四つの声部に分かれて段上に並び、指揮者を見て一緒に歌っている。男女の声が重なり合うことが分かるよう、四群から柔らかな色の音の流れが中央で調和する。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
 {"word": "独唱", "file": "gk_4d4254a818.jpg", "bucket": "v1", "method": "sd", "prompt": "a single singer standing alone on a stage under a spotlight, singing a solo with notes floating up"}
-{"word": "ソナタ形式", "file": "gk_28f0062399.jpg", "bucket": "v1", "method": "sd", "prompt": "a three-part musical form diagram, three labeled blocks in a row joined by arrows, the first and third blocks matching each other"}
+{"word": "ソナタ形式", "file": "gk_28f0062399.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "交響曲", "file": "gk_3aad5c2c18.jpg", "bucket": "v1", "method": "sd", "prompt": "a full symphony orchestra on stage with strings, brass, woodwinds and timpani, a conductor raising a baton"}
 {"word": "協奏曲", "file": "gk_64e435d66e.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "音楽の「協奏曲」を説明する教育用イラスト。演奏会の舞台で、一人のバイオリン独奏者が前方中央に立ち、その後ろのオーケストラと音楽を掛け合っている。独奏者の旋律を暖色、応答する管弦楽の旋律を寒色の波で示し、指揮者が両者をまとめる構図。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
 {"word": "組曲", "file": "gk_c111a05a86.jpg", "bucket": "v1b", "method": "card", "card_main": "Suite", "card_sub": "組曲"}
@@ -758,15 +758,15 @@
 {"word": "トルコ行進曲", "file": "gk_d8525b61c1.jpg", "bucket": "v1b", "method": "sd", "prompt": "a piano keyboard with a marching parade of Ottoman janissary band drums, cymbals and a crescent bell tree under a crescent moon"}
 {"word": "未完成交響曲", "file": "gk_13c5e8d16d.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "音楽の「未完成交響曲」を説明する教育用イラスト。シューベルトの交響曲を学ぶ場面として、19世紀風の作曲机に二つの完成した楽章の楽譜束を置き、その先に続くはずの空白の五線紙と止まった羽根ペンを描く。奥には演奏中のオーケストラを淡く示し、二楽章で残された作品だと伝わる構図。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
 {"word": "アレグレット", "file": "gk_f02aa43423.jpg", "bucket": "v1b", "method": "card", "card_main": "Allegretto", "card_sub": "アレグレット"}
-{"word": "ラルゴ", "file": "gk_45f5bcad4e.jpg", "bucket": "v1", "method": "sd", "prompt": "a metronome with its pendulum leaning far out in a very slow wide arc, broad long whole notes and a calm vast horizon"}
-{"word": "アッチェレランド", "file": "gk_cc9a48af88.jpg", "bucket": "v1b", "method": "sd", "prompt": "a row of notes packing closer and closer toward the right with an arrow speeding up and sharp motion lines"}
+{"word": "ラルゴ", "file": "gk_45f5bcad4e.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "アッチェレランド", "file": "gk_cc9a48af88.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "カンタービレ", "file": "gk_7658845e09.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "音楽の「カンタービレ」を説明する教育用イラスト。中学生のバイオリン奏者が、歌うように滑らかな旋律を長い弓使いで演奏している。楽器から出る一本のなめらかで途切れない旋律線が、そばでゆったり歌う人物の声の波と自然につながる構図。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
 {"word": "全休符", "file": "gk_9b2fae5c6c.jpg", "bucket": "v1b", "method": "card", "card_main": "𝄻", "card_sub": "全休符"}
-{"word": "三連符", "file": "gk_7947005c5a.jpg", "bucket": "v1", "method": "sd", "prompt": "three beamed eighth notes grouped under a bracket with a big numeral 3 above them, centered, large"}
+{"word": "三連符", "file": "gk_7947005c5a.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "臨時記号", "file": "gk_0af5df5c25.jpg", "bucket": "v1", "method": "card", "card_main": "♯ ♭ ♮", "card_sub": "臨時記号"}
 {"word": "ハ長調", "file": "gk_fe5041d2d8.jpg", "bucket": "v1b", "method": "sd", "prompt": "a piano keyboard with the white keys from C to C highlighted, a staff with a treble clef and no sharps or flats"}
 {"word": "イ短調", "file": "gk_6b92582a58.jpg", "bucket": "v1", "method": "card", "card_main": "Am", "card_sub": "イ短調"}
-{"word": "階名", "file": "gk_9e22b0c3a9.jpg", "bucket": "v1b", "method": "sd", "prompt": "seven note heads climbing a staircase, each step labeled with a solfege syllable from do to ti"}
+{"word": "階名", "file": "gk_9e22b0c3a9.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "オクターブ", "file": "gk_0165036cca.jpg", "bucket": "v1", "method": "card", "card_main": "ド 〜 ド (8度)", "card_sub": "オクターブ"}
 {"word": "アルペジオ", "file": "gk_947556d097.jpg", "bucket": "v1b", "method": "card", "card_main": "ド・ミ・ソ・ド", "card_sub": "アルペジオ"}
 {"word": "ピチカート", "file": "gk_f75bf329e5.jpg", "bucket": "v1b", "method": "sd", "prompt": "a hand plucking a violin string with a fingertip, the string vibrating with short sound rings, the bow resting aside"}
@@ -958,38 +958,38 @@
 {"word": "平行", "file": "gk_d2ef955ebe.jpg", "bucket": "v1b", "method": "sd", "prompt": "two long straight lines running side by side at the same distance apart, never meeting, small matching arrowhead marks on each line, a pair of set squares resting beside them"}
 {"word": "円柱", "file": "gk_548211cbed.jpg", "bucket": "v1", "method": "sd", "prompt": "a single upright cylinder solid with a visible top circular face and a dashed ellipse for the hidden bottom face, centered, large"}
 {"word": "球", "file": "gk_f2af96b867.jpg", "bucket": "v1b", "method": "sd", "prompt": "a single sphere with soft shading, thick outline, plain background"}
-{"word": "合同", "file": "gk_59404d4088.jpg", "bucket": "v1", "method": "sd", "prompt": "two triangles of exactly the same shape and same size placed side by side, one rotated slightly, matching tick marks on corresponding sides and matching arc marks on corresponding angles"}
+{"word": "合同", "file": "gk_59404d4088.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "相似", "file": "gk_72bfb8ee14.jpg", "bucket": "v1", "method": "sd", "prompt": "a small triangle and a larger triangle of exactly the same shape, nested with matching angle arc marks, dashed guide lines radiating from a common point through their corresponding corners"}
 {"word": "内角の和", "file": "gk_22dffb7be0.jpg", "bucket": "v1", "method": "sd", "prompt": "a pentagon outline with a colored arc drawn inside every corner, and dashed diagonals from one vertex splitting it into triangles, each triangle tinted a different pastel color"}
-{"word": "垂直二等分線", "file": "gk_8bb82af83d.jpg", "bucket": "v1b", "method": "sd", "prompt": "a horizontal line segment with dots at both ends, two overlapping compass arcs crossing above and below it, and a vertical line through the crossing points meeting the segment at a right angle square mark, equal tick marks on both halves"}
-{"word": "作図", "file": "gk_8e06d936e9.jpg", "bucket": "v1b", "method": "sd", "prompt": "a drawing compass and a straightedge ruler lying on a blank sheet, with light circular construction arcs and a partly drawn angle beneath them, centered, large"}
-{"word": "面積", "file": "gk_e89998bd95.jpg", "bucket": "v1b", "method": "sd", "prompt": "a rectangle outline completely tiled with small unit squares, the inside evenly filled with a flat color, one corner square highlighted in a stronger tone"}
+{"word": "垂直二等分線", "file": "gk_8bb82af83d.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "作図", "file": "gk_8e06d936e9.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "面積", "file": "gk_e89998bd95.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "体積", "file": "gk_f5a13d598c.jpg", "bucket": "v1b", "method": "sd", "prompt": "a large transparent cube box packed with small stacked unit cubes, a few unit cubes sitting outside it, three dimension arrows along the length, width and height edges"}
 {"word": "表面積", "file": "gk_aee7a93ddb.jpg", "bucket": "v1b", "method": "card", "card_main": "6a²", "card_sub": "立方体の表面積"}
 {"word": "三平方の定理", "file": "gk_6bd035558c.jpg", "bucket": "v1", "method": "card", "card_main": "a² + b² = c²", "card_sub": "三平方の定理"}
 {"word": "素因数分解", "file": "gk_20248c8b60.jpg", "bucket": "v1", "method": "card", "card_main": "12 = 2² × 3", "card_sub": "素因数分解"}
-{"word": "通分", "file": "gk_9bff3b8cdd.jpg", "bucket": "v1b", "method": "sd", "prompt": "two circles cut into different numbers of equal slices with some slices shaded, and below them the same two circles recut into the same number of equal slices, downward arrows linking the pairs"}
+{"word": "通分", "file": "gk_9bff3b8cdd.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "概数", "file": "gk_6c0b5d2196.jpg", "bucket": "v1", "method": "card", "card_main": "3842 → 約3800", "card_sub": "概数"}
 {"word": "余り", "file": "gk_dee7c4bb21.jpg", "bucket": "v1b", "method": "card", "card_main": "7 ÷ 3 = 2 あまり 1", "card_sub": "余り"}
 {"word": "筆算", "file": "gk_b5e168e318.jpg", "bucket": "v1b", "method": "sd", "prompt": "a sheet of squared grid paper with empty digit boxes stacked in neat vertical columns, a horizontal rule beneath them and a row of empty answer boxes below, a pencil resting diagonally on the sheet"}
 {"word": "九九", "file": "gk_f7c85acdcc.jpg", "bucket": "v1b", "method": "sd", "prompt": "a nine by nine grid table of empty cells with a highlighted top row and left column, several cells tinted in soft pastel bands like a multiplication chart, centered, large"}
 {"word": "分配法則", "file": "gk_d4ccf90932.jpg", "bucket": "v1b", "method": "sd", "prompt": "a wide rectangle split by a single vertical line into two smaller rectangles filled with two different colors, a brace under the whole width and separate braces under each part, arrows fanning from the left side to both parts"}
 {"word": "交換法則", "file": "gk_5164182330.jpg", "bucket": "v1", "method": "card", "card_main": "3 × 4 = 4 × 3", "card_sub": "交換法則"}
-{"word": "正の数", "file": "gk_7063f386b9.jpg", "bucket": "v1", "method": "sd", "prompt": "a horizontal number line with evenly spaced ticks, the right half from the middle onward thickly highlighted in a warm color with an arrow pointing right, a dot marked on that side, an upward thermometer bar rising above its midpoint"}
+{"word": "正の数", "file": "gk_7063f386b9.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "負の数", "file": "gk_51fcc5657c.jpg", "bucket": "v1", "method": "card", "card_main": "-1  -2  -3", "card_sub": "負の数"}
 {"word": "有理数", "file": "gk_77dc4b16ce.jpg", "bucket": "v1", "method": "card", "card_main": "2/3  -5  0.25", "card_sub": "有理数"}
 {"word": "平方根", "file": "gk_c37fa81641.jpg", "bucket": "v1b", "method": "card", "card_main": "√9 = 3", "card_sub": "平方根"}
 {"word": "累乗", "file": "gk_d94d6aa4f9.jpg", "bucket": "v1b", "method": "sd", "prompt": "a left to right staircase of four shapes, a single dot, then a short line of dots, then a flat square block of dots, then a stacked cube of dots, each step larger than the last with small arrows between them"}
 {"word": "指数", "file": "gk_0065c59f18.jpg", "bucket": "v1", "method": "card", "card_main": "2³ = 2×2×2", "card_sub": "指数"}
 {"word": "有効数字", "file": "gk_1b6167bd43.jpg", "bucket": "v1", "method": "card", "card_main": "3.14 × 10³", "card_sub": "有効数字"}
-{"word": "割合", "file": "gk_0bcb13a157.jpg", "bucket": "v1", "method": "sd", "prompt": "a pie chart circle divided into parts with one wedge pulled slightly out and filled in a bright accent color, beside it a full horizontal bar with the matching portion shaded, a double headed arrow between them"}
+{"word": "割合", "file": "gk_0bcb13a157.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "単位量あたりの大きさ", "file": "gk_cb2ddd71c8.jpg", "bucket": "v1b", "method": "card", "card_main": "1m² あたり 5人", "card_sub": "単位量あたりの大きさ"}
 {"word": "速さ", "file": "gk_42f8b57743.jpg", "bucket": "v1", "method": "sd", "prompt": "a small car on a straight road with motion streak lines behind it, a stopwatch beside the road and a dashed distance line with arrows at both ends running along the road"}
 {"word": "比例", "file": "gk_c27f341ce5.jpg", "bucket": "v1b", "method": "sd", "prompt": "a coordinate plane with plain horizontal and vertical axes and no labels, a straight line rising from the origin through evenly spaced plotted dots, dashed step lines from each dot down to the horizontal axis"}
 {"word": "一次方程式", "file": "gk_e3354377b3.jpg", "bucket": "v1b", "method": "card", "card_main": "2x + 3 = 7", "card_sub": "一次方程式"}
-{"word": "連立方程式", "file": "gk_3a5e811f29.jpg", "bucket": "v1", "method": "sd", "prompt": "a coordinate plane with unlabeled axes and two straight lines of different slopes crossing each other, a large highlighted dot at their single intersection point with dashed guide lines to both axes"}
+{"word": "連立方程式", "file": "gk_3a5e811f29.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "二次方程式", "file": "gk_adb88f7c47.jpg", "bucket": "v1b", "method": "card", "card_main": "x² - 5x + 6 = 0", "card_sub": "二次方程式"}
-{"word": "展開", "file": "gk_6ce77738b8.jpg", "bucket": "v1", "method": "sd", "prompt": "a large rectangle split by one vertical and one horizontal line into four smaller rectangles each filled with a different pastel color, a pair of large open and close bracket shapes beside it with arrows fanning out into the four parts"}
+{"word": "展開", "file": "gk_6ce77738b8.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "比例定数", "file": "gk_7d1e6e24d6.jpg", "bucket": "v1", "method": "card", "card_main": "y = 3x", "card_sub": "比例定数 = 3"}
 {"word": "傾き", "file": "gk_00174e4abf.jpg", "bucket": "v1", "method": "sd", "prompt": "a coordinate plane with unlabeled axes and one straight rising line, with a shaded right triangle sitting under the line, a horizontal arrow along its base and a vertical arrow up its side"}
 {"word": "切片", "file": "gk_1a37ffe775.jpg", "bucket": "v1", "method": "card", "card_main": "y = 2x + 3", "card_sub": "切片 = 3"}
@@ -997,7 +997,7 @@
 {"word": "原点", "file": "gk_a63c922ee2.jpg", "bucket": "v1b", "method": "sd", "prompt": "a coordinate plane with a plain horizontal and vertical axis crossing in the middle, a large bold highlighted dot with a glowing ring exactly at the crossing point"}
 {"word": "変域", "file": "gk_f1f7ba2756.jpg", "bucket": "v1b", "method": "card", "card_main": "0 ≦ x ≦ 5", "card_sub": "変域"}
 {"word": "移項", "file": "gk_1dcc301788.jpg", "bucket": "v1", "method": "card", "card_main": "x + 3 = 7 → x = 7 - 3", "card_sub": "移項"}
-{"word": "代入", "file": "gk_fffc5d3d84.jpg", "bucket": "v1b", "method": "sd", "prompt": "a flat board with a shaped empty slot, and a matching puzzle piece block dropping into that slot along a downward arrow, a mystery sack beside the board opening to reveal cube blocks"}
+{"word": "代入", "file": "gk_fffc5d3d84.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "文字式", "file": "gk_bc4319b08a.jpg", "bucket": "v1b", "method": "card", "card_main": "3a + 2b", "card_sub": "文字式"}
 {"word": "単項式", "file": "gk_e91c90ceeb.jpg", "bucket": "v1b", "method": "card", "card_main": "3xy", "card_sub": "単項式"}
 {"word": "多項式", "file": "gk_14b6c00195.jpg", "bucket": "v1", "method": "card", "card_main": "x² + 3x - 2", "card_sub": "多項式"}
@@ -1014,58 +1014,58 @@
 {"word": "階級", "file": "gk_7d8e7379f2.jpg", "bucket": "v1", "method": "card", "card_main": "150 〜 160 cm", "card_sub": "階級"}
 {"word": "確率", "file": "gk_63ddbac0a2.jpg", "bucket": "v1", "method": "sd", "prompt": "a rolling dice cube with pip dots, a flipping coin in mid air showing both faces, and a spinner wheel divided into colored wedges with a pointer arrow"}
 {"word": "標本調査", "file": "gk_e372db5cd1.jpg", "bucket": "v1b", "method": "sd", "prompt": "a huge crowd of many people packed inside a large circle outline, with a small scoop or net lifting out a handful of them into a small separate circle beside it, the lifted few highlighted in a bright accent color"}
-{"word": "さくらんぼ計算", "file": "gk_69f2800bd2.jpg", "bucket": "v1", "method": "sd", "prompt": "one round circle at the top with a short curved stem splitting into two branches, each branch ending in a smaller round circle hanging below like a pair of cherries, two green leaves at the stem"}
-{"word": "繰り上がり", "file": "gk_d324a74e32.jpg", "bucket": "v1b", "method": "sd", "prompt": "a column of ten small unit blocks binding together into a single tall rod, with a curved arrow carrying that rod up and over into the next column to the left, an empty column frame drawn beside"}
-{"word": "繰り下がり", "file": "gk_e332bd98dd.jpg", "bucket": "v1b", "method": "sd", "prompt": "a single tall rod in the left column breaking apart into ten loose small unit blocks, with a curved arrow carrying them down and over into the column to the right"}
+{"word": "さくらんぼ計算", "file": "gk_69f2800bd2.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "繰り上がり", "file": "gk_d324a74e32.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "繰り下がり", "file": "gk_e332bd98dd.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "数直線", "file": "gk_c4ca5945a1.jpg", "bucket": "v1b", "method": "card", "card_main": "-2 -1 0 1 2", "card_sub": "数直線"}
-{"word": "積", "file": "gk_34ddea8d85.jpg", "bucket": "v1", "method": "sd", "prompt": "a filled rectangular array of round tokens in neat rows and columns, with a brace along the top edge and a brace along the left edge, the whole rectangle tinted as one result block"}
-{"word": "商", "file": "gk_2ce413903b.jpg", "bucket": "v1", "method": "sd", "prompt": "a heap of round cookies being shared out evenly onto four plates arranged in a row, each plate holding the same number, with fanning arrows from the heap to the plates"}
+{"word": "積", "file": "gk_34ddea8d85.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "商", "file": "gk_2ce413903b.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "検算", "file": "gk_169e0de745.jpg", "bucket": "v1", "method": "card", "card_main": "7+5=12 → 12-5=7", "card_sub": "検算"}
 {"word": "位取り", "file": "gk_662471e0a7.jpg", "bucket": "v1", "method": "card", "card_main": "百 十 一", "card_sub": "位取り"}
-{"word": "小数", "file": "gk_4c22de50db.jpg", "bucket": "v1", "method": "sd", "prompt": "a large square divided into ten equal vertical strips with three strips shaded, beside a whole unshaded square, with a bold round point marker between the two squares"}
+{"word": "小数", "file": "gk_4c22de50db.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "小数点", "file": "gk_1cc3e96233.jpg", "bucket": "v1", "method": "card", "card_main": "3.14", "card_sub": "小数点"}
 {"word": "約数", "file": "gk_8cd04de966.jpg", "bucket": "v1b", "method": "card", "card_main": "12 → 1,2,3,4,6,12", "card_sub": "約数"}
-{"word": "倍数", "file": "gk_cc7822df05.jpg", "bucket": "v1b", "method": "sd", "prompt": "a horizontal number line with even tick marks and a series of equal sized curved hop arrows leaping from tick to tick, each landing point marked with a bright dot"}
-{"word": "公約数", "file": "gk_201d8afc81.jpg", "bucket": "v1", "method": "sd", "prompt": "two large overlapping circles forming a venn diagram, round tokens scattered in each outer part and a few tokens in the shared overlapping middle highlighted in a bright accent color"}
-{"word": "公倍数", "file": "gk_c7db63e768.jpg", "bucket": "v1b", "method": "sd", "prompt": "two parallel horizontal number lines aligned one above the other, the top with small equal hop arrows and the bottom with larger equal hop arrows, vertical dashed lines marking the ticks where both land together"}
+{"word": "倍数", "file": "gk_cc7822df05.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "公約数", "file": "gk_201d8afc81.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "公倍数", "file": "gk_c7db63e768.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "偶数", "file": "gk_a3685ea6fa.jpg", "bucket": "v1b", "method": "sd", "prompt": "eight round tokens arranged as two neat equal rows of four, every token paired with a partner directly below it and each pair circled, nothing left over"}
 {"word": "奇数", "file": "gk_0cf1d841bd.jpg", "bucket": "v1", "method": "card", "card_main": "1 3 5 7 9 …", "card_sub": ""}
 {"word": "結合法則", "file": "gk_2ce338f334.jpg", "bucket": "v1", "method": "card", "card_main": "(2+3)+4 = 2+(3+4)", "card_sub": "結合法則"}
 {"word": "等号", "file": "gk_9a1dd4507b.jpg", "bucket": "v1b", "method": "card", "card_main": "=", "card_sub": "等号"}
 {"word": "不等号", "file": "gk_a64ea03280.jpg", "bucket": "v1b", "method": "card", "card_main": "< >", "card_sub": "不等号"}
-{"word": "単位換算", "file": "gk_21b0372f16.jpg", "bucket": "v1", "method": "sd", "prompt": "a short ruler with fine tick marks beside a long measuring tape, with a two way conversion arrow loop between a tiny cube block and a large cube block, and a small stepped ladder of nested boxes"}
+{"word": "単位換算", "file": "gk_21b0372f16.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "トン", "file": "gk_7b098c0dee.jpg", "bucket": "v1", "method": "sd", "prompt": "a heavy dump truck parked on a large flat weighing platform scale with a round dial gauge, a huge iron weight block sitting beside it, centered, large"}
 {"word": "アール", "file": "gk_f08497c774.jpg", "bucket": "v1b", "method": "sd", "prompt": "a square plot of farm field bordered by a low fence, its rows of green crops in neat lines, with dimension arrows along two adjacent edges and a small measuring pole at one corner"}
 {"word": "平方メートル", "file": "gk_0f2e58481a.jpg", "bucket": "v1", "method": "sd", "prompt": "a single square outline with its interior filled flat, a meter stick laid along its bottom edge and another along its left edge, small right angle marks at the corners, centered, large"}
 {"word": "時速", "file": "gk_517fe7b9d9.jpg", "bucket": "v1", "method": "card", "card_main": "60 km/h", "card_sub": "時速"}
-{"word": "分速", "file": "gk_e19acbc99e.jpg", "bucket": "v1b", "method": "sd", "prompt": "a bicycle rolling along a path with motion streak lines, and a stopwatch beside it with a curved arrow sweeping one minute around its dial"}
-{"word": "秒速", "file": "gk_90f06a007d.jpg", "bucket": "v1b", "method": "sd", "prompt": "a stopwatch with a thin sweeping second hand and a bold arrow shooting away from it with sharp speed streak lines, a short dashed distance segment under the arrow"}
+{"word": "分速", "file": "gk_e19acbc99e.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "秒速", "file": "gk_90f06a007d.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "道のり", "file": "gk_47c9b1efd6.jpg", "bucket": "v1", "method": "sd", "prompt": "a winding curved road running from a small house to a school building, with a dashed measuring line tracing along every bend of the road and small arrowheads at each end"}
 {"word": "人口密度", "file": "gk_8293b6a103.jpg", "bucket": "v1b", "method": "sd", "prompt": "two square map tiles side by side, one crowded with many tiny houses and many small people packed close together, the other holding only a few scattered houses and people, a divider between them"}
 {"word": "比", "file": "gk_6810afd44d.jpg", "bucket": "v1", "method": "card", "card_main": "3 : 2", "card_sub": "比"}
 {"word": "比の値", "file": "gk_c7721f6c74.jpg", "bucket": "v1b", "method": "card", "card_main": "3 : 2 → 3/2", "card_sub": "比の値"}
 {"word": "比例式", "file": "gk_dca0b5acc4.jpg", "bucket": "v1b", "method": "card", "card_main": "2 : 3 = 4 : 6", "card_sub": "比例式"}
 {"word": "歩合", "file": "gk_ad2150ed6f.jpg", "bucket": "v1b", "method": "card", "card_main": "3割2分5厘", "card_sub": "歩合"}
-{"word": "もとにする量", "file": "gk_857372c05f.jpg", "bucket": "v1b", "method": "sd", "prompt": "a long base bar highlighted in a bold accent color with a bracket spanning its whole length and an anchor marker at its left end, and a shorter faded gray bar drawn above it for comparison"}
+{"word": "もとにする量", "file": "gk_857372c05f.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "比べられる量", "file": "gk_a25d152851.jpg", "bucket": "v1b", "method": "card", "card_main": "3 ÷ 12", "card_sub": "比べられる量 = 3"}
 {"word": "円周", "file": "gk_6064e3613c.jpg", "bucket": "v1", "method": "sd", "prompt": "a circle whose outline rim is traced in a thick bright color, with the rim unrolling to the right into a long straight segment of the same color, a dashed diameter line across the circle"}
 {"word": "弧", "file": "gk_0c80b06c07.jpg", "bucket": "v1", "method": "card", "card_main": "⌒", "card_sub": "弧"}
 {"word": "弦", "file": "gk_5022065034.jpg", "bucket": "v1", "method": "sd", "prompt": "a circle outline with two dots on its rim joined by a straight bold line segment across the inside, and a fainter longer straight line through the center shown for comparison"}
 {"word": "半直線", "file": "gk_25f9db31d2.jpg", "bucket": "v1", "method": "card", "card_main": "●———▶", "card_sub": "半直線"}
 {"word": "線分", "file": "gk_5aa500649a.jpg", "bucket": "v1", "method": "card", "card_main": "●———●", "card_sub": "線分"}
-{"word": "角の二等分線", "file": "gk_a605336739.jpg", "bucket": "v1b", "method": "sd", "prompt": "two rays meeting at a vertex to form an angle, with a dashed line from the vertex splitting the angle down the middle, matching arc marks on both halves and light compass arcs crossing inside the angle"}
-{"word": "ねじれの位置", "file": "gk_b7bcef4cb7.jpg", "bucket": "v1b", "method": "sd", "prompt": "a transparent rectangular box drawn in perspective with dashed hidden edges, and two of its edges that neither meet nor run parallel highlighted in two bold contrasting colors"}
+{"word": "角の二等分線", "file": "gk_a605336739.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "ねじれの位置", "file": "gk_b7bcef4cb7.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "見取図", "file": "gk_e2dabc212b.jpg", "bucket": "v1b", "method": "sd", "prompt": "a rectangular box drawn in slanted oblique perspective with the front face solid, the hidden back edges drawn as dashed lines, and the receding depth edges parallel and slanted"}
-{"word": "側面", "file": "gk_dbc5ceff83.jpg", "bucket": "v1b", "method": "sd", "prompt": "a cylinder with its curved wrapping surface highlighted in a bright accent color while the top and bottom circles stay pale, and beside it that surface unrolled flat into a rectangle in the same color with a curved arrow linking them"}
+{"word": "側面", "file": "gk_dbc5ceff83.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "母線", "file": "gk_fb3ea7a089.jpg", "bucket": "v1b", "method": "sd", "prompt": "a cone standing on its circular base with a straight bold line drawn from the apex down to a point on the base rim, and several fainter parallel lines fanning around the cone surface, a dashed vertical height line inside"}
 {"word": "角すい", "file": "gk_43de275820.jpg", "bucket": "v1", "method": "sd", "prompt": "a square pyramid solid with four triangular side faces rising to a single apex point, the hidden base edges drawn as dashed lines, a dashed vertical height line from apex to base center, centered, large"}
 {"word": "正多面体", "file": "gk_470b72d2c3.jpg", "bucket": "v1", "method": "sd", "prompt": "five regular polyhedron solids lined up in a row, a tetrahedron, a cube, an octahedron, a dodecahedron and an icosahedron, each in a different pastel color with visible edges"}
-{"word": "拡大図", "file": "gk_5e997f4373.jpg", "bucket": "v1", "method": "sd", "prompt": "a small triangle and a much larger triangle of exactly the same shape drawn side by side, with outward pointing expansion arrows around the large one and dashed corresponding lines linking their matching corners"}
+{"word": "拡大図", "file": "gk_5e997f4373.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "縮図", "file": "gk_0343fb19c1.jpg", "bucket": "v1", "method": "sd", "prompt": "a large house shape outline and a much smaller copy of exactly the same shape beside it, with inward pointing shrinking arrows around the small one and dashed lines linking their matching corners"}
 {"word": "縮尺", "file": "gk_e5b851e3ab.jpg", "bucket": "v1b", "method": "card", "card_main": "1 : 25000", "card_sub": ""}
 {"word": "回転移動", "file": "gk_37c5aaa450.jpg", "bucket": "v1", "method": "sd", "prompt": "a triangle and a faded ghost copy of the same triangle turned about a marked center dot, with a curved arrow sweeping between them and dashed radius lines from the center dot to matching corners"}
-{"word": "対称移動", "file": "gk_1ee1f7d2a4.jpg", "bucket": "v1", "method": "sd", "prompt": "a shape and its mirrored copy facing each other across a vertical dashed fold line, with dashed perpendicular connector lines between matching corners and equal tick marks on each side of the fold"}
-{"word": "底面積", "file": "gk_5fe3ab85f5.jpg", "bucket": "v1", "method": "sd", "prompt": "a single upright triangular prism with only its bottom face shaded solid, thick outline"}
+{"word": "対称移動", "file": "gk_1ee1f7d2a4.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "底面積", "file": "gk_5fe3ab85f5.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "項", "file": "gk_9cc6467c8c.jpg", "bucket": "v1b", "method": "card", "card_main": "3x + 2y - 5", "card_sub": "項は 3x, 2y, -5"}
 {"word": "同類項", "file": "gk_82635835a4.jpg", "bucket": "v1b", "method": "card", "card_main": "3x + 2x = 5x", "card_sub": "同類項"}
 {"word": "次数", "file": "gk_d4a97e7577.jpg", "bucket": "v1b", "method": "card", "card_main": "x³", "card_sub": "次数 = 3"}
@@ -1075,16 +1075,16 @@
 {"word": "近似値", "file": "gk_4089ec3c0b.jpg", "bucket": "v1", "method": "card", "card_main": "π ≒ 3.14", "card_sub": "近似値"}
 {"word": "誤差", "file": "gk_d7b31136dd.jpg", "bucket": "v1b", "method": "sd", "prompt": "a round archery target with concentric rings, an arrow stuck near the bullseye but slightly off, and a short double headed arrow with a dashed line measuring the gap between the arrow tip and the exact center"}
 {"word": "変化の割合", "file": "gk_1c9e23269b.jpg", "bucket": "v1", "method": "sd", "prompt": "a coordinate plane with unlabeled axes and a straight rising line, with two marked dots on the line joined by a stepped right angle path, a horizontal arrow for the sideways step and a vertical arrow for the upward step, the triangle between them shaded"}
-{"word": "等式の性質", "file": "gk_7fa18f0044.jpg", "bucket": "v1", "method": "sd", "prompt": "a two pan balance scale resting perfectly level, with an identical cube weight descending on an arrow into each pan at the same moment, both pans still balanced"}
+{"word": "等式の性質", "file": "gk_7fa18f0044.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "場合の数", "file": "gk_671b014fe8.jpg", "bucket": "v1", "method": "sd", "prompt": "a branching tree diagram of dots opening to the right, one root dot splitting into two branches and each of those splitting into three, all the endpoint dots at the right highlighted and counted with small tick marks"}
-{"word": "組み合わせ", "file": "gk_debf457740.jpg", "bucket": "v1b", "method": "sd", "prompt": "five round balls of different colors in a row, with several dashed loops each lassoing a different pair of them, the loops stacked below in a small list, unordered pairs shown as unlabeled ovals"}
+{"word": "組み合わせ", "file": "gk_debf457740.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "母集団", "file": "gk_16c7f3d856.jpg", "bucket": "v1", "method": "sd", "prompt": "a very large circle outline densely filled with a whole crowd of tiny people, with a small dashed circle inside it enclosing just a few of them highlighted in an accent color, and a big bracket around the entire outer circle"}
 {"word": "全数調査", "file": "gk_57a8a09a78.jpg", "bucket": "v1", "method": "card", "card_main": "全員を調査", "card_sub": "全数調査"}
-{"word": "累積度数", "file": "gk_32e0eaa1d6.jpg", "bucket": "v1", "method": "sd", "prompt": "a histogram of adjacent bars on a base line with an ascending staircase step line drawn over them rising from left to right and flattening at the top, each step corner marked with a dot"}
-{"word": "四分位数", "file": "gk_19d522f9a5.jpg", "bucket": "v1", "method": "sd", "prompt": "a horizontal box and whisker plot, a rectangle box with a dividing line inside it and a thin whisker line extending from each end to a short vertical cap, sitting above a plain axis line with tick marks"}
+{"word": "累積度数", "file": "gk_32e0eaa1d6.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "四分位数", "file": "gk_19d522f9a5.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "代表値", "file": "gk_901c15a635.jpg", "bucket": "v1b", "method": "card", "card_main": "平均値・中央値・最頻値", "card_sub": "代表値"}
 {"word": "階級値", "file": "gk_4d6b4256ba.jpg", "bucket": "v1", "method": "card", "card_main": "150〜160 → 155", "card_sub": "階級値"}
-{"word": "帯グラフ", "file": "gk_4a3f56ec06.jpg", "bucket": "v1", "method": "sd", "prompt": "a single long horizontal bar divided into a few colored segments, flat diagram, plain background"}
+{"word": "帯グラフ", "file": "gk_4a3f56ec06.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "棒グラフ", "file": "gk_39cb953904.jpg", "bucket": "v1", "method": "sd", "prompt": "a vertical bar chart of five separate upright bars of different heights standing on a base line with even gaps between them, a plain vertical axis with tick marks on the left"}
 {"word": "折れ線グラフ", "file": "gk_d1fc021433.jpg", "bucket": "v1b", "method": "sd", "prompt": "a coordinate grid with unlabeled axes and a zigzag line connecting a series of plotted round dots that rise and fall across the chart, each dot marked clearly on the line"}
 {"word": "目盛り", "file": "gk_afbdbeb046.jpg", "bucket": "v1b", "method": "sd", "prompt": "a close up of a ruler edge and a thermometer side by side, showing rows of evenly spaced tick marks with long major ticks and short minor ticks, a small pointer arrow reading one of the long ticks"}
