@@ -123,6 +123,71 @@ EXCLUDED = {
     "開脚前転": "リード画像が体操マットの商品写真(技を表さない)",
 }
 
+# 完全一致では引けないが、AIレビューで語義一致を確認して手動で対応づけた記事(2026-08-02)。
+# 曖昧さ回避ページ止まりだった語(モネ→クロード・モネ)や、日本語版に画像が無く英語版から
+# 引く語(雅楽→Gagaku)が対象。ここに無い語を検索で拾いにいくことはしない(取り違え防止)。
+MANUAL_TITLES = {
+    "おくのほそ道": ("en", "Oku no Hosomichi"),
+    "はさみ跳び": ("en", "Scissors jump"),
+    "オフサイド": ("en", "Offside (sport)"),
+    "カム": ("ja", "カム (機械要素)"),
+    "クランプ": ("ja", "クランプ (工具)"),
+    "サバナ": ("ja", "サバナ (植生)"),
+    "サマー": ("ja", "夏"),
+    "シュート": ("ja", "シュート (サッカー)"),
+    "スキット": ("ja", "スケッチ・コメディー"),
+    "スクール": ("ja", "学校"),
+    "スチューデント": ("ja", "生徒"),
+    "スプリング": ("ja", "春"),
+    "セザンヌ": ("ja", "ポール・セザンヌ"),
+    "チャート": ("ja", "チャート (岩石)"),
+    "トン": ("en", "Tonne"),
+    "ニス": ("en", "Varnish"),
+    "ニッパ": ("ja", "ニッパー (工具)"),
+    "パス": ("ja", "オイルパステル"),
+    "パスワード": ("en", "Password"),
+    "パリ協定": ("ja", "パリ協定 (気候変動)"),
+    "フロッタージュ": ("en", "Frottage (art)"),
+    "ブック": ("ja", "本"),
+    "ブラックボード": ("ja", "黒板"),
+    "ヘ音記号": ("en", "Clef"),
+    "ペンシル": ("ja", "鉛筆"),
+    "ホルスト": ("ja", "グスターヴ・ホルスト"),
+    "マイムマイム": ("en", "Mayim Mayim"),
+    "マスキング": ("ja", "マスキングテープ"),
+    "ムンク": ("ja", "エドヴァルド・ムンク"),
+    "モネ": ("ja", "クロード・モネ"),
+    "ライティング": ("ja", "筆記"),
+    "ロダン": ("ja", "オーギュスト・ロダン"),
+    "ヴィヴァルディ": ("ja", "アントニオ・ヴィヴァルディ"),
+    "ヴェルディ": ("ja", "ジュゼッペ・ヴェルディ"),
+    "三平方の定理": ("ja", "ピタゴラスの定理"),
+    "傾き": ("ja", "傾き (数学)"),
+    "円柱": ("ja", "円柱 (数学)"),
+    "分別": ("ja", "分別収集"),
+    "原点": ("ja", "原点 (数学)"),
+    "叫び": ("ja", "叫び (エドヴァルド・ムンク)"),
+    "塗装": ("en", "Coating"),
+    "大太鼓": ("ja", "バスドラム"),
+    "御伽草子": ("en", "Otogi-zōshi"),
+    "持久走": ("en", "Long-distance running"),
+    "政府開発援助": ("en", "Official development assistance"),
+    "比": ("en", "Ratio"),
+    "民謡": ("en", "Min'yō"),
+    "気団": ("en", "Air mass"),
+    "相似": ("ja", "図形の相似"),
+    "第三角法": ("en", "Multiview orthographic projection"),
+    "筋かい": ("ja", "筋交い"),
+    "考える人": ("ja", "考える人 (ロダン)"),
+    "見当": ("ja", "トンボ (印刷)"),
+    "通風": ("ja", "換気"),
+    "酸化": ("en", "Oxidation"),
+    "酸化銅": ("ja", "酸化銅(II)"),
+    "長距離走": ("en", "Long-distance running"),
+    "雅楽": ("en", "Gagaku"),
+    "需要と供給": ("en", "Supply and demand"),
+}
+
 
 # 手動キュレーション(語 → Commonsファイル名)。完全一致記事にもP18にも無いが、
 # Commonsを検索すれば教科書的な画像が実在する語。AIレビューでライセンス・被写体を
@@ -156,8 +221,56 @@ def api_get(url, params):
             time.sleep(wait)
 
 
+def lookup_manual(words):
+    """MANUAL_TITLES の語を、対応づけた記事から引く(完全一致では届かない語)。"""
+    out = {}
+    by_host = {}
+    for w in words:
+        host, title = MANUAL_TITLES[w]
+        by_host.setdefault(host, []).append((w, title))
+    for host, pairs in by_host.items():
+        api = JA_API if host == "ja" else JA_API.replace("ja.wikipedia", "en.wikipedia")
+        for i in range(0, len(pairs), BATCH):
+            chunk = pairs[i : i + BATCH]
+            data = api_get(
+                api,
+                {
+                    "action": "query",
+                    "redirects": 1,
+                    "titles": "|".join(t for _, t in chunk),
+                    "prop": "pageprops|pageimages",
+                    "ppprop": "wikibase_item",
+                    "piprop": "name",
+                    "pilicense": "free",
+                },
+            )
+            q = data["query"]
+            norm = {n["from"]: n["to"] for n in q.get("normalized", [])}
+            redir = {r["from"]: r["to"] for r in q.get("redirects", [])}
+            pages = {p["title"]: p for p in q.get("pages", {}).values()}
+            for w, title in chunk:
+                resolved = redir.get(norm.get(title, title), norm.get(title, title))
+                pg = pages.get(resolved)
+                if not pg or "missing" in pg or not pg.get("pageimage"):
+                    out[w] = {"status": "noimage", "qid": ""}
+                else:
+                    out[w] = {
+                        "status": "ok",
+                        "file": pg["pageimage"],
+                        "qid": pg.get("pageprops", {}).get("wikibase_item", ""),
+                        "article": resolved,
+                    }
+            time.sleep(1)
+    return out
+
+
 def lookup_batch(titles):
     """語 -> {status, file, qid} を返す。statusは ok/missing/disambig/noimage。"""
+    manual = [t for t in titles if t in MANUAL_TITLES]
+    titles = [t for t in titles if t not in MANUAL_TITLES]
+    out_manual = lookup_manual(manual) if manual else {}
+    if not titles:
+        return out_manual
     data = api_get(
         JA_API,
         {
@@ -192,6 +305,7 @@ def lookup_batch(titles):
                 "qid": p.get("pageprops", {}).get("wikibase_item", ""),
                 "article": resolved,
             }
+    out.update(out_manual)
     return out
 
 
