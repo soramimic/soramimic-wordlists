@@ -76,6 +76,13 @@ jobs:
         continue-on-error: true
         run: python tools/update_youtuber.py
 
+      # 名字。SudachiDict の辞書ソース(S3・約70MB)を落として姓エントリを取り、
+      # rank は Wikidata の集計で毎回全行を更新する(ADR 00038)
+      - name: Update myoji.csv (SudachiDict/Wikidata/Wikipedia)
+        id: myoji
+        continue-on-error: true
+        run: python tools/update_myoji.py
+
       # 登録者数は時変値なので毎回全行を上書きする(ADR 00030)。
       # secrets.YOUTUBE_API_KEY が未設定(forkなど)ならスクリプト側が
       # 「スキップ」を出して正常終了する
@@ -120,6 +127,7 @@ jobs:
           O_INSECT: ${{ steps.insect.outcome }}
           O_MUNICIPALITY: ${{ steps.municipality.outcome }}
           O_YOUTUBER: ${{ steps.youtuber.outcome }}
+          O_MYOJI: ${{ steps.myoji.outcome }}
           O_YTSUBS: ${{ steps.ytsubs.outcome }}
           O_SCHOOL: ${{ steps.school.outcome }}
           O_IMAGES: ${{ steps.images.outcome }}
@@ -145,6 +153,7 @@ jobs:
           revert_if_failed insect "$O_INSECT" insect.csv
           revert_if_failed municipality "$O_MUNICIPALITY" municipality.csv
           revert_if_failed youtuber "$O_YOUTUBER" youtuber.csv
+          revert_if_failed myoji "$O_MYOJI" myoji.csv
           # update_youtuber_subscribers は全チャンネルの取得が成功してから
           # youtuber.csv を1回だけ書くので、失敗した回に書きかけは残らない。
           # ここで youtuber.csv を巻き戻すと同じ回の update_youtuber の追記まで
