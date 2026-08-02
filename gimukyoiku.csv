@@ -1649,7 +1649,7 @@ id,original,surface,pronunciation,subject,level,description,image,image_page,wik
 1712,大玉転がし,大玉転がし,オオダマコロガシ,保健体育,小学校,大きな玉を転がして走る運動会の団体種目。,http://commons.wikimedia.org/wiki/Special:FilePath/Odama_001.jpg,https://commons.wikimedia.org/wiki/File:Odama_001.jpg,Q17222018
 1713,二人三脚,二人三脚,ニニンサンキャク,保健体育,小学校,二人の足を結んで息を合わせて走る競技。,http://commons.wikimedia.org/wiki/Special:FilePath/Dreibeinlauf-3_2.jpg,https://commons.wikimedia.org/wiki/File:Dreibeinlauf-3_2.jpg,Q372767
 1714,台風の目,台風の目,タイフウノメ,保健体育,小学校,数人で棒を持ちコーンを回って走る運動会の団体種目。,https://github.com/soramimic/soramimic-wordlists/releases/download/gimukyoiku-image-v1b/gk_ac62c1fa4f.jpg,https://github.com/soramimic/soramimic-wordlists/releases/tag/gimukyoiku-image-v1b,
-1715,応援合戦,応援合戦,オウエンガッセン,保健体育,小学校,紅白などの組に分かれて応援を披露する運動会の演目。,https://github.com/soramimic/soramimic-wordlists/releases/download/gimukyoiku-image-v1/gk_66fa659d30.jpg,https://github.com/soramimic/soramimic-wordlists/releases/tag/gimukyoiku-image-v1,
+1715,応援合戦,応援合戦,オウエンガッセン,学校生活,小学校,紅白などの組に分かれて応援を披露する運動会の演目。,https://github.com/soramimic/soramimic-wordlists/releases/download/gimukyoiku-image-v1/gk_66fa659d30.jpg,https://github.com/soramimic/soramimic-wordlists/releases/tag/gimukyoiku-image-v1,
 1716,発育急進期,発育急進期,ハツイクキュウシンキ,保健体育,中学校,思春期に身長や体重が急に伸びる時期のこと。,https://github.com/soramimic/soramimic-wordlists/releases/download/gimukyoiku-image-v1/gk_04634cd84b.jpg,https://github.com/soramimic/soramimic-wordlists/releases/tag/gimukyoiku-image-v1,
 1717,月経,月経,ゲッケイ,保健体育,小学校/中学校,思春期の体の変化として学ぶ女子の周期的な出血。,http://commons.wikimedia.org/wiki/Special:FilePath/MenstrualCycle_ja.png,https://commons.wikimedia.org/wiki/File:MenstrualCycle_ja.png,Q12171
 1718,射精,射精,シャセイ,保健体育,小学校/中学校,思春期の体の変化として学ぶ男子の精子の排出。,http://commons.wikimedia.org/wiki/Special:FilePath/Ejaculation_anatomy_en.svg,https://commons.wikimedia.org/wiki/File:Ejaculation_anatomy_en.svg,Q14820885
@@ -3665,3 +3665,4 @@ id,original,surface,pronunciation,subject,level,description,image,image_page,wik
 3727,マグリット,マグリット,マグリット,美術,中学校,意外な組み合わせで不思議な絵を描いたベルギーの画家。,,,
 3728,ラファエロ,ラファエロ,ラファエロ,美術,中学校,聖母子像で知られるイタリアの画家。調和のある構図が特徴である。,,,
 3729,鈴木康広,鈴木康広,スズキヤスヒロ,美術,中学校,日常の見方を変える作品をつくる現代の美術家。教科書にも登場する。,,,
+3730,運動会,運動会,ウンドウカイ,学校生活,小学校/中学校,徒競走や玉入れなどの種目を学年や組で競う秋や春の行事。,,,
