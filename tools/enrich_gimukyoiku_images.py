@@ -585,6 +585,26 @@ MANUAL_TITLES = {
 # Commonsを検索すれば教科書的な画像が実在する語。AIレビューでライセンス・被写体を
 # 確認済み(2026-07-30)。EXCLUDED より優先する
 MANUAL_FILES = {
+    # 近現代の実在人物は生成肖像を作らず、代表作・題材の図版で示す。
+    "斎藤隆介": "Aesculus turbinata (tree).jpg",
+    "今西祐行": "Cosmos Kinchakuda 3.JPG",
+    "杉みき子": "Aso Tenku-no-michi.jpg",
+    "いぬいとみこ": "Genbaku Dome04-r.JPG",
+    "シューベルト": "Franz Schubert by Wilhelm August Rieder.jpeg",
+    "桜蝶": "Peacock butterfly (Aglais io) on cherry blossom.png",
+    "田丸雅智": "Peacock butterfly (Aglais io) on cherry blossom.png",
+    "夏の葬列": "A SHINTO FUNERAL PROCESSION. (1910) - illustration - page 249.png",
+    "山川方夫": "A SHINTO FUNERAL PROCESSION. (1910) - illustration - page 249.png",
+    "穂村弘": "Hyakuninisshu 001.jpg",
+    "今江祥智": "Ukiyo-e dragon.jpg",
+    "三崎亜記": "Myself in the Mirror by Oliver Chaffee, c. 1926.jpg",
+    "きつねの窓": "Red fox in snow.jpg",
+    "初雪のふる日": "Red fox in snow.jpg",
+    "安房直子": "Red fox in snow.jpg",
+    "紙風船": "Paperballoon.JPG",
+    "黒田三郎": "Paperballoon.JPG",
+    "風神雷神図屏風": "Wind-God-Fujin-and-Thunder-God-Raijin-by-Tawaraya-Sotatsu.png",
+    "俵屋宗達": "Wind-God-Fujin-and-Thunder-God-Raijin-by-Tawaraya-Sotatsu.png",
     "木ねじ": "Wood screws.jpg",
     "防具": "Bogu.jpg",
     "ファスナー": "Zipper - metal - blue 01.jpg",
@@ -593,6 +613,12 @@ MANUAL_FILES = {
     "星座早見": "星座 早見 渡辺教具製作所 (42414938381).jpg",
     "ブロック": "Volleyball block.jpg",
     "過密": "A crowded platform - rush hour - yurakucho - July 2014.jpg",
+}
+
+# MANUAL_FILES は通常、画像由来の記事QIDを持たない。人物本人のQIDが既に
+# 確定している行だけは、画像を代表作へ差し替えても識別子を保持する。
+MANUAL_FILE_QIDS = {
+    "シューベルト": "Q7312",
 }
 
 
@@ -747,6 +773,11 @@ def on_commons(files):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--refresh", action="store_true", help="キャッシュを無視して引き直す")
+    ap.add_argument(
+        "--manual-only",
+        action="store_true",
+        help="MANUAL_FILES の固定マッピングだけを既存CSVへ反映する",
+    )
     args = ap.parse_args()
 
     lines = CSV.read_text(encoding="utf-8").split("\n")
@@ -770,16 +801,26 @@ def main():
     targets = [
         r
         for r in rows
-        if not r[idx["image"]]
-        or "commons.wikimedia.org" in r[idx["image"]]
-        or r[idx["image"]].startswith(GEN_PREFIX)
+        if (
+            r[idx["original"]] in MANUAL_FILES
+            if args.manual_only
+            else not r[idx["image"]]
+            or "commons.wikimedia.org" in r[idx["image"]]
+            or r[idx["image"]].startswith(GEN_PREFIX)
+        )
     ]
     kept_generated = {}
     for r in targets:
         if r[idx["image"]].startswith(GEN_PREFIX):
             kept_generated[r[idx["original"]]] = (r[idx["image"]], r[idx["image_page"]])
         r[idx["image"]] = r[idx["image_page"]] = r[idx["wikidata"]] = ""
-    pending = sorted({r[idx["original"]] for r in targets if r[idx["original"]] not in cache})
+    pending = sorted(
+        {
+            r[idx["original"]]
+            for r in targets
+            if r[idx["original"]] not in cache and r[idx["original"]] not in MANUAL_FILES
+        }
+    )
     print(f"対象 {len(targets)} 行 / 問い合わせ {len(pending)} 語(キャッシュ済み {len(targets) - len(pending)})")
 
     for i in range(0, len(pending), BATCH):
@@ -813,7 +854,11 @@ def main():
             candidates[w] = dict(c, status="ok", file=c["p18"])
             cache[w] = candidates[w]
     for w, f in MANUAL_FILES.items():
-        candidates[w] = {"status": "ok", "file": f, "qid": ""}
+        candidates[w] = {
+            "status": "ok",
+            "file": f,
+            "qid": MANUAL_FILE_QIDS.get(w, ""),
+        }
     commons_ok = on_commons([c["file"] for c in candidates.values()])
 
     stats = {}
