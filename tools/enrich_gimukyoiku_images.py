@@ -442,6 +442,7 @@ MANUAL_TITLES = {
     "遠近感": ("en", "Depth perception"),
     "遣隋使": ("ja", "小野妹子"),
     "都道府県": ("en", "Prefectures of Japan"),
+    "重松清": ("ja", "カレーライス"),
     "重心": ("en", "Center of mass"),
     "野原はうたう": ("ja", "工藤直子"),
     "量子化": ("en", "Quantization (signal processing)"),
