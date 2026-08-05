@@ -200,8 +200,8 @@
 {"word": "句読点", "file": "gk_517c78ed91.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "白背景に、日本語の読点「、」と句点「。」を一つずつ、大きく正確に描く。それ以外の文字や記号は描かない。 太く明瞭な輪郭、柔らかなパステルカラー、白背景、細部を省いたフラットな教材図版。各マスは小さく切り出しても意味が分かる単純な構図。正方形。"}
 {"word": "ピリオド", "file": "gk_d1df59021f.jpg", "bucket": "v1b", "method": "card", "card_main": ".", "card_sub": "ピリオド"}
 {"word": "クエスチョンマーク", "file": "gk_724b4399ef.jpg", "bucket": "v1", "method": "sd", "prompt": "a large bold question mark on a card with a small speech bubble behind it"}
-{"word": "アポストロフィ", "file": "gk_35a1ded7b9.jpg", "bucket": "v1", "method": "sd", "prompt": "a large floating apostrophe mark above two word cards squeezed together"}
-{"word": "コンマ", "file": "gk_99adce93a5.jpg", "bucket": "v1b", "method": "sd", "prompt": "a large comma mark on a card beside a ruled line with a small pause symbol"}
+{"word": "アポストロフィ", "file": "gk_35a1ded7b9.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "コンマ", "file": "gk_99adce93a5.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "英文法", "file": "gk_3986544b08.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "英語の「英文法」を説明する教育用図版。白い教科書ページに英文「She plays tennis.」を大きく正確に書く。Sheを青い枠で主語、playsを赤い枠で動詞、tennisを緑の枠で目的語として分け、主語から動詞、動詞から目的語へ順番の矢印を引く。語順と文の組み立てを学ぶ図。フラットデザイン、パステルカラー、白背景、正方形。"}
 {"word": "文末", "file": "gk_b324c7b22c.jpg", "bucket": "v1b", "method": "sd", "prompt": "the tail end of a ruled line with a period dot and a question mark, an arrow pointing to the final position"}
 {"word": "英文", "file": "gk_5d758b31a9.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "英語の「英文」を説明する教育用図版。英語教科書の白いページに、主語・動詞・目的語がそろった短い一文「I play tennis.」を大きく正確に書く。単語の下を主語は青、動詞は赤、目的語は緑の短い線で色分けし、日本語ではなく英語で書かれた文だと明確にする。フラットデザイン、パステルカラー、白背景、正方形。"}
@@ -361,7 +361,7 @@
 {"word": "押さえ", "file": "gk_1c037556c1.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "家庭科のミシン学習の「押さえ(押さえ金)」を説明する教育用イラスト。ミシンの針まわりを斜め前から大きく拡大し、針棒の横の細い棒の先に取り付けられた、平たい金属の二股の足の形をした押さえ金を主役に描く。後ろにある押さえレバーが下がっていて、押さえ金が布を針板にぴったり平らに押さえつけており、二股のすき間を針が上下している。画面の右上に、押さえレバーを上げて押さえ金が布から浮き、布を出し入れできる状態を小さく対比で描く。待ち針は描かない。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
 {"word": "糸調子", "file": "gk_7a5f60928b.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "家庭科のミシン学習の「糸調子」を説明する教育用イラスト。布を横から切った断面の拡大図を縦に3つ並べた比較図。いちばん上は良い状態で、上から来る濃い色の上糸と下から来る薄い色の下糸が布の厚みのちょうど中央で交わって結び目を作っている。真ん中は上糸が強すぎる状態で、結び目が布の上面側に引き上げられ、下糸が表に引き出されている。いちばん下は上糸が弱すぎる状態で、結び目が布の下面側に落ち、上糸が裏でループになってたるんでいる。各図の右にミシンの糸調子ダイヤルを小さく添える。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
 {"word": "糸切りばさみ", "file": "gk_1b70e0bd94.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "家庭科の裁縫用具「糸切りばさみ(握りばさみ)」を説明する教育用イラスト。画面中央に、1枚の金属をU字に曲げた一体のばね状の柄の両端に短い刃が向かい合ってついた、手のひらサイズの握りばさみを大きく斜めから描く。ねじも指を入れる輪もなく、握ると刃が閉じ、離すとばねで開く形がはっきり分かるようにする。その柄を手のひら全体で軽く握って、縫い終わった布から出ている糸端を刃先で短く切っている場面にする。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
-{"word": "型紙", "file": "gk_981e0078aa.jpg", "bucket": "v1b", "method": "gpt-image", "prompt": "家庭科の製作の「型紙」を説明する教育用イラスト。机の上に広げた布の上に、白い薄い紙でできた型紙を置いた俯瞰図。型紙にはエプロンの身頃の形の輪郭が実線で描かれ、内側に平行な出来上がり線の破線、二等辺三角形の合印、布目の向きを示す長い両向き矢印、折り山を示す線が入っている。紙の上に文鎮を数個のせ、手が型紙の輪郭に沿ってチャコペンで布に線を写し取っている。紙であることが分かるよう、角が少し反り上がっている。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
+{"word": "型紙", "file": "gk_981e0078aa.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word":"しるしつけ","file":"gk_822a89e0a5.jpg","bucket":"v1b","method":"gpt-image","prompt":"家庭科の被服製作の「しるしつけ」を説明する教育用イラスト。真上から見た作業台の上に、水色の布を大きく広げて置く。その布の上に、うすい茶色の紙でできた型紙を重ね、四すみを待ち針で布にとめてある。エプロン姿の中学生の左手が型紙の端を軽く押さえ、右手が細長いチャコペンシルをにぎって、型紙のふちに沿って布の上をなぞっており、通り過ぎたところにははっきりと青い線がすでに引かれている。まだなぞっていない側には線がなく、どこまで引いたかが一目で分かるようにする。型紙のはしには、合わせる位置を示す短い直角の印と、ぬいしろの外側の線が二重に引かれ、布にもその印が小さく写し取られている。作業台のわきには、型紙の切れはし、待ち針を刺したピンクッション、方眼の入ったものさしを置く。両手が同じような棒を持つあいまいな構図にはせず、押さえる手と描く手の役割をはっきり分ける。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
 {"word":"ファスナー","file":"gk_fa04a0cd79.jpg","bucket":"v1b","method":"gpt-image","prompt":"家庭科の被服の留め具「ファスナー」を説明する教育用イラスト。画面の中央に、まっすぐ縦に長いファスナーを1本、大きく拡大して描く。左のテープと右のテープの両方の内側の縁に、金属色の小さな務歯が同じ数だけ等間隔にびっしり並んでおり、必ず左右そろって歯があるようにする。ファスナーの上半分では左右の務歯がぴったりかみ合って一本の鎖のようにつながって閉じており、下半分では左右のテープが左右に開いて務歯が向かい合ったまま離れている。その境目に、スライダーを描く。スライダーは上に向かって細くなる金属のさやの形で、下から入ってきた左右2列の務歯をその中で1列にかみ合わせて上へ送り出す構造が分かるよう、スライダーの内部をうすく透かして左右の歯が交互に組み合う様子を見せ、動く向きの上向き矢印と、それを引く小さな引き手を付ける。上端には左右をつなぐ止め具、下端には左右の下止めを描く。かみ合う部分だけを丸く拡大した図を右上に添え、歯が交互に一つずつ組み合っていることを示す。ぼんやりした光の背景にはしない。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
 {"word":"採光","file":"gk_0633ac0c36.jpg","bucket":"v1","method":"gpt-image","prompt":"家庭科の住まいの学習の「採光」を説明する教育用イラスト。部屋を真横から見た断面で描く。画面の右のかべに、上下2本の横さんと左右のたてさんからなる四角いサッシに透明なガラスがはまった大きな窓を、かべの高い位置から腰の高さまでしっかり描き、窓の外には青空と太陽を置く。太陽から出た平行な光の帯が、斜め上から窓ガラスを通りぬけて部屋の中へ入り、床のおくの方まで届いて明るい台形の光だまりを作っている様子を、まっすぐな帯として描く。光の帯が部屋の奥まで届いていることが分かるよう、窓から離れるほど明るさがゆるやかに弱まるように床を塗り分け、天井にも光の反射で明るくなった部分を示す。窓ぎわには開いたカーテンをまとめて、光をさえぎっていないことを見せる。部屋の中では中学生が本を読んでおり、照明をつけていないことが分かるよう天井の照明は消しておく。窓のさんとガラスの位置関係が食い違わないよう、枠とガラスをきちんと描く。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
@@ -386,10 +386,10 @@
 {"word": "堆肥", "file": "gk_8933a8e764.jpg", "bucket": "v1b", "method": "sd", "prompt": "a pile of dark crumbly compost mixed with fallen leaves and straw, a pitchfork stuck into it and a compost bin behind, centered"}
 {"word":"モータ","file":"gk_447b3c2119.jpg","bucket":"v1","method":"gpt-image","prompt":"技術の「モータ」のしくみを説明する教育用イラスト。画面の中央に、円筒形のモータの外側のケースをうすく透かして、中の構造を真横から見た断面として大きく描く。ケースの内側の左のかべには赤い永久磁石、右のかべには青い永久磁石が向かい合ってはりつけてある。その2つの磁石にはさまれた中央に、鉄しんに導線を何回も巻きつけたコイルがあり、コイルは中心を通る軸に取り付けられて回転する。軸の左端には、2つに割れた円筒形の整流子が付いており、その両側から2枚のブラシがばねで押し当てられ、ブラシから電池へ2本の導線がのびている。電池からブラシ、整流子、コイルへと流れる電流の道すじを、コイルの巻き線をたどる矢印で示し、その電流が磁石の間で力を受けてコイルが回る向きを、軸のまわりの太い回転矢印で示す。右端の軸には、回転が取り出されて回る小さなプロペラを付ける。画面の下に、電気が回転の運動に変わることを、左から入る電気の矢印と右へ出る回転の矢印の対で小さく添える。ただの円筒に同心円を描いた機械にはしない。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
 {"word": "回路図", "file": "gk_be00073d2e.jpg", "bucket": "v1b", "method": "gpt-image", "prompt": "技術科の電気学習で学ぶ「回路図」を説明する教育用イラスト。画面中央に、水平線と垂直線だけで描いた大きな長方形の閉じた回路を1つ描く。左辺には長い線と短い線を交互に2組並べた電池の記号、上辺の中央には片方が持ち上がって斜めに開いたスイッチの記号、右辺には円の中に斜めの十字が入った電球の記号、下辺には細長い長方形の抵抗の記号を配置し、それぞれを太さの同じ直線でつなぎ、導線に切れ目がなく一周つながっている。線の上に電流の向きを示す小さな矢印を数か所置く。フラットデザイン、パステルカラー、白背景、正方形。"}
-{"word": "電気用図記号", "file": "gk_e84e82ab7d.jpg", "bucket": "v1b", "method": "gpt-image", "prompt": "技術科の電気学習で学ぶ「電気用図記号」を説明する教育用イラスト。白いカードを2行3列に整然と並べ、各カードの中央に電気用図記号を黒い線で1つずつ大きく正確に描く。左上から順に、長い線と短い線を交互に並べた電池、片方の端が持ち上がって開いたスイッチ、円の中に斜めの十字が入った電球、細長い長方形の抵抗、円の中に大文字のMが入ったモーター、円の中に大文字のAが入った電流計。カードには記号だけを描き、日本語の説明文は書かない。フラットデザイン、パステルカラー、白背景、正方形。"}
+{"word": "電気用図記号", "file": "gk_e84e82ab7d.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "ヒューズ", "file": "gk_61bb2a27a2.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "技術科の電気学習で学ぶ「ヒューズ」を説明する教育用イラスト。画面を上下に分けた対比図。上段は正常な状態で、両端に金属のキャップがついた透明な円筒形のガラス管ヒューズの中を、細い1本の金属線がまっすぐ渡っており、その左右につながる回路に電流の矢印が流れて豆電球が光っている。下段は大きすぎる電流が流れた状態で、同じヒューズの中の細い線が中央で溶けて切れ、すき間があいており、回路の電流の矢印がそこで止まって豆電球が消えている。切れた側の回路の先に、太い電流を示す大きな矢印を描く。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
 {"word": "かさ歯車", "file": "gk_8f6f3a4b7e.jpg", "bucket": "v1b", "method": "gpt-image", "prompt": "技術科の機械学習で学ぶ「かさ歯車」を説明する教育用イラスト。円すいの側面に歯を刻んだ、傘のような形の歯車を2つ描き、それぞれの軸が直角に交わるように配置して、円すいの広いふちどうしの歯をぴったりかみ合わせる。一方の軸は水平、もう一方の軸は垂直で、軸の交点で歯が接している。歯の1枚1枚が円すい面の上ですぼまっていく形をはっきり描き、水平の軸の回転を示す矢印と、それによって垂直の軸が回る向きを示す矢印を添えて、交わる2軸の間で回転が伝わることを示す。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
-{"word":"IPアドレス","file":"gk_b2197f34b8.jpg","bucket":"v1b","method":"gpt-image","prompt":"技術のネットワークの「IPアドレス」を説明する教育用イラスト。画面の中央に、丸いルータを1台置き、そこから線が放射状に4方向へのび、ノートパソコン、タブレット、プリンタ、スマートフォンの4台の機器につながっている。それぞれの機器の下に、住所の札のような四角い名札を1つずつ付け、名札の中に 192.168.1.2 、 192.168.1.3 、 192.168.1.4 、 192.168.1.5 と、機器ごとに最後の数字だけが違う番号を大きく書き分ける。中央のルータの名札には 192.168.1.1 と書く。番号が1台ごとに重ならない目印であることが分かるよう、名札の形を郵便の宛名札のようにし、ルータから1台の機器へ向かって、宛名の番号を見て届けられる小さな封筒の絵と矢印を1本描く。抽象的な箱の並びにはせず、機器の形と番号の札をはっきり描く。フラットデザイン、パステルカラー、白背景、正方形。"}
+{"word": "IPアドレス", "file": "gk_b2197f34b8.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word":"パスワード","file":"gk_a9694dc2e8.jpg","bucket":"v1b","method":"gpt-image","prompt":"技術の情報セキュリティの「パスワード」を説明する教育用イラスト。画面の中央に、ノートパソコンの画面を大きく描き、その中にログイン画面を映す。画面の上部には人の形をした丸いアイコンと利用者名を入れる横長の入力欄があり、その下にもう1つ横長の入力欄があって、そこには入力された文字が読めないように黒い丸が8個ならんで伏せ字になっている。入力欄の左はしには小さな鍵のアイコンが付き、右はしには目のアイコンが付く。中学生の指がキーボードを打っており、打つたびに黒い丸が1つずつ増えていく様子を小さな矢印で示す。パソコンの画面の右には、大きなじょうぶな南京錠を描き、その鍵穴に、入力された伏せ字の列がそのまま鍵の形になって差しこまれ、正しければ錠が開いて中の書類やデータが取り出せる様子を、開いた錠と矢印で示す。錠のむこう側には、番号を知らずに入れずに困っている見知らぬ人物のシルエットを小さく添える。ただのモニターと小物の絵にはしない。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
 {"word": "コンピュータウイルス", "file": "gk_716b8a0823.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "a computer monitor with a menacing green spiky virus germ creature crawling out of the screen, a red warning triangle and a shield with a check mark blocking it, centered"}
 {"word": "暗号化", "file": "gk_a7ca13dbf6.jpg", "bucket": "v1b", "method": "gpt-image", "prompt": "技術科の情報学習で学ぶ「暗号化」を説明する教育用イラスト。画面を左から右へ3段階の工程図にする。左に、読める文が書かれた紙として大文字のHELLOを大きく1語だけ描く。中央に、鍵の形のアイコンが差し込まれた箱型の変換装置を置き、左から右へ太い矢印が通る。右に、装置から出てきた読めない記号の並びとして#%&?*のような記号列を描く。さらにその下に、同じ鍵で逆向きに戻すと再びHELLOに読めるようになることを、左向きの矢印で示す。鍵を持たない人物が記号列を見て首をかしげているようすを小さく添える。フラットデザイン、パステルカラー、白背景、正方形。"}
@@ -649,7 +649,7 @@
 {"word": "自由律俳句", "file": "gk_4429ca0246.jpg", "bucket": "v1", "method": "card", "card_main": "分け入っても分け入っても青い山", "card_sub": "自由律俳句"}
 {"word": "縁語", "file": "gk_b12f02f770.jpg", "bucket": "v1b", "method": "card", "card_main": "波 — 浦 — 海", "card_sub": "縁語"}
 {"word": "象形文字", "file": "gk_2d62092410.jpg", "bucket": "v1", "method": "sd", "prompt": "a mountain with three peaks and a winding river each paired with a simplified line-drawing shape of the same form, arrows linking object to shape, carved on a stone tablet, centered, large"}
-{"word": "形声文字", "file": "gk_754ea6c090.jpg", "bucket": "v1", "method": "sd", "prompt": "two puzzle halves joining into one square block, the left half showing a water droplet symbol and the right half showing a sound wave symbol, centered, large"}
+{"word": "形声文字", "file": "gk_754ea6c090.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "熟字訓", "file": "gk_4a8b0edcd9.jpg", "bucket": "v1", "method": "card", "card_main": "明日 = あす", "card_sub": "熟字訓"}
 {"word": "慣用句", "file": "gk_485c946b00.jpg", "bucket": "v1", "method": "card", "card_main": "目を丸くする", "card_sub": "慣用句"}
 {"word": "杞憂", "file": "gk_84b9438bb8.jpg", "bucket": "v1b", "method": "gpt-image", "prompt": "古代中国風の服を着た人物が、よく晴れた安全な空を見上げ、空が落ちてくるのではないかと過度に心配している「杞憂」。 太く明瞭な輪郭、柔らかなパステルカラー、白背景、細部を省いたフラットな教材図版。人物の顔や背景は簡潔にし、小さく切り出しても主題が分かる構図。文字なし、正方形。"}
@@ -660,15 +660,15 @@
 {"word": "竜頭蛇尾", "file": "gk_560992c1d2.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "堂々とした大きな龍の頭から始まり、後ろへ行くほど細く弱い蛇の尾になって終わる「竜頭蛇尾」。 太く明瞭な輪郭、柔らかなパステルカラー、白背景、細部を省いたフラットな教材図版。人物の顔や背景は簡潔にし、小さく切り出しても主題が分かる構図。文字なし、正方形。"}
 {"word": "ト音記号", "file": "gk_8d2ec5bc7a.jpg", "bucket": "v1b", "method": "gpt-image", "prompt": "白い五線譜の上に、大きく正確な黒いト音記号を一つだけ描く。余計な音符や文字は描かない。 太く明瞭な輪郭、柔らかなパステルカラー、白背景、細部を省いたフラットな教材図版。各マスは小さく切り出しても意味が分かる単純な構図。正方形。"}
 {"word": "ヘ音記号", "file": "gk_ef89880cec.jpg", "bucket": "v1b", "method": "card", "card_main": "𝄢", "card_sub": "ヘ音記号"}
-{"word": "五線譜", "file": "gk_f58174cb1d.jpg", "bucket": "v1b", "method": "card", "card_main": "𝄚", "card_sub": "五線譜"}
-{"word": "音符", "file": "gk_7ac32896c6.jpg", "bucket": "v1", "method": "sd", "prompt": "a large quarter note and an eighth note with flag, centered, big black note heads with stems"}
+{"word": "五線譜", "file": "gk_f58174cb1d.svg", "bucket": "v1b", "method": "svg", "card_main": "𝄚", "card_sub": "五線譜", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "音符", "file": "gk_7ac32896c6.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "休符", "file": "gk_72e9c9d4d3.jpg", "bucket": "v1", "method": "card", "card_main": "𝄽", "card_sub": "休符(四分休符)"}
 {"word": "付点四分音符", "file": "gk_256109d79d.jpg", "bucket": "v1", "method": "card", "card_main": "♩.", "card_sub": "付点四分音符"}
 {"word": "拍子", "file": "gk_1e4171528e.jpg", "bucket": "v1", "method": "card", "card_main": "4/4  3/4", "card_sub": "拍子"}
 {"word": "四分の四拍子", "file": "gk_aae24d93e9.jpg", "bucket": "v1b", "method": "card", "card_main": "4/4", "card_sub": "四分の四拍子"}
 {"word": "四分の三拍子", "file": "gk_60eda38df4.jpg", "bucket": "v1", "method": "card", "card_main": "3/4", "card_sub": "四分の三拍子"}
 {"word": "リズム", "file": "gk_3829134f74.jpg", "bucket": "v1", "method": "sd", "prompt": "a repeating pattern of note and rest symbols in a row, long and short beat blocks alternating"}
-{"word": "メロディー", "file": "gk_cb03da8dde.jpg", "bucket": "v1b", "method": "sd", "prompt": "a flowing wavy line of note heads rising and falling like a gentle wave across a staff"}
+{"word": "メロディー", "file": "gk_cb03da8dde.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "ハーモニー", "file": "gk_7b2ef22aa0.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "音楽の「ハーモニー」を説明する教育用イラスト。小中学生の小さな合唱団が三つの異なる音の高さで同時に歌い、各パートから出る三本のなめらかな色付きの音の波が中央で重なって一つの美しい和音になる様子。そばで先生が指揮している。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
 {"word": "フォルテ", "file": "gk_76398c15d9.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "フォルテシモ", "file": "gk_ee8ce3535d.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
@@ -679,10 +679,10 @@
 {"word": "デクレッシェンド", "file": "gk_2ada091b55.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "ディミヌエンド", "file": "gk_566e45553d.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "スタッカート", "file": "gk_976f58345c.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "スラー", "file": "gk_7676d02510.jpg", "bucket": "v1", "method": "sd", "prompt": "a huge curved arc line joining two note heads of different pitch on a staff, smooth connecting curve"}
+{"word": "スラー", "file": "gk_7676d02510.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "タイ", "file": "gk_d9b6ded59a.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "フェルマータ", "file": "gk_432b801d90.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "レガート", "file": "gk_b4a8c726a2.jpg", "bucket": "v1b", "method": "sd", "prompt": "a long smooth curved line arching over a row of connected note heads, seamless flowing ribbon of sound"}
+{"word": "レガート", "file": "gk_b4a8c726a2.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "テンポ", "file": "gk_7061bee1c8.jpg", "bucket": "v1", "method": "sd", "prompt": "a single pyramid-shaped mechanical metronome, centered, large, with its pendulum swinging and motion arcs"}
 {"word": "アンダンテ", "file": "gk_6cf4381688.jpg", "bucket": "v1", "method": "card", "card_main": "Andante", "card_sub": "アンダンテ(歩く速さで)"}
 {"word": "アレグロ", "file": "gk_5e02a51f6d.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "音楽の「アレグロ」を説明する教育用イラスト。中学生の弦楽四重奏が、生き生きとした速いテンポで演奏している。指揮役の手元と四人の弓の動きがきびきびそろい、横に置いたメトロノームの振り子が速く往復する様子を二重の軌跡で示す。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
@@ -699,7 +699,7 @@
 {"word": "短調", "file": "gk_aa83af3450.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "音階", "file": "gk_433129ea04.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "和音", "file": "gk_47f586ae8d.jpg", "bucket": "v1", "method": "sd", "prompt": "three note heads stacked in a vertical chord on a staff, sounded together with a single burst of rings"}
-{"word": "主旋律", "file": "gk_d3b972f615.jpg", "bucket": "v1b", "method": "card", "card_main": "♪♪♪", "card_sub": "主旋律(メロディー)"}
+{"word": "主旋律", "file": "gk_d3b972f615.svg", "bucket": "v1b", "method": "svg", "card_main": "♪♪♪", "card_sub": "主旋律(メロディー)", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "大太鼓", "file": "gk_24c5da5346.jpg", "bucket": "v1", "method": "sd", "prompt": "a single large orchestral bass drum on its stand with a soft-headed mallet, centered, large"}
 {"word": "小太鼓", "file": "gk_029f220313.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "音楽の「小太鼓」を説明する教育用イラスト。脚付きスタンドに置いた一台のスネアドラムを中学生が正しい姿勢で二本のスティックを使って演奏している。円筒形の胴、上下の白いヘッド、側面の金属金具、裏面に張られた響き線が分かる小さな拡大図も添える。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
 {"word": "尺八", "file": "gk_0830c69338.jpg", "bucket": "v1", "method": "sd", "prompt": "a single bamboo shakuhachi end-blown flute with visible bamboo nodes and finger holes, centered, large"}
@@ -764,8 +764,8 @@
 {"word": "全休符", "file": "gk_9b2fae5c6c.jpg", "bucket": "v1b", "method": "card", "card_main": "𝄻", "card_sub": "全休符"}
 {"word": "三連符", "file": "gk_7947005c5a.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "臨時記号", "file": "gk_0af5df5c25.jpg", "bucket": "v1", "method": "card", "card_main": "♯ ♭ ♮", "card_sub": "臨時記号"}
-{"word": "ハ長調", "file": "gk_fe5041d2d8.jpg", "bucket": "v1b", "method": "sd", "prompt": "a piano keyboard with the white keys from C to C highlighted, a staff with a treble clef and no sharps or flats"}
-{"word": "イ短調", "file": "gk_6b92582a58.jpg", "bucket": "v1", "method": "card", "card_main": "Am", "card_sub": "イ短調"}
+{"word": "ハ長調", "file": "gk_fe5041d2d8.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "イ短調", "file": "gk_6b92582a58.svg", "bucket": "v1", "method": "svg", "card_main": "Am", "card_sub": "イ短調", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "階名", "file": "gk_9e22b0c3a9.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "オクターブ", "file": "gk_0165036cca.jpg", "bucket": "v1", "method": "card", "card_main": "ド 〜 ド (8度)", "card_sub": "オクターブ"}
 {"word": "アルペジオ", "file": "gk_947556d097.jpg", "bucket": "v1b", "method": "card", "card_main": "ド・ミ・ソ・ド", "card_sub": "アルペジオ"}
@@ -967,7 +967,7 @@
 {"word": "体積", "file": "gk_f5a13d598c.jpg", "bucket": "v1b", "method": "sd", "prompt": "a large transparent cube box packed with small stacked unit cubes, a few unit cubes sitting outside it, three dimension arrows along the length, width and height edges"}
 {"word": "表面積", "file": "gk_aee7a93ddb.jpg", "bucket": "v1b", "method": "card", "card_main": "6a²", "card_sub": "立方体の表面積"}
 {"word": "三平方の定理", "file": "gk_6bd035558c.jpg", "bucket": "v1", "method": "card", "card_main": "a² + b² = c²", "card_sub": "三平方の定理"}
-{"word": "素因数分解", "file": "gk_20248c8b60.jpg", "bucket": "v1", "method": "card", "card_main": "12 = 2² × 3", "card_sub": "素因数分解"}
+{"word": "素因数分解", "file": "gk_20248c8b60.svg", "bucket": "v1", "method": "svg", "card_main": "12 = 2² × 3", "card_sub": "素因数分解", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "通分", "file": "gk_9bff3b8cdd.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "概数", "file": "gk_6c0b5d2196.jpg", "bucket": "v1", "method": "card", "card_main": "3842 → 約3800", "card_sub": "概数"}
 {"word": "余り", "file": "gk_dee7c4bb21.jpg", "bucket": "v1b", "method": "card", "card_main": "7 ÷ 3 = 2 あまり 1", "card_sub": "余り"}
@@ -977,7 +977,7 @@
 {"word": "交換法則", "file": "gk_5164182330.jpg", "bucket": "v1", "method": "card", "card_main": "3 × 4 = 4 × 3", "card_sub": "交換法則"}
 {"word": "正の数", "file": "gk_7063f386b9.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "負の数", "file": "gk_51fcc5657c.jpg", "bucket": "v1", "method": "card", "card_main": "-1  -2  -3", "card_sub": "負の数"}
-{"word": "有理数", "file": "gk_77dc4b16ce.jpg", "bucket": "v1", "method": "card", "card_main": "2/3  -5  0.25", "card_sub": "有理数"}
+{"word": "有理数", "file": "gk_77dc4b16ce.svg", "bucket": "v1", "method": "svg", "card_main": "2/3  -5  0.25", "card_sub": "有理数", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "平方根", "file": "gk_c37fa81641.jpg", "bucket": "v1b", "method": "card", "card_main": "√9 = 3", "card_sub": "平方根"}
 {"word": "累乗", "file": "gk_d94d6aa4f9.jpg", "bucket": "v1b", "method": "sd", "prompt": "a left to right staircase of four shapes, a single dot, then a short line of dots, then a flat square block of dots, then a stacked cube of dots, each step larger than the last with small arrows between them"}
 {"word": "指数", "file": "gk_0065c59f18.jpg", "bucket": "v1", "method": "card", "card_main": "2³ = 2×2×2", "card_sub": "指数"}
@@ -1031,7 +1031,7 @@
 {"word": "偶数", "file": "gk_a3685ea6fa.jpg", "bucket": "v1b", "method": "sd", "prompt": "eight round tokens arranged as two neat equal rows of four, every token paired with a partner directly below it and each pair circled, nothing left over"}
 {"word": "奇数", "file": "gk_0cf1d841bd.jpg", "bucket": "v1", "method": "card", "card_main": "1 3 5 7 9 …", "card_sub": ""}
 {"word": "結合法則", "file": "gk_2ce338f334.jpg", "bucket": "v1", "method": "card", "card_main": "(2+3)+4 = 2+(3+4)", "card_sub": "結合法則"}
-{"word": "等号", "file": "gk_9a1dd4507b.jpg", "bucket": "v1b", "method": "card", "card_main": "=", "card_sub": "等号"}
+{"word": "等号", "file": "gk_9a1dd4507b.svg", "bucket": "v1b", "method": "svg", "card_main": "=", "card_sub": "等号", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "不等号", "file": "gk_a64ea03280.jpg", "bucket": "v1b", "method": "card", "card_main": "< >", "card_sub": "不等号"}
 {"word": "単位換算", "file": "gk_21b0372f16.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "トン", "file": "gk_7b098c0dee.jpg", "bucket": "v1", "method": "sd", "prompt": "a heavy dump truck parked on a large flat weighing platform scale with a round dial gauge, a huge iron weight block sitting beside it, centered, large"}
@@ -1070,7 +1070,7 @@
 {"word": "同類項", "file": "gk_82635835a4.jpg", "bucket": "v1b", "method": "card", "card_main": "3x + 2x = 5x", "card_sub": "同類項"}
 {"word": "次数", "file": "gk_d4a97e7577.jpg", "bucket": "v1b", "method": "card", "card_main": "x³", "card_sub": "次数 = 3"}
 {"word": "因数", "file": "gk_2ea891e06e.jpg", "bucket": "v1", "method": "card", "card_main": "6 = 2 × 3", "card_sub": "因数"}
-{"word": "根号", "file": "gk_73139d3e2e.jpg", "bucket": "v1", "method": "card", "card_main": "√", "card_sub": "根号"}
+{"word": "根号", "file": "gk_73139d3e2e.svg", "bucket": "v1", "method": "svg", "card_main": "√", "card_sub": "根号", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "有理化", "file": "gk_a73d967846.jpg", "bucket": "v1b", "method": "card", "card_main": "1/√2 = √2/2", "card_sub": "有理化"}
 {"word": "近似値", "file": "gk_4089ec3c0b.jpg", "bucket": "v1", "method": "card", "card_main": "π ≒ 3.14", "card_sub": "近似値"}
 {"word": "誤差", "file": "gk_d7b31136dd.jpg", "bucket": "v1b", "method": "gpt-image", "prompt": "一本の棒の本当の端点と、測定で少しずれた二つの端点を近くに描き、その小さなずれを両矢印で強調した「誤差」。数字なし。 太く明瞭な輪郭、柔らかなパステルカラー、白背景、細部を省いたフラットな教材図版。各マスは小さく切り出しても意味が分かる単純な構図。正方形。"}
@@ -1184,3 +1184,41 @@
 {"word": "曲尺", "file": "gk_17dcc9570f.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_math_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "ディオファントス", "file": "gk_438e829603.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_math_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "立体模型", "file": "gk_3294bd205e.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_math_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "アドレナリン", "file": "gk_7bf6c885f9.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "エステル", "file": "gk_7c7c815607.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "カルボン酸", "file": "gk_737af9a026.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "クライアントサーバシステム", "file": "gk_c590abf73f.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "サンタルチア", "file": "gk_94c4e5b6a5.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "パスカルの三角形", "file": "gk_3dafd480b0.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "不定方程式", "file": "gk_6d4114b743.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "並列回路", "file": "gk_3b3d77a305.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "中点", "file": "gk_1beb7e6953.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "二項定理", "file": "gk_a103c618b0.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "八分音符", "file": "gk_3d7a635846.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "共通鍵暗号", "file": "gk_7556eeb710.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "円周率", "file": "gk_10f0325e61.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "単位円", "file": "gk_b80fb85da1.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "台形", "file": "gk_4214995107.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "合成関数", "file": "gk_4213095a0d.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "君が代", "file": "gk_3f34a8d9af.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "商標権", "file": "gk_8fac777f20.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "字形", "file": "gk_f67a7a0253.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "対位法", "file": "gk_ef6861db8b.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "尿素", "file": "gk_cab24b8bac.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "平行四辺形", "file": "gk_a4f89edab1.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "整数", "file": "gk_58306b30f4.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "旋律", "file": "gk_fc819298f1.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "春望", "file": "gk_9455dbed76.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "正三角形", "file": "gk_fe22be391e.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "比較生産費説", "file": "gk_bca382bdaa.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "炭酸水素ナトリウム", "file": "gk_eb39002c6e.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "点対称", "file": "gk_7a1535804a.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "点画", "file": "gk_c6d979b51e.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "百分率", "file": "gk_a0c550c61e.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "直列回路", "file": "gk_56a1a65b62.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "直角三角形", "file": "gk_0e6568838c.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "空間ベクトル", "file": "gk_a2350fc41f.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "立ち泳ぎ", "file": "gk_103996bc36.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "配位結合", "file": "gk_cd5da2bc55.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "鎌倉幕府", "file": "gk_8da7631de5.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "長方形", "file": "gk_8e1d6bf453.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
