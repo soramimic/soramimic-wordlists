@@ -3222,5 +3222,557 @@ def fig_敬語():
     return g.titled("敬語", b)
 
 
+# ---- 音楽(構造語) -----------------------------------------------------------
+
+
+@register("提示部")
+def fig_提示部():
+    b = [g.rect(36, 44, 248, 40, g.INK, 1.4, g.FILL2),
+         g.t(160, 66, "第1主題・第2主題を提示する部分", 10, g.ACCENT),
+         g.rect(36, 96, 72, 40, g.INK, 1.2, g.FILL),
+         g.rect(124, 96, 72, 40, g.INK, 1.2, g.FILL),
+         g.rect(212, 96, 72, 40, g.INK, 1.2, g.FILL2),
+         g.t(72, 116, "提示部", 9, g.ACCENT), g.t(160, 116, "展開部", 9), g.t(248, 116, "再現部", 9),
+         g.t(160, 156, "ソナタ形式の最初の部分", 10.5),
+         g.t(160, 178, "主題がはっきり示される", 10, g.ACCENT),
+         g.t(160, 200, "「聞かせる」役割", 9.5, g.SUB)]
+    return g.titled("提示部", b)
+
+
+@register("展開部")
+def fig_展開部():
+    b = [g.rect(36, 96, 72, 40, g.INK, 1.2, g.FILL),
+         g.rect(124, 96, 72, 40, g.INK, 1.2, g.FILL2),
+         g.rect(212, 96, 72, 40, g.INK, 1.2, g.FILL),
+         g.t(72, 116, "提示部", 9), g.t(160, 116, "展開部", 9, g.ACCENT), g.t(248, 116, "再現部", 9),
+         g.t(160, 60, "主題を変化・発展させる部分", 10, g.ACCENT),
+         g.t(160, 156, "ソナタ形式の中央部分", 10.5),
+         g.t(160, 178, "転調・モチーフの変形で盛り上げる", 10, g.ACCENT),
+         g.t(160, 200, "「葛藤・発展」の役割", 9.5, g.SUB)]
+    return g.titled("展開部", b)
+
+
+@register("再現部")
+def fig_再現部():
+    b = [g.rect(36, 96, 72, 40, g.INK, 1.2, g.FILL),
+         g.rect(124, 96, 72, 40, g.INK, 1.2, g.FILL),
+         g.rect(212, 96, 72, 40, g.INK, 1.2, g.FILL2),
+         g.t(72, 116, "提示部", 9), g.t(160, 116, "展開部", 9), g.t(248, 116, "再現部", 9, g.ACCENT),
+         g.t(160, 60, "主題が再び現れる部分", 10, g.ACCENT),
+         g.t(160, 156, "ソナタ形式の最後の部分", 10.5),
+         g.t(160, 178, "提示部の主題を主調で再現", 10, g.ACCENT),
+         g.t(160, 200, "「帰ってくる」安心感", 9.5, g.SUB)]
+    return g.titled("再現部", b)
+
+
+@register("変奏曲")
+def fig_変奏曲():
+    b = [g.t(160, 44, "主題", 11, g.INK),
+         g.rect(60, 54, 200, 28, g.INK, 1.2, g.FILL2),
+         g.arrow(160, 88, 160, 106, g.INK, 1.4),
+         g.rect(40, 112, 52, 30, g.INK, 1.2, g.FILL),
+         g.rect(134, 112, 52, 30, g.INK, 1.2, g.FILL),
+         g.rect(228, 112, 52, 30, g.INK, 1.2, g.FILL2),
+         g.t(66, 130, "変奏1", 8.5), g.t(160, 130, "変奏2", 8.5), g.t(254, 130, "変奏3…", 8.5),
+         g.t(160, 160, "主題をリズム・旋律・和声などで", 10.5),
+         g.t(160, 182, "様々に変化させて展開する曲", 10.5, g.ACCENT),
+         g.t(160, 206, "例: ベートーヴェンの変奏曲", 9.5, g.SUB)]
+    return g.titled("変奏曲", b)
+
+
+@register("形式")
+def fig_形式():
+    b = [g.t(160, 44, "曲のまとまり・構造", 11, g.INK),
+         g.rect(40, 58, 52, 40, g.INK, 1.2, g.FILL),
+         g.rect(134, 58, 52, 40, g.INK, 1.2, g.FILL),
+         g.rect(228, 58, 52, 40, g.INK, 1.2, g.FILL2),
+         g.t(66, 78, "A", 11), g.t(160, 78, "B", 11), g.t(254, 78, "A", 11, g.ACCENT),
+         g.t(160, 112, "二部形式・三部形式など", 10, g.ACCENT),
+         g.t(160, 136, "A-B-A は「三部形式」", 10.5),
+         g.t(160, 160, "繰り返し・対比の組み立て方", 10, g.ACCENT),
+         g.t(160, 184, "楽曲の構造(フレーズのまとまり)", 9.5, g.SUB)]
+    return g.titled("形式", b)
+
+
+@register("リズムパターン")
+def fig_リズムパターン():
+    b = [g.line(60, 120, 260, 120, g.SUB, 1.2),
+         g.line(60, 120, 60, 60, g.SUB, 1.2),
+         g.t(44, 54, "強", 9, g.ACCENT),
+         g.line(84, 120, 84, 84, g.INK, 2.0),
+         g.line(128, 120, 128, 100, g.INK, 1.2),
+         g.line(172, 120, 172, 100, g.INK, 1.2),
+         g.line(216, 120, 216, 84, g.INK, 2.0),
+         g.line(260, 120, 260, 100, g.INK, 1.2),
+         g.t(160, 148, "強弱・長短の組み合わせのくり返し", 10.5),
+         g.t(160, 170, "ジャンルごとに特徴的なパターン", 10, g.ACCENT),
+         g.t(160, 194, "例: ロックの8ビート・ワルツの3拍子", 9.5, g.SUB)]
+    return g.titled("リズムパターン", b)
+
+
+@register("祭囃子")
+def fig_祭囃子():
+    b = [g.rect(40, 48, 240, 40, g.INK, 1.3, g.FILL2),
+         g.t(160, 68, "祭りで奏でるお囃子(和太鼓・笛など)", 9.5, g.ACCENT),
+         g.rect(70, 104, 40, 26, g.INK, 1.2, g.FILL),
+         g.rect(140, 104, 40, 26, g.INK, 1.2, g.FILL),
+         g.rect(210, 104, 40, 26, g.INK, 1.2, g.FILL),
+         g.t(90, 122, "太鼓", 8.5), g.t(160, 122, "笛", 8.5), g.t(230, 122, "鉦", 8.5),
+         g.t(160, 150, "祭礼の雰囲気をつくる音楽", 10.5),
+         g.t(160, 172, "地域ごとに特徴的なリズム", 10, g.ACCENT),
+         g.t(160, 196, "神輿や山車とともに奏でられる", 9.5, g.SUB)]
+    return g.titled("祭囃子", b)
+
+
+@register("寄せの合方")
+def fig_寄せの合方():
+    b = [g.rect(40, 48, 240, 40, g.INK, 1.3, g.FILL2),
+         g.t(160, 68, "謡や舞の合間に奏でる囃子", 9.5, g.ACCENT),
+         g.rect(60, 100, 200, 34, g.INK, 1.2, g.FILL),
+         g.t(160, 122, "太鼓・笛・小鼓・大鼓", 9.5),
+         g.t(160, 150, "能や狂言の演奏形式の一つ", 10.5),
+         g.t(160, 172, "場面の転換・盛り上げに使う", 10, g.ACCENT),
+         g.t(160, 196, "「合方」= 囃子だけの部分", 9.5, g.SUB)]
+    return g.titled("寄せの合方", b)
+
+
+@register("唱歌")
+def fig_唱歌():
+    b = [g.rect(40, 48, 240, 40, g.INK, 1.3, g.FILL2),
+         g.t(160, 68, "学校教育のために作られた歌", 9.5, g.ACCENT),
+         g.t(160, 104, "明治期の「唱歌」に始まる", 10.5),
+         g.t(160, 126, "例: ふるさと・朧月夜・茶摘", 10, g.ACCENT),
+         g.t(160, 150, "文部省唱歌として普及", 10),
+         g.t(160, 174, "現在の教科書にも掲載", 10, g.ACCENT),
+         g.t(160, 198, "日本独自の歌曲文化", 9.5, g.SUB)]
+    return g.titled("唱歌", b)
+
+
+@register("現代音楽")
+def fig_現代音楽():
+    b = [g.rect(40, 48, 240, 40, g.INK, 1.3, g.FILL2),
+         g.t(160, 68, "20世紀以降の多様な音楽", 9.5, g.ACCENT),
+         g.t(160, 104, "無調・12音技法・電子音など", 10, g.ACCENT),
+         g.t(160, 126, "従来の枠にとらわれない表現", 10.5),
+         g.t(160, 150, "例: シェーンベルク・ケージ", 10, g.ACCENT),
+         g.t(160, 174, "現代の作曲技法を学ぶ", 10),
+         g.t(160, 198, "ポピュラー音楽とも相互に影響", 9.5, g.SUB)]
+    return g.titled("現代音楽", b)
+
+
+@register("民族音楽")
+def fig_民族音楽():
+    b = [g.rect(40, 48, 240, 40, g.INK, 1.3, g.FILL2),
+         g.t(160, 68, "各地域で伝えられてきた音楽", 9.5, g.ACCENT),
+         g.t(160, 104, "民族ごとの楽器・音階・リズム", 10, g.ACCENT),
+         g.t(160, 126, "例: ガムラン・フラメンコ・雅楽", 10),
+         g.t(160, 150, "生活や祭りと結びつく", 10.5),
+         g.t(160, 174, "口承で伝わる音楽", 10, g.ACCENT),
+         g.t(160, 198, "世界の音楽を学ぶ際の柱", 9.5, g.SUB)]
+    return g.titled("民族音楽", b)
+
+
+@register("ポピュラー音楽")
+def fig_ポピュラー音楽():
+    b = [g.rect(40, 48, 240, 40, g.INK, 1.3, g.FILL2),
+         g.t(160, 68, "大衆に親しまれる音楽", 9.5, g.ACCENT),
+         g.t(160, 104, "ポップス・ロック・ジャズなど", 10, g.ACCENT),
+         g.t(160, 126, "幅広い世代に親しまれる", 10.5),
+         g.t(160, 150, "J-POPの背景として学ぶ", 10, g.ACCENT),
+         g.t(160, 174, "メディアとともに発展", 10),
+         g.t(160, 198, "クラシック・民族音楽と対比される", 9.5, g.SUB)]
+    return g.titled("ポピュラー音楽", b)
+
+
+@register("天球図")
+def fig_天球図():
+    b = [g.circle(160, 92, 58, g.INK, 1.6),
+         g.circle(160, 92, 44, g.INK, 1.0, g.FILL),
+         g.circle(160, 92, 24, g.INK, 1.0),
+         g.line(102, 92, 218, 92, g.INK, 1.0),
+         g.line(160, 34, 160, 150, g.INK, 1.0),
+         g.dot(160, 92, 3.0, g.ACCENT),
+         g.t(160, 84, "★", 10, g.ACCENT),
+         g.t(160, 164, "天体の位置を表した図", 10.5),
+         g.t(160, 186, "天球を球として描く", 10, g.ACCENT),
+         g.t(160, 208, "星座早見盤にもつながる", 9.5, g.SUB)]
+    return g.titled("天球図", b)
+
+
+# ---- 美術 ---------------------------------------------------------------
+
+
+@register("伝統色")
+def fig_伝統色():
+    cols = [("#a8d8ea", "水色"), ("#7b6c9e", "藤色"), ("#e78b8b", "珊瑚色"),
+            ("#9fae5c", "若草色"), ("#e8b9c3", "桜色"), ("#3b3b3b", "墨色")]
+    b = []
+    for i, (c, name) in enumerate(cols):
+        x = 28 + (i % 3) * 96
+        y = 46 + (i // 3) * 52
+        b += [g.rect(x, y, 76, 32, g.INK, 1.0, c, rx=4),
+              g.t(x + 38, y + 44, name, 9.5)]
+    b += [g.t(160, 156, "日本で親しまれてきた色の名前", 10.5),
+          g.t(160, 178, "自然や暮らしから生まれた", 10, g.ACCENT),
+          g.t(160, 200, "例: 藍色・茜色・山吹色", 9.5, g.SUB)]
+    return g.titled("伝統色", b)
+
+
+@register("パッケージ")
+def fig_パッケージ():
+    b = [g.rect(100, 44, 120, 76, g.INK, 1.8, g.FILL2),
+         g.path("M100,44 L130,60 L130,120", g.INK, 1.2),
+         g.path("M220,44 L190,60 L190,120", g.INK, 1.2),
+         g.line(100, 44, 130, 60, g.INK, 1.2), g.line(220, 44, 190, 60, g.INK, 1.2),
+         g.t(160, 92, "商品", 11, g.ACCENT),
+         g.t(160, 140, "商品を包む容器・デザイン", 10.5),
+         g.t(160, 162, "保護・運搬・表示の機能", 10, g.ACCENT),
+         g.t(160, 186, "購入意欲にも影響する", 10),
+         g.t(160, 210, "意匠・ユニバーサルデザインも関連", 9.5, g.SUB)]
+    return g.titled("パッケージ", b)
+
+
+@register("デペイズマン")
+def fig_デペイズマン():
+    b = [g.circle(90, 92, 30, g.INK, 1.6, g.FILL),
+         g.t(90, 97, "林檎", 9.5),
+         g.t(160, 66, "×", 16, g.ACCENT),
+         g.rect(200, 52, 64, 80, g.INK, 1.6, g.FILL2),
+         g.t(232, 92, "机", 9.5),
+         g.t(160, 148, "異なるものを組み合わせて", 10.5),
+         g.t(160, 170, "違和感を生み出す表現", 10.5, g.ACCENT),
+         g.t(160, 194, "シュルレアリスムの手法", 10),
+         g.t(160, 218, "「非日常化」による驚き", 9.5, g.SUB)]
+    return g.titled("デペイズマン", b)
+
+
+@register("量感")
+def fig_量感():
+    b = [g.circle(160, 90, 46, g.INK, 1.6, g.FILL),
+         g.circle(160, 90, 30, g.INK, 1.0, g.FILL2),
+         g.circle(160, 90, 14, g.INK, 1.0),
+         g.path("M114,90 Q160,40 206,90", g.ACCENT, 1.4),
+         g.t(160, 150, "立体としての重み・存在感", 10.5),
+         g.t(160, 172, "陰影や明暗で表す", 10, g.ACCENT),
+         g.t(160, 196, "彫刻・デッサンで大切", 10),
+         g.t(160, 220, "「かさ」の感じ", 9.5, g.SUB)]
+    return g.titled("量感", b)
+
+
+@register("造形")
+def fig_造形():
+    b = [g.rect(50, 44, 100, 70, g.INK, 1.4, g.FILL),
+         g.circle(200, 70, 30, g.INK, 1.4, g.FILL2),
+         g.line(150, 90, 170, 82, g.INK, 1.2),
+         g.t(160, 136, "形や色・材料を工夫して", 10.5),
+         g.t(160, 158, "作品をつくること", 10.5, g.ACCENT),
+         g.t(160, 182, "平面(絵)・立体(彫刻)・工芸", 10),
+         g.t(160, 206, "バランス・構成を考える", 9.5, g.SUB)]
+    return g.titled("造形", b)
+
+
+@register("修復")
+def fig_修復():
+    b = [g.rect(60, 44, 90, 80, g.INK, 1.5, g.FILL),
+         g.path("M70,50 L96,72 M96,50 L70,72", g.ACCENT, 2.2),
+         g.rect(190, 44, 90, 80, g.INK, 1.5, g.FILL2),
+         g.path("M200,60 L214,88 M228,60 L214,88", g.INK, 1.2),
+         g.t(105, 140, "壊れた作品", 9.5), g.t(235, 140, "元の姿へ", 9.5, g.ACCENT),
+         g.t(160, 162, "傷んだ文化財・美術品を", 10.5),
+         g.t(160, 184, "元の状態に近づけて直す", 10.5, g.ACCENT),
+         g.t(160, 208, "文化財の保護活動", 9.5, g.SUB)]
+    return g.titled("修復", b)
+
+
+@register("躍動感")
+def fig_躍動感():
+    b = [g.path("M60,110 Q100,60 140,110 Q180,60 220,110", g.ACCENT, 3.0),
+         g.path("M60,140 Q110,100 160,140 Q210,100 260,140", g.INK, 2.0),
+         g.t(160, 168, "動き・勢いを感じさせる表現", 10.5),
+         g.t(160, 190, "曲線・斜め・リズムで表す", 10, g.ACCENT),
+         g.t(160, 214, "スポーツ・動物などの描写に", 9.5, g.SUB)]
+    return g.titled("躍動感", b)
+
+
+@register("仮名書道")
+def fig_仮名書道():
+    b = [g.t(160, 78, "かな", 34, g.INK, "middle", "Noto Serif JP,Hiragino Mincho ProN,serif", "400"),
+         g.t(160, 122, "ひらがなを中心に書く書道", 10.5),
+         g.t(160, 146, "流れるような線・余白の美", 10, g.ACCENT),
+         g.t(160, 170, "漢字書道と対になる日本の書", 10),
+         g.t(160, 194, "色紙・短冊にも用いられる", 9.5, g.SUB)]
+    return g.titled("仮名書道", b)
+
+
+# ---- 英語(文型・段落構造) ---------------------------------------------------
+
+
+def _bunkei(word, s, v, o, c, note):
+    b = []
+    labels = [("S", "主語", s), ("V", "動詞", v), ("O", "目的語", o), ("C", "補語", c)]
+    x0 = 40
+    for i, (sym, name, ex) in enumerate(labels):
+        if ex is None:
+            continue
+        x = x0 + i * 62
+        b += _chem_box(x, 46, 50, 40, sym, size=16, fill=g.FILL2 if sym == "V" else g.FILL,
+                       color=g.ACCENT if sym == "V" else g.INK)
+        b.append(g.t(x + 25, 98, name, 9, g.SUB))
+    b += [g.t(160, 122, note, 11, g.ACCENT),
+          g.t(160, 146, word, 10.5),
+          g.t(160, 170, "5文型の基本となる形", 10),
+          g.t(160, 194, "例文で語順を確認する", 9.5, g.SUB)]
+    return g.titled(word, b)
+
+
+@register("第一文型")
+def fig_第一文型():
+    return _bunkei("第一文型", "S", "V", None, None, "S V — 主語 + 動詞")
+
+
+@register("第二文型")
+def fig_第二文型():
+    return _bunkei("第二文型", "S", "V", None, "C", "S V C — 主語 = 補語")
+
+
+@register("第三文型")
+def fig_第三文型():
+    return _bunkei("第三文型", "S", "V", "O", None, "S V O — 主語 + 動詞 + 目的語")
+
+
+@register("第四文型")
+def fig_第四文型():
+    return _bunkei("第四文型", "S", "V", "O(人)", "O(物)", "S V O O — 人に物を与える")
+
+
+@register("第五文型")
+def fig_第五文型():
+    return _bunkei("第五文型", "S", "V", "O", "C", "S V O C — 目的語 = 補語")
+
+
+@register("文の要素")
+def fig_文の要素():
+    b = []
+    for i, (sym, name, ex) in enumerate([("S", "主語", "誰が・何が"),
+                                         ("V", "動詞", "する・である"),
+                                         ("O", "目的語", "〜を(に)"),
+                                         ("C", "補語", "主語=補語")]):
+        x = 30 + i * 70
+        b += _chem_box(x, 46, 56, 40, sym, size=16, fill=g.FILL2 if sym == "V" else g.FILL,
+                       color=g.ACCENT if sym == "V" else g.INK)
+        b.append(g.t(x + 28, 98, name, 9, g.SUB))
+        b.append(g.t(x + 28, 112, ex, 8, g.ACCENT))
+    b += [g.t(160, 136, "文を組み立てる4つの働き", 10.5),
+          g.t(160, 158, "S V O C の並びで文型が決まる", 10, g.ACCENT),
+          g.t(160, 182, "文型判断の基礎", 10),
+          g.t(160, 206, "例: I (S) love (V) music (O)", 9.5, g.SUB)]
+    return g.titled("文の要素", b)
+
+
+@register("二重目的語")
+def fig_二重目的語():
+    b = [g.t(160, 44, "She gave me a book.", 12, g.INK, "middle", g.MATHFONT, "700"),
+         g.t(160, 66, "V        O(人)     O(物)", 10.5, g.ACCENT),
+         g.t(160, 92, "「人に物を〜する」", 10.5),
+         g.t(160, 114, "人と物の2つの目的語をとる", 10.5, g.ACCENT),
+         g.t(160, 138, "to/for + 人 に書き換え可能", 10),
+         g.t(160, 162, "例: gave the book to me", 10, g.ACCENT, "middle", g.MATHFONT, "700"),
+         g.t(160, 186, "第四文型の特徴", 9.5, g.SUB)]
+    return g.titled("二重目的語", b)
+
+
+@register("形式主語")
+def fig_形式主語():
+    b = [g.t(160, 44, "It is important to study.", 11.5, g.INK, "middle", g.MATHFONT, "700"),
+         g.rect(40, 56, 60, 36, g.INK, 1.3, g.FILL2),
+         g.rect(220, 56, 60, 36, g.INK, 1.3, g.FILL),
+         g.t(70, 78, "It(形式主語)", 9.5, g.ACCENT),
+         g.t(250, 78, "to study(真主語)", 9, g.ACCENT),
+         g.t(160, 110, "長い主語を文末に回す", 10.5),
+         g.t(160, 132, "It is 〜 to … の構文", 10.5, g.ACCENT),
+         g.t(160, 156, "文のバランスを整える", 10),
+         g.t(160, 180, "形式目的語 it もある", 9.5, g.SUB)]
+    return g.titled("形式主語", b)
+
+
+@register("主節")
+def fig_主節():
+    b = [g.t(160, 44, "I think that he is kind.", 11.5, g.INK, "middle", g.MATHFONT, "700"),
+         g.rect(40, 56, 90, 40, g.INK, 1.3, g.FILL2),
+         g.rect(150, 56, 130, 40, g.INK, 1.3, g.FILL),
+         g.t(85, 78, "主節", 10, g.ACCENT), g.t(215, 78, "従属節(that節)", 9.5, g.ACCENT),
+         g.t(160, 114, "文の中心になる節", 10.5),
+         g.t(160, 136, "従属節を支える骨組み", 10.5, g.ACCENT),
+         g.t(160, 160, "従属節は主節の一部になる", 10),
+         g.t(160, 184, "複文の基本構造", 9.5, g.SUB)]
+    return g.titled("主節", b)
+
+
+@register("従属節")
+def fig_従属節():
+    b = [g.t(160, 44, "I think that he is kind.", 11.5, g.INK, "middle", g.MATHFONT, "700"),
+         g.rect(40, 56, 90, 40, g.INK, 1.3, g.FILL),
+         g.rect(150, 56, 130, 40, g.INK, 1.3, g.FILL2),
+         g.t(85, 78, "主節", 10), g.t(215, 78, "従属節(that節)", 9.5, g.ACCENT),
+         g.t(160, 114, "主節の中で働く節", 10.5),
+         g.t(160, 136, "名詞節・形容詞節・副詞節がある", 10.5, g.ACCENT),
+         g.t(160, 160, "接続詞・関係詞で導かれる", 10),
+         g.t(160, 184, "単独では文にならない", 9.5, g.SUB)]
+    return g.titled("従属節", b)
+
+
+@register("名詞節")
+def fig_名詞節():
+    b = [g.t(160, 44, "I know that he is busy.", 11.5, g.INK, "middle", g.MATHFONT, "700"),
+         g.t(160, 70, "that節 = 「〜ということ」", 10.5, g.ACCENT),
+         g.t(160, 96, "文の中で名詞の働き(S・O・C)", 10.5),
+         g.t(160, 120, "例: What he said is true.", 10, g.ACCENT, "middle", g.MATHFONT, "700"),
+         g.t(160, 144, "what 節も名詞節", 10),
+         g.t(160, 168, "主語・目的語・補語になれる", 10, g.ACCENT),
+         g.t(160, 192, "間接疑問(if/whether)も同類", 9.5, g.SUB)]
+    return g.titled("名詞節", b)
+
+
+@register("形容詞節")
+def fig_形容詞節():
+    b = [g.t(160, 44, "The book which I read is good.", 10.5, g.INK, "middle", g.MATHFONT, "700"),
+         g.t(160, 70, "which節 = 「私が読んだ」", 10.5, g.ACCENT),
+         g.t(160, 96, "文の中で形容詞の働き(名詞を修飾)", 10.5),
+         g.t(160, 120, "関係代名詞・関係副詞で導く", 10, g.ACCENT),
+         g.t(160, 144, "先行詞の説明をする", 10),
+         g.t(160, 168, "例: the boy who runs fast", 10, g.ACCENT, "middle", g.MATHFONT, "700"),
+         g.t(160, 192, "制限用法・非制限用法がある", 9.5, g.SUB)]
+    return g.titled("形容詞節", b)
+
+
+@register("副詞節")
+def fig_副詞節():
+    b = [g.t(160, 44, "Because it rained, I stayed home.", 10, g.INK, "middle", g.MATHFONT, "700"),
+         g.t(160, 70, "because節 = 「雨が降ったので」", 10, g.ACCENT),
+         g.t(160, 96, "文の中で副詞の働き(動詞を修飾)", 10.5),
+         g.t(160, 120, "時・理由・条件・譲歩などを表す", 10, g.ACCENT),
+         g.t(160, 144, "例: when / if / although 節", 10),
+         g.t(160, 168, "主節の前後どちらにも置ける", 10, g.ACCENT),
+         g.t(160, 192, "文頭に置くとコンマを使う", 9.5, g.SUB)]
+    return g.titled("副詞節", b)
+
+
+@register("パラグラフライティング")
+def fig_パラグラフライティング():
+    b = [g.rect(90, 42, 140, 28, g.INK, 1.3, g.FILL2),
+         g.t(160, 61, "トピックセンテンス", 9.5, g.ACCENT),
+         g.rect(50, 76, 220, 34, g.INK, 1.2, g.FILL),
+         g.t(160, 97, "サポーティングセンテンス①", 9),
+         g.rect(50, 112, 220, 34, g.INK, 1.2, g.FILL),
+         g.t(160, 133, "サポーティングセンテンス②", 9),
+         g.rect(50, 148, 220, 28, g.INK, 1.2, g.FILL2),
+         g.t(160, 167, "まとめ(結論)", 9, g.ACCENT),
+         g.t(160, 196, "段落を「序論→本論→結論」で構成", 9.5)]
+    return g.titled("パラグラフライティング", b)
+
+
+@register("トピックセンテンス")
+def fig_トピックセンテンス():
+    b = [g.rect(40, 44, 240, 40, g.INK, 1.4, g.FILL2),
+         g.t(160, 62, "段落の中心となる文", 10.5, g.ACCENT),
+         g.t(160, 76, "(たいてい段落の最初)", 8.5, g.SUB),
+         g.t(160, 104, "「何について書くか」を示す", 10.5),
+         g.t(160, 128, "後ろの文で具体化される", 10, g.ACCENT),
+         g.t(160, 152, "段落全体の要約になる", 10),
+         g.t(160, 176, "書く前に決めると構成しやすい", 10, g.ACCENT),
+         g.t(160, 200, "パラグラフライティングの要", 9.5, g.SUB)]
+    return g.titled("トピックセンテンス", b)
+
+
+@register("サポーティングセンテンス")
+def fig_サポーティングセンテンス():
+    b = [g.rect(40, 44, 240, 36, g.INK, 1.3, g.FILL2),
+         g.t(160, 66, "トピックセンテンスを支える文", 10, g.ACCENT),
+         g.rect(40, 86, 240, 30, g.INK, 1.2, g.FILL),
+         g.t(160, 105, "具体例・理由・説明", 9.5),
+         g.rect(40, 118, 240, 30, g.INK, 1.2, g.FILL),
+         g.t(160, 137, "データ・体験談など", 9.5),
+         g.t(160, 166, "トピック文を具体化する役割", 10.5),
+         g.t(160, 190, "複数並べて段落を充実させる", 10, g.ACCENT),
+         g.t(160, 214, "トピック文と矛盾しない内容に", 9.5, g.SUB)]
+    return g.titled("サポーティングセンテンス", b)
+
+
+@register("比較構文")
+def fig_比較構文():
+    b = [g.rect(50, 50, 70, 40, g.INK, 1.3, g.FILL),
+         g.rect(150, 34, 70, 56, g.INK, 1.3, g.FILL2),
+         g.rect(230, 60, 40, 30, g.INK, 1.3, g.FILL),
+         g.t(85, 72, "A", 11), g.t(185, 58, "B", 11, g.ACCENT), g.t(250, 78, "C", 11),
+         g.t(160, 110, "as 〜 as(同級)", 10, g.ACCENT),
+         g.t(160, 132, "比較級: A is bigger than B", 10, g.ACCENT, "middle", g.MATHFONT, "700"),
+         g.t(160, 156, "最上級: the biggest of C", 10),
+         g.t(160, 180, "3つの級で程度を表す", 10, g.ACCENT),
+         g.t(160, 204, "倍数表現・クジラ構文とも関連", 9.5, g.SUB)]
+    return g.titled("比較構文", b)
+
+
+@register("倍数表現")
+def fig_倍数表現():
+    b = [g.rect(50, 50, 60, 40, g.INK, 1.3, g.FILL),
+         g.rect(140, 26, 60, 64, g.INK, 1.3, g.FILL2),
+         g.t(80, 72, "A", 11), g.t(170, 56, "2倍のB", 10, g.ACCENT),
+         g.t(160, 108, "twice as 〜 as / three times as 〜 as", 9.5, g.ACCENT, "middle", g.MATHFONT, "700"),
+         g.t(160, 132, "「AはBの○倍〜」を表す", 10.5),
+         g.t(160, 156, "例: This is twice as long as that.", 9.5, g.ACCENT, "middle", g.MATHFONT, "700"),
+         g.t(160, 180, "as 〜 as の形で倍数を前におく", 10),
+         g.t(160, 204, "比較構文の応用", 9.5, g.SUB)]
+    return g.titled("倍数表現", b)
+
+
+@register("クジラ構文")
+def fig_クジラ構文():
+    b = [g.t(160, 44, "A whale is no more a fish than a horse is.", 9, g.INK, "middle", g.MATHFONT, "700"),
+         g.t(160, 70, "「クジラが魚でないように、〜も…ない」", 9.5, g.ACCENT),
+         g.t(160, 96, "no more 〜 than … の構文", 10.5),
+         g.t(160, 120, "than の後は主語+動詞で終わる", 10, g.ACCENT),
+         g.t(160, 144, "「どちらも〜でない」の比較", 10),
+         g.t(160, 168, "例: He is no more a poet than I am.", 9.5, g.ACCENT, "middle", g.MATHFONT, "700"),
+         g.t(160, 192, "英語の難構文の代表", 9.5, g.SUB)]
+    return g.titled("クジラ構文", b)
+
+
+@register("倒置")
+def fig_倒置():
+    b = [g.t(160, 44, "Never have I seen such a sight.", 9.5, g.INK, "middle", g.MATHFONT, "700"),
+         g.t(160, 68, "否定語を文頭に出すと", 10.5),
+         g.t(160, 90, "主語と動詞が入れ替わる", 10.5, g.ACCENT),
+         g.t(160, 114, "例: Here comes the bus.", 10, g.ACCENT, "middle", g.MATHFONT, "700"),
+         g.t(160, 138, "強調・語順の変化", 10),
+         g.t(160, 162, "「〜が…に」の倒置もある", 10, g.ACCENT),
+         g.t(160, 186, "文のリズム・強調の技法", 9.5, g.SUB)]
+    return g.titled("倒置", b)
+
+
+@register("強調構文")
+def fig_強調構文():
+    b = [g.t(160, 44, "It is Tom that I like.", 11, g.INK, "middle", g.MATHFONT, "700"),
+         g.rect(50, 56, 90, 36, g.INK, 1.3, g.FILL2),
+         g.t(95, 78, "強調したい語", 9.5, g.ACCENT),
+         g.t(160, 96, "「私が好きなのはトムだ」", 10.5),
+         g.t(160, 120, "It is 〜 that … の構文", 10.5, g.ACCENT),
+         g.t(160, 144, "that の後は元の文の残り", 10),
+         g.t(160, 168, "例: It was yesterday that …", 10, g.ACCENT, "middle", g.MATHFONT, "700"),
+         g.t(160, 192, "形式主語の it とは別物", 9.5, g.SUB)]
+    return g.titled("強調構文", b)
+
+
+@register("省略")
+def fig_省略():
+    b = [g.t(160, 44, "(You) Come here.", 11.5, g.INK, "middle", g.MATHFONT, "700"),
+         g.t(160, 70, "前後の文脈から分かる語を省く", 10.5, g.ACCENT),
+         g.t(160, 94, "命令文の主語 You の省略", 10.5),
+         g.t(160, 118, "例: (I) hope so.", 10, g.ACCENT, "middle", g.MATHFONT, "700"),
+         g.t(160, 142, "比較構文の than 以下も省略される", 10),
+         g.t(160, 166, "自然で簡潔な表現になる", 10, g.ACCENT),
+         g.t(160, 190, "文脈が省略を許す", 9.5, g.SUB)]
+    return g.titled("省略", b)
+
+
 if __name__ == "__main__":
     main()
