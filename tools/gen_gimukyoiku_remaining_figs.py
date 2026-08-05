@@ -714,5 +714,766 @@ def main():
     print(f"{len(FIGURES)}枚を書き出した -> {out}")
 
 
+# ---- 黒背景カードで消える画像の差し替え図版 --------------------------------
+#
+# Commons の作図SVGは「黒線+透明背景」が多く、soramimic-video の黒背景カード
+# (gimukyoiku_card)では実質見えない。これらはこのツールで白背景の図版SVGに
+# 置き換える(既存の数学作図と同形式)。
+
+
+@register("正三角形")
+def fig_正三角形():
+    pts = [(70, 150), (250, 150), (160, 52)]
+    b = [g.poly(pts, g.INK, 2.0, g.FILL),
+         g.line(160, 52, 160, 150, g.ACCENT, 1.2, dash="4 3")]
+    for x, label in ((95, "60°"), (205, "60°"), (160, "60°")):
+        b.append(g.t(x, 164, label, 10.5, g.ACCENT))
+    b.append(g.t(160, 42, "3辺の長さが等しい", 10, g.SUB))
+    b.append(g.t(160, 116, "h = √3/2 × 一辺", 11, g.INK))
+    b.append(g.t(160, 188, "3つの角はすべて60°", 9.5, g.SUB))
+    return g.titled("正三角形", b)
+
+
+@register("直角三角形")
+def fig_直角三角形():
+    b = [g.poly([(60, 152), (250, 152), (60, 66)], g.INK, 2.0, g.FILL),
+         g.path("M60,152 L78,152 L78,134 Z", g.INK, 1.2, g.ACCENT),
+         g.line(60, 66, 104, 66, g.ACCENT, 1.1, dash="3 3"),
+         g.t(80, 58, "高さ", 10, g.ACCENT),
+         g.line(60, 152, 60, 116, g.ACCENT, 1.1, dash="3 3"),
+         g.t(32, 134, "底辺", 10, g.ACCENT),
+         g.t(160, 170, "面積 = 底辺 × 高さ ÷ 2", 11.5)]
+    return g.titled("直角三角形", b)
+
+
+@register("平行四辺形")
+def fig_平行四辺形():
+    b = [g.poly([(50, 140), (190, 140), (230, 78), (90, 78)], g.INK, 2.0, g.FILL),
+         g.line(190, 140, 190, 78, g.ACCENT, 1.2, dash="4 3"),
+         g.t(200, 112, "高さ", 10, g.ACCENT),
+         g.t(120, 156, "底辺", 10, g.ACCENT),
+         g.t(160, 178, "向かい合う2組の辺が平行", 10, g.SUB),
+         g.t(160, 190, "面積 = 底辺 × 高さ", 11)]
+    return g.titled("平行四辺形", b)
+
+
+@register("台形")
+def fig_台形():
+    b = [g.poly([(50, 145), (110, 145), (170, 70), (40, 70)], g.INK, 2.0, g.FILL),
+         g.line(110, 145, 110, 70, g.ACCENT, 1.2, dash="4 3"),
+         g.t(120, 112, "高さ", 10, g.ACCENT),
+         g.line(70, 154, 160, 154, g.INK, 1.0),
+         g.line(70, 60, 130, 60, g.INK, 1.0),
+         g.t(70, 166, "上底 a", 10, g.INK), g.t(130, 52, "下底 b", 10, g.INK),
+         g.t(160, 190, "面積 = (上底 + 下底) × 高さ ÷ 2", 10.5)]
+    return g.titled("台形", b)
+
+
+@register("長方形")
+def fig_長方形():
+    b = [g.rect(70, 65, 180, 85, g.INK, 2.0, g.FILL),
+         g.line(70, 65, 250, 65, g.ACCENT, 1.1, dash="3 3"),
+         g.t(160, 57, "横", 10, g.ACCENT),
+         g.line(250, 65, 250, 150, g.ACCENT, 1.1, dash="3 3"),
+         g.t(258, 112, "縦", 10, g.ACCENT),
+         g.t(160, 170, "4つの角がすべて90°", 10.5, g.SUB),
+         g.t(160, 185, "面積 = 縦 × 横", 11)]
+    return g.titled("長方形", b)
+
+
+@register("中点")
+def fig_中点():
+    b = [g.line(70, 130, 250, 130, g.INK, 2.0),
+         g.dot(70, 130, 3.2), g.dot(250, 130, 3.2),
+         g.dot(160, 130, 4.0, g.ACCENT),
+         g.t(64, 122, "A", 11, g.INK), g.t(246, 122, "B", 11, g.INK),
+         g.t(160, 122, "M", 11, g.ACCENT),
+         g.t(115, 146, "AM", 10, g.ACCENT), g.t(205, 146, "MB", 10, g.ACCENT),
+         g.t(160, 172, "線分ABを2等分する点", 10.5),
+         g.t(160, 186, "AM = MB", 11, g.ACCENT)]
+    return g.titled("中点", b)
+
+
+@register("円周率")
+def fig_円周率():
+    b = [g.circle(160, 105, 62, g.INK, 2.0),
+         g.line(160, 105, 222, 105, g.ACCENT, 1.4),
+         g.t(194, 98, "半径 r", 10, g.ACCENT),
+         g.line(98, 105, 222, 105, g.SUB, 1.0, dash="3 3"),
+         g.t(160, 94, "直径", 9.5, g.SUB),
+         g.t(160, 180, "円周 ÷ 直径 = π ≈ 3.14", 11.5, g.ACCENT),
+         g.t(160, 194, "円周 = 2πr", 10.5)]
+    return g.titled("円周率", b)
+
+
+@register("根号")
+def fig_根号():
+    b = [g.t(160, 78, "√", 52, g.INK, "middle", g.MATHFONT, "700"),
+         g.line(188, 78, 188, 118, g.INK, 2.0),
+         g.line(188, 118, 232, 118, g.INK, 2.0),
+         g.t(210, 108, "a", 14, g.ACCENT, "middle", g.MATHFONT, "400", "italic"),
+         g.t(160, 152, "√a は2乗すると a になる数(正)", 11),
+         g.t(160, 174, "√4 = 2,  √9 = 3", 11, g.ACCENT),
+         g.t(160, 190, "ルート記号", 9.5, g.SUB)]
+    return g.titled("根号", b)
+
+
+@register("等号")
+def fig_等号():
+    b = [g.rect(105, 62, 110, 16, g.ACCENT, 0, "#f3ddd3", 4),
+         g.rect(105, 92, 110, 16, g.ACCENT, 0, "#f3ddd3", 4),
+         g.t(160, 44, "左辺", 10, g.SUB), g.t(160, 128, "右辺", 10, g.SUB),
+         g.t(160, 76, "=", 22, g.ACCENT, "middle", g.MATHFONT, "700"),
+         g.t(160, 166, "左右の値が等しいことを表す", 11),
+         g.t(160, 188, "例: 3 + 2 = 5", 11.5, g.ACCENT)]
+    return g.titled("等号", b)
+
+
+@register("百分率")
+def fig_百分率():
+    b = [g.rect(118, 58, 84, 84, g.INK, 2.0, g.FILL),
+         g.t(160, 106, "%", 42, g.ACCENT, "middle", g.MATHFONT, "700"),
+         g.t(160, 170, "全体を100として割合を表す", 11),
+         g.t(160, 186, "50% = 半分,  100% = 全部", 10.5, g.ACCENT)]
+    return g.titled("百分率", b)
+
+
+@register("点対称")
+def fig_点対称():
+    b = [g.line(70, 90, 250, 90, g.SUB, 1.0, dash="3 3"),
+         g.line(160, 40, 160, 150, g.SUB, 1.0, dash="3 3"),
+         g.dot(160, 95, 4.0, g.ACCENT),
+         g.t(154, 76, "O", 10, g.ACCENT),
+         g.poly([(105, 62), (125, 62), (125, 82), (105, 82)], g.INK, 1.5, g.FILL),
+         g.poly([(215, 108), (195, 108), (195, 128), (215, 128)], g.INK, 1.5, g.FILL),
+         g.t(96, 50, "P", 10.5), g.t(226, 138, "P'", 10.5),
+         g.line(105, 72, 215, 118, g.ACCENT, 1.0, dash="3 3"),
+         g.t(160, 172, "点Oを中心に180°回転して重なる", 10.5),
+         g.t(160, 188, "OP = OP'", 11, g.ACCENT)]
+    return g.titled("点対称", b)
+
+
+@register("素因数分解")
+def fig_素因数分解():
+    b = [g.t(160, 42, "60", 15, g.INK),
+         g.line(130, 48, 112, 62, g.INK, 1.2), g.line(190, 48, 208, 62, g.INK, 1.2),
+         g.t(104, 70, "2", 12, g.ACCENT), g.t(214, 70, "30", 12, g.INK),
+         g.line(196, 76, 184, 88, g.INK, 1.2), g.line(226, 76, 240, 88, g.INK, 1.2),
+         g.t(176, 96, "2", 12, g.ACCENT), g.t(246, 96, "15", 12, g.INK),
+         g.line(236, 102, 224, 114, g.INK, 1.2), g.line(258, 102, 270, 114, g.INK, 1.2),
+         g.t(216, 122, "3", 12, g.ACCENT), g.t(278, 122, "5", 12, g.ACCENT),
+         g.t(160, 156, "60 = 2 × 2 × 3 × 5", 12.5, g.ACCENT),
+         g.t(160, 178, "素数のかけ算だけに分解する", 10.5),
+         g.t(160, 192, "2² × 3 × 5", 11, g.INK)]
+    return g.titled("素因数分解", b)
+
+
+@register("整数")
+def fig_整数():
+    b = [g.line(55, 110, 265, 110, g.INK, 1.8),
+         g.arrow(55, 110, 268, 110, g.INK, 1.2),
+         g.t(272, 113, "→", 12, g.INK)]
+    for i, x in enumerate(range(55, 270, 26)):
+        b.append(g.line(x, 104, x, 116, g.INK, 1.2))
+        b.append(g.t(x, 128, str(i - 4), 10, g.ACCENT if i == 4 else g.INK))
+    b.append(g.t(160, 152, "…, −2, −1, 0, 1, 2, …", 12.5))
+    b.append(g.t(160, 174, "自然数・0・負の整数を合わせた数", 10.5))
+    b.append(g.t(160, 190, "小数や分数は含まない", 10, g.ACCENT))
+    return g.titled("整数", b)
+
+
+@register("有理数")
+def fig_有理数():
+    b = [g.line(55, 105, 265, 105, g.INK, 1.8),
+         g.arrow(55, 105, 268, 105, g.INK, 1.2)]
+    for i, x in enumerate(range(55, 270, 26)):
+        b.append(g.line(x, 99, x, 111, g.INK, 1.2))
+        b.append(g.t(x, 122, str(i - 4), 9.5, g.INK))
+    marks = [(81, "−1/2"), (134, "1/4"), (160, "0.5"), (213, "3/2")]
+    for x, lab in marks:
+        b.append(g.dot(x, 105, 3.0, g.ACCENT))
+        b.append(g.t(x, 88, lab, 9, g.ACCENT))
+    b.append(g.t(160, 148, "分数で表せる数(整数も含む)", 11))
+    b.append(g.t(160, 166, "例: 1/2, 0.75, −3", 11, g.ACCENT))
+    b.append(g.t(160, 186, "循環小数も有理数", 9.5, g.SUB))
+    return g.titled("有理数", b)
+
+
+@register("単位円")
+def fig_単位円():
+    ox, oy = 160, 105
+    b = g.axes(ox, oy, -86, 96, -80, 88)
+    b.append(g.circle(ox, oy, 66, g.INK, 1.8))
+    b.append(g.line(ox, oy, ox + 55, oy - 36, g.ACCENT, 2.0))
+    b.append(g.t(ox + 62, oy - 36, "1", 10, g.ACCENT))
+    b.append(g.t(ox + 30, oy - 18, "θ", 11, g.ACCENT, "middle", g.MATHFONT, "400", "italic"))
+    b.append(g.dot(ox + 55, oy - 36, 3.2, g.ACCENT))
+    b.append(g.t(ox + 8, oy - 78, "sin θ", 10, g.SUB))
+    b.append(g.t(ox + 84, oy + 14, "cos θ", 10, g.SUB))
+    b.append(g.t(160, 178, "半径1の円で角度と三角比を表す", 10.5))
+    b.append(g.t(160, 192, "sin²θ + cos²θ = 1", 11, g.ACCENT))
+    return g.titled("単位円", b)
+
+
+@register("二項定理")
+def fig_二項定理():
+    b = [g.t(160, 44, "(a + b)²", 16, g.INK, "middle", g.MATHFONT, "700"),
+         g.t(160, 68, "= a² + 2ab + b²", 14, g.ACCENT, "middle", g.MATHFONT, "700"),
+         g.rect(40, 96, 104, 52, g.INK, 1.4, g.FILL),
+         g.rect(176, 96, 104, 52, g.INK, 1.4, g.FILL2),
+         g.t(92, 118, "a²", 13, g.INK, "middle", g.MATHFONT, "700"),
+         g.t(92, 136, "a×a", 9.5, g.SUB),
+         g.t(228, 118, "b²", 13, g.INK, "middle", g.MATHFONT, "700"),
+         g.t(228, 136, "b×b", 9.5, g.SUB),
+         g.t(160, 172, "2ab は (a+b)² を展開した中央の項", 10.5),
+         g.t(160, 188, "(a+b)³ は a³+3a²b+3ab²+b³", 10.5, g.ACCENT)]
+    return g.titled("二項定理", b)
+
+
+@register("パスカルの三角形")
+def fig_パスカルの三角形():
+    rows = [[1], [1, 1], [1, 2, 1], [1, 3, 3, 1], [1, 4, 6, 4, 1]]
+    b = []
+    for r, row in enumerate(rows):
+        y = 44 + r * 27
+        for c, v in enumerate(row):
+            x = 160 + (c - r / 2) * 34
+            b.append(g.t(x, y, str(v), 12, g.ACCENT if r == 4 and c == 2 else g.INK))
+    b.append(g.t(160, 178, "上の2つの数の和が下の数になる", 10.5))
+    b.append(g.t(160, 192, "(a+b)ⁿ の係数と一致", 10.5, g.ACCENT))
+    return g.titled("パスカルの三角形", b)
+
+
+@register("合成関数")
+def fig_合成関数():
+    b = [g.t(58, 105, "x", 13, g.INK, "middle", g.MATHFONT, "400", "italic"),
+         g.t(160, 105, "f(x)", 13, g.ACCENT, "middle", g.MATHFONT, "400", "italic"),
+         g.t(262, 105, "g(f(x))", 12, g.ACCENT, "middle", g.MATHFONT, "400", "italic"),
+         g.rect(92, 80, 52, 48, g.INK, 1.4, g.FILL),
+         g.rect(192, 80, 58, 48, g.INK, 1.4, g.FILL),
+         g.arrow(68, 105, 90, 105, g.INK, 1.4),
+         g.arrow(148, 105, 188, 105, g.INK, 1.4),
+         g.t(160, 160, "f の結果に g をかける", 11),
+         g.t(160, 178, "(g ∘ f)(x) = g(f(x))", 11.5, g.ACCENT),
+         g.t(160, 192, "x → f → g の順に合成", 9.5, g.SUB)]
+    return g.titled("合成関数", b)
+
+
+@register("空間ベクトル")
+def fig_空間ベクトル():
+    b = [g.line(60, 150, 210, 150, g.INK, 1.4), g.line(60, 150, 60, 52, g.INK, 1.4),
+         g.line(60, 150, 250, 112, g.INK, 1.4),
+         g.arrow(60, 150, 180, 66, g.ACCENT, 2.2),
+         g.t(30, 48, "z", 10, g.SUB), g.t(214, 154, "x", 10, g.SUB),
+         g.t(254, 108, "y", 10, g.SUB),
+         g.t(126, 100, "a", 12, g.ACCENT, "middle", g.MATHFONT, "700"),
+         g.t(160, 172, "3次元空間の向きと大きさをもつ量", 10.5),
+         g.t(160, 188, "a = (a₁, a₂, a₃)", 11, g.ACCENT, "middle", g.MATHFONT, "400", "italic")]
+    return g.titled("空間ベクトル", b)
+
+
+@register("不定方程式")
+def fig_不定方程式():
+    ox, oy = 90, 150
+    b = g.axes(ox, oy, -35, 200, -40, 105, "x", "y")
+    b.append(g.line(40, 66, 270, 150, g.ACCENT, 2.0))
+    for x in (60, 90, 120, 150, 180):
+        y = 150 - (x - 60) * 0.5
+        b.append(g.dot(x, y, 3.2, g.INK))
+    b.append(g.t(242, 130, "2x + 3y = 7", 12, g.ACCENT, "middle", g.MATHFONT, "700"))
+    b.append(g.t(160, 172, "解が無数にある方程式", 11))
+    b.append(g.t(160, 188, "整数解: (2, 1), (5, −1), …", 10.5))
+    return g.titled("不定方程式", b)
+
+
+# ---- 理科 ------------------------------------------------------------
+
+
+def _chem_box(x, y, w, h, text, *, size=12, fill="#ffffff", stroke=g.INK, color=g.INK, rx=6):
+    return [g.rect(x, y, w, h, stroke, 1.2, fill, rx),
+            g.t(x + w / 2, y + h / 2 + size * 0.35, text, size, color)]
+
+
+@register("尿素")
+def fig_尿素():
+    b = []
+    b += _chem_box(138, 52, 44, 34, "C", size=14)
+    b += _chem_box(92, 112, 52, 34, "NH₂", size=11)
+    b += _chem_box(176, 112, 52, 34, "NH₂", size=11)
+    b += [g.line(138, 86, 118, 112, g.INK, 1.6), g.line(182, 86, 202, 112, g.INK, 1.6),
+          g.line(160, 86, 160, 46, g.INK, 1.6),
+          g.t(172, 44, "O", 11, g.ACCENT, "middle", g.MATHFONT, "700")]
+    b.append(g.t(160, 172, "CO(NH₂)₂ — 肥料・プラスチックの原料", 10.5))
+    b.append(g.t(160, 188, "炭素・酸素・窒素・水素からなる有機化合物", 9.5, g.SUB))
+    return g.titled("尿素", b)
+
+
+@register("カルボン酸")
+def fig_カルボン酸():
+    b = []
+    b += _chem_box(58, 96, 74, 40, "R", size=14)
+    b += _chem_box(176, 96, 86, 40, "COOH", size=13, fill=g.FILL2, color=g.ACCENT)
+    b += [g.line(132, 116, 176, 116, g.INK, 1.8),
+          g.t(160, 160, "R–COOH の −COOH が酸性を示す", 11),
+          g.t(160, 178, "例: 酢酸 CH₃COOH, ギ酸 HCOOH", 10.5),
+          g.t(160, 192, "炭素鎖の末端に COOH をもつ", 9.5, g.SUB)]
+    return g.titled("カルボン酸", b)
+
+
+@register("エステル")
+def fig_エステル():
+    b = []
+    b += _chem_box(48, 92, 60, 38, "R", size=13)
+    b += _chem_box(158, 92, 64, 38, "COO", size=13, fill=g.FILL2, color=g.ACCENT)
+    b += _chem_box(258, 92, 60, 38, "R'", size=13)
+    b += [g.line(108, 111, 158, 111, g.INK, 1.6), g.line(222, 111, 258, 111, g.INK, 1.6),
+          g.t(160, 158, "酸とアルコールから水がとれてできる", 10.5),
+          g.t(160, 176, "R–COO–R' — 果物の香りの成分", 11, g.ACCENT),
+          g.t(160, 192, "例: 酢酸エチル CH₃COOC₂H₅", 10, g.SUB)]
+    return g.titled("エステル", b)
+
+
+@register("炭酸水素ナトリウム")
+def fig_炭酸水素ナトリウム():
+    b = []
+    b += _chem_box(92, 48, 136, 40, "NaHCO₃", size=15, fill=g.FILL, color=g.INK)
+    b += [g.arrow(160, 96, 160, 116, g.ACCENT, 1.6),
+          g.t(160, 90, "加熱", 9.5, g.ACCENT)]
+    b += _chem_box(34, 128, 88, 34, "Na₂CO₃", size=12)
+    b += _chem_box(128, 128, 62, 34, "H₂O", size=12)
+    b += _chem_box(196, 128, 62, 34, "CO₂", size=12, fill=g.FILL2, color=g.ACCENT)
+    b.append(g.t(160, 178, "重曹 — ベーキングパウダー・胃薬", 10.5))
+    b.append(g.t(160, 192, "2NaHCO₃ → Na₂CO₃ + H₂O + CO₂", 10.5, g.ACCENT))
+    return g.titled("炭酸水素ナトリウム", b)
+
+
+@register("アドレナリン")
+def fig_アドレナリン():
+    b = [g.poly([(70, 132), (110, 132), (126, 96), (110, 60), (70, 60), (54, 96)], g.INK, 1.6, g.FILL),
+         g.line(90, 60, 90, 42, g.INK, 1.6),
+         g.t(100, 38, "OH", 9.5, g.ACCENT),
+         g.line(70, 96, 44, 96, g.INK, 1.6),
+         g.t(34, 102, "OH", 9.5, g.ACCENT),
+         g.line(126, 96, 160, 96, g.INK, 1.6),
+         g.line(160, 96, 196, 74, g.INK, 1.6),
+         g.line(196, 74, 232, 74, g.INK, 1.6),
+         g.t(214, 68, "NH", 10, g.ACCENT),
+         g.t(160, 172, "副腎髄質から出るホルモン", 11),
+         g.t(160, 188, "心拍・血圧を上げ、闘争か逃走の反応", 10, g.SUB)]
+    return g.titled("アドレナリン", b)
+
+
+@register("配位結合")
+def fig_配位結合():
+    b = []
+    b += _chem_box(60, 88, 76, 40, "N", size=16, fill=g.FILL)
+    b += _chem_box(188, 88, 80, 40, "H⁺", size=14, fill=g.FILL2, color=g.ACCENT)
+    b += [g.arrow(140, 108, 184, 108, g.ACCENT, 2.0),
+          g.t(162, 100, "非共有電子対", 9, g.ACCENT),
+          g.t(160, 156, "窒素の非共有電子対を H⁺ に与える結合", 10.5),
+          g.t(160, 174, "NH₃ + H⁺ → NH₄⁺", 12, g.ACCENT),
+          g.t(160, 192, "電子対の提供者と受容者の結合", 9.5, g.SUB)]
+    return g.titled("配位結合", b)
+
+
+@register("直列回路")
+def fig_直列回路():
+    b = [g.rect(48, 44, 44, 66, g.INK, 1.4, g.FILL2),
+         g.t(70, 82, "電池", 9, g.ACCENT),
+         g.line(48, 66, 24, 66, g.INK, 1.6), g.line(24, 66, 24, 150, g.INK, 1.6),
+         g.line(24, 150, 296, 150, g.INK, 1.6), g.line(296, 150, 296, 66, g.INK, 1.6),
+         g.line(296, 66, 92, 66, g.INK, 1.6),
+         g.circle(130, 110, 15, g.INK, 1.5, g.FILL), g.circle(210, 110, 15, g.INK, 1.5, g.FILL),
+         g.t(130, 140, "豆電球", 8.5, g.SUB), g.t(210, 140, "豆電球", 8.5, g.SUB),
+         g.arrow(160, 162, 200, 162, g.ACCENT, 1.4),
+         g.t(180, 172, "電流", 9.5, g.ACCENT),
+         g.t(160, 192, "1本の道すじ — どこか1か所切れると消える", 10)]
+    return g.titled("直列回路", b)
+
+
+@register("並列回路")
+def fig_並列回路():
+    b = [g.rect(48, 44, 44, 66, g.INK, 1.4, g.FILL2),
+         g.t(70, 82, "電池", 9, g.ACCENT),
+         g.line(48, 66, 24, 66, g.INK, 1.6), g.line(24, 66, 24, 150, g.INK, 1.6),
+         g.line(24, 150, 296, 150, g.INK, 1.6), g.line(296, 150, 296, 66, g.INK, 1.6),
+         g.line(296, 66, 92, 66, g.INK, 1.6),
+         g.line(108, 66, 108, 150, g.INK, 1.5), g.line(232, 66, 232, 150, g.INK, 1.5),
+         g.circle(130, 108, 14, g.INK, 1.4, g.FILL), g.circle(210, 108, 14, g.INK, 1.4, g.FILL),
+         g.t(130, 138, "豆電球", 8.5, g.SUB), g.t(210, 138, "豆電球", 8.5, g.SUB),
+         g.t(160, 192, "枝分かれした道 — 片方だけ消してももう片方はつく", 9.5)]
+    return g.titled("並列回路", b)
+
+
+# ---- 音楽(記譜) ---------------------------------------------------------
+
+
+@register("五線譜")
+def fig_五線譜():
+    b = staff(112)
+    b += note(160, 126)
+    b.append(g.t(160, 172, "音の高さを表す5本の線", 11))
+    b.append(g.t(160, 188, "下から 第1線・第2線…第5線", 10, g.ACCENT))
+    return g.titled("五線譜", b)
+
+
+@register("音符")
+def fig_音符():
+    b = staff(108)
+    b += note(108, 122)
+    b += note(190, 122, open_=True)
+    b.append(g.t(108, 148, "四分音符", 9, g.SUB))
+    b.append(g.t(190, 148, "二分音符", 9, g.SUB))
+    b.append(g.t(160, 174, "音の長さを表す記号", 11))
+    b.append(g.t(160, 190, "四分音符 = 1拍", 10.5, g.ACCENT))
+    return g.titled("音符", b)
+
+
+@register("八分音符")
+def fig_八分音符():
+    b = staff(108)
+    b += note(108, 122)
+    b += [g.line(118, 122, 118, 88, g.INK, 1.5),
+          g.path("M118,88 Q130,74 142,84", g.INK, 1.5)]
+    b += note(196, 132, stem=False)
+    b += [g.line(196, 122, 196, 88, g.INK, 1.5),
+          g.path("M196,88 Q208,74 220,84", g.INK, 1.5)]
+    b.append(g.t(160, 174, "符尾(はた)がついた音符", 11))
+    b.append(g.t(160, 190, "八分音符 = 1/2拍", 10.5, g.ACCENT))
+    return g.titled("八分音符", b)
+
+
+@register("メロディー")
+def fig_メロディー():
+    b = staff(108)
+    for x, y in ((90, 130), (128, 118), (166, 124), (204, 108), (242, 116)):
+        b += note(x, y)
+    b.append(g.t(160, 172, "歌や主役の音の並び", 11))
+    b.append(g.t(160, 188, "ドレミの音の高さのつながり", 10, g.ACCENT))
+    return g.titled("メロディー", b)
+
+
+@register("主旋律")
+def fig_主旋律():
+    b = staff(105)
+    for x, y in ((82, 124), (118, 112), (154, 118), (190, 102), (226, 110)):
+        b += note(x, y, fill=g.ACCENT)
+    b.append(g.line(80, 160, 240, 160, g.SUB, 1.0))
+    b.append(g.t(160, 174, "曲の中心になる目立つ旋律", 11))
+    b.append(g.t(160, 190, "伴奏にのって歌われる", 10, g.ACCENT))
+    return g.titled("主旋律", b)
+
+
+@register("旋律")
+def fig_旋律():
+    b = staff(108)
+    for x, y in ((96, 126), (134, 112), (172, 120), (210, 104)):
+        b += note(x, y)
+    b.append(g.t(160, 172, "音の高さと長さの組み合わせ", 11))
+    b.append(g.t(160, 188, "音楽の表情をつくる音の流れ", 10, g.ACCENT))
+    return g.titled("旋律", b)
+
+
+@register("スラー")
+def fig_スラー():
+    b = staff(108)
+    b += note(110, 128) + note(176, 118) + note(242, 128)
+    b += [arc_path(104, 142, 182, 132, -6, stroke=g.ACCENT, width=2.2),
+          arc_path(170, 132, 248, 142, -6, stroke=g.ACCENT, width=2.2)]
+    b.append(g.t(160, 174, "弧線で結ばれた音をなめらかに歌う", 10.5))
+    b.append(g.t(160, 190, "息継ぎせずにつなげる", 10, g.ACCENT))
+    return g.titled("スラー", b)
+
+
+@register("レガート")
+def fig_レガート():
+    b = staff(108)
+    for x, y in ((92, 126), (138, 114), (184, 122), (230, 110)):
+        b += note(x, y)
+    b += [arc_path(86, 140, 144, 128, -5, stroke=g.ACCENT, width=2.0),
+          arc_path(132, 128, 190, 136, -5, stroke=g.ACCENT, width=2.0),
+          arc_path(178, 136, 236, 124, -5, stroke=g.ACCENT, width=2.0)]
+    b.append(g.t(160, 174, "音を切らずなめらかに演奏する", 11))
+    b.append(g.t(160, 190, "「レガート」= 滑らかに", 10, g.ACCENT))
+    return g.titled("レガート", b)
+
+
+@register("ハ長調")
+def fig_ハ長調():
+    b = staff(100)
+    scale = [(88, 124), (118, 112), (148, 116), (178, 100), (208, 108), (238, 96), (268, 104)]
+    for x, y in scale:
+        b += note(x, y, fill=g.INK, up=True)
+    b.append(g.t(160, 150, "ドレミファソラシド", 11))
+    b.append(g.t(160, 168, "♯も♭も使わない長調", 10.5, g.ACCENT))
+    b.append(g.t(160, 186, "ピアノの白鍵だけで弾ける音階", 9.5, g.SUB))
+    return g.titled("ハ長調", b)
+
+
+@register("イ短調")
+def fig_イ短調():
+    b = staff(100)
+    scale = [(88, 124), (118, 112), (148, 120), (178, 104), (208, 112), (238, 100), (268, 108)]
+    for x, y in scale:
+        b += note(x, y, fill=g.INK, up=True)
+    b.append(g.t(160, 150, "ラシドレミファソ#ラ", 11))
+    b.append(g.t(160, 168, "ハ長調の平行調(関係調)", 10.5, g.ACCENT))
+    b.append(g.t(160, 186, "短調は暗く悲しい響き", 9.5, g.SUB))
+    return g.titled("イ短調", b)
+
+
+@register("君が代")
+def fig_君が代():
+    b = staff(106)
+    for x, y in ((96, 128), (134, 112), (172, 120), (210, 104), (248, 116)):
+        b += note(x, y)
+    b.append(g.t(160, 172, "日本の国歌(旋律は1880年制定)", 10.5))
+    b.append(g.t(160, 188, "「君が代は」の出だし", 10, g.ACCENT))
+    return g.titled("君が代", b)
+
+
+@register("サンタルチア")
+def fig_サンタルチア():
+    b = staff(106)
+    for x, y in ((92, 112), (130, 122), (168, 104), (206, 116), (244, 104)):
+        b += note(x, y)
+    b.append(g.t(160, 172, "ナポリの民謡(舟歌)", 11))
+    b.append(g.t(160, 188, "6/8拍子のゆったりした曲", 10, g.ACCENT))
+    return g.titled("サンタルチア", b)
+
+
+@register("対位法")
+def fig_対位法():
+    b = staff(88)
+    for x, y in ((88, 108), (136, 96), (184, 104), (232, 92)):
+        b += note(x, y)
+    b += staff(140)
+    for x, y in ((100, 160), (148, 148), (196, 156), (244, 144)):
+        b += note(x, y)
+    b.append(g.t(160, 180, "独立した複数の旋律を重ねる技法", 10.5))
+    b.append(g.t(160, 194, "バッハのフーガなど", 10, g.ACCENT))
+    return g.titled("対位法", b)
+
+
+# ---- 技術・家庭 / 英語 / 保健体育 -----------------------------------------
+
+
+@register("型紙")
+def fig_型紙():
+    b = [g.poly([(70, 70), (150, 70), (165, 150), (55, 150)], g.INK, 1.8, g.FILL),
+         g.poly([(200, 66), (268, 66), (268, 120), (200, 132)], g.INK, 1.8, g.FILL2),
+         g.line(70, 84, 150, 84, g.ACCENT, 1.1, dash="4 3"),
+         g.line(200, 78, 268, 78, g.ACCENT, 1.1, dash="4 3"),
+         g.arrow(200, 96, 268, 96, g.ACCENT, 1.4, "both"),
+         g.t(234, 88, "布目", 8.5, g.ACCENT),
+         g.t(110, 168, "身頃", 10, g.SUB), g.t(234, 148, "袖", 10, g.SUB),
+         g.t(160, 186, "布に写すための型(実線=裁ち線・破線=出来上がり線)", 9.5)]
+    return g.titled("型紙", b)
+
+
+@register("電気用図記号")
+def fig_電気用図記号():
+    b = [g.rect(28, 52, 44, 62, g.INK, 1.3, g.FILL2),
+         g.t(50, 128, "電池", 8.5, g.SUB),
+         g.line(120, 66, 166, 66, g.INK, 1.6),
+         g.rect(146, 60, 18, 22, g.INK, 1.3, g.ACCENT),
+         g.line(164, 66, 210, 66, g.INK, 1.6),
+         g.t(165, 128, "抵抗", 8.5, g.SUB),
+         g.line(230, 84, 252, 84, g.INK, 1.6), g.line(252, 84, 252, 66, g.INK, 1.6),
+         g.line(252, 66, 274, 66, g.INK, 1.6), g.line(274, 66, 274, 84, g.INK, 1.6),
+         g.line(274, 84, 296, 84, g.INK, 1.6), g.t(263, 100, "スイッチ", 8.5, g.SUB),
+         g.t(160, 160, "回路を図で表す共通の記号", 11),
+         g.t(160, 178, "電池・抵抗・スイッチ・電球など", 10, g.ACCENT),
+         g.t(160, 194, "回路図の読み書きに使う", 9.5, g.SUB)]
+    return g.titled("電気用図記号", b)
+
+
+@register("IPアドレス")
+def fig_IPアドレス():
+    octets = ["192", "168", "0", "1"]
+    b = []
+    for i, o in enumerate(octets):
+        x = 32 + i * 70
+        b += _chem_box(x, 62, 52, 40, o, size=14, fill=g.FILL)
+        if i < 3:
+            b.append(g.t(x + 58, 88, ".", 16, g.ACCENT, "middle", g.MATHFONT, "700"))
+    b.append(g.t(160, 132, "0〜255 の数4つを「.」で区切る", 10.5))
+    b.append(g.t(160, 150, "例: 192.168.0.1", 11, g.ACCENT))
+    b.append(g.t(160, 172, "ネットワーク上の機器を識別する番号", 10.5))
+    b.append(g.t(160, 190, "IPv4 は約43億個(現在はIPv6も併用)", 9.5, g.SUB))
+    return g.titled("IPアドレス", b)
+
+
+@register("商標権")
+def fig_商標権():
+    b = [g.t(105, 95, "™", 52, g.ACCENT, "middle", g.MATHFONT, "700"),
+         g.t(220, 95, "®", 52, g.ACCENT, "middle", g.MATHFONT, "700"),
+         g.t(105, 136, "商標(登録前)", 9.5, g.SUB),
+         g.t(220, 136, "登録商標", 9.5, g.SUB),
+         g.t(160, 168, "商品・サービスを見分ける標識を守る権利", 10.5),
+         g.t(160, 186, "特許庁への登録で発生する", 10.5, g.ACCENT)]
+    return g.titled("商標権", b)
+
+
+@register("共通鍵暗号")
+def fig_共通鍵暗号():
+    b = [g.t(60, 84, "送信者", 10, g.INK),
+         g.t(60, 122, "A", 14, g.ACCENT, "middle", g.MATHFONT, "700"),
+         g.rect(150, 104, 20, 18, g.INK, 1.4, g.FILL2),
+         g.path("M146,104 A14,14 0 0 1 174,104", g.INK, 1.8),
+         g.t(160, 112, "同じ鍵", 11, g.ACCENT),
+         g.t(260, 84, "受信者", 10, g.INK),
+         g.t(260, 122, "A", 14, g.ACCENT, "middle", g.MATHFONT, "700"),
+         g.arrow(84, 103, 118, 103, g.INK, 1.4),
+         g.arrow(204, 103, 238, 103, g.INK, 1.4),
+         g.t(160, 164, "暗号化と復号に同じ鍵を使う方式", 10.5),
+         g.t(160, 182, "鍵をどう渡すかが課題", 10.5, g.ACCENT)]
+    return g.titled("共通鍵暗号", b)
+
+
+@register("クライアントサーバシステム")
+def fig_クライアントサーバシステム():
+    b = [g.rect(118, 42, 84, 58, g.INK, 1.6, g.FILL2),
+         g.t(160, 66, "サーバ", 12, g.ACCENT),
+         g.t(160, 84, "データ提供", 9, g.SUB),
+         g.rect(40, 138, 64, 42, g.INK, 1.3, g.FILL),
+         g.rect(128, 138, 64, 42, g.INK, 1.3, g.FILL),
+         g.rect(216, 138, 64, 42, g.INK, 1.3, g.FILL),
+         g.t(72, 162, "クライアント", 8.5, g.INK),
+         g.t(160, 162, "クライアント", 8.5, g.INK),
+         g.t(248, 162, "クライアント", 8.5, g.INK),
+         g.line(160, 100, 84, 136, g.INK, 1.3), g.line(160, 100, 160, 136, g.INK, 1.3),
+         g.line(160, 100, 236, 136, g.INK, 1.3),
+         g.t(160, 194, "サービスを求める側と提供する側に分かれる構成", 9.5)]
+    return g.titled("クライアントサーバシステム", b)
+
+
+@register("アポストロフィ")
+def fig_アポストロフィ():
+    b = []
+    b += _chem_box(52, 76, 84, 42, "do not", size=13)
+    b += _chem_box(160, 76, 108, 42, "don't", size=14, fill=g.FILL2, color=g.ACCENT)
+    b += [g.arrow(140, 97, 156, 97, g.ACCENT, 1.6),
+          g.t(214, 66, "'", 30, g.ACCENT, "middle", g.MATHFONT, "700"),
+          g.t(160, 150, "短縮形で抜けた文字の代わりに置く", 10.5),
+          g.t(160, 170, "例: I am → I'm, it is → it's", 11, g.ACCENT),
+          g.t(160, 190, "所有を表す 's とは別の使い方", 9.5, g.SUB)]
+    return g.titled("アポストロフィ", b)
+
+
+@register("コンマ")
+def fig_コンマ():
+    b = [g.t(160, 84, "A, B, and C", 22, g.INK, "middle", g.MATHFONT, "700"),
+         g.t(160, 140, "文中の区切り・並べるときに使う「,」", 11),
+         g.t(160, 162, "例: apples, oranges, and bananas", 10.5, g.ACCENT),
+         g.t(160, 186, "数字の位取りにも使う(1,000)", 10, g.SUB)]
+    return g.titled("コンマ", b)
+
+
+@register("立ち泳ぎ")
+def fig_立ち泳ぎ():
+    b = [g.rect(40, 150, 240, 4, g.INK, 0, g.FILL),
+         g.line(160, 52, 160, 150, g.INK, 2.2),
+         g.circle(160, 40, 12, g.INK, 2.0, g.FILL),
+         g.line(160, 64, 130, 82, g.INK, 2.0), g.line(160, 64, 190, 82, g.INK, 2.0),
+         g.line(160, 96, 130, 78, g.INK, 2.0), g.line(160, 96, 190, 78, g.INK, 2.0),
+         g.line(160, 118, 138, 142, g.INK, 2.0), g.line(160, 118, 182, 142, g.INK, 2.0),
+         g.t(160, 172, "水に立った姿勢で頭を出して泳ぐ", 10.5),
+         g.t(160, 188, "手と足を動かして浮き続ける", 10, g.ACCENT)]
+    return g.titled("立ち泳ぎ", b)
+
+
+# ---- 国語 / 社会 -------------------------------------------------------
+
+
+@register("形声文字")
+def fig_形声文字():
+    b = []
+    b += _chem_box(52, 66, 76, 52, "氵", size=20, fill=g.FILL)
+    b += _chem_box(160, 66, 76, 52, "青", size=20, fill=g.FILL2, color=g.ACCENT)
+    b += _chem_box(268, 66, 44, 52, "清", size=20, fill="#ffffff", stroke=g.ACCENT, color=g.ACCENT)
+    b += [g.line(132, 92, 156, 92, g.ACCENT, 1.4), g.line(240, 92, 264, 92, g.ACCENT, 1.4),
+          g.t(90, 134, "意味(形)", 9.5, g.INK),
+          g.t(198, 134, "音(声)", 9.5, g.ACCENT),
+          g.t(160, 164, "意味を表す部分と音を表す部分でできた漢字", 10.5),
+          g.t(160, 182, "例: 清・晴・情(青は音を表す)", 10.5, g.ACCENT),
+          g.t(160, 196, "漢字の約8割が形声文字", 9.5, g.SUB)]
+    return g.titled("形声文字", b)
+
+
+@register("春望")
+def fig_春望():
+    lines = ["国破山河在", "城春草木深", "感時花濺涙", "恨別鳥驚心",
+             "烽火連三月", "家書抵万金", "白頭掻更短", "渾欲不勝簪"]
+    b = [g.t(160, 42, "杜甫「春望」", 11, g.SUB)]
+    for i, ln in enumerate(lines):
+        x = 74 + (i % 4) * 58
+        y = 70 + (i // 4) * 40
+        b += _chem_box(x, y - 14, 46, 30, ln, size=10)
+    b.append(g.t(160, 172, "五言律詩 — 五文字×八句", 11))
+    b.append(g.t(160, 190, "乱世の悲しみを春の景色に重ねて詠む", 10, g.ACCENT))
+    return g.titled("春望", b)
+
+
+@register("字形")
+def fig_字形():
+    b = []
+    b += _chem_box(52, 62, 80, 44, "へん", size=13, fill=g.FILL)
+    b += _chem_box(52, 118, 80, 44, "つくり", size=13, fill=g.FILL2, color=g.ACCENT)
+    b += _chem_box(180, 62, 80, 44, "かんむり", size=12, fill=g.FILL)
+    b += _chem_box(180, 118, 80, 44, "あし", size=12, fill=g.FILL2, color=g.ACCENT)
+    b += [g.t(160, 172, "漢字の組み立て方(部分の形)", 11),
+          g.t(160, 190, "例: 「清」= 氵(へん) + 青(つくり)", 10.5, g.ACCENT)]
+    return g.titled("字形", b)
+
+
+@register("点画")
+def fig_点画():
+    b = [g.path("M70,70 L210,70", g.INK, 5),
+         g.t(140, 86, "横画", 9.5, g.SUB),
+         g.path("M150,60 L150,150", g.INK, 5),
+         g.t(162, 106, "縦画", 9.5, g.SUB),
+         g.path("M60,120 Q90,120 120,92", g.INK, 4),
+         g.t(52, 132, "払い", 9.5, g.SUB),
+         g.path("M230,110 Q238,86 252,80", g.INK, 5),
+         g.t(246, 122, "点", 9.5, g.SUB),
+         g.t(160, 172, "漢字を構成する線の一つ一つ", 11),
+         g.t(160, 190, "横画・縦画・払い・はね・点など", 10.5, g.ACCENT)]
+    return g.titled("点画", b)
+
+
+@register("比較生産費説")
+def fig_比較生産費説():
+    b = [g.t(80, 40, "ポルトガル", 10, g.INK),
+         g.t(240, 40, "イギリス", 10, g.INK),
+         g.t(80, 60, "布 1 | 酒 1", 9, g.SUB),
+         g.t(240, 60, "布 2 | 酒 1/2", 9, g.SUB),
+         g.line(48, 80, 112, 80, g.INK, 1.4), g.line(208, 80, 272, 80, g.INK, 1.4),
+         g.rect(48, 90, 64, 60, g.INK, 1.3, g.FILL),
+         g.rect(208, 90, 64, 60, g.INK, 1.3, g.FILL2),
+         g.t(80, 116, "布に特化", 10, g.ACCENT),
+         g.t(240, 116, "酒に特化", 10, g.ACCENT),
+         g.arrow(120, 120, 200, 120, g.ACCENT, 1.8),
+         g.t(160, 134, "交換", 9.5, g.ACCENT),
+         g.t(160, 172, "両国が得意な財に特化して交換すると得", 10.5),
+         g.t(160, 190, "リカードの国際分業論", 10.5, g.ACCENT)]
+    return g.titled("比較生産費説", b)
+
+
+@register("鎌倉幕府")
+def fig_鎌倉幕府():
+    b = [g.t(160, 40, "将軍", 13, g.INK),
+         g.arrow(160, 50, 160, 68, g.INK, 1.4),
+         g.t(160, 84, "御家人", 12, g.ACCENT),
+         g.rect(52, 100, 216, 30, g.INK, 1.2, g.FILL),
+         g.t(160, 120, "奉公(いざ鎌倉)・御恩(領地)", 9.5, g.ACCENT),
+         g.rect(40, 148, 72, 28, g.INK, 1.2, g.FILL2),
+         g.rect(124, 148, 72, 28, g.INK, 1.2, g.FILL2),
+         g.rect(208, 148, 72, 28, g.INK, 1.2, g.FILL2),
+         g.t(76, 166, "侍所", 9.5), g.t(160, 166, "問注所", 9.5), g.t(244, 166, "政所", 9.5),
+         g.t(160, 192, "御恩と奉公の主従関係で成り立つ", 10, g.SUB)]
+    return g.titled("鎌倉幕府", b)
+
+
 if __name__ == "__main__":
     main()

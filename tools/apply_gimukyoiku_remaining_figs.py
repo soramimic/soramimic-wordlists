@@ -32,7 +32,7 @@ def main():
             continue
         found.add(word)
         expected_file = f"{key(word)}.svg"
-        if row["method"] not in {"sd", "svg"}:
+        if row["method"] not in {"sd", "svg", "gpt-image", "card", "program"}:
             raise SystemExit(f"unexpected method for {word}: {row['method']}")
         if row["method"] == "svg" and row["file"] == expected_file and row["prompt"] == PROMPT:
             output_lines.append(source)
@@ -66,7 +66,14 @@ def main():
         image = f"{BASE}/download/{tag}/{file_key}.svg"
         image_page = f"{BASE}/tag/{tag}"
         if row[idx["image"]] != image or row[idx["image_page"]] != image_page:
-            if row[idx["image"]] and not row[idx["image"]].endswith(f"/{file_key}.jpg"):
+            # 黒背景カードで消える画像(Commonsの作図SVG等)からの差し替えも対象。
+            # すでに自前Releaseアセットを指しているのに別ファイル名になる場合だけ
+            # 事故として止める(ハッシュ衝突などの検出)
+            if (
+                row[idx["image"]]
+                and BASE + "/download/" in row[idx["image"]]
+                and not row[idx["image"]].endswith(f"/{file_key}.svg")
+            ):
                 raise SystemExit(f"unexpected old image for {word}: {row[idx['image']]}")
             row[idx["image"]] = image
             row[idx["image_page"]] = image_page
