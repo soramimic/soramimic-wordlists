@@ -52,7 +52,7 @@
 {"word": "陰刻", "file": "gk_751a2a54dc.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "美術の「陰刻」を説明する教育用図版。黒インクをつける木版で、花の輪郭線そのものを細く彫り下げ、周囲の平らな面は残す。版の断面では線の部分だけがV字にへこみ、刷り上がりでは黒い面の中に花の線が白く現れる。版と完成した刷りを左右に対比する。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
 {"word": "試し刷り", "file": "gk_fb676a8876.jpg", "bucket": "v1b", "method": "gpt-image", "prompt": "美術の「試し刷り」を説明する教育用イラスト。木版画制作の途中で、左にまだ彫り残しのある版木、中央に黒インクをつけて一度だけ刷る手元、右に紙へ刷った結果を見て不要な黒い部分へ赤鉛筆で小さな印をつけ、版木を追加で彫り直す流れを矢印で示す。本番前の確認作業だと分かる。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
 {"word": "凸版", "file": "gk_9da79c333a.jpg", "bucket": "v1b", "method": "sd", "prompt": "a cut-away cross-section diagram of a relief printing plate, ink sitting only on the raised areas and transferring to the paper above"}
-{"word": "凹版", "file": "gk_664c3e7f59.jpg", "bucket": "v1", "method": "card", "card_main": "凹", "card_sub": "凹版"}
+{"word": "凹版", "file": "gk_664c3e7f59.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "3つの小さなパネル。左: 銅板に細い線を彫る道具。中央: 彫った凹みにインクを詰めて余分なインクを拭き取る。右: 紙を押し付けて印刷する。文字なし。"}
 {"word": "孔版", "file": "gk_36730f2c4e.jpg", "bucket": "v1", "method": "sd", "prompt": "a stencil sheet with cut-out holes, ink being pushed through the openings onto the paper underneath"}
 {"word": "はじき絵", "file": "gk_60d6231056.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "美術の「はじき絵」を説明する教育用イラスト。画面左に白い画用紙へ白と黄色のクレヨンで大きな星や波線を描く手元、画面右にその上から青い水彩絵の具を平筆で塗るとクレヨン部分だけが絵の具をはじいて明るい模様として浮かび上がる完成例を並べる。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
 {"word": "ドライブラシ", "file": "gk_0cb38ce619.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "美術の「ドライブラシ」を説明する教育用イラスト。画面左に、水をほとんど含まない平筆の穂先へ少量の茶色い絵の具をつける手元。画面右に、その筆を乾いた白い紙へ横に動かし、紙目が白く残るザラザラしたかすれ線を数本描いている拡大図。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
@@ -166,7 +166,7 @@
 {"word": "プリント", "file": "gk_0087f71210.jpg", "bucket": "v1", "method": "sd", "prompt": "a stack of printed worksheet sheets with rows of blank boxes, a pencil resting on the top sheet"}
 {"word": "穴埋め", "file": "gk_ad6605073d.jpg", "bucket": "v1b", "method": "sd", "prompt": "a worksheet with empty rounded blank boxes in a line, a pencil filling one of them in"}
 {"word": "並べかえ", "file": "gk_50a95966b9.jpg", "bucket": "v1", "method": "sd", "prompt": "scattered word cards being swept into a straight ordered line by curved arrows"}
-{"word": "英作文", "file": "gk_496b00b85e.jpg", "bucket": "v1", "method": "card", "card_main": "I like dogs.", "card_sub": "英作文"}
+{"word": "英作文", "file": "gk_496b00b85e.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "白いノートの紙の上に、英語の短い文を3行、手書き風に正確に書く: \"I like dogs.\" \"I play soccer.\" \"I study English.\" 他の文字は描かない。"}
 {"word": "自己紹介", "file": "gk_9c693a859d.jpg", "bucket": "v1b", "method": "sd", "prompt": "a student standing in front of the class wearing a name tag, smiling with a friendly speech bubble"}
 {"word": "外国語指導助手", "file": "gk_c1927914d2.jpg", "bucket": "v1b", "method": "gpt-image", "prompt": "英語の「外国語指導助手」を説明する教育用イラスト。中学校の英語授業で、英語担当の日本人教師と外国語指導助手が教室の前に並び、二人で協力して生徒へ会話練習を教えている。助手が英語の発音例を示し、教師が生徒をペア活動へ導く場面。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
 {"word": "グッドモーニング", "file": "gk_e2263d378d.jpg", "bucket": "v1b", "method": "sd", "prompt": "a smiling person waving beside a window with the morning sun rising, a bright speech bubble"}
@@ -294,7 +294,7 @@
 {"word": "正面図", "file": "gk_e03e05b912.jpg", "bucket": "v1b", "method": "gpt-image", "prompt": "a drafting sheet showing a single flat front elevation outline of a simple block drawn in thin lines, a small three-dimensional version of the same block faintly beside it with an arrow pointing at its front face, centered"}
 {"word": "寸法線", "file": "gk_b1e22469e9.jpg", "bucket": "v1b", "method": "gpt-image", "prompt": "技術の製図でかき入れる「寸法線」を説明する教育用イラスト。画面の中央に、細い線でかかれた1つの長方形の板の部品を真上から見た図として大きく置く。その下に、部品の左端と右端からまっすぐ下へ伸びる2本の細い寸法補助線を引き、その間を両端が矢じり形の矢印になった横向きの寸法線でつなぎ、線の上に数字「120」を書く。同じように部品の右側には、上端と下端から右へ伸びる補助線と両端矢印のたて向きの寸法線を引き、数字「60」を書く。矢印の向き合う形と補助線の関係が主役になるよう、寸法線だけ濃い色で強調する。抽象的な交差線にはしない。フラットデザイン、パステルカラー、白背景、正方形。"}
 {"word":"構想図","file":"gk_3f276c86c1.jpg","bucket":"v1","method":"gpt-image","prompt":"技術の製作学習でかく「構想図」を説明する教育用イラスト。エプロン姿の中学生が、机の上の方眼ノートに鉛筆で、これから作る木製の本立てのアイデアを手描きでスケッチしている場面を大きく描く。ノートには、本立ての全体の斜め方向からの絵と、その横に正面から見た図が2つ並び、幅と高さと奥行きに寸法の矢印線が書き込まれ、棚板をここに1枚足す、角を丸くするといった思いつきが小さな引き出し線と矢印でまわりに描き足されている。ページのすみには、線を消して描き直した薄い跡と、別案の小さなラフが2つ並ぶ。机の上には鉛筆、消しゴム、定規が置かれる。動物や貝殻など自然物の絵ではなく、あくまで木で作る道具の設計スケッチにする。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
-{"word": "けがき線", "file": "gk_783b70b727.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "技術の木材加工で材料にしるした「けがき線」を説明する教育用イラスト。作業台の上に置いた1枚の木の板を斜め上から大きく描き、その表面に、切断する位置を示すまっすぐな細い線が板のはしからはしまで数本引かれ、穴をあける位置には小さな十字のしるしと、その十字を中心にした穴の大きさの円が描かれている。板の縁にはL字形の直角定規が置かれ、線が定規に沿って引かれたことが分かる。板はまだ切られておらず1枚のままで、穴も1つもあいていない。幾何学模様ではなく木目のある板の上の線として描く。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
+{"word": "けがき線", "file": "gk_783b70b727.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "作業台の木の板を斜め上から描き、板の表面にまっすぐな細い線が端から端まで引かれている。L字形の直角定規と細いけがき針がそばにある。線を強調。文字なし。"}
 {"word":"丈夫な構造","file":"gk_1740e6bb50.jpg","bucket":"v1","method":"gpt-image","prompt":"技術の「丈夫な構造」を説明する教育用イラスト。画面を左右に分けて対比させる。画面の左には、4本の角材をくぎで四角く組んだだけの枠を描き、上の辺に横向きの力の矢印を加えると、枠がぐにゃりと平行四辺形にかたむいてつぶれている様子を、かたむいた形とゆれを表す短い線で示す。画面の右には、同じ四角い枠の対角線上に1本の角材を斜めに渡した筋かい入りの枠を描き、同じ横向きの力の矢印を加えてもまったく変形せず、四角い形を保っている様子を示す。右の枠の角には、L字型の金属の補強金具がねじで留められているところを丸く拡大して添え、三角形は変形しにくいことが分かるよう筋かいが作る三角形をうすく塗る。絵画的な光の演出は使わず、部材と力の矢印だけをはっきり描く。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
 {"word": "筋かい", "file": "gk_ff9742ddd9.jpg", "bucket": "v1b", "method": "gpt-image", "prompt": "技術の構造学習の「筋かい」を説明する教育用イラスト。画面を左右に分けた対比図。画面の左には、4本の角材をつないだ正方形の枠だけの構造を描き、上の辺に右向きの力の矢印を加えて、枠が平行四辺形にななめにつぶれて変形している様子を示す。画面の右には、同じ正方形の枠の対角線上に1本のななめの角材(筋かい)を入れた構造を描き、同じ右向きの力の矢印を加えても三角形ができているため変形せず正方形のまま保たれている様子を示す。ななめの部材が主役だと分かるよう筋かいだけ濃い色にする。線と色面だけの抽象模様にはしない。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
 {"word": "ベルト伝動", "file": "gk_4b58144930.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "技術の機械分野の「ベルト伝動」を説明する教育用イラスト。画面の左に小さい円形のプーリー(ベルト車)、画面の右に大きい円形のプーリーを軸と支えとともに描き、2つの外周に1本の平たいベルトを輪のようにかけ渡す(たすきがけにしない)。回転方向はすべて統一する: 左のプーリーの中に時計回りの円弧矢印、右のプーリーの中にも同じ時計回りの円弧矢印を描く。2つの矢印は完全に同じ向き(どちらも上側が右へ、下側が左へ回る時計回り)にすること。ベルトの上側の直線部分には右向きの小さな矢印を添える。回転が1本のベルトで伝わる仕組みの図解。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
@@ -540,10 +540,10 @@
 {"word": "サ行変格活用", "file": "gk_aad5c4321a.jpg", "bucket": "v1b", "method": "card", "card_main": "する → し・し・する", "card_sub": "サ行変格活用"}
 {"word": "連体形", "file": "gk_55a2477c63.jpg", "bucket": "v1", "method": "card", "card_main": "咲く + 花", "card_sub": "連体形"}
 {"word": "未然形", "file": "gk_bf893205c7.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "主語", "file": "gk_c53b797895.jpg", "bucket": "v1b", "method": "gpt-image", "prompt": "a row of plain blank tiles with the leading tile highlighted and lifted, a spotlight beam shining down on it, centered, large"}
+{"word": "主語", "file": "gk_c53b797895.jpg", "bucket": "v1b", "method": "gpt-image", "prompt": "白い背景の中央に、一匹の猫が丸まって寝ている。猫だけを太い輪郭でくっきり描き、猫の上側にラベル用の白い余白を残す。文字なし。 ※文例ラベルはプログラム合成: 「ねこが」＝主語 「ねている」＝述語"}
 {"word": "述語", "file": "gk_c3f561609f.jpg", "bucket": "v1b", "method": "card", "card_main": "花が 咲く。", "card_sub": "述語 = 咲く"}
-{"word": "修飾語", "file": "gk_8f72842aab.jpg", "bucket": "v1b", "method": "gpt-image", "prompt": "a small decorative tile covered in sparkles attached by a short line to a larger plain block, a magnifying glass hovering nearby, centered, large"}
-{"word": "助動詞", "file": "gk_f10b0b33dc.jpg", "bucket": "v1b", "method": "gpt-image", "prompt": "a small rounded block riding piggyback on top of a larger block, joined by a hook connector, motion arrows, centered, large"}
+{"word": "修飾語", "file": "gk_8f72842aab.jpg", "bucket": "v1b", "method": "gpt-image", "prompt": "白い背景の中央に一輪の赤い花を大きく描き、花の左上に小さな矢印と日本語「美しい」を正確に描く。「美しい」が花を修飾している構図。他の文字は描かない。"}
+{"word": "助動詞", "file": "gk_f10b0b33dc.jpg", "bucket": "v1b", "method": "gpt-image", "prompt": "白い背景の中央に開いた本を大きく描き、本のページに日本語「読む」と「読まれる」を縦に並べて正確に描き、2語の間を短い矢印で結ぶ。他の文字は描かない。"}
 {"word": "助詞", "file": "gk_c33c34f3e9.jpg", "bucket": "v1b", "method": "card", "card_main": "が・を・に・は", "card_sub": "助詞"}
 {"word": "形容動詞", "file": "gk_46071240dd.jpg", "bucket": "v1", "method": "card", "card_main": "静かだ", "card_sub": "形容動詞"}
 {"word": "連体詞", "file": "gk_f040d5d714.jpg", "bucket": "v1b", "method": "card", "card_main": "この その あの", "card_sub": "連体詞"}
@@ -569,18 +569,18 @@
 {"word": "一二点", "file": "gk_4ec62ed375.jpg", "bucket": "v1", "method": "card", "card_main": "一 二", "card_sub": "一二点"}
 {"word": "書き下し文", "file": "gk_945b0c894a.jpg", "bucket": "v1b", "method": "sd", "prompt": "two vertical paper strips side by side joined by an arrow, the left one filled with dense square marks and the right one with flowing brush lines, centered, large"}
 {"word": "走れメロス", "file": "gk_dfdf800557.jpg", "bucket": "v1b", "method": "sd", "prompt": "a young man in an ancient Greek tunic running desperately along a coastal road under a burning orange sunset, dust trailing behind him"}
-{"word": "少年の日の思い出", "file": "gk_22628d8396.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "中学国語の物語教材の理解用。薄暗い部屋の古い木机に蝶の標本箱があり、美しい蛾の標本の一つだけ羽が壊れている。そばで少年の手がためらい、罪悪感と後悔が伝わる。既存の教科書挿絵や特定作品の装丁を模倣しない独自構図。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
+{"word": "少年の日の思い出", "file": "gk_22628d8396.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "薄暗い部屋の机の上に開いた蝶・蛾の標本箱。一つの大きな美しい蛾の標本だけ羽が欠けて壊れている。そばにためらう少年の手。文字なし。"}
 {"word": "大造じいさんとガン", "file": "gk_bdd7fe1a89.jpg", "bucket": "v1b", "method": "sd", "prompt": "a flock of wild geese flying over a misty marsh at dawn, a lead goose with white markings, tall reeds and a hunting decoy, centered, large"}
 {"word": "スイミー", "file": "gk_9a413d7515.jpg", "bucket": "v1b", "method": "gpt-image", "prompt": "a giant fish silhouette formed by a school of many small red fish with one single black fish as its eye, underwater seaweed and coral, centered, large"}
 {"word": "くじらぐも", "file": "gk_311f0596a5.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "小学一年生向け国語教材の理解用。晴れた小学校の校庭で、体操着の子どもたちが空を見上げ、大きなくじらの形をしたふわふわの白い雲へ想像の中で跳び乗ろうとしている、明るく躍動感のある独自構図。既存の教科書挿絵や特定作家の絵柄は模倣しない。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
-{"word": "ちいちゃんのかげおくり", "file": "gk_230687c952.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "晴れた空の下で、小さな女の子が地面に長く伸びる家族三人の影を見つめる「かげおくり」。必ず女の子にし、男の子にしない。 太く明瞭な輪郭、柔らかなパステルカラー、白背景、細部を省いたフラットな教材図版。人物の顔や背景は簡潔にし、小さく切り出しても主題が分かる構図。文字なし、正方形。"}
+{"word": "ちいちゃんのかげおくり", "file": "gk_230687c952.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "晴れた夕方の草原で、小さな女の子が家族三人の地面に長く伸びた影を見つめている。遠い空に飛行機雲。少し物悲しい雰囲気。文字なし。"}
 {"word": "一つの花", "file": "gk_be398d2068.jpg", "bucket": "v1b", "method": "sd", "prompt": "a single cosmos flower lying on a wartime railway station platform, a military cap and a cloth-wrapped bundle beside it, soft sunlight, centered, large"}
-{"word": "モチモチの木", "file": "gk_eb0497cb05.jpg", "bucket": "v1b", "method": "gpt-image", "prompt": "a huge gnarled tree at night with warm candle-like lights glowing among its bare branches, starry sky, a small lamp at its base, centered, large"}
+{"word": "モチモチの木", "file": "gk_eb0497cb05.jpg", "bucket": "v1b", "method": "gpt-image", "prompt": "夜、巨大でごつごつした木のそばを、小さな男の子が一人で走っている。木の太い幹、遠くの家の窓に灯り。雪の地面。文字なし。"}
 {"word": "注文の多い料理店", "file": "gk_1d7dc39f72.jpg", "bucket": "v1", "method": "sd", "prompt": "a mysterious western-style restaurant door standing alone in a dark forest, brass handles and a wildcat silhouette, fallen leaves swirling, centered, large"}
 {"word": "やまなし", "file": "gk_59704502fb.jpg", "bucket": "v1", "method": "sd", "prompt": "two small crabs on the sandy bed of a clear stream, thick outline, side view"}
 {"word": "故郷", "file": "gk_3442498a58.jpg", "bucket": "v1", "method": "sd", "prompt": "a moonlit seaside watermelon field with a pitchfork stuck in the sand and a silver necklace ring, an old Chinese village silhouette in the distance, centered, large"}
 {"word": "蜘蛛の糸", "file": "gk_2440f07b9a.jpg", "bucket": "v1", "method": "sd", "prompt": "a single shining silver spider thread descending from bright clouds and lotus flowers down into a dark pit, a small spider on the thread, centered, large"}
-{"word": "故事成語", "file": "gk_2adc479bd4.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "中学漢文の学習用図版。古代中国の出来事を表す小さな情景が竹簡の巻物から立ち上がり、現代の人がその教訓を受け取る構図。竹簡、毛筆、古代中国の衣服と建物を歴史的に自然に描き、古い出来事から現代の言葉が生まれることが視覚で分かる。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
+{"word": "故事成語", "file": "gk_2adc479bd4.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "中国風の机の上に開いた書物と巻物、筆と硯。書物の上に盾と矛の小さな絵を置く。文字なし。"}
 {"word": "矛盾", "file": "gk_2b078f35f3.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "故事成語の由来が分かる学習用図版。古代中国の市場で商人が一本の鋭い矛と頑丈な盾を同時に高く掲げて自慢し、聞いている人が矛先を盾へ向けて試すよう促す。矛と盾の両方を大きく明瞭にし、主張のつじつまが合わない瞬間を示す。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
 {"word": "五十歩百歩", "file": "gk_19dcf47957.jpg", "bucket": "v1", "method": "sd", "prompt": "two ancient Chinese soldiers in armor fleeing from a battlefield, one only slightly ahead of the other, dropped weapons and footprint trails behind them"}
 {"word": "蛇足", "file": "gk_17fac6b14a.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "故事成語の由来が分かる学習用図版。古代中国の数人が地面に蛇の絵を描く競争をし、一人だけ完成した蛇に不要な四本の足を毛筆で付け足している。その間に別の人が酒器を受け取り、余計な付け足しで負けたことが伝わる。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
@@ -590,7 +590,7 @@
 {"word": "背水の陣", "file": "gk_3edbc97b6a.jpg", "bucket": "v1", "method": "sd", "prompt": "an ancient Chinese army formation with spears and banners standing with a wide river directly at their backs, no path of retreat"}
 {"word": "温故知新", "file": "gk_f4961ccf19.jpg", "bucket": "v1b", "method": "gpt-image", "prompt": "古い巻物を丁寧に読み返した人物が、そこから新しい発想を得て、明るい電球を掲げる「温故知新」。 太く明瞭な輪郭、柔らかなパステルカラー、白背景、細部を省いたフラットな教材図版。人物の顔や背景は簡潔にし、小さく切り出しても主題が分かる構図。文字なし、正方形。"}
 {"word": "井の中の蛙", "file": "gk_65df6a311a.jpg", "bucket": "v1", "method": "sd", "prompt": "a small green frog sitting at the bottom of a deep stone well looking up at a small circle of blue sky far above, centered, large"}
-{"word": "塞翁が馬", "file": "gk_a34d35ca3e.jpg", "bucket": "v1b", "method": "gpt-image", "prompt": "塞翁が馬の別案。古代中国の城壁のそばで、老人が手綱を持ち、茶色い馬と白い馬の二頭が並んで戻ってきた瞬間を簡潔に描く。 太く明瞭な輪郭、柔らかなパステルカラー、白背景、細部を省いたフラットな教材図版。人物の顔や背景は簡潔にし、小さく切り出しても主題が分かる構図。文字なし、正方形。"}
+{"word": "塞翁が馬", "file": "gk_a34d35ca3e.jpg", "bucket": "v1b", "method": "gpt-image", "prompt": "2つのパネル。左: 木の柵から馬が逃げていくのを見送る古代中国の老人。右: 逃げた馬がもう一頭の白い馬を連れて柵に戻ってくる。文字なし。"}
 {"word": "呉越同舟", "file": "gk_be45076a8e.jpg", "bucket": "v1b", "method": "sd", "prompt": "two rival warriors in ancient Chinese armor sitting at opposite ends of one small boat caught in a storm on rough water"}
 {"word": "音読", "file": "gk_034adcc823.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "a child holding an open textbook and reading aloud, a speech bubble and sound wave lines coming from their mouth"}
 {"word": "名詞", "file": "gk_1062e0e203.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "a name tag label tied onto a red apple and another tied onto a wooden chair, a stack of plain object icons behind, centered, large"}
@@ -604,15 +604,15 @@
 {"word": "ありの行列", "file": "gk_ea02533e3d.jpg", "bucket": "v1b", "method": "sd", "prompt": "a long line of black ants marching in single file toward a white sugar lump, a magnifying glass held above the trail, centered, large"}
 {"word": "たんぽぽのちえ", "file": "gk_22ae37e938.jpg", "bucket": "v1", "method": "sd", "prompt": "a dandelion shown in three stages side by side, yellow flower, closed stem lying down, and white seed puff releasing seeds into the wind, centered, large"}
 {"word": "かさこじぞう", "file": "gk_87b3e8bc55.jpg", "bucket": "v1b", "method": "sd", "prompt": "six small stone jizo statues standing in a row in deep snow, each wearing a woven straw hat, snowy night with falling snowflakes, centered, large"}
-{"word": "三年とうげ", "file": "gk_f41a82b6d6.jpg", "bucket": "v1b", "method": "gpt-image", "prompt": "a winding path over a grassy autumn hill pass with a fallen walking stick and a Korean straw hat on the ground, a distant village below, centered, large"}
+{"word": "三年とうげ", "file": "gk_f41a82b6d6.jpg", "bucket": "v1b", "method": "gpt-image", "prompt": "山道の峠の坂道で、杖と笠を持ったおじいさんが転んでいる。下の方に韓国風の村の家並み。文字なし。"}
 {"word": "海のいのち", "file": "gk_3d23a99a92.jpg", "bucket": "v1", "method": "sd", "prompt": "a huge dark grouper fish resting in a deep blue underwater rock crevice, a harpoon and rope nearby, shafts of sunlight through the water, centered, large"}
 {"word": "川とノリオ", "file": "gk_4d9c876302.jpg", "bucket": "v1", "method": "sd", "prompt": "a clear river flowing past summer grass with a small paper boat drifting on it, a distant white flash of light in the sky above the hills, centered, large"}
 {"word": "プラタナスの木", "file": "gk_2083ece3bd.jpg", "bucket": "v1", "method": "sd", "prompt": "a large plane tree with broad green leaves in a park, a wide cut stump with roots spreading beneath it, a soccer ball and a bench nearby, centered, large"}
-{"word": "握手", "file": "gk_5052e6da7a.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "two hands clasped together in a firm warm handshake, a rosary and a small cross resting beside them, centered, large"}
+{"word": "握手", "file": "gk_5052e6da7a.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "白い清潔な病室で、ベッドに横たわる年配の男性と、ベッドのそばに立つ若い男性が握手している場面。人物の顔は簡潔に。文字なし。"}
 {"word": "盆土産", "file": "gk_b60e0b6407.jpg", "bucket": "v1b", "method": "sd", "prompt": "a plate of golden fried shrimp on a family dining table with a paper wrapper and a train souvenir bag, rural Japanese home interior, centered, large"}
-{"word": "アイスプラネット", "file": "gk_eb1afc60a7.jpg", "bucket": "v1b", "method": "gpt-image", "prompt": "中学二年の物語教材の理解用。旅好きの大人が中学生に、氷原の巨大な青い氷穴を撮った旅の写真を見せながら体験を語っている。机に地球儀、使い込んだ旅行かばん、写真アルバム。未知の世界への憧れが伝わる独自構図で、既存の教科書挿絵や特定人物の外見は模倣しない。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
+{"word": "アイスプラネット", "file": "gk_eb1afc60a7.jpg", "bucket": "v1b", "method": "gpt-image", "prompt": "巨大な青く輝く氷穴の前に立つ旅人が写真を撮っている。机の上に地球儀と旅行かばん。文字なし。"}
 {"word": "字のない葉書", "file": "gk_c8f3d9a3cb.jpg", "bucket": "v1b", "method": "gpt-image", "prompt": "戦時中の家族を扱う随筆の理解用。古い木の机に疎開先から届いた葉書が時系列で並び、最初は大きい赤い丸、次第に小さい丸、最後は何も書かれていない葉書。そばに子どもの布かばんと、それを心配そうに見つめる父親の手。人物の顔を特定せず、静かで切実な独自構図。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
-{"word": "大人になれなかった弟たちに", "file": "gk_c7fff98392.jpg", "bucket": "v1b", "method": "gpt-image", "prompt": "戦時中を思わせる質素な木の机に、小さな空の食器、配給袋、子どもの玩具を置き、大人の手が玩具をそっと守る場面。人物の顔や暴力は描かない。 太く明瞭な輪郭、柔らかなパステルカラー、白背景、細部を省いたフラットな教材図版。人物の顔や背景は簡潔にし、小さく切り出しても主題が分かる構図。文字なし、正方形。"}
+{"word": "大人になれなかった弟たちに", "file": "gk_c7fff98392.jpg", "bucket": "v1b", "method": "gpt-image", "prompt": "戦時中の質素な和室。食器棚に空の茶碗、配給袋、小さな幼児の靴と防空頭巾。静かで物悲しい。人物の顔は描かない。文字なし。"}
 {"word": "トロッコ", "file": "gk_3d8cc23459.jpg", "bucket": "v1", "method": "sd", "prompt": "a small wooden rail trolley cart standing on narrow tracks at a mountain construction site at dusk, long shadows and a winding road home, centered, large"}
 {"word": "高瀬舟", "file": "gk_92edbf14b3.jpg", "bucket": "v1b", "method": "sd", "prompt": "a slender flat-bottomed wooden river boat on a narrow canal at night under the moon, a paper lantern glowing at its bow, Edo period townscape, centered, large"}
 {"word": "星の花が降るころに", "file": "gk_6d894285e2.jpg", "bucket": "v1", "method": "sd", "prompt": "tiny orange fragrant osmanthus blossoms falling like stars onto autumn ground beside a school bag, a school fence and warm afternoon light, centered, large"}
@@ -652,12 +652,12 @@
 {"word": "形声文字", "file": "gk_754ea6c090.jpg", "bucket": "v1", "method": "sd", "prompt": "two puzzle halves joining into one square block, the left half showing a water droplet symbol and the right half showing a sound wave symbol, centered, large"}
 {"word": "熟字訓", "file": "gk_4a8b0edcd9.jpg", "bucket": "v1", "method": "card", "card_main": "明日 = あす", "card_sub": "熟字訓"}
 {"word": "慣用句", "file": "gk_485c946b00.jpg", "bucket": "v1", "method": "card", "card_main": "目を丸くする", "card_sub": "慣用句"}
-{"word": "杞憂", "file": "gk_84b9438bb8.jpg", "bucket": "v1b", "method": "gpt-image", "prompt": "古代中国風の服を着た人物が、よく晴れた安全な空を見上げ、空が落ちてくるのではないかと過度に心配している「杞憂」。 太く明瞭な輪郭、柔らかなパステルカラー、白背景、細部を省いたフラットな教材図版。人物の顔や背景は簡潔にし、小さく切り出しても主題が分かる構図。文字なし、正方形。"}
+{"word": "杞憂", "file": "gk_84b9438bb8.jpg", "bucket": "v1b", "method": "gpt-image", "prompt": "青空の下で、空が落ちてくるのを心配して両手を上げて空を見上げる男性。周囲は穏やかで何も起きていない。文字なし。"}
 {"word": "助長", "file": "gk_6f9225f5fe.jpg", "bucket": "v1", "method": "sd", "prompt": "young rice seedlings pulled up out of a paddy field with their roots exposed and leaves wilting, neat rows of healthy seedlings behind them, centered, large"}
 {"word": "蛍雪の功", "file": "gk_cf901754db.jpg", "bucket": "v1b", "method": "sd", "prompt": "an old open book lit at night by a cloth bag of glowing fireflies and by moonlight reflecting off snow outside a window, centered, large"}
 {"word": "画竜点睛", "file": "gk_491e933182.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "古代の画家が、完成した龍の絵の目に筆で最後の一点を入れる「画竜点睛」。龍は巻物の中の絵として描く。 太く明瞭な輪郭、柔らかなパステルカラー、白背景、細部を省いたフラットな教材図版。人物の顔や背景は簡潔にし、小さく切り出しても主題が分かる構図。文字なし、正方形。"}
 {"word": "一期一会", "file": "gk_991517c02a.jpg", "bucket": "v1b", "method": "sd", "prompt": "a tea ceremony bowl and bamboo whisk set on a tatami mat with a single flower in an alcove vase, two cushions facing each other, warm quiet light, centered, large"}
-{"word": "竜頭蛇尾", "file": "gk_560992c1d2.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "堂々とした大きな龍の頭から始まり、後ろへ行くほど細く弱い蛇の尾になって終わる「竜頭蛇尾」。 太く明瞭な輪郭、柔らかなパステルカラー、白背景、細部を省いたフラットな教材図版。人物の顔や背景は簡潔にし、小さく切り出しても主題が分かる構図。文字なし、正方形。"}
+{"word": "竜頭蛇尾", "file": "gk_560992c1d2.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "正方形の教育用画像を1枚生成してください。白い背景に、左端から右端へ一匹の長い生き物を描いてください。左端は大きくて立派で派手な緑と金の竜の頭、胴体は右へ進むにつれて徐々に細くなり、右端では極端に細い蛇の尾になっています。頭の太さと尾の細さの対比が一目で分かるようにしてください。太く明瞭な輪郭、柔らかなパステルカラー、フラットな教材図版、文字なし、正方形、高解像度。"}
 {"word": "ト音記号", "file": "gk_8d2ec5bc7a.jpg", "bucket": "v1b", "method": "gpt-image", "prompt": "白い五線譜の上に、大きく正確な黒いト音記号を一つだけ描く。余計な音符や文字は描かない。 太く明瞭な輪郭、柔らかなパステルカラー、白背景、細部を省いたフラットな教材図版。各マスは小さく切り出しても意味が分かる単純な構図。正方形。"}
 {"word": "ヘ音記号", "file": "gk_ef89880cec.jpg", "bucket": "v1b", "method": "card", "card_main": "𝄢", "card_sub": "ヘ音記号"}
 {"word": "五線譜", "file": "gk_f58174cb1d.jpg", "bucket": "v1b", "method": "card", "card_main": "𝄚", "card_sub": "五線譜"}
@@ -705,7 +705,7 @@
 {"word": "尺八", "file": "gk_0830c69338.jpg", "bucket": "v1", "method": "sd", "prompt": "a single bamboo shakuhachi end-blown flute with visible bamboo nodes and finger holes, centered, large"}
 {"word": "雅楽", "file": "gk_1ad6c39c11.jpg", "bucket": "v1", "method": "sd", "prompt": "Japanese gagaku court musicians in Heian-style robes and black eboshi caps playing a sho mouth organ, hichiriki reed pipe and ryuteki flute beside a huge red lacquered dadaiko drum"}
 {"word": "ソプラノ", "file": "gk_cae8b0a65c.jpg", "bucket": "v1b", "method": "gpt-image", "prompt": "学校の合唱で、女子生徒が背筋を伸ばして明るい高音を歌い、細い赤い音の波が上方へ伸びる「ソプラノ」。 太く明瞭な輪郭、柔らかなパステルカラー、白背景、細部を省いたフラットな教材図版。人物の顔や背景は簡潔にし、小さく切り出しても主題が分かる構図。文字なし、正方形。"}
-{"word": "アルト", "file": "gk_cbb88b9a9f.jpg", "bucket": "v1b", "method": "gpt-image", "prompt": "音楽の「アルト」を説明する教育用イラスト。中学校の合唱練習で女子生徒4人が二列に並んで歌い、低めの女声パートを担当する手前の2人を落ち着いた暖色で強調する。奥のソプラノ2人は淡い寒色で描き、先生がピアノで伴奏している。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
+{"word": "アルト", "file": "gk_cbb88b9a9f.jpg", "bucket": "v1b", "method": "gpt-image", "prompt": "合唱練習の教室で、女子生徒が横に並んで歌う。手前の2人を落ち着いた暖色で強調し、奥の2人は淡い色。ピアノの伴奏。文字なし。"}
 {"word": "テノール", "file": "gk_3b6d3d6d0b.jpg", "bucket": "v1", "method": "sd", "prompt": "a male choir singer singing in a high male range with bright notes rising above him"}
 {"word": "バス", "file": "gk_4018296bb9.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "音楽の「バス」を説明する教育用イラスト。中学校の混声合唱で男子生徒4人が低い男声パートを歌っている。手前の低い音域を担当する2人を濃い落ち着いた色で強調し、後ろにテノール2人、横にピアノで伴奏する先生を配置する。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
 {"word": "斉唱", "file": "gk_9c5a4cd4d8.jpg", "bucket": "v1b", "method": "gpt-image", "prompt": "音楽の「斉唱」を説明する教育用イラスト。小中学生8人が一列に並び、全員が同じ旋律を同じ高さでそろえて歌っている。全員の口元から出る細い音の線が一本の太い同色の旋律線へ重なり、指揮者が一定の拍を示している。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
@@ -720,7 +720,7 @@
 {"word": "ヴィヴァルディ", "file": "gk_930e586716.jpg", "bucket": "v1b", "method": "sd", "prompt": "an imagined portrait of a baroque era Italian composer in a red coat and long white curly wig, holding a violin and bow"}
 {"word": "スメタナ", "file": "gk_b0319a8497.jpg", "bucket": "v1b", "method": "sd", "prompt": "an imagined portrait of a nineteenth century Bohemian composer with a beard and formal frock coat, a wide winding river valley behind him"}
 {"word": "魔王", "file": "gk_d7437b3d20.jpg", "bucket": "v1b", "method": "sd", "prompt": "a stormy night forest scene, a father on a galloping horse holding a child, a shadowy crowned elf king reaching from the dark trees"}
-{"word": "翼をください", "file": "gk_973a33f54e.jpg", "bucket": "v1b", "method": "gpt-image", "prompt": "a pair of large white feathered wings spreading open against a wide blue sky with drifting clouds"}
+{"word": "翼をください", "file": "gk_973a33f54e.jpg", "bucket": "v1b", "method": "gpt-image", "prompt": "合唱する中学生たちの後ろに、白い大きな翼が広がる。青空と雲。文字なし。"}
 {"word": "赤とんぼ", "file": "gk_7283b935d3.jpg", "bucket": "v1", "method": "sd", "prompt": "a red dragonfly resting on a stalk of grass against an orange evening sunset sky over rice fields"}
 {"word": "ふるさと", "file": "gk_5a49381e28.jpg", "bucket": "v1", "method": "sd", "prompt": "a nostalgic rural hometown landscape, green hills with a clear stream, rabbits running and small thatched houses"}
 {"word": "ボレロ", "file": "gk_c81efa0ab9.jpg", "bucket": "v1b", "method": "gpt-image", "prompt": "音楽の「ボレロ」を説明する教育用イラスト。オーケストラの演奏会で、手前の小太鼓奏者が同じ一定のリズムを刻み続け、奥でフルート、クラリネット、金管、弦楽器が順番に旋律を受け継ぐ様子。演奏が次第に大きくなるよう、楽器の人数と色彩が左から右へ増えていく構図。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
@@ -906,7 +906,7 @@
 {"word": "国民主権", "file": "gk_062cd8350c.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "社会の「国民主権」を説明する教育用図版。画面下の多様な国民が選挙で一票ずつ投票箱へ入れ、そこから太い矢印が国会議事堂と選ばれた代表者へ向かう。国の政治を決める力の源が国民にあることを、国民を最も大きく中心に描いて示す。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
 {"word": "基本的人権", "file": "gk_3303fea5d1.jpg", "bucket": "v1", "method": "sd", "prompt": "a ring of diverse people of different ages and abilities holding hands around a glowing heart shaped shield, soft light radiating outward"}
 {"word": "内閣", "file": "gk_5222cc8536.jpg", "bucket": "v1", "method": "sd", "prompt": "a cabinet meeting room in a government building, officials in dark suits seated around a large oval table with folders and microphones, a Japanese flag standing in the corner"}
-{"word": "違憲審査", "file": "gk_3af24889c8.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "a balance scale inside a courthouse, a large plain hardcover constitution book on the higher pan and a smaller blank law book on the lower pan, a magnifying glass held over the smaller book, a wooden gavel beside"}
+{"word": "違憲審査", "file": "gk_3af24889c8.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "3つのパネル。左: 議事堂風の建物から法律が生まれる。中央: 大きな「憲法」の本。右: 裁判所が本に「違憲」の印を押す。パネルを矢印で結ぶ。「憲法」「違憲」の文字だけ正確に描く。"}
 {"word": "裁判員制度", "file": "gk_67e5b1c698.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "a courtroom bench where three judges in black robes sit side by side with six ordinary citizens in everyday clothes on the same raised platform, a wooden witness stand and gallery seats below"}
 {"word": "地方自治", "file": "gk_7865904938.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "a small town hall building with local residents gathered in a circle of folding chairs in front of it, a large blank town map on an easel, surrounding houses, fields and a river"}
 {"word": "条例", "file": "gk_1fb8fe78ba.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "社会の「条例」を説明する教育用図版。地方議会の議場で市議会議員が地域のごみ分別ルールを審議し、多数決で可決する。可決されたルールの文書から矢印がその市の境界線で囲まれた地図へ向かい、国全体ではなく地方公共団体の区域内で適用されることを示す。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
@@ -1005,7 +1005,7 @@
 {"word": "不等式", "file": "gk_bd198003d8.jpg", "bucket": "v1b", "method": "card", "card_main": "3x + 1 > 7", "card_sub": "不等式"}
 {"word": "放物線", "file": "gk_08867db3de.jpg", "bucket": "v1", "method": "card", "card_main": "y = x²", "card_sub": "放物線"}
 {"word": "解の公式", "file": "gk_52b4b937e1.jpg", "bucket": "v1", "method": "card", "card_main": "x = (-b±√(b²-4ac)) / 2a", "card_sub": "解の公式"}
-{"word": "関数", "file": "gk_42e493607d.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "左から緑の丸を一つ入れると、中央の簡潔な箱型装置を通り、右から同じ緑の丸が二つ出てくる「関数」の入力・規則・出力図。文字なし。 太く明瞭な輪郭、柔らかなパステルカラー、白背景、細部を省いたフラットな教材図版。各マスは小さく切り出しても意味が分かる単純な構図。正方形。"}
+{"word": "関数", "file": "gk_42e493607d.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "白い背景に、左から「1」→四角い箱（中に「f」）→「3」、その下に「2」→同じ箱→「4」の2組を描く。一つの入力が一つの出力にだけ矢印で結ばれる関数の対応図。数字とfだけを正確に描く。"}
 {"word": "平均値", "file": "gk_eba2b401b5.jpg", "bucket": "v1b", "method": "card", "card_main": "(2+4+6) ÷ 3 = 4", "card_sub": "平均値"}
 {"word": "中央値", "file": "gk_97dfd26ea3.jpg", "bucket": "v1b", "method": "sd", "prompt": "a row of an odd number of bars sorted neatly from shortest to tallest, the single middle bar highlighted in a bright accent color with a downward pointing marker above it"}
 {"word": "最頻値", "file": "gk_c77c050fcb.jpg", "bucket": "v1b", "method": "sd", "prompt": "a dot plot of stacked round tokens in columns of different heights above a base line, the single tallest column highlighted in a bright accent color with a small crown marker on top"}
@@ -1017,7 +1017,7 @@
 {"word": "さくらんぼ計算", "file": "gk_69f2800bd2.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "繰り上がり", "file": "gk_d324a74e32.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "繰り下がり", "file": "gk_e332bd98dd.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "数直線", "file": "gk_c4ca5945a1.jpg", "bucket": "v1b", "method": "card", "card_main": "-2 -1 0 1 2", "card_sub": "数直線"}
+{"word": "数直線", "file": "gk_c4ca5945a1.jpg", "bucket": "v1b", "method": "gpt-image", "prompt": "白い背景に横長の数直線を大きく描き、太い目盛りと下の数字「0」「1」「2」「3」「4」「5」を正確に描く。他の文字は描かない。"}
 {"word": "積", "file": "gk_34ddea8d85.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "商", "file": "gk_2ce413903b.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "検算", "file": "gk_169e0de745.jpg", "bucket": "v1", "method": "card", "card_main": "7+5=12 → 12-5=7", "card_sub": "検算"}
@@ -1073,7 +1073,7 @@
 {"word": "根号", "file": "gk_73139d3e2e.jpg", "bucket": "v1", "method": "card", "card_main": "√", "card_sub": "根号"}
 {"word": "有理化", "file": "gk_a73d967846.jpg", "bucket": "v1b", "method": "card", "card_main": "1/√2 = √2/2", "card_sub": "有理化"}
 {"word": "近似値", "file": "gk_4089ec3c0b.jpg", "bucket": "v1", "method": "card", "card_main": "π ≒ 3.14", "card_sub": "近似値"}
-{"word": "誤差", "file": "gk_d7b31136dd.jpg", "bucket": "v1b", "method": "gpt-image", "prompt": "一本の棒の本当の端点と、測定で少しずれた二つの端点を近くに描き、その小さなずれを両矢印で強調した「誤差」。数字なし。 太く明瞭な輪郭、柔らかなパステルカラー、白背景、細部を省いたフラットな教材図版。各マスは小さく切り出しても意味が分かる単純な構図。正方形。"}
+{"word": "誤差", "file": "gk_d7b31136dd.jpg", "bucket": "v1b", "method": "gpt-image", "prompt": "白い背景に横長の数直線と目盛り、数字「0」「10」「20」。数直線上の点と少しずれた点を描き、2点の間を両矢印で結び、日本語「誤差」と小さくラベルする。他の文字は描かない。"}
 {"word": "変化の割合", "file": "gk_1c9e23269b.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "a coordinate plane with unlabeled axes and a straight rising line, with two marked dots on the line joined by a stepped right angle path, a horizontal arrow for the sideways step and a vertical arrow for the upward step, the triangle between them shaded"}
 {"word": "等式の性質", "file": "gk_7fa18f0044.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "場合の数", "file": "gk_671b014fe8.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "上に赤・青・黄の三色の旗、左に丸・三角・四角の三つの形を置き、中央の3×3の九つの区画すべてに、対応する色と形の組合せを一つずつ描く「場合の数」。全9通りを省略しない。 太く明瞭な輪郭、柔らかなパステルカラー、白背景、細部を省いたフラットな教材図版。各マスは小さく切り出しても意味が分かる単純な構図。正方形。"}
