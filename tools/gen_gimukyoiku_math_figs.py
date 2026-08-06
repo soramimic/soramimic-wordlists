@@ -26,7 +26,10 @@ import math
 from pathlib import Path
 
 W, H = 320, 200
-FONT = "Noto Sans JP,Hiragino Sans,Yu Gothic,Meiryo,sans-serif"
+# 先頭は fontconfig で実際に日本語グリフへ解決されるファミリ名にする。
+# "Noto Sans JP" は環境によってラテン専用の "Noto Sans" にマッチしてしまい、
+# 日本語が□(トーフ)になる(Noto Sans CJK JP が正しいファミリ名)。
+FONT = "Noto Sans CJK JP,Noto Sans JP,Hiragino Sans,Yu Gothic,Meiryo,sans-serif"
 MATHFONT = "Times New Roman,Georgia,serif"
 
 INK = "#26303d"        # 主線・文字

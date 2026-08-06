@@ -3496,7 +3496,7 @@ def fig_躍動感():
 
 @register("仮名書道")
 def fig_仮名書道():
-    b = [g.t(160, 78, "かな", 34, g.INK, "middle", "Noto Serif JP,Hiragino Mincho ProN,serif", "400"),
+    b = [g.t(160, 78, "かな", 34, g.INK, "middle", "Noto Serif CJK JP,Noto Serif JP,Hiragino Mincho ProN,serif", "400"),
          g.t(160, 122, "ひらがなを中心に書く書道", 10.5),
          g.t(160, 146, "流れるような線・余白の美", 10, g.ACCENT),
          g.t(160, 170, "漢字書道と対になる日本の書", 10),
