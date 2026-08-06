@@ -3595,9 +3595,9 @@ id,original,team,surface,pronunciation,type,org_id,image,image_page
 1180,遠藤一彦,大洋,遠藤,エンドウ,family,1180,http://commons.wikimedia.org/wiki/Special:FilePath/20171123_Kazuhiko_Endo_OB_of_whales_at_Yokohama_stadium.jpg,https://commons.wikimedia.org/wiki/File:20171123_Kazuhiko_Endo_OB_of_whales_at_Yokohama_stadium.jpg
 1180,遠藤一彦,大洋,遠藤一彦,エンドウカズヒコ,full,1180,http://commons.wikimedia.org/wiki/Special:FilePath/20171123_Kazuhiko_Endo_OB_of_whales_at_Yokohama_stadium.jpg,https://commons.wikimedia.org/wiki/File:20171123_Kazuhiko_Endo_OB_of_whales_at_Yokohama_stadium.jpg
 1180,遠藤一彦,大洋,一彦,カズヒコ,given,1180,http://commons.wikimedia.org/wiki/Special:FilePath/20171123_Kazuhiko_Endo_OB_of_whales_at_Yokohama_stadium.jpg,https://commons.wikimedia.org/wiki/File:20171123_Kazuhiko_Endo_OB_of_whales_at_Yokohama_stadium.jpg
-1181,遠藤成,阪神-オリックス,遠藤,エンドウ,family,1181,https://raw.githubusercontent.com/soramimic/soramimic-wordlists/main/images/baseball/bb_600e55c529.svg,https://github.com/soramimic/soramimic-wordlists/blob/main/images/baseball/bb_600e55c529.svg
-1181,遠藤成,阪神-オリックス,遠藤成,エンドウジョウ,full,1181,https://raw.githubusercontent.com/soramimic/soramimic-wordlists/main/images/baseball/bb_600e55c529.svg,https://github.com/soramimic/soramimic-wordlists/blob/main/images/baseball/bb_600e55c529.svg
-1181,遠藤成,阪神-オリックス,成,ジョウ,given,1181,https://raw.githubusercontent.com/soramimic/soramimic-wordlists/main/images/baseball/bb_600e55c529.svg,https://github.com/soramimic/soramimic-wordlists/blob/main/images/baseball/bb_600e55c529.svg
+1181,遠藤成,阪神-オリックス-ヤクルト,遠藤,エンドウ,family,1181,https://raw.githubusercontent.com/soramimic/soramimic-wordlists/main/images/baseball/bb_600e55c529.svg,https://github.com/soramimic/soramimic-wordlists/blob/main/images/baseball/bb_600e55c529.svg
+1181,遠藤成,阪神-オリックス-ヤクルト,遠藤成,エンドウジョウ,full,1181,https://raw.githubusercontent.com/soramimic/soramimic-wordlists/main/images/baseball/bb_600e55c529.svg,https://github.com/soramimic/soramimic-wordlists/blob/main/images/baseball/bb_600e55c529.svg
+1181,遠藤成,阪神-オリックス-ヤクルト,成,ジョウ,given,1181,https://raw.githubusercontent.com/soramimic/soramimic-wordlists/main/images/baseball/bb_600e55c529.svg,https://github.com/soramimic/soramimic-wordlists/blob/main/images/baseball/bb_600e55c529.svg
 1182,遠藤伸久,阪神,遠藤,エンドウ,family,1182,https://raw.githubusercontent.com/soramimic/soramimic-wordlists/main/images/baseball/bb_eefd87e877.svg,https://github.com/soramimic/soramimic-wordlists/blob/main/images/baseball/bb_eefd87e877.svg
 1182,遠藤伸久,阪神,遠藤伸久,エンドウノブヒサ,full,1182,https://raw.githubusercontent.com/soramimic/soramimic-wordlists/main/images/baseball/bb_eefd87e877.svg,https://github.com/soramimic/soramimic-wordlists/blob/main/images/baseball/bb_eefd87e877.svg
 1182,遠藤伸久,阪神,伸久,ノブヒサ,given,1182,https://raw.githubusercontent.com/soramimic/soramimic-wordlists/main/images/baseball/bb_eefd87e877.svg,https://github.com/soramimic/soramimic-wordlists/blob/main/images/baseball/bb_eefd87e877.svg
@@ -28605,3 +28605,16 @@ A.J.コール_ヤクルト_00000,A.J.コール,ヤクルト,.J.コール,アン�
 髙橋快秀_ロッテ_00000,髙橋快秀,ロッテ,髙橋,タカハシ,family,髙橋快秀_ロッテ_00000,https://raw.githubusercontent.com/soramimic/soramimic-wordlists/main/images/baseball/bb_d3a1f85943.svg,https://github.com/soramimic/soramimic-wordlists/blob/main/images/baseball/bb_d3a1f85943.svg
 髙橋快秀_ロッテ_00000,髙橋快秀,ロッテ,快秀,カイシュウ,given,髙橋快秀_ロッテ_00000,https://raw.githubusercontent.com/soramimic/soramimic-wordlists/main/images/baseball/bb_d3a1f85943.svg,https://github.com/soramimic/soramimic-wordlists/blob/main/images/baseball/bb_d3a1f85943.svg
 髙橋快秀_ロッテ_00000,髙橋快秀,ロッテ,髙橋快秀,タカハシ カイシュウ,full,髙橋快秀_ロッテ_00000,https://raw.githubusercontent.com/soramimic/soramimic-wordlists/main/images/baseball/bb_d3a1f85943.svg,https://github.com/soramimic/soramimic-wordlists/blob/main/images/baseball/bb_d3a1f85943.svg
+ジャクソン・ラットリッジ_ソフトバンク_00000,ジャクソン・ラットリッジ,ソフトバンク,ラットリッジ,ラットリッジ,family,ジャクソン・ラットリッジ_ソフトバンク_00000,,
+ジャクソン・ラットリッジ_ソフトバンク_00000,ジャクソン・ラットリッジ,ソフトバンク,ジャクソン,ジャクソン,given,ジャクソン・ラットリッジ_ソフトバンク_00000,,
+ジャクソン・ラットリッジ_ソフトバンク_00000,ジャクソン・ラットリッジ,ソフトバンク,ジャクソン・ラットリッジ,ジャクソン・ラットリッジ,full,ジャクソン・ラットリッジ_ソフトバンク_00000,,
+ジャクソン・ラットリッジ_ソフトバンク_00000,ラトリッジ(ジャクソン・ラットリッジ),ソフトバンク,ラトリッジ,ラトリッジ,registered,ジャクソン・ラットリッジ_ソフトバンク_00000,,
+中山優人_ロッテ_00000,中山優人,ロッテ,中山,ナカヤマ,family,中山優人_ロッテ_00000,,
+中山優人_ロッテ_00000,中山優人,ロッテ,優人,ユウト,given,中山優人_ロッテ_00000,,
+中山優人_ロッテ_00000,中山優人,ロッテ,中山優人,ナカヤマ ユウト,full,中山優人_ロッテ_00000,,
+常谷拓輝_日本ハム_00000,常谷拓輝,日本ハム,常谷,ツネヤ,family,常谷拓輝_日本ハム_00000,,
+常谷拓輝_日本ハム_00000,常谷拓輝,日本ハム,拓輝,ヒロキ,given,常谷拓輝_日本ハム_00000,,
+常谷拓輝_日本ハム_00000,常谷拓輝,日本ハム,常谷拓輝,ツネヤ ヒロキ,full,常谷拓輝_日本ハム_00000,,
+杉山諒_ロッテ_00000,杉山諒,ロッテ,杉山,スギヤマ,family,杉山諒_ロッテ_00000,,
+杉山諒_ロッテ_00000,杉山諒,ロッテ,諒,リョウ,given,杉山諒_ロッテ_00000,,
+杉山諒_ロッテ_00000,杉山諒,ロッテ,杉山諒,スギヤマ リョウ,full,杉山諒_ロッテ_00000,,
