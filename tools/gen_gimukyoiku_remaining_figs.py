@@ -5601,5 +5601,618 @@ def fig_唐詩選():
     return g.titled("唐詩選", b)
 
 
+# ---- 音楽(伝統曲・公有楽曲のカード図) ---------------------------------------
+
+
+def _song(word, genre, desc):
+    """歌のカード図(装飾的な五線+ジャンル・説明)。旋律の正確さは主張しない。"""
+    b = staff(96)
+    for x, y in ((96, 112), (134, 100), (172, 108), (210, 92), (248, 100)):
+        b += note(x, y)
+    b += [g.t(160, 146, genre, 10.5, g.ACCENT),
+          g.t(160, 168, desc, 10.5),
+          g.t(160, 192, word, 10, g.SUB)]
+    return g.titled(word, b)
+
+
+@register("仰げば尊し")
+def fig_仰げば尊し():
+    return _song("仰げば尊し", "卒業式の唱歌(1884年)", "別れを惜しみ教えに感謝する歌")
+
+
+@register("アニー・ローリー")
+def fig_アニーローリー():
+    return _song("アニー・ローリー", "スコットランド民謡", "別れの恋を歌う抒情的な曲")
+
+
+@register("かりぼし切り歌")
+def fig_かりぼし切り歌():
+    return _song("かりぼし切り歌", "民謡(刈干切り唄)", "刈り干す作業と恋を詠う仕事歌")
+
+
+@register("聖者の行進")
+def fig_聖者の行進():
+    return _song("聖者の行進", "アメリカの伝統曲", "When the Saints Go Marching In")
+
+
+@register("ロング・ロング・アゴー")
+def fig_ロングロングアゴー():
+    return _song("ロング・ロング・アゴー", "アメリカの歌(1833年)", "遠い昔の思い出を歌う")
+
+
+@register("こきりこ節")
+def fig_こきりこ節():
+    return _song("こきりこ節", "富山県の民謡", "こきりこ(竹の楽器)を打ちながら歌う")
+
+
+@register("星の世界")
+def fig_星の世界():
+    return _song("星の世界", "賛美歌", "星の美しさをたたえる歌")
+
+
+@register("シチリアーナ")
+def fig_シチリアーナ():
+    return _song("シチリアーナ", "イタリアの古典曲", "シチリア風のゆったりした舞曲")
+
+
+@register("モルダウ")
+def fig_モルダウ():
+    return _song("モルダウ", "スメタナの交響詩(1874年)", "『わが祖国』の中の川の情景")
+
+
+@register("巣鶴鈴慕")
+def fig_巣鶴鈴慕():
+    return _song("巣鶴鈴慕", "尺八曲(琴古流)", "鶴の巣立ちを描く古典本曲")
+
+
+@register("鹿の遠音")
+def fig_鹿の遠音():
+    return _song("鹿の遠音", "尺八曲(琴古流)", "遠くの鹿の声を交わす本曲")
+
+
+@register("トリステーザ")
+def fig_トリステーザ():
+    return _song("トリステーザ", "イタリアの歌(トスティ)", "哀愁を帯びたナポリの歌")
+
+
+@register("新版歌祭文")
+def fig_新版歌祭文():
+    return _song("新版歌祭文", "浄瑠璃(義太夫節)", "お染久松の恋をうたう人形浄瑠璃")
+
+
+@register("野崎村")
+def fig_野崎村():
+    return _song("野崎村", "文楽・浄瑠璃", "お染久松の悲恋を描く段物")
+
+
+@register("執心鐘入")
+def fig_執心鐘入():
+    return _song("執心鐘入", "能の曲", "鐘の中の鬼女を描く能")
+
+
+# ---- 英語(残り20語の構造図) --------------------------------------------------
+
+
+@register("完了動名詞")
+def fig_完了動名詞():
+    b = [g.t(160, 44, "having + 過去分詞", 10.5, g.INK, "middle", g.MATHFONT, "700"),
+         g.t(160, 70, "例: I regret having said that.", 9, g.ACCENT, "middle", g.MATHFONT, "700"),
+         g.t(160, 96, "「言ったことを後悔している」", 9.5, g.ACCENT),
+         g.t(160, 120, "動詞の時制より前の動作", 10.5),
+         g.t(160, 144, "動名詞の完了形", 10, g.ACCENT),
+         g.t(160, 168, "regret/remember などと使う", 10),
+         g.t(160, 192, "完了不定詞と似た働き", 9.5, g.SUB)]
+    return g.titled("完了動名詞", b)
+
+
+@register("複合関係詞")
+def fig_複合関係詞():
+    b = [g.t(160, 44, "what / whatever / whoever", 9.5, g.INK, "middle", g.MATHFONT, "700"),
+         g.t(160, 70, "「〜するもの(こと)」「〜でも」", 9.5, g.ACCENT),
+         g.t(160, 96, "先行詞を含む関係詞", 10.5),
+         g.t(160, 120, "what = the thing which", 10, g.ACCENT),
+         g.t(160, 144, "例: What he said is true.", 10, g.ACCENT, "middle", g.MATHFONT, "700"),
+         g.t(160, 168, "関係代名詞+ever の形もある", 10, g.ACCENT),
+         g.t(160, 192, "複合関係代名詞・複合関係副詞を含む", 9.5, g.SUB)]
+    return g.titled("複合関係詞", b)
+
+
+@register("複合関係代名詞")
+def fig_複合関係代名詞():
+    b = [g.t(160, 44, "what / whatever / whoever / whomever", 9, g.INK, "middle", g.MATHFONT, "700"),
+         g.t(160, 70, "先行詞を含む関係代名詞", 10, g.ACCENT),
+         g.t(160, 96, "what = the thing which", 10, g.ACCENT, "middle", g.MATHFONT, "700"),
+         g.t(160, 120, "whoever = anyone who", 10, g.ACCENT, "middle", g.MATHFONT, "700"),
+         g.t(160, 144, "例: Whoever said that is wrong.", 9, g.ACCENT, "middle", g.MATHFONT, "700"),
+         g.t(160, 168, "「〜する人(もの)は誰でも」", 10, g.ACCENT),
+         g.t(160, 192, "複合関係詞の中心", 9.5, g.SUB)]
+    return g.titled("複合関係代名詞", b)
+
+
+@register("複合関係副詞")
+def fig_複合関係副詞():
+    b = [g.t(160, 44, "wherever / whenever / however", 9.5, g.INK, "middle", g.MATHFONT, "700"),
+         g.t(160, 70, "「どこでも」「いつでも」「どんなに〜でも」", 9, g.ACCENT),
+         g.t(160, 96, "先行詞を含む関係副詞", 10.5),
+         g.t(160, 120, "wherever = at any place where", 9, g.ACCENT, "middle", g.MATHFONT, "700"),
+         g.t(160, 144, "例: Wherever you go, I'll follow.", 9, g.ACCENT, "middle", g.MATHFONT, "700"),
+         g.t(160, 168, "「どこへ行こうと」", 10, g.ACCENT),
+         g.t(160, 192, "譲歩の意味を表すこともある", 9.5, g.SUB)]
+    return g.titled("複合関係副詞", b)
+
+
+@register("連鎖関係代名詞")
+def fig_連鎖関係代名詞():
+    b = [g.t(160, 44, "There is no one but knows it.", 9, g.INK, "middle", g.MATHFONT, "700"),
+         g.t(160, 70, "「それを知らない人はいない」", 9.5, g.ACCENT),
+         g.t(160, 96, "but = who … not(〜しない人)", 10, g.ACCENT),
+         g.t(160, 120, "no … but の構文", 10.5),
+         g.t(160, 144, "「〜しない…はない」", 10, g.ACCENT),
+         g.t(160, 168, "but が関係代名詞の働き", 10),
+         g.t(160, 192, "準否定の関係代名詞", 9.5, g.SUB)]
+    return g.titled("連鎖関係代名詞", b)
+
+
+@register("話法")
+def fig_話法():
+    b = [g.rect(40, 44, 100, 44, g.INK, 1.2, g.FILL),
+         g.rect(180, 44, 100, 44, g.INK, 1.2, g.FILL2),
+         g.t(90, 62, "直接話法", 9.5), g.t(90, 78, "(そのまま引用)", 8.5, g.SUB),
+         g.t(230, 62, "間接話法", 9.5, g.ACCENT), g.t(230, 78, "(言い換えて伝達)", 8.5, g.SUB),
+         g.arrow(144, 66, 176, 66, g.ACCENT, 1.8),
+         g.t(160, 104, "人の言葉を伝える表現方法", 10.5),
+         g.t(160, 128, "直接: He said, \"I am busy.\"", 9.5, g.ACCENT, "middle", g.MATHFONT, "700"),
+         g.t(160, 152, "間接: He said (that) he was busy.", 9.5, g.ACCENT, "middle", g.MATHFONT, "700"),
+         g.t(160, 176, "時制・人称が変わる", 10, g.ACCENT),
+         g.t(160, 200, "描出話法もある", 9.5, g.SUB)]
+    return g.titled("話法", b)
+
+
+@register("直接話法")
+def fig_直接話法():
+    b = [g.t(160, 44, "He said, \"I am busy.\"", 10, g.INK, "middle", g.MATHFONT, "700"),
+         g.t(160, 70, "「彼は『忙しい』と言った」", 9.5, g.ACCENT),
+         g.t(160, 96, "発言をそのまま引用符で表す", 10.5),
+         g.t(160, 120, "クォーテーションマーク「\"」を使う", 10, g.ACCENT),
+         g.t(160, 144, "例: She asked, \"Are you OK?\"", 9.5, g.ACCENT, "middle", g.MATHFONT, "700"),
+         g.t(160, 168, "間接話法と対になる", 10, g.ACCENT),
+         g.t(160, 192, "会話文・引用文", 9.5, g.SUB)]
+    return g.titled("直接話法", b)
+
+
+@register("間接話法")
+def fig_間接話法():
+    b = [g.t(160, 44, "He said (that) he was busy.", 9.5, g.INK, "middle", g.MATHFONT, "700"),
+         g.t(160, 70, "「彼は忙しいと言った」", 9.5, g.ACCENT),
+         g.t(160, 96, "発言を言い換えて伝える", 10.5),
+         g.t(160, 120, "that節や疑問詞節で表す", 10, g.ACCENT),
+         g.t(160, 144, "時制の一致で am → was に変化", 9.5, g.ACCENT),
+         g.t(160, 168, "直接話法と対になる", 10, g.ACCENT),
+         g.t(160, 192, "伝達動詞 said/told/asked と使う", 9.5, g.SUB)]
+    return g.titled("間接話法", b)
+
+
+@register("描出話法")
+def fig_描出話法():
+    b = [g.t(160, 44, "He was tired. He had to rest.", 9.5, g.INK, "middle", g.MATHFONT, "700"),
+         g.t(160, 70, "地の文に人物の心の声を混ぜる", 9.5, g.ACCENT),
+         g.t(160, 96, "引用符もthatも使わない", 10.5),
+         g.t(160, 120, "小説で人物の心情を表す技法", 10, g.ACCENT),
+         g.t(160, 144, "自由間接話法とも呼ぶ", 10, g.ACCENT),
+         g.t(160, 168, "日本語の「〜だろうと思った」に近い", 10),
+         g.t(160, 192, "直接話法と間接話法の中間", 9.5, g.SUB)]
+    return g.titled("描出話法", b)
+
+
+@register("時制の一致")
+def fig_時制の一致():
+    b = [g.rect(40, 44, 100, 44, g.INK, 1.2, g.FILL),
+         g.rect(180, 44, 100, 44, g.INK, 1.2, g.FILL2),
+         g.t(90, 62, "主節が過去", 9.5), g.t(90, 78, "(said)", 8.5, g.SUB),
+         g.t(230, 62, "従属節も過去", 9.5, g.ACCENT), g.t(230, 78, "(was)", 8.5, g.SUB),
+         g.arrow(144, 66, 176, 66, g.ACCENT, 1.8),
+         g.t(160, 104, "主節の時制に従属節が合わせられる", 10.5),
+         g.t(160, 128, "am/is → was / will → would", 9.5, g.ACCENT, "middle", g.MATHFONT, "700"),
+         g.t(160, 152, "不変の真理は一致しない", 10, g.ACCENT),
+         g.t(160, 176, "例: He said (that) he was busy.", 9.5, g.ACCENT, "middle", g.MATHFONT, "700"),
+         g.t(160, 200, "間接話法の基本ルール", 9.5, g.SUB)]
+    return g.titled("時制の一致", b)
+
+
+@register("大過去")
+def fig_大過去():
+    b = [g.line(50, 90, 270, 90, g.INK, 1.2),
+         g.t(60, 76, "過去(過去完了より前)", 9, g.ACCENT),
+         g.t(180, 104, "過去完了", 9.5, g.ACCENT),
+         g.line(180, 90, 180, 74, g.INK, 1.0, dash="3 3"),
+         g.t(160, 122, "過去のある時点より前の動作", 10.5),
+         g.t(160, 144, "had + 過去分詞", 10, g.ACCENT, "middle", g.MATHFONT, "700"),
+         g.t(160, 168, "例: He had left before I came.", 9.5, g.ACCENT, "middle", g.MATHFONT, "700"),
+         g.t(160, 192, "「〜する前に〜していた」", 10, g.ACCENT),
+         g.t(160, 216, "過去完了形の用法の一つ", 9.5, g.SUB)]
+    return g.titled("大過去", b)
+
+
+@register("過去完了形")
+def fig_過去完了形():
+    b = [g.t(160, 44, "had + 過去分詞", 10.5, g.INK, "middle", g.MATHFONT, "700"),
+         g.t(160, 70, "例: I had finished it by noon.", 9.5, g.ACCENT, "middle", g.MATHFONT, "700"),
+         g.t(160, 96, "「正午までに終えていた」", 9.5, g.ACCENT),
+         g.t(160, 120, "過去のある時点での完了・経験・継続", 10.5),
+         g.t(160, 144, "大過去(過去より前)の表現", 10, g.ACCENT),
+         g.t(160, 168, "had は have の過去形", 10),
+         g.t(160, 192, "時制の一致でも使う", 9.5, g.SUB)]
+    return g.titled("過去完了形", b)
+
+
+@register("未来完了形")
+def fig_未来完了形():
+    b = [g.t(160, 44, "will have + 過去分詞", 10, g.INK, "middle", g.MATHFONT, "700"),
+         g.t(160, 70, "例: I will have finished by then.", 9, g.ACCENT, "middle", g.MATHFONT, "700"),
+         g.t(160, 96, "「その頃には終えているだろう」", 9.5, g.ACCENT),
+         g.t(160, 120, "未来のある時点での完了を表す", 10.5),
+         g.t(160, 144, "by 〜(までに)とよく使う", 10, g.ACCENT),
+         g.t(160, 168, "未来の完了・経験・継続", 10, g.ACCENT),
+         g.t(160, 192, "will have + 過去分詞の形", 9.5, g.SUB)]
+    return g.titled("未来完了形", b)
+
+
+@register("過去完了進行形")
+def fig_過去完了進行形():
+    b = [g.t(160, 44, "had been + -ing", 10, g.INK, "middle", g.MATHFONT, "700"),
+         g.t(160, 70, "例: I had been studying for 3 hours.", 8.5, g.ACCENT, "middle", g.MATHFONT, "700"),
+         g.t(160, 96, "「3時間勉強し続けていた」", 9.5, g.ACCENT),
+         g.t(160, 120, "過去のある時点まで続いていた動作", 10.5),
+         g.t(160, 144, "継続の意味を強調する", 10, g.ACCENT),
+         g.t(160, 168, "had been + 現在分詞", 10, g.ACCENT),
+         g.t(160, 192, "過去完了形の進行形", 9.5, g.SUB)]
+    return g.titled("過去完了進行形", b)
+
+
+@register("未来進行形")
+def fig_未来進行形():
+    b = [g.t(160, 44, "will be + -ing", 10, g.INK, "middle", g.MATHFONT, "700"),
+         g.t(160, 70, "例: I will be waiting for you.", 9, g.ACCENT, "middle", g.MATHFONT, "700"),
+         g.t(160, 96, "「待っているでしょう」", 9.5, g.ACCENT),
+         g.t(160, 120, "未来のある時点で進行中の動作", 10.5),
+         g.t(160, 144, "「きっと〜している」", 10, g.ACCENT),
+         g.t(160, 168, "予定・見込みの意味もある", 10),
+         g.t(160, 192, "will be + 現在分詞", 9.5, g.SUB)]
+    return g.titled("未来進行形", b)
+
+
+@register("無生物主語")
+def fig_無生物主語():
+    b = [g.t(160, 44, "The news surprised me.", 10, g.INK, "middle", g.MATHFONT, "700"),
+         g.t(160, 70, "「その知らせに私は驚いた」", 9.5, g.ACCENT),
+         g.t(160, 96, "物事が主語になる構文", 10.5),
+         g.t(160, 120, "日本語では「〜に」と訳す", 10, g.ACCENT),
+         g.t(160, 144, "例: This book made me happy.", 9.5, g.ACCENT, "middle", g.MATHFONT, "700"),
+         g.t(160, 168, "英語らしい表現の一つ", 10, g.ACCENT),
+         g.t(160, 192, "原因・理由を主語にする", 9.5, g.SUB)]
+    return g.titled("無生物主語", b)
+
+
+@register("同格")
+def fig_同格():
+    b = [g.rect(40, 44, 100, 40, g.INK, 1.2, g.FILL),
+         g.rect(180, 44, 100, 40, g.INK, 1.2, g.FILL2),
+         g.t(90, 62, "名詞", 9.5), g.t(90, 78, "(Mr. Smith)", 8.5, g.SUB),
+         g.t(230, 62, "説明する語", 9.5, g.ACCENT), g.t(230, 78, "(the teacher)", 8.5, g.SUB),
+         g.t(160, 58, "=", 11, g.ACCENT),
+         g.t(160, 104, "同じものを別の語で言い換える", 10.5),
+         g.t(160, 128, "例: Mr. Smith, the teacher, came.", 9, g.ACCENT, "middle", g.MATHFONT, "700"),
+         g.t(160, 152, "「同格の名詞」", 10, g.ACCENT),
+         g.t(160, 176, "that節と同格の名詞(idea/fact)もある", 9.5, g.ACCENT),
+         g.t(160, 200, "コンマで区切って置く", 9.5, g.SUB)]
+    return g.titled("同格", b)
+
+
+@register("同格節")
+def fig_同格節():
+    b = [g.t(160, 44, "the fact that he came", 9.5, g.INK, "middle", g.MATHFONT, "700"),
+         g.rect(40, 56, 90, 36, g.INK, 1.2, g.FILL),
+         g.rect(190, 56, 90, 36, g.INK, 1.2, g.FILL2),
+         g.t(85, 78, "名詞", 9.5), g.t(235, 78, "that節", 9.5, g.ACCENT),
+         g.t(160, 108, "名詞の内容を説明する that節", 10.5),
+         g.t(160, 132, "idea / fact / news などと使う", 9.5, g.ACCENT),
+         g.t(160, 156, "「〜という(知らせ・事実)」", 10, g.ACCENT),
+         g.t(160, 180, "例: the news that he won", 10, g.ACCENT, "middle", g.MATHFONT, "700"),
+         g.t(160, 204, "名詞+同格のthat節", 9.5, g.SUB)]
+    return g.titled("同格節", b)
+
+
+@register("挿入句")
+def fig_挿入句():
+    b = [g.t(160, 44, "He is, I think, honest.", 10, g.INK, "middle", g.MATHFONT, "700"),
+         g.rect(60, 56, 90, 36, g.INK, 1.2, g.FILL),
+         g.rect(170, 56, 90, 36, g.INK, 1.2, g.FILL2),
+         g.t(105, 78, "文の中心", 9.5), g.t(215, 78, "I think(挿入)", 9, g.ACCENT),
+         g.t(160, 108, "文の中に差し挟む語句", 10.5),
+         g.t(160, 132, "「〜だと思う」「〜によれば」", 10, g.ACCENT),
+         g.t(160, 156, "コンマで区切って挿入", 10),
+         g.t(160, 180, "例: This is, of course, true.", 9.5, g.ACCENT, "middle", g.MATHFONT, "700"),
+         g.t(160, 204, "文修飾の働き", 9.5, g.SUB)]
+    return g.titled("挿入句", b)
+
+
+@register("挿入節")
+def fig_挿入節():
+    b = [g.t(160, 44, "The book, I believe, is good.", 9, g.INK, "middle", g.MATHFONT, "700"),
+         g.rect(50, 56, 90, 36, g.INK, 1.2, g.FILL),
+         g.rect(180, 56, 90, 36, g.INK, 1.2, g.FILL2),
+         g.t(95, 78, "文の中心", 9.5), g.t(225, 78, "I believe(挿入節)", 8.5, g.ACCENT),
+         g.t(160, 108, "文の中に差し挟む節(主語+動詞)", 10.5),
+         g.t(160, 132, "「〜だと信じる」などのコメント", 10, g.ACCENT),
+         g.t(160, 156, "コンマで区切る", 10),
+         g.t(160, 180, "例: She is, it seems, angry.", 9.5, g.ACCENT, "middle", g.MATHFONT, "700"),
+         g.t(160, 204, "挿入句が節になったもの", 9.5, g.SUB)]
+    return g.titled("挿入節", b)
+
+
+# ---- 国語(四字熟語・古典作品・概念の残り) -------------------------------------
+
+
+@register("絶体絶命")
+def fig_絶体絶命():
+    b = [g.path("M80,140 L160,70 L240,140 Z", g.ACCENT, 1.4, g.FILL),
+         g.t(160, 66, "崖", 9, g.ACCENT),
+         g.circle(160, 110, 12, g.INK, 1.4, g.FILL),
+         g.t(160, 164, "逃げ場のない状態", 10.5),
+         g.t(160, 186, "「絶体」「絶命」= 身動きがとれない", 10, g.ACCENT),
+         g.t(160, 210, "危機的な状況を強調する四字熟語", 9.5, g.SUB)]
+    return g.titled("絶体絶命", b)
+
+
+@register("危機一髪")
+def fig_危機一髪():
+    b = [g.line(160, 40, 160, 90, g.ACCENT, 1.2),
+         g.circle(160, 92, 8, g.INK, 1.2, g.FILL),
+         g.path("M160,100 L160,150", g.INK, 1.0),
+         g.line(120, 150, 200, 150, g.INK, 1.2),
+         g.t(160, 130, "糸一本", 9, g.ACCENT),
+         g.t(160, 168, "あと少しで危険な状態", 10.5),
+         g.t(160, 190, "「髪一本の差」が由来", 10, g.ACCENT),
+         g.t(160, 214, "間一髪の危機", 9.5, g.SUB)]
+    return g.titled("危機一髪", b)
+
+
+@register("大器晩成")
+def fig_大器晩成():
+    b = [g.rect(80, 44, 160, 30, g.INK, 1.2, g.FILL2),
+         g.t(160, 64, "大きな器", 10, g.ACCENT),
+         g.arrow(160, 82, 160, 104, g.INK, 1.4),
+         g.rect(80, 108, 160, 30, g.INK, 1.2, g.FILL),
+         g.t(160, 128, "できるまで時間がかかる", 10),
+         g.t(160, 156, "大人物は大成するのが遅い", 10.5),
+         g.t(160, 178, "才能はあとから開花する", 10, g.ACCENT),
+         g.t(160, 202, "「大きな器は完成が遅い」", 9.5, g.SUB)]
+    return g.titled("大器晩成", b)
+
+
+@register("本末転倒")
+def fig_本末転倒():
+    b = [g.rect(40, 44, 100, 40, g.INK, 1.2, g.FILL2),
+         g.rect(180, 44, 100, 40, g.INK, 1.2, g.FILL),
+         g.t(90, 62, "本(大切なこと)", 10, g.ACCENT),
+         g.t(230, 62, "末(枝葉のこと)", 10),
+         g.arrow(90, 90, 90, 110, g.INK, 1.2), g.arrow(230, 90, 230, 110, g.INK, 1.2),
+         g.t(90, 132, "下に", 8.5, g.ACCENT), g.t(230, 132, "上に", 8.5, g.ACCENT),
+         g.t(160, 160, "大事なこととどうでもいいことが", 10.5),
+         g.t(160, 182, "逆になってしまうこと", 10.5, g.ACCENT),
+         g.t(160, 206, "「本と末が転倒する」", 9.5, g.SUB)]
+    return g.titled("本末転倒", b)
+
+
+@register("自業自得")
+def fig_自業自得():
+    b = [g.t(160, 44, "自分の行い", 10.5, g.INK),
+         g.arrow(160, 56, 160, 78, g.ACCENT, 1.6),
+         g.rect(80, 82, 160, 36, g.INK, 1.3, g.FILL2),
+         g.t(160, 104, "自分の受ける報い", 10, g.ACCENT),
+         g.t(160, 136, "自分の行いの結果を", 10.5),
+         g.t(160, 158, "自分で受けること", 10.5, g.ACCENT),
+         g.t(160, 182, "悪い結果は身から出た錆", 10),
+         g.t(160, 206, "「自ら業(ごう)を自ら得る」", 9.5, g.SUB)]
+    return g.titled("自業自得", b)
+
+
+@register("自画自賛")
+def fig_自画自賛():
+    b = [g.rect(70, 44, 120, 80, g.INK, 1.3, g.FILL),
+         g.circle(160, 70, 8, g.ACCENT, 0, g.FILL2),
+         g.t(160, 100, "自分の絵", 9.5),
+         g.path("M190,120 Q210,80 230,90", g.INK, 1.2),
+         g.t(222, 76, "「上手い」", 9, g.ACCENT),
+         g.t(160, 144, "自分の作品・行いを", 10.5),
+         g.t(160, 166, "自分でほめること", 10.5, g.ACCENT),
+         g.t(160, 190, "「自分の絵に自分で賛を書く」", 9.5, g.SUB)]
+    return g.titled("自画自賛", b)
+
+
+@register("異口同音")
+def fig_異口同音():
+    b = [g.circle(60, 70, 14, g.INK, 1.2, g.FILL),
+         g.circle(130, 70, 14, g.INK, 1.2, g.FILL),
+         g.circle(200, 70, 14, g.INK, 1.2, g.FILL),
+         g.circle(270, 70, 14, g.INK, 1.2, g.FILL),
+         g.t(60, 96, "A", 9), g.t(130, 96, "B", 9), g.t(200, 96, "C", 9), g.t(270, 96, "D", 9),
+         g.t(160, 124, "「同じだ」", 12, g.ACCENT),
+         g.t(160, 150, "大勢が同じことを言う", 10.5),
+         g.t(160, 172, "「口をそろえて」", 10, g.ACCENT),
+         g.t(160, 196, "人々の意見が一致する様子", 9.5, g.SUB)]
+    return g.titled("異口同音", b)
+
+
+@register("疑心暗鬼")
+def fig_疑心暗鬼():
+    b = [g.circle(100, 80, 18, g.INK, 1.3, g.FILL),
+         g.t(100, 85, "？", 11, g.ACCENT),
+         g.path("M118,80 Q180,40 240,80", g.INK, 1.4, dash="4 4"),
+         g.path("M118,80 Q180,120 240,80", g.INK, 1.4, dash="4 4"),
+         g.t(160, 108, "疑いの心", 9.5, g.ACCENT),
+         g.t(160, 132, "疑い始めると何でも疑わしく見える", 10.5),
+         g.t(160, 154, "「疑う心が闇を生む」", 10, g.ACCENT),
+         g.t(160, 178, "疑心暗鬼に陥る", 9.5, g.SUB)]
+    return g.titled("疑心暗鬼", b)
+
+
+@register("支離滅裂")
+def fig_支離滅裂():
+    b = [g.rect(40, 44, 70, 30, g.INK, 1.0, g.FILL),
+         g.rect(120, 44, 70, 30, g.INK, 1.0, g.FILL),
+         g.rect(200, 44, 70, 30, g.INK, 1.0, g.FILL2),
+         g.line(90, 52, 120, 52, g.SUB, 1.0, dash="3 3"),
+         g.line(160, 52, 200, 52, g.SUB, 1.0, dash="3 3"),
+         g.path("M80,120 Q120,100 160,120 Q200,100 240,120", g.ACCENT, 1.6, dash="4 3"),
+         g.t(160, 140, "ばらばらに砕けた状態", 10.5),
+         g.t(160, 162, "話・文章のつじつまが合わない", 10, g.ACCENT),
+         g.t(160, 186, "「支離」「滅裂」= ばらばら", 9.5, g.SUB)]
+    return g.titled("支離滅裂", b)
+
+
+@register("東奔西走")
+def fig_東奔西走():
+    b = [g.circle(160, 62, 14, g.INK, 1.3, g.FILL),
+         g.path("M160,76 L160,140", g.INK, 1.4),
+         g.path("M160,84 L120,100 M160,84 L200,100 M160,104 L124,120 M160,104 L196,120", g.INK, 1.4),
+         g.path("M80,150 Q120,130 160,150 Q200,130 240,150", g.ACCENT, 1.8, dash="4 3"),
+         g.t(160, 168, "あちこち忙しくかけ回る", 10.5),
+         g.t(160, 190, "「東へ走り西へ走る」", 10, g.ACCENT),
+         g.t(160, 214, "忙しい様子の四字熟語", 9.5, g.SUB)]
+    return g.titled("東奔西走", b)
+
+
+@register("無我夢中")
+def fig_無我夢中():
+    b = [g.circle(160, 60, 16, g.INK, 1.3, g.FILL),
+         g.t(160, 65, "夢中", 9, g.ACCENT),
+         g.path("M160,78 Q90,90 160,120 Q230,140 160,158", g.ACCENT, 2.0),
+         g.t(160, 138, "他のことを忘れる", 9, g.ACCENT),
+         g.t(160, 178, "自分を忘れて一つのことに", 10.5),
+         g.t(160, 200, "打ち込むこと", 10.5, g.ACCENT),
+         g.t(160, 224, "「無我」= 我を忘れる", 9.5, g.SUB)]
+    return g.titled("無我夢中", b)
+
+
+@register("玉石混交")
+def fig_玉石混交():
+    b = [g.circle(70, 80, 14, g.ACCENT, 0, g.FILL2),
+         g.circle(120, 96, 10, g.INK, 1.0, g.FILL),
+         g.circle(170, 76, 13, g.ACCENT, 0, g.FILL2),
+         g.circle(220, 94, 10, g.INK, 1.0, g.FILL),
+         g.circle(260, 70, 9, g.INK, 1.0, g.FILL),
+         g.t(160, 126, "良いものと悪いものが", 10.5),
+         g.t(160, 148, "入り混じっていること", 10.5, g.ACCENT),
+         g.t(160, 172, "「玉(宝石)と石が混ざる」", 10, g.ACCENT),
+         g.t(160, 196, "人材や作品の質がまちまち", 9.5, g.SUB)]
+    return g.titled("玉石混交", b)
+
+
+@register("古今著聞集")
+def fig_古今著聞集():
+    b = [g.rect(90, 44, 140, 90, g.INK, 1.6, g.FILL),
+         g.line(90, 64, 230, 64, g.INK, 1.0),
+         g.t(160, 80, "『古今著聞集』", 12, g.ACCENT),
+         g.t(160, 100, "鎌倉時代の説話集", 10),
+         g.t(160, 120, "(橘成季編)", 9.5, g.SUB),
+         g.t(160, 152, "「古今」の事柄を集めた説話集", 10.5),
+         g.t(160, 176, "和歌・仏教・説話など幅広く収録", 10, g.ACCENT),
+         g.t(160, 200, "十訓抄と並ぶ鎌倉説話集", 9.5, g.SUB)]
+    return g.titled("古今著聞集", b)
+
+
+@register("堤中納言物語")
+def fig_堤中納言物語():
+    b = [g.rect(90, 44, 140, 90, g.INK, 1.6, g.FILL),
+         g.line(90, 64, 230, 64, g.INK, 1.0),
+         g.t(160, 80, "『堤中納言物語』", 12, g.ACCENT),
+         g.t(160, 100, "平安時代の物語", 10),
+         g.t(160, 120, "(短編物語集)", 9.5, g.SUB),
+         g.t(160, 152, "『虫めづる姫君』など10編", 10.5),
+         g.t(160, 176, "風刺・ユーモアあふれる短編", 10, g.ACCENT),
+         g.t(160, 200, "教科書教材としても登場", 9.5, g.SUB)]
+    return g.titled("堤中納言物語", b)
+
+
+@register("増鏡")
+def fig_増鏡():
+    b = [g.rect(90, 44, 140, 90, g.INK, 1.6, g.FILL),
+         g.line(90, 64, 230, 64, g.INK, 1.0),
+         g.t(160, 80, "『増鏡』", 12, g.ACCENT),
+         g.t(160, 100, "南北朝時代の歴史物語", 10),
+         g.t(160, 120, "(鎌倉時代〜)", 9.5, g.SUB),
+         g.t(160, 152, "承久の乱から鎌倉幕府の滅亡まで", 10.5),
+         g.t(160, 176, "『大鏡』『水鏡』など「四鏡」の一つ", 10, g.ACCENT),
+         g.t(160, 200, "歴史を鏡にたとえた物語", 9.5, g.SUB)]
+    return g.titled("増鏡", b)
+
+
+@register("十八史略")
+def fig_十八史略():
+    b = [g.rect(90, 44, 140, 90, g.INK, 1.6, g.FILL),
+         g.line(90, 64, 230, 64, g.INK, 1.0),
+         g.t(160, 80, "『十八史略』", 12, g.ACCENT),
+         g.t(160, 100, "中国の歴史書", 10),
+         g.t(160, 120, "(宋代の編纂)", 9.5, g.SUB),
+         g.t(160, 152, "中国の18の史書の要約", 10.5),
+         g.t(160, 176, "日本でも漢文教材として読まれた", 10, g.ACCENT),
+         g.t(160, 200, "「十八史略」の故事成語も多い", 9.5, g.SUB)]
+    return g.titled("十八史略", b)
+
+
+@register("世阿弥")
+def fig_世阿弥():
+    b = [g.circle(160, 58, 24, g.INK, 1.4, g.FILL2),
+         g.t(160, 63, "能面", 10, g.ACCENT),
+         g.line(160, 82, 160, 96, g.INK, 1.2),
+         g.rect(100, 96, 120, 40, g.INK, 1.3, g.FILL),
+         g.t(160, 114, "『風姿花伝』", 10.5, g.ACCENT),
+         g.t(160, 128, "(能楽論)", 9, g.SUB),
+         g.t(160, 154, "能の大成者(観阿弥の子)", 10.5),
+         g.t(160, 178, "「秘すれば花」を説く", 10, g.ACCENT),
+         g.t(160, 202, "室町時代の能役者・芸術論者", 9.5, g.SUB)]
+    return g.titled("世阿弥", b)
+
+
+@register("抽象化")
+def fig_抽象化():
+    b = [g.rect(40, 44, 100, 40, g.INK, 1.3, g.FILL),
+         g.rect(180, 44, 100, 40, g.INK, 1.3, g.FILL2),
+         g.t(90, 62, "具体的な物事", 10), g.t(90, 78, "(りんご・みかん)", 8.5, g.SUB),
+         g.t(230, 62, "共通する性質", 10, g.ACCENT), g.t(230, 78, "(果物)", 8.5, g.SUB),
+         g.arrow(144, 64, 176, 64, g.ACCENT, 1.8),
+         g.t(160, 104, "共通点を取り出して", 10.5),
+         g.t(160, 126, "まとめること", 10.5, g.ACCENT),
+         g.t(160, 150, "プログラミングでは重要", 10, g.ACCENT),
+         g.t(160, 174, "個別の例から概念をつくる", 10),
+         g.t(160, 198, "具象化と対になる", 9.5, g.SUB)]
+    return g.titled("抽象化", b)
+
+
+@register("アイデンティティ")
+def fig_アイデンティティ():
+    b = [g.circle(160, 70, 30, g.INK, 1.4, g.FILL),
+         g.t(160, 75, "自分", 10, g.ACCENT),
+         g.t(160, 116, "「自分は何者か」という", 10.5),
+         g.t(160, 138, "自己の認識・確信", 10.5, g.ACCENT),
+         g.t(160, 162, "家族・社会との関わりで形成", 10),
+         g.t(160, 186, "アイデンティティの確立(青年期の課題)", 9.5, g.ACCENT),
+         g.t(160, 210, "自己同一性とも訳す", 9.5, g.SUB)]
+    return g.titled("アイデンティティ", b)
+
+
+@register("禁中並公家諸法度")
+def fig_禁中並公家諸法度():
+    b = [g.rect(60, 44, 200, 40, g.INK, 1.4, g.FILL2),
+         g.t(160, 62, "1615年 朝廷・公家への法令", 9.5, g.ACCENT),
+         g.t(160, 104, "天皇・公家の行動を規制", 10.5),
+         g.t(160, 126, "「朝廷は学問を第一に」", 10, g.ACCENT),
+         g.t(160, 150, "幕府が朝廷を統制した", 10),
+         g.t(160, 174, "武家諸法度と対になる", 10, g.ACCENT),
+         g.t(160, 198, "江戸幕府の支配体制の一環", 9.5, g.SUB)]
+    return g.titled("禁中並公家諸法度", b)
+
+
 if __name__ == "__main__":
     main()
