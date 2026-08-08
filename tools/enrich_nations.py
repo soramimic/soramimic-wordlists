@@ -153,6 +153,31 @@ def clean(value: str) -> str:
     return (value or "").replace(",", " ").replace('"', "").strip()
 
 
+def strip_country_subject(description: str, names: set[str]) -> str:
+    """「正式国名、通称○○は、」のような重複する主語を説明文から除く。"""
+    first, period, following = description.partition("。")
+    normalized_names = {
+        name.replace(" ", "").replace("　", "") for name in names if name
+    }
+    if period and first.replace(" ", "").replace("　", "") in normalized_names:
+        return following.lstrip()
+
+    head, separator, rest = description.partition("は")
+    if not separator or len(head) > 80 or "。" in head:
+        return description
+    normalized_head = head.replace(" ", "").replace("　", "")
+    starts_with_name = any(
+        normalized_head.startswith(name) for name in normalized_names
+    )
+    country_alias = normalized_head.endswith(
+        ("共和国", "王国", "公国", "連邦", "合衆国", "首長国", "国")
+    )
+    if not starts_with_name and not country_alias:
+        return description
+    stripped = rest.lstrip("、 ").strip()
+    return stripped or description
+
+
 def resolve_missing_qids(rows: list[dict]) -> None:
     """新規加盟国の cca3 から QID を引き、同じ id の行へ設定する。"""
     missing_ids = {r["id"] for r in rows if not r.get("wikidata")}
@@ -215,6 +240,11 @@ def main() -> int:
         qid: entity.get("sitelinks", {}).get("jawiki", {}).get("title", "")
         for qid, entity in entities.items()
     }
+    names = {}
+    for row in rows:
+        names.setdefault(row["wikidata"], set()).add(row["original"])
+    for qid, title in titles.items():
+        names.setdefault(qid, set()).add(title)
     extracts = fetch_extracts(sorted({t for t in titles.values() if t}), limit=300)
 
     info = {}
@@ -223,6 +253,7 @@ def main() -> int:
         intro = extracts.get(title, "")
         wd_desc = entity.get("descriptions", {}).get("ja", {}).get("value", "")
         desc = make_description(intro, wd_desc, title)
+        desc = strip_country_subject(desc, names.get(qid, set()))
         info[qid] = {
             "capital": "/".join(
                 labels.get(x, {}).get("labels", {}).get("ja", {}).get("value", "")
@@ -242,7 +273,12 @@ def main() -> int:
         values = info.get(row.get("wikidata", ""), {})
         for col in ADDED_COLS:
             new = clean(values.get(col, ""))
-            if col == "population":
+            if col == "description":
+                existing = row.get(col, "") or new
+                row[col] = strip_country_subject(
+                    existing, names.get(row.get("wikidata", ""), set())
+                )
+            elif col == "population":
                 row[col] = new or row.get(col, "")
             else:
                 row[col] = row.get(col, "") or new
