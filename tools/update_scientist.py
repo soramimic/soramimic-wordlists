@@ -42,6 +42,7 @@ import datetime
 import json
 import os
 import pickle
+import re
 import sys
 import urllib.parse
 from pathlib import Path
@@ -71,6 +72,18 @@ OCCUPATIONS = [
     ("Q520549", "地学"),
 ]
 FIELD_ORDER = {label: i for i, (_, label) in enumerate(OCCUPATIONS)}
+
+
+def style_description(value: str) -> str:
+    """自然に体言止めにできる終端だけを動画キャプション向けに整える。"""
+    value = re.sub(r"受賞した。$", "受賞。", value)
+    return re.sub(
+        r"((?:学者|研究者|技術者|発明家|医師|教授|著者|創始者|開拓者|受賞者))"
+        r"である。$",
+        r"\1。",
+        value,
+    )
+
 
 # 旧 physicist.csv 由来で記事名の表記揺れにより Wikidata と照合できない人物の
 # 業績文。自動取得できない場合も「分野: 物理」だけのカードに戻さない。
@@ -183,8 +196,15 @@ DESCRIPTION_OVERRIDES = {
     "リチャード・ストールマン": "GNUプロジェクトを創始しEmacsやGCCを開発して自由ソフトウェアの技術基盤を築いた。",
     "イワン・エフレーモフ": "化石が地層に残る過程を研究するタフォノミーを創始した古生物学者・SF作家。",
 }
-DESCRIPTION_OVERRIDES.update(
-    json.loads(ACHIEVEMENT_OVERRIDES.read_text(encoding="utf-8")))
+DESCRIPTION_OVERRIDES = {
+    name: style_description(description)
+    for name, description in DESCRIPTION_OVERRIDES.items()
+}
+DESCRIPTION_OVERRIDES.update({
+    name: style_description(description)
+    for name, description in json.loads(
+        ACHIEVEMENT_OVERRIDES.read_text(encoding="utf-8")).items()
+})
 
 # 対象外にする人物(norm() 済みの記事名 = CSV の original と同じキー)。
 # P106 に上表の職業が付いているが、実際には研究職・研究業績がなく著名性が
@@ -641,10 +661,11 @@ def main() -> int:
         by_key[key] = {
             "qid": qid, "rank": rank, "field": field_value(p["fields"]),
             "attr": attrs.get(qid, {}),
-            "desc": make_description(extracts.get(p["title"], ""),
-                                     attrs.get(qid, {}).get("wd_desc", ""),
-                                     DISAMBIG.sub("", p["title"]),
-                                     prefer_achievement=True),
+            "desc": style_description(
+                make_description(extracts.get(p["title"], ""),
+                                 attrs.get(qid, {}).get("wd_desc", ""),
+                                 DISAMBIG.sub("", p["title"]),
+                                 prefer_achievement=True)),
         }
     if collisions:
         print(f"照合キー衝突(同名別人) {collisions}件: サフィックス無しを優先", flush=True)
@@ -712,6 +733,7 @@ def main() -> int:
             r["field"] = "物理"
             r["era"] = r["birth_year"] = r["nobel"] = "NA"
             r["gender"] = r["country"] = r["status"] = r["description"] = "NA"
+        r["description"] = style_description(r.get("description", "NA"))
         if (r["original"] in DESCRIPTION_OVERRIDES
                 and r.get("description") != DESCRIPTION_OVERRIDES[r["original"]]):
             r["description"] = DESCRIPTION_OVERRIDES[r["original"]]
