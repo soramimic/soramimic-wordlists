@@ -178,10 +178,6 @@ ACHIEVEMENT_WORDS = (
 )
 
 # 冒頭の「{人名}は、」除去まわり
-HIRAGANA = re.compile(r"[ぁ-ん]")
-# 残りが名詞述語として自然に完結する語尾(体言止め以外に許可するもの)
-NOUN_PRED_TAIL = ("である", "であった", "だった", "とされる", "といわれる",
-                  "と呼ばれる")
 # 人名の後ろに付きうる短い爵位等(「〜男爵」「〜卿」)。ひらがなは接続助詞なので不可
 NAME_SUFFIX = re.compile(r"^[一-龥]{0,3}$")
 
@@ -240,42 +236,59 @@ def _norm_name(s: str) -> str:
     return s.replace(" ", "").replace("　", "").replace("=", "＝")
 
 
+def _name_parts(s: str) -> list[str]:
+    """欧文由来の人名を、ミドルネームを無視して比較できる単位に分ける。"""
+    return [
+        _norm_name(part)
+        for part in re.split(r"[・＝゠=\s]+", s)
+        if len(_norm_name(part)) >= 2
+    ]
+
+
 def _is_name_head(head: str, name: str) -> bool:
     """「〜は」の「〜」が name の呼称かどうか。ミドルネーム付き・敬称付き
     (サー・〜)・爵位付き(〜男爵)・姓のみ、といった表記ゆれを許容する。"""
-    if head == name or head.endswith(name):
+    raw_name = name
+    head = _norm_name(head)
+    name = _norm_name(name)
+    compact_head = re.sub(r"[・＝゠=]", "", head)
+    compact_name = re.sub(r"[・＝゠=]", "", name)
+    if compact_head == compact_name or compact_head.endswith(compact_name):
         return True
-    if len(head) >= 3 and name.endswith(head):  # 姓のみ等の短縮形
+    if len(compact_head) >= 3 and compact_name.endswith(compact_head):  # 姓のみ等
         return True
-    i = head.find(name)
-    return i >= 0 and bool(NAME_SUFFIX.match(head[i + len(name):]))
+    i = compact_head.find(compact_name)
+    if i >= 0 and bool(NAME_SUFFIX.match(compact_head[i + len(compact_name):])):
+        return True
+    # 「レイチェル・カーソン」に対する
+    # 「レイチェル・ルイーズ・カーソン」のようなミドルネーム入り表記。
+    parts = _name_parts(raw_name)
+    if len(parts) < 2:
+        return False
+    first = head.find(parts[0])
+    last = head.rfind(parts[-1])
+    return first >= 0 and last >= first + len(parts[0])
 
 
 def strip_name_prefix(desc: str, name: str) -> str:
     """description 冒頭の「{人名}は、」を除去する。動画キャプションでは人名が
     別に表示されるため冗長なので落とす。
 
-    ただし除去すると主語を失って壊れる文(「〜は…で、…した。」のように残りの
-    1文目が用言で終わる)や、上流のカッコ対応が壊れている文はそのまま返す。"""
+    カードでは人名が直前に大きく表示されるため、述語文でも主語を省略して
+    意味が通る。「または」の「は」は助詞ではないので対象外。"""
     if not desc or not name or name == "NA":
         return desc
-    name = _norm_name(name)
     end = desc.find("。")
     end = len(desc) if end == -1 else end
     for m in re.finditer("は", desc[:end]):
-        head = _norm_name(desc[:m.start()])
-        if not head or len(head) > 30 or "、" in head:
+        if desc[max(0, m.start() - 2):m.end()] == "または":
+            continue
+        head = desc[:m.start()]
+        if not head or len(head) > 60 or "、" in head:
             continue
         if not _is_name_head(head, name):
             continue
         rest = desc[m.end():].lstrip("、 ").strip()
-        first = rest.split("。")[0]
-        if len(first) < 4:
-            return desc
-        if first.count("）") > first.count("（") or first.count(")") > first.count("("):
-            return desc
-        if HIRAGANA.match(first[-1]) and not first.endswith(NOUN_PRED_TAIL):
-            return desc
         return rest
     return desc
 
@@ -289,12 +302,64 @@ def _cut_at_comma(s: str, target: int = DESC_TARGET, hard: int = DESC_HARD) -> s
 def has_achievement(text: str) -> bool:
     """説明文に具体的な業績を示す語が含まれるか。"""
     text = text or ""
-    if any(word in text for word in ACHIEVEMENT_WORDS):
+    # 肩書きに含まれる語を業績と誤認しない。
+    searchable = re.sub(
+        r"(?:発明家|実験物理学者|実験科学者|計算機科学者|"
+        r"計算機科学|現象学者|分析化学者|研究開発局|"
+        r"開発員|開発マネージャー)",
+        "",
+        text,
+    )
+    if any(word in searchable for word in ACHIEVEMENT_WORDS):
         return True
     # 「研究者」「研究所」「理論物理学者」のような肩書き・所属だけでは
     # 業績とみなさず、具体的な研究・理論への言及だけを拾う。
-    return bool(re.search(r"研究(?!者|所|院|科|部|室|機関|職)", text)
-                or re.search(r"理論(?!物理学者|化学者|数学者|生物学者)", text))
+    return bool(
+        re.search(r"研究(?!者|所|院|科|部|室|機関|職|分野)", text)
+        or re.search(
+            r"理論(?!物理学(?:者|研究)|化学者|数学者|生物学者)", text
+        )
+    )
+
+
+ACHIEVEMENT_WEIGHTS = {
+    "発見": 8, "発明": 8, "提唱": 8, "証明": 8, "確立": 8, "創始": 8,
+    "考案": 8, "ノーベル": 8, "受賞": 7, "法則": 7, "定理": 7,
+    "方程式": 7, "公式": 7, "開発": 6, "解明": 6, "定式化": 6,
+    "体系化": 6, "予言": 6, "原理": 6, "仮説": 6, "学説": 6,
+    "教科書": 6, "名著": 6, "構築": 5, "模型": 5, "モデル": 5,
+    "設計": 5, "製作": 5, "同定": 5, "合成": 5, "著書": 4,
+    "測定": 4, "観測": 4, "実験": 4, "計算": 4, "分類": 4,
+    "業績": 3, "貢献": 3, "先駆者": 3, "基礎を築": 5, "道を開": 5,
+}
+
+
+def achievement_score(sentence: str) -> int:
+    """肩書き・経歴より具体的な科学業績文を上位にする重み付きスコア。"""
+    searchable = re.sub(
+        r"(?:発明家|実験物理学者|実験科学者|計算機科学者|"
+        r"計算機科学|現象学者|分析化学者|研究開発局|"
+        r"開発員|開発マネージャー)",
+        "",
+        sentence,
+    )
+    score = sum(
+        weight for word, weight in ACHIEVEMENT_WEIGHTS.items()
+        if word in searchable
+    )
+    score -= 2 * len(re.findall(r"大学|教授|所長|卒業|出身|生まれ|任命", sentence))
+    if re.search(r"主な(?:研究)?業績|代表的な?業績", sentence):
+        score += 10
+    if re.match(r"(?:このほか|また|一方)", sentence):
+        score -= 10
+    if re.search(r"行わず|おらず|されず|ではない|なかった|未発見|未解決", sentence):
+        score -= 15
+    if re.match(r"(?:先人|同時代人|師|弟子)", sentence):
+        score -= 8
+    # 親族の受賞・業績を本人のものとして拾わない。
+    if re.search(r"(?:父|母|息子|娘|夫|妻|兄|弟|姉|妹).{0,16}(?:受賞|業績|発見)", sentence):
+        score -= 10
+    return score
 
 
 def _assemble(text: str, prefer_achievement: bool = False) -> str:
@@ -308,10 +373,12 @@ def _assemble(text: str, prefer_achievement: bool = False) -> str:
     complete = [s for s in (segs if ends_complete else segs[:-1]) if s]
     if complete:
         if prefer_achievement:
-            start = next((i for i, s in enumerate(complete)
-                          if has_achievement(s)), None)
-            if start is not None:
-                complete = complete[start:]
+            ranked = sorted(
+                ((achievement_score(s), -i, s) for i, s in enumerate(complete)),
+                reverse=True,
+            )
+            if ranked and ranked[0][0] > 0:
+                complete = [ranked[0][2]]
         out = ""
         for s in complete:
             cand = out + s + "。"

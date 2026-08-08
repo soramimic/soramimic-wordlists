@@ -50,12 +50,14 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from wpnames import (DISAMBIG, KATA2HIRA, KATAKANA, fetch_extracts,
                      has_achievement, make_description, parse_person, sparql,
-                     write_csv_no_trailing_newline)
+                     strip_name_prefix, write_csv_no_trailing_newline)
 
 OLD_CSV = Path(__file__).resolve().parent.parent / "physicist.csv"
 NEW_CSV = Path(__file__).resolve().parent.parent / "scientist.csv"
 ACHIEVEMENT_OVERRIDES = (
     Path(__file__).resolve().parent / "scientist_achievement_overrides.json")
+AUDIT_EXCLUSIONS = (
+    Path(__file__).resolve().parent / "scientist_audit_exclusions.json")
 MIN_SITELINKS = 20
 CURRENT_YEAR = datetime.date.today().year
 CACHE = os.environ.get("SCIENTIST_CACHE")  # 開発用: 取得結果の pickle キャッシュ先
@@ -74,8 +76,53 @@ OCCUPATIONS = [
 FIELD_ORDER = {label: i for i, (_, label) in enumerate(OCCUPATIONS)}
 
 
-def style_description(value: str) -> str:
-    """自然に体言止めにできる終端だけを動画キャプション向けに整える。"""
+SCIENTIST_ROLE = (
+    r"(?:[一-龥ァ-ヶー・＝/]{0,24}"
+    r"(?:学者|科学者|研究者|技術者|発明家|医師|教授))"
+)
+STRONG_ACHIEVEMENT = re.compile(
+    r"発見|発明(?!家)|開発|提唱|証明|解明|確立|創始|考案|構築|定式化|"
+    r"体系化|測定|法則|定理|公式|方程式|効果|模型|モデル|予言|分類|"
+    r"著書|教科書|業績|貢献|受賞|ノーベル|命名|製作|設計|同定|合成|"
+    r"原理|仮説|学説|開拓|実現|刷新|名著|先駆者|基礎を築|道を開"
+)
+
+
+def strip_redundant_role_intro(value: str) -> str:
+    """後続に具体的業績がある場合だけ、冒頭の肩書き文・肩書き句を落とす。"""
+    sentence = re.match(
+        rf"^(?P<intro>[^。]{{2,70}}{SCIENTIST_ROLE}(?:である)?。)"
+        rf"(?P<rest>.+)$",
+        value,
+    )
+    if sentence:
+        intro, rest = sentence.group("intro"), sentence.group("rest")
+        if not has_achievement(intro) and STRONG_ACHIEVEMENT.search(rest):
+            return rest
+    clause = re.match(
+        rf"^(?P<intro>[^、。]{{2,70}}{SCIENTIST_ROLE}(?:であり、|で、|、))"
+        rf"(?P<rest>.+)$",
+        value,
+    )
+    if clause:
+        intro, rest = clause.group("intro"), clause.group("rest")
+        starts_with_role = re.match(rf"^[^、。]{{0,30}}{SCIENTIST_ROLE}", rest)
+        if (not starts_with_role and not has_achievement(intro)
+                and STRONG_ACHIEVEMENT.search(rest)):
+            return rest
+    return value
+
+
+def style_description(value: str, name: str = "") -> str:
+    """冗長な導入を除き、自然な終端だけを動画キャプション向けに整える。"""
+    stripped = strip_name_prefix(value, name)
+    if stripped == value and name:
+        # Wikipediaのリードが記事名と異なる本名・別名で始まる場合。人名らしい
+        # カタカナ・漢字列に限り「〜は、」を落とし、一般文の「中には」等は触らない。
+        match = re.match(r"^([^。]{1,80}?)は[、,]", value)
+        if match and not re.search(r"[ぁ-ん]", match.group(1)):
+            stripped = value[match.end():].lstrip()
+    value = strip_redundant_role_intro(stripped)
     value = re.sub(r"受賞した。$", "受賞。", value)
     return re.sub(
         r"((?:学者|研究者|技術者|発明家|医師|教授|著者|創始者|開拓者|受賞者))"
@@ -197,11 +244,11 @@ DESCRIPTION_OVERRIDES = {
     "イワン・エフレーモフ": "化石が地層に残る過程を研究するタフォノミーを創始した古生物学者・SF作家。",
 }
 DESCRIPTION_OVERRIDES = {
-    name: style_description(description)
+    name: style_description(description, name)
     for name, description in DESCRIPTION_OVERRIDES.items()
 }
 DESCRIPTION_OVERRIDES.update({
-    name: style_description(description)
+    name: style_description(description, name)
     for name, description in json.loads(
         ACHIEVEMENT_OVERRIDES.read_text(encoding="utf-8")).items()
 })
@@ -466,7 +513,10 @@ EXCLUDED = {
     "エルンスト・フォン・グレーザーズフェルド",  # 哲学者・心理学者で生物学研究実績なし
     "ラリー・サンガー",  # 哲学者・インターネット起業家で計算機科学研究実績なし
     "ツヴェタン・トドロフ",  # 文芸批評家・思想家で地学研究実績なし
+    "ロナルド・ウェイン",  # 主にApple共同創業者・技術文書作成者で科学研究実績なし
+    "アンジェラ・ビーズリー",  # Wikimedia/企業活動で著名な実業家で科学研究実績なし
 }
+EXCLUDED.update(json.loads(AUDIT_EXCLUSIONS.read_text(encoding="utf-8")))
 
 
 # era 境界(生年basis。明快な丸め値。変更容易にするためここに集約。ADR 00009 参照)
@@ -638,7 +688,7 @@ def fetch_all(persons: dict):
     titles = sorted({p["title"] for p in persons.values()})
     print(f"記事冒頭を取得中... {len(titles)}件", flush=True)
     # 日本語版の第1文が肩書き・所属だけでも、後続の主要業績まで取得できる長さ。
-    extracts = fetch_extracts(titles, limit=600)
+    extracts = fetch_extracts(titles, limit=1600)
     if CACHE:
         with open(CACHE, "wb") as fh:
             pickle.dump((attrs, extracts), fh)
@@ -686,7 +736,8 @@ def main() -> int:
                 make_description(extracts.get(p["title"], ""),
                                  attrs.get(qid, {}).get("wd_desc", ""),
                                  DISAMBIG.sub("", p["title"]),
-                                 prefer_achievement=True)),
+                                 prefer_achievement=True),
+                DISAMBIG.sub("", p["title"])),
         }
     if collisions:
         print(f"照合キー衝突(同名別人) {collisions}件: サフィックス無しを優先", flush=True)
@@ -754,7 +805,8 @@ def main() -> int:
             r["field"] = "物理"
             r["era"] = r["birth_year"] = r["nobel"] = "NA"
             r["gender"] = r["country"] = r["status"] = r["description"] = "NA"
-        r["description"] = style_description(r.get("description", "NA"))
+        r["description"] = style_description(
+            r.get("description", "NA"), r["original"])
         if (r["original"] in DESCRIPTION_OVERRIDES
                 and r.get("description") != DESCRIPTION_OVERRIDES[r["original"]]):
             r["description"] = DESCRIPTION_OVERRIDES[r["original"]]
