@@ -20,7 +20,8 @@ from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from wpnames import (KATAKANA, api, make_player_description,
+from wpnames import (KATAKANA, api, is_likely_disambiguation_text,
+                     make_player_description,
                      write_csv_no_trailing_newline)
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -72,7 +73,8 @@ def save_cache(cache: dict[str, dict[str, str]]) -> None:
 def fetch_intro_batch(batch: list[str]) -> dict[str, dict[str, str]]:
     data = api({
         "action": "query",
-        "prop": "extracts",
+        "prop": "extracts|pageprops",
+        "ppprop": "disambiguation",
         "exintro": 1,
         "explaintext": 1,
         "exlimit": "max",
@@ -89,18 +91,29 @@ def fetch_intro_batch(batch: list[str]) -> dict[str, dict[str, str]]:
             if target == item["from"]:
                 aliases[source] = item["to"]
     pages = {
-        page.get("title", ""): page.get("extract", "")
+        page.get("title", ""): {
+            "intro": page.get("extract", ""),
+            "disambiguation": "disambiguation" in page.get("pageprops", {}),
+        }
         for page in data["query"]["pages"].values()
         if "missing" not in page
     }
     return {
-        source: {"title": target, "intro": pages.get(target, "")}
+        source: {
+            "title": target,
+            "intro": pages.get(target, {}).get("intro", ""),
+            "disambiguation": pages.get(target, {}).get("disambiguation", False),
+        }
         for source, target in aliases.items()
     }
 
 
 def fetch_intros(titles: list[str], cache: dict[str, dict[str, str]]) -> None:
-    missing = [title for title in titles if title not in cache]
+    missing = [
+        title
+        for title in titles
+        if title not in cache or "disambiguation" not in cache[title]
+    ]
     batches = [missing[offset:offset + 20] for offset in range(0, len(missing), 20)]
     completed = 0
     with ThreadPoolExecutor(max_workers=8) as executor:
@@ -140,7 +153,12 @@ def enrich(kind: str, cache: dict[str, dict[str, str]], refresh: bool) -> None:
         for candidate in candidates:
             article = cache.get(candidate, {})
             text = article.get("intro", "")
-            if text and any(keyword in text for keyword in config["keywords"]):
+            if (
+                text
+                and not article.get("disambiguation")
+                and not is_likely_disambiguation_text(text)
+                and any(keyword in text for keyword in config["keywords"])
+            ):
                 intro = text
                 title = article.get("title", candidate)
                 break
