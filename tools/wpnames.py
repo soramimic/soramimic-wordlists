@@ -365,6 +365,34 @@ PLAYER_ACHIEVEMENT_TERMS = {
 PLAYER_DESC_TARGET = 50
 PLAYER_DESC_MAX = 65
 PLAYER_DESCRIPTION_OVERRIDES = {
+    "浅尾拓也": (
+        "2010年・2011年にセ・リーグ最優秀中継ぎ投手。"
+        "2011年はリーグMVP。"
+    ),
+    "飯塚誠": "1950年に51本塁打・161打点で二冠王とセ・リーグMVPを獲得。",
+    "小鶴誠": "1950年に51本塁打・161打点で二冠王とセ・リーグMVPを獲得。",
+    "石井一久": "NPBで最多奪三振2回、最高勝率1回、最優秀防御率1回を獲得。",
+    "石川雅規": "2002年のセ・リーグ新人王。大卒投手初の新人年から24年連続安打を記録。",
+    "上原浩治": "NPB新人年に投手三冠。アジア人初の100勝・100セーブ・100ホールド達成。",
+    "小野和義": "近鉄時代に2桁勝利を5度記録。NPB通算82勝。",
+    "斉藤和巳": "2003年に投手三冠・リーグMVP。2006年に投手四冠・沢村賞。",
+    "九里亜蓮": "2021年に13勝を挙げ、セ・リーグ最多勝利を獲得。",
+    "灰山元章": "1931年に4番・エースとして広島商業の夏の甲子園連覇に貢献。",
+    "島野育夫": "中日・阪神で星野仙一監督を支え、コーチとして両球団のリーグ優勝を経験。",
+    "中山裕章": "中日の救援投手として1999年のセ・リーグ優勝に貢献。",
+    "西本聖": "投手最多タイとなるゴールデングラブ賞8回を受賞。",
+    "ウラディミール・バレンティン": (
+        "2013年にNPB記録のシーズン60本塁打と長打率.779を記録。"
+    ),
+    "藤本英雄": "1943年に防御率0.73と19完封のNPB記録。1950年にNPB初の完全試合。",
+    "ジョン・ボウカー": "2012年の日本シリーズで2本塁打を放ち、巨人の日本一に貢献。",
+    "星野仙一": "1974年に15勝10セーブで沢村賞とセ・リーグ初の最多セーブ投手。",
+    "村田勝喜": "1991年から3年連続で2桁勝利・2桁完投を記録。",
+    "フォルラン": "2010年W杯で5得点を挙げ、大会MVPのゴールデンボールを受賞。",
+    "ディエゴ・フォルラン": (
+        "2010年W杯で5得点を挙げ、大会MVPのゴールデンボールを受賞。"
+    ),
+    "洪明甫": "韓国代表でW杯に4大会連続出場。2002年W杯でブロンズボールを受賞。",
     "大谷翔平": (
         "MLB史上初の50本塁打・50盗塁を達成し、"
         "両リーグでMVPを受賞した投打の二刀流選手。"
@@ -375,6 +403,21 @@ PLAYER_DESCRIPTION_OVERRIDES = {
         "2000年・2002年の最優秀救援投手。NPB通算120セーブ。"
     ),
 }
+PLAYER_CONTEXTUAL_DESCRIPTION = re.compile(
+    r"(?:^|。)(?:また[、]?|さらに[、]?|なお[、]?|同年|同大会|その後|"
+    r"この年|翌年|翌\d|チーム)"
+    r"|(?:など|しており|ており|であり)。$"
+)
+
+
+def is_standalone_player_description(description: str) -> bool:
+    """カード単体で意味が通り、完結している選手説明かを返す。"""
+    return bool(
+        description
+        and description != "NA"
+        and description.endswith(("。", "…"))
+        and not PLAYER_CONTEXTUAL_DESCRIPTION.search(description)
+    )
 
 
 def _shorten_player_description(description: str) -> str:
@@ -430,7 +473,8 @@ def make_player_description(intro: str, name: str = "") -> str:
     受賞・優勝・記録などを含む完結文があれば、重み付きで最も情報量の多い1文を
     採る。記事冒頭が所属・ポジションだけなら通常の人物説明にフォールバックする。
     """
-    override = PLAYER_DESCRIPTION_OVERRIDES.get(DISAMBIG.sub("", name))
+    normalized_name = DISAMBIG.sub("", name).replace(" ", "").replace("　", "")
+    override = PLAYER_DESCRIPTION_OVERRIDES.get(normalized_name)
     if override:
         return override
     text = clean_ws(intro)
@@ -443,11 +487,16 @@ def make_player_description(intro: str, name: str = "") -> str:
         )
         if score:
             ranked.append((score, -index, sentence))
-    if ranked:
-        sentence = _best_player_achievement_clause(max(ranked)[2]) + "。"
-        return _shorten_player_description(make_description(sentence, "", name))
+    for _, _, sentence in sorted(ranked, reverse=True):
+        sentence = _best_player_achievement_clause(sentence) + "。"
+        description = _shorten_player_description(
+            make_description(sentence, "", name)
+        )
+        if is_standalone_player_description(description):
+            return description
     first = (sentences[0] + "。") if sentences else intro
-    return _shorten_player_description(make_description(first, "", name))
+    description = _shorten_player_description(make_description(first, "", name))
+    return description if is_standalone_player_description(description) else "NA"
 
 
 def titles_to_qids(titles: list) -> dict:
