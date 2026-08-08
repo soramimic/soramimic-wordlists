@@ -70,6 +70,17 @@ CONTEXT_REFERENCE = re.compile(r"(当駅|同駅|同県|同市|同区|同町|同�
 STATION_COPULA = re.compile(
     r"((?:駅|停留場|停留所)(?:（廃駅）)?)で(?:ある|あった)。"
 )
+DESCRIPTION_MAX = 48
+ERA_PAREN = re.compile(r"（(?:明治|大正|昭和|平成|令和)\d+年(?:\d+月\d+日)?）")
+COMPACT_ENDINGS = (
+    ("に選定されている。", "に選定。"),
+    ("に選定された。", "に選定。"),
+    ("に認定されている。", "に認定。"),
+    ("を受賞した。", "を受賞。"),
+    ("として著名である。", "として知られる。"),
+    ("ことでも知られる。", "ことで知られる。"),
+    ("となっている。", "。"),
+)
 
 
 def to_hira(s: str) -> str:
@@ -316,6 +327,46 @@ def nominalize_station_description(description: str) -> str:
     return STATION_COPULA.sub(r"\1。", description)
 
 
+def compact_station_description(description: str, opened_year: str = "") -> str:
+    """カード3行相当の48字以内に収める。特徴が無ければ開業年だけを残す。"""
+    description = ERA_PAREN.sub("", description)
+    for old, new in COMPACT_ENDINGS:
+        description = description.replace(old, new)
+    description = re.sub(r"\s+", " ", description).strip()
+    has_feature = any(pattern.search(description) for pattern, _ in FEATURE_TERMS)
+    if opened_year and not has_feature:
+        return f"{opened_year}年開業。"
+    if len(description) <= DESCRIPTION_MAX:
+        return description
+
+    if description.startswith("駅のシンボルマーク"):
+        designers = re.findall(
+            r"([一-龥々]{2,8})が(?:デザイン|完成させた)", description
+        )
+        if designers:
+            return f"駅のシンボルマークは{designers[-1]}がデザイン。"
+
+    clauses = [
+        clause.lstrip("また、なお、").strip()
+        for clause in re.split(r"(?<=。)|、", description)
+        if clause.strip()
+    ]
+    candidates = []
+    for index, clause in enumerate(clauses):
+        if not clause.endswith("。"):
+            continue
+        score = sum(weight for pattern, weight in FEATURE_TERMS
+                    if pattern.search(clause))
+        if score and len(clause) <= DESCRIPTION_MAX:
+            candidates.append((score, -index, clause))
+    if candidates:
+        return max(candidates)[2]
+
+    if opened_year:
+        return f"{opened_year}年開業。"
+    return description[:DESCRIPTION_MAX - 1].rstrip("、 ") + "…"
+
+
 def make_station_description(
     intro: str,
     wd_desc: str,
@@ -343,7 +394,8 @@ def make_station_description(
         if not CONTEXT_REFERENCE.search(sentence):
             desc = make_description(sentence, "", title)
             if desc != "NA":
-                return nominalize_station_description(desc)
+                desc = nominalize_station_description(desc)
+                return compact_station_description(desc, opened_year)
 
     first = complete[0] if complete else intro
     desc = make_description(first, wd_desc, title)
@@ -351,7 +403,8 @@ def make_station_description(
         return desc
     if opened_year and opened_year not in desc and len(desc) <= 105:
         desc += f"{opened_year}年開業。"
-    return nominalize_station_description(desc)
+    desc = nominalize_station_description(desc)
+    return compact_station_description(desc, opened_year)
 
 
 def main() -> int:
