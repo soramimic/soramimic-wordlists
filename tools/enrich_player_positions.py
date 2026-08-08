@@ -29,6 +29,7 @@ ROOT = Path(__file__).resolve().parent.parent
 CACHE_PATH = Path(__file__).resolve().parent / ".cache" / "player_positions.json"
 BATCH = 50
 KINDS = ("baseball", "football")
+TITLE_CANDIDATE_VERSION = 3
 POSITION_ORDER = {
     "baseball": ("投手", "捕手", "内野手", "外野手"),
     "football": ("GK", "DF", "MF", "FW"),
@@ -50,9 +51,15 @@ POSITION_OVERRIDES = {
 
 def load_cache() -> dict:
     try:
-        return json.loads(CACHE_PATH.read_text(encoding="utf-8"))
+        cache = json.loads(CACHE_PATH.read_text(encoding="utf-8"))
     except FileNotFoundError:
-        return {"titles": {}, "claims": {}, "labels": {}, "rosters": {}}
+        cache = {"titles": {}, "claims": {}, "labels": {}, "rosters": {}}
+    if cache.get("title_candidate_version") != TITLE_CANDIDATE_VERSION:
+        cache["titles"] = {
+            key: qid for key, qid in cache.get("titles", {}).items() if qid
+        }
+        cache["title_candidate_version"] = TITLE_CANDIDATE_VERSION
+    return cache
 
 
 def save_cache(cache: dict) -> None:
@@ -67,12 +74,17 @@ def key_of(name: str) -> str:
     return vnorm(re.sub(r"[ 　・]", "", name))
 
 
-def candidates(name: str) -> list[str]:
+def candidates(kind: str, name: str) -> list[str]:
     base = name.split("(", 1)[0].strip()
-    return list(dict.fromkeys((
+    variants = list(dict.fromkeys((
         base,
         base.replace(" ", "").replace("　", ""),
         re.sub(r"[ 　]+", "・", base),
+    )))
+    disambiguator = "サッカー選手" if kind == "football" else "野球選手"
+    return list(dict.fromkeys((
+        *variants,
+        *(f"{variant} ({disambiguator})" for variant in variants[:2]),
     )))
 
 
@@ -120,9 +132,9 @@ def fetch_roster(kind: str, cache: dict) -> dict[str, str]:
     return result
 
 
-def resolve_title_batch(names: list[str]) -> dict[str, str]:
+def resolve_title_batch(kind: str, names: list[str]) -> dict[str, str]:
     title_list = list(dict.fromkeys(
-        title for name in names for title in candidates(name)
+        title for name in names for title in candidates(kind, name)
     ))
     data = api({
         "action": "query",
@@ -148,7 +160,7 @@ def resolve_title_batch(names: list[str]) -> dict[str, str]:
     found = {source: pages.get(target, "") for source, target in aliases.items()}
     return {
         name: next(
-            (found[title] for title in candidates(name) if found.get(title)),
+            (found[title] for title in candidates(kind, name) if found.get(title)),
             "",
         )
         for name in names
@@ -157,10 +169,12 @@ def resolve_title_batch(names: list[str]) -> dict[str, str]:
 
 def resolve_titles(kind: str, names: list[str], cache: dict) -> None:
     todo = [name for name in names if title_key(kind, name) not in cache["titles"]]
-    batches = [todo[offset:offset + 15] for offset in range(0, len(todo), 15)]
+    batches = [todo[offset:offset + 10] for offset in range(0, len(todo), 10)]
     completed = 0
-    with ThreadPoolExecutor(max_workers=8) as executor:
-        for result in executor.map(resolve_title_batch, batches):
+    with ThreadPoolExecutor(max_workers=2) as executor:
+        for result in executor.map(
+            lambda batch: resolve_title_batch(kind, batch), batches
+        ):
             for name, qid in result.items():
                 cache["titles"][title_key(kind, name)] = qid
             completed += len(result)
