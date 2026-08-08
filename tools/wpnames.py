@@ -187,6 +187,9 @@ def clean_ws(s: str) -> str:
 def _sanitize_desc(s: str) -> str:
     """CSVパーサを壊す文字を除去(ASCIIカンマ・二重引用符を削除)。日本語の
     「、」「。」「（）」「：」は残す。連続空白は1つに。"""
+    # 動画用フォントで欠字になりやすいIPA表記は説明文には不要。
+    s = re.sub(r"\[[^\]]*[\u0250-\u02ff\u1d00-\u1dbf][^\]]*\]", "", s)
+    s = re.sub(r"\(\s*音声ファイル\s*\)", "", s)
     s = s.replace('"', "").replace(",", " ")
     return re.sub(r"[\s　]+", " ", s).strip()
 
@@ -199,14 +202,15 @@ def strip_lead_paren(text: str) -> str:
     idx = next((i for i, c in enumerate(text) if c in opens), None)
     if idx is None:
         return text
+    # 1) 「）は」を優先アンカーにする(name（…）は、… の閉じカッコ)
+    # 別名列挙の「または」がカッコより前にあっても、主語の「は」と誤認しない。
+    m = re.search(r"[）)]\s*は", text)
+    if m and m.start() >= idx:
+        return (text[:idx].rstrip() + text[m.start() + 1:].lstrip()).strip()
     ha, period = text.find("は"), text.find("。")
     limit = min([x for x in (ha, period) if x != -1], default=len(text))
     if idx > limit:  # カッコが「は」「。」より後 = 本文中のカッコなので触らない
         return text
-    # 1) 「）は」を優先アンカーにする(name（…）は、… の閉じカッコ)
-    m = re.search(r"[）)]\s*は", text)
-    if m and m.start() >= idx:
-        return (text[:idx].rstrip() + text[m.start() + 1:].lstrip()).strip()
     # 2) フォールバック: 対応の取れたブロック。ただし最初の「。」を越えたら暴走と
     #    みなして除去しない(壊れたカッコ対策)
     end = period if period != -1 else len(text)
