@@ -20,30 +20,29 @@
 
 | ファイル | 内容 | 出典・クレジット |
 |---|---|---|
-| baseball.csv | プロ野球選手・歴代(type: family/given/full/registered。所属球団・画像URL付き) | Moto(選手表ニキ)様と協力者の皆様。現役の新規追加は[Wikipedia](https://ja.wikipedia.org/) (CC BY-SA 4.0)で自動更新。写真は[Wikimedia Commons](https://commons.wikimedia.org/)(ライセンスは画像ごと。image_page参照)、実写が無い人の選手カード画像は本リポジトリの `images/baseball/`(Apache License 2.0 の職業アイコンを含む。実写ではない。下の「利用上の注意」参照) |
-| football.csv | サッカー選手(J1〜J3・歴代。所属クラブ・画像URL付き) | ヨロスー様。現役の新規追加はWikipediaで自動更新。所属クラブはWikipedia/[Wikidata](https://www.wikidata.org/)。写真は[Wikimedia Commons](https://commons.wikimedia.org/)(ライセンスは画像ごと。image_page参照)、実写が無い人の選手カード画像は本リポジトリの `images/football/`(Apache License 2.0 の職業アイコンを含む。実写ではない。下の「利用上の注意」参照) |
-| stations.csv | 駅名(現役駅+路面電車・索道。所在地・路線・説明・写真URL付き) | [Wikidata](https://www.wikidata.org/)/[Wikipedia](https://ja.wikipedia.org/) (CC BY-SA 4.0) で自動更新。旧リストはすきやきすきや様。写真は[Wikimedia Commons](https://commons.wikimedia.org/)(ライセンスは画像ごと。image_page参照)、写真が無い駅の駅名標画像は本リポジトリの `images/station/`(実写ではない。鉄道会社の意匠は含まない。詳細は ADR 00026) |
-| nations.csv | 国名(国連加盟国+消滅国・旧称。正式名称・通称・漢字略称・別読み・別カナ表記を同一idで併記。首都・大陸・人口・面積・成立年・説明・国旗URL付き) | [mledoze/countries](https://github.com/mledoze/countries) で自動更新。基礎情報は[Wikidata](https://www.wikidata.org/)(CC0)、別表記と説明は[Wikipedia](https://ja.wikipedia.org/) (CC BY-SA 4.0)等を参照。国旗はWikidata(P41)経由で[Wikimedia Commons](https://commons.wikimedia.org/)(ライセンスは画像ごと。image_page参照。国旗はほぼすべてPD) |
-| scientist.csv | 科学者(物理/化学/数学/天文/生物/計算機/地学。分野・時代区分・生没・国・性別・ノーベル賞・業績説明・画像URL付き。手選び+著名層) | Wikidata/Wikipediaで自動更新。肖像は[Wikimedia Commons](https://commons.wikimedia.org/)(ライセンスは画像ごと。image_page参照)、肖像が無い人の象徴カード画像は本リポジトリの `images/scientist/`(Apache License 2.0 の分野アイコンを含む。実写ではない。下の「利用上の注意」参照) |
-| sekitsui.csv | 動物(脊椎動物。分類・絶滅フラグ・目/科・画像URL付き) | [Wikidata](https://www.wikidata.org/) (CC0) で自動更新。写真は[Wikimedia Commons](https://commons.wikimedia.org/)(ライセンスは画像ごと。image_page参照)、実写が無い行の分類イメージ画像は本リポジトリのReleaseで配布(CC0・実写ではない) |
-| plant.csv | 植物(被子/裸子/シダ/コケ/藻類の和名。分類・絶滅フラグ・科/属・写真URL付き) | [Wikidata](https://www.wikidata.org/) (CC0) で自動更新。写真は[Wikimedia Commons](https://commons.wikimedia.org/)(ライセンスは画像ごと。image_page参照)、実写が無い行の分類イメージ画像は本リポジトリのReleaseで配布(CC0・実写ではない) |
-| insect.csv | 昆虫(昆虫綱の和名。粗い区分・絶滅フラグ・目/科・写真URL付き。クモ・ムカデ等の非昆虫は含まない) | [Wikidata](https://www.wikidata.org/) (CC0) で自動更新。写真は[Wikimedia Commons](https://commons.wikimedia.org/)(ライセンスは画像ごと。image_page参照)、実写が無い行の分類イメージ画像は本リポジトリのReleaseで配布(CC0・実写ではない) |
-| pokemon.csv | ポケモン(地方のすがた・メガ・キョダイマックス含む。タイプ・世代・分類名・伝説/幻・高さ・重さ・進化元・説明文付き。タイプ配色とモチーフ生物のシルエットで描いた「図鑑端末風カード」画像付き) | [PokéAPI](https://github.com/PokeAPI/pokeapi) で自動更新。説明文は事実列からの機械生成で、公式の図鑑説明文は収録しない(ADR 00032)。画像は本リポジトリのReleaseで配布(公式アセット・キャラクター造形は使わず、配色と文字とモチーフ生物の汎用シルエットのみ)。シルエット素材は[PhyloPic](https://www.phylopic.org/)のパブリックドメイン(CC0 / Public Domain Mark)のもののみで、ドラゴン・妖精のような架空・非生物のモチーフは本リポジトリの自作(CC0)。出典・作者・自作かどうか(`source`)は `tools/motif_silhouettes.json` に記録(ADR 00033)。本リポジトリは非公式のファンメイドであり株式会社ポケモン・任天堂等とは無関係 |
-| youtuber.csv | YouTuber・VTuber(ja.wikipediaに記事がある著名層。海外勢含む。活動名のみ、type: family/given/full。category列で区分、所属・活動開始年・status・チャンネル名・登録者数・説明文・画像URL付き) | Wikidata/Wikipedia (CC BY-SA 4.0) で自動更新。登録者数(`subscribers`)のみ [YouTube Data API v3](https://developers.google.com/youtube/v3) から取得(YouTubeが公開している概数)。写真は[Wikimedia Commons](https://commons.wikimedia.org/)の自由ライセンスの実写のみ(ライセンスは画像ごと。image_page参照)、実写が無い人の象徴カード画像は本リポジトリの `images/youtuber/`(Apache License 2.0 の職業アイコンを含む。実写ではない。下の「利用上の注意」参照) |
-| fictional_scientist.csv | AI生成による架空の科学者1000人(名前・読み・生没年・国籍・分野・主な業績・肖像画像。type: family/given/full) | jiroshimaya/fictional-scientists プロジェクトによる自動生成(実在人物とは無関係)、画像は本リポジトリのReleaseで配布 |
-| fictional_anime_character.csv | AI生成による架空アニメ『蒼穹の螺旋航路』の登場キャラ1000人(名前・読み・所属・初登場年・種族・声優名・紹介文・肖像画像。type: family/given/full/call/nick。callは作中で使われる呼び名(敬称込み)、nickはあだ名) | jiroshimaya/fictional-scientists プロジェクトによる自動生成(実在の作品・人物とは無関係)、画像は本リポジトリのReleaseで配布 |
-| fictional_daily_anime_character.csv | AI生成による架空日常アニメ『まちまる！』の住人1025人(名前・読み・所属・初登場年・種族・声優名・紹介文・肖像画像。type: family/given/full/call/nick。callは作中で使われる呼び名(敬称込み)、nickはあだ名) | jiroshimaya/fictional-scientists プロジェクトによる自動生成(実在の作品・人物とは無関係)、画像は本リポジトリのReleaseで配布 |
-| ryuko.csv | 年代別の流行(平安〜令和。流行語・モノ・遊び・ファッション・食べ物。10年区切りのdecade・時代区分era・流行年・説明文付き。災害・事件・政治・成人向け等に由来する語は `sensitive=yes` でフラグ。詳細は ADR 00031) | 新語・流行語大賞受賞語(1984〜)は[Wikipedia](https://ja.wikipedia.org/wiki/%E6%96%B0%E8%AA%9E%E3%83%BB%E6%B5%81%E8%A1%8C%E8%AA%9E%E5%A4%A7%E8%B3%9E) (CC BY-SA 4.0)から機械抽出。それ以外はWikipedia等で裏取りしたAIキュレーション(自動更新なし) |
-| myoji.csv | 名字(漢字表記・カタカナ読み。同じ表記に複数の読みがある名字は同じidで行を分ける。読みの裏が取れたかの`verified`・著名人ベースの参考順位`rank`・由来の説明・姓アイテムのQID付き)。**読みの確かさを求める利用側は `verified=yes` で絞ること**(母集団の辞書には破格の読みが混ざる)。**`rank` は世帯数・人口順位ではない**(日本には姓別の公的統計が無く、世帯数を持つ民間サイトは再配布を禁じているため収録していない。詳細は ADR 00038) | 表記と読みは[SudachiDict](https://github.com/WorksApplications/SudachiDict)(Works Applications、**Apache License 2.0**)の辞書ソースの人名(姓)エントリ。同梱の`LEGAL`のとおり `small_lex.csv` は[UniDic](https://unidic.ninjal.ac.jp/)(BSD 3条項。Copyright (c) 2011-2013 The UniDic Consortium)を、`core_lex.csv`/`notcore_lex.csv` は[mecab-unidic-NEologd](https://github.com/neologd/mecab-unidic-neologd)(Apache-2.0。はてなキーワード一覧/日本郵便の郵便番号データ/スナフキん氏の日本全国駅名一覧/工藤拓氏の人名(姓・名)エントリデータを素材とする)を含む。`rank`と`wikidata`は[Wikidata](https://www.wikidata.org/) (CC0)の日本人人物の姓(P734)の集計、`description`は[Wikipedia](https://ja.wikipedia.org/) (CC BY-SA 4.0)の姓記事・氏族記事の冒頭 |
-| gimukyoiku.csv | 小中学校の教科書・授業に登場する単語を中核に、高校の教科書の語も収録(教科フィルタ・学校段階フィルタ・説明文・画像URL付き。学習用語に加え授業で扱う人名・作品名・事件名を含む)。**名前のとおり義務教育を中核にしているが、収録範囲は `level=高等学校` の語まで広げている**(詳細は ADR 00034) | AI生成による手動キュレーション(本リポジトリ内で作成、自動更新なし。詳細は ADR 00022)。収録漏れの点検には[教科書LOD](https://jp-textbook.github.io/)の単元情報(CC BY 4.0。文部科学省「教科書編修趣意書」の加工物)を突き合わせに使っている。写真・図版は[Wikimedia Commons](https://commons.wikimedia.org/)(ライセンスは画像ごと。image_page参照)、実写が無い語は本リポジトリのReleaseで配布する生成イメージ(CC0・実写ではない。画像内に「AIイメージ」等と明記。詳細は ADR 00027/00028) |
-| municipality.csv | 市区町村(現存する市町村・特別区・政令指定都市の行政区と、廃止・合併消滅した旧自治体。正式名称`札幌市`と接尾辞を落とした`札幌`を同一idで併記。都道府県・親の市名・人口・団体コード・説明文付き。`status=current` で現存だけに絞れる。詳細は ADR 00036) | 現存の市区町村・団体コード・カナは[総務省「全国地方公共団体コード」](https://www.soumu.go.jp/denshijiti/code.html)(政府標準利用規約。CC BY 4.0 互換)。人口は[e-Stat](https://www.e-stat.go.jp/)の令和2年国勢調査「都道府県・市区町村別の主な結果」(政府標準利用規約)。廃止自治体・QID・読み仮名は[Wikidata](https://www.wikidata.org/) (CC0)。説明文(description)は[Wikipedia](https://ja.wikipedia.org/) (CC BY-SA 4.0)の記事冒頭から機械生成。画像は無し |
-| school.csv | 学校名(全国の幼稚園〜大学。廃校含む。校種・設置区分・所在地・学校コード付き。表層は通用形`common`(札幌南高校)・固有部分`name`(札幌南)・通称`nick`(札南)の3種類で、正式名称は`original`列。詳細は ADR 00037) | [文部科学省 学校コード](https://www.mext.go.jp/b_menu/toukei/mext_01087.html)(政府標準利用規約2.0)で自動更新。読み・別名・QIDは[Wikidata](https://www.wikidata.org/)(CC0。P11127=学校コードで突き合わせ)、通称・略称とその読みは[Wikipedia](https://ja.wikipedia.org/)日本語版の記事冒頭 (CC BY-SA 4.0)。所在地の市区町村名は[総務省 全国地方公共団体コード](https://www.soumu.go.jp/denshijiti/code.html)(政府標準利用規約2.0)の名簿に照合 |
+| baseball.csv | プロ野球選手 | Moto(選手表ニキ)様と協力者の皆様、[Wikipedia](https://ja.wikipedia.org/)、[Wikimedia Commons](https://commons.wikimedia.org/) |
+| football.csv | サッカー選手 | ヨロスー様、Wikipedia、[Wikidata](https://www.wikidata.org/)、Wikimedia Commons |
+| stations.csv | 現役駅・廃駅・旧駅名 | Wikidata、Wikipedia、すきやきすきや様提供の旧リスト(廃駅の照合)、Wikimedia Commons |
+| nations.csv | 現存国・消滅国・旧称 | [mledoze/countries](https://github.com/mledoze/countries)、Wikidata、Wikipedia、Wikimedia Commons |
+| scientist.csv | 科学者 | Wikidata、Wikipedia、Wikimedia Commons |
+| sekitsui.csv | 脊椎動物 | Wikidata、Wikimedia Commons |
+| plant.csv | 植物 | Wikidata、Wikimedia Commons |
+| insect.csv | 昆虫 | Wikidata、Wikimedia Commons |
+| pokemon.csv | ポケモン | [PokéAPI](https://github.com/PokeAPI/pokeapi)、[PhyloPic](https://www.phylopic.org/) |
+| youtuber.csv | YouTuber・VTuber | Wikidata、Wikipedia、[YouTube Data API v3](https://developers.google.com/youtube/v3)、Wikimedia Commons |
+| fictional_scientist.csv | AI生成の架空科学者 | jiroshimaya/fictional-scientists |
+| fictional_anime_character.csv | AI生成の架空アニメ登場人物 | jiroshimaya/fictional-scientists |
+| fictional_daily_anime_character.csv | AI生成の架空日常アニメ登場人物 | jiroshimaya/fictional-scientists |
+| ryuko.csv | 平安〜令和の流行 | Wikipedia等を参照したキュレーション |
+| myoji.csv | 名字と読み | [SudachiDict](https://github.com/WorksApplications/SudachiDict)、Wikidata、Wikipedia |
+| gimukyoiku.csv | 小中高の学習語 | 本リポジトリでのキュレーション、[教科書LOD](https://jp-textbook.github.io/)、Wikimedia Commons |
+| municipality.csv | 現存・廃止自治体 | 総務省、[e-Stat](https://www.e-stat.go.jp/)、Wikidata、Wikipedia |
+| school.csv | 幼稚園〜大学等の学校名 | 文部科学省、総務省、Wikidata、Wikipedia |
 
 ## 利用上の注意
 
 - 本リポジトリは非公式のファンメイド・データ集であり、各作品・団体・人物とは無関係です
-- テキストや画像は、CC0、CC BY-SA 4.0、Apache License 2.0、ODbLなど、再利用可能な条件で提供された素材または本リポジトリで作成した素材から構成しています。利用時は各リストの出典欄と `image_page` に記載されたライセンスに従ってください
-- データセットの利用に関する法令遵守は利用者の責任となります
+- テキストや画像は、再利用可能な条件で提供された素材または本リポジトリで作成した素材から構成しています。各リストの出典欄と `image_page` に記載されたライセンスを確認のうえ、利用者の責任で利用してください
 - 実在人物を扱うデータの利用にあたっては、肖像権やパブリシティ権等に配慮してください
 - 掲載内容に関する権利上のご指摘は、Issueでご連絡ください
 
