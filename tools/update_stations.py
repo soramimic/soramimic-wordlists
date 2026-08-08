@@ -2,8 +2,8 @@
 """stations.csv を Wikidata + Wikipedia から差分更新する。
 
 出典:
-- 駅エンティティ・所在地・画像: Wikidata (CC0)
-- 読み: Wikipedia日本語版の記事冒頭文 (CC BY-SA 4.0)
+- 駅エンティティ・所在地・運営者・開業年・駅番号・画像: Wikidata (CC0)
+- 読み・description: Wikipedia日本語版の記事冒頭文 (CC BY-SA 4.0)
 
 方式(既存行は書き換えない):
 - 駅の同定は wikidata 列(QID)。既存行の表記・読み・id は保持する
@@ -12,6 +12,8 @@
 - csv にあって現役でなくなった駅は status=former に変更(行は消さない)
 - 新規駅の読みは Wikipedia 冒頭文「〇〇駅(よみえき)」を正規表現で抽出。
   取れない場合は pronunciation 空で追記(PRレビューで補完する)
+- 新規駅の description は記事冒頭から短い完結文を作る。既存行の説明は
+  書き換えない(初回補完は tools/enrich_station_descriptions.py)
 - 新規駅の路線名(lines列)は tools/enrich_lines.py と同じ方式で取得。
   既存行の lines はここでは触らない(補完・更新は enrich_lines.py で行う)
 
@@ -27,6 +29,8 @@ import time
 import urllib.parse
 import urllib.request
 from pathlib import Path
+
+from wpnames import make_description
 
 UA = {"User-Agent": "soramimic-wordlists-updater/1.0 (https://github.com/soramimic/soramimic-wordlists)"}
 WDQS = "https://query.wikidata.org/sparql"
@@ -111,14 +115,54 @@ def first_claim(e: dict, prop: str):
     return None
 
 
+def claim_values(e: dict, prop: str) -> list:
+    claims = [c for c in e.get("claims", {}).get(prop, [])
+              if c.get("rank") != "deprecated"
+              and c.get("mainsnak", {}).get("datavalue")]
+    preferred = [c for c in claims if c.get("rank") == "preferred"]
+    return [c["mainsnak"]["datavalue"]["value"] for c in (preferred or claims)]
+
+
+def claim_year(e: dict) -> str:
+    for prop in ("P1619", "P571"):  # 正式開業日、なければ設立日
+        years = []
+        for value in claim_values(e, prop):
+            match = re.match(r"^\+?(-?\d+)-", value.get("time", ""))
+            if match:
+                years.append(int(match.group(1)))
+        if years:
+            year = min(years)
+            return f"前{abs(year)}" if year < 0 else str(year)
+    return ""
+
+
+def sanitize_cell(value: str) -> str:
+    return value.replace(",", "、").replace('"', "”").strip()
+
+
 def fetch_details(qids: list) -> dict:
-    """QID -> {muni_qid, image_url, image_page}(wbgetentities、WDQS非依存)"""
+    """QID -> 所在地・運営者QID・開業年・駅番号・画像(WDQS非依存)。"""
     details = {}
     for i in range(0, len(qids), 50):
         for q, e in wbget(qids[i:i + 50], "claims").items():
             muni = first_claim(e, "P131")
             img = first_claim(e, "P18")
-            d = {"muni": muni["id"] if muni else None, "image": "", "image_page": ""}
+            operator_qids = sorted({
+                value["id"] for value in claim_values(e, "P137")
+                if isinstance(value, dict) and value.get("id")
+            })
+            station_codes = sorted({
+                str(value).strip() for value in claim_values(e, "P296")
+                if str(value).strip()
+            })
+            d = {
+                "muni": muni["id"] if muni else None,
+                "operator_qids": operator_qids,
+                "opened_year": claim_year(e),
+                "station_code": sanitize_cell("／".join(station_codes)),
+                "image": "",
+                "image_page": "",
+            }
             if img:
                 # カンマ等を含むファイル名はCSVを壊すので必ずURLエンコード
                 fname = urllib.parse.quote(img.replace(" ", "_"))
@@ -128,6 +172,21 @@ def fetch_details(qids: list) -> dict:
             details[q] = d
         time.sleep(0.3)
     return details
+
+
+def resolve_operator_labels(qids: set) -> dict:
+    """運営者QID -> 日本語略称(P1813)、なければ日本語ラベル。"""
+    result = {}
+    for i in range(0, len(qids), 50):
+        for q, e in wbget(sorted(qids)[i:i + 50], "claims|labels").items():
+            short = next((
+                value["text"] for value in claim_values(e, "P1813")
+                if isinstance(value, dict) and value.get("language") == "ja"
+            ), "")
+            label = e.get("labels", {}).get("ja", {}).get("value", "")
+            result[q] = short or label
+        time.sleep(0.3)
+    return result
 
 
 def resolve_admin(muni_qids: set) -> dict:
@@ -254,28 +313,46 @@ def main() -> int:
         from enrich_lines import SEP, fetch_station_lines
         line_map = fetch_station_lines()
         details = fetch_details(added_qids)
+        operator_qids = {
+            op for detail in details.values() for op in detail["operator_qids"]
+        }
+        operator_labels = resolve_operator_labels(operator_qids)
         munis = {d["muni"] for d in details.values() if d["muni"]}
         admin = resolve_admin(munis)
         extracts = fetch_extracts([active[q]["title"] for q in added_qids])
         next_id = max((int(r["id"]) for r in rows), default=-1) + 1
         for q in added_qids:
             title = active[q]["title"]
-            name, yomi = parse_station(title, extracts.get(title, ""))
-            d = details.get(q, {"muni": None, "image": "", "image_page": ""})
+            extract = extracts.get(title, "")
+            name, yomi = parse_station(title, extract)
+            desc = make_description(extract, "", DISAMBIG.sub("", title))
+            d = details.get(q, {
+                "muni": None, "operator_qids": [], "opened_year": "",
+                "station_code": "", "image": "", "image_page": "",
+            })
             muni_label, pref = admin.get(d["muni"], ("", "")) if d["muni"] else ("", "")
+            operators = sorted({
+                operator_labels[op] for op in d["operator_qids"]
+                if operator_labels.get(op)
+            })
             rows.append({"id": str(next_id), "original": name, "surface": name,
                          "pronunciation": yomi or "", "prefecture": pref,
                          "city": muni_label,
                          "lines": SEP.join(sorted(line_map.get(q, []))),
+                         "operator": sanitize_cell("／".join(operators)),
+                         "opened_year": d["opened_year"],
+                         "station_code": d["station_code"],
                          "status": "current",
                          "image": d["image"], "image_page": d["image_page"],
+                         "description": "" if desc == "NA" else desc,
                          "wikidata": q})
             mark = "" if yomi else " [要読み確認]"
             print(f"added: {name} ({pref}, {q}) id={next_id}{mark}")
             next_id += 1
 
     cols = ["id", "original", "surface", "pronunciation", "prefecture", "city",
-            "lines", "status", "image", "image_page", "wikidata"]
+            "lines", "operator", "opened_year", "station_code", "status",
+            "image", "image_page", "description", "wikidata"]
     buf = io.StringIO()
     w = csv.DictWriter(buf, fieldnames=cols, lineterminator="\n")
     w.writeheader()
