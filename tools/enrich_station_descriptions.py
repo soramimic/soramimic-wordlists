@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """stations.csv の空の description を Wikipedia/Wikidata から補完する。
 
-通常は既存の description を上書きしない。日本語版 Wikipedia の記事冒頭を優先し、
-記事が無い場合は Wikidata の日本語 description を使う。出典の更新を明示的に
-反映するときだけ --refresh で取得可能な説明を再生成する。
+通常は既存の description を上書きしない。日本語版 Wikipedia の記事冒頭から
+特徴的な文を優先し、無ければ所在地・路線の概要に開業年を添える。記事が無い場合は
+Wikidata の日本語 description を使う。抽出方式を更新したときだけ --refresh で
+取得可能な説明を再生成する。
 
 usage: python3 tools/enrich_station_descriptions.py
        python3 tools/enrich_station_descriptions.py --refresh
@@ -19,7 +20,8 @@ import urllib.parse
 import urllib.request
 from pathlib import Path
 
-from wpnames import fetch_extracts, make_description
+from update_stations import make_station_description
+from wpnames import fetch_extracts
 
 UA = {
     "User-Agent": (
@@ -93,16 +95,20 @@ def main() -> int:
         for r in targets
         if entities.get(r["wikidata"], {}).get("title")
     })
-    extracts = fetch_extracts(titles)
+    extracts = fetch_extracts(titles, limit=1200)
 
     filled = 0
     for row in targets:
         entity = entities.get(row["wikidata"], {})
         title = entity.get("title", "")
-        desc = make_description(
+        desc = make_station_description(
             extracts.get(title, ""),
             entity.get("description", ""),
             DISAMBIG.sub("", title),
+            row.get("opened_year", ""),
+            row.get("prefecture", ""),
+            row.get("city", ""),
+            row.get("operator", ""),
         )
         if desc != "NA":
             row["description"] = desc
