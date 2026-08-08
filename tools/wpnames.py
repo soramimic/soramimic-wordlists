@@ -364,6 +364,17 @@ PLAYER_ACHIEVEMENT_TERMS = {
 }
 PLAYER_DESC_TARGET = 50
 PLAYER_DESC_MAX = 65
+PLAYER_DESCRIPTION_OVERRIDES = {
+    "大谷翔平": (
+        "MLB史上初の50本塁打・50盗塁を達成し、"
+        "両リーグでMVPを受賞した投打の二刀流選手。"
+    ),
+    "王貞治": "NPB最多の通算868本塁打を記録した、国民栄誉賞受賞者第1号。",
+    "野茂英雄": "新人年に投手三冠を達成した、NPB新人王・パ・リーグMVP受賞者。",
+    "エディ・ギャラード": (
+        "アメリカ合衆国ニュージャージー州出身の元プロ野球選手（投手）。"
+    ),
+}
 
 
 def _shorten_player_description(description: str) -> str:
@@ -419,6 +430,9 @@ def make_player_description(intro: str, name: str = "") -> str:
     受賞・優勝・記録などを含む完結文があれば、重み付きで最も情報量の多い1文を
     採る。記事冒頭が所属・ポジションだけなら通常の人物説明にフォールバックする。
     """
+    override = PLAYER_DESCRIPTION_OVERRIDES.get(DISAMBIG.sub("", name))
+    if override:
+        return override
     text = clean_ws(intro)
     sentences = [sentence.strip() for sentence in text.split("。") if sentence.strip()]
     ranked = []
