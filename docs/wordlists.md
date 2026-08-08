@@ -1,7 +1,7 @@
 # リスト別の列説明
 
 全CSVに共通する `id`, `original`, `surface`, `pronunciation` は
-[README](../README.md#形式tidy-csv)を参照。ここでは各リストの固有列と、
+[README](../README.md#形式)を参照。ここでは各リストの固有列と、
 利用時に注意が必要な点を説明する。
 
 `image` は画像URL、`image_page` はライセンス・作者の確認先、
@@ -18,7 +18,7 @@
 | description | 経歴や主要実績の短い説明 |
 | image, image_page | Commonsの肖像。ない場合はチームカラーによる選手カード |
 
-選手カードはロゴ、マスコット、ユニフォームの意匠を含まない。詳細は
+選手カードはチームカラーと汎用の職業アイコンで構成する。詳細は
 [ADR 00020](adr/00020-player-cards.md)。
 
 ## football.csv
@@ -46,7 +46,7 @@
 | image, image_page | Commonsの写真。ない場合は汎用の駅名標画像 |
 | wikidata | 駅のQID |
 
-駅名標画像は鉄道会社のロゴ、社章、駅ナンバリング、ラインカラーを使わない。
+駅名標画像は白地の板に駅名とかな読みを置き、帯の色は路線名から機械的に決める。
 
 ## nations.csv
 
@@ -78,7 +78,7 @@
 | description | 主な業績の短い説明 |
 | image, image_page | Commonsの肖像。ない場合は分野別の象徴カード |
 
-象徴カードは肖像ではなく、分野の色、姓の頭文字、汎用アイコンで構成する。
+象徴カードは分野の色、姓の頭文字、汎用アイコンで構成する。
 分野の色は本リポジトリ独自の区分。詳細は
 [ADR 00025](adr/00025-scientist-symbol-cards.md)。
 
@@ -128,8 +128,8 @@
 | description | 上記の事実から機械生成した説明 |
 | image, image_page | 図鑑端末風カードと素材の確認先 |
 
-公式の図鑑説明文やキャラクター画像は収録しない。カード上のモチーフは本リポジトリ
-の解釈であり、公式設定ではない。詳細は
+カードはタイプ配色、文字、モチーフの汎用シルエットで構成する。モチーフは
+本リポジトリの解釈であり、公式設定ではない。詳細は
 [ADR 00032](adr/00032-pokemon-fact-columns.md)と
 [ADR 00033](adr/00033-pokemon-motif-silhouettes.md)。
 
@@ -148,8 +148,8 @@
 | image, image_page | Commonsの実写。ない場合は象徴カード |
 | wikidata | 本人のQID |
 
-活動名のみを収録し、本名は収録しない。VTuberの画像にアバター、チャンネルアイコン、
-サムネイルは使わない。詳細は
+人物名には活動名を採用する。VTuberの象徴カードは配色、頭文字、職業アイコンで
+構成する。詳細は
 [ADR 00029](adr/00029-youtuber-channel-description-columns.md)。
 
 ## fictional_scientist.csv
@@ -206,7 +206,7 @@
 | wikidata | 集計に使った姓アイテムのQID |
 
 同じ漢字表記に複数の読みがある場合も同じ `id` を使う。`verified=no` は誤りを
-意味しない。`rank` は世帯数や人口順位ではない。詳細は
+意味しない。詳細は
 [ADR 00038](adr/00038-myoji-wordlist.md)。
 
 ## gimukyoiku.csv
@@ -220,7 +220,8 @@
 | wikidata | 実写・図版に対応するQID |
 
 教科は9区分、学校段階は `小学校`/`中学校`/`高等学校`。画像内では生成物である
-ことを「AIイメージ」「イメージ」等で示す。詳細は
+ことを「AIイメージ」「イメージ」等で示す。高等学校は義務教育の範囲外だが、
+関連語を継続して利用できるよう収録対象に含める。詳細は
 [ADR 00022](adr/00022-gimukyoiku-wordlist.md)。
 
 ## municipality.csv
