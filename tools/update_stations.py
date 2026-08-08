@@ -30,7 +30,7 @@ import urllib.parse
 import urllib.request
 from pathlib import Path
 
-from wpnames import make_description
+from wpnames import clean_ws, make_description
 
 UA = {"User-Agent": "soramimic-wordlists-updater/1.0 (https://github.com/soramimic/soramimic-wordlists)"}
 WDQS = "https://query.wikidata.org/sparql"
@@ -51,6 +51,22 @@ DISAMBIG = re.compile(r"\s+\([^)]*\)$")
 SUFFIX = re.compile(r"(駅|停留場|停留所)$")
 KANA_NAME = re.compile(r"^[ぁ-ゖァ-ヶーゝゞ・\s]+$")
 EXCLUDE_TITLE = re.compile(r"(信号場|信号所|貨物ターミナル|貨物駅|操車場)( \(|（|$)|一覧")
+FEATURE_TERMS = (
+    (re.compile(r"(日本|国内|JR|世界).{0,12}(唯一|初|最[東西南北]|最も)"), 6),
+    (re.compile(r"(唯一|初めて|最[東西南北]|最も.{0,8}(駅|ホーム))"), 6),
+    (re.compile(r"(重要文化財|登録有形文化財|文化財|近代化産業遺産)"), 6),
+    (re.compile(r"(受賞|選定|百選|ブルネル賞|グッドデザイン賞)"), 5),
+    (re.compile(r"(秘境駅|絶景|眺望|海が見える|夜景|桜の名所)"), 5),
+    (re.compile(r"(駅名.{0,16}由来|由来する|命名された|改称された)"), 4),
+    (re.compile(r"(舞台|ロケ地|モデル|聖地|作品に登場)"), 4),
+    (re.compile(r"(建築家|デザイン|意匠|保存|復元|現存する)"), 3),
+    (re.compile(r"(スイッチバック|ループ線|地下.{0,10}ホーム|珍しい|特徴)"), 3),
+)
+LOW_VALUE_SENTENCE = re.compile(
+    r"(駅番号|事務管コード|事務管理コード|貨物事務管コード|電報略号|"
+    r"特定都区市内制度|運賃計算|管理駅)"
+)
+CONTEXT_REFERENCE = re.compile(r"(当駅|同駅|同県|同市|同区|同町|同村|同社|同線)")
 
 
 def to_hira(s: str) -> str:
@@ -241,7 +257,7 @@ def fetch_extracts(titles: list) -> dict:
         redir = {r["to"]: r["from"] for r in data["query"].get("redirects", [])}
         for p in data["query"]["pages"].values():
             orig = redir.get(p["title"], p["title"])
-            extracts[orig] = p.get("extract", "")[:300]
+            extracts[orig] = p.get("extract", "")[:1200]
         time.sleep(0.6)
     return extracts
 
@@ -274,6 +290,60 @@ def parse_station(title: str, extract: str):
     if yomi is None and KANA_NAME.match(name):
         yomi = to_hira(name)
     return name, yomi
+
+
+def resolve_station_references(
+    sentence: str, title: str, prefecture: str = "", city: str = "",
+    operator: str = "",
+) -> str:
+    """単独表示した特徴文の「当駅」「同県」等を具体名に置き換える。"""
+    replacements = {"当駅": title, "同駅": title, "同県": prefecture}
+    if city and "/" not in city and city[-1:] in "市区町村":
+        replacements[f"同{city[-1]}"] = city
+    if operator and "／" not in operator:
+        replacements["同社"] = operator
+    for old, new in replacements.items():
+        if new:
+            sentence = sentence.replace(old, new)
+    return sentence
+
+
+def make_station_description(
+    intro: str,
+    wd_desc: str,
+    title: str,
+    opened_year: str = "",
+    prefecture: str = "",
+    city: str = "",
+    operator: str = "",
+) -> str:
+    """記事導入部から特徴的な1文を優先し、無ければ概要+開業年を返す。"""
+    text = clean_ws(intro)
+    complete = [s.strip() + "。" for s in text.split("。")[:-1] if s.strip()]
+    candidates = []
+    for index, sentence in enumerate(complete):
+        score = sum(weight for pattern, weight in FEATURE_TERMS
+                    if pattern.search(sentence))
+        if LOW_VALUE_SENTENCE.search(sentence):
+            score -= 5
+        if score > 0:
+            candidates.append((score, -index, sentence))
+    if candidates:
+        sentence = resolve_station_references(
+            max(candidates)[2], title, prefecture, city, operator
+        )
+        if not CONTEXT_REFERENCE.search(sentence):
+            desc = make_description(sentence, "", title)
+            if desc != "NA":
+                return desc
+
+    first = complete[0] if complete else intro
+    desc = make_description(first, wd_desc, title)
+    if desc == "NA":
+        return desc
+    if opened_year and opened_year not in desc and len(desc) <= 105:
+        desc += f"{opened_year}年開業。"
+    return desc
 
 
 def main() -> int:
@@ -325,7 +395,6 @@ def main() -> int:
             title = active[q]["title"]
             extract = extracts.get(title, "")
             name, yomi = parse_station(title, extract)
-            desc = make_description(extract, "", DISAMBIG.sub("", title))
             d = details.get(q, {
                 "muni": None, "operator_qids": [], "opened_year": "",
                 "station_code": "", "image": "", "image_page": "",
@@ -335,11 +404,16 @@ def main() -> int:
                 operator_labels[op] for op in d["operator_qids"]
                 if operator_labels.get(op)
             })
+            operator = sanitize_cell("／".join(operators))
+            desc = make_station_description(
+                extract, "", DISAMBIG.sub("", title), d["opened_year"],
+                pref, muni_label, operator,
+            )
             rows.append({"id": str(next_id), "original": name, "surface": name,
                          "pronunciation": yomi or "", "prefecture": pref,
                          "city": muni_label,
                          "lines": SEP.join(sorted(line_map.get(q, []))),
-                         "operator": sanitize_cell("／".join(operators)),
+                         "operator": operator,
                          "opened_year": d["opened_year"],
                          "station_code": d["station_code"],
                          "status": "current",
