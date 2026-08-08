@@ -19,7 +19,8 @@ import re
 import sys
 from pathlib import Path
 
-from wpnames import is_standalone_player_description
+from wpnames import (PLAYER_DISAMBIGUATION_DESCRIPTION,
+                     is_standalone_player_description)
 
 ROOT = Path(__file__).resolve().parent.parent
 REQUIRED = ("id", "original", "surface")
@@ -86,6 +87,13 @@ def validate(path: Path):
             v = f[idx["description"]]
             if v and not is_standalone_player_description(v):
                 err(f"{path.name}:{lineno}: descriptionが単独で完結していない: "
+                    f"{v[:65]}")
+            if (
+                path.name == "football.csv"
+                and v
+                and PLAYER_DISAMBIGUATION_DESCRIPTION.search(v)
+            ):
+                err(f"{path.name}:{lineno}: descriptionが曖昧さ回避ページ由来: "
                     f"{v[:65]}")
     print(f"OK: {path.name} ({len(lines) - 1}行)")
 

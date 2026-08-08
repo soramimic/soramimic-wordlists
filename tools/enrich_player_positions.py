@@ -37,7 +37,14 @@ POSITION_OVERRIDES = {
     "baseball": {
         "王貞治": "内野手",
     },
-    "football": {},
+    "football": {
+        "長友佑都": "DF",
+        "吉田麻也": "DF",
+        "朴智星": "MF",
+        "マラドーナ": "MF",
+        "リネカー": "FW",
+        "ラウドルップ": "MF",
+    },
 }
 
 
