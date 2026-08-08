@@ -342,6 +342,50 @@ def make_description(intro: str, wd_desc: str, name: str = "",
     return desc or "NA"
 
 
+PLAYER_ACHIEVEMENT_TERMS = {
+    "MVP": 4,
+    "最優秀": 4,
+    "バロンドール": 4,
+    "国民栄誉賞": 4,
+    "文化勲章": 4,
+    "最多": 3,
+    "記録": 3,
+    "受賞": 3,
+    "殿堂": 3,
+    "得点王": 3,
+    "本塁打王": 3,
+    "首位打者": 3,
+    "達成": 2,
+    "優勝": 2,
+    "タイトル": 2,
+    "表彰": 2,
+    "選出": 1,
+    "貢献": 1,
+}
+
+
+def make_player_description(intro: str, name: str = "") -> str:
+    """選手記事の冒頭から主要実績を優先した説明文を作る。
+
+    受賞・優勝・記録などを含む完結文があれば、重み付きで最も情報量の多い1文を
+    採る。記事冒頭が所属・ポジションだけなら通常の人物説明にフォールバックする。
+    """
+    text = clean_ws(intro)
+    sentences = [sentence.strip() for sentence in text.split("。") if sentence.strip()]
+    ranked = []
+    for index, sentence in enumerate(sentences):
+        score = sum(
+            weight * sentence.count(term)
+            for term, weight in PLAYER_ACHIEVEMENT_TERMS.items()
+        )
+        if score:
+            ranked.append((score, -index, sentence))
+    if ranked:
+        sentence = max(ranked)[2] + "。"
+        return make_description(sentence, "", name)
+    return make_description(intro, "", name)
+
+
 def titles_to_qids(titles: list) -> dict:
     """記事タイトル -> Wikidata QID。曖昧さ回避ページは除外"""
     result = {}

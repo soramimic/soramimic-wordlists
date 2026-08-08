@@ -21,8 +21,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from wpnames import (DISAMBIG, KATAKANA, LINK, api, fetch_extracts,
-                     images_for_titles, parse_person, template_wikitext, vnorm,
-                     write_csv_no_trailing_newline)
+                     images_for_titles, make_player_description, parse_person,
+                     template_wikitext, vnorm, write_csv_no_trailing_newline)
 
 CSV_PATH = Path(__file__).resolve().parent.parent / "football.csv"
 NOISE = re.compile(r"登録選手|キャプテン|一覧|Category|ユース|アカデミー")
@@ -56,13 +56,18 @@ def club_players(club: str) -> dict:
         mg = re.search(r"\|\s*group\d+\s*=\s*(.+)", line)
         if mg:
             g = mg.group(1).strip()
-            mode = "player" if g in ("選手", "GK", "DF", "MF", "FW") else None
-        if mode != "player" or not line.strip().startswith("*"):
+            mode = g if g in ("GK", "DF", "MF", "FW") else (
+                "player" if g == "選手" else None
+            )
+        if mode is None or not line.strip().startswith("*"):
             continue
         for t, disp in LINK.findall(line):
             if NOISE.search(t):
                 continue
-            players.setdefault(DISAMBIG.sub("", t.strip()), (disp or t).strip())
+            players.setdefault(
+                DISAMBIG.sub("", t.strip()),
+                ((disp or t).strip(), mode if mode != "player" else ""),
+            )
             break  # 行の最初のリンクのみ(注釈リンクを拾わない)
     return players
 
@@ -72,6 +77,8 @@ def main() -> int:
     for r in old_rows:
         r.setdefault("image", "")
         r.setdefault("image_page", "")
+        r.setdefault("description", "")
+        r.setdefault("position", "")
     full_to_id = {vnorm(r["surface"].replace(" ", "")): r["id"]
                   for r in old_rows if r["type"] == "full"}
     rows_by_id = {}
@@ -97,8 +104,8 @@ def main() -> int:
     # 現役ロースター全員の画像(リンク先記事=本人なので同姓同名事故なし)
     images = images_for_titles(sorted(players))
     print(f"画像あり: {len(images)}/{len(players)}")
-    img_updates = 0
-    for article in players:
+    img_updates = position_updates = 0
+    for article, (_display, position) in players.items():
         gid = full_to_id.get(vnorm(article.replace(" ", "")))
         if gid is None:
             continue
@@ -106,7 +113,11 @@ def main() -> int:
             if not r["image"] and article in images:
                 r["image"], r["image_page"] = images[article]
                 img_updates += 1
+            if not r["position"] and position:
+                r["position"] = position
+                position_updates += 1
     print(f"既存行への画像付与: {img_updates}行")
+    print(f"既存行へのposition付与: {position_updates}行")
 
     new_players = {a: v for a, v in players.items()
                    if vnorm(a.replace(" ", "")) not in existing_full}
@@ -141,16 +152,19 @@ def main() -> int:
             rows = [(original, f"{f_y} {g_y}", "full"),
                     (f_s, f_y, "family"), (g_s, g_y, "given")]
         img, img_page = images.get(article, ("", ""))
+        _display, position = new_players[article]
+        description = make_player_description(text, article)
         for surface, pron, typ in rows:
             added.append({"id": str(next_id), "original": original,
                           "surface": surface, "pronunciation": pron,
                           "type": typ, "category": "player",
-                          "image": img, "image_page": img_page})
+                          "image": img, "image_page": img_page,
+                          "description": description, "position": position})
         print(f"added: {original}")
         next_id += 1
 
-    cols = ["id", "original", "surface", "pronunciation", "type", "category",
-            "image", "image_page"]
+    cols = ["id", "original", "team", "surface", "pronunciation", "type",
+            "category", "image", "image_page", "position", "description"]
     write_csv_no_trailing_newline(CSV_PATH, cols, old_rows + added)
 
     n_add = len({r["id"] for r in added})
