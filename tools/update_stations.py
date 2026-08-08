@@ -67,6 +67,9 @@ LOW_VALUE_SENTENCE = re.compile(
     r"特定都区市内制度|運賃計算|管理駅)"
 )
 CONTEXT_REFERENCE = re.compile(r"(当駅|同駅|同県|同市|同区|同町|同村|同社|同線)")
+STATION_COPULA = re.compile(
+    r"((?:駅|停留場|停留所)(?:（廃駅）)?)で(?:ある|あった)。"
+)
 
 
 def to_hira(s: str) -> str:
@@ -308,6 +311,11 @@ def resolve_station_references(
     return sentence
 
 
+def nominalize_station_description(description: str) -> str:
+    """駅種別を説明する定型的な「駅である。」だけを体言止めにする。"""
+    return STATION_COPULA.sub(r"\1。", description)
+
+
 def make_station_description(
     intro: str,
     wd_desc: str,
@@ -335,7 +343,7 @@ def make_station_description(
         if not CONTEXT_REFERENCE.search(sentence):
             desc = make_description(sentence, "", title)
             if desc != "NA":
-                return desc
+                return nominalize_station_description(desc)
 
     first = complete[0] if complete else intro
     desc = make_description(first, wd_desc, title)
@@ -343,7 +351,7 @@ def make_station_description(
         return desc
     if opened_year and opened_year not in desc and len(desc) <= 105:
         desc += f"{opened_year}年開業。"
-    return desc
+    return nominalize_station_description(desc)
 
 
 def main() -> int:
