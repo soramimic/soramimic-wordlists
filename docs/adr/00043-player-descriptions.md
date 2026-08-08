@@ -36,6 +36,8 @@
 - 現役選手のポジションはWikipediaのロースターテンプレートの区分を優先し、
   歴代選手はWikidataの選手のポジション(P413)から
   `tools/enrich_player_positions.py` で空欄だけ補完する
+- Wikidataで取得できない著名選手の明白なポジションは、確認済みの固定値で
+  補完する（王貞治=`内野手`）
 
 ## Consequences
 

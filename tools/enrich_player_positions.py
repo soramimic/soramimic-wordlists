@@ -33,6 +33,12 @@ POSITION_ORDER = {
     "baseball": ("投手", "捕手", "内野手", "外野手"),
     "football": ("GK", "DF", "MF", "FW"),
 }
+POSITION_OVERRIDES = {
+    "baseball": {
+        "王貞治": "内野手",
+    },
+    "football": {},
+}
 
 
 def load_cache() -> dict:
@@ -262,7 +268,10 @@ def enrich(kind: str, cache: dict) -> None:
 
     filled = 0
     for group_id, name in names.items():
-        position = roster_positions.get(key_of(name), "")
+        position = (
+            POSITION_OVERRIDES[kind].get(key_of(name))
+            or roster_positions.get(key_of(name), "")
+        )
         if not position:
             qid = cache["titles"].get(title_key(kind, name), "")
             labels = [
