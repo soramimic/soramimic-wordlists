@@ -168,6 +168,14 @@ def parse_person(name: str, text: str):
 # scientist / youtuber で共用する(詳細は docs/adr/00009, 00029)。
 DESC_TARGET = 90  # description の目安文字数(完結文をここまで連結)
 DESC_HARD = 120   # 1文がこれを超える場合のみ「、」境界で切る
+ACHIEVEMENT_WORDS = (
+    "発見", "発明", "開発", "提唱", "証明", "解明", "確立", "創始", "考案",
+    "導入", "構築", "定式化", "体系化", "測定", "観測", "実験",
+    "法則", "定理", "公式", "方程式", "効果", "現象", "模型", "モデル", "予言",
+    "分類", "計算", "著書", "教科書", "業績", "貢献", "受賞", "ノーベル", "命名",
+    "記述", "製作", "設計", "同定", "合成", "分析", "原理", "仮説", "学説",
+    "開拓", "実現", "刷新", "名著", "先駆者", "基礎を築", "道を開",
+)
 
 # 冒頭の「{人名}は、」除去まわり
 HIRAGANA = re.compile(r"[ぁ-ん]")
@@ -278,7 +286,18 @@ def _cut_at_comma(s: str, target: int = DESC_TARGET, hard: int = DESC_HARD) -> s
     return (s[:pos] if pos >= 30 else s[:target]).rstrip("、 ") + "。"
 
 
-def _assemble(text: str) -> str:
+def has_achievement(text: str) -> bool:
+    """説明文に具体的な業績を示す語が含まれるか。"""
+    text = text or ""
+    if any(word in text for word in ACHIEVEMENT_WORDS):
+        return True
+    # 「研究者」「研究所」「理論物理学者」のような肩書き・所属だけでは
+    # 業績とみなさず、具体的な研究・理論への言及だけを拾う。
+    return bool(re.search(r"研究(?!者|所|院|科|部|室|機関|職)", text)
+                or re.search(r"理論(?!物理学者|化学者|数学者|生物学者)", text))
+
+
+def _assemble(text: str, prefer_achievement: bool = False) -> str:
     """完結した文(「。」区切り)だけを目安 DESC_TARGET 字まで連結する。常に
     「。」で終わる。1文目が長すぎる場合のみ「、」境界で切る。"""
     text = text.strip("、 ").strip()
@@ -288,6 +307,11 @@ def _assemble(text: str) -> str:
     segs = [s.strip() for s in text.split("。")]
     complete = [s for s in (segs if ends_complete else segs[:-1]) if s]
     if complete:
+        if prefer_achievement:
+            start = next((i for i, s in enumerate(complete)
+                          if has_achievement(s)), None)
+            if start is not None:
+                complete = complete[start:]
         out = ""
         for s in complete:
             cand = out + s + "。"
@@ -302,13 +326,14 @@ def _assemble(text: str) -> str:
     return _cut_at_comma(frag) if frag else ""
 
 
-def make_description(intro: str, wd_desc: str, name: str = "") -> str:
+def make_description(intro: str, wd_desc: str, name: str = "",
+                     prefer_achievement: bool = False) -> str:
     """動画キャプションに使える完結文を作る。Wikipedia 冒頭文を優先し、先頭の
     生没年カッコと冒頭の「{人名}は、」を除去してから「。」区切りで完結文を連結。
     無ければ Wikidata の ja description(完結句)にフォールバック、どちらも
     無ければ NA。"""
     text = strip_name_prefix(strip_lead_paren(clean_ws(intro)), name)
-    desc = _sanitize_desc(_assemble(text)).strip()
+    desc = _sanitize_desc(_assemble(text, prefer_achievement)).strip()
     if desc and not desc.endswith("。"):
         desc += "。"
     if not desc:

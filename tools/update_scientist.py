@@ -39,6 +39,7 @@ usage: python3 tools/update_scientist.py
 
 import csv
 import datetime
+import json
 import os
 import pickle
 import sys
@@ -47,11 +48,13 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from wpnames import (DISAMBIG, KATA2HIRA, KATAKANA, fetch_extracts,
-                     make_description, parse_person, sparql,
+                     has_achievement, make_description, parse_person, sparql,
                      write_csv_no_trailing_newline)
 
 OLD_CSV = Path(__file__).resolve().parent.parent / "physicist.csv"
 NEW_CSV = Path(__file__).resolve().parent.parent / "scientist.csv"
+ACHIEVEMENT_OVERRIDES = (
+    Path(__file__).resolve().parent / "scientist_achievement_overrides.json")
 MIN_SITELINKS = 20
 CURRENT_YEAR = datetime.date.today().year
 CACHE = os.environ.get("SCIENTIST_CACHE")  # 開発用: 取得結果の pickle キャッシュ先
@@ -180,6 +183,8 @@ DESCRIPTION_OVERRIDES = {
     "リチャード・ストールマン": "GNUプロジェクトを創始しEmacsやGCCを開発して自由ソフトウェアの技術基盤を築いた。",
     "イワン・エフレーモフ": "化石が地層に残る過程を研究するタフォノミーを創始した古生物学者・SF作家。",
 }
+DESCRIPTION_OVERRIDES.update(
+    json.loads(ACHIEVEMENT_OVERRIDES.read_text(encoding="utf-8")))
 
 # 対象外にする人物(norm() 済みの記事名 = CSV の original と同じキー)。
 # P106 に上表の職業が付いているが、実際には研究職・研究業績がなく著名性が
@@ -591,7 +596,8 @@ def fetch_all(persons: dict):
     attrs = fetch_attrs(sorted(persons))
     titles = sorted({p["title"] for p in persons.values()})
     print(f"記事冒頭を取得中... {len(titles)}件", flush=True)
-    extracts = fetch_extracts(titles)
+    # 日本語版の第1文が肩書き・所属だけでも、後続の主要業績まで取得できる長さ。
+    extracts = fetch_extracts(titles, limit=600)
     if CACHE:
         with open(CACHE, "wb") as fh:
             pickle.dump((attrs, extracts), fh)
@@ -637,7 +643,8 @@ def main() -> int:
             "attr": attrs.get(qid, {}),
             "desc": make_description(extracts.get(p["title"], ""),
                                      attrs.get(qid, {}).get("wd_desc", ""),
-                                     DISAMBIG.sub("", p["title"])),
+                                     DISAMBIG.sub("", p["title"]),
+                                     prefer_achievement=True),
         }
     if collisions:
         print(f"照合キー衝突(同名別人) {collisions}件: サフィックス無しを優先", flush=True)
@@ -686,6 +693,10 @@ def main() -> int:
                         and not description_needs_refresh(replacement)):
                     r["description"] = replacement
                     filled += 1
+            elif (not has_achievement(r.get("description", ""))
+                  and has_achievement(fresh["description"])):
+                r["description"] = fresh["description"]
+                filled += 1
             # 死没は不可逆なので 存命→物故 だけは反映する
             if r["status"] == "存命" and fresh["status"] == "物故":
                 r["status"] = "物故"
