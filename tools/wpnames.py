@@ -362,12 +362,13 @@ PLAYER_ACHIEVEMENT_TERMS = {
     "選出": 1,
     "貢献": 1,
 }
-PLAYER_DESC_MAX = 50
+PLAYER_DESC_TARGET = 50
+PLAYER_DESC_MAX = 65
 
 
 def _shorten_player_description(description: str) -> str:
-    """カード上で約2行に収まるよう、選手説明を最大50文字にする。"""
-    if len(description) <= PLAYER_DESC_MAX:
+    """約2行の50文字を目安に整え、完結文は65文字まで許容する。"""
+    if len(description) <= PLAYER_DESC_TARGET:
         return description
     compact = re.sub(r"（[^（）]*）", "", description)
     compact = re.sub(r"\([^()]*\)", "", compact)
