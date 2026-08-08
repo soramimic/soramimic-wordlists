@@ -362,6 +362,54 @@ PLAYER_ACHIEVEMENT_TERMS = {
     "選出": 1,
     "貢献": 1,
 }
+PLAYER_DESC_MAX = 50
+
+
+def _shorten_player_description(description: str) -> str:
+    """カード上で約2行に収まるよう、選手説明を最大50文字にする。"""
+    if len(description) <= PLAYER_DESC_MAX:
+        return description
+    compact = re.sub(r"（[^（）]*）", "", description)
+    compact = re.sub(r"\([^()]*\)", "", compact)
+    compact = re.sub(r"[\s　]+", " ", compact).strip()
+    if len(compact) <= PLAYER_DESC_MAX:
+        return compact
+    return compact[:PLAYER_DESC_MAX - 1].rstrip("、。 ") + "…"
+
+
+def _best_player_achievement_clause(sentence: str) -> str:
+    """長い実績列挙から、受賞・優勝・記録を最もよく表す1節を選ぶ。"""
+    if len(sentence) <= PLAYER_DESC_MAX:
+        return sentence
+    titles = re.search(
+        r"(\d+度の[^、。]{1,20}優勝と\d+度の[^、。]{1,30}優勝)",
+        sentence,
+    )
+    if titles and len(titles.group(1)) <= PLAYER_DESC_MAX:
+        return titles.group(1)
+    clauses = [clause.strip() for clause in sentence.split("、") if clause.strip()]
+    ranked = []
+    for index, clause in enumerate(clauses):
+        score = sum(
+            weight * clause.count(term)
+            for term, weight in PLAYER_ACHIEVEMENT_TERMS.items()
+        )
+        if score:
+            ranked.append((score, -index, clause))
+    if not ranked:
+        return sentence
+    clause = max(ranked)[2]
+    index = clauses.index(clause)
+    clause = re.sub(r"^(?:また|さらに|なお)", "", clause).strip()
+    if index and re.match(r"^(?:チーム|大会|同年|同大会|その)", clause):
+        contextual = clauses[index - 1] + "、" + clause
+        if len(contextual) <= PLAYER_DESC_MAX:
+            clause = contextual
+    if clause.endswith("し"):
+        clause += "た"
+    elif clause.endswith("であり"):
+        clause = clause[:-3] + "である"
+    return clause
 
 
 def make_player_description(intro: str, name: str = "") -> str:
@@ -381,9 +429,10 @@ def make_player_description(intro: str, name: str = "") -> str:
         if score:
             ranked.append((score, -index, sentence))
     if ranked:
-        sentence = max(ranked)[2] + "。"
-        return make_description(sentence, "", name)
-    return make_description(intro, "", name)
+        sentence = _best_player_achievement_clause(max(ranked)[2]) + "。"
+        return _shorten_player_description(make_description(sentence, "", name))
+    first = (sentences[0] + "。") if sentences else intro
+    return _shorten_player_description(make_description(first, "", name))
 
 
 def titles_to_qids(titles: list) -> dict:
