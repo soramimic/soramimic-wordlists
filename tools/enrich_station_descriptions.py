@@ -2,9 +2,9 @@
 """stations.csv の空の description を Wikipedia/Wikidata から補完する。
 
 通常は既存の description を上書きしない。日本語版 Wikipedia の記事冒頭から
-特徴的な文を優先し、無ければ所在地・路線の概要に開業年を添える。記事が無い場合は
-Wikidata の日本語 description を使う。抽出方式を更新したときだけ --refresh で
-取得可能な説明を再生成する。
+特徴的な文を優先し、無ければ開業年だけにする。記事に特徴文が無い場合は
+Wikidata の日本語 description に特徴があれば使う。抽出方式を更新したときだけ
+--refresh で取得可能な説明を再生成する。
 
 usage: python3 tools/enrich_station_descriptions.py
        python3 tools/enrich_station_descriptions.py --refresh
@@ -20,7 +20,7 @@ import urllib.parse
 import urllib.request
 from pathlib import Path
 
-from update_stations import make_station_description
+from update_stations import compact_station_description, make_station_description
 from wpnames import fetch_extracts
 
 UA = {
@@ -113,13 +113,20 @@ def main() -> int:
             row.get("prefecture", ""),
             row.get("city", ""),
             row.get("operator", ""),
-            row.get("lines", ""),
         )
         if desc != "NA":
             row["description"] = desc
             filled += 1
         elif row.get("description", "").rstrip().endswith(("…", "...")):
             row["description"] = ""
+
+    if refresh:
+        # Wikidataの無い旧駅も含め、以前の抽出方式で作った所在地・路線文を残さない。
+        for row in rows:
+            desc = compact_station_description(
+                row.get("description", ""), row.get("opened_year", "")
+            )
+            row["description"] = "" if desc == "NA" else desc
 
     buf = io.StringIO()
     writer = csv.DictWriter(
