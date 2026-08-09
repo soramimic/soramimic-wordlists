@@ -57,7 +57,7 @@ def fetch_entities(qids: list[str]) -> dict[str, dict[str, str]]:
                 with urllib.request.urlopen(req, timeout=60) as response:
                     entities = json.load(response).get("entities", {})
                 break
-            except Exception as ex:
+            except (OSError, ValueError) as ex:
                 last_error = ex
                 print(f"Wikidata retry {attempt}: {ex}")
                 time.sleep(5 * (attempt + 1))
@@ -87,7 +87,11 @@ def main() -> int:
 
     targets = [
         r for r in rows
-        if r.get("wikidata") and (refresh or not r.get("description"))
+        if r.get("wikidata") and (
+            refresh
+            or not r.get("description")
+            or r.get("description", "").rstrip().endswith(("…", "..."))
+        )
     ]
     entities = fetch_entities(sorted({r["wikidata"] for r in targets}))
     titles = sorted({
@@ -109,10 +113,13 @@ def main() -> int:
             row.get("prefecture", ""),
             row.get("city", ""),
             row.get("operator", ""),
+            row.get("lines", ""),
         )
         if desc != "NA":
             row["description"] = desc
             filled += 1
+        elif row.get("description", "").rstrip().endswith(("…", "...")):
+            row["description"] = ""
 
     buf = io.StringIO()
     writer = csv.DictWriter(

@@ -106,7 +106,9 @@ SELECT DISTINCT ?s ?line ?lineLabel ?op ?opLabel ?opShort ?stOp WHERE {{
 
 # 記事中のwikiリンク。File:等と#アンカーは路線名として除外する
 WIKILINK = re.compile(r"\[\[([^\[\]|]+)(?:\|([^\[\]]*))?\]\]")
-FIELD = re.compile(r"^\s*\|\s*(所属事業者|所属路線\d*)\s*=\s*(.*)", re.M)
+FIELD = re.compile(
+    r"^\s*\|\s*(所属事業者|所属路線\d*)\s*=\s*(.*)", re.MULTILINE,
+)
 
 
 def _first_link_text(value: str) -> str:
@@ -198,7 +200,7 @@ def main() -> int:
 
     with CSV_PATH.open(encoding="utf-8") as f:
         reader = csv.DictReader(f)
-        cols = list(reader.fieldnames)
+        cols = list(reader.fieldnames or [])
         rows = list(reader)
     if "lines" not in cols:
         cols.insert(cols.index("city") + 1, "lines")
