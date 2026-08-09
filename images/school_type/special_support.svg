@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" role="img">
+<title>特別支援学校のイメージ画像</title>
+<rect width="320" height="200" rx="16" fill="#f2eaf2"/>
+<circle cx="160" cy="76" r="62" fill="#fff" opacity=".55"/>
+<path d="M72 126 V83 L104 67 V126 M104 126 V74 H216 V126 M216 126 V83 L248 67 V126" fill="#fff" stroke="#84608b" stroke-width="6" stroke-linejoin="round"/>
+<path d="M142 126 V105 H178 V126" fill="#f2eaf2" stroke="#84608b" stroke-width="5"/>
+<path d="M88 99 H96 M88 113 H96 M224 99 H232 M224 113 H232" stroke="#84608b" stroke-width="6" stroke-linecap="round"/>
+<circle cx="160" cy="55" r="12" fill="#84608b"/><path d="M160 70 C140 54 122 70 132 86 C142 101 160 108 160 108 C160 108 178 101 188 86 C198 70 180 54 160 70 Z" fill="#84608b"/>
+<rect x="0" y="139" width="320" height="61" fill="#84608b"/>
+<text x="160" y="177" text-anchor="middle" fill="#fff" font-size="25" font-weight="700" font-family="Noto Sans JP,Hiragino Sans,sans-serif">特別支援学校</text>
+<rect x="237" y="12" width="70" height="25" rx="12.5" fill="#84608b"/>
+<text x="272" y="30" text-anchor="middle" fill="#fff" font-size="13" font-weight="700" font-family="Noto Sans JP,Hiragino Sans,sans-serif">イメージ</text>
+</svg>

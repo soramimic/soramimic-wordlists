@@ -17,6 +17,7 @@
   Wikidata の altLabel からしか作らない(詳細は ADR 00037)
 - id は学校コードで固定する。既存 school.csv にある学校コードの id は変えず、
   新規の学校だけ末尾に追記する(ADR 00014)
+- image / image_page は別の画像補完ツールが付与し、全件再生成時も学校コードで保持する
 
 usage: python3 tools/update_school.py [--refresh]
   --refresh を付けると tools/.cache/ の取得結果を捨てて引き直す
@@ -56,7 +57,8 @@ ROOT = Path(__file__).resolve().parent.parent
 CSV_PATH = ROOT / "school.csv"
 CACHE = Path(__file__).resolve().parent / ".cache"
 COLS = ["id", "original", "surface", "pronunciation", "type", "school_type",
-        "founder", "prefecture", "city", "status", "code", "wikidata"]
+        "founder", "prefecture", "city", "status", "code", "image",
+        "image_page", "wikidata"]
 
 # 名簿の件数がこの範囲を外れたらソース異常とみなして中断する
 MIN_SCHOOLS, MAX_SCHOOLS = 40000, 90000
@@ -742,13 +744,16 @@ def main() -> int:
     extracts = fetch_extracts(titles, refresh)
 
     # 既存の id を学校コードで引き継ぐ(ADR 00014)
-    old_ids, old_rows = {}, []
+    old_ids, old_rows, old_images = {}, [], {}
     if CSV_PATH.exists():
         with CSV_PATH.open(encoding="utf-8") as f:
             old_rows = list(csv.DictReader(f))
         for r in old_rows:
             if r.get("code"):
                 old_ids.setdefault(r["code"], r["id"])
+                if r.get("image"):
+                    old_images.setdefault(r["code"],
+                                          (r["image"], r.get("image_page", "")))
     next_id = max((int(v) for v in old_ids.values()), default=-1) + 1
 
     rows = []
@@ -761,6 +766,12 @@ def main() -> int:
     # 名簿から消えた学校の行は落とさずそのまま残す
     kept = [r for r in old_rows if r.get("code") and r["code"] not in seen_codes]
     rows.extend(kept)
+    # 画像収集は別ツールで行う。全件再生成時にも既存画像を学校コードで引き継ぐ。
+    for r in rows:
+        r.setdefault("image", "")
+        r.setdefault("image_page", "")
+        if not r["image"] and r.get("code") in old_images:
+            r["image"], r["image_page"] = old_images[r["code"]]
     order = {"common": 0, "name": 1, "nick": 2}
     rows.sort(key=lambda r: (int(r["id"]), order.get(r["type"], 9)))
 

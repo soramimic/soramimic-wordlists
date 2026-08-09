@@ -36,8 +36,8 @@
 | ryuko.csv | 平安〜令和の流行 | Wikipedia等を参照したキュレーション |
 | myoji.csv | 名字と読み | [SudachiDict](https://github.com/WorksApplications/SudachiDict)、Wikidata、Wikipedia |
 | gimukyoiku.csv | 小中高の学習語 | 本リポジトリでのキュレーション、[教科書LOD](https://jp-textbook.github.io/)、Wikimedia Commons |
-| municipality.csv | 現存・廃止自治体 | 総務省、[e-Stat](https://www.e-stat.go.jp/)、Wikidata、Wikipedia |
-| school.csv | 幼稚園〜大学等の学校名 | 文部科学省、総務省、Wikidata、Wikipedia |
+| municipality.csv | 現存・廃止自治体 | 総務省、[e-Stat](https://www.e-stat.go.jp/)、Wikidata、Wikipedia、Wikimedia Commons |
+| school.csv | 幼稚園〜大学等の学校名 | 文部科学省、総務省、Wikidata、Wikipedia、Wikimedia Commons |
 
 ## 利用上の注意
 

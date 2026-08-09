@@ -21,6 +21,7 @@
   QID、無ければ 都道府県+親+名称)から引き継ぎ、新規のみ連番を増やす。列の値は
   今回取得できたときだけ上書きする
 - 総務省のコード表から消えた現存行は status=former に落とす(行は消さない)
+- image / image_page は別の画像補完ツールが付与し、全件再生成時も保持する
 
 取得結果は tools/.cache/municipality/(Git管理外)に保存し、再実行時は
 そこから読む。全件引き直すときは --refresh。
@@ -64,7 +65,8 @@ FORMER_CLASS = "Q18663566"
 PREF_CLASS = "Q50337"
 
 COLS = ["id", "original", "surface", "pronunciation", "type", "prefecture",
-        "parent", "status", "population", "code", "description", "wikidata"]
+        "parent", "status", "population", "code", "description", "image",
+        "image_page", "wikidata"]
 
 SUFFIXES = ("市", "区", "町", "村")
 # 接尾辞のカナ。同じ漢字でも自治体ごとに読みが違う(町=チョウ/マチ、
@@ -438,6 +440,8 @@ def build_group(g: dict, existing: dict) -> list:
         "population": keep(as_int(g["population"]), of.get("population", "")),
         "code": keep(g["code"], of.get("code", "")),
         "description": keep(safe(g["description"]), of.get("description", "")),
+        "image": of.get("image", ""),
+        "image_page": of.get("image_page", ""),
         "wikidata": keep(g["wikidata"], of.get("wikidata", "")),
     }
     kana = keep(g["pronunciation"], of.get("pronunciation", ""))

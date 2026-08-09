@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" role="img">
+<title>大学のイメージ画像</title>
+<rect width="320" height="200" rx="16" fill="#eee9e3"/>
+<circle cx="160" cy="76" r="62" fill="#fff" opacity=".55"/>
+<path d="M72 126 V83 L104 67 V126 M104 126 V74 H216 V126 M216 126 V83 L248 67 V126" fill="#fff" stroke="#795e47" stroke-width="6" stroke-linejoin="round"/>
+<path d="M142 126 V105 H178 V126" fill="#eee9e3" stroke="#795e47" stroke-width="5"/>
+<path d="M88 99 H96 M88 113 H96 M224 99 H232 M224 113 H232" stroke="#795e47" stroke-width="6" stroke-linecap="round"/>
+<path d="M122 69 L160 43 L198 69 Z" fill="#795e47"/><rect x="128" y="69" width="64" height="7" fill="#795e47"/><path d="M134 78 V105 M151 78 V105 M169 78 V105 M186 78 V105" stroke="#795e47" stroke-width="7"/>
+<rect x="0" y="139" width="320" height="61" fill="#795e47"/>
+<text x="160" y="177" text-anchor="middle" fill="#fff" font-size="25" font-weight="700" font-family="Noto Sans JP,Hiragino Sans,sans-serif">大学</text>
+<rect x="237" y="12" width="70" height="25" rx="12.5" fill="#795e47"/>
+<text x="272" y="30" text-anchor="middle" fill="#fff" font-size="13" font-weight="700" font-family="Noto Sans JP,Hiragino Sans,sans-serif">イメージ</text>
+</svg>
