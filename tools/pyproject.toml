@@ -3,7 +3,9 @@ name = "soramimic-wordlists-tools"
 version = "0.1.0"
 description = "単語リストの整備スクリプト(野球選手表の差分更新など)"
 requires-python = ">=3.11"
-dependencies = []
+dependencies = [
+    "pillow>=10.1",
+]
 
 [dependency-groups]
 dev = [
