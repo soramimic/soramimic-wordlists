@@ -54,14 +54,15 @@
 |---|---|
 | status | `current`(現存)/`former`(消滅国・旧称) |
 | capital, continent | 首都と大陸。複数は `/` 区切り |
-| population, area_km2 | 人口と面積(km²) |
-| established_year | 成立年。紀元前は `前660` の形式 |
+| population, population_year | 人口と、その人口値の基準年 |
+| area_km2 | 面積(km²) |
+| established_year, ended_year | 成立年と終了年。紀元前は `前660` の形式。現存行の終了年は空欄 |
 | description | 国の短い説明 |
 | image, image_page | Commonsの国旗と確認先 |
 | wikidata | 国のQID |
 
 人口はWikidataの最新の時点付き値。成立年は最古の成立日であり、現在の政体の
-発足年とは限らない。
+発足年とは限らない。終了年は旧国家の解散年または旧称が置き換わった年とする。
 
 ## scientist.csv
 
