@@ -240,8 +240,9 @@ python3 tools/audit_taxa.py sekitsui  # 既存行が想定した界・門・綱�
   debut_year(活動開始年)・channel(メインチャンネル名)・description(短い説明文)付き
   (debut_year は P2031(活動開始)を優先し、無ければ P2397 の修飾子 P580 =
   チャンネル開設年を使う。channel は P2397 の修飾子 P1810 で、複数チャンネルは
-  登録者数 P3744 が最大の1本。description は scientist と同じ生成方式で
-  記事冒頭から目安90字の完結文。**記事冒頭には本名がよく書かれているので、
+  登録者数 P3744 が最大の1本。description は ADR 00045 の専用生成方式で、
+  活動内容・実績を中心に目安50字、通常65字以内の完結文にする。
+  **記事冒頭には本名がよく書かれているので、
   「本名は〜」の文と「{本名}は、活動名として知られる〜」の主語は description に
   入れる前に機械的に落としている**。詳細は ADR 00011, 00012, 00023, 00029)。
   **`subscribers`(メインチャンネルの登録者数)だけは別スクリプトで、毎回全行を
@@ -251,6 +252,10 @@ python3 tools/audit_taxa.py sekitsui  # 既存行が想定した界・門・綱�
   # 要 YouTube Data API v3 のキー。環境変数 YOUTUBE_API_KEY か
   # ~/.config/soramimic/youtube_api_key に置く(キーが無ければスキップして正常終了)
   python3 tools/update_youtuber_subscribers.py
+  ```
+  説明文の基準を変更して既存行を再生成するときは、通常更新とは分けて明示的に行う:
+  ```sh
+  python3 tools/enrich_youtuber_descriptions.py --refresh
   ```
   チャンネルIDはWikidataのP2397から引き、1人が複数チャンネルを持つ場合は
   **最大の登録者数**を採る(`channel` のメイン判定と同じ基準)。値はYouTubeが

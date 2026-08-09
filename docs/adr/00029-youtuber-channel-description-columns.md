@@ -4,7 +4,7 @@
 - Date: 2026-07-30
 - Supersedes: none
 - Superseded by: none
-- Related: 00011(youtuber/vtuber リストの収録基準) / 00014(既存行を劣化させない・空欄補完のみ) / 00023(debut_year をチャンネル開設年で補う)
+- Related: 00011(youtuber/vtuber リストの収録基準) / 00014(既存行を劣化させない・空欄補完のみ) / 00023(debut_year をチャンネル開設年で補う) / 00045(descriptionの短文化)
 
 ## Context
 
@@ -44,11 +44,9 @@ Wikidata 側の実測(対象1101人、2026-07時点):
    - チャンネル名と登録者数は同じ P2397 文の修飾子なので、`GROUP_CONCAT` で
      別々に集約すると対応が失われる。`"登録者数@@チャンネル名"` に連結して
      1変数で集約し、どれがメインかは Python 側(`_main_channel`)で決める
-2. **`description` 列 = scientist と同じ生成方式**。記事冒頭文から先頭の生没年
-   カッコと冒頭の「{人名}は、」を除去し、「。」区切りで完結文を目安90字まで連結。
-   記事冒頭が無ければ Wikidata の ja description、どちらも無ければ `NA`。
-   実装は `update_scientist.py` にあった `make_description` とその補助関数を
-   **`tools/wpnames.py` へ移して共用する**(scientist の出力は変えない)
+2. **`description` 列は記事冒頭または Wikidata の ja description から作る**。当初は
+   scientist と同じ方式だったが、短文化・活動内容の優先・文脈依存表現の除去は
+   [ADR 00045](00045-youtuber-description-curation.md)で定める専用方式に移行する。
 3. **description に本名を持ち込まない**(`yt_common.deidentify`)。このリストは
    活動名だけを収録する方針(ADR 00011)だが、**ja.wikipedia の記事冒頭には本名が
    よく書かれている**。実測では1068記事のうち80記事の冒頭から作った description に
