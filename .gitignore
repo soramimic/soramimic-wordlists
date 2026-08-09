@@ -1,5 +1,7 @@
 __pycache__/
 *.pyc
+# AI生成・QCの中間成果物。配布画像はGitHub Releaseへ置く
+.generated/
 # 取得結果の途中経過(enrich_*.py の再開用キャッシュ)
 tools/.cache/
 tools/football_jleague_candidates.csv
