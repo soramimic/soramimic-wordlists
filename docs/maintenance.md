@@ -31,6 +31,8 @@ python3 tools/update_school.py     # 文科省の学校コード一覧+Wikidata/
 python3 tools/update_myoji.py      # SudachiDictの姓エントリ+Wikidata/Wikipediaで生成
 python3 tools/update_youtuber_subscribers.py  # 登録者数を全行上書き(要 YOUTUBE_API_KEY)
 python3 tools/enrich_images.py     # 画像が空の人物行にCommons画像を遡及付与
+python3 tools/enrich_school_municipality_images.py  # 学校・市町村のCommons画像を補完
+python3 tools/apply_school_type_images.py  # 実写が無い学校へ校種別イメージを付与
 python3 tools/audit_taxa.py sekitsui  # 既存行が想定した界・門・綱の配下か検査(読み取り専用)
 ```
 
@@ -253,6 +255,12 @@ python3 tools/audit_taxa.py sekitsui  # 既存行が想定した界・門・綱�
   (ADR 00014)。母集団から消えた現存行は status=former に落として残す。
   取得結果は `tools/.cache/municipality/`(Git管理外)に貯め、再実行では
   Wikipediaの記事冒頭を引き直さない(全件引き直しは `--refresh`)
+  画像はWikidata P18を優先し、無い自治体はP242の位置図で補完する。
+  なお空欄の旧自治体は `python3 tools/collect_municipality_image_candidates.py`
+  でP373のCommonsカテゴリから実写候補台帳を作れるが、旗・章・地図・
+  人物などを取り違えないよう、候補は自動適用せず目視確認する。
+  `tools/set_image_candidate_review.py municipality ...` で採用を記録し、
+  `python3 tools/apply_reviewed_municipality_images.py --dry-run` で確認後に反映する
   (詳細は ADR 00036)
 - youtuber: Wikidataの職業(P106)がYouTuber/バーチャルYouTuberで
   ja.wikipediaに記事がある人物のみ。1ファイルに収録し category 列
@@ -332,6 +340,17 @@ python3 tools/audit_taxa.py sekitsui  # 既存行が想定した界・門・綱�
   (幼保連携型認定こども園は収録するので「〜保育園」を名乗る園は入る)。
   取得結果は `tools/.cache/`(Git管理外)に保存するので、ローカルでの再実行は
   差分だけ引く(全部引き直したいときは `--refresh`)。
+  画像はWikidata P18のCommons実写を優先する。P373のCommonsカテゴリから
+  追加候補を作る場合は `python3 tools/collect_school_image_candidates.py` を実行し、
+  出力された `tools/school_image_candidates.jsonl` を目視確認する。採用する
+  レコードに `review.status=accepted` と候補内の `selected_image_page` を記録する
+  (`tools/set_image_candidate_review.py school ...` で安全に更新できる)。
+  `python3 tools/apply_reviewed_school_images.py --dry-run` でQID・URL・既存実写の
+  保護を検査してから、`--dry-run` 無しで反映する。再収集しても
+  `review` は保持される。実写が無い学校は
+  `python3 tools/gen_school_type_images.py --prune` で生成した13校種の共有SVGを
+  `python3 tools/apply_school_type_images.py` で割り当てる。校章・ロゴは使わず、
+  すべてのSVGに「イメージ」と明記する。後から実写が取れた場合は自動で置換される。
   Wikipediaの冒頭文取得(約2.9万記事)が支配的で、初回は35分前後かかる(3並列)
 - 自動更新の対象外は fictional_scientist(外部プロジェクトで生成したCSVを
   取り込む方式。詳細は ADR 00006)と gimukyoiku(AI生成による手動キュレーション。

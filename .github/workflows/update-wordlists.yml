@@ -105,6 +105,16 @@ jobs:
         continue-on-error: true
         run: python tools/enrich_images.py
 
+      - name: Backfill school/municipality images (Wikidata P18/P242)
+        id: placeimages
+        continue-on-error: true
+        run: python tools/enrich_school_municipality_images.py
+
+      - name: Apply school type images
+        id: schooltypeimg
+        continue-on-error: true
+        run: python tools/apply_school_type_images.py
+
       # 実写が無い行に class ごとの概念イメージを割り当てる(ネットワーク不要)。
       # update_sekitsui / update_plant / update_insect が追記した新規行にも
       # この回で画像が付く
@@ -131,6 +141,8 @@ jobs:
           O_YTSUBS: ${{ steps.ytsubs.outcome }}
           O_SCHOOL: ${{ steps.school.outcome }}
           O_IMAGES: ${{ steps.images.outcome }}
+          O_PLACEIMAGES: ${{ steps.placeimages.outcome }}
+          O_SCHOOLTYPEIMG: ${{ steps.schooltypeimg.outcome }}
           O_CLASSIMG: ${{ steps.classimg.outcome }}
         run: |
           failed=""
@@ -163,6 +175,10 @@ jobs:
           # enrich_imagesは複数ファイルを触るため巻き戻さない(他updaterの
           # 成果を消すおそれ)。破壊は次の行数チェックとvalidateで検出する
           revert_if_failed enrich_images "$O_IMAGES"
+          # 2つのCSVを触るため、片方のupdaterの成果まで消さないよう巻き戻さない。
+          revert_if_failed school_municipality_images "$O_PLACEIMAGES"
+          # school updater/実写補完の成果を巻き戻さないよう、失敗だけを記録する。
+          revert_if_failed school_type_images "$O_SCHOOLTYPEIMG"
           # 概念イメージの割り当てはsekitsui/plant/insectのCSVのみを書き換える
           # ので巻き戻せる(同回のupdate_*の追記も一緒に戻るが、次回の実行で
           # 復帰する)

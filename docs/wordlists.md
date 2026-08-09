@@ -245,6 +245,7 @@ Jリーグ照合根拠は
 | population | 現存自治体は2020年国勢調査、旧自治体は取得可能な最新値 |
 | code | 全国地方公共団体コード |
 | description | 自治体の短い説明 |
+| image, image_page | Wikidata P18由来のCommons写真、またはP242の位置図と確認先 |
 | wikidata | 自治体のQID |
 
 詳細は [ADR 00036](adr/00036-municipality-wordlist.md)。
@@ -259,6 +260,7 @@ Jリーグ照合根拠は
 | prefecture, city | 所在地 |
 | status | `current`(現存)/`former`(廃校) |
 | code | 文部科学省の13桁の学校コード |
+| image, image_page | Commons実写。ない場合は校種別の概念イメージ |
 | wikidata | 学校のQID |
 
 正式名称は `original` に収録する。通称・略称は出典で確認できたものだけを使う。

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" role="img">
+<title>各種学校のイメージ画像</title>
+<rect width="320" height="200" rx="16" fill="#ecebe8"/>
+<circle cx="160" cy="76" r="62" fill="#fff" opacity=".55"/>
+<path d="M72 126 V83 L104 67 V126 M104 126 V74 H216 V126 M216 126 V83 L248 67 V126" fill="#fff" stroke="#6d6b63" stroke-width="6" stroke-linejoin="round"/>
+<path d="M142 126 V105 H178 V126" fill="#ecebe8" stroke="#6d6b63" stroke-width="5"/>
+<path d="M88 99 H96 M88 113 H96 M224 99 H232 M224 113 H232" stroke="#6d6b63" stroke-width="6" stroke-linecap="round"/>
+<path d="M132 43 L188 99 M188 43 L132 99" stroke="#6d6b63" stroke-width="10" stroke-linecap="round"/><circle cx="132" cy="43" r="9" fill="none" stroke="#6d6b63" stroke-width="6"/><path d="M178 37 L194 53 L186 61 L170 45 Z" fill="#6d6b63"/>
+<rect x="0" y="139" width="320" height="61" fill="#6d6b63"/>
+<text x="160" y="177" text-anchor="middle" fill="#fff" font-size="25" font-weight="700" font-family="Noto Sans JP,Hiragino Sans,sans-serif">各種学校</text>
+<rect x="237" y="12" width="70" height="25" rx="12.5" fill="#6d6b63"/>
+<text x="272" y="30" text-anchor="middle" fill="#fff" font-size="13" font-weight="700" font-family="Noto Sans JP,Hiragino Sans,sans-serif">イメージ</text>
+</svg>
