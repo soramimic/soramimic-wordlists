@@ -94,18 +94,41 @@ python3 tools/audit_taxa.py sekitsui  # 既存行が想定した界・門・綱�
   かな読み、上下の帯、支柱だけで描く。帯の色は路線名のハッシュで、路線の実際の
   ラインカラーではない(このリポジトリは路線カラーの出典を持たないため)。
   実写と誤認されないよう画像内に「イメージ」と明記する
-- baseball/football: 既存データ(歴代名鑑・手選び)は保持し、
-  未収録の現役選手だけ追記。姓名分割済みの読みは記事冒頭
-  「姓 名(せい めい、」から取得(詳細は ADR 00005)。
-  football の `team`(所属クラブ)は月次バッチには入れず手動実行で補完する
-  (詳細は ADR 00016):
+- baseball: 既存の歴代名鑑を保持し、未収録の現役選手だけ追記する。
+  姓名分割済みの読みは記事冒頭「姓 名(せい めい、」から取得する
+  (詳細は ADR 00005)。
+- football: WikipediaのJリーグクラブ選手カテゴリから候補を作り、Jリーグ公式の
+  登録名・生年月日・英字名と本人照合できた選手だけで再生成する
+  (詳細は ADR 00047)。読みはWikipedia記事冒頭から取得し、公式の英字名からは
+  逆算しない。再生成と監査は次の順で行う:
   ```sh
-  # 現役はJ1〜J3のロースター、歴代はWikidataの所属クラブ(P54)から
-  # 「最新の所属」を1つ選んで付与(空欄のみ。--refreshで全行)
-  python3 tools/enrich_football_team.py
+  python3 tools/rebuild_football_jleague.py
+  python3 tools/audit_football_jleague_readings.py \
+      --candidates tools/football_jleague_candidates.csv \
+      --manifest tools/football_jleague_candidates.jsonl
+  python3 tools/audit_football_jleague_eligibility.py \
+      --candidates tools/football_jleague_candidates.csv \
+      --manifest tools/football_jleague_candidates.jsonl \
+      --verified-candidates tools/football_jleague_verified.csv \
+      --verified-manifest tools/football_jleague_verified_sources.jsonl
+  python3 tools/extend_football_scopes.py \
+      --input tools/football_jleague_verified.csv \
+      --jleague-manifest tools/football_jleague_verified_sources.jsonl \
+      --resume
+  # J照合、追加区分の件数・要確認一覧・根拠manifestをレビューしてから切り替える
+  cp tools/football_scoped_candidates.csv football.csv
+  python3 tools/gen_player_cards.py --list football
   ```
   取得結果を `tools/.cache/`(Git管理外)に逐次保存するので、中断しても
   再実行で続きから再開する(全件引き直したいときはキャッシュを消す)。
+  `scope=jleague` は既定で有効にし、`world` と `overseas_japanese` は利用側の
+  フィルターで任意追加する。追加基準は ADR 00048 を参照する。
+  選手の経歴・主要な実績を紹介する `description` とポジションは生成時に付与する。
+  baseballの既存空欄を補完するときは次を使う:
+  ```sh
+  python3 tools/enrich_player_descriptions.py
+  python3 tools/enrich_player_positions.py
+  ```
   自由ライセンスの実写が取れるのは baseball 37% / football 9% だけなので、
   **実写が無い人には所属チームのチームカラーで描いた「選手カード」SVG**を
   割り当てて全行を埋めている。これも月次バッチには入れず手動実行する

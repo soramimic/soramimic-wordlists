@@ -21,7 +21,7 @@
 | ファイル | 内容 | 出典・クレジット |
 |---|---|---|
 | baseball.csv | プロ野球選手 | Moto(選手表ニキ)様と協力者の皆様、[Wikipedia](https://ja.wikipedia.org/)、[Wikimedia Commons](https://commons.wikimedia.org/) |
-| football.csv | サッカー選手 | ヨロスー様、Wikipedia、[Wikidata](https://www.wikidata.org/)、Wikimedia Commons |
+| football.csv | Jリーグ経験者、世界的著名選手、海外のみで活動する日本人サッカー選手 | [Wikipedia](https://ja.wikipedia.org/)、[Jリーグデータサイト](https://data.j-league.or.jp/)、[Wikidata](https://www.wikidata.org/)、Wikimedia Commons |
 | stations.csv | 現役駅・廃駅・旧駅名 | Wikidata、Wikipedia、すきやきすきや様提供の旧リスト(廃駅の照合)、Wikimedia Commons |
 | nations.csv | 現存国・消滅国・旧称 | [mledoze/countries](https://github.com/mledoze/countries)、Wikidata、Wikipedia、Wikimedia Commons |
 | scientist.csv | 科学者 | Wikidata、Wikipedia、Wikimedia Commons |

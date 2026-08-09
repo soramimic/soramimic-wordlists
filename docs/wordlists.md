@@ -23,11 +23,21 @@
 
 ## football.csv
 
+既定対象は、WikipediaのJリーグクラブ選手カテゴリを母集団とし、Jリーグ公式の
+全選手一覧で登録歴を本人照合できた選手とする。加えて、再現可能な著名度条件を
+満たす世界の選手と、国内クラブ所属歴のない日本人選手を任意選択用に収録する。
+Jリーグ照合根拠は
+`tools/football_jleague_verified_sources.jsonl` に記録する（詳細は
+[ADR 00047](adr/00047-football-jleague-wikipedia-rebuild.md)）。収録範囲の基準は
+[ADR 00048](adr/00048-football-scope-filters.md)を参照。
+
 | 列 | 意味 |
 |---|---|
-| team | 代表的な所属クラブ。クラブ名中の `・` は区切りではない |
+| team | Jリーグ経験者は公式の最終所属クラブ、それ以外はWikidata上の最新または最終所属クラブを1つ表示 |
 | type | 表層の種類(`family`/`given`/`full`等) |
 | category | 選手の区分 |
+| scope | `jleague`/`world`/`overseas_japanese`。利用側の既定は `jleague` のみ |
+| wikidata | 人物のQID |
 | position | `GK`/`DF`/`MF`/`FW`。複数は `/` 区切り |
 | description | 経歴や主要実績の短い説明 |
 | image, image_page | Commonsの肖像。ない場合はチームカラーによる選手カード |

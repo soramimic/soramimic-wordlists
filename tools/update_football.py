@@ -158,13 +158,15 @@ def main() -> int:
             added.append({"id": str(next_id), "original": original,
                           "surface": surface, "pronunciation": pron,
                           "type": typ, "category": "player",
+                          "scope": "jleague", "wikidata": "",
                           "image": img, "image_page": img_page,
                           "description": description, "position": position})
         print(f"added: {original}")
         next_id += 1
 
     cols = ["id", "original", "team", "surface", "pronunciation", "type",
-            "category", "image", "image_page", "position", "description"]
+            "category", "scope", "wikidata", "image", "image_page",
+            "position", "description"]
     write_csv_no_trailing_newline(CSV_PATH, cols, old_rows + added)
 
     n_add = len({r["id"] for r in added})
