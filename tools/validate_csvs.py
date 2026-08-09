@@ -9,6 +9,7 @@
 - pronunciation にASCII英字の連続が無い(英名をそのまま読みに入れると、利用側の
   読み解析が異常に遅くなる。実際に3行で辞書構築が193秒かかっていた)
 - image/image_page は生カンマを含まないURL
+- 選手descriptionが文脈依存の接続語や未完の語尾を含まない
 - 一意であるべき列の妥当性(stationsのwikidata重複など)
 
 usage: python3 tools/validate_csvs.py
@@ -17,6 +18,9 @@ usage: python3 tools/validate_csvs.py
 import re
 import sys
 from pathlib import Path
+
+from wpnames import (PLAYER_DISAMBIGUATION_DESCRIPTION,
+                     is_standalone_player_description)
 
 ROOT = Path(__file__).resolve().parent.parent
 REQUIRED = ("id", "original", "surface")
@@ -79,6 +83,18 @@ def validate(path: Path):
             if PRON_ASCII_RE.search(v):
                 err(f"{path.name}:{lineno}: pronunciation にASCII英字が連続"
                     f"(英名の混入?): {v[:40]}")
+        if path.name in ("baseball.csv", "football.csv") and "description" in idx:
+            v = f[idx["description"]]
+            if v and not is_standalone_player_description(v):
+                err(f"{path.name}:{lineno}: descriptionが単独で完結していない: "
+                    f"{v[:65]}")
+            if (
+                path.name == "football.csv"
+                and v
+                and PLAYER_DISAMBIGUATION_DESCRIPTION.search(v)
+            ):
+                err(f"{path.name}:{lineno}: descriptionが曖昧さ回避ページ由来: "
+                    f"{v[:65]}")
     print(f"OK: {path.name} ({len(lines) - 1}行)")
 
 

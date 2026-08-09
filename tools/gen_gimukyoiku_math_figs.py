@@ -26,7 +26,10 @@ import math
 from pathlib import Path
 
 W, H = 320, 200
-FONT = "Noto Sans JP,Hiragino Sans,Yu Gothic,Meiryo,sans-serif"
+# 先頭は fontconfig で実際に日本語グリフへ解決されるファミリ名にする。
+# "Noto Sans JP" は環境によってラテン専用の "Noto Sans" にマッチしてしまい、
+# 日本語が□(トーフ)になる(Noto Sans CJK JP が正しいファミリ名)。
+FONT = "Noto Sans CJK JP,Noto Sans JP,Hiragino Sans,Yu Gothic,Meiryo,sans-serif"
 MATHFONT = "Times New Roman,Georgia,serif"
 
 INK = "#26303d"        # 主線・文字
@@ -203,7 +206,7 @@ def fig_判別式():
     half = 34
     panels = [(60, 148, "D > 0", "交点 2個"),
               (160, 128, "D = 0", "交点 1個"),
-              (260, 108, "D < 0", "交点 0個")]
+              (260, 108, "D &lt; 0", "交点 0個")]
     for cx, vy, dlab, nlab in panels:
         body.append(line(cx - 42, ax, cx + 42, ax, SUB, 1.1))
         body.append(path(_pparab(cx, vy, m, half), INK, 1.6))

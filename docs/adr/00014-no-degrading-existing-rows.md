@@ -30,7 +30,7 @@
 2. **一方向にしか動かさない列を明示する**
    - `sekitsui` / `plant` の `extinct`: `no` → `yes` のみ。絶滅シグナル(P141・P31)は取りこぼしやすく、取りこぼしで `yes` → `no` に落とすと情報が失われる
    - `scientist` の `status`: `存命` → `物故` のみ。死没は不可逆な事実なので反映する
-3. **`scientist` の既存行は空欄補完のみ**。`field/era/birth_year/nobel/gender/country/status/description` は、既存セルが空または `NA` のときだけ書き込む。属性リフレッシュ(毎回の埋め直し)はやめる
+3. **`scientist` の既存行は原則として空欄補完のみ**。`field/era/birth_year/nobel/gender/country/status/description` は、既存セルが空または `NA` のときだけ書き込む。属性リフレッシュ(毎回の埋め直し)はやめる。ただし動画用フォントで欠字になるIPA・原語文字を含む `description` と、具体的業績がない説明から業績を含む説明への改善は置き換える
 
 あわせて、劣化の温床になっていた2つの取得側の欠陥を直す。
 
