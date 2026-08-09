@@ -328,107 +328,12 @@ def nominalize_station_description(description: str) -> str:
     return STATION_COPULA.sub(r"\1。", description)
 
 
-def _compact_list(values: list[str], unit: str) -> str:
-    """一覧は全件を優先し、長い場合も先頭要素と件数を残す。"""
-    values = list(dict.fromkeys(value for value in values if value))
-    if len(values) <= 2:
-        return "・".join(values)
-    return f"{values[0]}ほか{len(values) - 1}{unit}"
-
-
-def _route_names(lines: str, operators: list[str]) -> list[str]:
-    """lines の事業者接頭辞を、operator と重複しない表示へ整える。"""
-    routes = []
-    for line in lines.split("／"):
-        route = line.strip()
-        for operator in sorted(operators, key=len, reverse=True):
-            if route.startswith(operator + " "):
-                route = route[len(operator):].strip()
-                break
-            if route.startswith(operator) and len(route) > len(operator):
-                remainder = route[len(operator):].strip()
-                if remainder not in {"本線", "鉄道線"}:
-                    route = remainder
-                    break
-        routes.append(route)
-    return list(dict.fromkeys(route for route in routes if route))
-
-
-def _detailed_location(
-    description: str, prefecture: str = "", city: str = "",
-) -> str:
-    """Wikipediaの概要文から、カード上部より細かい所在地だけを取り出す。"""
-    match = re.match(r"^([^。]{1,50}?)(?:にある|に位置する)[、,]?", description)
-    if not match:
-        return city
-    location = match.group(1).strip()
-    if not ((prefecture and prefecture in location) or (city and city in location)):
-        return city
-    if prefecture and prefecture in location:
-        location = location.split(prefecture, 1)[1]
-    elif city and city in location:
-        location = location[location.index(city):]
-    # 住所に添えられた読み仮名はカード説明では情報が重複する。
-    location = re.sub(r"（[ぁ-ゖァ-ヶー・\s]+）", "", location)
-    return location or city
-
-
-def station_facts_description(
-    description: str = "",
-    opened_year: str = "",
-    prefecture: str = "",
-    city: str = "",
-    operator: str = "",
-    lines: str = "",
-) -> str:
-    """特徴文がない駅向けに、カード上部と重ならない基礎情報を短文にする。"""
-    location = _detailed_location(description, prefecture, city)
-    operators = [value.strip() for value in operator.split("／") if value.strip()]
-    routes = _route_names(lines, operators)
-    station_kind = (
-        "停留場" if "停留場" in description
-        else "停留所" if "停留所" in description
-        else "駅"
-    )
-
-    operator_text = _compact_list(operators, "事業者")
-    route_text = _compact_list(routes, "路線")
-    year_text = f"{opened_year}年開業。" if opened_year else ""
-    if location:
-        summary = f"{location}に所在。{year_text}"
-        if len(summary) > DESCRIPTION_MAX and city and location != city:
-            summary = f"{city}に所在。{year_text}"
-        return summary
-    if year_text and not (operator_text or route_text):
-        return year_text
-
-    # cityを取得できない行だけは、説明を空にしないため事業者・路線を使う。
-    if operator_text:
-        overview = f"{operator_text}の{station_kind}。"
-    else:
-        overview = ""
-    route_sentence = f"路線は{route_text}。" if route_text else ""
-
-    full = overview + route_sentence + year_text
-    if len(full) <= DESCRIPTION_MAX:
-        return full or "NA"
-
-    # 「路線は」を省くだけで意味が保てる。48字を超えても情報一式を捨てず、
-    # 最後はこの短縮形を返してカード側の自動フィットに任せる。
-    compact = overview + (f"{route_text}。" if route_text else "") + year_text
-    return compact or "NA"
-
-
 def compact_station_description(
     description: str,
     opened_year: str = "",
     fallback: str = "",
-    prefecture: str = "",
-    city: str = "",
-    operator: str = "",
-    lines: str = "",
 ) -> str:
-    """特徴文を優先し、無ければ駅の基礎情報をカード向けにまとめる。"""
+    """特徴文を優先し、無ければ開業年だけを返す。"""
     description = ERA_PAREN.sub("", description)
     for old, new in COMPACT_ENDINGS:
         description = description.replace(old, new)
@@ -469,13 +374,6 @@ def compact_station_description(
         pattern.search(fallback) for pattern, _ in FEATURE_TERMS
     ):
         return fallback
-    facts = station_facts_description(
-        description, opened_year, prefecture, city, operator, lines,
-    )
-    if facts != "NA":
-        return facts
-    if fallback != "NA":
-        return fallback
     return f"{opened_year}年開業。" if opened_year else "NA"
 
 
@@ -487,9 +385,8 @@ def make_station_description(
     prefecture: str = "",
     city: str = "",
     operator: str = "",
-    lines: str = "",
 ) -> str:
-    """記事導入部から特徴的な1文を優先し、無ければ概要+開業年を返す。"""
+    """記事導入部から特徴的な1文を優先し、無ければ開業年だけを返す。"""
     text = clean_ws(intro)
     complete = [s.strip() + "。" for s in text.split("。")[:-1] if s.strip()]
     candidates = []
@@ -508,22 +405,16 @@ def make_station_description(
             desc = make_description(sentence, "", title)
             if desc != "NA":
                 desc = nominalize_station_description(desc)
-                return compact_station_description(
-                    desc, opened_year, wd_desc, prefecture, city, operator, lines,
-                )
+                return compact_station_description(desc, opened_year, wd_desc)
 
     first = complete[0] if complete else intro
     desc = make_description(first, wd_desc, title)
     if desc == "NA":
-        return compact_station_description(
-            "", opened_year, "", prefecture, city, operator, lines,
-        )
+        return compact_station_description("", opened_year)
     if opened_year and opened_year not in desc and len(desc) <= 105:
         desc += f"{opened_year}年開業。"
     desc = nominalize_station_description(desc)
-    return compact_station_description(
-        desc, opened_year, wd_desc, prefecture, city, operator, lines,
-    )
+    return compact_station_description(desc, opened_year, wd_desc)
 
 
 def main() -> int:
@@ -588,7 +479,6 @@ def main() -> int:
             desc = make_station_description(
                 extract, "", DISAMBIG.sub("", title), d["opened_year"],
                 pref, muni_label, operator,
-                SEP.join(sorted(line_map.get(q, []))),
             )
             rows.append({"id": str(next_id), "original": name, "surface": name,
                          "pronunciation": yomi or "", "prefecture": pref,
