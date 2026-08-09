@@ -29,7 +29,7 @@ jobs:
       - name: Update nations.csv (mledoze/countries)
         id: nations
         continue-on-error: true
-        run: python tools/update_nations.py
+        run: python tools/update_nations.py && python tools/enrich_nations.py
 
       - name: Update stations.csv (Wikidata/Wikipedia)
         id: stations

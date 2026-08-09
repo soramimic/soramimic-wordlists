@@ -17,11 +17,13 @@ ADR 00001 では stations を「読み付きの構造化ソースが要登録(�
 
 ## Decision
 
-- 列を `id, original, surface, pronunciation, prefecture, city, status, image, image_page, wikidata` に拡張し、**既存リストは Wikidata/Wikipedia 由来のデータで全面的に置き換える**(旧リストの読みは品質検証の照合先として利用した)
+- 列を `id, original, surface, pronunciation, prefecture, city, lines, operator, opened_year, station_code, status, image, image_page, description, wikidata` に拡張し、**既存リストは Wikidata/Wikipedia 由来のデータで全面的に置き換える**(旧リストの読みは品質検証の照合先として利用した)
 - **1 行 = 1 駅エンティティ**。同名駅は Wikidata QID で区別し、それぞれ別 id(prefecture/city 列で見分ける)。`wikidata` 列が駅の永続キーで、差分更新はこれで突き合わせる
 - 読みが機械抽出できない駅(0.2%)は pronunciation 空で収録し、PR レビューで人が補完する(利用側は空読みを surface から推定する)
 - 画像は Wikimedia Commons の直リンク URL(`image`)とファイルページ URL(`image_page`)を持つ。**Commons の画像は全て再利用可能ライセンスだが、CC BY-SA 等は動画利用時にクレジット表記が必要**なので、条件確認先として image_page を必ず併記する。画像ファイル自体はリポジトリに置かない(容量とライセンス管理の分離のため)
 - 更新スクリプト(`tools/update_stations.py`)は nations と同じ差分方式: 既存行の表記・読み・id は書き換えず、新規 QID の追記と status(current/former)の更新のみ行う。読みの手動修正は csv 行の直接編集で永続する
+- `description` はカードの約3行に収まる **48字以内** とする。日本語版 Wikipedia の記事冒頭から、「唯一・最端・文化財・受賞・愛称・駅名由来・作品の舞台・眺望」などの特徴を含む文を優先し、定型句や元号併記を圧縮する。特徴が無い駅はカード上部の所在地・事業者・路線と重複させず、`opened_year` の「○年開業。」だけにする。定型的な「駅である。」は「駅。」の体言止めにする。記事が無ければ Wikidata の日本語 description にフォールバックし、どちらも無ければ空にする。`tools/enrich_station_descriptions.py` は通常は空欄だけを補完し、抽出方式を更新したときは `--refresh` で再生成する
+- `operator` は Wikidata P137 の日本語略称(P1813、無ければラベル)、`opened_year` は正式開業日(P1619、無ければ設立日P571)の最古年、`station_code` は駅コード(P296)とする。P296 は駅ナンバリングと電報略号が混在するため、両者を区別せず登録値をそのまま収録する。複数値は「／」で連結する。`tools/enrich_station_facts.py` は3列の空欄だけを補完する
 - 所在地・画像の取得は WDQS ではなく wbgetentities API を使う(WDQS は障害時に 1req/分の強レート制限がかかった実績があり、チャンク取得の相性が悪い。エンティティ一覧の 1 クエリのみ WDQS)
 - 信号場・貨物駅・操車場・一覧記事は記事名で除外。廃駅は P576(廃止日)と P5817(使用状態: 退役/廃止/未運行/中止)で除外
 
@@ -30,6 +32,7 @@ ADR 00001 では stations を「読み付きの構造化ソースが要登録(�
 - 新駅・改名・廃駅が年次バッチで自動反映される(状態変化は status 列に現れ、行は消えない)
 - 旧リスト(すきやきすきや様提供)と比べた主な差: 廃駅を含まない、大阪メトロ等の駅名標ひらがな表記(なんば等)は Wikipedia 準拠の漢字表記(難波)になる、ロープウェイ駅を含む
 - 読みは Wikipedia(CC BY-SA 4.0)由来のため、README の出典欄でクレジットする
+- description も Wikipedia(CC BY-SA 4.0)または Wikidata(CC0)由来で、駅の所在地・路線・特徴を紹介する表示用情報として使える
 - 機械抽出できなかった読み 17 件は記事全文からの抽出+手動で補完済み(全行読みあり)。旧リストとの読み不一致 17 件は初回 PR に一覧を記載し人が判断
 - 旧リストにのみ存在した駅は、**廃駅であることが確証できたものだけ** status=former で復元した(260 件)。確証は (a) Wikidata の廃止マーク付きエンティティと駅名が一致(210 件、うち一意一致 205 件は QID・所在地・画像も付与)、(b) Wikipedia 記事のカテゴリに「廃駅」を含む、または信号場への降格(50 件)。現役駅の旧称(仲木戸→京急東神奈川 等 108 件)は **status=renamed** で収録する(所在地・画像はリダイレクト先の現役駅行から補完し、同一エンティティのため wikidata は空にして更新スクリプトの対象外とする)。確証の取れないもの(19 件)は収録しない。未成駅・計画駅などWikidata の状態プロパティが不十分な駅は手動で former にしてよく、更新スクリプトは former を自動で current に戻さない
 - 駅名の一部にしかならない副名称付き駅(「広電西広島(己斐)」等)は公式表記のまま収録される。表記ゆれ対応が必要になったら pokemon 方式(同一 original で複数行)を検討する

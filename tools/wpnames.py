@@ -168,12 +168,16 @@ def parse_person(name: str, text: str):
 # scientist / youtuber で共用する(詳細は docs/adr/00009, 00029)。
 DESC_TARGET = 90  # description の目安文字数(完結文をここまで連結)
 DESC_HARD = 120   # 1文がこれを超える場合のみ「、」境界で切る
+ACHIEVEMENT_WORDS = (
+    "発見", "発明", "開発", "提唱", "証明", "解明", "確立", "創始", "考案",
+    "導入", "構築", "定式化", "体系化", "測定", "観測", "実験",
+    "法則", "定理", "公式", "方程式", "効果", "現象", "模型", "モデル", "予言",
+    "分類", "計算", "著書", "教科書", "業績", "貢献", "受賞", "ノーベル", "命名",
+    "記述", "製作", "設計", "同定", "合成", "分析", "原理", "仮説", "学説",
+    "開拓", "実現", "刷新", "名著", "先駆者", "基礎を築", "道を開",
+)
 
 # 冒頭の「{人名}は、」除去まわり
-HIRAGANA = re.compile(r"[ぁ-ん]")
-# 残りが名詞述語として自然に完結する語尾(体言止め以外に許可するもの)
-NOUN_PRED_TAIL = ("である", "であった", "だった", "とされる", "といわれる",
-                  "と呼ばれる")
 # 人名の後ろに付きうる短い爵位等(「〜男爵」「〜卿」)。ひらがなは接続助詞なので不可
 NAME_SUFFIX = re.compile(r"^[一-龥]{0,3}$")
 
@@ -187,6 +191,9 @@ def clean_ws(s: str) -> str:
 def _sanitize_desc(s: str) -> str:
     """CSVパーサを壊す文字を除去(ASCIIカンマ・二重引用符を削除)。日本語の
     「、」「。」「（）」「：」は残す。連続空白は1つに。"""
+    # 動画用フォントで欠字になりやすいIPA表記は説明文には不要。
+    s = re.sub(r"\[[^\]]*[\u0250-\u02ff\u1d00-\u1dbf][^\]]*\]", "", s)
+    s = re.sub(r"\(\s*音声ファイル\s*\)", "", s)
     s = s.replace('"', "").replace(",", " ")
     return re.sub(r"[\s　]+", " ", s).strip()
 
@@ -199,14 +206,15 @@ def strip_lead_paren(text: str) -> str:
     idx = next((i for i, c in enumerate(text) if c in opens), None)
     if idx is None:
         return text
+    # 1) 「）は」を優先アンカーにする(name（…）は、… の閉じカッコ)
+    # 別名列挙の「または」がカッコより前にあっても、主語の「は」と誤認しない。
+    m = re.search(r"[）)]\s*は", text)
+    if m and m.start() >= idx:
+        return (text[:idx].rstrip() + text[m.start() + 1:].lstrip()).strip()
     ha, period = text.find("は"), text.find("。")
     limit = min([x for x in (ha, period) if x != -1], default=len(text))
     if idx > limit:  # カッコが「は」「。」より後 = 本文中のカッコなので触らない
         return text
-    # 1) 「）は」を優先アンカーにする(name（…）は、… の閉じカッコ)
-    m = re.search(r"[）)]\s*は", text)
-    if m and m.start() >= idx:
-        return (text[:idx].rstrip() + text[m.start() + 1:].lstrip()).strip()
     # 2) フォールバック: 対応の取れたブロック。ただし最初の「。」を越えたら暴走と
     #    みなして除去しない(壊れたカッコ対策)
     end = period if period != -1 else len(text)
@@ -228,42 +236,59 @@ def _norm_name(s: str) -> str:
     return s.replace(" ", "").replace("　", "").replace("=", "＝")
 
 
+def _name_parts(s: str) -> list[str]:
+    """欧文由来の人名を、ミドルネームを無視して比較できる単位に分ける。"""
+    return [
+        _norm_name(part)
+        for part in re.split(r"[・＝゠=\s]+", s)
+        if len(_norm_name(part)) >= 2
+    ]
+
+
 def _is_name_head(head: str, name: str) -> bool:
     """「〜は」の「〜」が name の呼称かどうか。ミドルネーム付き・敬称付き
     (サー・〜)・爵位付き(〜男爵)・姓のみ、といった表記ゆれを許容する。"""
-    if head == name or head.endswith(name):
+    raw_name = name
+    head = _norm_name(head)
+    name = _norm_name(name)
+    compact_head = re.sub(r"[・＝゠=]", "", head)
+    compact_name = re.sub(r"[・＝゠=]", "", name)
+    if compact_head == compact_name or compact_head.endswith(compact_name):
         return True
-    if len(head) >= 3 and name.endswith(head):  # 姓のみ等の短縮形
+    if len(compact_head) >= 3 and compact_name.endswith(compact_head):  # 姓のみ等
         return True
-    i = head.find(name)
-    return i >= 0 and bool(NAME_SUFFIX.match(head[i + len(name):]))
+    i = compact_head.find(compact_name)
+    if i >= 0 and bool(NAME_SUFFIX.match(compact_head[i + len(compact_name):])):
+        return True
+    # 「レイチェル・カーソン」に対する
+    # 「レイチェル・ルイーズ・カーソン」のようなミドルネーム入り表記。
+    parts = _name_parts(raw_name)
+    if len(parts) < 2:
+        return False
+    first = head.find(parts[0])
+    last = head.rfind(parts[-1])
+    return first >= 0 and last >= first + len(parts[0])
 
 
 def strip_name_prefix(desc: str, name: str) -> str:
     """description 冒頭の「{人名}は、」を除去する。動画キャプションでは人名が
     別に表示されるため冗長なので落とす。
 
-    ただし除去すると主語を失って壊れる文(「〜は…で、…した。」のように残りの
-    1文目が用言で終わる)や、上流のカッコ対応が壊れている文はそのまま返す。"""
+    カードでは人名が直前に大きく表示されるため、述語文でも主語を省略して
+    意味が通る。「または」の「は」は助詞ではないので対象外。"""
     if not desc or not name or name == "NA":
         return desc
-    name = _norm_name(name)
     end = desc.find("。")
     end = len(desc) if end == -1 else end
     for m in re.finditer("は", desc[:end]):
-        head = _norm_name(desc[:m.start()])
-        if not head or len(head) > 30 or "、" in head:
+        if desc[max(0, m.start() - 2):m.end()] == "または":
+            continue
+        head = desc[:m.start()]
+        if not head or len(head) > 60 or "、" in head:
             continue
         if not _is_name_head(head, name):
             continue
         rest = desc[m.end():].lstrip("、 ").strip()
-        first = rest.split("。")[0]
-        if len(first) < 4:
-            return desc
-        if first.count("）") > first.count("（") or first.count(")") > first.count("("):
-            return desc
-        if HIRAGANA.match(first[-1]) and not first.endswith(NOUN_PRED_TAIL):
-            return desc
         return rest
     return desc
 
@@ -274,7 +299,70 @@ def _cut_at_comma(s: str, target: int = DESC_TARGET, hard: int = DESC_HARD) -> s
     return (s[:pos] if pos >= 30 else s[:target]).rstrip("、 ") + "。"
 
 
-def _assemble(text: str) -> str:
+def has_achievement(text: str) -> bool:
+    """説明文に具体的な業績を示す語が含まれるか。"""
+    text = text or ""
+    # 肩書きに含まれる語を業績と誤認しない。
+    searchable = re.sub(
+        r"(?:発明家|実験物理学者|実験科学者|計算機科学者|"
+        r"計算機科学|現象学者|分析化学者|研究開発局|"
+        r"開発員|開発マネージャー)",
+        "",
+        text,
+    )
+    if any(word in searchable for word in ACHIEVEMENT_WORDS):
+        return True
+    # 「研究者」「研究所」「理論物理学者」のような肩書き・所属だけでは
+    # 業績とみなさず、具体的な研究・理論への言及だけを拾う。
+    return bool(
+        re.search(r"研究(?!者|所|院|科|部|室|機関|職|分野)", text)
+        or re.search(
+            r"理論(?!物理学(?:者|研究)|化学者|数学者|生物学者)", text
+        )
+    )
+
+
+ACHIEVEMENT_WEIGHTS = {
+    "発見": 8, "発明": 8, "提唱": 8, "証明": 8, "確立": 8, "創始": 8,
+    "考案": 8, "ノーベル": 8, "受賞": 7, "法則": 7, "定理": 7,
+    "方程式": 7, "公式": 7, "開発": 6, "解明": 6, "定式化": 6,
+    "体系化": 6, "予言": 6, "原理": 6, "仮説": 6, "学説": 6,
+    "教科書": 6, "名著": 6, "構築": 5, "模型": 5, "モデル": 5,
+    "設計": 5, "製作": 5, "同定": 5, "合成": 5, "著書": 4,
+    "測定": 4, "観測": 4, "実験": 4, "計算": 4, "分類": 4,
+    "業績": 3, "貢献": 3, "先駆者": 3, "基礎を築": 5, "道を開": 5,
+}
+
+
+def achievement_score(sentence: str) -> int:
+    """肩書き・経歴より具体的な科学業績文を上位にする重み付きスコア。"""
+    searchable = re.sub(
+        r"(?:発明家|実験物理学者|実験科学者|計算機科学者|"
+        r"計算機科学|現象学者|分析化学者|研究開発局|"
+        r"開発員|開発マネージャー)",
+        "",
+        sentence,
+    )
+    score = sum(
+        weight for word, weight in ACHIEVEMENT_WEIGHTS.items()
+        if word in searchable
+    )
+    score -= 2 * len(re.findall(r"大学|教授|所長|卒業|出身|生まれ|任命", sentence))
+    if re.search(r"主な(?:研究)?業績|代表的な?業績", sentence):
+        score += 10
+    if re.match(r"(?:このほか|また|一方)", sentence):
+        score -= 10
+    if re.search(r"行わず|おらず|されず|ではない|なかった|未発見|未解決", sentence):
+        score -= 15
+    if re.match(r"(?:先人|同時代人|師|弟子)", sentence):
+        score -= 8
+    # 親族の受賞・業績を本人のものとして拾わない。
+    if re.search(r"(?:父|母|息子|娘|夫|妻|兄|弟|姉|妹).{0,16}(?:受賞|業績|発見)", sentence):
+        score -= 10
+    return score
+
+
+def _assemble(text: str, prefer_achievement: bool = False) -> str:
     """完結した文(「。」区切り)だけを目安 DESC_TARGET 字まで連結する。常に
     「。」で終わる。1文目が長すぎる場合のみ「、」境界で切る。"""
     text = text.strip("、 ").strip()
@@ -284,6 +372,13 @@ def _assemble(text: str) -> str:
     segs = [s.strip() for s in text.split("。")]
     complete = [s for s in (segs if ends_complete else segs[:-1]) if s]
     if complete:
+        if prefer_achievement:
+            ranked = sorted(
+                ((achievement_score(s), -i, s) for i, s in enumerate(complete)),
+                reverse=True,
+            )
+            if ranked and ranked[0][0] > 0:
+                complete = [ranked[0][2]]
         out = ""
         for s in complete:
             cand = out + s + "。"
@@ -298,19 +393,245 @@ def _assemble(text: str) -> str:
     return _cut_at_comma(frag) if frag else ""
 
 
-def make_description(intro: str, wd_desc: str, name: str = "") -> str:
+def make_description(intro: str, wd_desc: str, name: str = "",
+                     prefer_achievement: bool = False) -> str:
     """動画キャプションに使える完結文を作る。Wikipedia 冒頭文を優先し、先頭の
     生没年カッコと冒頭の「{人名}は、」を除去してから「。」区切りで完結文を連結。
     無ければ Wikidata の ja description(完結句)にフォールバック、どちらも
     無ければ NA。"""
     text = strip_name_prefix(strip_lead_paren(clean_ws(intro)), name)
-    desc = _sanitize_desc(_assemble(text)).strip()
+    desc = _sanitize_desc(_assemble(text, prefer_achievement)).strip()
     if desc and not desc.endswith("。"):
         desc += "。"
     if not desc:
         wd = _sanitize_desc(clean_ws(wd_desc)).strip()
         desc = (wd + "。") if wd and not wd.endswith("。") else wd
     return desc or "NA"
+
+
+PLAYER_ACHIEVEMENT_TERMS = {
+    "MVP": 4,
+    "最優秀": 4,
+    "バロンドール": 4,
+    "国民栄誉賞": 4,
+    "文化勲章": 4,
+    "最多": 3,
+    "記録": 3,
+    "受賞": 3,
+    "殿堂": 3,
+    "得点王": 3,
+    "本塁打王": 3,
+    "首位打者": 3,
+    "達成": 2,
+    "優勝": 2,
+    "タイトル": 2,
+    "表彰": 2,
+    "選出": 1,
+    "貢献": 1,
+}
+PLAYER_DESC_TARGET = 50
+PLAYER_DESC_MAX = 65
+PLAYER_DESCRIPTION_OVERRIDES = {
+    "浅尾拓也": (
+        "2010年・2011年にセ・リーグ最優秀中継ぎ投手。"
+        "2011年はリーグMVP。"
+    ),
+    "飯塚誠": "1950年に51本塁打・161打点で二冠王とセ・リーグMVPを獲得。",
+    "小鶴誠": "1950年に51本塁打・161打点で二冠王とセ・リーグMVPを獲得。",
+    "石井一久": "NPBで最多奪三振2回、最高勝率1回、最優秀防御率1回を獲得。",
+    "石川雅規": "2002年のセ・リーグ新人王。大卒投手初の新人年から24年連続安打を記録。",
+    "上原浩治": "NPB新人年に投手三冠。アジア人初の100勝・100セーブ・100ホールド達成。",
+    "小野和義": "近鉄時代に2桁勝利を5度記録。NPB通算82勝。",
+    "斉藤和巳": "2003年に投手三冠・リーグMVP。2006年に投手四冠・沢村賞。",
+    "九里亜蓮": "2021年に13勝を挙げ、セ・リーグ最多勝利を獲得。",
+    "灰山元章": "1931年に4番・エースとして広島商業の夏の甲子園連覇に貢献。",
+    "池山隆寛": "ヤクルト一筋で通算304本塁打。5年連続30本塁打を記録。",
+    "島野育夫": "中日・阪神で星野仙一監督を支え、コーチとして両球団のリーグ優勝を経験。",
+    "中山裕章": "中日の救援投手として1999年のセ・リーグ優勝に貢献。",
+    "西本聖": "投手最多タイとなるゴールデングラブ賞8回を受賞。",
+    "ウラディミール・バレンティン": (
+        "2013年にNPB記録のシーズン60本塁打と長打率.779を記録。"
+    ),
+    "藤本英雄": "1943年に防御率0.73と19完封のNPB記録。1950年にNPB初の完全試合。",
+    "ジョン・ボウカー": "2012年の日本シリーズで2本塁打を放ち、巨人の日本一に貢献。",
+    "星野仙一": "1974年に15勝10セーブで沢村賞とセ・リーグ初の最多セーブ投手。",
+    "村田勝喜": "1991年から3年連続で2桁勝利・2桁完投を記録。",
+    "前田健太": "2010年に投手三冠。沢村賞2回、最優秀防御率3回。",
+    "宮西尚生": "NPB史上初の通算400ホールド。最優秀中継ぎ投手3回。",
+    "フォルラン": "2010年W杯で5得点を挙げ、大会MVPのゴールデンボールを受賞。",
+    "ディエゴ・フォルラン": (
+        "2010年W杯で5得点を挙げ、大会MVPのゴールデンボールを受賞。"
+    ),
+    "洪明甫": "韓国代表でW杯に4大会連続出場。2002年W杯でブロンズボールを受賞。",
+    "釜本邦茂": "日本代表歴代最多の75得点。1968年メキシコ五輪得点王・銅メダル。",
+    "三浦知良": "1993年の初代JリーグMVP・アジア年間最優秀選手。",
+    "中田英寿": "アジア年間最優秀選手賞を2度受賞。2000-01年のローマのセリエA優勝に貢献。",
+    "本田圭佑": "W杯3大会連続で得点し、日本人最多のW杯通算4得点を記録。",
+    "香川真司": "ドルトムントのブンデスリーガ2連覇とマンチェスター・ユナイテッドのリーグ優勝に貢献。",
+    "遠藤保仁": "日本代表歴代最多の国際Aマッチ152試合出場。2009年アジア年間最優秀選手。",
+    "長友佑都": "2010〜2022年にW杯4大会連続出場。インテルでコッパ・イタリア優勝。",
+    "吉田麻也": "W杯3大会出場。2019年から日本代表主将を務め、国際Aマッチ126試合出場。",
+    "小野伸二": "2002年にフェイエノールトでUEFAカップ優勝。アジア年間最優秀選手賞受賞。",
+    "岡崎慎司": "レスターの2015-16年プレミアリーグ初優勝に貢献。日本代表通算50得点。",
+    "中村俊輔": "2006-07年スコットランドリーグMVP。J1最多の直接FK24得点。",
+    "中山雅史": "1998年W杯で日本代表の本大会初得点。JリーグMVPと2度の得点王。",
+    "ラモス瑠偉": "1992年アジアカップ初優勝に貢献。日本代表最年長得点記録保持者。",
+    "奥寺康彦": "日本人初のブンデスリーガ選手。ケルンでリーグ優勝・ドイツ杯制覇。",
+    "大久保嘉人": "J1歴代最多の通算191得点。史上初の3年連続J1得点王。",
+    "稲本潤一": "2002年W杯で2得点を挙げ、日本代表初のベスト16進出に貢献。",
+    "高原直泰": "2002年にJリーグMVP・得点王。ブンデスリーガ通算25得点。",
+    "名波浩": "ジュビロ磐田のJリーグ3度の優勝に貢献。2000年アジアカップMVP。",
+    "ジーコ": "フラメンゴ史上最多の509得点。ブラジル代表でW杯3大会出場。",
+    "ストイチコフ": "1994年W杯でブルガリアをベスト4へ導き、得点王・バロンドール。",
+    "フリスト・ストイチコフ": (
+        "1994年W杯でブルガリアをベスト4へ導き、得点王・バロンドール。"
+    ),
+    "ロナウド": "2002年W杯で8得点を挙げ、得点王としてブラジルの優勝に貢献。",
+    "ディエゴ・マラドーナ": "1986年W杯で大会MVPとなり、アルゼンチンを優勝に導いた。",
+    "マラドーナ": "1986年W杯で大会MVPとなり、アルゼンチンを優勝に導いた。",
+    "アンドレス・イニエスタ": "2010年W杯決勝で優勝を決める得点。バルセロナでリーグ優勝9回。",
+    "ダビド・ビジャ": "スペイン代表歴代最多の59得点。2010年W杯優勝に貢献。",
+    "フェルナンド・トーレス": "2008年欧州選手権決勝で決勝点。2010年W杯でも優勝。",
+    "ゲーリー・リネカー": "1986年W杯で6得点を挙げ、イングランド代表として得点王。",
+    "リネカー": "1986年W杯で6得点を挙げ、イングランド代表として得点王。",
+    "ドゥンガ": "主将として1994年W杯でブラジル代表を優勝に導いた。",
+    "ベベット": "1994年W杯優勝に貢献。1989年南米年間最優秀選手。",
+    "ギド・ブッフバルト": "1990年W杯決勝でマラドーナを封じ、西ドイツの優勝に貢献。",
+    "ブッフバルト": "1990年W杯決勝でマラドーナを封じ、西ドイツの優勝に貢献。",
+    "ピエール・リトバルスキー": "1990年W杯で西ドイツ代表として優勝。",
+    "リトバルスキー": "1990年W杯で西ドイツ代表として優勝。",
+    "ミカエル・ラウドルップ": "バルセロナでリーグ4連覇・欧州チャンピオンズカップ優勝。",
+    "ラウドルップ": "バルセロナでリーグ4連覇・欧州チャンピオンズカップ優勝。",
+    "朴智星": "マンチェスター・ユナイテッドでリーグ優勝4回・欧州CL優勝。",
+    "アーセン・ベンゲル": "アーセナルでプレミアリーグ優勝3回。2003-04年は無敗優勝。",
+    "ベンゲル": "アーセナルでプレミアリーグ優勝3回。2003-04年は無敗優勝。",
+    "岡田武史": "日本代表監督として1998年W杯初出場、2010年W杯ベスト16。",
+    "加茂周": "日本代表監督を1994〜1997年に務め、1995年ダイナスティカップ優勝。",
+    "白井博幸": "U-23日本代表に選出されたディフェンダー。",
+    "池谷友良": "ロッソ熊本初代監督。ロアッソ熊本運営会社の社長を歴任。",
+    "フアン・エスナイデル": (
+        "1995年欧州カップウィナーズカップ決勝で得点し、サラゴサの優勝に貢献。"
+    ),
+    "大谷翔平": (
+        "MLB史上初の50本塁打・50盗塁を達成し、"
+        "両リーグでMVPを受賞した投打の二刀流選手。"
+    ),
+    "王貞治": "NPB最多の通算868本塁打を記録した、国民栄誉賞受賞者第1号。",
+    "野茂英雄": "新人年に投手三冠を達成した、NPB新人王・パ・リーグMVP受賞者。",
+    "エディ・ギャラード": (
+        "2000年・2002年の最優秀救援投手。NPB通算120セーブ。"
+    ),
+}
+PLAYER_CONTEXTUAL_DESCRIPTION = re.compile(
+    r"(?:^|。)(?:また[、]?|さらに[、]?|なお[、]?|同年|同大会|その後|"
+    r"この|翌年|翌\d|チーム|ほかに|その他)"
+    r"|(?:など|しており|ており|であり)。$"
+)
+PLAYER_DISAMBIGUATION_DESCRIPTION = re.compile(
+    r"\s-\s|とは、以下の|以下の人物を指す|一覧参照|"
+    r"(?:男性名|女性名|姓名|人名)である。$|(?:男性名|女性名|人名)。$"
+)
+
+
+def is_likely_disambiguation_text(text: str) -> bool:
+    """Wikipediaの曖昧さ回避ページ由来と考えられる本文かを返す。"""
+    text = clean_ws(text)
+    return bool(
+        PLAYER_DISAMBIGUATION_DESCRIPTION.search(text)
+        or text.count(" - ") >= 2
+        or re.search(r"\{\{\s*(?:aimai|曖昧さ回避)", text, re.IGNORECASE)
+    )
+
+
+def is_standalone_player_description(description: str) -> bool:
+    """カード単体で意味が通り、完結している選手説明かを返す。"""
+    return bool(
+        description
+        and description != "NA"
+        and description.endswith(("。", "…"))
+        and not PLAYER_CONTEXTUAL_DESCRIPTION.search(description)
+    )
+
+
+def _shorten_player_description(description: str) -> str:
+    """約2行の50文字を目安に整え、完結文は65文字まで許容する。"""
+    if len(description) <= PLAYER_DESC_TARGET:
+        return description
+    compact = re.sub(r"（[^（）]*）", "", description)
+    compact = re.sub(r"\([^()]*\)", "", compact)
+    compact = re.sub(r"[\s　]+", " ", compact).strip()
+    if len(compact) <= PLAYER_DESC_MAX:
+        return compact
+    return compact[:PLAYER_DESC_MAX - 1].rstrip("、。 ") + "…"
+
+
+def _best_player_achievement_clause(sentence: str) -> str:
+    """長い実績列挙から、受賞・優勝・記録を最もよく表す1節を選ぶ。"""
+    if len(sentence) <= PLAYER_DESC_MAX:
+        return sentence
+    titles = re.search(
+        r"(\d+度の[^、。]{1,20}優勝と\d+度の[^、。]{1,30}優勝)",
+        sentence,
+    )
+    if titles and len(titles.group(1)) <= PLAYER_DESC_MAX:
+        return titles.group(1)
+    clauses = [clause.strip() for clause in sentence.split("、") if clause.strip()]
+    ranked = []
+    for index, clause in enumerate(clauses):
+        score = sum(
+            weight * clause.count(term)
+            for term, weight in PLAYER_ACHIEVEMENT_TERMS.items()
+        )
+        if score:
+            ranked.append((score, -index, clause))
+    if not ranked:
+        return sentence
+    clause = max(ranked)[2]
+    index = clauses.index(clause)
+    clause = re.sub(r"^(?:また|さらに|なお)", "", clause).strip()
+    if index and re.match(r"^(?:チーム|大会|同年|同大会|その)", clause):
+        contextual = clauses[index - 1] + "、" + clause
+        if len(contextual) <= PLAYER_DESC_MAX:
+            clause = contextual
+    if clause.endswith("し"):
+        clause += "た"
+    elif clause.endswith("であり"):
+        clause = clause[:-3] + "である"
+    return clause
+
+
+def make_player_description(intro: str, name: str = "") -> str:
+    """選手記事の冒頭から主要実績を優先した説明文を作る。
+
+    受賞・優勝・記録などを含む完結文があれば、重み付きで最も情報量の多い1文を
+    採る。記事冒頭が所属・ポジションだけなら通常の人物説明にフォールバックする。
+    """
+    normalized_name = DISAMBIG.sub("", name).replace(" ", "").replace("　", "")
+    override = PLAYER_DESCRIPTION_OVERRIDES.get(normalized_name)
+    if override:
+        return override
+    if is_likely_disambiguation_text(intro):
+        return "NA"
+    text = clean_ws(intro)
+    sentences = [sentence.strip() for sentence in text.split("。") if sentence.strip()]
+    ranked = []
+    for index, sentence in enumerate(sentences):
+        score = sum(
+            weight * sentence.count(term)
+            for term, weight in PLAYER_ACHIEVEMENT_TERMS.items()
+        )
+        if score:
+            ranked.append((score, -index, sentence))
+    for _, _, sentence in sorted(ranked, reverse=True):
+        sentence = _best_player_achievement_clause(sentence) + "。"
+        description = _shorten_player_description(
+            make_description(sentence, "", name)
+        )
+        if is_standalone_player_description(description):
+            return description
+    first = (sentences[0] + "。") if sentences else intro
+    description = _shorten_player_description(make_description(first, "", name))
+    return description if is_standalone_player_description(description) else "NA"
 
 
 def titles_to_qids(titles: list) -> dict:
