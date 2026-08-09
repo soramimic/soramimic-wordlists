@@ -54,6 +54,7 @@ import csv
 import hashlib
 import json
 import sys
+from collections import Counter
 from pathlib import Path
 from xml.sax.saxutils import escape
 
@@ -374,20 +375,28 @@ def load_people(cfg: dict) -> tuple:
     見る(同じ人の full/family/given 行は必ず同じ画像を持つ)。
     """
     prefix = url_prefix(cfg)
-    rows_by_name = {}
+    rows_by_person = {}
     order = []
     with (ROOT / cfg["csv"]).open(encoding="utf-8") as fh:
         for r in csv.DictReader(fh):
             name = r["original"]
-            if name not in rows_by_name:
-                rows_by_name[name] = r
-                order.append(name)
+            identity = r.get("wikidata") or f'id:{r["id"]}'
+            person = (name, identity)
+            if person not in rows_by_person:
+                rows_by_person[person] = r
+                order.append(person)
             # 実写(=生成カード以外のURL)が1行でもあれば、その人は対象外
             img = r.get("image", "")
             if img and not img.startswith(prefix):
-                rows_by_name[name] = None
-    out = [(n, rows_by_name[n].get("team", ""), cfg["sil"](rows_by_name[n]))
-           for n in order if rows_by_name[n] is not None]
+                rows_by_person[person] = None
+    name_counts = Counter(name for name, _identity in order)
+    out = []
+    for name, identity in order:
+        row = rows_by_person[(name, identity)]
+        if row is None:
+            continue
+        seed = name if name_counts[name] == 1 else f"{name}\0{identity}"
+        out.append((name, row.get("team", ""), cfg["sil"](row), seed))
     return out, len(order) - len(out)
 
 
@@ -417,11 +426,11 @@ def run(key: str, apply: bool, prune: bool) -> int:
 
     wanted = set()
     n_color = 0
-    for name, team, sil in people:
+    for name, team, sil, seed in people:
         color = team_color(cfg, colors, team)
         if color:
             n_color += 1
-        path = out_dir / asset_name(cfg, name)
+        path = out_dir / asset_name(cfg, seed)
         path.write_text(build_card(cfg, name, team, color, sil),
                         encoding="utf-8")
         wanted.add(path.name)
@@ -451,6 +460,9 @@ def run(key: str, apply: bool, prune: bool) -> int:
         reader = csv.DictReader(fh)
         rows = [dict(r) for r in reader]
         cols = list(reader.fieldnames)
+    person_names = {(r["original"], r.get("wikidata") or f'id:{r["id"]}')
+                    for r in rows}
+    name_counts = Counter(name for name, _identity in person_names)
     for c in ("image", "image_page"):
         if c not in cols:
             cols.append(c)
@@ -463,14 +475,17 @@ def run(key: str, apply: bool, prune: bool) -> int:
         if cur and not cur.startswith(prefix):
             photo += 1
             continue          # 実写がある行は絶対に触らない
-        url = image_url(cfg, r["original"])
+        identity = r.get("wikidata") or f'id:{r["id"]}'
+        seed = (r["original"] if name_counts[r["original"]] == 1
+                else f'{r["original"]}\0{identity}')
+        url = image_url(cfg, seed)
         if cur == url:
             continue          # 既に同じカード(冪等)
         if cur:
             rebound += 1      # 名前が変わった等でファイル名がずれた場合の貼り替え
         else:
             filled += 1
-        r["image"], r["image_page"] = url, image_page_url(cfg, r["original"])
+        r["image"], r["image_page"] = url, image_page_url(cfg, seed)
 
     write_csv_no_trailing_newline(csv_path, cols, rows)
     print(f"  {cfg['csv']}: カードを付与 +{filled}行, 貼り替え {rebound}行, "

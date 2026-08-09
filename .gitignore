@@ -2,5 +2,10 @@ __pycache__/
 *.pyc
 # 取得結果の途中経過(enrich_*.py の再開用キャッシュ)
 tools/.cache/
+tools/football_jleague_candidates.csv
+tools/football_jleague_candidates.jsonl
+tools/football_jleague_eligibility.jsonl
+tools/football_jleague_verified.csv
+tools/football_scoped_candidates.csv
 # 生成物(gen_pokemon_typecards.py のSVG出力。配布はGitHub Release)
 build/
