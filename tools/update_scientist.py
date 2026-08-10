@@ -6,7 +6,8 @@ sitelinks>=20 ≒ 多言語版20版以上に記事がある著名層)と、Wikip
 の冒頭文(CC BY-SA 4.0)。
 
 - 旧 physicist.csv の全行(id/original/surface/pronunciation/type/image/image_page)
-  はそのまま引き継ぎ、新列 field/era/birth_year/nobel/gender/country/status を付与
+  はそのまま引き継ぎ、新列 field/era/birth_year/death_year/nobel/gender/country/status
+  を付与
 - 未収録の著名科学者を追記(読み・姓名分割は update_physicist.py と同じ方式)
 - 既存行の読み・id・表記は絶対に書き換えない
 - 既存行の付加列は**空欄/NAの補完のみ**行い、既に埋まっている値は書き換えない
@@ -20,7 +21,7 @@ sitelinks>=20 ≒ 多言語版20版以上に記事がある著名層)と、Wikip
   単一列のスラッシュ区切り多値(例 物理/数学)。切り詰めなし、無ければNA。
   ソラミミック側の部分一致演算子 field~=物理 で1列のまま絞れる前提
 - era:     時代区分(古代/中世/近世/近代/現代/NA)。生年basis
-- birth_year: 西暦生年(紀元前は「前287」形式、不明はNA)
+- birth_year/death_year: 西暦の生没年(紀元前は「前287」形式、不明はNA)
 - nobel:   科学系ノーベル賞受賞者か(yes/no、既存で照合不能はNA)
 - gender:  男性/女性/その他/NA
 - country: 市民権のある国の日本語ラベル(複数は"/"、不明はNA)
@@ -554,8 +555,8 @@ def image_pair(url: str):
             "https://commons.wikimedia.org/wiki/File:" + fname)
 
 
-def parse_birth(iso: str):
-    """P569のISO日時 -> (表示用文字列, 数値年)。紀元前は「前287」/ 負の数値年。"""
+def parse_year(iso: str):
+    """WikidataのISO日時 -> (表示用文字列, 数値年)。紀元前は「前287」/ 負の数値年。"""
     if not iso:
         return None, None
     try:
@@ -637,7 +638,8 @@ SELECT ?p (MIN(?birth) AS ?b) (MAX(?death) AS ?d) (MIN(?genderL) AS ?g)
 def build_attr(bnd: dict) -> dict:
     birth_iso = bnd.get("b", {}).get("value")
     death_iso = bnd.get("d", {}).get("value")
-    birth_disp, birth_num = parse_birth(birth_iso)
+    birth_disp, birth_num = parse_year(birth_iso)
+    death_disp, _death_num = parse_year(death_iso)
     gender_raw = bnd.get("g", {}).get("value")
     gender = {"男性": "男性", "女性": "女性"}.get(gender_raw, "その他" if gender_raw else "NA")
     countries_raw = bnd.get("countries", {}).get("value", "")
@@ -659,6 +661,7 @@ def build_attr(bnd: dict) -> dict:
     img = bnd.get("image", {}).get("value")
     return {
         "birth_year": birth_disp or "NA",
+        "death_year": death_disp or "NA",
         "era": era_of(birth_num),
         "gender": gender,
         "country": country,
@@ -670,11 +673,12 @@ def build_attr(bnd: dict) -> dict:
 
 
 COLS = ["id", "original", "surface", "pronunciation", "type",
-        "field", "era", "birth_year", "nobel", "gender", "country", "status",
+        "field", "era", "birth_year", "death_year", "nobel", "gender",
+        "country", "status",
         "description", "image", "image_page"]
 # 既存行に付与/保持する新列
-NEW_FIELDS = ["field", "era", "birth_year", "nobel", "gender", "country",
-              "status", "description"]
+NEW_FIELDS = ["field", "era", "birth_year", "death_year", "nobel", "gender",
+              "country", "status", "description"]
 
 
 def fetch_all(persons: dict):
@@ -682,8 +686,12 @@ def fetch_all(persons: dict):
     if CACHE and Path(CACHE).exists():
         with open(CACHE, "rb") as fh:
             attrs, extracts = pickle.load(fh)
-        print(f"キャッシュから読み込み: {CACHE}", flush=True)
-        return attrs, extracts
+        # death_year追加前のpickleを再利用すると全件NAになってしまうため、
+        # 加工済みattrsのschemaが古いcacheは捨てて再取得する。
+        if not attrs or all("death_year" in attr for attr in attrs.values()):
+            print(f"キャッシュから読み込み: {CACHE}", flush=True)
+            return attrs, extracts
+        print(f"旧形式キャッシュを再取得: {CACHE}", flush=True)
     attrs = fetch_attrs(sorted(persons))
     titles = sorted({p["title"] for p in persons.values()})
     print(f"記事冒頭を取得中... {len(titles)}件", flush=True)
@@ -769,6 +777,7 @@ def main() -> int:
                 "field": info["field"],
                 "era": a.get("era", "NA"),
                 "birth_year": a.get("birth_year", "NA"),
+                "death_year": a.get("death_year", "NA"),
                 "nobel": a.get("nobel", "no"),
                 "gender": a.get("gender", "NA"),
                 "country": a.get("country", "NA"),
@@ -803,7 +812,7 @@ def main() -> int:
         else:
             # physicist.csv からの初回移行: 出自が物理学者なので field=物理、他はNA
             r["field"] = "物理"
-            r["era"] = r["birth_year"] = r["nobel"] = "NA"
+            r["era"] = r["birth_year"] = r["death_year"] = r["nobel"] = "NA"
             r["gender"] = r["country"] = r["status"] = r["description"] = "NA"
         r["description"] = style_description(
             r.get("description", "NA"), r["original"])
@@ -849,6 +858,7 @@ def main() -> int:
             "field": info.get("field", "物理"),
             "era": a.get("era", "NA"),
             "birth_year": a.get("birth_year", "NA"),
+            "death_year": a.get("death_year", "NA"),
             "nobel": a.get("nobel", "no"),
             "gender": a.get("gender", "NA"),
             "country": a.get("country", "NA"),

@@ -38,6 +38,7 @@ IMAGE_URL_RE = re.compile(
 # (例: sekitsui の "Azara's night monkey")。利用側の読み解析がこの手の行で
 # 暴走するため、混入を止める。読みはカタカナのみが前提
 PRON_ASCII_RE = re.compile(r"[A-Za-z]{2,}")
+YEAR_RE = re.compile(r"^(?:NA|前?[0-9]+)$")
 
 errors = []
 
@@ -65,7 +66,11 @@ def validate(path: Path):
             err(f"{path.name}: 必須列 {col} がない")
             return
     idx = {c: i for i, c in enumerate(header)}
+    if path.name == "scientist.csv" and "death_year" not in idx:
+        err(f"{path.name}: 必須列 death_year がない")
+        return
     img_cols = [c for c in ("image", "image_page") if c in idx]
+    scientist_years = {}
     for lineno, line in enumerate(lines[1:], start=2):
         f = line.split(",")
         if len(f) != ncol:
@@ -95,6 +100,17 @@ def validate(path: Path):
             ):
                 err(f"{path.name}:{lineno}: descriptionが曖昧さ回避ページ由来: "
                     f"{v[:65]}")
+        if path.name == "scientist.csv":
+            death_year = f[idx["death_year"]]
+            if not YEAR_RE.fullmatch(death_year):
+                err(f"{path.name}:{lineno}: death_year が不正: {death_year}")
+            if death_year != "NA" and f[idx["status"]] != "物故":
+                err(f"{path.name}:{lineno}: 没年があるのにstatusが物故でない")
+            person_id = f[idx["id"]]
+            years = (f[idx["birth_year"]], death_year)
+            if person_id in scientist_years and scientist_years[person_id] != years:
+                err(f"{path.name}:{lineno}: 同じidで生没年が一致しない")
+            scientist_years[person_id] = years
     print(f"OK: {path.name} ({len(lines) - 1}行)")
 
 
