@@ -123,6 +123,9 @@ def style_description(value: str, name: str = "") -> str:
         match = re.match(r"^([^。]{1,80}?)は[、,]", value)
         if match and not re.search(r"[ぁ-ん]", match.group(1)):
             stripped = value[match.end():].lstrip()
+    # 人物カードに添える文なので、冒頭の三人称主語は重複する。
+    # 「彼が発明した〜」も述語を残せば自然な説明になる。
+    stripped = re.sub(r"^(?:彼|彼女)(?:は|が)[、,]?\s*", "", stripped)
     value = strip_redundant_role_intro(stripped)
     value = re.sub(r"受賞した。$", "受賞。", value)
     return re.sub(
