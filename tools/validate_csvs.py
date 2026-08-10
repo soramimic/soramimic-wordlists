@@ -40,6 +40,7 @@ IMAGE_URL_RE = re.compile(
 # 暴走するため、混入を止める。読みはカタカナのみが前提
 PRON_ASCII_RE = re.compile(r"[A-Za-z]{2,}")
 YEAR_RE = re.compile(r"^(?:NA|前?[0-9]+)$")
+HAN_RE = re.compile(r"[\u3400-\u9fff]")
 
 errors = []
 
@@ -102,6 +103,15 @@ def validate(path: Path):
                 err(f"{path.name}:{lineno}: descriptionが曖昧さ回避ページ由来: "
                     f"{v[:65]}")
         if path.name == "scientist.csv":
+            # 漢字名の family 行は姓の表記を保つ。読みを surface に誤記すると、
+            # 動画字幕でも「小田」ではなく「おだ」のように表示されてしまう。
+            if (
+                f[idx["type"]] == "family"
+                and HAN_RE.search(f[idx["original"]])
+                and not HAN_RE.search(f[idx["surface"]])
+            ):
+                err(f"{path.name}:{lineno}: 漢字名のfamily surfaceが漢字でない: "
+                    f"{f[idx['surface']]}")
             death_year = f[idx["death_year"]]
             if not YEAR_RE.fullmatch(death_year):
                 err(f"{path.name}:{lineno}: death_year が不正: {death_year}")
