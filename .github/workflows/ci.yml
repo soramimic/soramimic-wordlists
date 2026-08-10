@@ -20,3 +20,6 @@ jobs:
 
       - name: Test semantic image replacements
         run: python -m unittest tools/test_apply_gimukyoiku_semantic_images.py
+
+      - name: Test scientist updater
+        run: python tools/test_update_scientist.py
