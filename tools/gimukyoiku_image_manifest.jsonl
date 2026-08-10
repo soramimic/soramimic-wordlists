@@ -1225,7 +1225,7 @@
 {"word": "ATP", "file": "gk_6d89a344fc.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "けむ", "file": "gk_1d98770076.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "けり", "file": "gk_b952c8fabe.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "し尿", "file": "gk_1abf8a4062.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "し尿", "file": "gk_1abf8a4062.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
 {"word": "なり", "file": "gk_0391b70efe.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "べし", "file": "gk_a49f9c930d.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "まし", "file": "gk_c9606ccba5.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
@@ -1234,77 +1234,77 @@
 {"word": "らむ", "file": "gk_fc29a69548.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "イオン化傾向", "file": "gk_9e7b35ee27.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "ウ音便", "file": "gk_73c786a8e5.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "キルヒホッフの法則", "file": "gk_26aae639d3.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "クオリティオブライフ", "file": "gk_6008423b25.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "クロス集計", "file": "gk_fdde8784b6.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "グルカゴン", "file": "gk_fab427f34d.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "ストレス対処", "file": "gk_453d8d3d0c.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "キルヒホッフの法則", "file": "gk_26aae639d3.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
+{"word": "クオリティオブライフ", "file": "gk_6008423b25.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "保健体育の「クオリティオブライフ」を説明する教育用イラスト。通院しながら暮らす成人が、体調に配慮しつつ家族との食事、好きな園芸、友人との交流を楽しんでいる。薬や病院だけを中心にせず、本人の満足、自立、人とのつながりを含む生活全体の質が大切だと分かる穏やかな構図。病名、薬品名、標語、医療ロゴは描かない。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
+{"word": "クロス集計", "file": "gk_fdde8784b6.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
+{"word": "グルカゴン", "file": "gk_fab427f34d.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
+{"word": "ストレス対処", "file": "gk_453d8d3d0c.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "保健体育の「ストレス対処」を説明する教育用イラスト。悩みを抱えた中学生が、深呼吸、軽い運動、十分な睡眠、信頼できる大人への相談を安全に行う四つの小場面。ストレスを無理に消すのではなく複数の健全な方法で付き合うことが伝わる構図。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
 {"word": "トレードオフ", "file": "gk_4ebb3af6f0.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "ナリ活用", "file": "gk_d2d597e244.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "ナ行変格活用", "file": "gk_495704998c.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "ニホニウム", "file": "gk_5a7befa37d.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "フィードバック調節", "file": "gk_42c8921090.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "プロトコル", "file": "gk_a83e661742.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "ヘルスプロモーション", "file": "gk_56158f5310.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "フィードバック調節", "file": "gk_42c8921090.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
+{"word": "プロトコル", "file": "gk_a83e661742.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
+{"word": "ヘルスプロモーション", "file": "gk_56158f5310.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "保健体育の「ヘルスプロモーション」を説明する教育用イラスト。地域の公園で、住民が自分に合う運動、健康相談、食生活の学習に主体的に参加し、保健師と地域スタッフが設備や情報で後押ししている。中央の住民たちが自ら選び行動し、周囲の環境がそれを支えることが一目で分かる構図。標語、看板の文字、医療ロゴは描かない。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
 {"word": "モル濃度", "file": "gk_dc80300923.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "ラ行変格活用", "file": "gk_0ca339d69a.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "リラクセーション", "file": "gk_b24712150a.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "ルシャトリエの原理", "file": "gk_06ecbb94cf.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "リラクセーション", "file": "gk_b24712150a.jpg", "bucket": "v1b", "method": "gpt-image", "prompt": "保健体育の「リラクセーション」を説明する教育用イラスト。静かな教室で体操服の中学生が椅子に深く座り、目を軽く閉じ、肩を下げて腹式呼吸をしている。左に肩へ力を入れて緊張した小さな姿、右に息をゆっくり吐いて腕と肩をゆるめた大きな姿を連続して示し、呼吸と筋弛緩で心身をほぐす実習だと分かる構図。呼吸を表す文字や数字は描かない。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
+{"word": "ルシャトリエの原理", "file": "gk_06ecbb94cf.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
 {"word": "七五調", "file": "gk_33a296dcde.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "七言絶句", "file": "gk_5e4b879dff.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "上二段活用", "file": "gk_3a4ef370a4.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "下二段活用", "file": "gk_5c5b949f84.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "下降気流", "file": "gk_6384096f2c.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "主キー", "file": "gk_db528d1344.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "主キー", "file": "gk_db528d1344.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
 {"word": "五七調", "file": "gk_7ba23490bc.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "五言律詩", "file": "gk_3a9dfa9f4f.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "休養", "file": "gk_a6261f8806.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "住空間", "file": "gk_faf1d35fdc.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "体温調節", "file": "gk_9d105a251a.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "休養", "file": "gk_a6261f8806.jpg", "bucket": "v1b", "method": "gpt-image", "prompt": "保健体育の「休養」を説明する教育用イラスト。活動を終えた中学生が明るい居間でソファに腰掛け、目を休めて温かい飲み物を飲み、窓辺の植物を眺めて心身を落ち着かせている。奥には整えられた寝室を小さく見せ、活動後の休息と十分な睡眠が疲労回復を支えることが分かる構図。スマートフォン、商品ロゴ、文字は描かない。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
+{"word": "住空間", "file": "gk_faf1d35fdc.jpg", "bucket": "v1b", "method": "gpt-image", "prompt": "技術・家庭の「住空間」を説明する教育用イラスト。住宅を真上から見た間取り風の俯瞰図で、家族が食事をする場所、眠る場所、調理する場所、くつろぐ場所を家具と動作で明確に使い分けている。壁と出入口、生活動線も自然に示し、部屋名などの文字なし。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
+{"word": "体温調節", "file": "gk_9d105a251a.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
 {"word": "作業の安全", "file": "gk_d5ea978817.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "使役", "file": "gk_1461075c32.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "係り結びの流れ", "file": "gk_e94d0c9ced.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "係助詞", "file": "gk_3d7173209c.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "保健機関", "file": "gk_4331e761a6.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "公的年金", "file": "gk_c8ec012a50.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "保健機関", "file": "gk_4331e761a6.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "保健体育の「保健機関」を説明する教育用イラスト。地域の明るい公的施設で、保健師が住民の健康相談に応じ、隣では乳幼児の健診と高齢者の血圧測定が安全に行われている。年齢の異なる地域住民を公的な専門職が相談と検診で支えることが伝わる一つの室内場面。施設名、掲示物の文字、赤十字などの標章は描かない。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
+{"word": "公的年金", "file": "gk_c8ec012a50.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
 {"word": "共通語", "file": "gk_3a9e882a5a.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "半加算回路", "file": "gk_4c97af054b.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "原子の構造", "file": "gk_d61fe5b86d.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "原子量", "file": "gk_b8e60466a6.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "反実仮想", "file": "gk_98fb747492.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "反復構造", "file": "gk_ff600134f9.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "反復構造", "file": "gk_ff600134f9.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
 {"word": "反語", "file": "gk_2eca1669c7.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "受身", "file": "gk_eb37c53f9a.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "叙景詩", "file": "gk_ae63f68bc4.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "口語自由詩", "file": "gk_ac75abe22c.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "可逆圧縮", "file": "gk_d451040149.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "同訓異字", "file": "gk_4a6ddafabc.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "可逆圧縮", "file": "gk_d451040149.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
+{"word": "同訓異字", "file": "gk_4a6ddafabc.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
 {"word": "向心力", "file": "gk_ea436dbfc4.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "呼応の副詞", "file": "gk_44dff715df.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "和語", "file": "gk_199126f511.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "和語", "file": "gk_199126f511.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
 {"word": "四段活用", "file": "gk_fcdfca4b0f.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "基礎代謝量", "file": "gk_e4860c9456.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "外来語", "file": "gk_28d7531ec7.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "外部キー", "file": "gk_dcb1aaae09.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "基礎代謝量", "file": "gk_e4860c9456.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
+{"word": "外来語", "file": "gk_28d7531ec7.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
+{"word": "外部キー", "file": "gk_dcb1aaae09.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
 {"word": "婉曲", "file": "gk_82bf78487e.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "完了", "file": "gk_1cae18a9a4.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "官能基", "file": "gk_ca7d3a2ddc.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "家計", "file": "gk_58c5df5427.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "官能基", "file": "gk_ca7d3a2ddc.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
+{"word": "家計", "file": "gk_58c5df5427.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
 {"word": "已然形", "file": "gk_3d95881218.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "平衡定数", "file": "gk_911d5c94b8.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "引数", "file": "gk_539b3b56c5.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "恒常性", "file": "gk_b6cb157a5e.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "情報格差", "file": "gk_d6ab82c4d0.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "意匠権", "file": "gk_73f4ad0625.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "引数", "file": "gk_539b3b56c5.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
+{"word": "恒常性", "file": "gk_b6cb157a5e.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
+{"word": "情報格差", "file": "gk_d6ab82c4d0.jpg", "bucket": "v1b", "method": "gpt-image", "prompt": "技術・家庭の「情報格差」を説明する教育用イラスト。左右対比の一場面で、左側では通信環境とタブレットを使える生徒がオンライン教材へアクセスし、右側では同年代の生徒が端末も通信設備もなく閉じたままの机で困っている。中央に距離のある切れ目を置き、情報機器や通信へのアクセスの差だと分かる構図。画面に読める文字、企業ロゴ、禁止記号は描かない。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
+{"word": "意匠権", "file": "gk_73f4ad0625.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
 {"word": "意志", "file": "gk_82c8503c91.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "戦術", "file": "gk_d8a946f197.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "戦術", "file": "gk_d8a946f197.jpg", "bucket": "v1b", "method": "gpt-image", "prompt": "保健体育の球技における「戦術」を説明する、正確で見やすいバスケットボール教材図。一つのハーフコートを斜め上から俯瞰し、青い体操服の攻撃側を正確に3人、白い体操服の守備側を正確に2人だけ描く。攻撃側1人だけがオレンジ色の丸いバスケットボールを両手で持つ。二人目へ向かう一本のパス矢印、三人目が守備のいない空間へ走る一本の移動矢印を描く。守備2人はボール保持者とパス先を守る位置。画面上部にバスケットゴール一つ。人物は合計5人だけ。スティック、ラケット、ホッケー用具、サッカーボール、余分な選手、文字や数字なし。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
 {"word": "戻り値", "file": "gk_1b3533d716.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "抗原抗体反応", "file": "gk_e8cde8932d.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "探索行動", "file": "gk_2072eee819.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "接続語", "file": "gk_9055de8ff5.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "抗原抗体反応", "file": "gk_e8cde8932d.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
+{"word": "探索行動", "file": "gk_2072eee819.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "技術・家庭の「探索行動」を説明する教育用イラスト。安全な室内の遊び場で幼児が自分から低い棚へ近づき、形や手触りの異なる積み木、布、音の鳴る玩具を手に取って確かめている。少し離れて保護者が見守り、子どもが視線、手、姿勢を使って身の回りを主体的に調べることが分かる構図。商品キャラクター、文字、小さな誤飲物は描かない。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
+{"word": "接続語", "file": "gk_9055de8ff5.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
 {"word": "推定", "file": "gk_5fb53c92ea.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "推量", "file": "gk_debdb52af0.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "放射年代", "file": "gk_740a62bad6.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "放射年代", "file": "gk_740a62bad6.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
 {"word": "敬語", "file": "gk_13225bf8e3.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "文語定型詩", "file": "gk_e4396bb025.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "断定", "file": "gk_4af5c0e788.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
@@ -1313,52 +1313,52 @@
 {"word": "最高敬語", "file": "gk_106569b719.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "本動詞", "file": "gk_0eaddd7408.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "栄養素", "file": "gk_cbad9b7ef6.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "止血法", "file": "gk_645b4dcaa2.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "止血法", "file": "gk_645b4dcaa2.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "保健体育の「止血法」を説明する正確な教育用イラスト。学校の応急手当実習で、使い捨て手袋を着けた中学生が、別の生徒の前腕にある小さな傷へ厚く折った清潔な白いガーゼを一枚だけ直接当て、その真上を手のひら全体でしっかり押さえて圧迫している手元を大きく描く。圧迫する手・ガーゼ・傷の位置関係を明瞭にする。腕を縛る帯、止血帯、上腕の赤い帯、浮いた手、巨大な余分のガーゼ、流血は描かない。そばに小さな救急箱。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
 {"word": "水酸化物イオン", "file": "gk_e486a0cc29.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "消費者市民社会", "file": "gk_6efa4664c6.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "漸進性の原則", "file": "gk_1a985ffc0f.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "特異性の原則", "file": "gk_7788748f7d.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "生活習慣", "file": "gk_37a9e6ae5d.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "生涯発達", "file": "gk_8650feb66a.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "産業財産権", "file": "gk_993bc5a7d0.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "消費者市民社会", "file": "gk_6efa4664c6.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "技術・家庭の「消費者市民社会」を説明する教育用イラスト。現代日本の地域の店を舞台に、中学生と家族が中央で簡易包装かつ長く使える商品を選び、同じ画面の左で壊れた日用品を修理し、右で空き容器を資源回収箱へ分別する場面。買い物・修理・資源循環が社会と環境を良くする一連の行動だと分かる構図。歴史人物、古文書、宮殿は絶対に描かない。商品名、ロゴ、読める表示なし。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
+{"word": "漸進性の原則", "file": "gk_1a985ffc0f.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "保健体育の「漸進性の原則」を説明する教育用イラスト。同じ体操服の中学生が安全な指導のもと、左から右へ軽いダンベル、少し重いダンベル、やや重いダンベルを正しい姿勢で持ち上げる3つの連続姿勢。重さと運動量を一段ずつ無理なく高めることが分かる階段状の構図。重量の数字、文字、極端な筋肉表現は描かない。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
+{"word": "特異性の原則", "file": "gk_7788748f7d.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "保健体育の「特異性の原則」を説明する教育用イラスト。画面を左右に分け、左側では同じ短距離走者を手前のスタートダッシュ練習と奥の力強く加速して走る成果の2場面で描く。右側では同じ水泳者を手前のクロール練習と奥の滑らかに速く泳ぐ成果の2場面で描く。各側で『特定の動作を練習すると、その動作に対応する能力が伸びる』という練習と成果の組合せが明確に対応し、単なる二種類のスポーツ紹介に見えない構図。人物の服装と外見は各側で統一する。競技名、数字、矢印、文字、疑似文字は一切描かない。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
+{"word": "生活習慣", "file": "gk_37a9e6ae5d.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "保健体育の「生活習慣」を説明する教育用イラスト。同じ中学生の一日を、朝の栄養バランスのよい食事、昼の適度な運動、夜の入浴後に早めに眠る3つの連続場面で描く。毎日規則正しく繰り返す食事、運動、睡眠が健康を支えることを、朝から夜への光の変化で一目で示す。時計の数字や文字、商品ロゴは描かない。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
+{"word": "生涯発達", "file": "gk_8650feb66a.jpg", "bucket": "v1b", "method": "gpt-image", "prompt": "技術・家庭の「生涯発達」を説明する教育用イラスト。同じ人物の人生を左から右へ、乳幼児、学ぶ子ども、働き家庭や地域に関わる成人、趣味や交流を続ける高齢者の4段階で連続して描く。どの年代にも新しい学びや人との関わりを表す物を添え、一生を通じて発達が続くことが伝わる構図。年齢を示す数字や文字は描かない。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
+{"word": "産業財産権", "file": "gk_993bc5a7d0.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
 {"word": "真理値表", "file": "gk_434abb8a04.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "確定モデル", "file": "gk_ede060a2df.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "窒素固定", "file": "gk_5c106adc79.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "符号化", "file": "gk_000f164cca.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "確定モデル", "file": "gk_ede060a2df.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
+{"word": "窒素固定", "file": "gk_5c106adc79.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
+{"word": "符号化", "file": "gk_000f164cca.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
 {"word": "等速円運動", "file": "gk_f52fd8aff6.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "結びの省略", "file": "gk_fd8a501560.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "絶対等級", "file": "gk_d83ddb9a87.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "線形探索", "file": "gk_e3fce7e7f5.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "緩衝液", "file": "gk_19b9056304.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "繊維の性能", "file": "gk_f4da9d7493.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "線形探索", "file": "gk_e3fce7e7f5.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
+{"word": "緩衝液", "file": "gk_19b9056304.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
+{"word": "繊維の性能", "file": "gk_f4da9d7493.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
 {"word": "置き字", "file": "gk_218be4c87e.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "職業病", "file": "gk_2a8ef9df11.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "自己形成", "file": "gk_1ed74e6f56.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "自己誘導", "file": "gk_cbf4032483.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "芳香族化合物", "file": "gk_01dd39809b.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "著作者人格権", "file": "gk_4acb31f2b4.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "著作隣接権", "file": "gk_b355fff764.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "行動嗜癖", "file": "gk_20efa5957a.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "職業病", "file": "gk_2a8ef9df11.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "保健体育の「職業病」を説明する教育用イラスト。長時間同じ姿勢でパソコン作業を続ける成人が肩と腰の痛みに気づき、机の高さや椅子の姿勢を見直している職場の場面。反復する作業環境が体の不調につながることを、時計の連続した小さな影と痛む部位の淡い強調で示す。企業ロゴ、画面内の文字、危険な作業は描かない。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
+{"word": "自己形成", "file": "gk_1ed74e6f56.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "保健体育の「自己形成」を説明する教育用イラスト。一人の中学生が学習、部活動、友達との対話、地域での体験を重ねながら、中央で自分の進む方向を落ち着いて選んでいる。周囲の経験を小さな独立した場面として配置し、それらが色の帯となって中央の成長した姿へつながる構図。特定の職業だけを正解にせず、標語や文字は描かない。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
+{"word": "自己誘導", "file": "gk_cbf4032483.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
+{"word": "芳香族化合物", "file": "gk_01dd39809b.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
+{"word": "著作者人格権", "file": "gk_4acb31f2b4.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
+{"word": "著作隣接権", "file": "gk_b355fff764.jpg", "bucket": "v1b", "method": "gpt-image", "prompt": "技術・家庭の「著作隣接権」を説明する教育用イラスト。中央の楽曲を、左の演奏者が演奏し、中央の録音スタッフが録音し、右の放送スタッフが届ける一連の場面。作品を公衆へ伝える演奏者・レコード製作者・放送事業者にも権利があることを、三者を囲む小さな盾で示す。実在人物・ロゴなし。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
+{"word": "行動嗜癖", "file": "gk_20efa5957a.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "保健体育の「行動嗜癖」を説明する教育用イラスト。夜の部屋で中学生がゲーム端末から離れようとしても手放せず、背後の机には手つかずの宿題、冷めた食事、暗い窓を描く。端末へ引き戻されるような淡い循環の軌跡と疲れた表情で、生活に支障が出ても行動をやめにくい状態を示す。ゲーム画面の内容、企業ロゴ、文字、恐怖表現は描かない。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
 {"word": "衣食住", "file": "gk_2094cd348f.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "被服の機能", "file": "gk_d4d508ec8e.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "被服の機能", "file": "gk_d4d508ec8e.jpg", "bucket": "v1b", "method": "gpt-image", "prompt": "技術・家庭の「被服の機能」を説明する教育用イラスト。中央に同じ中学生を置き、左に冬の上着が体温を守り雨具が水を防ぐ保健衛生上の働き、右に制服や作業着が場面と役割を示す社会生活上の働きを対比。衣服が身体を守る機能と所属・礼儀を表す機能の両方が伝わる構図。ロゴなし。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
 {"word": "補助動詞", "file": "gk_1668b5f709.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "複合語", "file": "gk_e9ce6882ff.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "複合語", "file": "gk_e9ce6882ff.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
 {"word": "詠嘆", "file": "gk_d4d715a068.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "話し言葉", "file": "gk_bdeaa070ae.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "論理回路", "file": "gk_10f58c4d6b.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "連文節", "file": "gk_2008728262.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "論理回路", "file": "gk_10f58c4d6b.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
+{"word": "連文節", "file": "gk_2008728262.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
 {"word": "運動方程式", "file": "gk_9d92f9b073.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "過負荷の原則", "file": "gk_6a46f9eec3.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "選択構造", "file": "gk_6556b084f6.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "還元剤", "file": "gk_42b55db83c.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "酸化還元滴定", "file": "gk_166e2636ad.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "電子証明書", "file": "gk_0a6c702f6b.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "過負荷の原則", "file": "gk_6a46f9eec3.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "保健体育の「過負荷の原則」を説明する教育用イラスト。同じ体操服、同じ髪型の中学生を左から右へ三場面で描く。左は日常動作として非常に軽い青いダンベルを楽に持つ。中央はトレーニングとしてそれより少し重い赤いダンベル一個を正しい姿勢で努力して持つ。右は十分な休息の後、中央とまったく同じ大きさ・同じ赤色のダンベル一個を、余裕のある表情で安定して持つ。中央と右の赤いダンベルは形・大きさ・色を完全に同一にし、右だけ重くしない。右端まで全身を収める。段階的に重さを増やし続ける図、極端な重量、けが、文字なし。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
+{"word": "選択構造", "file": "gk_6556b084f6.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
+{"word": "還元剤", "file": "gk_42b55db83c.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
+{"word": "酸化還元滴定", "file": "gk_166e2636ad.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
+{"word": "電子証明書", "file": "gk_0a6c702f6b.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
 {"word": "電気陰性度", "file": "gk_58a9cf530d.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "電離平衡", "file": "gk_d3eea92a14.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "静電誘導", "file": "gk_574ea225be.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "音色", "file": "gk_c4301894a2.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "順次構造", "file": "gk_9b03a34c20.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "食事摂取基準", "file": "gk_6fa67e36a9.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "静電誘導", "file": "gk_574ea225be.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
+{"word": "音色", "file": "gk_c4301894a2.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
+{"word": "順次構造", "file": "gk_9b03a34c20.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
+{"word": "食事摂取基準", "file": "gk_6fa67e36a9.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
 {"word": "クジラ構文", "file": "gk_d4b939e33b.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "サポーティングセンテンス", "file": "gk_7cd22e0f47.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "デペイズマン", "file": "gk_545a7a680b.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
@@ -1374,20 +1374,20 @@
 {"word": "修復", "file": "gk_6fcf246122.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "倍数表現", "file": "gk_e8b50befe6.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "倒置", "file": "gk_627a0c3120.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "再現部", "file": "gk_43258dbf28.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "再現部", "file": "gk_43258dbf28.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
 {"word": "副詞節", "file": "gk_dba3e38131.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "名詞節", "file": "gk_2605cfb50f.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "唱歌", "file": "gk_646478a9b0.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "変奏曲", "file": "gk_e0c2a409d4.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "変奏曲", "file": "gk_e0c2a409d4.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
 {"word": "天球図", "file": "gk_85583519fb.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "寄せの合方", "file": "gk_8ab6292daa.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "展開部", "file": "gk_fcd8301ae8.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "展開部", "file": "gk_fcd8301ae8.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
 {"word": "強調構文", "file": "gk_ac429b11b0.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "形容詞節", "file": "gk_52cf2cdcb6.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "形式", "file": "gk_fa7fa786a5.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "形式主語", "file": "gk_9ed3b821f6.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "従属節", "file": "gk_ecd5ffb30e.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "提示部", "file": "gk_44d5db16e7.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "提示部", "file": "gk_44d5db16e7.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
 {"word": "文の要素", "file": "gk_3af786066e.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "比較構文", "file": "gk_f15e24b263.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "民族音楽", "file": "gk_fb552676e1.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
@@ -1399,64 +1399,64 @@
 {"word": "第二文型", "file": "gk_ce8bf57111.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "第五文型", "file": "gk_5419597d0f.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "第四文型", "file": "gk_7317bd674f.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "躍動感", "file": "gk_1f48e185c9.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "造形", "file": "gk_d792e9a38c.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "躍動感", "file": "gk_1f48e185c9.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "美術の「躍動感」を説明する教育用イラスト。左上から右下へ跳躍する一頭の犬を、鼻先、耳、胴体、四本の脚、尾まで一切切らず、四辺に十分な余白を取って全身が正方形内へ収まるように描く。犬は胴を伸ばし、前脚と後脚を大きく開き、耳と尾をなびかせ、地面から離れた影で空中の動きを示す。右下の中学生は犬を観察しながら、大きなスケッチ用紙に鉛筆の先を実際に触れさせ、犬の全身を表す一本の大きな曲線を描いている。生徒の両手と鉛筆の持ち方を自然にし、犬と紙と手を重ねない。擬音、矢印、文字は描かない。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
+{"word": "造形", "file": "gk_d792e9a38c.jpg", "bucket": "v1b", "method": "gpt-image", "prompt": "美術の「造形」を説明する教育用イラスト。美術室で中学生が手を使い、粘土を押す、伸ばす、つまむ動作で、かたまりから立体的な抽象形をつくり出している。机上には紙を折って作った形と細い木片を組んだ形も少量置き、さまざまな材料から形を生み出す活動だと分かる手元中心の構図。完成作品に既存キャラクターや読める文字を描かない。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
 {"word": "量感", "file": "gk_414a85b8cf.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "ウェーバーの工業立地論", "file": "gk_a70775e7a4.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "ノーマライゼーション", "file": "gk_060411f396.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "ビルトインスタビライザー", "file": "gk_c80e72fdcc.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "ホイットルセーの農業区分", "file": "gk_bad75fb406.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "三世一身法", "file": "gk_5e6d07383f.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "不輸不入の権", "file": "gk_ab85d0c436.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "公共の福祉", "file": "gk_a6ea6bd362.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "兵農分離", "file": "gk_3aee77ce65.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "分国法", "file": "gk_c227a92f21.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "功利主義", "file": "gk_925c1bb1b7.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "労働三権", "file": "gk_45a896ab13.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "原料指向型工業", "file": "gk_426233c449.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "古期造山帯", "file": "gk_fa82ae58e1.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "四大公害病", "file": "gk_b022affa5e.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "地頭", "file": "gk_3748cda017.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "執権", "file": "gk_7efdf661d1.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "外来河川", "file": "gk_4d3e75920b.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "大宝律令", "file": "gk_152e9116e3.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "守護大名", "file": "gk_a1a104ebfd.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "定言命法", "file": "gk_58e0e6ba7f.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "寡占", "file": "gk_c7d624a5db.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "市場指向型工業", "file": "gk_3b579505d4.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "幕藩体制", "file": "gk_89d121a26c.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "情報公開制度", "file": "gk_9ff71ecdeb.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "惣村", "file": "gk_ccfe32fe19.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "所得倍増計画", "file": "gk_231c489237.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "景気循環", "file": "gk_d0b69ea610.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "版籍奉還", "file": "gk_444abc903d.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "ウェーバーの工業立地論", "file": "gk_a70775e7a4.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
+{"word": "ノーマライゼーション", "file": "gk_060411f396.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "社会の「ノーマライゼーション」を説明する教育用イラスト。学校と地域の同じ日常空間で、車いす利用者、白杖利用者、子ども、高齢者など多様な人が、段差のない入口や低床バスを使いながら自然に学び暮らす場面。障害のある人を隔離せず共に生活する社会を肯定的に描く。過度な英雄化や介助の強調なし。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
+{"word": "ビルトインスタビライザー", "file": "gk_c80e72fdcc.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
+{"word": "ホイットルセーの農業区分", "file": "gk_bad75fb406.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
+{"word": "三世一身法", "file": "gk_5e6d07383f.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
+{"word": "不輸不入の権", "file": "gk_ab85d0c436.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
+{"word": "公共の福祉", "file": "gk_a6ea6bd362.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
+{"word": "兵農分離", "file": "gk_3aee77ce65.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "社会の「兵農分離」を説明する教育用イラスト。安土桃山時代の農村だけを背景に、左右二場面を描く。左では戦国末期の検地役人が竹竿と縄で水田を測り、農民は鍬を持つ。右では農民が刀を役人の両手へ穏やかに渡し、奥で刀を帯びた武士一人が城下へ歩き、農民は村に残って田を耕す。検地、刀狩、武士と農民の身分分離が一目で分かる。蒸気機関車、鉄道、煙突、工場、電柱、自動車、近代服を絶対に描かない。暴力、負傷者、文字なし。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
+{"word": "分国法", "file": "gk_c227a92f21.jpg", "bucket": "v1b", "method": "gpt-image", "prompt": "社会の「分国法」を説明する教育用イラスト。戦国時代の城の広間で、大名が領国内の武士や村の代表へ法令の巻物を示し、争う二人を家臣が等しく制止している。領国を統一した規則で治め、私闘を抑えるための法だと分かる場面。特定の実在人物や家紋、巻物の読める文字は描かない。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
+{"word": "功利主義", "file": "gk_925c1bb1b7.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
+{"word": "労働三権", "file": "gk_45a896ab13.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
+{"word": "原料指向型工業", "file": "gk_426233c449.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
+{"word": "古期造山帯", "file": "gk_fa82ae58e1.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
+{"word": "四大公害病", "file": "gk_b022affa5e.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
+{"word": "地頭", "file": "gk_3748cda017.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "社会の「地頭」を説明する教育用イラスト。鎌倉時代の荘園で、武士の地頭が田畑を見回り、農民が納める年貢米を帳簿で確認し、土地を管理している場面。遠景に鎌倉幕府から任命されたことを示す使者。暴力や徴税の誇張を避ける。時代に合う装束、読める文字なし。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
+{"word": "執権", "file": "gk_7efdf661d1.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
+{"word": "外来河川", "file": "gk_4d3e75920b.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "社会の「外来河川」を説明する教育用イラスト。画面上部の雨が多い緑の山地を水源とする大河が、中央の広い乾燥砂漠を途切れず貫き、下流の農地と集落を潤す俯瞰景観。湿潤地域に源をもち乾燥地域へ流れ込む関係を明確にし、固有の地名や文字なし。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
+{"word": "大宝律令", "file": "gk_152e9116e3.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
+{"word": "守護大名", "file": "gk_a1a104ebfd.jpg", "bucket": "v1b", "method": "gpt-image", "prompt": "社会の「守護大名」を説明する教育用イラスト。14〜15世紀の室町時代の質素な城館で、中央の守護が烏帽子と落ち着いた色の直垂を着て座り、周囲の地方武士団の代表たちも直垂や小袖姿で、一国の田畑と道を描いた無文字の地図を囲んで指示を受けている。背景に低い土塁と木造館、遠くに領国の村々。全員を非戦闘の会議姿にし、甲冑、兜、刀を振るう姿、戦国時代の派手な鎧、江戸城風天守、実在家紋を一切描かない。地域武士をまとめる領国支配者と分かる構図。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
+{"word": "定言命法", "file": "gk_58e0e6ba7f.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
+{"word": "寡占", "file": "gk_c7d624a5db.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
+{"word": "市場指向型工業", "file": "gk_3b579505d4.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "社会・地理の「市場指向型工業」を一目で説明する正確な教材イラスト。大都市の消費者市場を俯瞰する。画面中央に飲料を瓶詰めする小規模な飲料工場を一つ置き、工場のすぐ周囲にスーパーマーケット、飲食店、小売店を多数密集させる。工場から周囲の各店舗へ、短い距離だけ走る複数の小型配送トラックと短い矢印を放射状に描く。画面の遠い端には小さな原料産地を置くが、主役は工場と近接する多数の消費店舗。港、貨物船、長距離大型トラック、複数の巨大工場、一般的な工業地帯を描かない。企業ロゴ、地名、文字、数字なし。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
+{"word": "幕藩体制", "file": "gk_89d121a26c.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
+{"word": "情報公開制度", "file": "gk_9ff71ecdeb.jpg", "bucket": "v1b", "method": "gpt-image", "prompt": "社会の「情報公開制度」を説明する教育用イラスト。市民が行政窓口で公文書の開示を請求し、職員が個人情報を適切に伏せた文書を透明な窓口越しに渡す場面。閉じた書庫から市民へ情報が開かれる流れと、知る権利を支える制度が伝わる。文書に読める文字なし。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
+{"word": "惣村", "file": "gk_ccfe32fe19.jpg", "bucket": "v1b", "method": "gpt-image", "prompt": "社会の「惣村」を説明する教育用イラスト。室町時代の農村で、村人が寄合で村掟を相談し、共同で用水路を整備し、村の門と共有林を管理する様子を一枚にまとめる。村人自身による自治と共同作業が伝わる構図。時代に合う家並みと服装、読める文字なし。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
+{"word": "所得倍増計画", "file": "gk_231c489237.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
+{"word": "景気循環", "file": "gk_d0b69ea610.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
+{"word": "版籍奉還", "file": "gk_444abc903d.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "社会の「版籍奉還」を説明する教育用イラスト。1869年の明治初期、画面左に並ぶ複数の旧藩主が、それぞれ領地を示す地図と領民台帳を両手で差し出し、画面右の中央政府の官人たちがまとめて受け取る公式の場面。藩主から中央政府へ土地と人民の支配権を返す措置だと、複数の地図・台帳と受け渡しの方向で明確にする。全員を明治初期の日本の和装・束帯に統一し、中国古代風の服、洋装、単なる白紙一枚の交換、実在人物の肖像、読める文字は描かない。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
 {"word": "環境権", "file": "gk_2f79e508c6.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "租庸調", "file": "gk_c35a3c1dcb.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "秩禄処分", "file": "gk_3636f307a8.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "立憲主義", "file": "gk_888b889a68.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "自由党", "file": "gk_936773ee23.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "荘園公領制", "file": "gk_547df47a67.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "象徴天皇制", "file": "gk_6713af5b22.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "違憲立法審査権", "file": "gk_b3b0c69b6e.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "集団的自衛権", "file": "gk_3c249e98f7.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "預金準備率操作", "file": "gk_0a5bfe4eca.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "秩禄処分", "file": "gk_3636f307a8.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
+{"word": "立憲主義", "file": "gk_888b889a68.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
+{"word": "自由党", "file": "gk_936773ee23.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
+{"word": "荘園公領制", "file": "gk_547df47a67.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
+{"word": "象徴天皇制", "file": "gk_6713af5b22.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
+{"word": "違憲立法審査権", "file": "gk_b3b0c69b6e.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
+{"word": "集団的自衛権", "file": "gk_3c249e98f7.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
+{"word": "預金準備率操作", "file": "gk_0a5bfe4eca.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
 {"word": "もののあはれ", "file": "gk_66168cc794.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "アナロジー", "file": "gk_a977bff39a.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "アナロジー", "file": "gk_a977bff39a.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
 {"word": "コロケーション", "file": "gk_02c0f0fd4a.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "ディスコースマーカー", "file": "gk_d5b804180f.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "パラフレーズ", "file": "gk_41a4b5c1c4.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "ビブリオバトル", "file": "gk_887e99e0a1.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "フロンガス", "file": "gk_9afb883818.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "ビブリオバトル", "file": "gk_887e99e0a1.jpg", "bucket": "v1b", "method": "gpt-image", "prompt": "国語の「ビブリオバトル」を説明する教育用イラスト。教室で中学生4人がそれぞれおすすめの本を一冊ずつ紹介し終え、中央の机に表紙の異なる4冊を横一列に並べている。投票は一人一票で、4人それぞれの手元から合計4枚だけの同じ形の赤い丸札を置く。選ばれた一冊の前に3枚、別の一冊の前に1枚、残り2冊には0枚とし、余分な札は一切描かない。参加者が一冊を選ぶ読書活動と分かる構図。本や札に読める文字や数字なし。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
+{"word": "フロンガス", "file": "gk_9afb883818.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
 {"word": "ルソー", "file": "gk_8a85070473.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "ロック", "file": "gk_609429c587.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "一石二鳥", "file": "gk_5ad0cefd2f.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "上げ米の制", "file": "gk_9b78f73da6.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "上知令", "file": "gk_e2dc5fcf84.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "上げ米の制", "file": "gk_9b78f73da6.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
+{"word": "上知令", "file": "gk_e2dc5fcf84.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
 {"word": "二重否定", "file": "gk_7fec048286.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "二項対立", "file": "gk_aeafb63e63.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "五人組", "file": "gk_c52045a1a3.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "二項対立", "file": "gk_aeafb63e63.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
+{"word": "五人組", "file": "gk_c52045a1a3.jpg", "bucket": "v1b", "method": "gpt-image", "prompt": "社会の「五人組」を説明する教育用イラスト。江戸時代の農村で、五軒の農家から一人ずつ集まった成人の農民を、重ならない半円状に正確に五人だけ描く。五人全員の頭、顔、両腕、上半身がはっきり見え、画面内の人物はこの五人以外に増やさない。中央の低い台には年貢米の俵と、読める文字のない一枚の連判状を置き、連判状には五人分だと一目で数えられる五つの赤い印だけを並べる。背景には対応する五軒の農家を簡潔に描き、五人が一つの組として共同で確認し連帯責任を負う構図。江戸期の農民らしい質素な小袖と髪形にし、武士、庄屋、子ども、六人目の人物、威圧や処罰は描かない。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
 {"word": "五里霧中", "file": "gk_40c57b6d33.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "人返しの法", "file": "gk_14bea7f337.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "人返しの法", "file": "gk_14bea7f337.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "社会の「人返しの法」を説明する教育用イラスト。江戸時代末期、画面左のにぎわう江戸の町から、出稼ぎに来ていた農民の家族が役人の穏やかな案内を受け、画面右の故郷の農村と田畑へ戻っていく場面。家族の進行方向を町から農村へ明確にし、農村側では村人が迎える。荷物は風呂敷包みと背負い籠に限定し、現代の旅行鞄、洋服、鉄道、自動車は描かない。威圧、暴力、読める文字なし。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
 {"word": "付帯状況", "file": "gk_6caeb49245.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "代不定詞", "file": "gk_efd8f17377.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "以心伝心", "file": "gk_15864de2b6.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
@@ -1472,28 +1472,28 @@
 {"word": "分詞構文", "file": "gk_82dc3e5466.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "制限用法", "file": "gk_ef2d7cd6cc.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "副詞的用法", "file": "gk_670e88c5d5.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "北洋漁業", "file": "gk_6a42a4a95f.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "北洋漁業", "file": "gk_6a42a4a95f.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "社会の「北洋漁業」を説明する教育用イラスト。冷たい北太平洋の沖合で大型漁船が網を巻き上げ、甲板の漁業者がサケやマスを選別している遠洋漁業の場面。背景に雪を頂くアリューシャン列島風の島影と荒い海を小さく描き、日本近海の沿岸漁業ではないことが分かる構図。国旗、船名、地図上の文字や数字は描かない。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
 {"word": "十人十色", "file": "gk_e1130f4b0f.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "十訓抄", "file": "gk_cc58644c80.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "原形不定詞", "file": "gk_5f57602f22.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "句会", "file": "gk_9c6742cfa2.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "句会", "file": "gk_9c6742cfa2.jpg", "bucket": "v1b", "method": "gpt-image", "prompt": "国語の「句会」を説明する教育用イラスト。明るい教室で中学生4人が一つの机を囲み、作者名のない細長い俳句の紙片を読み比べ、気に入った句のそばへ小さな丸い投票札を置いて互いに選び合っている。机上には複数の句の紙片を整然と並べ、読む・考える・選ぶという共同活動が一目で分かる構図。紙片には読める文字を書かない。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
 {"word": "句動詞", "file": "gk_0cad1338fb.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "名詞構文", "file": "gk_102560ff59.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "名詞的用法", "file": "gk_c8c5597c3f.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "唐詩選", "file": "gk_fff45b2b75.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "囲米", "file": "gk_8759483c1d.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "大逆事件", "file": "gk_630a840ccc.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "囲米", "file": "gk_8759483c1d.jpg", "bucket": "v1b", "method": "gpt-image", "prompt": "社会の「囲米」を説明する教育用イラスト。電柱や機械や現代的な建物が一切ない江戸時代の農村で、ちょんまげと着物姿の農民たちが、縄で結んだ米俵を共同の頑丈な木造土蔵へ運び込んでいる。開いた蔵の内部には非常用の米俵が整然と積まれ、手前に豊作時の黄金色の田、遠景に不作を思わせる乾いた田を小さく対比する。運んでいる物は稲束ではなく、必ず円筒形の米俵として描く。ヘルメット、帽子、電柱、電線、近代的な道具、看板、帳面、記号、文字、疑似文字は一切描かない。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
+{"word": "大逆事件", "file": "gk_630a840ccc.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
 {"word": "完了不定詞", "file": "gk_5763ca045e.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "完了形分詞構文", "file": "gk_103f004382.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "対比", "file": "gk_54f354b65e.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "川柳", "file": "gk_ab937c8cc9.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "帰納", "file": "gk_09f34d20ad.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "川柳", "file": "gk_ab937c8cc9.jpg", "bucket": "v1b", "method": "gpt-image", "prompt": "国語の「川柳」を説明する教育用イラスト。教室で中学生3人が、日常のちょっとした失敗や人のしぐさを題材に短い句を考えている。一人が完全に無地の細長い白い短冊を見せ、ほかの二人が親しみを込めて笑っている。机上には五・七・五の三つのまとまりを暗示する、長さの異なる三組の完全に無地の短冊を並べ、季節の自然ではなく世相や人情をユーモラスによむ活動だと分かる構図。すべての紙は完全な無地とし、線、点、記号、数字、文字、疑似文字、透かしを一切描かない。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
+{"word": "帰納", "file": "gk_09f34d20ad.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
 {"word": "帰結節", "file": "gk_1fd34cb78d.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "弱肉強食", "file": "gk_23f8b38ce2.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "形容詞的用法", "file": "gk_0c9143c312.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "形式目的語", "file": "gk_a2045a3de9.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "従属接続詞", "file": "gk_95f55e74f5.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "惣", "file": "gk_1293803831.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "惣", "file": "gk_1293803831.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "社会の「惣」を説明する教育用イラスト。室町時代の日本の農村で、寺社の土の境内に村人たちが輪になって座り、共同で管理する用水と共有林について寄合で相談し、自治的に合意している一場面。背景に分岐する用水路、水田、共有林、板葺きや茅葺きの農家を小さく見せ、中央には文字のない簡素な木札だけを置く。村人は室町期の農民らしい質素な小袖と脚絆で、江戸時代のちょんまげや武士の服装にしない。近代的な印刷物、紙の地図、机、椅子、文字は描かない。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
 {"word": "意味上の主語", "file": "gk_35ea9d22e5.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "慶安の御触書", "file": "gk_2ab4ece4cc.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "懸垂分詞", "file": "gk_ed60517bb6.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
@@ -1502,46 +1502,46 @@
 {"word": "文修飾副詞", "file": "gk_e4d650e64c.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "暗中模索", "file": "gk_79076f606d.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "条件節", "file": "gk_bdcb65548b.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "株仲間", "file": "gk_3278ffd4a6.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "棄捐令", "file": "gk_789ebb0cfd.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "永仁の徳政令", "file": "gk_1397cc746f.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "株仲間", "file": "gk_3278ffd4a6.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "社会の「株仲間」を説明する教育用イラスト。江戸時代の町で、同じ品物を扱う商人たちが問屋の座敷に集まり、反物や升や帳面を前に商売の決まりを相談している。店先には同業者の品物が整然と並び、商工業者の同業組合だと伝わる場面。実在人物の肖像、紋章、読める文字は描かない。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
+{"word": "棄捐令", "file": "gk_789ebb0cfd.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
+{"word": "永仁の徳政令", "file": "gk_1397cc746f.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
 {"word": "混合仮定法", "file": "gk_5c76e28dcb.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "準動詞", "file": "gk_ece24282d6.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "準否定語", "file": "gk_b73a220e71.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "演繹", "file": "gk_05fa8fc2fd.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "演繹", "file": "gk_05fa8fc2fd.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
 {"word": "無冠詞", "file": "gk_8ee694090d.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "無常観", "file": "gk_04fe8baa9d.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "特需景気", "file": "gk_0124c5063c.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "特需景気", "file": "gk_0124c5063c.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "社会の「特需景気」を説明する教育用イラスト。1950年代初頭の日本で、工場が車両・衣料・資材を大量生産し、港で貨物を船へ積み込み、工場の雇用と商店の活気が増す場面。朝鮮戦争による海外からの大量注文が日本経済を回復させた因果を、注文書の束から工場へ向かう矢印で示す。国旗や軍事戦闘、読める文字なし。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
 {"word": "独立不定詞", "file": "gk_b3afc19f16.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "独立分詞構文", "file": "gk_024545309d.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "異国船打払令", "file": "gk_52824cabf4.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "異国船打払令", "file": "gk_52824cabf4.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "社会の「異国船打払令」を説明する教育用イラスト。江戸時代の海岸で、日本の海防役人が砲台から接近する外国帆船へ警告し、沖へ退かせようとする場面。対外強硬策と沿岸防備が伝わる構図だが、砲撃の着弾や負傷者は描かない。国旗・文字・実在船名なし。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
 {"word": "相関接続詞", "file": "gk_376533c8a8.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "知行国", "file": "gk_d23fbcfca2.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "知行国", "file": "gk_d23fbcfca2.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
 {"word": "知覚動詞", "file": "gk_5c1134c868.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "硬筆", "file": "gk_41df8dc4ac.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "硬筆", "file": "gk_41df8dc4ac.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "国語・書写の「硬筆」を説明する教育用イラスト。机に正しい姿勢で座る小中学生の上半身と手元を斜め前から描き、鉛筆を正しい三指の持ち方で持ち、罫線入りの練習用紙へゆっくり整った字形を書く練習をしている。筆や墨は置かず、鉛筆と消しゴムだけを見せる。紙には読める文字を書かず、薄い練習線と書きかけの抽象的な筆跡だけにする。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
 {"word": "私小説", "file": "gk_b224e50746.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "等位接続詞", "file": "gk_e55d43f57a.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "群前置詞", "file": "gk_55c7824833.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "群動詞", "file": "gk_e6328ca3ce.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "自然主義", "file": "gk_3f53e0bd0b.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "要約", "file": "gk_caf19d1f91.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "要約", "file": "gk_caf19d1f91.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
 {"word": "言文一致", "file": "gk_aa94b64694.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "語り手", "file": "gk_ec72df3399.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "語り手", "file": "gk_ec72df3399.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
 {"word": "談話標識", "file": "gk_37f43e31b1.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "譲歩構文", "file": "gk_babdd28f38.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "象徴詩", "file": "gk_f3e248056b.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "農地改革", "file": "gk_9243d39c03.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "郡司", "file": "gk_2465a334eb.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "農地改革", "file": "gk_9243d39c03.jpg", "bucket": "v1b", "method": "gpt-image", "prompt": "社会の「農地改革」を説明する教育用イラスト。戦後の日本の田畑を背景に、農地を借りていた農家が公的な窓口で土地の権利書を受け取り、自分の田を耕し始める場面。遠くに大地主の大きな屋敷、手前に自作農となった家族と区画された水田を描き、農地の所有が移ったことを視覚的に示す。文書に読める文字や印章は描かない。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
+{"word": "郡司", "file": "gk_2465a334eb.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "社会の「郡司」を説明する教育用イラスト。奈良時代の地方で、古くからの地方豪族出身の官人が郡家の前に座り、農民から租の稲束を受け取り、戸籍木簡と地域の田畑を管理している場面。都の貴族ではなく郡を治める地方官だと分かる構図。時代考証に配慮し、読める文字なし。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
 {"word": "関係副詞", "file": "gk_eda386a48f.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "関白", "file": "gk_763b41a8a2.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "防人", "file": "gk_306e13c49a.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "関白", "file": "gk_763b41a8a2.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "社会の「関白」を説明する教育用イラスト。平安時代の日本の宮廷で、成人した天皇が中央の座で政務文書を開いて判断し、そのすぐ横の一段低い位置で公家の関白が別の文書を確認しながら助言している場面。天皇が統治者で関白は成人天皇を補佐する職だと、座る位置と視線で明確にする。2人とも成人として描き、平安時代の日本の宮廷装束に限定する。中国風の冠や衣装、幼い天皇、掛け軸、読める文字は描かない。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
+{"word": "防人", "file": "gk_306e13c49a.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "社会の「防人」を説明する教育用イラスト。奈良時代、九州北部の海岸の防塁で、東国から来た兵士が弓と矢を携え海を警戒し、背後に遠く故郷を思う家族の小さな情景を重ねる。外国との戦闘ではなく沿岸防備の任務を中心に描く。時代に合う装束、流血なし。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
 {"word": "非制限用法", "file": "gk_16e556358c.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "領事裁判権", "file": "gk_99fd4a4472.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "風姿花伝", "file": "gk_3f279c2c13.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "馬耳東風", "file": "gk_d95ce12ca1.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "かりぼし切り歌", "file": "gk_ee7316fd19.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "こきりこ節", "file": "gk_bb240557e3.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "アイデンティティ", "file": "gk_21afb6c386.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "アイデンティティ", "file": "gk_21afb6c386.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "国語・家庭科の「アイデンティティ」を説明する教育用イラスト。一人の中学生が鏡の前で穏やかに自分を見つめ、その周囲に家族と過ごす姿、友達と活動する姿、好きな創作に取り組む姿を小さな円形の場面として配置する。さまざまな役割や経験を含めて自分らしさを形づくることが伝わる構図。性別や外見を固定的に類型化せず、文字や記号は描かない。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
 {"word": "アニー・ローリー", "file": "gk_30b42cfeeb.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "シチリアーナ", "file": "gk_ca8d954947.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "トリステーザ", "file": "gk_b1cc4531d0.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
@@ -1561,7 +1561,7 @@
 {"word": "大過去", "file": "gk_fb65179228.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "完了動名詞", "file": "gk_d1f2621db2.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "巣鶴鈴慕", "file": "gk_acb0e09cec.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "抽象化", "file": "gk_f91a4be717.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "抽象化", "file": "gk_f91a4be717.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
 {"word": "挿入句", "file": "gk_cac7c6c251.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "挿入節", "file": "gk_c8af1440cc.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "描出話法", "file": "gk_e739eaf52e.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
@@ -1579,7 +1579,7 @@
 {"word": "異口同音", "file": "gk_03a33ca01f.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "疑心暗鬼", "file": "gk_31caf8b6b5.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "直接話法", "file": "gk_fcc205bf9f.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "禁中並公家諸法度", "file": "gk_b1d9537d1a.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "禁中並公家諸法度", "file": "gk_b1d9537d1a.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
 {"word": "絶体絶命", "file": "gk_d169d5b56c.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "聖者の行進", "file": "gk_8f26f46136.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "自業自得", "file": "gk_f074af6883.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_remaining_figs.py で作図(プログラム描画・生成AI不使用)"}
@@ -1622,24 +1622,24 @@
 {"word": "累加", "file": "gk_3b294d1a3f.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_final_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "限定", "file": "gk_70c3158069.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_final_figs.py で作図(プログラム描画・生成AI不使用)"}
 {"word": "抑揚", "file": "gk_84ff37517f.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_final_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "レトリック", "file": "gk_1de3abd3d7.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_final_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "レトリック", "file": "gk_1de3abd3d7.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
 {"word": "近代的自我", "file": "gk_6e404970a7.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "Flat educational illustration for 「近代的自我」, original scene or visual metaphor conveying this lesson concept: 個としての自分を意識する近代文学の中心的な主題。. Simple geometric shapes, muted blue and warm terracotta palette, clean outlines, white background, 320:200 landscape composition. Use invented anonymous people only where needed; no real-person likeness, copyrighted character, existing artwork or cover, logo, brand, watermark, or long text. Do not imitate any artist. No title lettering."}
 {"word": "耽美派", "file": "gk_f9ab90ee39.jpg", "bucket": "v1b", "method": "gpt-image", "prompt": "Flat educational illustration for 「耽美派」, original scene or visual metaphor conveying this lesson concept: 谷崎潤一郎や永井荷風らが美の追求を掲げた一派。. Simple geometric shapes, muted blue and warm terracotta palette, clean outlines, white background, 320:200 landscape composition. Use invented anonymous people only where needed; no real-person likeness, copyrighted character, existing artwork or cover, logo, brand, watermark, or long text. Do not imitate any artist. No title lettering."}
 {"word": "新感覚派", "file": "gk_8cb2a24e73.jpg", "bucket": "v1b", "method": "gpt-image", "prompt": "Flat educational illustration for 「新感覚派」, original scene or visual metaphor conveying this lesson concept: 横光利一や川端康成らの新しい感覚表現を試みた一派。. Simple geometric shapes, muted blue and warm terracotta palette, clean outlines, white background, 320:200 landscape composition. Use invented anonymous people only where needed; no real-person likeness, copyrighted character, existing artwork or cover, logo, brand, watermark, or long text. Do not imitate any artist. No title lettering."}
 {"word": "新思潮派", "file": "gk_487f34b57e.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "Flat educational illustration for 「新思潮派」, original scene or visual metaphor conveying this lesson concept: 芥川龍之介や菊池寛らの理知的な作風の一派。. Simple geometric shapes, muted blue and warm terracotta palette, clean outlines, white background, 320:200 landscape composition. Use invented anonymous people only where needed; no real-person likeness, copyrighted character, existing artwork or cover, logo, brand, watermark, or long text. Do not imitate any artist. No title lettering."}
 {"word": "アララギ派", "file": "gk_3543712805.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "Flat educational illustration for 「アララギ派」, original scene or visual metaphor conveying this lesson concept: 正岡子規の写生を継ぎ斎藤茂吉らが集った短歌の一派。. Simple geometric shapes, muted blue and warm terracotta palette, clean outlines, white background, 320:200 landscape composition. Use invented anonymous people only where needed; no real-person likeness, copyrighted character, existing artwork or cover, logo, brand, watermark, or long text. Do not imitate any artist. No title lettering."}
 {"word": "戦後派", "file": "gk_f7435b749c.jpg", "bucket": "v1b", "method": "gpt-image", "prompt": "Flat educational illustration for 「戦後派」, original scene or visual metaphor conveying this lesson concept: 敗戦後に登場し戦争と人間を主題にした作家たちの総称。. Simple geometric shapes, muted blue and warm terracotta palette, clean outlines, white background, 320:200 landscape composition. Use invented anonymous people only where needed; no real-person likeness, copyrighted character, existing artwork or cover, logo, brand, watermark, or long text. Do not imitate any artist. No title lettering."}
-{"word": "恣意性", "file": "gk_40ac382ff3.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_final_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "情景描写", "file": "gk_6dab5d032d.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_final_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "評論", "file": "gk_6eb4af81df.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_final_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "論説", "file": "gk_7ee51389bf.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_final_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "説明文", "file": "gk_5147d97a8a.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_final_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "意見文", "file": "gk_a5eaf65288.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_final_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "報告文", "file": "gk_83ddd8d518.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_final_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "ブックトーク", "file": "gk_73db77c1a5.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_final_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "恣意性", "file": "gk_40ac382ff3.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
+{"word": "情景描写", "file": "gk_6dab5d032d.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "国語の「情景描写」を説明する教育用イラスト。雨上がりの夕暮れの帰り道で、一人の中学生が水たまりに映る薄明るい空と濡れた並木を見つめている。人物の表情を強調しすぎず、雲間の光、落ち葉、遠ざかる道という景色そのものが寂しさと希望の入り混じる心情を暗示する構図。文章、吹き出し、記号は描かない。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
+{"word": "評論", "file": "gk_6eb4af81df.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
+{"word": "論説", "file": "gk_7ee51389bf.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
+{"word": "説明文", "file": "gk_5147d97a8a.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
+{"word": "意見文", "file": "gk_a5eaf65288.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
+{"word": "報告文", "file": "gk_83ddd8d518.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_semantic_figs.py で作図（プログラム描画・生成AI不使用）"}
+{"word": "ブックトーク", "file": "gk_73db77c1a5.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "国語の「ブックトーク」を説明する教育用イラスト。教室で一人の中学生が、共通テーマに沿った表紙デザインの異なる3冊の本を机に並べ、そのうち一冊を開いて少人数の友達へ紹介している。聞き手は本と紹介者へ注目し、黒板や発表資料は使わない。テーマに沿って複数の本を紹介する活動だと分かる構図。本の表紙やページに読める文字を書かない。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
 {"word": "語釈", "file": "gk_bfbb166f4a.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_final_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "人物像", "file": "gk_420d4a3984.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_final_figs.py で作図(プログラム描画・生成AI不使用)"}
-{"word": "回想", "file": "gk_d8350149d7.svg", "bucket": "v1b", "method": "svg", "prompt": "tools/gen_gimukyoiku_final_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "人物像", "file": "gk_420d4a3984.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "国語の「人物像」を説明する教育用イラスト。開いた物語を読む中学生の上に、同じ架空の少女の行動を三つの独立した円形場面として描く。少女の外見を全場面で完全固定する：短い黒髪、黄色い上着、紺のスカート、赤い斜め掛けかばん。左は少女が落とし物を困っている子へ手渡す。中央は少女が友達の話を静かに聞く。右は雨の中で少女が傘を持たない子へ自分の傘を差し出し、相手が受け取る。三場面の少女は服、髪、顔、かばんを変えず、受け手を必ず描く。複数の行動から一人の優しい人柄を読み取る構図。紙、吹き出し、記号、文字、疑似文字なし。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
+{"word": "回想", "file": "gk_d8350149d7.jpg", "bucket": "v1b", "method": "gpt-image", "prompt": "国語の「回想」を説明する教育用イラスト。現在の中学生が古い小物を手に静かに思い返し、その背後の淡い雲形の場面に、幼いころ同じ小物で家族と遊んだ出来事が描かれている。現在の人物と過去の出来事を色調と輪郭で明確に分け、物語が過去へ戻る書き方だと分かる構図。日付、文章、吹き出しは描かない。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
 {"word": "さんちき", "file": "gk_0042887d8e.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "Flat educational illustration for 「さんちき」, original scene or visual metaphor conveying this lesson concept: 祇園祭の山車を作る車大工の親方と弟子を描いた吉橋通夫の物語教材。. Simple geometric shapes, muted blue and warm terracotta palette, clean outlines, white background, 320:200 landscape composition. Use invented anonymous people only where needed; no real-person likeness, copyrighted character, existing artwork or cover, logo, brand, watermark, or long text. Do not imitate any artist. No title lettering."}
 {"word": "百科事典少女", "file": "gk_016455ce7c.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "Flat educational illustration for 「百科事典少女」, original scene or visual metaphor conveying this lesson concept: 図書室で百科事典を読み続けた少女をめぐる小川洋子の小説教材。. Simple geometric shapes, muted blue and warm terracotta palette, clean outlines, white background, 320:200 landscape composition. Use invented anonymous people only where needed; no real-person likeness, copyrighted character, existing artwork or cover, logo, brand, watermark, or long text. Do not imitate any artist. No title lettering."}
 {"word": "見えないだけ", "file": "gk_7cf47fa976.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "Flat educational illustration for 「見えないだけ」, original scene or visual metaphor conveying this lesson concept: まだ見えないだけで素晴らしいものがあるとうたう牟礼慶子の詩。. Simple geometric shapes, muted blue and warm terracotta palette, clean outlines, white background, 320:200 landscape composition. Use invented anonymous people only where needed; no real-person likeness, copyrighted character, existing artwork or cover, logo, brand, watermark, or long text. Do not imitate any artist. No title lettering."}
@@ -1715,4 +1715,4 @@
 {"word": "打楽器のための小品", "file": "gk_8677b7931f.jpg", "bucket": "v1b", "method": "gpt-image", "prompt": "Flat educational illustration for 「打楽器のための小品」, original classroom-safe visual interpretation of the musical idea: 打楽器だけで演奏する合奏曲。中学校のリズム学習の教材となる。. Simple geometric shapes, muted blue and warm terracotta palette, clean outlines, white background, 320:200 landscape composition. Use invented anonymous people only where needed; no real-person likeness, copyrighted character, existing artwork or cover, logo, brand, watermark, or long text. Do not imitate any artist. No title lettering."}
 {"word": "明日を信じて", "file": "gk_b4a1364c8e.jpg", "bucket": "v1b", "method": "gpt-image", "prompt": "Flat educational illustration for 「明日を信じて」, original classroom-safe visual interpretation of the musical idea: 中学校の合唱教材として歌われる合唱曲。未来への希望を題材にする。. Simple geometric shapes, muted blue and warm terracotta palette, clean outlines, white background, 320:200 landscape composition. Use invented anonymous people only where needed; no real-person likeness, copyrighted character, existing artwork or cover, logo, brand, watermark, or long text. Do not imitate any artist. No title lettering."}
 {"word": "飛び立とう君の空へ", "file": "gk_303ad76a1c.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "Flat educational illustration for 「飛び立とう君の空へ」, original classroom-safe visual interpretation of the musical idea: 中学校の卒業期に歌われる合唱曲。旅立ちへの思いを題材にする。. Simple geometric shapes, muted blue and warm terracotta palette, clean outlines, white background, 320:200 landscape composition. Use invented anonymous people only where needed; no real-person likeness, copyrighted character, existing artwork or cover, logo, brand, watermark, or long text. Do not imitate any artist. No title lettering."}
-{"word": "鈴木康広", "file": "gk_30add8f0b1.svg", "bucket": "v1", "method": "svg", "prompt": "tools/gen_gimukyoiku_final_figs.py で作図(プログラム描画・生成AI不使用)"}
+{"word": "鈴木康広", "file": "gk_30add8f0b1.jpg", "bucket": "v1", "method": "gpt-image", "prompt": "美術の『鈴木康広』を説明する教育用の概念イラスト。現代日本の男性アーティストを後ろ斜めから描き、日常の小さな物（開いたノート、木の葉、窓、コップ）を観察し、その形の見方を変えて、白い展示空間の独創的な抽象彫刻へ発展させている場面。特定の実在作品の複製や本人の肖像ではなく、『日常の見方を変える発想で作品をつくる現代美術家』だと伝わる構図。作品名、署名、読める文字、ロゴは描かない。フラットデザイン、パステルカラー、白背景、文字なし、正方形。"}
