@@ -27,6 +27,7 @@ REQUIRED = ("id", "original", "surface")
 # image/image_page として許可するURLプレフィックス(明示的な許可リスト。any-httpsにはしない)
 IMAGE_URL_RE = re.compile(
     r"^https?://commons\.wikimedia\.org/"
+    r"|^https://upload\.wikimedia\.org/"
     r"|^https://github\.com/soramimic/soramimic-wordlists/releases/"
     # youtuber の象徴カードと baseball/football の選手カードは、リポジトリ内
     # (images/)に置いて raw で参照する(1枚3KB前後のSVGで、CSVと同じ

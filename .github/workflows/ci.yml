@@ -17,3 +17,6 @@ jobs:
 
       - name: Validate CSVs
         run: python tools/validate_csvs.py
+
+      - name: Test semantic image replacements
+        run: python -m unittest tools/test_apply_gimukyoiku_semantic_images.py
