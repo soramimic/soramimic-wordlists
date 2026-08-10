@@ -16,6 +16,8 @@
   「今回実データが取れたとき」だけ更新し、取れなければ既存値(NA含む)を保つ。
   extinct は no→yes の一方向のみ更新する(絶滅シグナルは取りこぼしやすく、
   取りこぼしで yes→no に落とすと情報が失われるため)
+- 種ランクの取得から漏れた既存行でも、目・科が既分類行と矛盾なく対応する場合は
+  class を補う。総称として収録している一部の語は手動分類で補う
 - 脊椎動物 Q25241 を一括クエリすると WDQS がタイムアウトするため、綱ごとに
   分割してクエリする。綱の系統樹は重複しうるが、original 照合で重複排除する
 
@@ -28,6 +30,11 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+from sekitsui_overrides import (
+    MANUAL_TAXONOMY,
+    build_rank_class_maps,
+    class_from_ranks,
+)
 from wpnames import sparql, write_csv_no_trailing_newline
 
 CSV_PATH = Path(__file__).resolve().parent.parent / "sekitsui.csv"
@@ -49,6 +56,12 @@ KATAKANA = re.compile(r"^[ァ-ヶー・]+$")
 UNKNOWN = "NA"
 # 収集総数がこれを下回ったら取得失敗とみなして中断(既存7280に対する下限)
 MIN_TOTAL = 5000
+
+
+def category_for(name: str, fetched: dict[str, str]) -> str | None:
+    """取得結果を基本とし、種ランクで拾えない総称は手動分類で補う。"""
+    manual = MANUAL_TAXONOMY.get(name, {})
+    return manual.get("class") or fetched.get(name)
 
 
 def fetch_taxa(qid: str) -> dict:
@@ -93,12 +106,14 @@ def main() -> int:
 
     reader = csv.DictReader(CSV_PATH.open(encoding="utf-8"))
     old_rows = list(reader)
+    rank_classes = build_rank_class_maps(old_rows)
     na = kept = 0
     for r in old_rows:
         # 既存行は「今回実データが取れたときだけ」更新する。取れなかった名前
         # (クエリのタイムアウト分割・Wikidata側のラベル改名で落ちうる)は既存値を
         # 保持し、既に埋まっている分類を NA に劣化させない
-        cat = name_cat.get(r["original"])
+        cat = (category_for(r["original"], name_cat)
+               or class_from_ranks(r, rank_classes))
         cur = (r.get("class") or "").strip()
         if cat:
             r["class"] = cat
