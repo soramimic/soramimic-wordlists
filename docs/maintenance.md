@@ -176,12 +176,27 @@ python3 tools/audit_taxa.py sekitsui  # 既存行が想定した界・門・綱�
   ```sh
   # Wikidataの親タクソン(P171)を辿って目・科を付与(空欄のみ。--refreshで全行)
   python3 tools/enrich_sekitsui_taxonomy.py
+  # Wikidataで引けない旧和名をGBIFの日本語別名完全一致で補完(まずdry-runで確認)
+  python3 tools/enrich_sekitsui_gbif.py --dry-run --workers 6
+  python3 tools/enrich_sekitsui_gbif.py --workers 6
+  # GBIF由来のラテン学名表記をWikidataの日本語ラベル・別名で表示用に直す
+  python3 tools/enrich_sekitsui_taxonomy_labels.py
   # 画像が空の行にCommons画像(P18)を遡及付与(概念イメージの行は実写で上書き)
   python3 tools/enrich_sekitsui_images.py
+  # 総称・別名用に検証済みの代表画像だけを、WDQS問い合わせなしで再適用
+  python3 tools/enrich_sekitsui_images.py --manual-only
+  # MANUAL_IMAGESの画像選定を変更した場合は既存の専用画像も更新
+  python3 tools/enrich_sekitsui_images.py --manual-only --refresh-manual
   ```
   enrich_sekitsui_taxonomy は取得結果を `tools/.cache/`(Git管理外)に逐次
   保存するので、中断しても再実行で続きから再開する(全件引き直したいときは
   キャッシュを消す)。
+  GBIF補完も検索結果を `tools/.cache/sekitsui_gbif.json` に保存する。日本語別名が
+  完全一致し、Animalia/Chordata 配下で、複数候補の綱・目・科が矛盾しない場合だけ
+  空欄へ適用する。既存値は上書きせず、曖昧な名前は未適用のまま残す。
+  種ランク検索から漏れる家畜名・総称・別名の代表画像は
+  `tools/sekitsui_overrides.py` の `MANUAL_IMAGES` で管理する。Wikidata QIDと
+  Commonsファイルを個別確認したものだけを登録し、同名だけを根拠に自動転用しない。
   実写画像が取れない行(約2,700行)には、`class` ごとの**概念イメージ**SVGを
   分類単位で共有して割り当てる。画像は `tools/gen_class_images.py` で生成して
   GitHub Release(`class-image-v1`)で配布し、`tools/apply_class_images.py` が

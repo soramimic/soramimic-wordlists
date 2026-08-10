@@ -12,11 +12,15 @@ wikidata を埋める。人名リストと違い taxon は日本語ラベルが�
 - 脊椎動物 Q25241 を一括で引くと WDQS がタイムアウトするため、綱ごとに
   分割してクエリする(update_sekitsui.py と同じ7綱)。
 - WDQS 部分応答ガード: 収集画像数が MIN_TOTAL を下回ったら中断。
+- 種ランク検索から漏れる検証済みの総称は、`sekitsui_overrides.py` の代表画像を
+  優先する。
 - ファイル名はカンマ等を含みうるので必ずURLエンコードして素朴なCSVパーサを守る。
 
 usage: python3 tools/enrich_sekitsui_images.py
+       python3 tools/enrich_sekitsui_images.py --manual-only
 """
 
+import argparse
 import csv
 import re
 import sys
@@ -24,6 +28,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from apply_class_images import is_class_image  # noqa: E402
+from sekitsui_overrides import MANUAL_IMAGES  # noqa: E402
 from wpnames import (commons_urls, sparql,  # noqa: E402
                      write_csv_no_trailing_newline)
 
@@ -60,15 +65,40 @@ SELECT DISTINCT ?t ?l ?img WHERE {{
     return out
 
 
-def main() -> int:
-    name_img: dict[str, tuple[str, str, str]] = {}
-    for qid in CLASSES:
-        got = fetch_images(qid)
-        for n, v in got.items():
-            name_img.setdefault(n, v)  # 綱をまたぐ重複は先勝ち
-        print(f"{qid}: 画像付き和名 {len(got)}", flush=True)
+def manual_images() -> dict[str, tuple[str, str, str]]:
+    """種ランク検索から漏れる総称の検証済み代表画像。"""
+    result = {}
+    for name, (qid, filename) in MANUAL_IMAGES.items():
+        source = "https://commons.wikimedia.org/wiki/Special:FilePath/" + filename
+        image, image_page = commons_urls(source)
+        result[name] = (qid, image, image_page)
+    return result
 
-    if len(name_img) < MIN_TOTAL:
+
+def main(argv: list[str] | None = None) -> int:
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--manual-only",
+        action="store_true",
+        help="検証済みの手動代表画像だけを適用し、WDQSへ問い合わせない",
+    )
+    parser.add_argument(
+        "--refresh-manual",
+        action="store_true",
+        help="手動代表画像の登録内容が変わった行は既存の専用画像も更新する",
+    )
+    args = parser.parse_args(argv)
+
+    name_img: dict[str, tuple[str, str, str]] = {}
+    if not args.manual_only:
+        for qid in CLASSES:
+            got = fetch_images(qid)
+            for n, v in got.items():
+                name_img.setdefault(n, v)  # 綱をまたぐ重複は先勝ち
+            print(f"{qid}: 画像付き和名 {len(got)}", flush=True)
+    name_img.update(manual_images())
+
+    if not args.manual_only and len(name_img) < MIN_TOTAL:
         print(f"error: implausible image count: {len(name_img)}", file=sys.stderr)
         return 1
 
@@ -83,7 +113,8 @@ def main() -> int:
         for c in cols:
             r.setdefault(c, "")
         cur = r.get("image") or ""
-        if cur and not is_class_image(cur):
+        refresh_manual = args.refresh_manual and r["original"] in MANUAL_IMAGES
+        if cur and not is_class_image(cur) and not refresh_manual:
             continue  # 実写がある行は触らない(冪等)
         hit = name_img.get(r["original"])
         if hit:

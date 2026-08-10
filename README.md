@@ -25,7 +25,7 @@
 | stations.csv | 現役駅・廃駅・旧駅名 | Wikidata、Wikipedia、すきやきすきや様提供の旧リスト(廃駅の照合)、Wikimedia Commons |
 | nations.csv | 現存国・消滅国・旧称 | [mledoze/countries](https://github.com/mledoze/countries)、Wikidata、Wikipedia、Wikimedia Commons |
 | scientist.csv | 科学者 | Wikidata、Wikipedia、Wikimedia Commons |
-| sekitsui.csv | 脊椎動物 | Wikidata、Wikimedia Commons |
+| sekitsui.csv | 脊椎動物 | Wikidata、[GBIF](https://www.gbif.org/)、Wikimedia Commons |
 | plant.csv | 植物 | Wikidata、Wikimedia Commons |
 | insect.csv | 昆虫 | Wikidata、Wikimedia Commons |
 | pokemon.csv | ポケモン | [PokéAPI](https://github.com/PokeAPI/pokeapi)、[PhyloPic](https://www.phylopic.org/) |

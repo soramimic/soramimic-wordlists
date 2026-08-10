@@ -38,6 +38,49 @@ SLEEP = 1.0
 MAX_DEPTH = 60
 
 
+def fetch_scientific_taxa(
+    names_and_ranks: list[tuple[str, str]],
+) -> dict[tuple[str, str], list[dict]]:
+    """P225（学名）とP105（階級）がともに一致する分類群をまとめて取得する。
+
+    戻り値の候補には日本語ラベルと日本語別名を含める。同じ学名を持つ項目が
+    複数あることがあるため、呼び出し側で曖昧性を判定できるよう候補を潰さない。
+    """
+    pairs = list(dict.fromkeys(names_and_ranks))
+    if not pairs:
+        return {}
+    values = " ".join(
+        f"({json.dumps(name, ensure_ascii=False)} wd:{rank})"
+        for name, rank in pairs
+    )
+    query = f"""
+SELECT ?t ?sci ?rank ?ja ?alt WHERE {{
+  VALUES (?sci ?rank) {{ {values} }}
+  ?t wdt:P225 ?sci ; wdt:P105 ?rank .
+  OPTIONAL {{ ?t rdfs:label ?ja . FILTER(LANG(?ja) = "ja") }}
+  OPTIONAL {{ ?t skos:altLabel ?alt . FILTER(LANG(?alt) = "ja") }}
+}}"""
+    data = sparql_post(query)
+    by_pair: dict[tuple[str, str], dict[str, dict]] = {
+        pair: {} for pair in pairs
+    }
+    for binding in data["results"]["bindings"]:
+        pair = (binding["sci"]["value"], qid(binding["rank"]["value"]))
+        if pair not in by_pair:
+            continue
+        taxon_qid = qid(binding["t"]["value"])
+        candidate = by_pair[pair].setdefault(
+            taxon_qid, {"qid": taxon_qid, "ja": "", "alts": []}
+        )
+        if "ja" in binding and not candidate["ja"]:
+            candidate["ja"] = binding["ja"]["value"]
+        if "alt" in binding:
+            alt = binding["alt"]["value"]
+            if alt not in candidate["alts"]:
+                candidate["alts"].append(alt)
+    return {pair: list(candidates.values()) for pair, candidates in by_pair.items()}
+
+
 def load_cache(path: Path) -> dict:
     if path.exists():
         return json.loads(path.read_text(encoding="utf-8"))

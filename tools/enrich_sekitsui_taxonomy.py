@@ -15,6 +15,7 @@ taxon rank(P105)が目(Q36602)/科(Q35409)のノードのラベルを取る。�
   逆引きした QID は CSV には書かない(wikidata 列は画像とセットで埋まる列の
   ため、ここでは触らない)。
 - WDQS 部分応答ガード: 目が引けた行が MIN_TOTAL を下回ったら書き込まず中断。
+- 目・科から大分類が一意に決まる `class=NA` 行は class も補完する。
 
 usage:
   python3 tools/enrich_sekitsui_taxonomy.py [--refresh]
@@ -26,6 +27,11 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import taxonomy as tx  # noqa: E402
+from sekitsui_overrides import (  # noqa: E402
+    apply_manual_ranks,
+    build_rank_class_maps,
+    class_from_ranks,
+)
 from wpnames import write_csv_no_trailing_newline  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -66,6 +72,13 @@ def main(argv: list[str]) -> int:
         q = row_qid(r)
         vals = tx.resolve(q, nodes, ranks) if q else [""] * len(ranks)
         r.update(dict(zip(own, vals)))
+        apply_manual_ranks(r["original"], r)
+    rank_classes = build_rank_class_maps(rows)
+    for r in rows:
+        if (r.get("class") or "").strip() in ("", "NA"):
+            inferred = class_from_ranks(r, rank_classes)
+            if inferred:
+                r["class"] = inferred
     for r in rows:
         for c in cols:
             r.setdefault(c, "")
