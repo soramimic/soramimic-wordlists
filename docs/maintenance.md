@@ -25,6 +25,7 @@ python3 tools/update_scientist.py  # Wikidataの著名科学者(7分野・siteli
 python3 tools/update_sekitsui.py   # Wikidataの脊椎動物(rank=種・カタカナ和名)を追記
 python3 tools/update_plant.py      # Wikidataの植物(rank=種・カタカナ和名)を追記
 python3 tools/update_insect.py    # Wikidataの昆虫(rank=種・カタカナ和名)を追記
+python3 tools/update_marine_life.py --check  # 海の生き物の台帳と配布CSVの同期を検査
 python3 tools/update_municipality.py  # 総務省コード表+Wikidataで市区町村を再生成
 python3 tools/update_youtuber.py   # WikidataのYouTuber/VTuber(ja記事あり)を追記
 python3 tools/update_school.py     # 文科省の学校コード一覧+Wikidata/Wikipediaで全件再生成
@@ -35,6 +36,22 @@ python3 tools/enrich_school_municipality_images.py  # 学校・市町村のCommo
 python3 tools/apply_school_type_images.py  # 実写が無い学校へ校種別イメージを付与
 python3 tools/audit_taxa.py sekitsui  # 既存行が想定した界・門・綱の配下か検査(読み取り専用)
 ```
+
+`marine_life.csv` はネットワークから無人更新せず、レビュー済み台帳
+`tools/marine_life_source.csv` から全件再生成する。項目を追加するときは台帳末尾へ
+次の連番 `id` で追記し、分類・海洋性・説明・QIDを確認してから次を実行する。
+QIDを既存リストから転記する場合は和名と `class` の両方が一致し、候補が一意な場合に
+限る。同名の魚と鳥などがあるため、和名だけでの結合は禁止する。
+
+```sh
+python3 tools/update_marine_life.py
+python3 tools/update_marine_life.py --check
+python3 -m unittest tools/test_update_marine_life.py
+```
+
+既存項目の削除は通常実行では拒否される。誤収録を台帳から削除する場合だけ、差分を
+レビューしたうえで `--allow-removals` を付ける。分類別概念画像を変更するときは
+`images/marine_life/` の4 SVGすべてに「イメージ」表記を残す。
 
 - pokemon: 全件再生成。フォームは「ライチュウ（アローラのすがた）」形式で
   表記ゆれ3行を同一idで収録。種とフォームは別ポケモンとして別id

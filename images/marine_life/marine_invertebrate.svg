@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="200" viewBox="0 0 320 200" role="img" aria-labelledby="title desc">
+  <title id="title">海洋無脊椎動物の分類イメージ</title>
+  <desc id="desc">放射形と腕を組み合わせて多様性を示す海洋無脊椎動物の分類用イメージ</desc>
+  <defs>
+    <linearGradient id="reef" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#e9e2ff"/><stop offset="1" stop-color="#6f86d6"/>
+    </linearGradient>
+  </defs>
+  <rect width="320" height="200" rx="18" fill="url(#reef)"/>
+  <g transform="translate(102 104)" fill="#ffb36b">
+    <path d="M0-58 13-20 51-35 24-7 58 10 19 13 32 51 5 24-16 57-14 18-54 27-23 2-52-25-13-18Z"/>
+    <circle r="23" fill="#f58569"/><circle r="9" fill="#ffd08f"/>
+  </g>
+  <g transform="translate(215 109)" fill="none" stroke="#604d9e" stroke-width="10" stroke-linecap="round">
+    <path d="M0 0 Q-36 12-42 51"/><path d="M0 0 Q-15 27-8 61"/><path d="M0 0 Q13 31 5 61"/><path d="M0 0 Q35 22 34 56"/>
+  </g>
+  <path d="M181 106 Q215 62 249 106 Q244 131 215 134 Q186 131 181 106Z" fill="#6b58ab"/>
+  <g fill="#fff" opacity=".55"><circle cx="35" cy="44" r="6"/><circle cx="53" cy="27" r="3"/><circle cx="279" cy="161" r="7"/></g>
+  <path d="M0 185 Q35 167 70 185 T140 185 T210 185 T280 185 T350 185 V200 H0Z" fill="#4d559e" opacity=".78"/>
+  <rect x="238" y="12" width="70" height="28" rx="14" fill="#fff" opacity=".92"/>
+  <text x="273" y="31" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="700" fill="#55458e">イメージ</text>
+</svg>

@@ -17,6 +17,7 @@ usage: python3 tools/validate_csvs.py
 
 import re
 import sys
+from collections import Counter
 from pathlib import Path
 
 from wpnames import (PLAYER_DISAMBIGUATION_DESCRIPTION,
@@ -125,9 +126,67 @@ def validate(path: Path):
     print(f"OK: {path.name} ({len(lines) - 1}行)")
 
 
+def validate_marine_life(path: Path):
+    """公開CSVでも分類facetとキュレーション契約を独立に検証する。"""
+    from update_marine_life import (
+        CLASSES,
+        IMAGE_FILE_BY_CLASS,
+        MIN_CLASS_COUNTS,
+        MIN_QID_COUNT,
+        OUTPUT_COLUMNS,
+        VERTEBRATE_BY_CLASS,
+    )
+
+    lines = path.read_text(encoding="utf-8").split("\n")
+    header = lines[0].split(",")
+    if tuple(header) != OUTPUT_COLUMNS:
+        err(f"{path.name}: 列が規約と一致しない: {header}")
+        return
+    idx = {name: pos for pos, name in enumerate(header)}
+    seen = set()
+    seen_descriptions = set()
+    counts = Counter()
+    for item_id, line in enumerate(lines[1:]):
+        fields = line.split(",")
+        if len(fields) != len(header):
+            continue  # 共通検証が列数エラーを報告する
+        name = fields[idx["original"]]
+        cls = fields[idx["class"]]
+        if fields[idx["id"]] != str(item_id):
+            err(f"{path.name}:{item_id + 2}: idが0始まりの連番でない")
+        if name in seen:
+            err(f"{path.name}:{item_id + 2}: originalが重複: {name}")
+        seen.add(name)
+        if cls not in CLASSES:
+            err(f"{path.name}:{item_id + 2}: classが不正: {cls}")
+            continue
+        counts[cls] += 1
+        if fields[idx["vertebrate"]] != VERTEBRATE_BY_CLASS[cls]:
+            err(f"{path.name}:{item_id + 2}: class/vertebrateが不整合: {name}")
+        if not fields[idx["order"]].endswith("目") or not fields[idx["family"]].endswith("科"):
+            err(f"{path.name}:{item_id + 2}: order/familyが不正: {name}")
+        description = fields[idx["description"]]
+        if not 20 <= len(description) <= 60 or not description.endswith("。"):
+            err(f"{path.name}:{item_id + 2}: descriptionが不正: {name}")
+        if description in seen_descriptions:
+            err(f"{path.name}:{item_id + 2}: descriptionが重複: {name}")
+        seen_descriptions.add(description)
+        filename = IMAGE_FILE_BY_CLASS[cls]
+        if not fields[idx["image"]].endswith(f"/images/marine_life/{filename}"):
+            err(f"{path.name}:{item_id + 2}: classとimageが不整合: {name}")
+    for cls, minimum in MIN_CLASS_COUNTS.items():
+        if counts[cls] < minimum:
+            err(f"{path.name}: {cls}が少なすぎる: {counts[cls]} < {minimum}")
+    qid_count = sum(bool(line.split(",")[idx["wikidata"]]) for line in lines[1:])
+    if qid_count < MIN_QID_COUNT:
+        err(f"{path.name}: Wikidata QIDが少なすぎる: {qid_count} < {MIN_QID_COUNT}")
+
+
 def main() -> int:
     for p in sorted(ROOT.glob("*.csv")):
         validate(p)
+        if p.name == "marine_life.csv":
+            validate_marine_life(p)
     # tools のPythonが構文エラーでないこと
     import py_compile
     for p in sorted((ROOT / "tools").glob("*.py")):

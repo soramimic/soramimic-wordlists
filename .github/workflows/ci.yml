@@ -23,3 +23,9 @@ jobs:
 
       - name: Test scientist updater
         run: python tools/test_update_scientist.py
+
+      - name: Test marine life updater
+        run: python -m unittest tools/test_update_marine_life.py
+
+      - name: Verify marine life generated CSV
+        run: python tools/update_marine_life.py --check

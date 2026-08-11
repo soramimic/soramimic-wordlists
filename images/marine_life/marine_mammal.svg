@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="200" viewBox="0 0 320 200" role="img" aria-labelledby="title desc">
+  <title id="title">海洋哺乳類の分類イメージ</title>
+  <desc id="desc">海面と丸みのある抽象的な海洋哺乳類の姿を組み合わせた分類用イメージ</desc>
+  <defs>
+    <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#dff6ff"/><stop offset="1" stop-color="#7dcbe6"/>
+    </linearGradient>
+  </defs>
+  <rect width="320" height="200" rx="18" fill="url(#sea)"/>
+  <path d="M0 71 Q42 56 84 71 T168 71 T252 71 T336 71 V200 H0Z" fill="#2488b7" opacity=".88"/>
+  <path d="M42 124 C79 82 157 77 216 108 C235 95 255 87 278 90 C270 106 259 118 243 126 C258 134 270 146 278 163 C251 164 230 154 214 140 C151 166 76 159 42 124Z" fill="#195c7d"/>
+  <path d="M107 101 Q129 68 155 95" fill="none" stroke="#195c7d" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="83" cy="118" r="4" fill="#dff6ff"/>
+  <g fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity=".8">
+    <path d="M143 59 Q134 43 140 29"/><path d="M151 58 Q157 41 169 34"/><path d="M147 57 Q147 39 146 27"/>
+  </g>
+  <rect x="238" y="12" width="70" height="28" rx="14" fill="#fff" opacity=".92"/>
+  <text x="273" y="31" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="700" fill="#195c7d">イメージ</text>
+</svg>
