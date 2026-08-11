@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="200" viewBox="0 0 320 200" role="img" aria-labelledby="title desc">
+  <title id="title">海洋爬虫類の分類イメージ</title>
+  <desc id="desc">甲羅と波を幾何学形状で表した海洋爬虫類の分類用イメージ</desc>
+  <defs>
+    <linearGradient id="water" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#d9f7ee"/><stop offset="1" stop-color="#56bda8"/>
+    </linearGradient>
+    <pattern id="shell" width="22" height="19" patternUnits="userSpaceOnUse">
+      <path d="M11 1 21 6v8l-10 5L1 14V6Z" fill="none" stroke="#d8f2ba" stroke-width="2"/>
+    </pattern>
+  </defs>
+  <rect width="320" height="200" rx="18" fill="url(#water)"/>
+  <path d="M0 151 Q35 133 70 151 T140 151 T210 151 T280 151 T350 151 V200 H0Z" fill="#187b7b" opacity=".8"/>
+  <ellipse cx="157" cy="111" rx="68" ry="48" fill="#397c55"/>
+  <ellipse cx="157" cy="111" rx="53" ry="38" fill="url(#shell)" stroke="#cde89f" stroke-width="3"/>
+  <path d="M97 91 Q65 69 50 84 Q69 104 101 108ZM97 130 Q67 151 78 166 Q103 153 117 136ZM217 91 Q249 69 264 84 Q245 104 213 108ZM217 130 Q247 151 236 166 Q211 153 197 136Z" fill="#397c55"/>
+  <path d="M222 103 Q250 95 266 111 Q246 127 220 119Z" fill="#397c55"/>
+  <circle cx="253" cy="109" r="3" fill="#eaffda"/>
+  <rect x="238" y="12" width="70" height="28" rx="14" fill="#fff" opacity=".92"/>
+  <text x="273" y="31" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="700" fill="#24664d">イメージ</text>
+</svg>
