@@ -27,13 +27,14 @@ CLASSES = ("哺乳類", "爬虫類", "魚類", "無脊椎動物")
 MIN_CLASS_COUNTS = {
     "哺乳類": 30,
     "爬虫類": 12,
-    "魚類": 650,
-    "無脊椎動物": 250,
+    "魚類": 2976,
+    "無脊椎動物": 1236,
 }
-MIN_TOTAL_COUNT = 1000
-MIN_QID_COUNT = 700
-MIN_APHIA_COUNT = 800
-MIN_PHOTO_COUNT = 500
+MIN_TOTAL_COUNT = 4254
+MIN_QID_COUNT = 4010
+MIN_APHIA_COUNT = 4148
+MIN_JODC_COUNT = 4148
+MIN_PHOTO_COUNT = 1384
 VERTEBRATE_BY_CLASS = {
     "哺乳類": "脊椎動物",
     "爬虫類": "脊椎動物",
@@ -143,6 +144,9 @@ def load_source(path: Path = SOURCE) -> list[dict[str, str]]:
     aphia_count = sum(bool(row["aphia_id"]) for row in rows)
     if aphia_count < MIN_APHIA_COUNT:
         raise ValueError(f"too few AphiaIDs: {aphia_count} (minimum {MIN_APHIA_COUNT})")
+    jodc_count = sum(bool(row["jodc_code"]) for row in rows)
+    if jodc_count < MIN_JODC_COUNT:
+        raise ValueError(f"too few JODC codes: {jodc_count} (minimum {MIN_JODC_COUNT})")
     if len(rows) < MIN_TOTAL_COUNT:
         raise ValueError(f"too few rows: {len(rows)} (minimum {MIN_TOTAL_COUNT})")
     return rows
