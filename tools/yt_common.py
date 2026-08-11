@@ -18,9 +18,8 @@
 - status:     current(活動中)/former(活動終了。P2032)
 - channel:    メインYouTubeチャンネル名(P2397の修飾子P1810)。複数チャンネルを
               持つ人は登録者数(P3744)が最大の1本を採る(ADR 00029)
-- description: 記事冒頭からの短い完結文(無ければWikidataのja description。
-              生成は wpnames.make_description で scientist と共用。記事冒頭に
-              よく書かれている本名は deidentify で落とす。ADR 00029)
+- description: 活動内容を優先した短い完結文(無ければWikidataのja description。
+              目安50字・上限65字で、登録者数や所属・個人情報は除く。ADR 00045)
 
 subscribers(メインチャンネルの登録者数)列も youtuber.csv にあるが、値の管理は
 このモジュールの外(tools/update_youtuber_subscribers.py)で行う。時変値なので
@@ -35,9 +34,9 @@ import pickle
 import re
 from pathlib import Path
 
-from wpnames import (DISAMBIG, HIRA2KATA, clean_ws, fetch_extracts,
-                     make_description, parse_person, sparql, strip_lead_paren,
-                     write_csv_no_trailing_newline)
+from wpnames import (DISAMBIG, HIRA2KATA, _sanitize_desc, clean_ws,
+                     fetch_extracts, parse_person, sparql, strip_lead_paren,
+                     strip_name_prefix, write_csv_no_trailing_newline)
 
 COLS = ["id", "original", "surface", "pronunciation", "type",
         "category", "org", "debut_year", "status", "channel", "description"]
@@ -244,6 +243,305 @@ def safe_wd_desc(s: str) -> str:
     return "" if REALNAME.search(s or "") else (s or "")
 
 
+# YouTuberカードの説明は、選手カードと同じく「1〜2行」を優先する。90字の
+# scientist/youtuber共通方式をそのまま使うと、所属・登録者数・出身地などが続き、
+# 何をしている人かが見えにくくなるため、YouTuberだけ活動内容を選ぶ。
+YOUTUBER_DESC_TARGET = 50
+YOUTUBER_DESC_MAX = 65
+YOUTUBER_DYNAMIC = re.compile(
+    r"チャンネル登録者数|登録者数|登録者|フォロワー数|フォロワー|"
+    r"再生回数|視聴回数|動画再生"
+)
+YOUTUBER_PERSONAL = re.compile(
+    r"血液型|出身|生まれ|在住|妻|夫|結婚|既婚|子供|家族"
+)
+YOUTUBER_ORG = re.compile(
+    r"所属|株式会社|代表取締役|本社|プロダクション|マネージャー|"
+    r"拠点を置く"
+)
+YOUTUBER_CONTEXT = re.compile(
+    r"^(?:また|その後|同年|翌年|この年|現在は|現在も|以降|これまで)[、 ]*"
+)
+YOUTUBER_ACTIVITY = {
+    "動画": 3, "動画投稿": 4, "投稿": 2, "配信": 3, "ライブ": 3,
+    "ゲーム実況": 5, "実況": 3, "音楽": 3, "楽曲": 3, "歌": 2,
+    "アニメ": 3, "アフレコ": 4, "料理": 3, "レシピ": 3, "クイズ": 3,
+    "解説": 3, "レビュー": 3, "教育": 3, "学習": 3, "科学": 3,
+    "美容": 3, "ファッション": 3, "旅行": 3, "ダンス": 3,
+    "Vlog": 3, "ゲーム": 2, "ストリーマー": 3, "フード": 2,
+    "コメディ": 3, "お笑い": 3, "企画": 3, "チャレンジ": 3,
+    "挑戦": 3, "慈善": 4, "寄付": 4, "基金": 4, "グループ": 2,
+    "メディア": 2, "作品": 2, "活動": 2, "パイオニア": 5,
+    "創設者": 4, "共同創設者": 5, "受賞": 5, "世界一": 5,
+    "殿堂": 4,
+}
+YOUTUBER_ACHIEVEMENT = re.compile(
+    r"受賞|パイオニア|世界一|共同創設者|創設者|優勝|記録|選出|賞"
+)
+YOUTUBER_ROLE = re.compile(
+    r"YouTuber|ユーチューバー|VTuber|バーチャルYouTuber|ゲーム実況者|配信者"
+)
+YOUTUBER_GENERIC_ROLE_TEXT = (
+    r"バーチャルYouTuber|YouTuber|ユーチューバー|VTuber"
+)
+YOUTUBER_GEO_HEAD = re.compile(
+    r"^(?:日本|アメリカ(?:合衆国)?|カナダ|イギリス|イングランド|ウェールズ|"
+    r"アイルランド|スウェーデン|スペイン|フランス|ドイツ|イタリア|"
+    r"ポルトガル|オランダ|ベルギー|ノルウェー|フィンランド|デンマーク|"
+    r"ポーランド|チェコ|ルーマニア|ハンガリー|ウクライナ|ロシア|トルコ|"
+    r"イスラエル|キプロス|韓国|大韓民国|中国|台湾|タイ|フィリピン|"
+    r"インドネシア|インド|オーストラリア|ニュージーランド|アルゼンチン|"
+    r"ブラジル|メキシコ|コロンビア|ベネズエラ|エジプト|ナイジェリア|"
+    r"南アフリカ)"
+)
+YOUTUBER_SIMPLE_GEO_PREFIX = re.compile(
+    YOUTUBER_GEO_HEAD.pattern + r"(?:人)?の"
+)
+YOUTUBER_NOT_OWNED = re.compile(r"師事|師匠|弟子入り")
+YOUTUBER_INCOMPLETE_TAIL = re.compile(
+    r"(?:となり|しており|であり|しつつ|など|等|および|または)$"
+)
+
+
+def _remove_youtuber_metadata(s: str) -> str:
+    """説明文からカードの別列と重複する所属・個人情報を取り除く。"""
+    ending = "。" if s.endswith("。") else ""
+    core = s[:-1] if ending else s
+    # 「東京都出身の〜」「〜生まれ」のような修飾だけを落とし、職業部分は残す。
+    core = re.sub(r"[^、。]{0,24}(?:出身|生まれ)(?:の)?[、 ]*", "", core)
+    # 所属先・運営会社はorg列にあるので、役割だけ残す。
+    core = re.sub(r"^[^、。]{0,120}(?:に)?所属(?:する|の)", "", core)
+    core = re.sub(r"^[^、。]{0,120}が運営する", "", core)
+    parts = [part.strip() for part in core.split("、")]
+    parts = [part for part in parts
+             if part and not YOUTUBER_ORG.search(part)
+             and not YOUTUBER_PERSONAL.search(part)]
+    if not parts:
+        return ""
+    return "、".join(parts) + ending
+
+
+def _strip_redundant_youtuber_lead(s: str) -> str:
+    """カード種別と重複する「日本のYouTuber、」等の書き出しを落とす。"""
+    # 地域・国籍が文頭にあり、そのまま一般的なYouTuber肩書きへ続く場合だけ
+    # 地域部分を除く。実績文の末尾にある「日本のYouTuber」は対象外にする。
+    first_clause = s.split("。", 1)[0]
+    geo = YOUTUBER_SIMPLE_GEO_PREFIX.match(s)
+    if geo and YOUTUBER_ROLE.search(first_clause):
+        s = s[geo.end():]
+    else:
+        # 「韓国人男性YouTuber」のように「の」を挟まない単純な国籍表現。
+        geo_person = re.match(
+            YOUTUBER_GEO_HEAD.pattern
+            + rf"人(?=(?:男性|女性)?(?:{YOUTUBER_GENERIC_ROLE_TEXT}))",
+            s,
+        )
+        if geo_person:
+            s = s[geo_person.end():]
+
+    role = re.match(
+        rf"^(?:男性|女性)?(?:{YOUTUBER_GENERIC_ROLE_TEXT})(?:グループ)?"
+        rf"(?:（(?P<detail>[^）]{{1,80}})）)?"
+        rf"(?:(?P<join>、|・|および|及び|兼|と)|(?P<end>である。|。)|$)",
+        s,
+    )
+    if not role:
+        return s
+
+    detail = (role.group("detail") or "").strip()
+    # 「以下、VTuber」は略記の宣言なので説明には使わない。一方、
+    # 「ゲーム実況者、ストリーマー」のような活動区分は有用なので残す。
+    if detail.startswith("以下") or not re.search(
+            r"ゲーム実況者|ストリーマー|ビデオブロガー|動画配信者|配信者", detail):
+        detail = ""
+    rest = s[role.end():].lstrip("、・ ")
+    parts = [part for part in (detail, rest) if part]
+    if not parts:
+        return ""
+    result = "、".join(parts)
+    if not result.endswith("。"):
+        result += "。"
+    return result
+
+
+def _youtuber_piece(sentence: str, name: str) -> str:
+    """記事冒頭の1文を、単独表示できる短い候補に整える。"""
+    s = clean_ws(sentence).strip("、 ")
+    if not s:
+        return ""
+    # 肩書きに挟まる「（登録者80万人）」などは括弧ごと除く。
+    s = re.sub(
+        r"[（(][^）)]{0,80}(?:登録者|フォロワー|再生回数|視聴回数|動画再生)"
+        r"[^）)]{0,80}[）)]", "", s,
+    )
+    # 「合計登録者70万人超えのサラリーマンYouTuber」のように、時変値が
+    # 肩書きの前置修飾になっている場合は修飾だけ落とす。
+    s = re.sub(
+        r"(?:合計)?(?:チャンネル)?登録者(?:数)?[^、。]{0,24}?の"
+        r"(?=[^、。]{2,})", "", s,
+    )
+    # それでも時変情報が残る文は、数値を主題にした実績文である可能性が高い。
+    # 一部だけ切ると「10年の活動の中で。」のような断片になるため文ごと使わない。
+    if YOUTUBER_DYNAMIC.search(s):
+        return ""
+    # 記事名が句点で終わる場合、匿名化後に助詞だけが残ることがある。
+    s = re.sub(r"^(?:は|が|を)[、 ]+", "", s)
+    # 時変値入りの括弧を削ったことで隣接した肩書きを、読みやすい列挙に戻す。
+    s = re.sub(
+        r"(TikToker|YouTuber|VTuber)"
+        r"(?=(?:YouTuber|VTuber|インフルエンサー|アーティスト))",
+        r"\1、", s,
+    )
+    s = strip_name_prefix(s if s.endswith("。") else s + "。", name).strip()
+    # 共通のstrip_name_prefixは、動詞で終わる長い文を壊さないため保守的に
+    # 何もしない場合がある。カードでは名前が別表示されるため、冒頭の主語は
+    # それより広く落として単独文にする。
+    lead = re.match(r"^(.{2,40}?)は[、 ]+", s)
+    if lead and len(s[lead.end():].strip("。 ")) >= 4:
+        s = s[lead.end():].lstrip("、 ")
+    if name and s.startswith(name):
+        s = s[len(name):].lstrip("、 ")
+    # 「ミスタービーストとして知られる〜」のような活動名の導入は、
+    # カード上では名前が別に出るので落とす。
+    if name and name != "NA":
+        name_re = re.escape(name.replace(" ", "").replace("　", ""))
+        s = re.sub(name_re + r"として(?:も|オンラインで)?(?:よく)?知られている", "", s)
+        s = re.sub(name_re + r"として知られる", "", s)
+    # 記事名の表記ゆれ・改名・リダイレクトでも、活動名の説明だけを残す。
+    s = re.sub(
+        r"^(?:一般的には)?[^、。]{1,80}?として(?:も|オンラインで)?"
+        r"(?:よく)?知られている(?:が、|、| )?", "", s)
+    s = re.sub(
+        r"^(?:一般的には)?[^、。]{1,80}?として(?:も|オンラインで)?"
+        r"(?:よく)?知られる(?:が、|、| )?", "", s)
+    s = re.sub(r"^[^、。]{2,80}(?:（[^）]{0,100}）)?による", "", s)
+    s = YOUTUBER_CONTEXT.sub("", s)
+    s = re.sub(r"^(?:彼|彼女|本人|同氏)は(?:また)?[、 ]*", "", s)
+    s = re.sub(r"彼女?は|彼女?が", "", s)
+    s = s.replace("同事務所の", "").replace("同事務所", "")
+    s = re.sub(r"彼女?の", "", s)
+    s = re.sub(r"^同(?:市|県|社|グループ|チャンネル)[^、。]{0,20}", "", s)
+    s = re.sub(r"同(?:市|県|社|グループ|チャンネル)", "", s)
+    if "であり、彼は" in s or "であり、彼女は" in s:
+        s = re.split(r"であり、(?:彼|彼女)は", s, maxsplit=1)[-1]
+    s = s.replace("知られており", "知られている")
+    s = re.sub(r"で知られ。$", "で知られている。", s)
+    s = re.sub(r"活動する他。$", "活動している。", s)
+    # 「〜しており、」「〜であり、」の後ろは別文脈になりやすいので、
+    # 前半を自然な完結文にする。
+    for needle, replacement in (("おり", "いる"), ("であり", "である")):
+        pos = s.find(needle)
+        if pos >= 0:
+            tail = s[pos + len(needle):]
+            if tail.startswith("、") or "、" in tail:
+                s = s[:pos] + replacement + "。"
+                break
+    s = _remove_youtuber_metadata(s)
+    s = _strip_redundant_youtuber_lead(s)
+    if not s:
+        return ""
+    if "スケッチ・コメディのグループ" in s:
+        s = "スケッチ・コメディのグループ。"
+    elif "YouTubeに動画を投稿" in s and "アーティスト" in s:
+        s = "YouTubeに動画を投稿するアーティスト。"
+    if s.endswith("など。") and "に関する" in s:
+        s = s[:s.find("など。")].rstrip("、 ") + "に関するYouTubeチャンネル。"
+    # グループ所属の前置きより、後半にある個人チャンネルの内容を優先する。
+    s = re.sub(
+        r"^YouTuberとしては[^。]{1,120}?として活動する他、", "", s,
+    )
+    # 冒頭文に長い列挙があるときは、活動の主節だけを残す。
+    compact = re.search(
+        r"([^、。]{4,60})(?:を中心に活動している|を投稿している|"
+        r"を配信している|で知られている|で知られており)", s)
+    if compact and len(compact.group(0)) + 1 <= YOUTUBER_DESC_MAX:
+        s = compact.group(0) + "。"
+    if len(s) > YOUTUBER_DESC_MAX:
+        group = re.search(
+            r"(?P<group>[^、。]{0,30}グループ[「『][^」』]+[」』])"
+            r"(?:の)?(?P<role>メンバー|リーダー)", s)
+        if group:
+            s = f"{group.group('group')}の{group.group('role')}。"
+    s = _sanitize_desc(s).strip()
+    if s and not s.endswith("。"):
+        s += "。"
+    if s and YOUTUBER_INCOMPLETE_TAIL.search(s[:-1]):
+        return ""
+    return s
+
+
+def _cut_youtuber_description(s: str) -> str:
+    """長すぎる候補を読点境界で短くする(中途半端な語尾を避ける)。"""
+    def finish_tail(value: str) -> str:
+        value = re.sub(r"で知られ。$", "で知られている。", value)
+        value = re.sub(r"活動する他。$", "活動している。", value)
+        return value
+
+    if len(s) <= YOUTUBER_DESC_MAX:
+        return finish_tail(s)
+    core = s[:-1] if s.endswith("。") else s
+    pos = core[:YOUTUBER_DESC_MAX].rfind("、")
+    while pos >= 24:
+        candidate = core[:pos].rstrip()
+        # 「〜で、」「〜に、」のような助詞の直後で切ると完結文にならない。
+        if candidate.endswith(("など", "等")):
+            return candidate[:-2].rstrip("、 ") + "に関するYouTubeチャンネル。"
+        if not candidate.endswith(("で", "に", "を", "の", "が", "は", "と", "も", "へ", "や")) \
+                and not YOUTUBER_INCOMPLETE_TAIL.search(candidate):
+            return finish_tail(candidate + "。")
+        pos = core[:pos].rfind("、")
+    # 安全な読点境界が無い場合は、多少長くても完結文を保つ。
+    return finish_tail(s)
+
+
+def make_youtuber_description(intro: str, wd_desc: str = "", name: str = "") -> str:
+    """YouTuber/VTuberの活動内容を優先した短い完結説明を作る。
+
+    目安50字、上限65字。先頭の肩書きだけでなく、動画・配信・ゲーム実況・
+    音楽・慈善活動などを含む文を優先する。登録者数、所属、出身地、家族関係は
+    別列または説明として不要なので採らない。記事冒頭が使えない場合は
+    Wikidataのja descriptionへフォールバックする。
+    """
+    text = deidentify(intro, name)
+    sentences = [part.strip() for part in re.split(r"(?<=。)", text) if part.strip()]
+    pieces = [_youtuber_piece(part, name) for part in sentences]
+    pieces = [part for part in pieces if part]
+    if not pieces:
+        fallback = safe_wd_desc(wd_desc)
+        pieces = [_youtuber_piece(fallback, name)] if fallback else []
+        pieces = [part for part in pieces if part]
+    if not pieces:
+        return "NA"
+
+    def score(item):
+        index, sentence = item
+        value = sum(weight * sentence.count(term)
+                    for term, weight in YOUTUBER_ACTIVITY.items())
+        if YOUTUBER_ACHIEVEMENT.search(sentence):
+            value += 4
+        if YOUTUBER_ROLE.search(sentence):
+            value += 1
+        if index == 0:
+            value += 2
+        elif len(sentence) > YOUTUBER_DESC_MAX:
+            value -= 2
+        if index > 0 and re.search(r"\d{4}年|活動休止|休止状態", sentence) \
+                and not YOUTUBER_ACHIEVEMENT.search(sentence):
+            value -= 4
+        if YOUTUBER_NOT_OWNED.search(sentence):
+            value -= 6
+        return value, -index
+
+    first = pieces[0]
+    best = max(enumerate(pieces), key=score)[1]
+    # 「日本のYouTuber。」のような短い肩書きは、活動文と一緒にしても
+    # 65字以内なら残す。長いときは活動内容だけを優先する。
+    if best != first and YOUTUBER_ROLE.search(first) \
+            and len(first) + len(best) <= YOUTUBER_DESC_MAX:
+        return first + best
+    return _cut_youtuber_description(best)
+
+
 def parse_entry(title: str, text: str):
     """記事名と冒頭文から (original, [(surface, pronunciation, type), ...]) を
     返す。読みが機械決定できなければ None(要確認)。"""
@@ -317,7 +615,8 @@ def build_list(csv_name: str, specs: list, cache_env: str,
         titles = sorted({t for p in persons_by_cat.values()
                          for t in p.values()})
         print(f"記事冒頭を取得中... {len(titles)}件", flush=True)
-        extracts = fetch_extracts(titles)
+        # 活動内容を含む後続文も選べるよう、通常の人名リストより長く取る。
+        extracts = fetch_extracts(titles, limit=600)
         if cache:
             with open(cache, "wb") as fh:
                 pickle.dump((persons_by_cat, attrs, extracts), fh)
@@ -338,11 +637,9 @@ def build_list(csv_name: str, specs: list, cache_env: str,
     existing = {r["original"] for r in old_rows}
     next_id = max((int(r["id"]) for r in old_rows), default=-1) + 1
 
-    # 記事タイトル -> description(記事冒頭文が無ければWikidataのja description)。
-    # 記事冒頭は deidentify で本名の記述を落としてから使う
-    descs = {t: make_description(deidentify(extracts.get(t, ""), norm(t)),
-                                 safe_wd_desc(attrs.get(q, {}).get("wd_desc")),
-                                 norm(t))
+    # 記事タイトル -> description(活動内容を優先した短い完結文)。
+    descs = {t: make_youtuber_description(
+                 extracts.get(t, ""), attrs.get(q, {}).get("wd_desc"), norm(t))
              for persons in persons_by_cat.values()
              for q, t in sorted(persons.items())}
     wd_attrs = {norm(t): {**attrs.get(q, {}), "description": descs[t]}
