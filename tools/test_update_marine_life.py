@@ -47,6 +47,7 @@ class MarineLifeUpdaterTest(unittest.TestCase):
             with mock.patch.dict(marine.MIN_CLASS_COUNTS, {key: 0 for key in marine.CLASSES}), \
                  mock.patch.object(marine, "MIN_QID_COUNT", 0), \
                  mock.patch.object(marine, "MIN_APHIA_COUNT", 0), \
+                 mock.patch.object(marine, "MIN_JODC_COUNT", 0), \
                  mock.patch.object(marine, "MIN_TOTAL_COUNT", 0):
                 return marine.load_source(path)
 

@@ -42,8 +42,10 @@ python3 tools/audit_taxa.py sekitsui  # 既存行が想定した界・門・綱�
 次の連番 `id` で追記し、分類・海洋性・説明・QIDを確認してから次を実行する。
 QIDを既存リストから転記する場合は和名と `class` の両方が一致し、候補が一意な場合に
 限る。同名の魚と鳥などがあるため、和名だけでの結合は禁止する。
-1000件版の追加行はJODCの和名・学名を候補にし、WoRMSの有効AphiaID側で
-`rank=Species` と `isMarine=1` を確認している。旧学名のレコードだけを根拠にしない。
+追加行はJODCの和名・学名を候補にし、WoRMSの有効AphiaID側で `rank=Species` と
+`isMarine=1` を確認している。旧学名のレコードだけを根拠にしない。QIDは学名P225が
+完全一致し、P171の祖先がAnimaliaへ到達する分類群に限る。
+JODCに日本語の目・科がない行は、WoRMSの有効レコードの学名に `目` / `科` を付ける。
 
 ```sh
 python3 tools/update_marine_life.py
