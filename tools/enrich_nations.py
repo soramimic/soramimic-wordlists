@@ -2,7 +2,7 @@
 """nations.csv に国の基礎情報と短い説明を付与する。
 
 出典:
-- 人口・面積・首都・大陸・成立年: Wikidata (CC0)
+- 人口・面積・首都・大陸・成立年・終了年: Wikidata (CC0)
 - description: 日本語版 Wikipedia の記事冒頭 (CC BY-SA 4.0)
 
 同じ id でも旧称が別の Wikidata item を指す場合があるため、id ではなく各行の
@@ -14,6 +14,7 @@ usage: python3 tools/enrich_nations.py
 
 import csv
 import json
+import re
 import sys
 import time
 import urllib.parse
@@ -36,10 +37,18 @@ UA = {
     )
 }
 ADDED_COLS = [
-    "capital", "continent", "population", "area_km2",
-    "established_year", "description",
+    "capital", "continent", "population", "population_year", "area_km2",
+    "established_year", "ended_year", "description",
 ]
 MIN_ENTITIES = 180
+
+# 現存国の旧称は国item自体に解散日(P576)がないため、その名称が日本語で
+# 置き換わった年を補う。status=current の同一itemには適用しない。
+FORMER_NAME_ENDED_YEAR = {
+    "Q230": "2015",  # グルジア -> ジョージア
+    "Q1050": "2018",  # スワジランド -> エスワティニ
+    "Q221": "2019",  # マケドニア -> 北マケドニア
+}
 
 
 def wd_entities(qids: list[str], props: str) -> dict:
@@ -89,15 +98,25 @@ def preferred(items: list[dict]) -> list[dict]:
     return best or items
 
 
-def point_year(statement: dict) -> int:
-    qualifiers = statement.get("qualifiers", {}).get("P585", [])
-    if not qualifiers:
-        return -999999
-    value = qualifiers[0].get("datavalue", {}).get("value", {})
-    try:
-        return int(value.get("time", "")[:5])
-    except ValueError:
-        return -999999
+def point_in_time(statement: dict) -> tuple[int, int, int] | None:
+    """P585のうち最も遅い年月日を返す。年未満の精度は採用しない。"""
+    points = []
+    for qualifier in statement.get("qualifiers", {}).get("P585", []):
+        if qualifier.get("snaktype") != "value":
+            continue
+        value = qualifier.get("datavalue", {}).get("value", {})
+        if not isinstance(value, dict) or value.get("precision", 0) < 9:
+            continue
+        match = re.fullmatch(
+            r"([+-])(\d+)-(\d{2})-(\d{2})T\d{2}:\d{2}:\d{2}Z",
+            value.get("time", ""),
+        )
+        if not match:
+            continue
+        sign, year, month, day = match.groups()
+        signed_year = int(year) * (-1 if sign == "-" else 1)
+        points.append((signed_year, int(month), int(day)))
+    return max(points) if points else None
 
 
 def quantity(statement: dict) -> str:
@@ -111,13 +130,22 @@ def quantity(statement: dict) -> str:
     return format(number.normalize(), "f")
 
 
-def latest_population(entity: dict) -> str:
+def latest_population_facts(entity: dict) -> tuple[str, str]:
+    """最新の人口値と、その同じstatementに付いた時点(P585)の年を返す。"""
     items = statements(entity, "P1082")
     if not items:
-        return ""
-    dated = [s for s in items if point_year(s) != -999999]
-    chosen = max(dated, key=point_year) if dated else preferred(items)[0]
-    return quantity(chosen)
+        return "", ""
+    dated = [s for s in items if point_in_time(s) is not None]
+    chosen = max(
+        dated,
+        key=lambda s: (point_in_time(s), s.get("rank") == "preferred"),
+    ) if dated else preferred(items)[0]
+    point = point_in_time(chosen)
+    year = point[0] if point else None
+    year_text = "" if year is None else (
+        f"前{abs(year)}" if year < 0 else str(year)
+    )
+    return quantity(chosen), year_text
 
 
 def area(entity: dict) -> str:
@@ -149,33 +177,23 @@ def established_year(entity: dict) -> str:
     return f"前{abs(year)}" if year < 0 else str(year)
 
 
+def ended_year(entity: dict) -> str:
+    """解散・廃止日(P576)のうち最も遅い西暦年を返す。"""
+    years = []
+    for statement in statements(entity, "P576"):
+        value = statement["mainsnak"]["datavalue"]["value"]
+        try:
+            years.append(int(value["time"][:5]))
+        except (KeyError, ValueError):
+            continue
+    if not years:
+        return ""
+    year = max(years)
+    return f"前{abs(year)}" if year < 0 else str(year)
+
+
 def clean(value: str) -> str:
     return (value or "").replace(",", " ").replace('"', "").strip()
-
-
-def strip_country_subject(description: str, names: set[str]) -> str:
-    """「正式国名、通称○○は、」のような重複する主語を説明文から除く。"""
-    first, period, following = description.partition("。")
-    normalized_names = {
-        name.replace(" ", "").replace("　", "") for name in names if name
-    }
-    if period and first.replace(" ", "").replace("　", "") in normalized_names:
-        return following.lstrip()
-
-    head, separator, rest = description.partition("は")
-    if not separator or len(head) > 80 or "。" in head:
-        return description
-    normalized_head = head.replace(" ", "").replace("　", "")
-    starts_with_name = any(
-        normalized_head.startswith(name) for name in normalized_names
-    )
-    country_alias = normalized_head.endswith(
-        ("共和国", "王国", "公国", "連邦", "合衆国", "首長国", "国")
-    )
-    if not starts_with_name and not country_alias:
-        return description
-    stripped = rest.lstrip("、 ").strip()
-    return stripped or description
 
 
 def resolve_missing_qids(rows: list[dict]) -> None:
@@ -240,11 +258,6 @@ def main() -> int:
         qid: entity.get("sitelinks", {}).get("jawiki", {}).get("title", "")
         for qid, entity in entities.items()
     }
-    names = {}
-    for row in rows:
-        names.setdefault(row["wikidata"], set()).add(row["original"])
-    for qid, title in titles.items():
-        names.setdefault(qid, set()).add(title)
     extracts = fetch_extracts(sorted({t for t in titles.values() if t}), limit=300)
 
     info = {}
@@ -253,7 +266,7 @@ def main() -> int:
         intro = extracts.get(title, "")
         wd_desc = entity.get("descriptions", {}).get("ja", {}).get("value", "")
         desc = make_description(intro, wd_desc, title)
-        desc = strip_country_subject(desc, names.get(qid, set()))
+        population, population_year = latest_population_facts(entity)
         info[qid] = {
             "capital": "/".join(
                 labels.get(x, {}).get("labels", {}).get("ja", {}).get("value", "")
@@ -263,25 +276,35 @@ def main() -> int:
                 labels.get(x, {}).get("labels", {}).get("ja", {}).get("value", "")
                 for x in item_ids(entity, "P30")
             ).strip("/"),
-            "population": latest_population(entity),
+            "population": population,
+            "population_year": population_year,
             "area_km2": area(entity),
             "established_year": established_year(entity),
+            "ended_year": ended_year(entity),
             "description": "" if desc == "NA" else desc,
         }
 
     for row in rows:
         values = info.get(row.get("wikidata", ""), {})
+        new_population = clean(values.get("population", ""))
+        if new_population:
+            # 人口と基準年は同じP1082 statementの組なので必ず同時に更新する。
+            row["population"] = new_population
+            row["population_year"] = clean(values.get("population_year", ""))
         for col in ADDED_COLS:
+            if col in {"population", "population_year"}:
+                continue
             new = clean(values.get(col, ""))
-            if col == "description":
-                existing = row.get(col, "") or new
-                row[col] = strip_country_subject(
-                    existing, names.get(row.get("wikidata", ""), set())
-                )
-            elif col == "population":
-                row[col] = new or row.get(col, "")
-            else:
-                row[col] = row.get(col, "") or new
+            if col == "ended_year":
+                if row.get("status") == "former":
+                    new = FORMER_NAME_ENDED_YEAR.get(
+                        row.get("wikidata", ""), new,
+                    )
+                    row[col] = row.get(col, "") or new
+                else:
+                    row[col] = ""
+                continue
+            row[col] = row.get(col, "") or new
 
     write_csv_no_trailing_newline(CSV_PATH, cols, rows)
     print(f"nations.csv: {len(rows)} rows / {len(qids)} Wikidata items")
