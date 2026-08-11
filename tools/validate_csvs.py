@@ -130,9 +130,12 @@ def validate_marine_life(path: Path):
     """公開CSVでも分類facetとキュレーション契約を独立に検証する。"""
     from update_marine_life import (
         CLASSES,
-        IMAGE_FILE_BY_CLASS,
+        APHIA_ID,
+        IMAGE_FILE_BY_GROUP,
+        MIN_APHIA_COUNT,
         MIN_CLASS_COUNTS,
         MIN_QID_COUNT,
+        MIN_TOTAL_COUNT,
         OUTPUT_COLUMNS,
         VERTEBRATE_BY_CLASS,
     )
@@ -171,15 +174,31 @@ def validate_marine_life(path: Path):
         if description in seen_descriptions:
             err(f"{path.name}:{item_id + 2}: descriptionが重複: {name}")
         seen_descriptions.add(description)
-        filename = IMAGE_FILE_BY_CLASS[cls]
-        if not fields[idx["image"]].endswith(f"/images/marine_life/{filename}"):
-            err(f"{path.name}:{item_id + 2}: classとimageが不整合: {name}")
+        image = fields[idx["image"]]
+        if not image.startswith("https://upload.wikimedia.org/wikipedia/commons/"):
+            valid_fallbacks = {IMAGE_FILE_BY_GROUP[cls]}
+            if cls == "無脊椎動物":
+                valid_fallbacks.update(
+                    filename for group, filename in IMAGE_FILE_BY_GROUP.items()
+                    if group not in {"哺乳類", "爬虫類", "魚類"}
+                )
+            if not any(image.endswith(f"/images/marine_life/{filename}")
+                       for filename in valid_fallbacks):
+                err(f"{path.name}:{item_id + 2}: classとimageが不整合: {name}")
+        aphia_id = fields[idx["aphia_id"]]
+        if aphia_id and not APHIA_ID.fullmatch(aphia_id):
+            err(f"{path.name}:{item_id + 2}: AphiaIDが不正: {name}")
     for cls, minimum in MIN_CLASS_COUNTS.items():
         if counts[cls] < minimum:
             err(f"{path.name}: {cls}が少なすぎる: {counts[cls]} < {minimum}")
     qid_count = sum(bool(line.split(",")[idx["wikidata"]]) for line in lines[1:])
     if qid_count < MIN_QID_COUNT:
         err(f"{path.name}: Wikidata QIDが少なすぎる: {qid_count} < {MIN_QID_COUNT}")
+    aphia_count = sum(bool(line.split(",")[idx["aphia_id"]]) for line in lines[1:])
+    if aphia_count < MIN_APHIA_COUNT:
+        err(f"{path.name}: AphiaIDが少なすぎる: {aphia_count} < {MIN_APHIA_COUNT}")
+    if len(lines) - 1 < MIN_TOTAL_COUNT:
+        err(f"{path.name}: 行数が少なすぎる: {len(lines) - 1} < {MIN_TOTAL_COUNT}")
 
 
 def main() -> int:

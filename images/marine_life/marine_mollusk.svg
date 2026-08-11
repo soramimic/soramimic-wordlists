@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="200" viewBox="0 0 320 200" role="img" aria-labelledby="title desc">
+  <title id="title">軟体動物の分類イメージ</title>
+  <desc id="desc">渦巻きと柔らかな腕状の曲線を組み合わせた軟体動物の分類用イメージ</desc>
+  <defs>
+    <linearGradient id="mollusk-sea" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#fff2dc"/><stop offset="1" stop-color="#708bc7"/>
+    </linearGradient>
+  </defs>
+  <rect width="320" height="200" rx="18" fill="url(#mollusk-sea)"/>
+  <path d="M42 144 Q51 110 82 103 Q82 60 121 55 Q165 52 172 93 Q177 128 146 143Z" fill="#eda75d"/>
+  <path d="M84 104 Q82 72 113 68 Q145 65 153 91 Q160 117 137 129 Q115 139 98 122 Q84 107 94 91 Q104 77 122 82 Q139 87 136 102 Q133 116 119 116 Q105 115 105 104" fill="none" stroke="#b96f50" stroke-width="7" stroke-linecap="round"/>
+  <g transform="translate(225 111)" fill="none" stroke="#7657a7" stroke-width="10" stroke-linecap="round">
+    <path d="M0 0 Q-32 17-42 50"/><path d="M0 0 Q-10 32-3 58"/><path d="M0 0 Q17 30 10 57"/><path d="M0 0 Q39 17 40 44"/>
+  </g>
+  <path d="M195 108 Q225 63 255 108 Q248 130 225 133 Q202 130 195 108Z" fill="#8b69bd"/>
+  <path d="M0 184 Q35 168 70 184 T140 184 T210 184 T280 184 T350 184 V200 H0Z" fill="#4d609f" opacity=".74"/>
+  <g fill="#fff" opacity=".58"><circle cx="33" cy="44" r="5"/><circle cx="50" cy="27" r="3"/><circle cx="286" cy="154" r="7"/></g>
+  <rect x="238" y="12" width="70" height="28" rx="14" fill="#fff" opacity=".92"/>
+  <text x="273" y="31" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="700" fill="#574a89">イメージ</text>
+</svg>

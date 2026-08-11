@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="200" viewBox="0 0 320 200" role="img" aria-labelledby="title desc">
+  <title id="title">刺胞動物の分類イメージ</title>
+  <desc id="desc">傘状と放射状の抽象形を組み合わせた刺胞動物の分類用イメージ</desc>
+  <defs>
+    <linearGradient id="cnidarian-sea" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#e6f8ff"/><stop offset="1" stop-color="#7777cf"/>
+    </linearGradient>
+  </defs>
+  <rect width="320" height="200" rx="18" fill="url(#cnidarian-sea)"/>
+  <path d="M69 88 Q113 36 157 88 Q151 108 113 110 Q75 108 69 88Z" fill="#ed7faf"/>
+  <g fill="none" stroke="#bd5b9a" stroke-width="7" stroke-linecap="round">
+    <path d="M87 104 Q72 132 84 165"/><path d="M103 108 Q94 137 105 174"/>
+    <path d="M121 108 Q137 139 124 172"/><path d="M139 103 Q156 130 148 161"/>
+  </g>
+  <g transform="translate(224 132)" fill="none" stroke="#f5b264" stroke-width="7" stroke-linecap="round">
+    <path d="M0 30V-8"/><path d="M0-7 Q-29-22-35-43"/><path d="M0-7 Q-12-36-2-55"/>
+    <path d="M0-7 Q20-34 35-42"/><path d="M0-7 Q31-13 42-1"/>
+  </g>
+  <path d="M0 184 Q35 166 70 184 T140 184 T210 184 T280 184 T350 184 V200 H0Z" fill="#4f589f" opacity=".72"/>
+  <g fill="#fff" opacity=".58"><circle cx="32" cy="51" r="5"/><circle cx="48" cy="31" r="3"/><circle cx="278" cy="155" r="7"/></g>
+  <rect x="238" y="12" width="70" height="28" rx="14" fill="#fff" opacity=".92"/>
+  <text x="273" y="31" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="700" fill="#58478f">イメージ</text>
+</svg>

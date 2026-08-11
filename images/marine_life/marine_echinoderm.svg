@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="200" viewBox="0 0 320 200" role="img" aria-labelledby="title desc">
+  <title id="title">棘皮動物の分類イメージ</title>
+  <desc id="desc">五放射形と棘のある円形を抽象化した棘皮動物の分類用イメージ</desc>
+  <defs>
+    <linearGradient id="echinoderm-sea" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#f2f4d8"/><stop offset="1" stop-color="#5f91b2"/>
+    </linearGradient>
+  </defs>
+  <rect width="320" height="200" rx="18" fill="url(#echinoderm-sea)"/>
+  <g transform="translate(105 108)">
+    <path d="M0-62 14-22 56-34 25-6 60 19 17 18 15 62-5 26-43 52-24 12-65 0-22-12-38-53-3-27Z" fill="#f08b6f"/>
+    <circle r="15" fill="#ffc076"/>
+  </g>
+  <g transform="translate(227 111)" fill="#765aa7" stroke="#5d478f" stroke-width="5" stroke-linecap="round">
+    <circle r="38"/>
+    <path d="M0-54V-39M32-44 23-31M52-17 37-12M52 17 37 12M32 44 23 31M0 54V39M-32 44-23 31M-52 17-37 12M-52-17-37-12M-32-44-23-31" fill="none"/>
+    <circle r="6" fill="#d9c1ef" stroke="none"/>
+  </g>
+  <path d="M0 184 Q35 167 70 184 T140 184 T210 184 T280 184 T350 184 V200 H0Z" fill="#457991" opacity=".75"/>
+  <g fill="#fff" opacity=".58"><circle cx="34" cy="47" r="6"/><circle cx="52" cy="28" r="3"/><circle cx="287" cy="151" r="7"/></g>
+  <rect x="238" y="12" width="70" height="28" rx="14" fill="#fff" opacity=".92"/>
+  <text x="273" y="31" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="700" fill="#4c5980">イメージ</text>
+</svg>

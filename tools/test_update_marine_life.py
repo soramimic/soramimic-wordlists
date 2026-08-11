@@ -1,5 +1,6 @@
 import csv
 import io
+import json
 import sys
 import tempfile
 import unittest
@@ -29,6 +30,12 @@ class MarineLifeUpdaterTest(unittest.TestCase):
             "family": "ナガスクジラ科",
             "description": "海で暮らす大型の哺乳類で水面に浮上して呼吸する。",
             "wikidata": "Q42196",
+            "scientific_name": "Balaenoptera musculus",
+            "aphia_id": "137090",
+            "jodc_code": "92010101010100",
+            "image": "",
+            "image_page": "",
+            "image_group": "哺乳類",
         }
         row.update(changes)
         return row
@@ -38,7 +45,9 @@ class MarineLifeUpdaterTest(unittest.TestCase):
             path = Path(directory) / "source.csv"
             path.write_bytes(self.source(rows))
             with mock.patch.dict(marine.MIN_CLASS_COUNTS, {key: 0 for key in marine.CLASSES}), \
-                 mock.patch.object(marine, "MIN_QID_COUNT", 0):
+                 mock.patch.object(marine, "MIN_QID_COUNT", 0), \
+                 mock.patch.object(marine, "MIN_APHIA_COUNT", 0), \
+                 mock.patch.object(marine, "MIN_TOTAL_COUNT", 0):
                 return marine.load_source(path)
 
     def test_generate_has_filter_values_and_images(self):
@@ -48,6 +57,61 @@ class MarineLifeUpdaterTest(unittest.TestCase):
         self.assertEqual("脊椎動物", parsed["vertebrate"])
         self.assertTrue(parsed["image"].endswith("/marine_mammal.svg"))
         self.assertEqual(parsed["original"], parsed["pronunciation"])
+        self.assertEqual("137090", parsed["aphia_id"])
+
+    def test_explicit_commons_photo_overrides_fallback(self):
+        row = self.row(
+            image="https://upload.wikimedia.org/wikipedia/commons/a/ab/Blue_whale.jpg",
+            image_page="https://commons.wikimedia.org/wiki/File:Blue_whale.jpg",
+        )
+        parsed = next(csv.DictReader(io.StringIO(marine.generate(self.load(row)).decode())))
+        self.assertIn("Blue_whale.jpg", parsed["image"])
+
+    def test_rejects_incomplete_photo_pair(self):
+        with self.assertRaisesRegex(ValueError, "image/image_page mismatch"):
+            self.load(self.row(image="https://upload.wikimedia.org/wikipedia/commons/a/ab/X.jpg"))
+
+    def test_rejects_unknown_image_group(self):
+        with self.assertRaisesRegex(ValueError, "invalid image group"):
+            self.load(self.row(image_group="深海魚"))
+
+    def test_image_source_manifest_matches_explicit_photo(self):
+        row = self.row(
+            image="https://upload.wikimedia.org/wikipedia/commons/a/ab/Blue_whale.jpg",
+            image_page="https://commons.wikimedia.org/wiki/File:Blue_whale.jpg",
+        )
+        record = {
+            "name": row["name"], "wikidata": row["wikidata"],
+            "scientific_name": row["scientific_name"], "aphia_id": row["aphia_id"],
+            "image": row["image"], "image_page": row["image_page"],
+            "license": "CC BY 4.0",
+            "license_url": "https://creativecommons.org/licenses/by/4.0/",
+            "artist": "Example Photographer", "sha1": "a" * 40,
+            "width": 640, "height": 480, "identification_basis": "QID and P18",
+        }
+        with tempfile.TemporaryDirectory() as directory, \
+             mock.patch.object(marine, "MIN_PHOTO_COUNT", 0):
+            path = Path(directory) / "images.jsonl"
+            path.write_text(json.dumps(record, ensure_ascii=False), encoding="utf-8")
+            marine.validate_image_sources([row], path)
+
+    def test_image_source_manifest_rejects_unknown_license(self):
+        row = self.row(
+            image="https://upload.wikimedia.org/wikipedia/commons/a/ab/Blue_whale.jpg",
+            image_page="https://commons.wikimedia.org/wiki/File:Blue_whale.jpg",
+        )
+        record = {
+            "name": row["name"], "wikidata": row["wikidata"],
+            "scientific_name": row["scientific_name"], "aphia_id": row["aphia_id"],
+            "image": row["image"], "image_page": row["image_page"],
+            "license": "unknown", "sha1": "a" * 40,
+            "width": 640, "height": 480, "identification_basis": "QID and P18",
+        }
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "images.jsonl"
+            path.write_text(json.dumps(record), encoding="utf-8")
+            with self.assertRaisesRegex(ValueError, "unsupported license"):
+                marine.validate_image_sources([row], path)
 
     def test_rejects_duplicate_name(self):
         with self.assertRaisesRegex(ValueError, "duplicate name"):
@@ -111,7 +175,8 @@ class MarineLifeUpdaterTest(unittest.TestCase):
             with mock.patch.object(marine, "SOURCE", Path(directory) / "missing"), \
                  mock.patch.object(marine, "OUTPUT", output), \
                  mock.patch.object(marine, "load_source", return_value=[self.row()]), \
-                 mock.patch.object(marine, "validate_images"):
+                 mock.patch.object(marine, "validate_images"), \
+                 mock.patch.object(marine, "validate_image_sources"):
                 self.assertEqual(1, marine.main(["--check"]))
                 self.assertEqual("different", output.read_text(encoding="utf-8"))
 

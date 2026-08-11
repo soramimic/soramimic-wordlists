@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="200" viewBox="0 0 320 200" role="img" aria-labelledby="title desc">
+  <title id="title">海産蠕虫の分類イメージ</title>
+  <desc id="desc">節と柔らかな曲線を持つ細長い体を抽象化した海産蠕虫の分類用イメージ</desc>
+  <defs>
+    <linearGradient id="worm-sea" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#e5faed"/><stop offset="1" stop-color="#5f84b5"/>
+    </linearGradient>
+  </defs>
+  <rect width="320" height="200" rx="18" fill="url(#worm-sea)"/>
+  <path d="M35 126 C61 55 102 51 122 101 S177 165 199 99 S257 54 286 113" fill="none" stroke="#ef836f" stroke-width="24" stroke-linecap="round"/>
+  <path d="M48 103 65 111M66 79 83 91M88 70 102 86M120 98 139 94M131 124 150 116M153 145 166 128M195 107 214 113M210 79 226 93M235 69 248 87M264 82 275 101" fill="none" stroke="#b95c67" stroke-width="4" stroke-linecap="round" opacity=".72"/>
+  <path d="M0 184 Q35 168 70 184 T140 184 T210 184 T280 184 T350 184 V200 H0Z" fill="#456d91" opacity=".76"/>
+  <g fill="#fff" opacity=".58"><circle cx="32" cy="46" r="5"/><circle cx="50" cy="27" r="3"/><circle cx="289" cy="150" r="7"/></g>
+  <rect x="238" y="12" width="70" height="28" rx="14" fill="#fff" opacity=".92"/>
+  <text x="273" y="31" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="700" fill="#405b7d">イメージ</text>
+</svg>

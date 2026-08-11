@@ -42,6 +42,8 @@ python3 tools/audit_taxa.py sekitsui  # 既存行が想定した界・門・綱�
 次の連番 `id` で追記し、分類・海洋性・説明・QIDを確認してから次を実行する。
 QIDを既存リストから転記する場合は和名と `class` の両方が一致し、候補が一意な場合に
 限る。同名の魚と鳥などがあるため、和名だけでの結合は禁止する。
+1000件版の追加行はJODCの和名・学名を候補にし、WoRMSの有効AphiaID側で
+`rank=Species` と `isMarine=1` を確認している。旧学名のレコードだけを根拠にしない。
 
 ```sh
 python3 tools/update_marine_life.py
@@ -50,8 +52,10 @@ python3 -m unittest tools/test_update_marine_life.py
 ```
 
 既存項目の削除は通常実行では拒否される。誤収録を台帳から削除する場合だけ、差分を
-レビューしたうえで `--allow-removals` を付ける。分類別概念画像を変更するときは
-`images/marine_life/` の4 SVGすべてに「イメージ」表記を残す。
+レビューしたうえで `--allow-removals` を付ける。実写を追加・変更するときはCommons APIで
+ライセンス、作者、寸法、SHA-1を取得し、`tools/marine_life_image_sources.jsonl` の同名行と
+台帳の `image` / `image_page` を同時に更新する。`update_marine_life.py --check` は両者の
+一対一対応も検査する。分類別概念SVGには必ず「イメージ」表記を残す。
 
 - pokemon: 全件再生成。フォームは「ライチュウ（アローラのすがた）」形式で
   表記ゆれ3行を同一idで収録。種とフォームは別ポケモンとして別id
