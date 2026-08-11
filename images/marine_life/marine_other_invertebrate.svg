@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="200" viewBox="0 0 320 200" role="img" aria-labelledby="title desc">
+  <title id="title">その他の海洋無脊椎動物の分類イメージ</title>
+  <desc id="desc">孔のある群体状と枝分かれする抽象形で多様性を示す海洋無脊椎動物の分類用イメージ</desc>
+  <defs>
+    <linearGradient id="other-sea" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#e7f6ff"/><stop offset="1" stop-color="#6c79b9"/>
+    </linearGradient>
+  </defs>
+  <rect width="320" height="200" rx="18" fill="url(#other-sea)"/>
+  <path d="M47 157 Q44 119 67 105 Q54 76 78 61 Q103 47 117 76 Q142 71 153 94 Q166 119 145 154Z" fill="#efae68"/>
+  <g fill="#ba765f" opacity=".85"><circle cx="76" cy="119" r="8"/><circle cx="93" cy="83" r="7"/><circle cx="120" cy="111" r="10"/><circle cx="102" cy="140" r="6"/><circle cx="137" cy="137" r="5"/></g>
+  <g transform="translate(224 157)" fill="none" stroke="#6953a0" stroke-width="11" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M0 0V-74M0-48-33-70M0-29 34-57M0-61 21-86M-33-70-43-92M34-57 47-78"/>
+  </g>
+  <g fill="#fff" opacity=".58"><circle cx="31" cy="45" r="5"/><circle cx="49" cy="26" r="3"/><circle cx="287" cy="146" r="7"/></g>
+  <path d="M0 184 Q35 168 70 184 T140 184 T210 184 T280 184 T350 184 V200 H0Z" fill="#4a5792" opacity=".76"/>
+  <rect x="238" y="12" width="70" height="28" rx="14" fill="#fff" opacity=".92"/>
+  <text x="273" y="31" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="700" fill="#544582">イメージ</text>
+</svg>

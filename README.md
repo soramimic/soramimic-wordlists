@@ -28,7 +28,7 @@
 | sekitsui.csv | 脊椎動物 | Wikidata、[GBIF](https://www.gbif.org/)、Wikimedia Commons |
 | plant.csv | 植物 | Wikidata、Wikimedia Commons |
 | insect.csv | 昆虫 | Wikidata、Wikimedia Commons |
-| marine_life.csv | 海の生き物 | [WoRMS](https://www.marinespecies.org/)、[JODC海洋生物分類コード](https://www.jodc.go.jp/jodcweb/JDOSS/infoTaxonomicCode_j.html)、Wikidata、本リポジトリでのキュレーション |
+| marine_life.csv | 海の生き物 | [WoRMS](https://www.marinespecies.org/)、[JODC海洋生物分類コード](https://www.jodc.go.jp/jodcweb/JDOSS/infoTaxonomicCode_j.html)、Wikidata、Wikimedia Commons、本リポジトリでのキュレーション |
 | pokemon.csv | ポケモン | [PokéAPI](https://github.com/PokeAPI/pokeapi)、[PhyloPic](https://www.phylopic.org/) |
 | youtuber.csv | YouTuber・VTuber | Wikidata、Wikipedia、[YouTube Data API v3](https://developers.google.com/youtube/v3)、Wikimedia Commons |
 | fictional_scientist.csv | AI生成の架空科学者 | jiroshimaya/fictional-scientists |
