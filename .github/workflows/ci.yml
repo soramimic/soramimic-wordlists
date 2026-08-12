@@ -27,6 +27,9 @@ jobs:
       - name: Test scientist updater
         run: python tools/test_update_scientist.py
 
+      - name: Test player description helpers
+        run: python -m unittest tools/test_wpnames.py
+
       - name: Test marine life updater
         run: >-
           python -m unittest
