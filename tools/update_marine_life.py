@@ -40,6 +40,10 @@ MIN_PHOTO_COUNT = 1384
 AUTO_DESCRIPTION_START_ID = 179
 MIN_AUTO_DESCRIPTION_COUNT = 4075
 MIN_WIKIPEDIA_DESCRIPTION_COUNT = 300
+MIN_GENERATED_FAMILY_ROWS = 5
+MIN_GENERATED_ORDER_ROWS = 5
+MIN_DETAILED_GENERATED_IMAGES = 100
+MIN_DETAILED_GENERATED_ROWS = 1500
 VERTEBRATE_BY_CLASS = {
     "哺乳類": "脊椎動物",
     "爬虫類": "脊椎動物",
@@ -227,11 +231,83 @@ def load_source(path: Path = SOURCE) -> list[dict[str, str]]:
     return rows
 
 
-def validate_images() -> None:
+def load_generated_image_manifest(path: Path = GENERATED_IMAGE_SOURCES) -> list[dict]:
+    records = json.loads(path.read_text(encoding="utf-8"))
+    if not isinstance(records, list):
+        raise ValueError("generated image manifest must be a list")
+    filenames = [record.get("filename") for record in records]
+    if any(not filename for filename in filenames) or len(filenames) != len(set(filenames)):
+        raise ValueError("generated image manifest has missing or duplicate filenames")
+    keys = [
+        (record.get("scope"), record.get("name"))
+        for record in records if record.get("scope") in {"family", "order"}
+    ]
+    if len(keys) != len(set(keys)):
+        raise ValueError("generated image manifest has duplicate taxon scopes")
+    return records
+
+
+def expected_detailed_image_keys(rows: list[dict[str, str]]) -> set[tuple[str, str]]:
+    missing = [row for row in rows if not row["image"]]
+    family_counts = Counter(row["family"] for row in missing)
+    families = {
+        name for name, count in family_counts.items()
+        if count >= MIN_GENERATED_FAMILY_ROWS
+    }
+    remaining = [row for row in missing if row["family"] not in families]
+    order_counts = Counter(row["order"] for row in remaining)
+    orders = {
+        name for name, count in order_counts.items()
+        if count >= MIN_GENERATED_ORDER_ROWS
+    }
+    return ({("family", name) for name in families}
+            | {("order", name) for name in orders})
+
+
+def detailed_generated_filename(
+        family: str, order: str, records: list[dict] | None = None) -> str | None:
+    records = records if records is not None else load_generated_image_manifest()
+    by_key = {
+        (record["scope"], record.get("name")): record["filename"]
+        for record in records if record.get("scope") in {"family", "order"}
+    }
+    return by_key.get(("family", family)) or by_key.get(("order", order))
+
+
+def generated_image_filename(
+        row: dict[str, str], records: list[dict] | None = None) -> str:
+    return (detailed_generated_filename(row["family"], row["order"], records)
+            or IMAGE_FILE_BY_GROUP[row["image_group"]])
+
+
+def validate_images(rows: list[dict[str, str]] | None = None) -> None:
     image_dir = ROOT / "images" / "marine_life"
-    manifest = json.loads(GENERATED_IMAGE_SOURCES.read_text(encoding="utf-8"))
+    manifest = load_generated_image_manifest()
     by_filename = {record["filename"]: record for record in manifest}
     expected = set(IMAGE_FILE_BY_GROUP.values())
+    expected.update(
+        record["filename"] for record in manifest
+        if record.get("scope") in {"family", "order"}
+    )
+    if rows is not None:
+        expected_keys = expected_detailed_image_keys(rows)
+        actual_keys = {
+            (record.get("scope"), record.get("name")) for record in manifest
+            if record.get("scope") in {"family", "order"}
+        }
+        unexpected = actual_keys - expected_keys
+        if unexpected:
+            raise ValueError("generated image manifest contains unexpected taxon scopes")
+        if len(actual_keys) < MIN_DETAILED_GENERATED_IMAGES:
+            raise ValueError("too few detailed generated images")
+        missing_rows = [row for row in rows if not row["image"]]
+        covered_rows = sum(
+            (("family", row["family"]) in actual_keys
+             or ("order", row["order"]) in actual_keys)
+            for row in missing_rows
+        )
+        if covered_rows < MIN_DETAILED_GENERATED_ROWS:
+            raise ValueError("too few rows covered by detailed generated images")
     if set(by_filename) != expected:
         raise ValueError("generated image manifest does not match fallback images")
     for filename in expected:
@@ -247,7 +323,8 @@ def validate_images() -> None:
         if (width, height) != (960, 600):
             raise ValueError(f"unexpected generated image size: {path}")
         record = by_filename[filename]
-        if record.get("label") != "生成イメージ" or record.get("scope") != "morphology_group":
+        if (record.get("label") != "生成イメージ"
+                or record.get("scope") not in {"morphology_group", "family", "order"}):
             raise ValueError(f"generated image lacks disclosure metadata: {path}")
         if hashlib.sha256(raw).hexdigest() != record.get("sha256"):
             raise ValueError(f"generated image hash mismatch: {path}")
@@ -433,12 +510,13 @@ def validate_description_sources(
         )
 
 
-def generate(rows: list[dict[str, str]]) -> bytes:
+def generate(rows: list[dict[str, str]], manifest: list[dict] | None = None) -> bytes:
+    manifest = manifest if manifest is not None else load_generated_image_manifest()
     out = io.StringIO(newline="")
     writer = csv.DictWriter(out, fieldnames=OUTPUT_COLUMNS, lineterminator="\n")
     writer.writeheader()
     for row in rows:
-        filename = IMAGE_FILE_BY_GROUP[row["image_group"]]
+        filename = generated_image_filename(row, manifest)
         image = row["image"] or f"{RAW_BASE}/{filename}"
         image_page = row["image_page"] or f"{PAGE_BASE}/{filename}"
         writer.writerow({
@@ -485,7 +563,7 @@ def main(argv: list[str] | None = None) -> int:
                         help="既存CSVからの項目削除を明示的に許可する")
     args = parser.parse_args(argv)
     rows = load_source()
-    validate_images()
+    validate_images(rows)
     validate_image_sources(rows)
     validate_description_sources(rows)
     generated = generate(rows)

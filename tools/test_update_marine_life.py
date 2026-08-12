@@ -68,6 +68,37 @@ class MarineLifeUpdaterTest(unittest.TestCase):
         parsed = next(csv.DictReader(io.StringIO(marine.generate(self.load(row)).decode())))
         self.assertIn("Blue_whale.jpg", parsed["image"])
 
+    def test_family_image_precedes_order_and_group(self):
+        records = [
+            {"scope": "family", "name": "ナガスクジラ科", "filename": "family.webp"},
+            {"scope": "order", "name": "鯨偶蹄目", "filename": "order.webp"},
+        ]
+        self.assertEqual("family.webp", marine.generated_image_filename(self.row(), records))
+
+    def test_order_image_precedes_group(self):
+        records = [
+            {"scope": "order", "name": "鯨偶蹄目", "filename": "order.webp"},
+        ]
+        self.assertEqual("order.webp", marine.generated_image_filename(self.row(), records))
+
+    def test_group_image_remains_final_fallback(self):
+        self.assertEqual(
+            "marine_mammal_generated.webp",
+            marine.generated_image_filename(self.row(), []),
+        )
+
+    def test_detailed_plan_uses_missing_photo_counts(self):
+        rows = [self.row(id=str(i), name=f"クジラ{i}") for i in range(5)]
+        rows.append(self.row(
+            id="5", name="シャシンアリ",
+            image="https://upload.wikimedia.org/wikipedia/commons/a/ab/Blue_whale.jpg",
+            image_page="https://commons.wikimedia.org/wiki/File:Blue_whale.jpg",
+        ))
+        self.assertEqual(
+            {("family", "ナガスクジラ科")},
+            marine.expected_detailed_image_keys(rows),
+        )
+
     def test_rejects_incomplete_photo_pair(self):
         with self.assertRaisesRegex(ValueError, "image/image_page mismatch"):
             self.load(self.row(image="https://upload.wikimedia.org/wikipedia/commons/a/ab/X.jpg"))
