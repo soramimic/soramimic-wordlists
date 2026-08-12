@@ -147,6 +147,9 @@ JODCの和名・学名をWoRMSの有効AphiaIDで海洋性確認して追加し�
 1384件はCommonsの自由ライセンス実写（幅960px以下の配信用サムネイル）、残る2870件は分類別の自作概念SVGである。
 実写のライセンス・作者・SHA-1・同定根拠は `tools/marine_life_image_sources.jsonl` に固定する。
 概念SVGには「イメージ」と表示し、特定種の姿と誤認しないようにしている。
+DB追加分の説明はWoRMSで再確認した分類・海洋性と、種レベルの最大体長・IUCN評価から
+決定的に生成する。使用した構造化事実、参照文献、品質状態、取得日は
+`tools/marine_life_description_sources.jsonl` に固定し、Traitsがない行には未確認の特徴を補わない。
 
 ## pokemon.csv
 

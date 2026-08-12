@@ -21,6 +21,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 SOURCE = Path(__file__).with_name("marine_life_source.csv")
 IMAGE_SOURCES = Path(__file__).with_name("marine_life_image_sources.jsonl")
+DESCRIPTION_SOURCES = Path(__file__).with_name("marine_life_description_sources.jsonl")
 OUTPUT = ROOT / "marine_life.csv"
 
 CLASSES = ("哺乳類", "爬虫類", "魚類", "無脊椎動物")
@@ -35,6 +36,8 @@ MIN_QID_COUNT = 4010
 MIN_APHIA_COUNT = 4148
 MIN_JODC_COUNT = 4148
 MIN_PHOTO_COUNT = 1384
+AUTO_DESCRIPTION_START_ID = 179
+MIN_AUTO_DESCRIPTION_COUNT = 4075
 VERTEBRATE_BY_CLASS = {
     "哺乳類": "脊椎動物",
     "爬虫類": "脊椎動物",
@@ -77,6 +80,89 @@ OUTPUT_COLUMNS = (
     "order", "family", "description", "image", "image_page", "wikidata",
     "scientific_name", "aphia_id",
 )
+
+IUCN_JA = {
+    "Least Concern": "低懸念",
+    "Near Threatened": "準絶滅危惧",
+    "Vulnerable": "危急",
+    "Endangered": "危機",
+    "Critically Endangered": "深刻な危機",
+    "Data Deficient": "情報不足",
+    "Not Evaluated": "未評価",
+    "Extinct in the Wild": "野生絶滅",
+    "Extinct": "絶滅",
+}
+UNIT_JA = {"mm": "ミリ", "cm": "センチ", "m": "メートル", "µm": "マイクロメートル"}
+UNCERTAIN_STATUS_JA = {
+    "taxon inquirendum": "要検討分類群",
+    "nomen dubium": "疑問名",
+    "nomen novum": "新置換名",
+    "unreplaced junior homonym": "未置換の新参同名",
+}
+
+
+def _display_number(raw: str) -> str:
+    number = float(raw)
+    if number >= 10:
+        return str(round(number))
+    digits = 1 if number >= 1 else 2
+    return f"{number:.{digits}f}".rstrip("0").rstrip(".")
+
+
+def description_from_evidence(row: dict[str, str], evidence: dict) -> str:
+    """固定済みWoRMS根拠だけから20〜60字の日本語説明を決定的に作る。"""
+    traits = {item["type"]: item for item in evidence.get("traits", [])}
+    length = traits.get("maximum_length")
+    iucn = traits.get("iucn_status")
+    name = row["name"]
+    candidates: list[str] = []
+    status = evidence.get("status")
+    rank = evidence.get("rank")
+    if status in UNCERTAIN_STATUS_JA:
+        label = UNCERTAIN_STATUS_JA[status]
+        candidates.extend([
+            f"{name}はWoRMSで{label}とされる海洋生物名である。",
+            f"{name}はWoRMSで{label}とされている海洋生物の名称である。",
+        ])
+    elif rank == "Subspecies":
+        candidates.extend([
+            f"{name}はWoRMSで海産の亜種と確認され、学名は{row['scientific_name']}。",
+            f"{name}はWoRMSで確認された海産の亜種で、{row['family']}に属する。",
+        ])
+    if candidates:
+        for description in candidates:
+            if 20 <= len(description) <= 60 and "," not in description:
+                return description
+        raise ValueError(f"説明を20〜60字に収められません: {name}")
+    if length and length.get("unit") in UNIT_JA:
+        size = _display_number(str(length["value"])) + UNIT_JA[length["unit"]]
+        if iucn and iucn.get("category") in IUCN_JA:
+            status = IUCN_JA[iucn["category"]]
+            if str(iucn.get("year") or "").isdigit():
+                candidates.append(
+                    f"{name}は最大体長約{size}。IUCN評価は{status}（{iucn['year']}年）。"
+                )
+            candidates.append(f"{name}は最大体長約{size}で、IUCN評価は{status}。")
+        candidates.append(
+            f"{name}は最大体長約{size}と記録され、WoRMSで海産種と確認されている。"
+        )
+    if iucn and iucn.get("category") in IUCN_JA:
+        status = IUCN_JA[iucn["category"]]
+        candidates.append(
+            f"{name}はWoRMSで海産種と確認され、IUCN評価は{status}。"
+        )
+    if row.get("scientific_name"):
+        candidates.append(
+            f"{name}はWoRMSで海産種と確認され、学名は{row['scientific_name']}。"
+        )
+    candidates.extend([
+        f"{name}は{row['family']}に属し、WoRMSで海に生息する種と確認されている。",
+        f"{name}はWoRMSで確認された海産種で、{row['family']}に属する。",
+    ])
+    for description in candidates:
+        if 20 <= len(description) <= 60 and "," not in description:
+            return description
+    raise ValueError(f"説明を20〜60字に収められません: {name}")
 
 
 def load_source(path: Path = SOURCE) -> list[dict[str, str]]:
@@ -208,6 +294,101 @@ def validate_image_sources(rows: list[dict[str, str]], path: Path = IMAGE_SOURCE
         raise ValueError(f"too few reviewed photos: {len(records)} (minimum {MIN_PHOTO_COUNT})")
 
 
+def validate_description_sources(
+    rows: list[dict[str, str]], path: Path = DESCRIPTION_SOURCES
+) -> None:
+    """DB生成説明が固定済みWoRMS根拠と一対一で再生成できるか検査する。"""
+    raw = path.read_bytes()
+    if b"\r" in raw or raw.endswith(b"\n"):
+        raise ValueError("description source JSONL must use LF without a trailing newline")
+    records = [json.loads(line) for line in raw.decode("utf-8").split("\n")]
+    by_name: dict[str, dict] = {}
+    for lineno, record in enumerate(records, 1):
+        name = record.get("name", "")
+        if not name or name in by_name:
+            raise ValueError(
+                f"description source line {lineno}: missing or duplicate name: {name}"
+            )
+        if record.get("status") not in {"accepted", *UNCERTAIN_STATUS_JA}:
+            raise ValueError(f"description source has unsupported status: {name}")
+        if record.get("rank") not in {"Species", "Subspecies"}:
+            raise ValueError(f"description source has unsupported rank: {name}")
+        if record.get("is_marine") != 1:
+            raise ValueError(f"description source is not marine: {name}")
+        if record.get("valid_aphia_id") != int(record.get("aphia_id", 0)):
+            raise ValueError(f"description source AphiaID mismatch: {name}")
+        if not record.get("record_url", "").startswith(
+            "https://www.marinespecies.org/aphia.php?"
+        ):
+            raise ValueError(f"description source record URL is missing: {name}")
+        if not record.get("attributes_url", "").startswith(
+            "https://www.marinespecies.org/rest/AphiaAttributesByAphiaID/"
+        ):
+            raise ValueError(f"description source attributes URL is missing: {name}")
+        aphia_id = str(record.get("aphia_id", ""))
+        if not APHIA_ID.fullmatch(aphia_id):
+            raise ValueError(f"description source AphiaID is invalid: {name}")
+        if not record["record_url"].endswith(f"id={aphia_id}") or not record[
+            "attributes_url"
+        ].endswith(f"/{aphia_id}"):
+            raise ValueError(f"description source URL/AphiaID mismatch: {name}")
+        if not re.fullmatch(
+            r"20[0-9]{2}-[01][0-9]-[0-3][0-9]", record.get("fetched_at", "")
+        ):
+            raise ValueError(f"description source fetched_at is invalid: {name}")
+        seen_traits: set[str] = set()
+        for trait in record.get("traits", []):
+            if trait.get("type") not in {"maximum_length", "iucn_status"}:
+                raise ValueError(f"description source has unknown trait: {name}")
+            if trait["type"] in seen_traits:
+                raise ValueError(f"description source has duplicate trait: {name}")
+            seen_traits.add(trait["type"])
+            if not trait.get("reference") or not trait.get("source_id"):
+                raise ValueError(f"description source trait lacks a reference: {name}")
+            if trait.get("quality_status") not in {"checked", "unreviewed", "trusted"}:
+                raise ValueError(f"description source trait quality is invalid: {name}")
+            if trait["type"] == "maximum_length":
+                try:
+                    positive = float(trait.get("value", 0)) > 0
+                except (TypeError, ValueError):
+                    positive = False
+                if not positive or trait.get("unit") not in UNIT_JA:
+                    raise ValueError(f"description source length is invalid: {name}")
+            if trait["type"] == "iucn_status":
+                if trait.get("category") not in IUCN_JA:
+                    raise ValueError(f"description source IUCN status is invalid: {name}")
+                if trait.get("year") and not str(trait["year"]).isdigit():
+                    raise ValueError(f"description source IUCN year is invalid: {name}")
+        by_name[name] = record
+
+    expected = {
+        row["name"]: row for row in rows if int(row["id"]) >= AUTO_DESCRIPTION_START_ID
+    }
+    if set(by_name) != set(expected):
+        missing = sorted(set(expected) - set(by_name))[:10]
+        extra = sorted(set(by_name) - set(expected))[:10]
+        raise ValueError(
+            f"description source names mismatch: missing={missing}, extra={extra}"
+        )
+    if [record["name"] for record in records] != list(expected):
+        raise ValueError("description source rows must follow source CSV order")
+    for name, row in expected.items():
+        record = by_name[name]
+        for field in ("aphia_id", "scientific_name"):
+            if str(record.get(field, "")) != row[field]:
+                raise ValueError(f"description source mismatch for {name}: {field}")
+        if record.get("valid_name") != row["scientific_name"]:
+            raise ValueError(f"description source valid name mismatch: {name}")
+        expected_description = description_from_evidence(row, record)
+        if row["description"] != expected_description:
+            raise ValueError(f"description is not generated from evidence: {name}")
+    if len(records) < MIN_AUTO_DESCRIPTION_COUNT:
+        raise ValueError(
+            f"too few sourced descriptions: {len(records)} "
+            f"(minimum {MIN_AUTO_DESCRIPTION_COUNT})"
+        )
+
+
 def generate(rows: list[dict[str, str]]) -> bytes:
     out = io.StringIO(newline="")
     writer = csv.DictWriter(out, fieldnames=OUTPUT_COLUMNS, lineterminator="\n")
@@ -262,6 +443,7 @@ def main(argv: list[str] | None = None) -> int:
     rows = load_source()
     validate_images()
     validate_image_sources(rows)
+    validate_description_sources(rows)
     generated = generate(rows)
     counts = Counter(row["class"] for row in rows)
     summary = ", ".join(f"{key} {counts[key]}" for key in CLASSES)
