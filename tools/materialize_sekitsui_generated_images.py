@@ -6,7 +6,7 @@ sekitsui用ファイル名で再利用する。それ以外はCDP gridから分�
 PNGを960x600へ整形し「生成イメージ」を焼き込む。
 
 usage: python3 tools/materialize_sekitsui_generated_images.py PLAN SPLIT_DIR \
-  [SPLIT_DIR ...] --out-dir DIR --manifest-out FILE
+  [SPLIT_DIR ...] --out-dir DIR --manifest-out FILE [--base-manifest FILE]
 """
 
 from __future__ import annotations
@@ -43,18 +43,36 @@ def marine_families() -> dict[str, dict]:
     }
 
 
+def merge_base_records(records: list[dict], plan: list[dict]) -> list[dict]:
+    existing_names = {record["name"] for record in records}
+    planned_names = {item["name"] for item in plan}
+    overlap = existing_names & planned_names
+    if overlap:
+        raise ValueError(f"base manifest overlaps plan: {sorted(overlap)}")
+    return records
+
+
+def load_base_manifest(path: Path | None, plan: list[dict]) -> list[dict]:
+    records = json.loads(path.read_text(encoding="utf-8")) if path else []
+    return merge_base_records(records, plan)
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("plan", type=Path)
     parser.add_argument("split_dirs", type=Path, nargs="*")
     parser.add_argument("--out-dir", type=Path, required=True)
     parser.add_argument("--manifest-out", type=Path, required=True)
+    parser.add_argument(
+        "--base-manifest", type=Path,
+        help="merge the newly materialized records after an existing manifest",
+    )
     args = parser.parse_args()
 
     plan = json.loads(args.plan.read_text(encoding="utf-8"))
     reused = marine_families()
     args.out_dir.mkdir(parents=True, exist_ok=True)
-    records = []
+    records = load_base_manifest(args.base_manifest, plan)
     generated_count = reused_count = 0
     for item in plan:
         output = args.out_dir / item["filename"]
