@@ -106,5 +106,4149 @@
     "prompt": "Photorealistic natural-history composite representing other marine invertebrates: generic branching sponge, colonial sea-squirt-like tunicate cluster, and lace-like bryozoan colony on a shaded reef wall; not particular species; landscape 16:10; no labels, text, logo, watermark, humans, aquarium, or fantasy anatomy.",
     "source_sha256": "23b206dcafea2cbcd035e916ed8716d82c7c99c4cbb8aac2605c773f87a34067",
     "sha256": "a159f8ebe1bc0b3122215fbfc83ce094c730540210142f3ddff83d989f73819a"
+  },
+  {
+    "name": "Acanthephyridae科",
+    "group": "甲殻類",
+    "member_count": 15,
+    "scientific_examples": [
+      "Acanthephyra acutifrons",
+      "Acanthephyra armata",
+      "Acanthephyra cucullata"
+    ],
+    "japanese_examples": [
+      "ヤリヒオドシエビ",
+      "ヒオドシエビ",
+      "カンムリヒオドシエビ"
+    ],
+    "filename": "marine_family_eefe3b382608_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account1",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「Acanthephyridae科」という科を表す教育用の写真風生成合成画像。台帳内の例はヤリヒオドシエビ、ヒオドシエビ、カンムリヒオドシエビ、学名参考はAcanthephyra acutifrons、Acanthephyra armata、Acanthephyra cucullata。海底の甲殻類。対象分類群に適した節、触角、脚を正確に表現した水中マクロ。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "d92365cad56dec656161b7cc9698276585acf46f09bd2c983fd6a0ecd7c6a85f",
+    "sha256": "2383b164b3ab97da0435f687ef2af1601e81522ec4145e48888c5c4e2e3c9877"
+  },
+  {
+    "name": "Benthesicymidae科",
+    "group": "甲殻類",
+    "member_count": 12,
+    "scientific_examples": [
+      "Boreogennema borealis",
+      "Bentheogennema intermedia",
+      "Dalicaris altus"
+    ],
+    "japanese_examples": [
+      "シンカイエビ",
+      "ベニシンカイエビ",
+      "ソコチヒロエビ"
+    ],
+    "filename": "marine_family_3dfb19347152_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account1",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「Benthesicymidae科」という科を表す教育用の写真風生成合成画像。台帳内の例はシンカイエビ、ベニシンカイエビ、ソコチヒロエビ、学名参考はBoreogennema borealis、Bentheogennema intermedia、Dalicaris altus。海底の甲殻類。対象分類群に適した節、触角、脚を正確に表現した水中マクロ。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "8670df886444a8faeee3c914ac84f4db7daf64e94f34a2a909837c898dd6cf57",
+    "sha256": "ebc286af821102f8a0992c4a9fd6f9feb242f43a3d5106c9bbfa4fd47a4a3c3b"
+  },
+  {
+    "name": "Bodotriidae科",
+    "group": "甲殻類",
+    "member_count": 9,
+    "scientific_examples": [
+      "Cyclaspis amamiensis",
+      "Cyclaspis bidens",
+      "Cyclaspis purpurascens"
+    ],
+    "japanese_examples": [
+      "アマミアサセクーマ",
+      "フタハアサセクーマ",
+      "ムラサキアサセクーマ"
+    ],
+    "filename": "marine_family_4983aca30eec_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account1",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「Bodotriidae科」という科を表す教育用の写真風生成合成画像。台帳内の例はアマミアサセクーマ、フタハアサセクーマ、ムラサキアサセクーマ、学名参考はCyclaspis amamiensis、Cyclaspis bidens、Cyclaspis purpurascens。海底の甲殻類。対象分類群に適した節、触角、脚を正確に表現した水中マクロ。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "35735fe6ae18ac09845bf5947febb1961065e6fd420ddd608611401373f92a60",
+    "sha256": "8bc9ff5077adab250f7430907fb87a7aea50d503322721fabc28142ed5bb09ef"
+  },
+  {
+    "name": "Lineidae科",
+    "group": "蠕虫型",
+    "member_count": 8,
+    "scientific_examples": [
+      "Cerebratulus orochi",
+      "Euborlasia gotoensis",
+      "Kulikovia alborostrata"
+    ],
+    "japanese_examples": [
+      "オロチヒモムシ",
+      "ゴトウヒモムシ",
+      "タカクラヒモムシ"
+    ],
+    "filename": "marine_family_1c975f7d66d4_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account1",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「Lineidae科」という科を表す教育用の写真風生成合成画像。台帳内の例はオロチヒモムシ、ゴトウヒモムシ、タカクラヒモムシ、学名参考はCerebratulus orochi、Euborlasia gotoensis、Kulikovia alborostrata。海底の蠕虫型無脊椎動物。対象分類群に適した体節、体表または棲管の水中マクロ。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "c354851d99153d6ce83b55a9cd49c2971db52820465441425ea7bf9ac10ba373",
+    "sha256": "6d171fe48a19cad6032419517440a64753fdb87eb1292a69c4257cf8a9ece0f1"
+  },
+  {
+    "name": "Luciferidae科",
+    "group": "甲殻類",
+    "member_count": 5,
+    "scientific_examples": [
+      "Belzebub chacei",
+      "Belzebub hanseni",
+      "Belzebub intermedius"
+    ],
+    "japanese_examples": [
+      "チェイスユメエビ",
+      "キシユメエビ",
+      "ナミノリユメエビ"
+    ],
+    "filename": "marine_family_915adc53c61a_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account1",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「Luciferidae科」という科を表す教育用の写真風生成合成画像。台帳内の例はチェイスユメエビ、キシユメエビ、ナミノリユメエビ、学名参考はBelzebub chacei、Belzebub hanseni、Belzebub intermedius。海底の甲殻類。対象分類群に適した節、触角、脚を正確に表現した水中マクロ。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "acf734459d2fa33daa277c9f933c63a4e61eace0bc49460a5b57a673990d4245",
+    "sha256": "e47ef8cbfd7480603693fc72e4795c8ccd3d97a4a6858a40316009ff2cfffbb8"
+  },
+  {
+    "name": "Oplophoridae科",
+    "group": "甲殻類",
+    "member_count": 6,
+    "scientific_examples": [
+      "Janicella spinicauda",
+      "Oplophorus gracilirostris",
+      "Oplophorus spinosus"
+    ],
+    "japanese_examples": [
+      "ジャニスヒオドシエビ",
+      "オキヒメヒオドシエビ",
+      "オキヒオドシエビ"
+    ],
+    "filename": "marine_family_697c52e6a0ba_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account1",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「Oplophoridae科」という科を表す教育用の写真風生成合成画像。台帳内の例はジャニスヒオドシエビ、オキヒメヒオドシエビ、オキヒオドシエビ、学名参考はJanicella spinicauda、Oplophorus gracilirostris、Oplophorus spinosus。海底の甲殻類。対象分類群に適した節、触角、脚を正確に表現した水中マクロ。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "4709b3dd2ceea3ec0911870612a33ed315f2215044f3f72516deff2621373b17",
+    "sha256": "f2e51d93d657403d27f060c7b3aca75c2d43a3db261f658d5dcddd4d7163cb69"
+  },
+  {
+    "name": "Pandalidae科",
+    "group": "甲殻類",
+    "member_count": 9,
+    "scientific_examples": [
+      "Heterocarpus sibogae",
+      "Pandalus miyakei",
+      "Plesionika izumiae"
+    ],
+    "japanese_examples": [
+      "ミノエビ",
+      "ブドウエビ",
+      "イズミエビ"
+    ],
+    "filename": "marine_family_0bd6724bfd8d_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account1",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「Pandalidae科」という科を表す教育用の写真風生成合成画像。台帳内の例はミノエビ、ブドウエビ、イズミエビ、学名参考はHeterocarpus sibogae、Pandalus miyakei、Plesionika izumiae。海底の甲殻類。対象分類群に適した節、触角、脚を正確に表現した水中マクロ。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "29cd135a6c9f4df06ffb6cb9ad3c64dcad8c8226b2d791ff49012a1606362006",
+    "sha256": "814f55950e01b26c84db2928bdf80971bc79052a543b3d447f58415d11adb62d"
+  },
+  {
+    "name": "Pasiphaeidae科",
+    "group": "甲殻類",
+    "member_count": 10,
+    "scientific_examples": [
+      "Leptochela gracilis",
+      "Leptochela japonica",
+      "Leptochela pugnax"
+    ],
+    "japanese_examples": [
+      "ソコシラエビ",
+      "ヤマトソコシラエビ",
+      "カドソコシラエビ"
+    ],
+    "filename": "marine_family_3e58393ae217_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account1",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「Pasiphaeidae科」という科を表す教育用の写真風生成合成画像。台帳内の例はソコシラエビ、ヤマトソコシラエビ、カドソコシラエビ、学名参考はLeptochela gracilis、Leptochela japonica、Leptochela pugnax。海底の甲殻類。対象分類群に適した節、触角、脚を正確に表現した水中マクロ。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "f04028a70af91ccb1d6dbfd9d83aea273ae4804945c973910b69c273658bf8b4",
+    "sha256": "779037b8d599207b70d0a82d0d04f4436aa735c930082e7816c2b7df4aee11c2"
+  },
+  {
+    "name": "Salpidae科",
+    "group": "その他無脊椎",
+    "member_count": 25,
+    "scientific_examples": [
+      "Cyclosalpa affinis",
+      "Cyclosalpa bakeri",
+      "Cyclosalpa foxtoni"
+    ],
+    "japanese_examples": [
+      "シャミッソサルパ",
+      "フタオサルパ",
+      "カスミサルパ"
+    ],
+    "filename": "marine_family_7fd019942b29_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account1",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「Salpidae科」という科を表す教育用の写真風生成合成画像。台帳内の例はシャミッソサルパ、フタオサルパ、カスミサルパ、学名参考はCyclosalpa affinis、Cyclosalpa bakeri、Cyclosalpa foxtoni。岩礁や海底の無脊椎動物。対象分類群に適した固着性または浮遊性の体型。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "39373f8dd2c3b427b59b6386f0f983dfa4085c17f302feb496f192104b883a94",
+    "sha256": "625daa9fe39d41fea74222a16f978bc3f347be4ff89688bd1472a84d3e3dd9db"
+  },
+  {
+    "name": "Sergestidae科",
+    "group": "甲殻類",
+    "member_count": 23,
+    "scientific_examples": [
+      "Acetes chinensis",
+      "Acetes erythraeus",
+      "Parasergestes armatus"
+    ],
+    "japanese_examples": [
+      "ヤホシアキアミ",
+      "アジアアキアミ",
+      "トガリカスミエビ"
+    ],
+    "filename": "marine_family_9632c0778d84_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account1",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「Sergestidae科」という科を表す教育用の写真風生成合成画像。台帳内の例はヤホシアキアミ、アジアアキアミ、トガリカスミエビ、学名参考はAcetes chinensis、Acetes erythraeus、Parasergestes armatus。海底の甲殻類。対象分類群に適した節、触角、脚を正確に表現した水中マクロ。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "85d457d62ec0bf90cc5e50a33a53c0d6f0ae4693091d4d65a40f4bc5522c0919",
+    "sha256": "3491515e013eabc7a2ca649954b9cefbb5a2203dd2bb01f92460ddf09d3eb1d1"
+  },
+  {
+    "name": "アイゴ科",
+    "group": "魚類",
+    "member_count": 5,
+    "scientific_examples": [
+      "Siganus argenteus",
+      "Siganus virgatus",
+      "Siganus sutor"
+    ],
+    "japanese_examples": [
+      "ハナアイゴ",
+      "ヒメアイゴ",
+      "チリメンアイゴ"
+    ],
+    "filename": "marine_family_fe85b70fef28_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account1",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「アイゴ科」という科を表す教育用の写真風生成合成画像。台帳内の例はハナアイゴ、ヒメアイゴ、チリメンアイゴ、学名参考はSiganus argenteus、Siganus virgatus、Siganus sutor。海中の魚類。対象分類群に適した体型、ひれ、鱗、自然な海底または外洋。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "b3db0721144b48b0452d2af50964854ee84a6ecbfdd6d4587b8d6dee7b98a527",
+    "sha256": "239b77babf005a14b1b60d913d552e5701a844496855e95c72c670482be04e93"
+  },
+  {
+    "name": "アカエイ科",
+    "group": "魚類",
+    "member_count": 5,
+    "scientific_examples": [
+      "Telatrygon zugei",
+      "Hemitrygon bennettii",
+      "Bathytoshia brevicaudata"
+    ],
+    "japanese_examples": [
+      "ズグエイ",
+      "オナガエイ",
+      "ホシエイ"
+    ],
+    "filename": "marine_family_83c0bfa855ef_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account1",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「アカエイ科」という科を表す教育用の写真風生成合成画像。台帳内の例はズグエイ、オナガエイ、ホシエイ、学名参考はTelatrygon zugei、Hemitrygon bennettii、Bathytoshia brevicaudata。海中の魚類。対象分類群に適した体型、ひれ、鱗、自然な海底または外洋。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "df0c8cb69da7c844d51d0faeab5ec130fd2b9b6c70215a490b26aa0e926fcb59",
+    "sha256": "dffe4065697d294cf0df2d283a5c076eff274ca8a60b387381dfe9661708dc62"
+  },
+  {
+    "name": "アカグツ科",
+    "group": "魚類",
+    "member_count": 10,
+    "scientific_examples": [
+      "Halieutaea stellata",
+      "Malthopsis mitrigera",
+      "Malthopsis jordani"
+    ],
+    "japanese_examples": [
+      "アカグツ",
+      "カギフウリユウウオ",
+      "コワヌケフウリユウウオ"
+    ],
+    "filename": "marine_family_758522af94cd_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account1",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「アカグツ科」という科を表す教育用の写真風生成合成画像。台帳内の例はアカグツ、カギフウリユウウオ、コワヌケフウリユウウオ、学名参考はHalieutaea stellata、Malthopsis mitrigera、Malthopsis jordani。海中の魚類。対象分類群に適した体型、ひれ、鱗、自然な海底または外洋。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "740315d163e68e07fe2f24b6b70734b66d45dc9e86b42179d6c297bca9df5baa",
+    "sha256": "a22ef6eb3a8dc45cae2cb2982311388bc0b519a31efd3e3ebfab9aca0665865c"
+  },
+  {
+    "name": "アカタチ科",
+    "group": "魚類",
+    "member_count": 6,
+    "scientific_examples": [
+      "Cepola schlegelii",
+      "Acanthocepola indica",
+      "Owstonia totomiensis"
+    ],
+    "japanese_examples": [
+      "スミツキアカタチ",
+      "インドアカタチ",
+      "ソコアマダイ"
+    ],
+    "filename": "marine_family_14a232e2a476_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account1",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「アカタチ科」という科を表す教育用の写真風生成合成画像。台帳内の例はスミツキアカタチ、インドアカタチ、ソコアマダイ、学名参考はCepola schlegelii、Acanthocepola indica、Owstonia totomiensis。海中の魚類。対象分類群に適した体型、ひれ、鱗、自然な海底または外洋。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "37291e48ec14552a9384ba3505a3a84ce516801dae710272c6608feb3d87c71e",
+    "sha256": "9920a13e18d6c96658af5626855b2d5abf4b611539b59c41e957425e5e5f3175"
+  },
+  {
+    "name": "アカメエソ科",
+    "group": "魚類",
+    "member_count": 8,
+    "scientific_examples": [
+      "Chlorophthalmus albatrossis",
+      "Bathysauroides gigas",
+      "Chlorophthalmus nigromarginatus"
+    ],
+    "japanese_examples": [
+      "アオメエソ",
+      "オニアオメエソ",
+      "ツマグロアオメエソ"
+    ],
+    "filename": "marine_family_2815451e62bc_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account1",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「アカメエソ科」という科を表す教育用の写真風生成合成画像。台帳内の例はアオメエソ、オニアオメエソ、ツマグロアオメエソ、学名参考はChlorophthalmus albatrossis、Bathysauroides gigas、Chlorophthalmus nigromarginatus。海中の魚類。対象分類群に適した体型、ひれ、鱗、自然な海底または外洋。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "57fc51ad666de211d349b6c46f9ec0bea71a57c391a05be48c7d6b7b3393a0e2",
+    "sha256": "5554007c0c81cc05a1d7156da9915e7414d44e9449bd3ecafc4b7f868c3b07c9"
+  },
+  {
+    "name": "アシロ科",
+    "group": "魚類",
+    "member_count": 16,
+    "scientific_examples": [
+      "Ophidion asiro",
+      "Acanthonus armatus",
+      "Sirembo imberbis"
+    ],
+    "japanese_examples": [
+      "アシロ",
+      "ハナトゲアシロ",
+      "ウミドジヨウ"
+    ],
+    "filename": "marine_family_83133d6f6601_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account1",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「アシロ科」という科を表す教育用の写真風生成合成画像。台帳内の例はアシロ、ハナトゲアシロ、ウミドジヨウ、学名参考はOphidion asiro、Acanthonus armatus、Sirembo imberbis。海中の魚類。対象分類群に適した体型、ひれ、鱗、自然な海底または外洋。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "007cd221a26512525be4514ae39812842bce8bb9704f6279dc0fc42a32d66cfd",
+    "sha256": "1627bd66300d350136ada5aa6ccd32563c0506432327070008a4910961994cd9"
+  },
+  {
+    "name": "アジ科",
+    "group": "魚類",
+    "member_count": 23,
+    "scientific_examples": [
+      "Pseudocaranx dentex",
+      "Naucrates ductor",
+      "Alectis ciliaris"
+    ],
+    "japanese_examples": [
+      "シマアジ",
+      "ブリモドキ",
+      "イトヒキアジ"
+    ],
+    "filename": "marine_family_a80da2d1c8ea_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account1",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「アジ科」という科を表す教育用の写真風生成合成画像。台帳内の例はシマアジ、ブリモドキ、イトヒキアジ、学名参考はPseudocaranx dentex、Naucrates ductor、Alectis ciliaris。海中の魚類。対象分類群に適した体型、ひれ、鱗、自然な海底または外洋。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "b1099658064e0fcfb83ca258081d218f05d5075047e83274ca4798e047daa189",
+    "sha256": "ed29e21a8408ac69c1b91310ccd581fa5e8786640fb87710a155ff7cb9dc5299"
+  },
+  {
+    "name": "アナゴ科",
+    "group": "魚類",
+    "member_count": 11,
+    "scientific_examples": [
+      "Heteroconger hassi",
+      "Parabathymyrus macrophthalmus",
+      "Congriscus megastoma"
+    ],
+    "japanese_examples": [
+      "チンアナゴ",
+      "メダマアナゴ",
+      "オキアナゴ"
+    ],
+    "filename": "marine_family_651e2b685779_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account1",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「アナゴ科」という科を表す教育用の写真風生成合成画像。台帳内の例はチンアナゴ、メダマアナゴ、オキアナゴ、学名参考はHeteroconger hassi、Parabathymyrus macrophthalmus、Congriscus megastoma。海中の魚類。対象分類群に適した体型、ひれ、鱗、自然な海底または外洋。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "ea3f6f89f605a0bb583adefc7c7baf859ff58213190b5480eb54a63fe3c41709",
+    "sha256": "1f1be0c3a4ee869b58228f0564f61083d9c5e1906eb7252d9c95cf99a941e23a"
+  },
+  {
+    "name": "アミ科",
+    "group": "甲殻類",
+    "member_count": 52,
+    "scientific_examples": [
+      "Orientomysis aspera",
+      "Orientomysis japonica",
+      "Orientomysis rotundicauda"
+    ],
+    "japanese_examples": [
+      "サメハダハマアミ",
+      "ニホンハマアミ",
+      "ナガオトゲハマアミ"
+    ],
+    "filename": "marine_family_f0e624e9cf48_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account1",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「アミ科」という科を表す教育用の写真風生成合成画像。台帳内の例はサメハダハマアミ、ニホンハマアミ、ナガオトゲハマアミ、学名参考はOrientomysis aspera、Orientomysis japonica、Orientomysis rotundicauda。海底の甲殻類。対象分類群に適した節、触角、脚を正確に表現した水中マクロ。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "c8ee10974321d5c16702b9cb583c79a9afd82a8985a2c53e97600845fd21e611",
+    "sha256": "d335695168e500f87726fa1502dec909f7dae123d1f2fd31cd55534dc604f577"
+  },
+  {
+    "name": "アンコウ科",
+    "group": "魚類",
+    "member_count": 5,
+    "scientific_examples": [
+      "Lophiodes naresi",
+      "Lophiodes mutilus",
+      "Lophiodes miacanthus"
+    ],
+    "japanese_examples": [
+      "ヒメアンコウ",
+      "メダマアンコウ",
+      "シモフリハナアンコウ"
+    ],
+    "filename": "marine_family_3f3650a006d1_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account1",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「アンコウ科」という科を表す教育用の写真風生成合成画像。台帳内の例はヒメアンコウ、メダマアンコウ、シモフリハナアンコウ、学名参考はLophiodes naresi、Lophiodes mutilus、Lophiodes miacanthus。海中の魚類。対象分類群に適した体型、ひれ、鱗、自然な海底または外洋。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "50479e83f6a0baea0f4f0d14c300f6f000d27e38774e7f1e4b6a88264616e874",
+    "sha256": "d72da3d90efd66579d0bc5fb45a70194d283b7524ad2f9263c6267c50333a33c"
+  },
+  {
+    "name": "イサキ科",
+    "group": "魚類",
+    "member_count": 9,
+    "scientific_examples": [
+      "Plectorhinchus cinctus",
+      "Plectorhinchus gibbosus",
+      "Plectorhinchus schotaf"
+    ],
+    "japanese_examples": [
+      "コシヨウダイ",
+      "クロコシヨウダイ",
+      "ナンヨウコタイ"
+    ],
+    "filename": "marine_family_864d4054dba9_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account1",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「イサキ科」という科を表す教育用の写真風生成合成画像。台帳内の例はコシヨウダイ、クロコシヨウダイ、ナンヨウコタイ、学名参考はPlectorhinchus cinctus、Plectorhinchus gibbosus、Plectorhinchus schotaf。海中の魚類。対象分類群に適した体型、ひれ、鱗、自然な海底または外洋。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "7e7112661656d092980507ce15a7c7976157bf815b89479df3c5b689165e7ea5",
+    "sha256": "fdca577dc7a40ffd04970f9ff4e60cf8ca40ce56abf29a90bdf9144fa771647f"
+  },
+  {
+    "name": "ウミサカズキガヤ科",
+    "group": "刺胞動物",
+    "member_count": 21,
+    "scientific_examples": [
+      "Obelia geniculata",
+      "Obelia dichotoma",
+      "Campanularia volubilis"
+    ],
+    "japanese_examples": [
+      "エダフトオベリア",
+      "シナオベリア",
+      "ヤセオベリア"
+    ],
+    "filename": "marine_family_8a3ee7a5e312_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account1",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「ウミサカズキガヤ科」という科を表す教育用の写真風生成合成画像。台帳内の例はエダフトオベリア、シナオベリア、ヤセオベリア、学名参考はObelia geniculata、Obelia dichotoma、Campanularia volubilis。海中の刺胞動物。対象分類群に適した傘、触手、ポリプまたは群体。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "7578e7a08a4454b924c063068fd49d9f2a4763fcbe7969fb703998e0ae08f1ce",
+    "sha256": "94b3784571cc2231b7963b364f63306b71b98f0ce590ea81c03fadf9ea784cab"
+  },
+  {
+    "name": "ウラナイカジカ科",
+    "group": "魚類",
+    "member_count": 8,
+    "scientific_examples": [
+      "Dasycottus setiger",
+      "Eurymen gyrinus",
+      "Malacocottus zonurus"
+    ],
+    "japanese_examples": [
+      "ガンコ",
+      "ヤギシリカジカ",
+      "コブシカジカ"
+    ],
+    "filename": "marine_family_36f4993dd2f6_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account1",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「ウラナイカジカ科」という科を表す教育用の写真風生成合成画像。台帳内の例はガンコ、ヤギシリカジカ、コブシカジカ、学名参考はDasycottus setiger、Eurymen gyrinus、Malacocottus zonurus。海中の魚類。対象分類群に適した体型、ひれ、鱗、自然な海底または外洋。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "a441fbba119ac88bd6281fde8e9b38dcff40b10c496b258e57c0dd38f02ef372",
+    "sha256": "0a5b6ae0a6ec63992b2e9c31522c53f13795e5205d1b568824b1e7f59dcc4ca3"
+  },
+  {
+    "name": "エダウミヒドラ科",
+    "group": "刺胞動物",
+    "member_count": 10,
+    "scientific_examples": [
+      "Eudendrium racemosum",
+      "Eudendrium rameum",
+      "Eudendrium magnificum"
+    ],
+    "japanese_examples": [
+      "フサエダウミヒドラ",
+      "フトエダウミヒドラ",
+      "オオエダウミヒドラ"
+    ],
+    "filename": "marine_family_89961d8b12c2_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account1",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「エダウミヒドラ科」という科を表す教育用の写真風生成合成画像。台帳内の例はフサエダウミヒドラ、フトエダウミヒドラ、オオエダウミヒドラ、学名参考はEudendrium racemosum、Eudendrium rameum、Eudendrium magnificum。海中の刺胞動物。対象分類群に適した傘、触手、ポリプまたは群体。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "5bdc679e302fdb4a18964dbe1d6e436474c39c21094c78246b6e13287fc87a8f",
+    "sha256": "19749239af223b3da27655846dde66e67a941d6ed6410d5a8fb25dc6fc384f70"
+  },
+  {
+    "name": "エダクラゲ科",
+    "group": "刺胞動物",
+    "member_count": 8,
+    "scientific_examples": [
+      "Bougainvillia bitentaculata",
+      "Dicoryne conybearei",
+      "Garveia annulata"
+    ],
+    "japanese_examples": [
+      "エダクラゲ",
+      "オタマヒドラ",
+      "オレンジスズヒドラ"
+    ],
+    "filename": "marine_family_a0578ec70dd8_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account1",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「エダクラゲ科」という科を表す教育用の写真風生成合成画像。台帳内の例はエダクラゲ、オタマヒドラ、オレンジスズヒドラ、学名参考はBougainvillia bitentaculata、Dicoryne conybearei、Garveia annulata。海中の刺胞動物。対象分類群に適した傘、触手、ポリプまたは群体。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "6a68006a028a396c876c598e2c42f341e21d45029de0ef26fd4228337859af59",
+    "sha256": "fbd1aefbfae438f533f6a628090ea9eedf27b5d492d898c5417e7891053e48a7"
+  },
+  {
+    "name": "エボシクラゲ科",
+    "group": "刺胞動物",
+    "member_count": 8,
+    "scientific_examples": [
+      "Halitiara formosa",
+      "Pandea conica",
+      "Larsonia pterophylla"
+    ],
+    "japanese_examples": [
+      "コエボシクラゲ",
+      "ハナアカリクラゲ",
+      "オオツリアイクラゲ"
+    ],
+    "filename": "marine_family_27de815a62c3_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account1",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「エボシクラゲ科」という科を表す教育用の写真風生成合成画像。台帳内の例はコエボシクラゲ、ハナアカリクラゲ、オオツリアイクラゲ、学名参考はHalitiara formosa、Pandea conica、Larsonia pterophylla。海中の刺胞動物。対象分類群に適した傘、触手、ポリプまたは群体。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "955611fc55e206b6264ca5db4393292879d94b4eb16dc3d89c51f6a80d1a700e",
+    "sha256": "f6df2bb4a692e9b5104cd934e4ba1030761ec0f0ebf0600e6c872d1680b9c0dd"
+  },
+  {
+    "name": "エボシダイ科",
+    "group": "魚類",
+    "member_count": 7,
+    "scientific_examples": [
+      "Psenes cyanophrys",
+      "Psenes arafurensis",
+      "Psenes pellucidus"
+    ],
+    "japanese_examples": [
+      "スジハナビラウオ",
+      "クラゲウオ",
+      "ハナビラウオ"
+    ],
+    "filename": "marine_family_da3f2b8dfa4f_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account1",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「エボシダイ科」という科を表す教育用の写真風生成合成画像。台帳内の例はスジハナビラウオ、クラゲウオ、ハナビラウオ、学名参考はPsenes cyanophrys、Psenes arafurensis、Psenes pellucidus。海中の魚類。対象分類群に適した体型、ひれ、鱗、自然な海底または外洋。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "442773d1f769bc8be332f014d7eb61950b5f50969593088aa7109024be3edab6",
+    "sha256": "d368c90fa73139f71bae381f2cf7c7419854e2f924887484bf1d9fc3a7a697ee"
+  },
+  {
+    "name": "オオウミヒドラ科",
+    "group": "刺胞動物",
+    "member_count": 9,
+    "scientific_examples": [
+      "Corymorpha carnea",
+      "Branchiocerianthus imperator",
+      "Corymorpha bigelowi"
+    ],
+    "japanese_examples": [
+      "オオウミヒドラ",
+      "オトヒメノハナガサ",
+      "カタアシクラゲ"
+    ],
+    "filename": "marine_family_656aab0a7637_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account1",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「オオウミヒドラ科」という科を表す教育用の写真風生成合成画像。台帳内の例はオオウミヒドラ、オトヒメノハナガサ、カタアシクラゲ、学名参考はCorymorpha carnea、Branchiocerianthus imperator、Corymorpha bigelowi。海中の刺胞動物。対象分類群に適した傘、触手、ポリプまたは群体。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "e31f9284c5fd7cafc47604f3e54ce4856e517d36fd643991126ed9a74de60b30",
+    "sha256": "4e0fa0cae1424abaad6321862c4f9e477e77b415045f4ea5e23ab3fb4171c8e7"
+  },
+  {
+    "name": "オキアミ科",
+    "group": "甲殻類",
+    "member_count": 8,
+    "scientific_examples": [
+      "Euphausia pacifica",
+      "Hansarsia tenella",
+      "Pseudeuphausia latifrons"
+    ],
+    "japanese_examples": [
+      "ナンキョクオキアミ",
+      "ツノナシオキアミ",
+      "ホソテナガオキアミ"
+    ],
+    "filename": "marine_family_3b07f1939783_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account1",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「オキアミ科」という科を表す教育用の写真風生成合成画像。台帳内の例はナンキョクオキアミ、ツノナシオキアミ、ホソテナガオキアミ、学名参考はEuphausia pacifica、Hansarsia tenella、Pseudeuphausia latifrons。海底の甲殻類。対象分類群に適した節、触角、脚を正確に表現した水中マクロ。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "361b9166155f809508fc9e16c4a4bec8c2a4c17c8cc810d1df3c4a279119ad76",
+    "sha256": "838f938ead8adf3a31b0b0fdf7e57a81721eec77ac6784cc23d4b863500469be"
+  },
+  {
+    "name": "オニオコゼ科",
+    "group": "魚類",
+    "member_count": 5,
+    "scientific_examples": [
+      "Minous monodactylus",
+      "Minous quincarinatus",
+      "Minous pusillus"
+    ],
+    "japanese_examples": [
+      "ヒメオコゼ",
+      "イトオコゼ",
+      "ヤセオコゼ"
+    ],
+    "filename": "marine_family_2dc7b197ad8d_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account1",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「オニオコゼ科」という科を表す教育用の写真風生成合成画像。台帳内の例はヒメオコゼ、イトオコゼ、ヤセオコゼ、学名参考はMinous monodactylus、Minous quincarinatus、Minous pusillus。海中の魚類。対象分類群に適した体型、ひれ、鱗、自然な海底または外洋。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "801319d0467908ea3c125a29f2b7117b0e9709664c50de6c22e733cc00d18b8e",
+    "sha256": "5b6d02bb973f76eb321345041012be47142b59ffa9f720d14b666be15b549905"
+  },
+  {
+    "name": "カメガイ科",
+    "group": "軟体動物",
+    "member_count": 16,
+    "scientific_examples": [
+      "Cavolinia gibbosa",
+      "Cavolinia globulosa",
+      "Cavolinia inflexa"
+    ],
+    "japanese_examples": [
+      "シロカメガイ",
+      "マルカメガイ",
+      "マサコカメガイ"
+    ],
+    "filename": "marine_family_6411720456d7_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account1",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「カメガイ科」という科を表す教育用の写真風生成合成画像。台帳内の例はシロカメガイ、マルカメガイ、マサコカメガイ、学名参考はCavolinia gibbosa、Cavolinia globulosa、Cavolinia inflexa。海底または海中の軟体動物。対象分類群に適した殻、外套、腕または足。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "b99cb87f70ba382845917a4f143c7dbb4c82cd038bd8b4abae803b60433b3400",
+    "sha256": "ed5595c21be288e020d49b233a70da5ee896c14f39bfd186b72c9c8f21a368d6"
+  },
+  {
+    "name": "キシベミジンコ科",
+    "group": "甲殻類",
+    "member_count": 5,
+    "scientific_examples": [
+      "Eudactylopus atlanticus",
+      "Idomene forficata",
+      "Paradactylopodia brevicornis"
+    ],
+    "japanese_examples": [
+      "セイヨウヨツツメソコミジンコ",
+      "イツカギナガソコミジンコ",
+      "イツツメソコミジンコ"
+    ],
+    "filename": "marine_family_818ae4968bbe_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account1",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「キシベミジンコ科」という科を表す教育用の写真風生成合成画像。台帳内の例はセイヨウヨツツメソコミジンコ、イツカギナガソコミジンコ、イツツメソコミジンコ、学名参考はEudactylopus atlanticus、Idomene forficata、Paradactylopodia brevicornis。海底の甲殻類。対象分類群に適した節、触角、脚を正確に表現した水中マクロ。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "d590949f2c3a741a2adb638206185d218dcd637847572c228dd6700b2a77887a",
+    "sha256": "4a93ff4191b7bfe17aac11708ecf60c06022f859e8721e9b463a3f2c26e74280"
+  },
+  {
+    "name": "キホウボウ科",
+    "group": "魚類",
+    "member_count": 12,
+    "scientific_examples": [
+      "Gargariscus prionocephalus",
+      "Heminodus philippinus",
+      "Peristedion liorhynchus"
+    ],
+    "japanese_examples": [
+      "オニキホウボウ",
+      "イトキホウボウ",
+      "モヨウキホウボウ"
+    ],
+    "filename": "marine_family_f66fe55307b2_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account1",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「キホウボウ科」という科を表す教育用の写真風生成合成画像。台帳内の例はオニキホウボウ、イトキホウボウ、モヨウキホウボウ、学名参考はGargariscus prionocephalus、Heminodus philippinus、Peristedion liorhynchus。海中の魚類。対象分類群に適した体型、ひれ、鱗、自然な海底または外洋。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "8dc2d6cea3ea00602f9e2fd0a6bcd029e828d457e2b11e9cbfa0fb87925d1d38",
+    "sha256": "6bbbfe00f5b45182dc10a0c4c8c1d346aea5b064b81d86bba3a351c685cdbb6f"
+  },
+  {
+    "name": "キンチヤクダイ科",
+    "group": "魚類",
+    "member_count": 5,
+    "scientific_examples": [
+      "Chaetodontoplus melanosoma",
+      "Centropyge heraldi",
+      "Centropyge nox"
+    ],
+    "japanese_examples": [
+      "キヘリキンチヤクダイ",
+      "ヘラルドコガネヤツコ",
+      "オハグロヤツコ"
+    ],
+    "filename": "marine_family_6e46af7e7fa8_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account1",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「キンチヤクダイ科」という科を表す教育用の写真風生成合成画像。台帳内の例はキヘリキンチヤクダイ、ヘラルドコガネヤツコ、オハグロヤツコ、学名参考はChaetodontoplus melanosoma、Centropyge heraldi、Centropyge nox。海中の魚類。対象分類群に適した体型、ひれ、鱗、自然な海底または外洋。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "32844d1e4a7aa98454773ffbe2b156f1a021da7bb287e58b18ad59b86909cb85",
+    "sha256": "e17899173d91e016800f6571283f84db34b85524e4a72c8a55d4f6b688130dab"
+  },
+  {
+    "name": "ギンザメ科",
+    "group": "魚類",
+    "member_count": 7,
+    "scientific_examples": [
+      "Chimaera phantasma",
+      "Hydrolagus purpurescens",
+      "Chimaera jordani"
+    ],
+    "japanese_examples": [
+      "ギンザメ",
+      "ムラサキギンザメ",
+      "ジヨルダンギンザメ"
+    ],
+    "filename": "marine_family_5f6610a58fe3_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account1",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「ギンザメ科」という科を表す教育用の写真風生成合成画像。台帳内の例はギンザメ、ムラサキギンザメ、ジヨルダンギンザメ、学名参考はChimaera phantasma、Hydrolagus purpurescens、Chimaera jordani。海中の魚類。対象分類群に適した体型、ひれ、鱗、自然な海底または外洋。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "cf2a6088db2343dba5910e6775545965f6fb79ee1cb6f212127d4847c430136e",
+    "sha256": "a696eafb04d6c342861b55d4a63943a86c6017b423159c2fe9140d5916dd7aba"
+  },
+  {
+    "name": "クラゲノミ科",
+    "group": "甲殻類",
+    "member_count": 7,
+    "scientific_examples": [
+      "Hyperia galba",
+      "Hyperioides longipes",
+      "Hyperoche medusarum"
+    ],
+    "japanese_examples": [
+      "クラゲノミ",
+      "ホオカムリウミノミ",
+      "ハサミウミノミ"
+    ],
+    "filename": "marine_family_d81171253768_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account1",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「クラゲノミ科」という科を表す教育用の写真風生成合成画像。台帳内の例はクラゲノミ、ホオカムリウミノミ、ハサミウミノミ、学名参考はHyperia galba、Hyperioides longipes、Hyperoche medusarum。海底の甲殻類。対象分類群に適した節、触角、脚を正確に表現した水中マクロ。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "b8d5f249fae43de843e19946aa3b0c42ee9c8009cefae3f4c0eca9b5812ca83b",
+    "sha256": "fdc9b3f4b1f154f36139eb3e4e1a25c47819abce4ca4300c8740edad9935d104"
+  },
+  {
+    "name": "クロタチカマス科",
+    "group": "魚類",
+    "member_count": 6,
+    "scientific_examples": [
+      "Promethichthys prometheus",
+      "Neoepinnula orientalis",
+      "Rexea prometheoides"
+    ],
+    "japanese_examples": [
+      "クロシビカマス",
+      "トウヨウカマス",
+      "カゴカマス"
+    ],
+    "filename": "marine_family_e62e3c08613f_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account1",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「クロタチカマス科」という科を表す教育用の写真風生成合成画像。台帳内の例はクロシビカマス、トウヨウカマス、カゴカマス、学名参考はPromethichthys prometheus、Neoepinnula orientalis、Rexea prometheoides。海中の魚類。対象分類群に適した体型、ひれ、鱗、自然な海底または外洋。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "d0d44c4256eb6b2ebd176ffcf5687c5c3401a9796db3bd7915870daacf74eea5",
+    "sha256": "e2f41fdb78aec5a81721b3cf8ab7e20fc403331a97a97be2206791d94c998b1d"
+  },
+  {
+    "name": "クーマ科",
+    "group": "甲殻類",
+    "member_count": 11,
+    "scientific_examples": [
+      "Diastylis alaskensis",
+      "Diastylis dalli",
+      "Diastylis lazarevi"
+    ],
+    "japanese_examples": [
+      "アラスカクーマ",
+      "ヨツスジクーマ",
+      "アムールクーマ"
+    ],
+    "filename": "marine_family_1f9ffd5986f0_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account1",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「クーマ科」という科を表す教育用の写真風生成合成画像。台帳内の例はアラスカクーマ、ヨツスジクーマ、アムールクーマ、学名参考はDiastylis alaskensis、Diastylis dalli、Diastylis lazarevi。海底の甲殻類。対象分類群に適した節、触角、脚を正確に表現した水中マクロ。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "57016167a1b454ae078716c046f67b023d8e91e87553cd69c85d7d309b48248f",
+    "sha256": "2b7021b2d421a2ea51b068fad315d66059e105fc65c8cc57f4415deb4090f380"
+  },
+  {
+    "name": "ゲンゲ科",
+    "group": "魚類",
+    "member_count": 49,
+    "scientific_examples": [
+      "Neozoarces steindachneri",
+      "Zoarchias veneficus",
+      "Zoarchias neglectus"
+    ],
+    "japanese_examples": [
+      "ハナイトギンポ",
+      "カズナギ",
+      "コモンイトギンポ"
+    ],
+    "filename": "marine_family_031547731c24_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account1",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「ゲンゲ科」という科を表す教育用の写真風生成合成画像。台帳内の例はハナイトギンポ、カズナギ、コモンイトギンポ、学名参考はNeozoarces steindachneri、Zoarchias veneficus、Zoarchias neglectus。海中の魚類。対象分類群に適した体型、ひれ、鱗、自然な海底または外洋。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "09887e8db2d7b7fa86be6d9a02f9c4bb56b72c948f541b4c78478a1f2d4f93f8",
+    "sha256": "e420ba34c129d7028a3dd61d7970afea0ee87066996762b3fefa56f9f928033e"
+  },
+  {
+    "name": "コチ科",
+    "group": "魚類",
+    "member_count": 8,
+    "scientific_examples": [
+      "Bembras japonica",
+      "Bembradium roseum",
+      "Onigocia macrolepis"
+    ],
+    "japanese_examples": [
+      "アカゴチ",
+      "バラハイゴチ",
+      "アネサゴチ"
+    ],
+    "filename": "marine_family_ab70cff28d7e_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account1",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「コチ科」という科を表す教育用の写真風生成合成画像。台帳内の例はアカゴチ、バラハイゴチ、アネサゴチ、学名参考はBembras japonica、Bembradium roseum、Onigocia macrolepis。海中の魚類。対象分類群に適した体型、ひれ、鱗、自然な海底または外洋。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "24a0422ddcf4b773a50bbe50dd6f65278d3e6fe16fde58a70dc4bbdc344f64a5",
+    "sha256": "8c5d393d777b45abe80f69f11042e09a5d30baef8e072f0c7b219cda9c9c3ceb"
+  },
+  {
+    "name": "コツブムシ科",
+    "group": "甲殻類",
+    "member_count": 21,
+    "scientific_examples": [
+      "Cymodoce acuta",
+      "Cymodoce japonica",
+      "Dynamenella marginata"
+    ],
+    "japanese_examples": [
+      "フトトゲコツブムシ",
+      "ニホンコツブムシ",
+      "フタバウミセミ"
+    ],
+    "filename": "marine_family_4a6ae90a98fe_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account1",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「コツブムシ科」という科を表す教育用の写真風生成合成画像。台帳内の例はフトトゲコツブムシ、ニホンコツブムシ、フタバウミセミ、学名参考はCymodoce acuta、Cymodoce japonica、Dynamenella marginata。海底の甲殻類。対象分類群に適した節、触角、脚を正確に表現した水中マクロ。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "02ce968cb5a6d9e0739096f31dca8b91be6bdefc29c81d803dc03bbd73093302",
+    "sha256": "fdd6015b71db63a7bb91f0d77f89a04dbae800ad8ba097846e20d5bf660223f1"
+  },
+  {
+    "name": "コバンザメ科",
+    "group": "魚類",
+    "member_count": 5,
+    "scientific_examples": [
+      "Remora albescens",
+      "Remora australis",
+      "Remora brachyptera"
+    ],
+    "japanese_examples": [
+      "シロコバン",
+      "オオコバン",
+      "クロコバン"
+    ],
+    "filename": "marine_family_c643ad35132c_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account1",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「コバンザメ科」という科を表す教育用の写真風生成合成画像。台帳内の例はシロコバン、オオコバン、クロコバン、学名参考はRemora albescens、Remora australis、Remora brachyptera。海中の魚類。対象分類群に適した体型、ひれ、鱗、自然な海底または外洋。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "184a5ebd68f94a49e7f14131eb2dbea01e017610cc28d185105295acf56c28d2",
+    "sha256": "7a8aa023c56dc1520d76a91d5fcc5c18b1f9dde6e7c3c57e63a2fd5a7b48a2cc"
+  },
+  {
+    "name": "コメツブヨコエビ科",
+    "group": "甲殻類",
+    "member_count": 9,
+    "scientific_examples": [
+      "Guernea ezoensis",
+      "Guernea minor",
+      "Paradexamine barnardi"
+    ],
+    "japanese_examples": [
+      "エゾテッポウダマ",
+      "ケシツブテッポウダマ",
+      "トゲホホヨコエビ"
+    ],
+    "filename": "marine_family_e4233b45711b_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account1",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「コメツブヨコエビ科」という科を表す教育用の写真風生成合成画像。台帳内の例はエゾテッポウダマ、ケシツブテッポウダマ、トゲホホヨコエビ、学名参考はGuernea ezoensis、Guernea minor、Paradexamine barnardi。海底の甲殻類。対象分類群に適した節、触角、脚を正確に表現した水中マクロ。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "a5bb35050e42211863b944223b476e3b50fa442c0f24bfe52de7a33272dfd112",
+    "sha256": "bb57e044f12df42f19bff851d4a9624ec2ad97dab28fa5ef6ebd9c994051133f"
+  },
+  {
+    "name": "サイウオ科",
+    "group": "魚類",
+    "member_count": 5,
+    "scientific_examples": [
+      "Bregmaceros japonicus",
+      "Bregmaceros nectabanus",
+      "Bregmaceros atlanticus"
+    ],
+    "japanese_examples": [
+      "サイウオ",
+      "トヤマサイウオ",
+      "セイヨウサイウオ"
+    ],
+    "filename": "marine_family_1031b24d75ae_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account1",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「サイウオ科」という科を表す教育用の写真風生成合成画像。台帳内の例はサイウオ、トヤマサイウオ、セイヨウサイウオ、学名参考はBregmaceros japonicus、Bregmaceros nectabanus、Bregmaceros atlanticus。海中の魚類。対象分類群に適した体型、ひれ、鱗、自然な海底または外洋。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "d897537a5356b80a25d63cbdb1107b7af64eb543d334309e3c076f30a5eb19d6",
+    "sha256": "8176e462bd7b19f9e3bcb9a7b117ec7266ca35e24d2299b6a7c11eb524eda5d2"
+  },
+  {
+    "name": "サイヅチボヤ科",
+    "group": "その他無脊椎",
+    "member_count": 6,
+    "scientific_examples": [
+      "Appendicularia sicula",
+      "Fritillaria formica",
+      "Fritillaria haplostoma"
+    ],
+    "japanese_examples": [
+      "ゴマオタマボヤ",
+      "アリサイヅチボヤ",
+      "ホソサイヅチボヤ"
+    ],
+    "filename": "marine_family_d71ebcec5086_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account1",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「サイヅチボヤ科」という科を表す教育用の写真風生成合成画像。台帳内の例はゴマオタマボヤ、アリサイヅチボヤ、ホソサイヅチボヤ、学名参考はAppendicularia sicula、Fritillaria formica、Fritillaria haplostoma。岩礁や海底の無脊椎動物。対象分類群に適した固着性または浮遊性の体型。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "5bf5faa72d7240ad0c7697406466aa4f78fe45704603a548ed3caedbf0a7ebf3",
+    "sha256": "9f7662f8f2cb6c2edc88f59690fdb004a32825217c922bb5e442940c3dada188"
+  },
+  {
+    "name": "サカサヨコエビ科",
+    "group": "甲殻類",
+    "member_count": 5,
+    "scientific_examples": [
+      "Melphidippa borealis",
+      "Melphidippa globosa",
+      "Melphidippa linea"
+    ],
+    "japanese_examples": [
+      "コヅメサカサヨコエビ",
+      "ツメナガサカサヨコエビ",
+      "ケヅメサカサヨコエビ"
+    ],
+    "filename": "marine_family_a30e3662d0b2_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account1",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「サカサヨコエビ科」という科を表す教育用の写真風生成合成画像。台帳内の例はコヅメサカサヨコエビ、ツメナガサカサヨコエビ、ケヅメサカサヨコエビ、学名参考はMelphidippa borealis、Melphidippa globosa、Melphidippa linea。海底の甲殻類。対象分類群に適した節、触角、脚を正確に表現した水中マクロ。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "e9c098f6e5c0e4d45a1eb7449f1e32c94f42c4fe24828f4db9b91b97959c5c44",
+    "sha256": "b442c2155019222925c03f99ccfad88a53973408dfe480991ca4d33bf9c77067"
+  },
+  {
+    "name": "ササウシノシタ科",
+    "group": "魚類",
+    "member_count": 10,
+    "scientific_examples": [
+      "Heteromycteris japonicus",
+      "Heteromycteris matsubarai",
+      "Aseraggodes xenicus"
+    ],
+    "japanese_examples": [
+      "ササウシノシタ",
+      "モンツキウシノシタ",
+      "オトメウシノシタ"
+    ],
+    "filename": "marine_family_edc3bcb5f74e_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account1",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「ササウシノシタ科」という科を表す教育用の写真風生成合成画像。台帳内の例はササウシノシタ、モンツキウシノシタ、オトメウシノシタ、学名参考はHeteromycteris japonicus、Heteromycteris matsubarai、Aseraggodes xenicus。海中の魚類。対象分類群に適した体型、ひれ、鱗、自然な海底または外洋。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "1b84dad3b62d919fae27755e04450741b9852de329a6f3a7e16f40c358644143",
+    "sha256": "038de5a8d2f98b2aed252e6a4d19d1f4b74a7112183ffa7df960112721040876"
+  },
+  {
+    "name": "サバ科",
+    "group": "魚類",
+    "member_count": 14,
+    "scientific_examples": [
+      "Thunnus thynnus",
+      "Thunnus alalunga",
+      "Katsuwonus pelamis"
+    ],
+    "japanese_examples": [
+      "クロマグロ",
+      "ミナミマグロ",
+      "ビンナガ"
+    ],
+    "filename": "marine_family_810b9b928603_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account1",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「サバ科」という科を表す教育用の写真風生成合成画像。台帳内の例はクロマグロ、ミナミマグロ、ビンナガ、学名参考はThunnus thynnus、Thunnus alalunga、Katsuwonus pelamis。海中の魚類。対象分類群に適した体型、ひれ、鱗、自然な海底または外洋。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "657530576dbefdc79074a02b6f46f63b5e0611c4af1533f18576f24f4d242a32",
+    "sha256": "8406fb4cc96e39233dc794518019aedb7adae3c6d4b618e4c9e2bd142e4d385a"
+  },
+  {
+    "name": "サヨリ科",
+    "group": "魚類",
+    "member_count": 7,
+    "scientific_examples": [
+      "Hyporhamphus sajori",
+      "Hyporhamphus intermedius",
+      "Hyporhamphus yuri"
+    ],
+    "japanese_examples": [
+      "サヨリ",
+      "クルメサヨリ",
+      "ユリサヨリ"
+    ],
+    "filename": "marine_family_527ee283b9d4_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account1",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「サヨリ科」という科を表す教育用の写真風生成合成画像。台帳内の例はサヨリ、クルメサヨリ、ユリサヨリ、学名参考はHyporhamphus sajori、Hyporhamphus intermedius、Hyporhamphus yuri。海中の魚類。対象分類群に適した体型、ひれ、鱗、自然な海底または外洋。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "b85a1bc8ff9ed2bf7456a7a0f169ca3ae167eb81ed6228232ea5fdb5e12b81cb",
+    "sha256": "c82e0e74d442bee7f9455c16b6b1344cf9d160d11f89de76f3a3050f50655b6e"
+  },
+  {
+    "name": "シダアンコウ科",
+    "group": "魚類",
+    "member_count": 5,
+    "scientific_examples": [
+      "Gigantactis vanhoeffeni",
+      "Gigantactis kreffti",
+      "Gigantactis perlatus"
+    ],
+    "japanese_examples": [
+      "シダアンコウ",
+      "クレフトアンコウ",
+      "アンドンモグラアンコウ"
+    ],
+    "filename": "marine_family_bb165464cd05_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account1",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「シダアンコウ科」という科を表す教育用の写真風生成合成画像。台帳内の例はシダアンコウ、クレフトアンコウ、アンドンモグラアンコウ、学名参考はGigantactis vanhoeffeni、Gigantactis kreffti、Gigantactis perlatus。海中の魚類。対象分類群に適した体型、ひれ、鱗、自然な海底または外洋。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "d73650250e74d54901a11ab342eb6646c48a884e10c8ca26190379c3b06bcc38",
+    "sha256": "95be9293794fdd0a69d4c9cf10243dd9e65d7d7ac076aeb3380c2a0c552c42db"
+  },
+  {
+    "name": "シマガツオ科",
+    "group": "魚類",
+    "member_count": 6,
+    "scientific_examples": [
+      "Eumegistus illustris",
+      "Taractes rubescens",
+      "Pteraclis aesticola"
+    ],
+    "japanese_examples": [
+      "チカメエチオピア",
+      "ツルギエチオピア",
+      "ベンテンウオ"
+    ],
+    "filename": "marine_family_596595ee0e11_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account1",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「シマガツオ科」という科を表す教育用の写真風生成合成画像。台帳内の例はチカメエチオピア、ツルギエチオピア、ベンテンウオ、学名参考はEumegistus illustris、Taractes rubescens、Pteraclis aesticola。海中の魚類。対象分類群に適した体型、ひれ、鱗、自然な海底または外洋。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "e93d2f6bb23ec5b9ae84b3a4a415afb3169cfee142df639640b3f6cec537c99b",
+    "sha256": "7cd6b8ed556ce34d429c50c4522495518091adcddb3dcaebb07516337621eaaa"
+  },
+  {
+    "name": "セキトリイワシ科",
+    "group": "魚類",
+    "member_count": 16,
+    "scientific_examples": [
+      "Alepocephalus umbriceps",
+      "Alepocephalus bicolor",
+      "Alepocephalus owstoni"
+    ],
+    "japanese_examples": [
+      "コンニヤクイワシ",
+      "ホソメコンニヤクイワシ",
+      "ハゲイワシ"
+    ],
+    "filename": "marine_family_ef28edf21c55_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account1",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「セキトリイワシ科」という科を表す教育用の写真風生成合成画像。台帳内の例はコンニヤクイワシ、ホソメコンニヤクイワシ、ハゲイワシ、学名参考はAlepocephalus umbriceps、Alepocephalus bicolor、Alepocephalus owstoni。海中の魚類。対象分類群に適した体型、ひれ、鱗、自然な海底または外洋。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "f26ded5d75e63b4955a0072de1f457b62f6a735ff7d1475ba59fbfc9fd0f3c36",
+    "sha256": "4c6fd8cafc09d6dfe115427b832d41e4ad28722378ed0dcfe1d374f11862e006"
+  },
+  {
+    "name": "ソコイワシ科",
+    "group": "魚類",
+    "member_count": 6,
+    "scientific_examples": [
+      "Leuroglossus schmidti",
+      "Lipolagus ochotensis",
+      "Dolicholagus longirostris"
+    ],
+    "japanese_examples": [
+      "トガリイチモンジイワシ",
+      "ソコイワシ",
+      "ギンソコイワシ"
+    ],
+    "filename": "marine_family_515849bbda26_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account1",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「ソコイワシ科」という科を表す教育用の写真風生成合成画像。台帳内の例はトガリイチモンジイワシ、ソコイワシ、ギンソコイワシ、学名参考はLeuroglossus schmidti、Lipolagus ochotensis、Dolicholagus longirostris。海中の魚類。対象分類群に適した体型、ひれ、鱗、自然な海底または外洋。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "19541fca2f51afb0ffef4f159afa17eabb07c25be9ddcd535e07151928269b15",
+    "sha256": "b6b71d1e5928a16f3cea982e9fa8b6dcc35a159145e713458da5f4439795f023"
+  },
+  {
+    "name": "ソコダラ科",
+    "group": "魚類",
+    "member_count": 58,
+    "scientific_examples": [
+      "Gadomus colletti",
+      "Gadomus multifilis",
+      "Bathygadus antrodes"
+    ],
+    "japanese_examples": [
+      "カタダラ",
+      "ノドグロカタダラ",
+      "アナダラ"
+    ],
+    "filename": "marine_family_db366952e107_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account1",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「ソコダラ科」という科を表す教育用の写真風生成合成画像。台帳内の例はカタダラ、ノドグロカタダラ、アナダラ、学名参考はGadomus colletti、Gadomus multifilis、Bathygadus antrodes。海中の魚類。対象分類群に適した体型、ひれ、鱗、自然な海底または外洋。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "5422bab1346894e4240768a36d877338078b17b3bc2a000ba6025b13c55cb80d",
+    "sha256": "7ab274c1ea7dffe93c44fa9c705571f28ca269417a328000afa2c2b83e07f4ce"
+  },
+  {
+    "name": "ゾウクラゲ科",
+    "group": "軟体動物",
+    "member_count": 6,
+    "scientific_examples": [
+      "Carinaria pseudorugosa",
+      "Carinaria cristata",
+      "Carinaria galea"
+    ],
+    "japanese_examples": [
+      "コガタゾウクラゲ",
+      "ゾウクラゲ",
+      "カブトゾウクラゲ"
+    ],
+    "filename": "marine_family_c7fb752a0853_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account1",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「ゾウクラゲ科」という科を表す教育用の写真風生成合成画像。台帳内の例はコガタゾウクラゲ、ゾウクラゲ、カブトゾウクラゲ、学名参考はCarinaria pseudorugosa、Carinaria cristata、Carinaria galea。海底または海中の軟体動物。対象分類群に適した殻、外套、腕または足。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "739efddd90de8a6efa64b2dba4d515af9afc33a962210b4d5a5553b670abdad7",
+    "sha256": "0a182be8e59578e9d888f2a88045a6ffbfc271375512ffba463a0901d96837c5"
+  },
+  {
+    "name": "タイ科",
+    "group": "魚類",
+    "member_count": 5,
+    "scientific_examples": [
+      "Acanthopagrus schlegelii",
+      "Amamiichthys matsubarai",
+      "Evynnis tumifrons"
+    ],
+    "japanese_examples": [
+      "クロダイ",
+      "ホシレンコ",
+      "チダイ"
+    ],
+    "filename": "marine_family_eafc35bcfcaf_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account1",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「タイ科」という科を表す教育用の写真風生成合成画像。台帳内の例はクロダイ、ホシレンコ、チダイ、学名参考はAcanthopagrus schlegelii、Amamiichthys matsubarai、Evynnis tumifrons。海中の魚類。対象分類群に適した体型、ひれ、鱗、自然な海底または外洋。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "20806c06f9344580baefdc4c08d103c05e0a3b494602cc42bb4e1ac66c46d599",
+    "sha256": "38a043814604a634a164934a38d3860e3a9c6a4e6bf4486d8aa421df7008f72f"
+  },
+  {
+    "name": "タウエガジ科",
+    "group": "魚類",
+    "member_count": 23,
+    "scientific_examples": [
+      "Chirolophis japonicus",
+      "Alectrias benjamini",
+      "Bryozoichthys lysimus"
+    ],
+    "japanese_examples": [
+      "フサギンポ",
+      "ムシヤギンポ",
+      "フサカケギンポ"
+    ],
+    "filename": "marine_family_b66abed163b7_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account1",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「タウエガジ科」という科を表す教育用の写真風生成合成画像。台帳内の例はフサギンポ、ムシヤギンポ、フサカケギンポ、学名参考はChirolophis japonicus、Alectrias benjamini、Bryozoichthys lysimus。海中の魚類。対象分類群に適した体型、ひれ、鱗、自然な海底または外洋。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "6e73d6cfee6130ee49f890cd51121d44ff577e137d4ca87383d99abe514db694",
+    "sha256": "3b22bb5b33da0785be48effc2cf7319fde9cf5cc64879b8ac4ed780a6b774a99"
+  },
+  {
+    "name": "タチウオ科",
+    "group": "魚類",
+    "member_count": 7,
+    "scientific_examples": [
+      "Trichiurus lepturus",
+      "Benthodesmus tenuis",
+      "Benthodesmus elongatus"
+    ],
+    "japanese_examples": [
+      "タチウオ",
+      "タチモドキ",
+      "ホソタチモドキ"
+    ],
+    "filename": "marine_family_07695257cc3c_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account1",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「タチウオ科」という科を表す教育用の写真風生成合成画像。台帳内の例はタチウオ、タチモドキ、ホソタチモドキ、学名参考はTrichiurus lepturus、Benthodesmus tenuis、Benthodesmus elongatus。海中の魚類。対象分類群に適した体型、ひれ、鱗、自然な海底または外洋。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "4362666ffb8ec05d8c7896a83cdd96019185922d922667bb2c96e8ae0b7d7647",
+    "sha256": "dd31ee57fbe175ac7289b6a9cda2db5f590e9dbf4509e50568f4d7b12291fb37"
+  },
+  {
+    "name": "タマウミヒドラ科",
+    "group": "刺胞動物",
+    "member_count": 6,
+    "scientific_examples": [
+      "Sarsia tubulosa",
+      "Coryne pusilla",
+      "Sphaerocoryne bedoti"
+    ],
+    "japanese_examples": [
+      "サルシアクラゲ",
+      "タマウミヒドラ",
+      "カイメンウミヒドラ"
+    ],
+    "filename": "marine_family_a13e3771ff7e_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account1",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「タマウミヒドラ科」という科を表す教育用の写真風生成合成画像。台帳内の例はサルシアクラゲ、タマウミヒドラ、カイメンウミヒドラ、学名参考はSarsia tubulosa、Coryne pusilla、Sphaerocoryne bedoti。海中の刺胞動物。対象分類群に適した傘、触手、ポリプまたは群体。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "fe9402df0c9dfdbdb8fd5641352048cefb656d92d822d04be7758b43c553255b",
+    "sha256": "a61f667befb11cc111362b6c199f88c36b4d116a9d5fa1387da20596646efd15"
+  },
+  {
+    "name": "タマキビガイ科",
+    "group": "軟体動物",
+    "member_count": 5,
+    "scientific_examples": [
+      "Littoraria pintado",
+      "Littorina squalida",
+      "Echinolittorina pascua"
+    ],
+    "japanese_examples": [
+      "コウダカタマキビガイ",
+      "エゾタマキビガイ",
+      "イボタマキビガイ"
+    ],
+    "filename": "marine_family_05eaf664bf45_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account1",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「タマキビガイ科」という科を表す教育用の写真風生成合成画像。台帳内の例はコウダカタマキビガイ、エゾタマキビガイ、イボタマキビガイ、学名参考はLittoraria pintado、Littorina squalida、Echinolittorina pascua。海底または海中の軟体動物。対象分類群に適した殻、外套、腕または足。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "ce4449941e4f1756eafc1ade37715b46276d940157916c5b93af2029c2d3a73f",
+    "sha256": "81988be14ac1beeaeaca6cc687c46e24aec7e9cba7143d3ee164c0cc8fc3a5fa"
+  },
+  {
+    "name": "タルマワシ科",
+    "group": "甲殻類",
+    "member_count": 5,
+    "scientific_examples": [
+      "Phronima atlantica",
+      "Phronima colletti",
+      "Phronima sedentaria"
+    ],
+    "japanese_examples": [
+      "アシナガタルマワシ",
+      "タンソクタルマワシ",
+      "オオタルマワシ"
+    ],
+    "filename": "marine_family_482116d22f6f_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account1",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「タルマワシ科」という科を表す教育用の写真風生成合成画像。台帳内の例はアシナガタルマワシ、タンソクタルマワシ、オオタルマワシ、学名参考はPhronima atlantica、Phronima colletti、Phronima sedentaria。海底の甲殻類。対象分類群に適した節、触角、脚を正確に表現した水中マクロ。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "19ea2fb76fa583a7b080f7e3da724ace51d46a310ac909ab927b26de9d7c1117",
+    "sha256": "91fb6d5a207eaaa2be1e32cf4a5de2c3e9e227b533e5a81cec749c34fb48a508"
+  },
+  {
+    "name": "ダルマガレイ科",
+    "group": "魚類",
+    "member_count": 22,
+    "scientific_examples": [
+      "Taeniopsetta ocellata",
+      "Parabothus coarctatus",
+      "Parabothus kiensis"
+    ],
+    "japanese_examples": [
+      "イトヒキガンゾウビラメ",
+      "スミレガレイ",
+      "キシユウダルマガレイ"
+    ],
+    "filename": "marine_family_e0df90a509cd_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account1",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「ダルマガレイ科」という科を表す教育用の写真風生成合成画像。台帳内の例はイトヒキガンゾウビラメ、スミレガレイ、キシユウダルマガレイ、学名参考はTaeniopsetta ocellata、Parabothus coarctatus、Parabothus kiensis。海中の魚類。対象分類群に適した体型、ひれ、鱗、自然な海底または外洋。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "966aeb1427c48cb05aeb4bd7ca59a939f6c3274a904f732e18a9ba6bd7522427",
+    "sha256": "d7846cfb65dd630f400fbe000407c7d6cfa529dd5f01e91e0154311218a4f2f5"
+  },
+  {
+    "name": "ダンゴウオ科",
+    "group": "魚類",
+    "member_count": 7,
+    "scientific_examples": [
+      "Eumicrotremus taranetzi",
+      "Eumicrotremus schmidti",
+      "Eumicrotremus asperrimus"
+    ],
+    "japanese_examples": [
+      "ナメダンコ",
+      "ヒラダンゴ",
+      "コンペイトウ"
+    ],
+    "filename": "marine_family_032a45866a1c_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account1",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「ダンゴウオ科」という科を表す教育用の写真風生成合成画像。台帳内の例はナメダンコ、ヒラダンゴ、コンペイトウ、学名参考はEumicrotremus taranetzi、Eumicrotremus schmidti、Eumicrotremus asperrimus。海中の魚類。対象分類群に適した体型、ひれ、鱗、自然な海底または外洋。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "fe44379b62cd084eab30bd46af8d6d49dc899bc5987811f9dc296e7659333d47",
+    "sha256": "bec003678542433bb1d64b3b2e5d65126a83015bfcfbf8e327235a1abc61b78e"
+  },
+  {
+    "name": "チゴダラ科",
+    "group": "魚類",
+    "member_count": 16,
+    "scientific_examples": [
+      "Lepidion inosimae",
+      "Lepidion schmidti",
+      "Halargyreus johnsonii"
+    ],
+    "japanese_examples": [
+      "ソコクロダラ",
+      "キタノクロダラ",
+      "カラスダラ"
+    ],
+    "filename": "marine_family_d10cb5ff1cef_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account1",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「チゴダラ科」という科を表す教育用の写真風生成合成画像。台帳内の例はソコクロダラ、キタノクロダラ、カラスダラ、学名参考はLepidion inosimae、Lepidion schmidti、Halargyreus johnsonii。海中の魚類。対象分類群に適した体型、ひれ、鱗、自然な海底または外洋。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "3fb0086d19734eea474b93070b813a8d4914aba67617c1a2a1ee52c535184fbc",
+    "sha256": "5348c33e705bc114d5b568ab9e2c2aaf8f853f3aba914a1d6569aa12d142997b"
+  },
+  {
+    "name": "チビヨコエビ科",
+    "group": "甲殻類",
+    "member_count": 6,
+    "scientific_examples": [
+      "Hourstonius breviculus",
+      "Gitanopsis iseebi",
+      "Hourstonius japonica"
+    ],
+    "japanese_examples": [
+      "ヒメチビマルヨコエビ",
+      "イセエビチビヨコエビ",
+      "ニホンチビマルヨコエビ"
+    ],
+    "filename": "marine_family_d61db423ff7a_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account1",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「チビヨコエビ科」という科を表す教育用の写真風生成合成画像。台帳内の例はヒメチビマルヨコエビ、イセエビチビヨコエビ、ニホンチビマルヨコエビ、学名参考はHourstonius breviculus、Gitanopsis iseebi、Hourstonius japonica。海底の甲殻類。対象分類群に適した節、触角、脚を正確に表現した水中マクロ。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "4877e4cf23176d67d9b7d79b1d961509302112d4d986157b58ac5194bb2bfb5a",
+    "sha256": "655d63c75645e4d046d54295ed7e4f5d01545357f510455992110a0b93121c0a"
+  },
+  {
+    "name": "チョウ科",
+    "group": "甲殻類",
+    "member_count": 5,
+    "scientific_examples": [
+      "Argulus scutiformis",
+      "Argulus onodai",
+      "Argulus kusafugu"
+    ],
+    "japanese_examples": [
+      "ウミチョウ",
+      "オノダウミチョウ",
+      "クサフグウミチョウ"
+    ],
+    "filename": "marine_family_0c469aababb1_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account1",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「チョウ科」という科を表す教育用の写真風生成合成画像。台帳内の例はウミチョウ、オノダウミチョウ、クサフグウミチョウ、学名参考はArgulus scutiformis、Argulus onodai、Argulus kusafugu。海底の甲殻類。対象分類群に適した節、触角、脚を正確に表現した水中マクロ。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "822b36a9153c09f9683b648648de1b87bbab8e4830b1c81d9454bb2eb30e3dec",
+    "sha256": "bf992078abd0c8559ab7467ad2a8c9788aec3e87bd2aa9c9438ddf00a358e223"
+  },
+  {
+    "name": "ツノザメ科",
+    "group": "魚類",
+    "member_count": 21,
+    "scientific_examples": [
+      "Dalatias licha",
+      "Echinorhinus brucus",
+      "Echinorhinus cookei"
+    ],
+    "japanese_examples": [
+      "ヨロイザメ",
+      "キクザメ",
+      "コギクザメ"
+    ],
+    "filename": "marine_family_5538c93fc783_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account1",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「ツノザメ科」という科を表す教育用の写真風生成合成画像。台帳内の例はヨロイザメ、キクザメ、コギクザメ、学名参考はDalatias licha、Echinorhinus brucus、Echinorhinus cookei。海中の魚類。対象分類群に適した体型、ひれ、鱗、自然な海底または外洋。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "a0616e017bceea86cd49d135426b364dcb3b3fd88b7b3a9c81e08fc3021a50c3",
+    "sha256": "a546a698ebbd2c1aa50229fbe86b2add13c2210c5a1ceaad40be0f9b08da69e0"
+  },
+  {
+    "name": "テングウミノミ科",
+    "group": "甲殻類",
+    "member_count": 9,
+    "scientific_examples": [
+      "Amphithyrus glaber",
+      "Amphithyrus muratus",
+      "Amphithyrus sculpturatus"
+    ],
+    "japanese_examples": [
+      "ナラビツメテング",
+      "オオマドテング",
+      "コマドテング"
+    ],
+    "filename": "marine_family_0fc1c869b0eb_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account2",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「テングウミノミ科」という科を表す教育用の写真風生成合成画像。台帳内の例はナラビツメテング、オオマドテング、コマドテング、学名参考はAmphithyrus glaber、Amphithyrus muratus、Amphithyrus sculpturatus。海底の甲殻類。対象分類群に適した節、触角、脚を正確に表現した水中マクロ。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "f238eb2c8028069db6d54c4d977fdeb4952fc2c271dac792789d3cb7f94a46c3",
+    "sha256": "ed9250d6c3c91f286210384472f78cbebcca286b4b54e13653c449e40ef9c3d3"
+  },
+  {
+    "name": "テングヨコエビ科",
+    "group": "甲殻類",
+    "member_count": 12,
+    "scientific_examples": [
+      "Micropleustes behningi",
+      "Parapleustes bicuspoides",
+      "Incisocalliope derzhavini"
+    ],
+    "japanese_examples": [
+      "アズキテングヨコエビ",
+      "オタフクヨコエビ",
+      "ドングリテングヨコエビ"
+    ],
+    "filename": "marine_family_8e76e3d3f499_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account2",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「テングヨコエビ科」という科を表す教育用の写真風生成合成画像。台帳内の例はアズキテングヨコエビ、オタフクヨコエビ、ドングリテングヨコエビ、学名参考はMicropleustes behningi、Parapleustes bicuspoides、Incisocalliope derzhavini。海底の甲殻類。対象分類群に適した節、触角、脚を正確に表現した水中マクロ。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "0abae51d9d6988192e791dd2325531658f4a7d60818b286e96701628bd34ee49",
+    "sha256": "4ff0d65c4068e5cd80345c47d2218dc8d60efbd2f6c97e188b98359dd286612d"
+  },
+  {
+    "name": "テンジクザメ科",
+    "group": "魚類",
+    "member_count": 6,
+    "scientific_examples": [
+      "Orectolobus japonicus",
+      "Orectolobus maculatus",
+      "Orectolobus ornatus"
+    ],
+    "japanese_examples": [
+      "オオセ",
+      "クモハダオオセ",
+      "カラクサオオセ"
+    ],
+    "filename": "marine_family_8c4f7385b599_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account2",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「テンジクザメ科」という科を表す教育用の写真風生成合成画像。台帳内の例はオオセ、クモハダオオセ、カラクサオオセ、学名参考はOrectolobus japonicus、Orectolobus maculatus、Orectolobus ornatus。海中の魚類。対象分類群に適した体型、ひれ、鱗、自然な海底または外洋。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "7ec92e985d593ad10ebcea5db6d3dcb8db30ab8af6ebbe2c75076e9ea09c3ca2",
+    "sha256": "6a3cb8c165525b41736a5a50946c2cc993131ef8a4b9f70d5c3c1d2d728d9cbf"
+  },
+  {
+    "name": "テンジクダイ科",
+    "group": "魚類",
+    "member_count": 49,
+    "scientific_examples": [
+      "Ostorhinchus notatus",
+      "Ostorhinchus doederleini",
+      "Fowleria variegata"
+    ],
+    "japanese_examples": [
+      "クロホシイシモチ",
+      "オオスジイシモチ",
+      "シボリ"
+    ],
+    "filename": "marine_family_1dabd3628a80_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account2",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「テンジクダイ科」という科を表す教育用の写真風生成合成画像。台帳内の例はクロホシイシモチ、オオスジイシモチ、シボリ、学名参考はOstorhinchus notatus、Ostorhinchus doederleini、Fowleria variegata。海中の魚類。対象分類群に適した体型、ひれ、鱗、自然な海底または外洋。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "0fc13e43e6e160353f49448da984f920c122c26bbe5d7022b4c67300ea50bc4e",
+    "sha256": "057301b841a51876b39f9d7b781e7a519d03530c006876db88b793be1ef103f0"
+  },
+  {
+    "name": "トカゲハダカ科",
+    "group": "魚類",
+    "member_count": 10,
+    "scientific_examples": [
+      "Astronesthes indicus",
+      "Astronesthes cyaneus",
+      "Astronesthes splendida"
+    ],
+    "japanese_examples": [
+      "ホホジロトカゲギス",
+      "クロトカゲギス",
+      "フサクロトカゲギス"
+    ],
+    "filename": "marine_family_a65595dccb02_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account2",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「トカゲハダカ科」という科を表す教育用の写真風生成合成画像。台帳内の例はホホジロトカゲギス、クロトカゲギス、フサクロトカゲギス、学名参考はAstronesthes indicus、Astronesthes cyaneus、Astronesthes splendida。海中の魚類。対象分類群に適した体型、ひれ、鱗、自然な海底または外洋。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "0b815eb61967172454423136453890eca7b83dc56bd02dd7111928e1312ce0ba",
+    "sha256": "2030e20c6ac476dba9b049a12fe9dd75b35c3cecc5fa94ecfe688ad8153f159c"
+  },
+  {
+    "name": "トガリズキンウミノミ科",
+    "group": "甲殻類",
+    "member_count": 13,
+    "scientific_examples": [
+      "Calamorhynchus pellucidus",
+      "Cranocephalus scleroticus",
+      "Glossocephalus milneedwardsi"
+    ],
+    "japanese_examples": [
+      "フチドリズキン",
+      "トガリヘルメットズキン",
+      "フクロズキンウミノミ"
+    ],
+    "filename": "marine_family_6e26098d4afb_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account2",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「トガリズキンウミノミ科」という科を表す教育用の写真風生成合成画像。台帳内の例はフチドリズキン、トガリヘルメットズキン、フクロズキンウミノミ、学名参考はCalamorhynchus pellucidus、Cranocephalus scleroticus、Glossocephalus milneedwardsi。海底の甲殻類。対象分類群に適した節、触角、脚を正確に表現した水中マクロ。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "762039146c89931d158683ad1ace538d92b068585949bc0283dea411bd0790bc",
+    "sha256": "af511dde37ffbc31c328824ad04014dbd8fad3acf1c06f111aa3689a97f34f68"
+  },
+  {
+    "name": "トクビレ科",
+    "group": "魚類",
+    "member_count": 16,
+    "scientific_examples": [
+      "Podothecus sachi",
+      "Percis japonica",
+      "Percis matsuii"
+    ],
+    "japanese_examples": [
+      "トクビレ",
+      "イヌゴチ",
+      "トンボイヌゴチ"
+    ],
+    "filename": "marine_family_764231b59377_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account2",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「トクビレ科」という科を表す教育用の写真風生成合成画像。台帳内の例はトクビレ、イヌゴチ、トンボイヌゴチ、学名参考はPodothecus sachi、Percis japonica、Percis matsuii。海中の魚類。対象分類群に適した体型、ひれ、鱗、自然な海底または外洋。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "36fca5a75dac30c6594d0b72230733040bfd76037acd936b5f1bece41928ef0b",
+    "sha256": "8308fdb95f162509c0fa4a9e7bc123303e84a4de434c0429efa6f0034d2c5326"
+  },
+  {
+    "name": "トゲヨコエビ科",
+    "group": "甲殻類",
+    "member_count": 5,
+    "scientific_examples": [
+      "Liljeborgia (Liljeborgia) japonica",
+      "Liljeborgia serrata",
+      "Idunella curvidactyla"
+    ],
+    "japanese_examples": [
+      "ホソトゲヨコエビ",
+      "コソドロトゲヨコエビ",
+      "ジロキチアシナガヨコエビ"
+    ],
+    "filename": "marine_family_9640afa62e2b_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account2",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「トゲヨコエビ科」という科を表す教育用の写真風生成合成画像。台帳内の例はホソトゲヨコエビ、コソドロトゲヨコエビ、ジロキチアシナガヨコエビ、学名参考はLiljeborgia (Liljeborgia) japonica、Liljeborgia serrata、Idunella curvidactyla。海底の甲殻類。対象分類群に適した節、触角、脚を正確に表現した水中マクロ。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "90135285a4c34d4e3b347f2c108d236bc0ef16d846f5610138a1820731af9719",
+    "sha256": "eddd12dfa16d6828433779faffff5cbfb4059fe0f4613fadb2640590c0129f54"
+  },
+  {
+    "name": "ナンノクーマ科",
+    "group": "甲殻類",
+    "member_count": 13,
+    "scientific_examples": [
+      "Campylaspis amblyoda",
+      "Campylaspis angularis",
+      "Campylaspis fusiformis"
+    ],
+    "japanese_examples": [
+      "アシボソスベスベサイヅチクーマ",
+      "スベスベサイヅチクーマ",
+      "アシブトホソミゾサイヅチクーマ"
+    ],
+    "filename": "marine_family_96ed17689211_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account2",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「ナンノクーマ科」という科を表す教育用の写真風生成合成画像。台帳内の例はアシボソスベスベサイヅチクーマ、スベスベサイヅチクーマ、アシブトホソミゾサイヅチクーマ、学名参考はCampylaspis amblyoda、Campylaspis angularis、Campylaspis fusiformis。海底の甲殻類。対象分類群に適した節、触角、脚を正確に表現した水中マクロ。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "5fd75b4a21f3c4205edfa408741d26e51f8a43b208a034564a1f2f1c82984bfa",
+    "sha256": "2f9fa34bbcefa153f398af981109c96ac939643d1e99cb175c95fc72b59e4549"
+  },
+  {
+    "name": "ニギス科",
+    "group": "魚類",
+    "member_count": 5,
+    "scientific_examples": [
+      "Argentina kagoshimae",
+      "Glossanodon semifasciatus",
+      "Glossanodon lineatus"
+    ],
+    "japanese_examples": [
+      "カゴシマニギス",
+      "ニギス",
+      "イチモンジイワシ"
+    ],
+    "filename": "marine_family_3eea8d2a1e14_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account2",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「ニギス科」という科を表す教育用の写真風生成合成画像。台帳内の例はカゴシマニギス、ニギス、イチモンジイワシ、学名参考はArgentina kagoshimae、Glossanodon semifasciatus、Glossanodon lineatus。海中の魚類。対象分類群に適した体型、ひれ、鱗、自然な海底または外洋。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "31fbf6b5c100b4275517e3d6b02e35d1b6ebf38507d8ac4024009e5e42c84879",
+    "sha256": "0f055516ef7ec0102b004b387daeabe1d269e84f393181fc113455151a24e78b"
+  },
+  {
+    "name": "ニシン科",
+    "group": "魚類",
+    "member_count": 8,
+    "scientific_examples": [
+      "Sardinops sagax",
+      "Clupea pallasii",
+      "Spratelloides gracilis"
+    ],
+    "japanese_examples": [
+      "マイワシ",
+      "ニシン",
+      "キビナゴ"
+    ],
+    "filename": "marine_family_9911ef406542_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account2",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「ニシン科」という科を表す教育用の写真風生成合成画像。台帳内の例はマイワシ、ニシン、キビナゴ、学名参考はSardinops sagax、Clupea pallasii、Spratelloides gracilis。海中の魚類。対象分類群に適した体型、ひれ、鱗、自然な海底または外洋。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "ab6ccbca2ee3b266a15b0846cd86398b4b6692361c83826af5b95cde22339405",
+    "sha256": "8a754c290ed4fc3c4ef41231961330c9676753361e5056c4b407acd1fd8861cb"
+  },
+  {
+    "name": "ニベ科",
+    "group": "魚類",
+    "member_count": 11,
+    "scientific_examples": [
+      "Johnius belangerii",
+      "Johnius distinctus",
+      "Megalonibea fusca"
+    ],
+    "japanese_examples": [
+      "コニベ",
+      "アブラグチ",
+      "シナオオニベ"
+    ],
+    "filename": "marine_family_499c0b5f0fbe_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account2",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「ニベ科」という科を表す教育用の写真風生成合成画像。台帳内の例はコニベ、アブラグチ、シナオオニベ、学名参考はJohnius belangerii、Johnius distinctus、Megalonibea fusca。海中の魚類。対象分類群に適した体型、ひれ、鱗、自然な海底または外洋。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "e70b17c18e5222c4797c8dd9a6212a2bd3d4fce7d36bca7e80a01f17b85315b5",
+    "sha256": "2b3cff76087c1c9743eea3c4787d5b3eba9b33d922bb3a88381a73a998f374cd"
+  },
+  {
+    "name": "ネコゼウミノミ科",
+    "group": "甲殻類",
+    "member_count": 5,
+    "scientific_examples": [
+      "Eupronoe maculata",
+      "Eupronoe minuta",
+      "Parapronoe campbelli"
+    ],
+    "japanese_examples": [
+      "トガリオネコゼ",
+      "マルオネコゼ",
+      "ミナミネコゼ"
+    ],
+    "filename": "marine_family_63d92b343290_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account2",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「ネコゼウミノミ科」という科を表す教育用の写真風生成合成画像。台帳内の例はトガリオネコゼ、マルオネコゼ、ミナミネコゼ、学名参考はEupronoe maculata、Eupronoe minuta、Parapronoe campbelli。海底の甲殻類。対象分類群に適した節、触角、脚を正確に表現した水中マクロ。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "d26e45fe686c8528669b939be0b3f8636964e53b045e84168cf42b7605a4369f",
+    "sha256": "a6118ceb9f7d4b2e8001c1d47707b0f03fe382af8ab2a848a03a9c0778d65a84"
+  },
+  {
+    "name": "ネズツポ科",
+    "group": "魚類",
+    "member_count": 16,
+    "scientific_examples": [
+      "Bathycallionymus kaianus",
+      "Callionymus formosanus",
+      "Callionymus sokonumeri"
+    ],
+    "japanese_examples": [
+      "トンガリヌメリ",
+      "クジヤクソコヌメリ",
+      "ソコヌメリ"
+    ],
+    "filename": "marine_family_fed2959ad89d_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account2",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「ネズツポ科」という科を表す教育用の写真風生成合成画像。台帳内の例はトンガリヌメリ、クジヤクソコヌメリ、ソコヌメリ、学名参考はBathycallionymus kaianus、Callionymus formosanus、Callionymus sokonumeri。海中の魚類。対象分類群に適した体型、ひれ、鱗、自然な海底または外洋。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "496e944489d8e0d310872758bc8d3f78b089349585b1e38cd83cbb58e05e71f3",
+    "sha256": "cd4290b51fffc9a70c2c7c7e565da80514c9509dff29e5db69e7c7a001861e32"
+  },
+  {
+    "name": "ノコギリウミノミ科",
+    "group": "甲殻類",
+    "member_count": 15,
+    "scientific_examples": [
+      "Acanthoscina acanthodes",
+      "Ctenoscina brevicaudata",
+      "Scina borealis"
+    ],
+    "japanese_examples": [
+      "アワセトゲノコギリ",
+      "トゲノコギリ",
+      "キタノコギリウミノミ"
+    ],
+    "filename": "marine_family_54244b55d848_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account2",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「ノコギリウミノミ科」という科を表す教育用の写真風生成合成画像。台帳内の例はアワセトゲノコギリ、トゲノコギリ、キタノコギリウミノミ、学名参考はAcanthoscina acanthodes、Ctenoscina brevicaudata、Scina borealis。海底の甲殻類。対象分類群に適した節、触角、脚を正確に表現した水中マクロ。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "5b3523bf976ba47408741036da05d5e5dc6a062a526c019f2cf7b69230ef7a79",
+    "sha256": "53c804948d20ffc119046ecc44c250619ea13f5c718a0b2024ba0accdec63d78"
+  },
+  {
+    "name": "ハゼ科",
+    "group": "魚類",
+    "member_count": 128,
+    "scientific_examples": [
+      "Periophthalmus modestus",
+      "Eleotris fusca",
+      "Mugilogobius abei"
+    ],
+    "japanese_examples": [
+      "トビハゼ",
+      "テンジクカワアナゴ",
+      "アベハゼ"
+    ],
+    "filename": "marine_family_085968adde94_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account1",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「ハゼ科」という科を表す教育用の写真風生成合成画像。台帳内の例はトビハゼ、テンジクカワアナゴ、アベハゼ、学名参考はPeriophthalmus modestus、Eleotris fusca、Mugilogobius abei。海中の魚類。対象分類群に適した体型、ひれ、鱗、自然な海底または外洋。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "655382e360ebd602b08ec31d295dd3b0031b065d8a7cb2510c965e3377dd4a20",
+    "sha256": "54fe3c7d63429c25068d502cf73aa269bde84f41a51fc24292d6793921eec62a"
+  },
+  {
+    "name": "ハタ科",
+    "group": "魚類",
+    "member_count": 49,
+    "scientific_examples": [
+      "Hyporthodus septemfasciatus",
+      "Cephalopholis sonnerati",
+      "Epinephelus latifasciatus"
+    ],
+    "japanese_examples": [
+      "マハタ",
+      "アザハタ",
+      "オオスジハタ"
+    ],
+    "filename": "marine_family_b26851b12ca8_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account2",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「ハタ科」という科を表す教育用の写真風生成合成画像。台帳内の例はマハタ、アザハタ、オオスジハタ、学名参考はHyporthodus septemfasciatus、Cephalopholis sonnerati、Epinephelus latifasciatus。海中の魚類。対象分類群に適した体型、ひれ、鱗、自然な海底または外洋。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "ba2dc1185326f30b06a69f4b7ca3f8ebb2fefa57d206621ebc011b0731541353",
+    "sha256": "550604f4874dc01c42309fceef90e5c3ddc5e04de6811478cef6cf5cd8772755"
+  },
+  {
+    "name": "ハダカイワシ科",
+    "group": "魚類",
+    "member_count": 78,
+    "scientific_examples": [
+      "Diaphus watasei",
+      "Protomyctophum crockeri",
+      "Protomyctophum thompsoni"
+    ],
+    "japanese_examples": [
+      "ハダカイワシ",
+      "ムカシハダカ",
+      "オオメハダカ"
+    ],
+    "filename": "marine_family_31b3d7bd978a_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account2",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「ハダカイワシ科」という科を表す教育用の写真風生成合成画像。台帳内の例はハダカイワシ、ムカシハダカ、オオメハダカ、学名参考はDiaphus watasei、Protomyctophum crockeri、Protomyctophum thompsoni。海中の魚類。対象分類群に適した体型、ひれ、鱗、自然な海底または外洋。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "83eba02c015df62fa31730690c9bfeeaef6a66a3ea420eb423a021a835421490",
+    "sha256": "88f272c7f1b8486953e8c655446fbadab799defe62e48841471ebf1826803f37"
+  },
+  {
+    "name": "ハダカエソ科",
+    "group": "魚類",
+    "member_count": 7,
+    "scientific_examples": [
+      "Lestidium prolixum",
+      "Lestidiops jayakari",
+      "Lestidiops sphyraenopsis"
+    ],
+    "japanese_examples": [
+      "ナメハダカ",
+      "シロナメハダカ",
+      "ヤセハダカエソ"
+    ],
+    "filename": "marine_family_18e9dcbf427a_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account2",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「ハダカエソ科」という科を表す教育用の写真風生成合成画像。台帳内の例はナメハダカ、シロナメハダカ、ヤセハダカエソ、学名参考はLestidium prolixum、Lestidiops jayakari、Lestidiops sphyraenopsis。海中の魚類。対象分類群に適した体型、ひれ、鱗、自然な海底または外洋。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "7714f20495fcfa7cc744b69d3752f744d62aea3a4e8416fc8e51981b7fa7824a",
+    "sha256": "171c2a0922c11552f9ce7d4ce7e44e8c572f8a710dcc0e2cf1096c59db549051"
+  },
+  {
+    "name": "ハリゴチ科",
+    "group": "魚類",
+    "member_count": 5,
+    "scientific_examples": [
+      "Hoplichthys regani",
+      "Hoplichthys gilberti",
+      "Hoplichthys langsdorfii"
+    ],
+    "japanese_examples": [
+      "ハリゴチ",
+      "ソコハリゴチ",
+      "ナツハリゴチ"
+    ],
+    "filename": "marine_family_19ef4780acbc_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account2",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「ハリゴチ科」という科を表す教育用の写真風生成合成画像。台帳内の例はハリゴチ、ソコハリゴチ、ナツハリゴチ、学名参考はHoplichthys regani、Hoplichthys gilberti、Hoplichthys langsdorfii。海中の魚類。対象分類群に適した体型、ひれ、鱗、自然な海底または外洋。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "6bf9409aee00a4c2744acec2b60c5ac3221ff907f74bcbc7fdca8345fe972ee0",
+    "sha256": "d86b63a4bceb88524aa1d33ed3bf5018e4a055d3a351efa5ae920920d49f3a11"
+  },
+  {
+    "name": "ハルパクチクス科",
+    "group": "甲殻類",
+    "member_count": 9,
+    "scientific_examples": [
+      "Harpacticus nipponicus",
+      "Harpacticus purpureus",
+      "Paratigriopus hoshidei"
+    ],
+    "japanese_examples": [
+      "ニッポンソコミジンコ",
+      "ムラサキソコミジンコ",
+      "ヤマトシオダマリミジンコ"
+    ],
+    "filename": "marine_family_0e0bac09d689_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account2",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「ハルパクチクス科」という科を表す教育用の写真風生成合成画像。台帳内の例はニッポンソコミジンコ、ムラサキソコミジンコ、ヤマトシオダマリミジンコ、学名参考はHarpacticus nipponicus、Harpacticus purpureus、Paratigriopus hoshidei。海底の甲殻類。対象分類群に適した節、触角、脚を正確に表現した水中マクロ。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "d78d11b486cf4954a41e36a9206cb31749fac917ab4bb62bc87c6d24ced873d3",
+    "sha256": "53955d9d329fa45bb0ce372f0d821b7a8a72c0d48e7c101911cf155460a4b7f8"
+  },
+  {
+    "name": "ヒイラギ科",
+    "group": "魚類",
+    "member_count": 6,
+    "scientific_examples": [
+      "Equulites leuciscus",
+      "Photopectoralis bindus",
+      "Eubleekeria splendens"
+    ],
+    "japanese_examples": [
+      "イトヒキヒイラギ",
+      "ネツタイヒイラギ",
+      "タイワンヒイラギ"
+    ],
+    "filename": "marine_family_170dfb27d697_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account2",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「ヒイラギ科」という科を表す教育用の写真風生成合成画像。台帳内の例はイトヒキヒイラギ、ネツタイヒイラギ、タイワンヒイラギ、学名参考はEquulites leuciscus、Photopectoralis bindus、Eubleekeria splendens。海中の魚類。対象分類群に適した体型、ひれ、鱗、自然な海底または外洋。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "0c3fd1abb05536d38a0a5de9be70727ea63a251ebbe698c08b8d13667cb120ec",
+    "sha256": "e428760ece04da3d0297d86903743cc19dc24268ea2431b0628e02559460444d"
+  },
+  {
+    "name": "ヒゲナガヨコエビ科",
+    "group": "甲殻類",
+    "member_count": 7,
+    "scientific_examples": [
+      "Ampithoe pollex",
+      "Ampithoe ramondi",
+      "Ampithoe valida"
+    ],
+    "japanese_examples": [
+      "オヤユビヒゲナガ",
+      "ラモンドヒゲナガ",
+      "モズミヨコエビ"
+    ],
+    "filename": "marine_family_2ce8d809e156_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account2",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「ヒゲナガヨコエビ科」という科を表す教育用の写真風生成合成画像。台帳内の例はオヤユビヒゲナガ、ラモンドヒゲナガ、モズミヨコエビ、学名参考はAmpithoe pollex、Ampithoe ramondi、Ampithoe valida。海底の甲殻類。対象分類群に適した節、触角、脚を正確に表現した水中マクロ。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "6ee64839402b58ef12f55371545750d6e57103c73aab79d881391585b89526e5",
+    "sha256": "b633043442d4ebc34b9c04419adec2563bf22afd859fb68e5f9c59d37f97c88f"
+  },
+  {
+    "name": "ヒサシソコエビ科",
+    "group": "甲殻類",
+    "member_count": 5,
+    "scientific_examples": [
+      "Harpiniopsis miharaensis",
+      "Harpiniopsis vadiculus",
+      "Parametaphoxus asiaensis"
+    ],
+    "japanese_examples": [
+      "ヒサシソコエビ",
+      "スナカキソコエビ",
+      "チョウチンチョビヒゲソコエビ"
+    ],
+    "filename": "marine_family_b44471ff3c85_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account2",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「ヒサシソコエビ科」という科を表す教育用の写真風生成合成画像。台帳内の例はヒサシソコエビ、スナカキソコエビ、チョウチンチョビヒゲソコエビ、学名参考はHarpiniopsis miharaensis、Harpiniopsis vadiculus、Parametaphoxus asiaensis。海底の甲殻類。対象分類群に適した節、触角、脚を正確に表現した水中マクロ。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "d01824683d815e98994ec9f42ca7bd334a947bad2cfd625d7981d6adfce3b919",
+    "sha256": "0e48497fc96480107d9792ad9a09eddcb588ca96135d33402b49488fb907d323"
+  },
+  {
+    "name": "ヒメジ科",
+    "group": "魚類",
+    "member_count": 6,
+    "scientific_examples": [
+      "Upeneus japonicus",
+      "Upeneus sulphureus",
+      "Upeneus subvittatus"
+    ],
+    "japanese_examples": [
+      "ヒメジ",
+      "コハクヒメジ",
+      "ヨコヒメジ"
+    ],
+    "filename": "marine_family_67ffef979592_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account2",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「ヒメジ科」という科を表す教育用の写真風生成合成画像。台帳内の例はヒメジ、コハクヒメジ、ヨコヒメジ、学名参考はUpeneus japonicus、Upeneus sulphureus、Upeneus subvittatus。海中の魚類。対象分類群に適した体型、ひれ、鱗、自然な海底または外洋。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "179dbe3dee96de6ec1c956ea07fa7fcce6dabcbc028dd860af477db67bfe34df",
+    "sha256": "d836207981f3acd7c6be5ee0ecde9f6835a42225a2113bc9d70d80b059c713e1"
+  },
+  {
+    "name": "ヒラメ科",
+    "group": "魚類",
+    "member_count": 6,
+    "scientific_examples": [
+      "Pseudorhombus oligodon",
+      "Pseudorhombus pentophthalmus",
+      "Pseudorhombus cinnamoneus"
+    ],
+    "japanese_examples": [
+      "ナンヨウガレイ",
+      "タマガンゾウビラメ",
+      "ガンゾウビラメ"
+    ],
+    "filename": "marine_family_0288351c1c06_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account2",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「ヒラメ科」という科を表す教育用の写真風生成合成画像。台帳内の例はナンヨウガレイ、タマガンゾウビラメ、ガンゾウビラメ、学名参考はPseudorhombus oligodon、Pseudorhombus pentophthalmus、Pseudorhombus cinnamoneus。海中の魚類。対象分類群に適した体型、ひれ、鱗、自然な海底または外洋。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "afa87e6047b502639aa468ee61e11ae760d1f77a1c30969ba004177b893bb992",
+    "sha256": "63445173699a553438c5d2cccf60f0709ff3ce4febf77125c6f9986098c6dad6"
+  },
+  {
+    "name": "フエダイ科",
+    "group": "魚類",
+    "member_count": 21,
+    "scientific_examples": [
+      "Lutjanus gibbus",
+      "Aphareus furca",
+      "Aphareus rutilans"
+    ],
+    "japanese_examples": [
+      "ヒメフエダイ",
+      "イシフエダイ",
+      "オオグチイシチビキ"
+    ],
+    "filename": "marine_family_b8fb6f6370b2_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account2",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「フエダイ科」という科を表す教育用の写真風生成合成画像。台帳内の例はヒメフエダイ、イシフエダイ、オオグチイシチビキ、学名参考はLutjanus gibbus、Aphareus furca、Aphareus rutilans。海中の魚類。対象分類群に適した体型、ひれ、鱗、自然な海底または外洋。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "05f32f317b6485c2f5193b80b659b00a8c28eca10c13a33fcc49f30cf39c5e83",
+    "sha256": "c0c244ce3c7c9842dfbe34348534c0e8252e0080caf331be49ca2f056c983aef"
+  },
+  {
+    "name": "フエフキダイ科",
+    "group": "魚類",
+    "member_count": 10,
+    "scientific_examples": [
+      "Lethrinus nebulosus",
+      "Lethrinus erythracanthus",
+      "Lethrinus variegatus"
+    ],
+    "japanese_examples": [
+      "ハマフエフキ",
+      "アマクチビ",
+      "ホソフエフキ"
+    ],
+    "filename": "marine_family_6114dc5b0841_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account2",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「フエフキダイ科」という科を表す教育用の写真風生成合成画像。台帳内の例はハマフエフキ、アマクチビ、ホソフエフキ、学名参考はLethrinus nebulosus、Lethrinus erythracanthus、Lethrinus variegatus。海中の魚類。対象分類群に適した体型、ひれ、鱗、自然な海底または外洋。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "20ec0d5dafadf8955b6587fa477dd4a4e75f1100db20d3e7e3f195b5e569796d",
+    "sha256": "f295867762c1a7b625720e205fe47868540046b4048bf3164e6429149cd8881f"
+  },
+  {
+    "name": "フグ科",
+    "group": "魚類",
+    "member_count": 16,
+    "scientific_examples": [
+      "Arothron hispidus",
+      "Sphoeroides pachygaster",
+      "Takifugu xanthopterus"
+    ],
+    "japanese_examples": [
+      "サザナミフグ",
+      "ヨリトフグ",
+      "シマフグ"
+    ],
+    "filename": "marine_family_3b0bda4eae9f_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account2",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「フグ科」という科を表す教育用の写真風生成合成画像。台帳内の例はサザナミフグ、ヨリトフグ、シマフグ、学名参考はArothron hispidus、Sphoeroides pachygaster、Takifugu xanthopterus。海中の魚類。対象分類群に適した体型、ひれ、鱗、自然な海底または外洋。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "7944a1e604d28767f8b4e084b2fc9340b05d747ecdce9417cab95978fcb308e7",
+    "sha256": "a790800b33b9a8aebedc74523b60a1120c283a103b12f46b85773df0980ba3a6"
+  },
+  {
+    "name": "フサイタチウオ科",
+    "group": "魚類",
+    "member_count": 7,
+    "scientific_examples": [
+      "Cataetyx lepidogenys",
+      "Cataetyx platyrhynchus",
+      "Diplacanthopoma japonicum"
+    ],
+    "japanese_examples": [
+      "フサイタチウオ",
+      "オオソコイタチウオ",
+      "ボライタチウオ"
+    ],
+    "filename": "marine_family_5ec1e1c3f5ce_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account2",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「フサイタチウオ科」という科を表す教育用の写真風生成合成画像。台帳内の例はフサイタチウオ、オオソコイタチウオ、ボライタチウオ、学名参考はCataetyx lepidogenys、Cataetyx platyrhynchus、Diplacanthopoma japonicum。海中の魚類。対象分類群に適した体型、ひれ、鱗、自然な海底または外洋。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "254738eceb956e5b25b0f1d0f43474be1f47d90efe7ecdfc4274ee8b90f6861f",
+    "sha256": "d36e2ec687a5ccd3b3096d88dfcdfbee9fc07d4e1613063eb7380a3dd147a0aa"
+  },
+  {
+    "name": "フサカサゴ科",
+    "group": "魚類",
+    "member_count": 39,
+    "scientific_examples": [
+      "Sebastes alutus",
+      "Iracundus signifer",
+      "Sebastes matsubarai"
+    ],
+    "japanese_examples": [
+      "アラスカメヌケ",
+      "ハタタテカサゴ",
+      "アコウダイ"
+    ],
+    "filename": "marine_family_79f7c1c64f39_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account2",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「フサカサゴ科」という科を表す教育用の写真風生成合成画像。台帳内の例はアラスカメヌケ、ハタタテカサゴ、アコウダイ、学名参考はSebastes alutus、Iracundus signifer、Sebastes matsubarai。海中の魚類。対象分類群に適した体型、ひれ、鱗、自然な海底または外洋。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "9c50ef6a00b164614710aca4e835b322b1c9cff3c1a1c891d3fb755bea1b9d66",
+    "sha256": "1f9db242cbce3c9d8ceadd598490f8050b28bd8dd3da36d6e08e73e69de9cd1f"
+  },
+  {
+    "name": "フタツクラゲ科",
+    "group": "刺胞動物",
+    "member_count": 10,
+    "scientific_examples": [
+      "Abyla haeckeli",
+      "Abyla trigona",
+      "Abylopsis tetragona"
+    ],
+    "japanese_examples": [
+      "ハコクラゲ",
+      "サンカクハコクラゲ",
+      "ハコクラゲモドキ"
+    ],
+    "filename": "marine_family_a3628c1c6aa6_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account2",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「フタツクラゲ科」という科を表す教育用の写真風生成合成画像。台帳内の例はハコクラゲ、サンカクハコクラゲ、ハコクラゲモドキ、学名参考はAbyla haeckeli、Abyla trigona、Abylopsis tetragona。海中の刺胞動物。対象分類群に適した傘、触手、ポリプまたは群体。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "6c2823d4ca9fd8e8f6d6613fb24c0e45b271109c5e106582c99db600a9fd7b9b",
+    "sha256": "17fb834b31f36533ba521d3e1441b2e9854e0fb859a3defd4bba6c130466dc85"
+  },
+  {
+    "name": "フトヒゲソコエビ科",
+    "group": "甲殻類",
+    "member_count": 31,
+    "scientific_examples": [
+      "Alicella gigantea",
+      "Anonyx eous",
+      "Anonyx hayashii"
+    ],
+    "japanese_examples": [
+      "ダイダラボッチ",
+      "アケボノツノアゲソコエビ",
+      "ハヤシツノアゲソコエビ"
+    ],
+    "filename": "marine_family_86019c8e5e98_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account2",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「フトヒゲソコエビ科」という科を表す教育用の写真風生成合成画像。台帳内の例はダイダラボッチ、アケボノツノアゲソコエビ、ハヤシツノアゲソコエビ、学名参考はAlicella gigantea、Anonyx eous、Anonyx hayashii。海底の甲殻類。対象分類群に適した節、触角、脚を正確に表現した水中マクロ。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "e5a1ec7d56ec1be825ff968b9d767c96214dcf70da2a19fb6046694d2658ecde",
+    "sha256": "8a33791ad48009b0677c64b42a57045b18f1b3906d948fdb83d594b32c765d77"
+  },
+  {
+    "name": "ブダイ科",
+    "group": "魚類",
+    "member_count": 11,
+    "scientific_examples": [
+      "Scarus prasiognathos",
+      "Calotomus spinidens",
+      "Scarus spinus"
+    ],
+    "japanese_examples": [
+      "ニシキブダイ",
+      "タイワンブダイ",
+      "シロオビブダイ"
+    ],
+    "filename": "marine_family_17f988f85086_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account2",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「ブダイ科」という科を表す教育用の写真風生成合成画像。台帳内の例はニシキブダイ、タイワンブダイ、シロオビブダイ、学名参考はScarus prasiognathos、Calotomus spinidens、Scarus spinus。海中の魚類。対象分類群に適した体型、ひれ、鱗、自然な海底または外洋。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "f366d2ca22de776a3080064db3965d859cc107083564fcf213a4c6eb30a90300",
+    "sha256": "36137a4ce177287b190feec7af5e142b04b31da6a729c095d98f79c179f30899"
+  },
+  {
+    "name": "ヘラウミノミ科",
+    "group": "甲殻類",
+    "member_count": 7,
+    "scientific_examples": [
+      "Vibilia armata",
+      "Vibilia australis",
+      "Vibilia caeca"
+    ],
+    "japanese_examples": [
+      "トガリヘラウミノミ",
+      "サンレツヘラノミ",
+      "メクラヘラノミ"
+    ],
+    "filename": "marine_family_a693be5653d0_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account2",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「ヘラウミノミ科」という科を表す教育用の写真風生成合成画像。台帳内の例はトガリヘラウミノミ、サンレツヘラノミ、メクラヘラノミ、学名参考はVibilia armata、Vibilia australis、Vibilia caeca。海底の甲殻類。対象分類群に適した節、触角、脚を正確に表現した水中マクロ。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "52fe4724b0eaa03ae806007fda2f29e6a748a51a903cf3a6170ecae600c08d0b",
+    "sha256": "5f3625060a34422286254e1622ea206d9c4de4166b7eb6314daac78d4a49835b"
+  },
+  {
+    "name": "ベラ科",
+    "group": "魚類",
+    "member_count": 36,
+    "scientific_examples": [
+      "Choerodon schoenleinii",
+      "Thalassoma amblycephalum",
+      "Hemigymnus melapterus"
+    ],
+    "japanese_examples": [
+      "シロクラベラ",
+      "コガシラベラ",
+      "タレクチベラ"
+    ],
+    "filename": "marine_family_80ace8d99d91_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account2",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「ベラ科」という科を表す教育用の写真風生成合成画像。台帳内の例はシロクラベラ、コガシラベラ、タレクチベラ、学名参考はChoerodon schoenleinii、Thalassoma amblycephalum、Hemigymnus melapterus。海中の魚類。対象分類群に適した体型、ひれ、鱗、自然な海底または外洋。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "cd06f6f81e4414616d5d847776c385375007e39543285ded0bb53ef52d1f2627",
+    "sha256": "204dde87a69a0da817624ddaab07cc41de52ed06c8fc73b0266bb567e2995837"
+  },
+  {
+    "name": "ホウボウ科",
+    "group": "魚類",
+    "member_count": 12,
+    "scientific_examples": [
+      "Chelidonichthys ischyrus",
+      "Lepidotrigla alata",
+      "Lepidotrigla japonica"
+    ],
+    "japanese_examples": [
+      "セツパリホウボウ",
+      "イゴダカホデリ",
+      "トゲカナガシラ"
+    ],
+    "filename": "marine_family_6656cd87603d_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account2",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「ホウボウ科」という科を表す教育用の写真風生成合成画像。台帳内の例はセツパリホウボウ、イゴダカホデリ、トゲカナガシラ、学名参考はChelidonichthys ischyrus、Lepidotrigla alata、Lepidotrigla japonica。海中の魚類。対象分類群に適した体型、ひれ、鱗、自然な海底または外洋。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "86e1ecc7d20a21ff060632804525137fbc9fede88c5c46eff2849fd77221e099",
+    "sha256": "849df62fdbfa351e7ceec42823cc8454788cf934655dc37e8afd277697ab4a62"
+  },
+  {
+    "name": "ホカケトラギス科",
+    "group": "魚類",
+    "member_count": 7,
+    "scientific_examples": [
+      "Chrionema furunoi",
+      "Chrionema chlorotaenia",
+      "Chrionema chryseres"
+    ],
+    "japanese_examples": [
+      "イバラトラギス",
+      "オハグロイバラトラギス",
+      "ナンヨウイバラトラギス"
+    ],
+    "filename": "marine_family_8fec9e4a3e03_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account2",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「ホカケトラギス科」という科を表す教育用の写真風生成合成画像。台帳内の例はイバラトラギス、オハグロイバラトラギス、ナンヨウイバラトラギス、学名参考はChrionema furunoi、Chrionema chlorotaenia、Chrionema chryseres。海中の魚類。対象分類群に適した体型、ひれ、鱗、自然な海底または外洋。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "cbf5c7317a2ef11ce85a078cb2f6fcd5a6d8bc20585300013889bcdec302cb0c",
+    "sha256": "6eb644ca2ad6449e01956110316c2f008322861dfc1663839703f0aa170999db"
+  },
+  {
+    "name": "ホテイエソ科",
+    "group": "魚類",
+    "member_count": 27,
+    "scientific_examples": [
+      "Opostomias mitsuii",
+      "Flagellostomias boureei",
+      "Thysanactis dentex"
+    ],
+    "japanese_examples": [
+      "ミツイホシエソ",
+      "ムチホシエソ",
+      "マヤカシホシエソ"
+    ],
+    "filename": "marine_family_a35a28238e13_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account2",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「ホテイエソ科」という科を表す教育用の写真風生成合成画像。台帳内の例はミツイホシエソ、ムチホシエソ、マヤカシホシエソ、学名参考はOpostomias mitsuii、Flagellostomias boureei、Thysanactis dentex。海中の魚類。対象分類群に適した体型、ひれ、鱗、自然な海底または外洋。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "816821db97061f96feb580c3d969d0247c1d84df875aa37237a7e2d9cca5157b",
+    "sha256": "14834cb7ffb84bb29a24fb48c885d67d81cbb47ee27cf6135a8667a5827edea7"
+  },
+  {
+    "name": "ホラアナゴ科",
+    "group": "魚類",
+    "member_count": 5,
+    "scientific_examples": [
+      "Synaphobranchus kaupii",
+      "Synaphobranchus affinis",
+      "Synaphobranchus brevidorsalis"
+    ],
+    "japanese_examples": [
+      "イラコアナゴ",
+      "ホラアナゴ",
+      "ソデアナゴ"
+    ],
+    "filename": "marine_family_729ec9b3f76d_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account2",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「ホラアナゴ科」という科を表す教育用の写真風生成合成画像。台帳内の例はイラコアナゴ、ホラアナゴ、ソデアナゴ、学名参考はSynaphobranchus kaupii、Synaphobranchus affinis、Synaphobranchus brevidorsalis。海中の魚類。対象分類群に適した体型、ひれ、鱗、自然な海底または外洋。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "bdc251e6c011af3b0cdb35c0ced39d0038c8a14f1ff1cef7f205d032c7534625",
+    "sha256": "c828ad9651a69ddbae5a0b3aa717505d4a260b87381b47698afb0d68bcc2ef7d"
+  },
+  {
+    "name": "ボラ科",
+    "group": "魚類",
+    "member_count": 9,
+    "scientific_examples": [
+      "Planiliza macrolepis",
+      "Planiliza subviridis",
+      "Crenimugil seheli"
+    ],
+    "japanese_examples": [
+      "コボラ",
+      "アンピンボラ",
+      "タイワンメナダ"
+    ],
+    "filename": "marine_family_dd8df68097fc_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account2",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「ボラ科」という科を表す教育用の写真風生成合成画像。台帳内の例はコボラ、アンピンボラ、タイワンメナダ、学名参考はPlaniliza macrolepis、Planiliza subviridis、Crenimugil seheli。海中の魚類。対象分類群に適した体型、ひれ、鱗、自然な海底または外洋。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "328f06775775c3a2d2da11e9808b1e85836c43f42c9a8065ceb58bca74fde5bd",
+    "sha256": "adff33a8838dfcca1e6817e43cfcd4eab3798478d95d7a5fe1ef0d82a44ca393"
+  },
+  {
+    "name": "マカジキ科",
+    "group": "魚類",
+    "member_count": 5,
+    "scientific_examples": [
+      "Istiompax indica",
+      "Kajikia audax",
+      "Tetrapturus angustirostris"
+    ],
+    "japanese_examples": [
+      "バショウカジキ",
+      "シロカジキ",
+      "マカジキ"
+    ],
+    "filename": "marine_family_1304f4d7f1ee_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account2",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「マカジキ科」という科を表す教育用の写真風生成合成画像。台帳内の例はバショウカジキ、シロカジキ、マカジキ、学名参考はIstiompax indica、Kajikia audax、Tetrapturus angustirostris。海中の魚類。対象分類群に適した体型、ひれ、鱗、自然な海底または外洋。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "6728009e28ebe64e15ce570dcd11ff0d725c16088a8bc788a06ec988bdf14235",
+    "sha256": "c41f4053e05385b44297951f73757b3afff86f144cd7f6096c7ec74398b50895"
+  },
+  {
+    "name": "マトウダイ科",
+    "group": "魚類",
+    "member_count": 5,
+    "scientific_examples": [
+      "Zenopsis nebulosa",
+      "Allocyttus verrucosus",
+      "Cyttomimus affinis"
+    ],
+    "japanese_examples": [
+      "カガミダイ",
+      "オオメマトウダイ",
+      "アオマトウダイ"
+    ],
+    "filename": "marine_family_c9c32147f7c3_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account2",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「マトウダイ科」という科を表す教育用の写真風生成合成画像。台帳内の例はカガミダイ、オオメマトウダイ、アオマトウダイ、学名参考はZenopsis nebulosa、Allocyttus verrucosus、Cyttomimus affinis。海中の魚類。対象分類群に適した体型、ひれ、鱗、自然な海底または外洋。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "9467b9371fb08f1f51c4b5c9330cbca1d5c0dfbe5753c3f8486679ecfbfbfaf5",
+    "sha256": "538cc7c2b164ad554df0863863936e6a8285c639c847250bebb8b34a82c9ea43"
+  },
+  {
+    "name": "ムネエソ科",
+    "group": "魚類",
+    "member_count": 12,
+    "scientific_examples": [
+      "Sternoptyx diaphana",
+      "Polyipnus parini",
+      "Polyipnus spinifer"
+    ],
+    "japanese_examples": [
+      "ムネエソ",
+      "マルホウネンエソ",
+      "ノコバホウネンエソ"
+    ],
+    "filename": "marine_family_7a634cef9a6e_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account2",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「ムネエソ科」という科を表す教育用の写真風生成合成画像。台帳内の例はムネエソ、マルホウネンエソ、ノコバホウネンエソ、学名参考はSternoptyx diaphana、Polyipnus parini、Polyipnus spinifer。海中の魚類。対象分類群に適した体型、ひれ、鱗、自然な海底または外洋。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "4292051b17b65909df12aee12b21611f13a374e3484f19345707b6d2a9d1ae06",
+    "sha256": "a7701d5da8093bda5a83a61a00b596732004dd5ef4aab342566d5fcffbd5649a"
+  },
+  {
+    "name": "メジロザメ科",
+    "group": "魚類",
+    "member_count": 6,
+    "scientific_examples": [
+      "Galeocerdo cuvier",
+      "Carcharhinus macloti",
+      "Scoliodon laticaudus"
+    ],
+    "japanese_examples": [
+      "イタチザメ",
+      "オオメジロザメ",
+      "ホコサキ"
+    ],
+    "filename": "marine_family_ede12b22979a_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "ChatGPT Web image generation via local CDP pipeline",
+    "generation_account": "account2",
+    "use_case": "scientific-educational",
+    "scope": "family",
+    "label": "生成イメージ",
+    "qc": {
+      "status": "accepted",
+      "reviewed_at": "2026-08-12",
+      "method": "全数連絡票と原寸試作の目視確認",
+      "checks": [
+        "分類群の代表形態",
+        "不自然な解剖の有無",
+        "文字混入",
+        "セル混線",
+        "中央16:10トリミング"
+      ]
+    },
+    "prompt": "海の生き物リストの「メジロザメ科」という科を表す教育用の写真風生成合成画像。台帳内の例はイタチザメ、オオメジロザメ、ホコサキ、学名参考はGaleocerdo cuvier、Carcharhinus macloti、Scoliodon laticaudus。海中の魚類。対象分類群に適した体型、ひれ、鱗、自然な海底または外洋。同じ科に見られる代表的な体型を1〜3個体で示す。単一の既知種を正確に再現した写真とはせず、分類群の形態範囲を誇張なく示す。自然史博物館の高品質な水中生態写真風、被写体は中央、上下に十分な余白、解剖学的に自然、文字なし、ロゴなし、透かしなし、人物なし、正方形。",
+    "source_sha256": "9861e97f23ef8e428ccc25d8e733d1f634f646625c9eee18c0affc552e9ba57a",
+    "sha256": "c9c6d0fdea2ba931b21a151c252f404965dccf8d454f4c28958aa01ffac7bcfd"
   }
 ]

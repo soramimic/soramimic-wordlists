@@ -132,6 +132,8 @@ def validate_marine_life(path: Path):
         CLASSES,
         APHIA_ID,
         IMAGE_FILE_BY_GROUP,
+        detailed_generated_filename,
+        load_generated_image_manifest,
         MIN_APHIA_COUNT,
         MIN_CLASS_COUNTS,
         MIN_QID_COUNT,
@@ -146,6 +148,7 @@ def validate_marine_life(path: Path):
         err(f"{path.name}: 列が規約と一致しない: {header}")
         return
     idx = {name: pos for pos, name in enumerate(header)}
+    generated_manifest = load_generated_image_manifest()
     seen = set()
     counts = Counter()
     for item_id, line in enumerate(lines[1:]):
@@ -180,6 +183,11 @@ def validate_marine_life(path: Path):
         image = fields[idx["image"]]
         if not image.startswith("https://upload.wikimedia.org/wikipedia/commons/"):
             valid_fallbacks = {IMAGE_FILE_BY_GROUP[cls]}
+            detailed = detailed_generated_filename(
+                fields[idx["family"]], fields[idx["order"]], generated_manifest
+            )
+            if detailed:
+                valid_fallbacks.add(detailed)
             if cls == "無脊椎動物":
                 valid_fallbacks.update(
                     filename for group, filename in IMAGE_FILE_BY_GROUP.items()
