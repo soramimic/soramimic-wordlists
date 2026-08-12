@@ -285,9 +285,15 @@ def strip_name_prefix(desc: str, name: str) -> str:
             continue
         head = desc[:m.start()]
         if not head or len(head) > 60 or "、" in head:
-            continue
+            return desc
+        if re.match(
+            r"^(?:実?父|実?母|父親|母親|兄|弟|姉|妹|息子|娘|夫|妻)の",
+            head,
+        ):
+            return desc
         if not _is_name_head(head, name):
-            continue
+            # 文中の人名の後ろに現れる助詞を、冒頭主語と誤認しない。
+            return desc
         rest = desc[m.end():].lstrip("、 ").strip()
         return rest
     return desc
@@ -531,6 +537,44 @@ PLAYER_DISAMBIGUATION_DESCRIPTION = re.compile(
     r"\s-\s|とは、以下の|以下の人物を指す|一覧参照|"
     r"(?:男性名|女性名|姓名|人名)である。$|(?:男性名|女性名|人名)。$"
 )
+PLAYER_ROLE_DESCRIPTION = re.compile(
+    r"(?:プロ)?野球選手|サッカー選手|フットボール選手"
+)
+PLAYER_NON_NAME_SUBJECT = re.compile(
+    r"出身|出生|現役|当時|時代|通算|シーズン|試合|記録|受賞|"
+    r"優勝|代表|監督として|選手として|NPB|MLB|Jリーグ"
+)
+
+
+def has_redundant_player_subject(description: str) -> bool:
+    """選手の肩書き文が、冒頭で本人名を主語に繰り返す形かを返す。
+
+    略称と本名が一致しない場合も、後半が選手の肩書きなら検出する。
+    出生地の括弧内や「現役時代は」のような非人名主語は除外する。
+    """
+    text = clean_ws(description)
+    particle = next(
+        (
+            match
+            for match in re.finditer("は", text[:61])
+            if text[max(0, match.start() - 2):match.end()] != "または"
+        ),
+        None,
+    )
+    if not particle:
+        return False
+    head = text[:particle.start()]
+    rest = text[particle.end():].lstrip("、､ ")
+    if not PLAYER_ROLE_DESCRIPTION.search(rest):
+        return False
+    if "、" in head or PLAYER_NON_NAME_SUBJECT.search(head):
+        return False
+    if head.count("（") != head.count("）") or head.count("(") != head.count(")"):
+        return False
+    relative = r"(?:実?父|実?母|父親|母親|兄|弟|姉|妹|息子|娘|夫|妻)"
+    if re.search(rf"(?:^{relative}の|{relative}$)", head):
+        return False
+    return True
 
 
 def is_likely_disambiguation_text(text: str) -> bool:

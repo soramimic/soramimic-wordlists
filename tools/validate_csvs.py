@@ -10,6 +10,7 @@
   読み解析が異常に遅くなる。実際に3行で辞書構築が193秒かかっていた)
 - image/image_page は生カンマを含まないURL
 - 選手descriptionが文脈依存の接続語や未完の語尾を含まない
+- 選手descriptionがカードに別表示される人名を主語に繰り返さない
 - 一意であるべき列の妥当性(stationsのwikidata重複など)
 
 usage: python3 tools/validate_csvs.py
@@ -21,7 +22,9 @@ from collections import Counter
 from pathlib import Path
 
 from wpnames import (PLAYER_DISAMBIGUATION_DESCRIPTION,
-                     is_standalone_player_description)
+                     has_redundant_player_subject,
+                     is_standalone_player_description,
+                     strip_name_prefix)
 
 ROOT = Path(__file__).resolve().parent.parent
 REQUIRED = ("id", "original", "surface")
@@ -74,6 +77,7 @@ def validate(path: Path):
         return
     img_cols = [c for c in ("image", "image_page") if c in idx]
     scientist_years = {}
+    player_groups = {}
     for lineno, line in enumerate(lines[1:], start=2):
         f = line.split(",")
         if len(f) != ncol:
@@ -93,8 +97,12 @@ def validate(path: Path):
                     f"(英名の混入?): {v[:40]}")
         if path.name in ("baseball.csv", "football.csv") and "description" in idx:
             v = f[idx["description"]]
+            player_groups.setdefault(f[idx["id"]], []).append((lineno, f))
             if v and not is_standalone_player_description(v):
                 err(f"{path.name}:{lineno}: descriptionが単独で完結していない: "
+                    f"{v[:65]}")
+            if v and has_redundant_player_subject(v):
+                err(f"{path.name}:{lineno}: descriptionの人名主語が冗長: "
                     f"{v[:65]}")
             if (
                 path.name == "football.csv"
@@ -123,6 +131,29 @@ def validate(path: Path):
             if person_id in scientist_years and scientist_years[person_id] != years:
                 err(f"{path.name}:{lineno}: 同じidで生没年が一致しない")
             scientist_years[person_id] = years
+    if player_groups:
+        for group_rows in player_groups.values():
+            descriptions = {fields[idx["description"]] for _, fields in group_rows}
+            if len(descriptions) != 1:
+                err(
+                    f"{path.name}:{group_rows[0][0]}: "
+                    "同じidでdescriptionが一致しない"
+                )
+            aliases = set()
+            for _, fields in group_rows:
+                aliases.add(fields[idx["original"]])
+                if fields[idx["type"]] in ("full", "registered"):
+                    aliases.add(fields[idx["surface"]])
+            for lineno, fields in group_rows:
+                description = fields[idx["description"]]
+                if description and any(
+                    strip_name_prefix(description, alias) != description
+                    for alias in aliases
+                ):
+                    err(
+                        f"{path.name}:{lineno}: descriptionの人名主語が冗長: "
+                        f"{description[:65]}"
+                    )
     print(f"OK: {path.name} ({len(lines) - 1}行)")
 
 
