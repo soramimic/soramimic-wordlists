@@ -28,6 +28,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from apply_class_images import is_class_image  # noqa: E402
+from apply_sekitsui_generated_images import is_generated_image  # noqa: E402
 from sekitsui_overrides import MANUAL_IMAGES  # noqa: E402
 from wpnames import (commons_urls, sparql,  # noqa: E402
                      write_csv_no_trailing_newline)
@@ -114,7 +115,8 @@ def main(argv: list[str] | None = None) -> int:
             r.setdefault(c, "")
         cur = r.get("image") or ""
         refresh_manual = args.refresh_manual and r["original"] in MANUAL_IMAGES
-        if cur and not is_class_image(cur) and not refresh_manual:
+        if (cur and not is_class_image(cur) and not is_generated_image(cur)
+                and not refresh_manual):
             continue  # 実写がある行は触らない(冪等)
         hit = name_img.get(r["original"])
         if hit:
@@ -122,7 +124,11 @@ def main(argv: list[str] | None = None) -> int:
             filled += 1  # 概念イメージだった行は実写に差し替わる
 
     write_csv_no_trailing_newline(CSV_PATH, cols, rows)
-    have = sum(1 for r in rows if r["image"] and not is_class_image(r["image"]))
+    have = sum(
+        1 for r in rows
+        if r["image"] and not is_class_image(r["image"])
+        and not is_generated_image(r["image"])
+    )
     print(f"画像を付与: +{filled} (計 {have}/{len(rows)}行に実写画像)")
     return 0
 

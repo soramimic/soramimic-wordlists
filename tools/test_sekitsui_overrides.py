@@ -65,6 +65,32 @@ class SekitsuiOverridesTest(unittest.TestCase):
             self.assertEqual("Q146", row["wikidata"])
             self.assertIn("Special:FilePath/Cat_grooming.jpg", row["image"])
 
+    def test_manual_only_replaces_family_generated_image_without_network(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "sekitsui.csv"
+            columns = ["original", "image", "image_page", "wikidata"]
+            with path.open("w", encoding="utf-8", newline="") as stream:
+                writer = csv.DictWriter(stream, fieldnames=columns, lineterminator="\n")
+                writer.writeheader()
+                writer.writerow({
+                    "original": "ネコ",
+                    "image": (
+                        "https://raw.githubusercontent.com/soramimic/"
+                        "soramimic-wordlists/main/images/sekitsui/"
+                        "sekitsui_family_deadbeef0000_generated.webp"
+                    ),
+                    "image_page": "old",
+                    "wikidata": "",
+                })
+            with mock.patch.object(enrich_sekitsui_images, "CSV_PATH", path), \
+                 mock.patch.object(enrich_sekitsui_images, "fetch_images") as fetch:
+                self.assertEqual(0, enrich_sekitsui_images.main(["--manual-only"]))
+            fetch.assert_not_called()
+            with path.open(encoding="utf-8", newline="") as stream:
+                row = next(csv.DictReader(stream))
+            self.assertEqual("Q146", row["wikidata"])
+            self.assertIn("Special:FilePath/Cat_grooming.jpg", row["image"])
+
     def test_refresh_manual_replaces_an_old_dedicated_image(self):
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory) / "sekitsui.csv"

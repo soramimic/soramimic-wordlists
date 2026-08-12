@@ -40,6 +40,28 @@ Wikidata を出典に、`tools/update_sekitsui.py` の年次バッチで未収�
 - **月次バッチ(update-wordlists)に組み込む**。`update_sekitsui.py` が追記した新規行にも同じ回で概念イメージが付く。updater 側で画像を付けず独立ステップにしたのは、画像付与が Wikidata 取得と無関係(オフライン処理)で、失敗の切り分けと巻き戻しを分けられるため
 - **実写が後から取れたら概念イメージを上書きする**。`enrich_sekitsui_images.py` は「実写がある行は触らない」に条件を変え、概念イメージのURL(`.../releases/download/class-image-` で始まる)は空扱いにして実写で差し替える。概念イメージ→実写は改善方向であり、ADR 00014 の「既存行を劣化させない」に反しない
 
+### 実写未取得行を科レベルの写真風生成イメージへ細分化する (2026-08-12 追記)
+
+`marine_life` で科レベルの写真風生成イメージが、綱・形態群の共通画像よりも分類群の
+特徴を伝えやすいことを確認した。この方式を脊椎動物にも適用し、実写未取得行のうち
+同じ科が5行以上あるものは科別画像を優先する。
+
+- 対象は従来の `class-image-v1` または科別生成画像を使う実写未取得行だけで数える。
+  `family` が「科」で終わり、5行以上ある93科・1,618行を科別対象にする。属などが
+  family列へ入っている値や5行未満の科、科不明を含む1,047行は従来のclass SVGを維持する
+- 画像は科内の最大3和名を視覚参考にし、代表的な体型を1〜3個体で示す写真風生成合成画像
+  とする。個別種の同定画像とは扱わず、960x600 WebPへ決定的に整形して右上に
+  「生成イメージ」を焼き込む
+- 海の生き物で同じ科について全数QC済みの画像がある4科は、再生成せず同じ検品済み
+  WebPを再利用する。残る89科は独立したChatGPT Web画像生成チャットで生成し、分割後の
+  全セルを原寸と連絡票で検品する
+- `tools/plan_sekitsui_generated_images.py` が現在のCSVから閾値・安定ファイル名・割当・
+  プロンプトを再現し、`tools/sekitsui_generated_images.json` が生成手段、プロンプト、
+  QC、元画像と配布画像のSHA-256を固定する。画像は `images/sekitsui/` で配布する
+- `tools/apply_sekitsui_generated_images.py` は実写を絶対に上書きせず、class SVGまたは
+  既存の科別生成画像だけを現在のfamilyに従って更新する。`enrich_sekitsui_images.py` は
+  科別生成画像を実写未取得扱いにし、検証済みCommons実写が後から取れれば上書きする
+
 ## Consequences
 
 - sekitsui が pokemon / nations / stations / baseball / football / physicist に続く自動更新対象になる

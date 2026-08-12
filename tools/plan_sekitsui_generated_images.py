@@ -20,6 +20,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 CSV_PATH = ROOT / "sekitsui.csv"
 CLASS_IMAGE_V1_MARKER = "/releases/download/class-image-v1/"
+FAMILY_GENERATED_MARKER = "/images/sekitsui/sekitsui_family_"
 MIN_FAMILY_ROWS = 5
 
 CLASS_HABITATS = {
@@ -39,11 +40,12 @@ def stable_filename(name: str) -> str:
 
 
 def load_rows(path: Path = CSV_PATH) -> list[dict[str, str]]:
-    """現在 class-image-v1 を使っている行だけを読み込む。"""
+    """実写未取得（class SVGまたは科別生成画像）の行だけを読み込む。"""
     with path.open(encoding="utf-8", newline="") as source:
         return [
             dict(row) for row in csv.DictReader(source)
-            if CLASS_IMAGE_V1_MARKER in row.get("image", "")
+            if (CLASS_IMAGE_V1_MARKER in row.get("image", "")
+                or FAMILY_GENERATED_MARKER in row.get("image", ""))
         ]
 
 

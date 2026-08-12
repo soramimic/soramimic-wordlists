@@ -21,6 +21,17 @@ class SekitsuiGeneratedImagePlanTest(unittest.TestCase):
             ),
         }
 
+    def test_load_rows_keeps_existing_family_generated_images(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "sekitsui.csv"
+            path.write_text(
+                "original,image\n"
+                "ア,https://raw.githubusercontent.com/soramimic/soramimic-wordlists/"
+                "main/images/sekitsui/sekitsui_family_deadbeef0000_generated.webp",
+                encoding="utf-8",
+            )
+            self.assertEqual(planner.load_rows(path)[0]["original"], "ア")
+
     def test_threshold_and_full_assignment_coverage(self):
         rows = [self.row(f"多数{i}", "多数科") for i in range(5)]
         rows += [self.row(f"少数{i}", "少数科", "鳥類") for i in range(4)]
