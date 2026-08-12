@@ -138,7 +138,7 @@ JODCの和名・学名をWoRMSの有効AphiaIDで海洋性確認して追加し�
 | class | `哺乳類`/`爬虫類`/`魚類`/`無脊椎動物`。Videoの分類フィルター値 |
 | vertebrate | `脊椎動物`/`無脊椎動物`。前者は哺乳類・爬虫類・魚類を包含する上位フィルター |
 | order, family | 目と科。JODCの日本語分類名、未収録時はWoRMSの学名による補完 |
-| description | 各生物に固有の分類・呼称または生態・形態を表す20〜60字の完結した短文 |
+| description | 根拠を確認できた生態・形態・生息域等を表す8〜90字の完結した短文。根拠不足時は空欄 |
 | image, image_page | Commons実写または分類別の概念画像と、その出典・確認先 |
 | wikidata | 対応を確認できた分類群のQID。未確認の場合は空欄 |
 | scientific_name | WoRMSで確認した有効学名。初版の一部は空欄 |
@@ -147,9 +147,11 @@ JODCの和名・学名をWoRMSの有効AphiaIDで海洋性確認して追加し�
 1384件はCommonsの自由ライセンス実写（幅960px以下の配信用サムネイル）、残る2870件は分類別の自作概念SVGである。
 実写のライセンス・作者・SHA-1・同定根拠は `tools/marine_life_image_sources.jsonl` に固定する。
 概念SVGには「イメージ」と表示し、特定種の姿と誤認しないようにしている。
-DB追加分の説明はWoRMSで再確認した分類・海洋性と、種レベルの最大体長・IUCN評価から
-決定的に生成する。使用した構造化事実、参照文献、品質状態、取得日は
-`tools/marine_life_description_sources.jsonl` に固定し、Traitsがない行には未確認の特徴を補わない。
+DB追加分の説明は、Wikidata QIDで表示名との一致を検証した日本語Wikipedia記事の特徴文を
+優先し、使った記事URL・版ID・元文・生成文を固定する。該当文がない場合だけ、WoRMSの
+種レベルの最大体長・IUCN評価から決定的に生成する。根拠は
+`tools/marine_life_description_sources.jsonl` に固定し、根拠がない行には未確認の特徴を補わない。
+Wikipedia由来の加工文はCC BY-SA 4.0で、同台帳から原記事への帰属と変更有無を確認できる。
 
 ## pokemon.csv
 

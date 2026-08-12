@@ -49,8 +49,8 @@ JODCに日本語の目・科がない行は、WoRMSの有効レコードの学�
 
 DB追加分の説明を更新するときは、次を明示的に実行する。WoRMSの分類レコードとTraitsを
 `tools/.cache/marine_life_descriptions/` に再開可能な形で取得し、説明に使用した事実だけを
-`tools/marine_life_description_sources.jsonl` へ固定する。ページ本文は転載せず、種自身に
-紐づく最大体長・IUCN評価を優先し、Traitsが無ければ学名・科・海産種確認だけを用いる。
+`tools/marine_life_description_sources.jsonl` へ固定する。WoRMSのページ本文は転載せず、種自身に
+紐づく最大体長・IUCN評価だけを用いる。Traitsが無ければ学名・科・出典名で水増しせず空欄にする。
 accepted Species以外の既存名は一律に種扱いせず、accepted SubspeciesまたはWoRMS上の
 疑問名・要検討分類群等であることを説明へ明記する。
 
@@ -59,6 +59,17 @@ python3 tools/enrich_marine_life_descriptions.py
 # WoRMSの現行値を取り直す定期更新（APIへ集中アクセスしない既定間隔を維持）
 python3 tools/enrich_marine_life_descriptions.py --refresh
 python3 -m unittest tools/test_enrich_marine_life_descriptions.py
+```
+
+日本語Wikipediaの特徴文を使う場合は、名前検索をせずWikidata QIDの `jawiki` sitelinkだけを
+起点にする。表示名と記事名の一致を必須とし、分類だけの文は採用しない。記事URL、版ID、
+取得日、採用元文、生成文、変更有無が根拠台帳へ保存される。生成文はCC BY-SA 4.0で扱う。
+
+```sh
+python3 tools/enrich_marine_life_wikipedia_descriptions.py
+# Wikipedia/Wikidataの現行値を取り直すときだけ
+python3 tools/enrich_marine_life_wikipedia_descriptions.py --refresh
+python3 -m unittest tools/test_enrich_marine_life_wikipedia_descriptions.py
 ```
 
 ```sh

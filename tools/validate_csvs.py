@@ -147,7 +147,6 @@ def validate_marine_life(path: Path):
         return
     idx = {name: pos for pos, name in enumerate(header)}
     seen = set()
-    seen_descriptions = set()
     counts = Counter()
     for item_id, line in enumerate(lines[1:]):
         fields = line.split(",")
@@ -169,11 +168,15 @@ def validate_marine_life(path: Path):
         if not fields[idx["order"]].endswith("目") or not fields[idx["family"]].endswith("科"):
             err(f"{path.name}:{item_id + 2}: order/familyが不正: {name}")
         description = fields[idx["description"]]
-        if not 20 <= len(description) <= 60 or not description.endswith("。"):
+        if description and (not 8 <= len(description) <= 90 or not description.endswith("。")):
             err(f"{path.name}:{item_id + 2}: descriptionが不正: {name}")
-        if description in seen_descriptions:
-            err(f"{path.name}:{item_id + 2}: descriptionが重複: {name}")
-        seen_descriptions.add(description)
+        if description and re.match(rf"^(?:{re.escape(name)}|本種)(?:は|が)[、 ]*", description):
+            err(f"{path.name}:{item_id + 2}: descriptionの主語が冗長: {name}")
+        if description and ("WoRMS" in description or "学名は" in description):
+            err(f"{path.name}:{item_id + 2}: descriptionが出典メタデータを重複表示: {name}")
+        scientific_name = fields[idx["scientific_name"]]
+        if scientific_name and scientific_name in description:
+            err(f"{path.name}:{item_id + 2}: descriptionが学名を重複表示: {name}")
         image = fields[idx["image"]]
         if not image.startswith("https://upload.wikimedia.org/wikipedia/commons/"):
             valid_fallbacks = {IMAGE_FILE_BY_GROUP[cls]}
