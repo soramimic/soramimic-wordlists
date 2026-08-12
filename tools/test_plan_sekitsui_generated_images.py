@@ -40,12 +40,15 @@ class SekitsuiGeneratedImagePlanTest(unittest.TestCase):
 
         plan, assignment = planner.build_plan(rows)
 
-        self.assertEqual(["family:多数科"], [record["word"] for record in plan])
+        self.assertEqual(
+            ["family:多数科", "family:少数科"],
+            [record["word"] for record in plan],
+        )
         self.assertTrue(all(
             assignment[f"多数{i}"] == "family:多数科" for i in range(5)
         ))
         self.assertTrue(all(
-            assignment[f"少数{i}"] == "class:鳥類" for i in range(4)
+            assignment[f"少数{i}"] == "family:少数科" for i in range(4)
         ))
         self.assertTrue(all(
             assignment[f"不正{i}"] == "class:爬虫類" for i in range(5)

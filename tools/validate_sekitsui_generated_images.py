@@ -15,8 +15,8 @@ from plan_sekitsui_generated_images import (
 
 ROOT = Path(__file__).resolve().parent.parent
 IMAGE_DIR = ROOT / "images" / "sekitsui"
-MIN_ASSETS = 90
-MIN_COVERED_ROWS = 1600
+MIN_ASSETS = 366
+MIN_COVERED_ROWS = 2083
 
 
 def validate() -> None:
@@ -75,7 +75,7 @@ def validate() -> None:
         actual_covered += 1
     if actual_covered != covered_rows:
         raise ValueError("CSV family image coverage mismatch")
-    if MIN_FAMILY_ROWS != 5:
+    if MIN_FAMILY_ROWS != 1:
         raise ValueError("unexpected family threshold")
     print(
         f"sekitsui family generated images: assets={len(records)} "

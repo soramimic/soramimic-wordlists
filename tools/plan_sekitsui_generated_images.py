@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
 """脊椎動物の綱別代替画像を科別の生成画像へ置き換える計画を作る。
 
-class-image-v1 の画像を使っている行のうち、実写未取得行が5件以上ある科を
-科別画像の生成対象にする。全対象行について科別画像または従来の綱別画像への
-割り当ても出力する。
+実写未取得行に有効な科名が1件でもあれば科別画像の生成対象にする。全対象行に
+ついて科別画像または従来の綱別画像への割り当ても出力する。
 
 usage: python3 tools/plan_sekitsui_generated_images.py --out-dir DIR
 """
@@ -21,7 +20,7 @@ ROOT = Path(__file__).resolve().parent.parent
 CSV_PATH = ROOT / "sekitsui.csv"
 CLASS_IMAGE_V1_MARKER = "/releases/download/class-image-v1/"
 FAMILY_GENERATED_MARKER = "/images/sekitsui/sekitsui_family_"
-MIN_FAMILY_ROWS = 5
+MIN_FAMILY_ROWS = 1
 
 CLASS_HABITATS = {
     "哺乳類": "その科に自然な森林、草原、岩場、水辺または海中の生息環境",

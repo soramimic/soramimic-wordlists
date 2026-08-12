@@ -262,8 +262,9 @@ python3 -m unittest tools/test_prepare_marine_generated_fallback.py
   python3 tools/gen_class_images.py --group sekitsui --out /tmp/class_images
   python3 tools/apply_class_images.py sekitsui   # 実写のある行は触らない
   ```
-  さらに、実写未取得行が同じ科に5件以上ある場合は科別の写真風生成イメージを
-  優先する。計画と割当は現在のCSVから決定的に再生成でき、実写が見つかれば
+  さらに、実写未取得行に有効な科名が1件でもある場合は科別の写真風生成イメージを
+  優先する。将来同じ科の行が増えても画像を再利用できる。計画と割当は現在のCSVから
+  決定的に再生成でき、実写が見つかれば
   Commons画像へ置き換えられる:
   ```sh
   python3 tools/plan_sekitsui_generated_images.py --out-dir /tmp/sekitsui_plan
