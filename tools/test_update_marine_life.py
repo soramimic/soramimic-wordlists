@@ -56,7 +56,7 @@ class MarineLifeUpdaterTest(unittest.TestCase):
         parsed = next(csv.DictReader(io.StringIO(data)))
         self.assertEqual("哺乳類", parsed["class"])
         self.assertEqual("脊椎動物", parsed["vertebrate"])
-        self.assertTrue(parsed["image"].endswith("/marine_mammal.svg"))
+        self.assertTrue(parsed["image"].endswith("/marine_mammal_generated.webp"))
         self.assertEqual(parsed["original"], parsed["pronunciation"])
         self.assertEqual("137090", parsed["aphia_id"])
 

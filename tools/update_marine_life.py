@@ -14,7 +14,7 @@ import io
 import json
 import os
 import re
-import xml.etree.ElementTree as ET
+import hashlib
 from collections import Counter
 from pathlib import Path
 
@@ -22,6 +22,7 @@ ROOT = Path(__file__).resolve().parent.parent
 SOURCE = Path(__file__).with_name("marine_life_source.csv")
 IMAGE_SOURCES = Path(__file__).with_name("marine_life_image_sources.jsonl")
 DESCRIPTION_SOURCES = Path(__file__).with_name("marine_life_description_sources.jsonl")
+GENERATED_IMAGE_SOURCES = Path(__file__).with_name("marine_life_generated_images.json")
 OUTPUT = ROOT / "marine_life.csv"
 
 CLASSES = ("哺乳類", "爬虫類", "魚類", "無脊椎動物")
@@ -46,16 +47,16 @@ VERTEBRATE_BY_CLASS = {
     "無脊椎動物": "無脊椎動物",
 }
 IMAGE_FILE_BY_GROUP = {
-    "哺乳類": "marine_mammal.svg",
-    "爬虫類": "marine_reptile.svg",
-    "魚類": "marine_fish.svg",
-    "無脊椎動物": "marine_invertebrate.svg",
-    "刺胞動物": "marine_cnidarian.svg",
-    "甲殻類": "marine_crustacean.svg",
-    "軟体動物": "marine_mollusk.svg",
-    "棘皮動物": "marine_echinoderm.svg",
-    "蠕虫型": "marine_worm.svg",
-    "その他無脊椎": "marine_other_invertebrate.svg",
+    "哺乳類": "marine_mammal_generated.webp",
+    "爬虫類": "marine_reptile_generated.webp",
+    "魚類": "marine_fish_generated.webp",
+    "無脊椎動物": "marine_other_invertebrate_generated.webp",
+    "刺胞動物": "marine_cnidarian_generated.webp",
+    "甲殻類": "marine_crustacean_generated.webp",
+    "軟体動物": "marine_mollusk_generated.webp",
+    "棘皮動物": "marine_echinoderm_generated.webp",
+    "蠕虫型": "marine_worm_generated.webp",
+    "その他無脊椎": "marine_other_invertebrate_generated.webp",
 }
 RAW_BASE = (
     "https://raw.githubusercontent.com/soramimic/soramimic-wordlists/"
@@ -228,14 +229,28 @@ def load_source(path: Path = SOURCE) -> list[dict[str, str]]:
 
 def validate_images() -> None:
     image_dir = ROOT / "images" / "marine_life"
-    for filename in set(IMAGE_FILE_BY_GROUP.values()):
+    manifest = json.loads(GENERATED_IMAGE_SOURCES.read_text(encoding="utf-8"))
+    by_filename = {record["filename"]: record for record in manifest}
+    expected = set(IMAGE_FILE_BY_GROUP.values())
+    if set(by_filename) != expected:
+        raise ValueError("generated image manifest does not match fallback images")
+    for filename in expected:
         path = image_dir / filename
         if not path.is_file():
-            raise ValueError(f"missing concept image: {path}")
-        root = ET.parse(path).getroot()
-        label = "".join(root.itertext())
-        if root.attrib.get("width") != "320" or root.attrib.get("height") != "200" or "イメージ" not in label:
-            raise ValueError(f"missing or unlabeled concept image: {path}")
+            raise ValueError(f"missing generated image: {path}")
+        raw = path.read_bytes()
+        marker = raw.find(b"\x9d\x01\x2a")
+        if raw[:4] != b"RIFF" or raw[8:12] != b"WEBP" or marker < 0:
+            raise ValueError(f"invalid generated WebP: {path}")
+        width = int.from_bytes(raw[marker + 3:marker + 5], "little") & 0x3FFF
+        height = int.from_bytes(raw[marker + 5:marker + 7], "little") & 0x3FFF
+        if (width, height) != (960, 600):
+            raise ValueError(f"unexpected generated image size: {path}")
+        record = by_filename[filename]
+        if record.get("label") != "生成イメージ" or record.get("scope") != "morphology_group":
+            raise ValueError(f"generated image lacks disclosure metadata: {path}")
+        if hashlib.sha256(raw).hexdigest() != record.get("sha256"):
+            raise ValueError(f"generated image hash mismatch: {path}")
 
 
 def validate_image_sources(rows: list[dict[str, str]], path: Path = IMAGE_SOURCES) -> None:

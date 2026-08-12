@@ -1,0 +1,110 @@
+[
+  {
+    "group": "哺乳類",
+    "filename": "marine_mammal_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "OpenAI built-in image generation",
+    "use_case": "scientific-educational",
+    "scope": "morphology_group",
+    "label": "生成イメージ",
+    "prompt": "Photorealistic natural-history composite representing marine mammals as a broad morphology group: generic dolphin-like and whale-like cetaceans and a seal-like pinniped, in open ocean; anatomically plausible, not a particular species; landscape 16:10; no text, logo, watermark, humans, aquarium, or fantasy anatomy.",
+    "source_sha256": "e00ab4aa2f33e8fdabeee91209f5c94c62da7b32dd8592acd8731553a7be66aa",
+    "sha256": "efeb7b36ab43452772822bb5d6827a551ef5432b853a9b8ed0498be334baf552"
+  },
+  {
+    "group": "爬虫類",
+    "filename": "marine_reptile_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "OpenAI built-in image generation",
+    "use_case": "scientific-educational",
+    "scope": "morphology_group",
+    "label": "生成イメージ",
+    "prompt": "Photorealistic natural-history composite representing marine reptiles as a broad morphology group: a generic sea-turtle-like reptile and sea-snake-like reptile above seagrass and reef rubble; anatomically plausible, not particular species; landscape 16:10; no text, logo, watermark, humans, aquarium, or fantasy anatomy.",
+    "source_sha256": "ef2e0ed3cb97b80f4001d1ba240e5ddad4b939d733fcdeaae3dc2207fe9354ab",
+    "sha256": "71eec32054f2bb6dc82ef82ef8a98cd6312c2e329e91e9b9aa8400a72477f130"
+  },
+  {
+    "group": "魚類",
+    "filename": "marine_fish_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "OpenAI built-in image generation",
+    "use_case": "scientific-educational",
+    "scope": "morphology_group",
+    "label": "生成イメージ",
+    "prompt": "Photorealistic natural-history composite representing marine fish as a broad morphology group: streamlined open-water fish, flat bottom fish, ray-like cartilaginous fish, and small reef fish at a sandy reef edge; not particular species; landscape 16:10; no text, logo, watermark, humans, aquarium, or fantasy anatomy.",
+    "source_sha256": "a350c4b8cf0abdd7b38eeee9a0545ddaba565e9a23573e8bae7bd9a3c9972640",
+    "sha256": "9635774de6ba6e7cfb05b497e0ced8d90794fcdf4fa83b2cde6d0e1e36de8ed6"
+  },
+  {
+    "group": "刺胞動物",
+    "filename": "marine_cnidarian_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "OpenAI built-in image generation",
+    "use_case": "scientific-educational",
+    "scope": "morphology_group",
+    "label": "生成イメージ",
+    "prompt": "Photorealistic natural-history composite representing cnidarians as a broad morphology group: translucent jellyfish, branching coral colony, and sea-anemone form in blue-green coastal water; not particular species; landscape 16:10; no labels, text, logo, watermark, humans, aquarium, or fantasy glow.",
+    "source_sha256": "69b2580bf8c5ab1d4e252fdd3627896fb99997beade80b53781657cde1c3ed39",
+    "sha256": "426be5ed4f9aa4f1befe75f6d31d0112bf55deec97d227ed7205fed4162c4412"
+  },
+  {
+    "group": "甲殻類",
+    "filename": "marine_crustacean_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "OpenAI built-in image generation",
+    "use_case": "scientific-educational",
+    "scope": "morphology_group",
+    "label": "生成イメージ",
+    "prompt": "Photorealistic natural-history composite representing marine crustaceans as a broad morphology group: generic shrimp-like, crab-like, and small lobster-like forms on a rocky sandy seafloor; accurate limbs and segmentation, not particular species; landscape 16:10; no text, logo, watermark, humans, aquarium, or fantasy anatomy.",
+    "source_sha256": "391d6c4d8dd827fdddb86d61b4271f457f7c9039094a845df6842c70dd830998",
+    "sha256": "378ad09612c3eafeed549b88b8c45e413104111f28aa186d4b2167f588790254"
+  },
+  {
+    "group": "軟体動物",
+    "filename": "marine_mollusk_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "OpenAI built-in image generation",
+    "use_case": "scientific-educational",
+    "scope": "morphology_group",
+    "label": "生成イメージ",
+    "prompt": "Photorealistic natural-history composite representing marine mollusks as a broad morphology group: generic octopus-like cephalopod, spiral-shelled sea snail, and bivalve shellfish on a coastal seafloor; not particular species; landscape 16:10; no text, logo, watermark, humans, aquarium, or fantasy anatomy.",
+    "source_sha256": "5b32cd6af32c275c48cc3c21c6dc85a730a3ce41cc009ab7deb4901ac7d0f328",
+    "sha256": "4c8f9c992c55c589c569de49026cf91fb29c770acc88f39ee7458bece244cd9d"
+  },
+  {
+    "group": "棘皮動物",
+    "filename": "marine_echinoderm_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "OpenAI built-in image generation",
+    "use_case": "scientific-educational",
+    "scope": "morphology_group",
+    "label": "生成イメージ",
+    "prompt": "Photorealistic natural-history composite representing echinoderms as a broad morphology group: generic five-armed sea star, round sea urchin, and elongated sea cucumber on rocky sand; correct radial body plans, not particular species; landscape 16:10; no text, logo, watermark, humans, aquarium, or fantasy anatomy.",
+    "source_sha256": "42074bb149d89959f6ff38e3d5bd6681db1c6cd6ccd3db0ae57a8bb25331fc5d",
+    "sha256": "4632a0f4a68e412beace8bcecc1d1253fae2e56039a5d2dd8fd40be0b58bae0e"
+  },
+  {
+    "group": "蠕虫型",
+    "filename": "marine_worm_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "OpenAI built-in image generation",
+    "use_case": "scientific-educational",
+    "scope": "morphology_group",
+    "label": "生成イメージ",
+    "prompt": "Photorealistic natural-history macro composite representing marine worm-shaped invertebrates as a broad morphology group: ribbon-worm-like, segmented bristle-worm-like, and tube-worm-like forms on sand and rock; not particular species; landscape 16:10; no gore, parasites, text, logo, watermark, humans, aquarium, or fantasy anatomy.",
+    "source_sha256": "8d03d65b97f8257e3c70bd40e4cf7302915514620ff303305094c80747fe60f0",
+    "sha256": "6517d55e5e773657c99206af3ab44c25700a5b5c2133bc8de22ea093b4393ca4"
+  },
+  {
+    "group": "その他無脊椎",
+    "filename": "marine_other_invertebrate_generated.webp",
+    "created_at": "2026-08-12",
+    "generator": "OpenAI built-in image generation",
+    "use_case": "scientific-educational",
+    "scope": "morphology_group",
+    "label": "生成イメージ",
+    "prompt": "Photorealistic natural-history composite representing other marine invertebrates: generic branching sponge, colonial sea-squirt-like tunicate cluster, and lace-like bryozoan colony on a shaded reef wall; not particular species; landscape 16:10; no labels, text, logo, watermark, humans, aquarium, or fantasy anatomy.",
+    "source_sha256": "23b206dcafea2cbcd035e916ed8716d82c7c99c4cbb8aac2605c773f87a34067",
+    "sha256": "a159f8ebe1bc0b3122215fbfc83ce094c730540210142f3ddff83d989f73819a"
+  }
+]

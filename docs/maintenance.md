@@ -82,7 +82,14 @@ python3 -m unittest tools/test_update_marine_life.py
 レビューしたうえで `--allow-removals` を付ける。実写を追加・変更するときはCommons APIで
 ライセンス、作者、寸法、SHA-1を取得し、`tools/marine_life_image_sources.jsonl` の同名行と
 台帳の `image` / `image_page` を同時に更新する。`update_marine_life.py --check` は両者の
-一対一対応も検査する。分類別概念SVGには必ず「イメージ」表記を残す。
+一対一対応も検査する。形態群別の写真風生成画像には必ず「生成イメージ」表記を残す。
+生成画像を差し替える場合は、元素材を次のコマンドで960x600 WebPへ整形し、
+`tools/marine_life_generated_images.json` のプロンプト・生成日・SHA-256も更新する。
+
+```sh
+python3 tools/prepare_marine_generated_fallback.py INPUT OUTPUT
+python3 -m unittest tools/test_prepare_marine_generated_fallback.py
+```
 
 - pokemon: 全件再生成。フォームは「ライチュウ（アローラのすがた）」形式で
   表記ゆれ3行を同一idで収録。種とフォームは別ポケモンとして別id

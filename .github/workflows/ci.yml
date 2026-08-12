@@ -15,6 +15,9 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Install image test dependency
+        run: python -m pip install Pillow==11.3.0
+
       - name: Validate CSVs
         run: python tools/validate_csvs.py
 
@@ -30,6 +33,7 @@ jobs:
           tools/test_update_marine_life.py
           tools/test_enrich_marine_life_descriptions.py
           tools/test_enrich_marine_life_wikipedia_descriptions.py
+          tools/test_prepare_marine_generated_fallback.py
 
       - name: Verify marine life generated CSV
         run: python tools/update_marine_life.py --check
