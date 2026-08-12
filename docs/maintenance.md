@@ -262,6 +262,16 @@ python3 -m unittest tools/test_prepare_marine_generated_fallback.py
   python3 tools/gen_class_images.py --group sekitsui --out /tmp/class_images
   python3 tools/apply_class_images.py sekitsui   # 実写のある行は触らない
   ```
+  さらに、実写未取得行が同じ科に5件以上ある場合は科別の写真風生成イメージを
+  優先する。計画と割当は現在のCSVから決定的に再生成でき、実写が見つかれば
+  Commons画像へ置き換えられる:
+  ```sh
+  python3 tools/plan_sekitsui_generated_images.py --out-dir /tmp/sekitsui_plan
+  python3 tools/apply_sekitsui_generated_images.py
+  python3 tools/validate_sekitsui_generated_images.py
+  ```
+  生成画像を追加・再生成した場合は、全数目視QC後に
+  `tools/sekitsui_generated_images.json` のプロンプト・QC日・SHA-256も更新する。
 - plant: sekitsuiと同じ方式の植物版。被子植物は巨大で一括取得がタイムアウト
   するため目(order)ごとに分割し、単子葉/双子葉に振り分ける。非被子植物は門
   ごとに取得。`class` 列に大分類(双子葉/単子葉/裸子植物/シダ植物/コケ植物/

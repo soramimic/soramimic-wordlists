@@ -121,7 +121,9 @@ jobs:
       - name: Apply class images (sekitsui/plant/insect)
         id: classimg
         continue-on-error: true
-        run: python tools/apply_class_images.py
+        run: |
+          python tools/apply_class_images.py
+          python tools/apply_sekitsui_generated_images.py
 
       - name: 失敗したupdaterの書きかけ出力を巻き戻す
         id: failures
