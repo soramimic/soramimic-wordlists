@@ -35,6 +35,15 @@ class PlayerDescriptionSubjectTest(unittest.TestCase):
             ),
         )
 
+    def test_player_description_uses_willie_upshaw_override(self):
+        self.assertEqual(
+            "1989年に福岡ダイエーで33本塁打・80打点を記録。",
+            make_player_description(
+                "ウィリー・アップショーは、アメリカ合衆国出身の元プロ野球選手。",
+                "ウィリー・アップショー",
+            ),
+        )
+
     def test_removes_middle_name_subject(self):
         self.assertEqual(
             "アメリカ合衆国出身の元プロ野球選手。",
