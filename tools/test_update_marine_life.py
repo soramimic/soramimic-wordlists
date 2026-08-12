@@ -177,9 +177,68 @@ class MarineLifeUpdaterTest(unittest.TestCase):
                  mock.patch.object(marine, "OUTPUT", output), \
                  mock.patch.object(marine, "load_source", return_value=[self.row()]), \
                  mock.patch.object(marine, "validate_images"), \
-                 mock.patch.object(marine, "validate_image_sources"):
+                 mock.patch.object(marine, "validate_image_sources"), \
+                 mock.patch.object(marine, "validate_description_sources"):
                 self.assertEqual(1, marine.main(["--check"]))
                 self.assertEqual("different", output.read_text(encoding="utf-8"))
+
+    def test_description_from_worms_traits(self):
+        row = self.row(name="ハナミノカサゴ", family="フサカサゴ科")
+        evidence = {
+            "traits": [
+                {"type": "maximum_length", "value": "38", "unit": "cm"},
+                {"type": "iucn_status", "category": "Least Concern", "year": "2015"},
+            ]
+        }
+        self.assertEqual(
+            "ハナミノカサゴは最大体長約38センチ。IUCN評価は低懸念（2015年）。",
+            marine.description_from_evidence(row, evidence),
+        )
+
+    def test_description_falls_back_to_verified_scientific_name(self):
+        row = self.row(name="テストクジラ", scientific_name="Testus marinus")
+        description = marine.description_from_evidence(row, {"traits": []})
+        self.assertIn("Testus marinus", description)
+        self.assertIn("WoRMS", description)
+        self.assertGreaterEqual(len(description), 20)
+        self.assertLessEqual(len(description), 60)
+
+    def test_description_exposes_uncertain_worms_status(self):
+        row = self.row(name="ハブクラゲ")
+        evidence = {"status": "nomen dubium", "rank": "Species", "traits": []}
+        self.assertEqual(
+            "ハブクラゲはWoRMSで疑問名とされる海洋生物名である。",
+            marine.description_from_evidence(row, evidence),
+        )
+
+    def test_description_source_manifest_reproduces_description(self):
+        row = self.row(
+            id="179", name="ハナミノカサゴ",
+            order="カサゴ目", family="フサカサゴ科",
+            scientific_name="Pterois volitans", aphia_id="159559",
+        )
+        row["class"] = "魚類"
+        record = {
+            "name": row["name"], "aphia_id": row["aphia_id"],
+            "scientific_name": row["scientific_name"], "fetched_at": "2026-08-12",
+            "record_url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=159559",
+            "attributes_url": "https://www.marinespecies.org/rest/AphiaAttributesByAphiaID/159559",
+            "status": "accepted", "rank": "Species", "is_marine": 1,
+            "valid_aphia_id": 159559, "valid_name": "Pterois volitans",
+            "traits": [{
+                "type": "maximum_length", "value": "38", "unit": "cm",
+                "source_id": 1, "reference": "Example source", "quality_status": "checked",
+            }],
+        }
+        row["description"] = marine.description_from_evidence(row, record)
+        with tempfile.TemporaryDirectory() as directory, \
+             mock.patch.object(marine, "MIN_AUTO_DESCRIPTION_COUNT", 0):
+            path = Path(directory) / "descriptions.jsonl"
+            path.write_text(json.dumps(record, ensure_ascii=False), encoding="utf-8")
+            marine.validate_description_sources([row], path)
+            row["description"] = "根拠と一致しない説明文なので検査で拒否される。"
+            with self.assertRaisesRegex(ValueError, "not generated from evidence"):
+                marine.validate_description_sources([row], path)
 
 
 if __name__ == "__main__":
