@@ -38,6 +38,7 @@ MIN_JODC_COUNT = 4148
 MIN_PHOTO_COUNT = 1384
 AUTO_DESCRIPTION_START_ID = 179
 MIN_AUTO_DESCRIPTION_COUNT = 4075
+MIN_WIKIPEDIA_DESCRIPTION_COUNT = 300
 VERTEBRATE_BY_CLASS = {
     "哺乳類": "脊椎動物",
     "爬虫類": "脊椎動物",
@@ -101,6 +102,11 @@ UNCERTAIN_STATUS_JA = {
 }
 
 
+def _normalized_wikipedia_title(value: str) -> str:
+    value = re.sub(r"[（(][^）)]*[）)]$", "", value)
+    return value.replace("・", "").replace(" ", "")
+
+
 def _display_number(raw: str) -> str:
     number = float(raw)
     if number >= 10:
@@ -110,59 +116,38 @@ def _display_number(raw: str) -> str:
 
 
 def description_from_evidence(row: dict[str, str], evidence: dict) -> str:
-    """固定済みWoRMS根拠だけから20〜60字の日本語説明を決定的に作る。"""
+    """固定済みの百科事典・構造化根拠からカード用説明を再生成する。
+
+    名前・学名・分類・出典名はカードの別欄や根拠台帳にあるため本文へ重ねない。
+    生態や形態の根拠がない場合は、分類文で水増しせず空欄を返す。
+    """
+    wikipedia = evidence.get("wikipedia") or {}
+    if wikipedia.get("description"):
+        return str(wikipedia["description"])
     traits = {item["type"]: item for item in evidence.get("traits", [])}
     length = traits.get("maximum_length")
     iucn = traits.get("iucn_status")
-    name = row["name"]
     candidates: list[str] = []
     status = evidence.get("status")
-    rank = evidence.get("rank")
     if status in UNCERTAIN_STATUS_JA:
         label = UNCERTAIN_STATUS_JA[status]
-        candidates.extend([
-            f"{name}はWoRMSで{label}とされる海洋生物名である。",
-            f"{name}はWoRMSで{label}とされている海洋生物の名称である。",
-        ])
-    elif rank == "Subspecies":
-        candidates.extend([
-            f"{name}はWoRMSで海産の亜種と確認され、学名は{row['scientific_name']}。",
-            f"{name}はWoRMSで確認された海産の亜種で、{row['family']}に属する。",
-        ])
-    if candidates:
-        for description in candidates:
-            if 20 <= len(description) <= 60 and "," not in description:
-                return description
-        raise ValueError(f"説明を20〜60字に収められません: {name}")
+        return f"分類上の位置づけが未確定で、{label}として扱われる海洋生物名。"
     if length and length.get("unit") in UNIT_JA:
         size = _display_number(str(length["value"])) + UNIT_JA[length["unit"]]
         if iucn and iucn.get("category") in IUCN_JA:
-            status = IUCN_JA[iucn["category"]]
+            iucn_label = IUCN_JA[iucn["category"]]
             if str(iucn.get("year") or "").isdigit():
                 candidates.append(
-                    f"{name}は最大体長約{size}。IUCN評価は{status}（{iucn['year']}年）。"
+                    f"最大体長約{size}。IUCN評価は{iucn_label}（{iucn['year']}年）。"
                 )
-            candidates.append(f"{name}は最大体長約{size}で、IUCN評価は{status}。")
-        candidates.append(
-            f"{name}は最大体長約{size}と記録され、WoRMSで海産種と確認されている。"
-        )
+            candidates.append(f"最大体長約{size}で、IUCN評価は{iucn_label}。")
+        candidates.append(f"最大体長約{size}。")
     if iucn and iucn.get("category") in IUCN_JA:
-        status = IUCN_JA[iucn["category"]]
-        candidates.append(
-            f"{name}はWoRMSで海産種と確認され、IUCN評価は{status}。"
-        )
-    if row.get("scientific_name"):
-        candidates.append(
-            f"{name}はWoRMSで海産種と確認され、学名は{row['scientific_name']}。"
-        )
-    candidates.extend([
-        f"{name}は{row['family']}に属し、WoRMSで海に生息する種と確認されている。",
-        f"{name}はWoRMSで確認された海産種で、{row['family']}に属する。",
-    ])
+        candidates.append(f"IUCN評価は{IUCN_JA[iucn['category']]}。")
     for description in candidates:
-        if 20 <= len(description) <= 60 and "," not in description:
+        if 8 <= len(description) <= 90 and "," not in description:
             return description
-    raise ValueError(f"説明を20〜60字に収められません: {name}")
+    return ""
 
 
 def load_source(path: Path = SOURCE) -> list[dict[str, str]]:
@@ -179,7 +164,6 @@ def load_source(path: Path = SOURCE) -> list[dict[str, str]]:
         rows = [dict(row) for row in csv.DictReader(f)]
 
     seen: set[str] = set()
-    seen_descriptions: set[str] = set()
     for lineno, row in enumerate(rows, 2):
         if row["id"] != str(lineno - 2):
             raise ValueError(f"line {lineno}: id must be append-only sequence: {row['id']}")
@@ -196,11 +180,15 @@ def load_source(path: Path = SOURCE) -> list[dict[str, str]]:
             raise ValueError(f"line {lineno}: class/vertebrate mismatch: {name}")
         if not row["order"].endswith("目") or not row["family"].endswith("科"):
             raise ValueError(f"line {lineno}: order/family must end in 目/科: {name}")
-        if not (20 <= len(row["description"]) <= 60) or not row["description"].endswith("。"):
+        description = row["description"]
+        if description and (not (8 <= len(description) <= 90) or not description.endswith("。")):
             raise ValueError(f"line {lineno}: invalid description: {name}")
-        if row["description"] in seen_descriptions:
-            raise ValueError(f"line {lineno}: duplicate description: {name}")
-        seen_descriptions.add(row["description"])
+        if description and re.match(rf"^(?:{re.escape(name)}|本種)(?:は|が)[、 ]*", description):
+            raise ValueError(f"line {lineno}: redundant description subject: {name}")
+        if description and ("WoRMS" in description or "学名は" in description):
+            raise ValueError(f"line {lineno}: description repeats source metadata: {name}")
+        if row["scientific_name"] and row["scientific_name"] in description:
+            raise ValueError(f"line {lineno}: description repeats scientific name: {name}")
         if any("," in row[col] for col in SOURCE_COLUMNS):
             raise ValueError(f"line {lineno}: comma is not supported: {name}")
         if row["wikidata"] and not QID.fullmatch(row["wikidata"]):
@@ -359,6 +347,41 @@ def validate_description_sources(
                     raise ValueError(f"description source IUCN status is invalid: {name}")
                 if trait.get("year") and not str(trait["year"]).isdigit():
                     raise ValueError(f"description source IUCN year is invalid: {name}")
+        wikipedia = record.get("wikipedia") or {}
+        if wikipedia:
+            if wikipedia.get("language") != "ja":
+                raise ValueError(f"description source Wikipedia language is invalid: {name}")
+            if not QID.fullmatch(str(wikipedia.get("wikidata") or "")):
+                raise ValueError(f"description source Wikipedia QID is invalid: {name}")
+            if wikipedia.get("wikidata") != record.get("wikidata"):
+                raise ValueError(f"description source Wikipedia QID mismatch: {name}")
+            title = str(wikipedia.get("title") or "")
+            if _normalized_wikipedia_title(title) != _normalized_wikipedia_title(name):
+                raise ValueError(f"description source Wikipedia title mismatch: {name}")
+            if not str(wikipedia.get("page_url") or "").startswith("https://ja.wikipedia.org/wiki/"):
+                raise ValueError(f"description source Wikipedia URL is invalid: {name}")
+            if not isinstance(wikipedia.get("revision_id"), int) or wikipedia["revision_id"] <= 0:
+                raise ValueError(f"description source Wikipedia revision is invalid: {name}")
+            if not re.fullmatch(
+                r"20[0-9]{2}-[01][0-9]-[0-3][0-9]", wikipedia.get("fetched_at", "")
+            ):
+                raise ValueError(f"description source Wikipedia fetched_at is invalid: {name}")
+            if wikipedia.get("license") != "CC BY-SA 4.0" or wikipedia.get(
+                "license_url"
+            ) != "https://creativecommons.org/licenses/by-sa/4.0/":
+                raise ValueError(f"description source Wikipedia license is invalid: {name}")
+            if not isinstance(wikipedia.get("modified"), bool):
+                raise ValueError(f"description source Wikipedia modified flag is invalid: {name}")
+            source_sentence = str(wikipedia.get("source_sentence") or "")
+            description = str(wikipedia.get("description") or "")
+            if not source_sentence.endswith("。") or not description.endswith("。"):
+                raise ValueError(f"description source Wikipedia sentence is invalid: {name}")
+            if not (8 <= len(description) <= 90) or "," in description:
+                raise ValueError(f"description source Wikipedia description is invalid: {name}")
+            if re.match(rf"^(?:{re.escape(name)}|本種)(?:は|が)[、 ]*", description):
+                raise ValueError(f"description source has redundant subject: {name}")
+            if record.get("scientific_name") and record["scientific_name"] in description:
+                raise ValueError(f"description source repeats scientific name: {name}")
         by_name[name] = record
 
     expected = {
@@ -374,7 +397,7 @@ def validate_description_sources(
         raise ValueError("description source rows must follow source CSV order")
     for name, row in expected.items():
         record = by_name[name]
-        for field in ("aphia_id", "scientific_name"):
+        for field in ("aphia_id", "scientific_name", "wikidata"):
             if str(record.get(field, "")) != row[field]:
                 raise ValueError(f"description source mismatch for {name}: {field}")
         if record.get("valid_name") != row["scientific_name"]:
@@ -386,6 +409,12 @@ def validate_description_sources(
         raise ValueError(
             f"too few sourced descriptions: {len(records)} "
             f"(minimum {MIN_AUTO_DESCRIPTION_COUNT})"
+        )
+    wikipedia_count = sum(bool(record.get("wikipedia")) for record in records)
+    if wikipedia_count < MIN_WIKIPEDIA_DESCRIPTION_COUNT:
+        raise ValueError(
+            f"too few Wikipedia descriptions: {wikipedia_count} "
+            f"(minimum {MIN_WIKIPEDIA_DESCRIPTION_COUNT})"
         )
 
 

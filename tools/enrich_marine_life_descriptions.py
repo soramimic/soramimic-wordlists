@@ -228,6 +228,7 @@ def evidence_for(
         traits.append(iucn)
     return {
         "name": row["name"],
+        "wikidata": row["wikidata"],
         "aphia_id": aphia_id,
         "scientific_name": row["scientific_name"],
         "fetched_at": fetched_at,

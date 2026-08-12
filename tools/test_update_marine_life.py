@@ -118,9 +118,9 @@ class MarineLifeUpdaterTest(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "duplicate name"):
             self.load(self.row(), self.row(id="1"))
 
-    def test_rejects_duplicate_description(self):
-        with self.assertRaisesRegex(ValueError, "duplicate description"):
-            self.load(self.row(), self.row(id="1", name="イルカ"))
+    def test_allows_same_structured_fact_for_different_species(self):
+        rows = self.load(self.row(), self.row(id="1", name="イルカ"))
+        self.assertEqual(rows[0]["description"], rows[1]["description"])
 
     def test_rejects_non_katakana_name(self):
         with self.assertRaisesRegex(ValueError, "not katakana"):
@@ -191,23 +191,20 @@ class MarineLifeUpdaterTest(unittest.TestCase):
             ]
         }
         self.assertEqual(
-            "ハナミノカサゴは最大体長約38センチ。IUCN評価は低懸念（2015年）。",
+            "最大体長約38センチ。IUCN評価は低懸念（2015年）。",
             marine.description_from_evidence(row, evidence),
         )
 
-    def test_description_falls_back_to_verified_scientific_name(self):
+    def test_description_does_not_fall_back_to_scientific_name(self):
         row = self.row(name="テストクジラ", scientific_name="Testus marinus")
         description = marine.description_from_evidence(row, {"traits": []})
-        self.assertIn("Testus marinus", description)
-        self.assertIn("WoRMS", description)
-        self.assertGreaterEqual(len(description), 20)
-        self.assertLessEqual(len(description), 60)
+        self.assertEqual("", description)
 
     def test_description_exposes_uncertain_worms_status(self):
         row = self.row(name="ハブクラゲ")
         evidence = {"status": "nomen dubium", "rank": "Species", "traits": []}
         self.assertEqual(
-            "ハブクラゲはWoRMSで疑問名とされる海洋生物名である。",
+            "分類上の位置づけが未確定で、疑問名として扱われる海洋生物名。",
             marine.description_from_evidence(row, evidence),
         )
 
@@ -219,7 +216,8 @@ class MarineLifeUpdaterTest(unittest.TestCase):
         )
         row["class"] = "魚類"
         record = {
-            "name": row["name"], "aphia_id": row["aphia_id"],
+            "name": row["name"], "wikidata": row["wikidata"],
+            "aphia_id": row["aphia_id"],
             "scientific_name": row["scientific_name"], "fetched_at": "2026-08-12",
             "record_url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=159559",
             "attributes_url": "https://www.marinespecies.org/rest/AphiaAttributesByAphiaID/159559",
@@ -232,7 +230,8 @@ class MarineLifeUpdaterTest(unittest.TestCase):
         }
         row["description"] = marine.description_from_evidence(row, record)
         with tempfile.TemporaryDirectory() as directory, \
-             mock.patch.object(marine, "MIN_AUTO_DESCRIPTION_COUNT", 0):
+             mock.patch.object(marine, "MIN_AUTO_DESCRIPTION_COUNT", 0), \
+             mock.patch.object(marine, "MIN_WIKIPEDIA_DESCRIPTION_COUNT", 0):
             path = Path(directory) / "descriptions.jsonl"
             path.write_text(json.dumps(record, ensure_ascii=False), encoding="utf-8")
             marine.validate_description_sources([row], path)
