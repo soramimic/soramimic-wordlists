@@ -58,7 +58,7 @@ CSV_PATH = ROOT / "school.csv"
 CACHE = Path(__file__).resolve().parent / ".cache"
 COLS = ["id", "original", "surface", "pronunciation", "type", "school_type",
         "founder", "prefecture", "city", "status", "code", "image",
-        "image_page", "wikidata"]
+        "image_page", "wikidata", "has_school_suffix"]
 
 # 名簿の件数がこの範囲を外れたらソース異常とみなして中断する
 MIN_SCHOOLS, MAX_SCHOOLS = 40000, 90000
@@ -594,6 +594,34 @@ SUFFIX_KANA = [("大学校", "ダイガッコウ"), ("大学", "ダイガク"), 
                ("学園", "ガクエン"), ("学院", "ガクイン"), ("小中", "ショウチュウ"),
                ("中", "チュウ"), ("小", "ショウ")]
 
+# 一般的な学校名の接尾辞。SUFFIX_KANA は読みとの整合確認に必要な語だけの表で
+# 「保育所」「中学」「スクール」などを含まないため、判定用の語彙は独立して持つ。
+# 「幼児センター」「幼児園」など非標準の末尾は意図的に含めない。
+GENERAL_SCHOOL_SUFFIXES = (
+    "学校", "大学校", "大学", "高校", "中学", "短大", "高専",
+    "こども園", "こどもえん", "子ども園", "子供園",
+    "幼稚園", "ようちえん", "保育園", "保育所", "幼稚舎",
+    "学園", "学院", "スクール", "幼稚部", "小学部", "中学部", "高等部",
+)
+ABBREVIATED_SUFFIX_TYPES = {
+    "小": {"小学校", "義務教育学校"},
+    "中": {"中学校", "義務教育学校"},
+    "小中": {"小学校", "中学校", "義務教育学校"},
+    "中等": {"中等教育学校"},
+}
+
+
+def has_school_suffix(surface: str, surface_type: str, school_type: str) -> str:
+    """surface が一般的な学校名接尾辞で終わるかを yes/no で返す。"""
+    if surface.endswith(GENERAL_SCHOOL_SUFFIXES):
+        return "yes"
+    if surface_type not in {"common", "nick"}:
+        return "no"
+    for suffix, school_types in ABBREVIATED_SUFFIX_TYPES.items():
+        if surface.endswith(suffix) and school_type in school_types:
+            return "yes"
+    return "no"
+
 
 def suffix_ok(surface: str, kana: str) -> bool:
     """表層の校種語と読みの終わりが一致するか(通称の読みの取り違えを防ぐ。
@@ -715,7 +743,8 @@ def build_rows(rec: dict, wd: dict, extracts: dict, munis: dict,
     return [{"id": str(gid), "original": full, "surface": s, "pronunciation": p,
              "type": t, "school_type": stype, "founder": founder,
              "prefecture": pref, "city": city, "status": status,
-             "code": rec["code"], "wikidata": qid}
+             "code": rec["code"], "wikidata": qid,
+             "has_school_suffix": has_school_suffix(s, t, stype)}
             for s, t, p in surfaces]
 
 
@@ -770,6 +799,8 @@ def main() -> int:
     for r in rows:
         r.setdefault("image", "")
         r.setdefault("image_page", "")
+        r["has_school_suffix"] = has_school_suffix(
+            r.get("surface", ""), r.get("type", ""), r.get("school_type", ""))
         if not r["image"] and r.get("code") in old_images:
             r["image"], r["image_page"] = old_images[r["code"]]
     order = {"common": 0, "name": 1, "nick": 2}
