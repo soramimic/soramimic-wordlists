@@ -8789,7 +8789,7 @@ id,original,surface,pronunciation,verified,rank,description,wikidata,evidence_so
 6524,日名子,日名子,ヒナゴ,yes,6180,,Q121746521,ndl|jmnedict
 6525,日恵野,日恵野,ヒエノ,no,6180,,Q111087133,jmnedict
 6526,日月,日月,タチモリ,yes,6180,,Q137863024,person_lists|ndl|wikidata_person|jmnedict
-6527,日枝,日枝,ヒエダ,no,6180,,Q131922005,jmnedict
+6527,日枝,日枝,ヒエダ,yes,6180,,Q131922005,official_web|jmnedict
 6528,日比谷,日比谷,ヒビヤ,yes,6180,,Q136744548,ndl|wikidata_person|jmnedict
 6529,日爪,日爪,ヒズメ,no,6180,,Q109328928,jmnedict
 6529,日爪,日爪,ヒヅメ,no,6180,,Q109328928,jmnedict
@@ -9046,7 +9046,7 @@ id,original,surface,pronunciation,verified,rank,description,wikidata,evidence_so
 6731,横浜,横浜,ヨコハマ,yes,6180,戦国時代の武家で、南部氏の庶族。,Q119033019,ndl|jmnedict
 6732,樫元,樫元,カシモト,no,6180,,Q115023564,jmnedict
 6733,樫崎,樫崎,カシザキ,yes,6180,,Q131747473,person_lists|ndl|jmnedict
-6734,樽茶,樽茶,タルチャ,no,6180,,Q115612037,jmnedict
+6734,樽茶,樽茶,タルチャ,yes,6180,,Q115612037,official_web|jmnedict
 6735,橋井,橋井,ハシイ,yes,6180,,Q40160752,ndl|wikidata_person|jmnedict
 6736,橋谷,橋谷,ハシタニ,yes,6180,,Q136745922,ndl|wikidata_person|jmnedict
 6736,橋谷,橋谷,ハシヤ,yes,6180,,Q136745922,ndl|jmnedict
@@ -9056,7 +9056,7 @@ id,original,surface,pronunciation,verified,rank,description,wikidata,evidence_so
 6740,櫟,櫟,イチイ,yes,6180,,Q40160803,person_lists|ndl|wikidata_person|jmnedict
 6741,櫟本,櫟本,イチノモト,yes,6180,,Q109500932,ndl|jmnedict
 6741,櫟本,櫟本,イチモト,yes,6180,,Q109500932,ndl|jmnedict
-6741,櫟本,櫟本,トチモト,no,6180,,Q109500932,jmnedict
+6741,櫟本,櫟本,トチモト,yes,6180,,Q109500932,official_web|jmnedict
 6742,次山,次山,ジヤマ,no,6180,,Q107209846,
 6742,次山,次山,ツギヤマ,yes,6180,,Q107209846,ndl|jmnedict
 6743,次田,次田,ツギタ,yes,6180,,Q40160843,ndl|wikidata_person|jmnedict
@@ -9144,7 +9144,7 @@ id,original,surface,pronunciation,verified,rank,description,wikidata,evidence_so
 6799,江河,江河,エガワ,yes,6180,,Q130438319,ndl|jmnedict
 6800,江淵,江淵,エブチ,yes,6180,,Q40103532,ndl|wikidata_person|jmnedict
 6801,江石,江石,エイシ,yes,6180,,Q115468302,ndl|wikidata_person|jmnedict
-6802,江面,江面,エヅラ,no,6180,,Q122210477,jmnedict
+6802,江面,江面,エヅラ,yes,6180,,Q122210477,official_web|jmnedict
 6803,池下,池下,イケシタ,yes,6180,,Q137969831,ndl|wikidata_person|jmnedict
 6804,池之上,池之上,イケノウエ,yes,6180,,Q40104718,person_lists|ndl|wikidata_person|jmnedict
 6804,池之上,池之上,イケノカミ,no,6180,,Q40104718,jmnedict
@@ -9170,7 +9170,7 @@ id,original,surface,pronunciation,verified,rank,description,wikidata,evidence_so
 6822,沼尾,沼尾,ヌマオ,yes,6180,,Q27316879,ndl|wikidata_person|jmnedict
 6823,沼川,沼川,ヌマカワ,yes,6180,,Q40103933,ndl|wikidata_person|jmnedict
 6824,沼畑,沼畑,ヌマハタ,yes,6180,,Q134891929,ndl|wikidata_person|jmnedict
-6825,沼舘,沼舘,ヌマダテ,no,6180,,Q124361331,jmnedict
+6825,沼舘,沼舘,ヌマダテ,yes,6180,,Q124361331,official_web|jmnedict
 6826,沼谷,沼谷,ヌマタニ,yes,6180,,Q140209701,ndl
 6826,沼谷,沼谷,ヌマヤ,yes,6180,,Q140209701,wikidata_person|jmnedict
 6827,泉井,泉井,イズイ,yes,6180,,Q40104409,ndl|wikidata_person
@@ -9658,7 +9658,7 @@ id,original,surface,pronunciation,verified,rank,description,wikidata,evidence_so
 7211,肥土,肥土,アクト,yes,6180,,Q118331345,ndl|jmnedict
 7211,肥土,肥土,ヒド,yes,6180,,Q118331345,ndl|wikidata_person|jmnedict
 7212,能代,能代,ノシロ,yes,6180,,Q43510983,ndl|wikidata_person|jmnedict
-7213,能年,能年,ノウトシ,no,6180,,Q76018957,jmnedict
+7213,能年,能年,ノウトシ,yes,6180,,Q76018957,official_web|jmnedict
 7213,能年,能年,ノウネン,no,6180,,Q76018957,
 7214,能町,能町,ノウマチ,yes,6180,,Q134395397,ndl|wikidata_person|jmnedict
 7215,能見,能見,ノウミ,yes,6180,日本各地の地名、また姓。,Q132412928,person_lists|ndl|wikidata_person|jmnedict
@@ -9677,7 +9677,7 @@ id,original,surface,pronunciation,verified,rank,description,wikidata,evidence_so
 7225,舘川,舘川,タチカワ,no,6180,,Q130700295,jmnedict
 7225,舘川,舘川,タテカワ,yes,6180,,Q130700295,ndl|wikidata_person|jmnedict
 7226,舘石,舘石,タテイシ,yes,6180,,Q43511064,ndl|wikidata_person|jmnedict
-7227,舘脇,舘脇,タテワキ,no,6180,,Q110885020,jmnedict
+7227,舘脇,舘脇,タテワキ,yes,6180,,Q110885020,official_web|jmnedict
 7228,舛屋,舛屋,マスヤ,yes,6180,,Q110165550,ndl|jmnedict
 7229,舛岡,舛岡,ソムオカ,no,6180,,Q136688583,jmnedict
 7229,舛岡,舛岡,マスオカ,yes,6180,,Q136688583,ndl|wikidata_person|jmnedict
@@ -9767,7 +9767,7 @@ id,original,surface,pronunciation,verified,rank,description,wikidata,evidence_so
 7296,薗浦,薗浦,ソノウラ,yes,6180,,Q109682524,ndl|jmnedict
 7297,薩摩,薩摩,サツマ,yes,6180,,Q43511612,ndl|wikidata_person|jmnedict
 7298,薬真寺,薬真寺,ヤクシンジ,yes,6180,,Q134484393,person_lists|jmnedict
-7299,薮上,薮上,ヤブカミ,no,6180,,Q123746899,jmnedict
+7299,薮上,薮上,ヤブカミ,yes,6180,,Q123746899,official_web|jmnedict
 7299,薮上,薮上,ヤブガミ,no,6180,,Q123746899,jmnedict
 7300,薮下,薮下,ヤブシタ,yes,6180,,Q29638903,ndl|jmnedict
 7301,薮内,薮内,ヤブウチ,yes,6180,,Q27167654,person_lists|ndl|wikidata_person|jmnedict
@@ -9778,7 +9778,7 @@ id,original,surface,pronunciation,verified,rank,description,wikidata,evidence_so
 7306,藤丸,藤丸,フジマル,yes,6180,,Q27322531,ndl|wikidata_person|jmnedict
 7307,藤塚,藤塚,フジツカ,yes,6180,,Q111728860,ndl|jmnedict
 7308,藤富,藤富,フジトミ,yes,6180,,Q133335842,ndl|jmnedict
-7309,藤嶌,藤嶌,フジシマ,no,6180,,Q140033922,jmnedict
+7309,藤嶌,藤嶌,フジシマ,yes,6180,,Q140033922,official_web|jmnedict
 7310,藤平,藤平,フジヒラ,yes,6180,,Q136459970,person_lists|ndl|wikidata_person|jmnedict
 7310,藤平,藤平,トウヘイ,yes,6180,,Q136459970,ndl|jmnedict
 7311,藤樫,藤樫,トガシ,yes,6180,,Q137927922,ndl|wikidata_person|jmnedict
@@ -9799,8 +9799,8 @@ id,original,surface,pronunciation,verified,rank,description,wikidata,evidence_so
 7323,袁,袁,エン,yes,6180,袁（えん）という漢姓を姓とする氏族である。中華圏と朝鮮に分布する。,Q716212,person_lists|ndl|jmnedict
 7324,西上,西上,ニシガミ,yes,6180,,Q123154766,person_lists|ndl|wikidata_person|jmnedict
 7324,西上,西上,ニシウエ,yes,6180,,Q123154766,ndl|jmnedict
-7325,西中川,西中川,ニシナカガワ,no,6180,,Q129485677,jmnedict
-7326,西入,西入,ニシイリ,no,6180,,Q111016912,jmnedict
+7325,西中川,西中川,ニシナカガワ,yes,6180,,Q129485677,official_web|jmnedict
+7326,西入,西入,ニシイリ,yes,6180,,Q111016912,official_web|jmnedict
 7327,西四辻,西四辻,ニシヨツツジ,yes,6180,藤原北家閑院流四辻支流の公家・華族である。公家としての家格は羽林家、華族としての家格は子爵家。,Q139250263,wikidata_person|jmnedict
 7328,西塔,西塔,サイトウ,yes,6180,,Q113864642,ndl|wikidata_person|jmnedict
 7329,西居,西居,ニシイ,yes,6180,,Q132173904,ndl|wikidata_person|jmnedict
@@ -9902,7 +9902,7 @@ id,original,surface,pronunciation,verified,rank,description,wikidata,evidence_so
 7405,辰馬,辰馬,タツマ,yes,6180,,Q140306246,ndl|wikidata_person|jmnedict
 7406,農口,農口,ノグチ,yes,6180,,Q130547019,ndl|wikidata_person
 7407,辻出,辻出,ツジイデ,no,6180,,Q131314002,jmnedict
-7407,辻出,辻出,ツジデ,no,6180,,Q131314002,jmnedict
+7407,辻出,辻出,ツジデ,yes,6180,,Q131314002,official_web|jmnedict
 7408,辻山,辻山,ツジヤマ,yes,6180,,Q43609136,ndl|wikidata_person|jmnedict
 7409,辻森,辻森,ツジモリ,yes,6180,,Q119251048,ndl|wikidata_person|jmnedict
 7410,近,近,キン,no,6180,,Q27306424,jmnedict
@@ -10060,7 +10060,7 @@ id,original,surface,pronunciation,verified,rank,description,wikidata,evidence_so
 7520,隅沢,隅沢,スミザワ,no,6180,,Q122612717,jmnedict
 7521,雄賀多,雄賀多,オガタ,yes,6180,,Q124361105,wikidata_person|jmnedict
 7522,集貝,集貝,シュウカイ,no,6180,,Q81139486,jmnedict
-7522,集貝,集貝,タメガイ,no,6180,,Q81139486,jmnedict
+7522,集貝,集貝,タメガイ,yes,6180,,Q81139486,official_web|jmnedict
 7523,難波江,難波江,ナバエ,yes,6180,,Q114729843,ndl|jmnedict
 7523,難波江,難波江,ナンバエ,no,6180,,Q114729843,jmnedict
 7524,雨堤,雨堤,アマツツミ,no,6180,,Q106157260,jmnedict
@@ -10092,7 +10092,7 @@ id,original,surface,pronunciation,verified,rank,description,wikidata,evidence_so
 7543,須江,須江,スエ,yes,6180,,Q121809246,ndl|jmnedict
 7544,須磨,須磨,スマ,yes,6180,,Q117455311,ndl|wikidata_person|jmnedict
 7545,須網,須網,スアミ,yes,6180,,Q126283227,ndl|wikidata_person|jmnedict
-7546,須谷,須谷,スタニ,no,6180,,Q110573161,jmnedict
+7546,須谷,須谷,スタニ,yes,6180,,Q110573161,official_web|jmnedict
 7546,須谷,須谷,スダニ,no,6180,,Q110573161,jmnedict
 7547,須賀川,須賀川,スカガワ,yes,6180,,Q111293477,ndl|jmnedict
 7548,須野田,須野田,スノダ,yes,6180,,Q51845736,ndl|wikidata_person|jmnedict
@@ -10154,7 +10154,7 @@ id,original,surface,pronunciation,verified,rank,description,wikidata,evidence_so
 7587,高鍬,高鍬,タカクワ,yes,6180,,Q110902831,ndl|jmnedict
 7588,高際,高際,タカギワ,yes,6180,,Q43610580,ndl|wikidata_person|jmnedict
 7589,高鹿,高鹿,コウロク,yes,6180,,Q134008481,ndl|jmnedict
-7589,高鹿,高鹿,タカシカ,no,6180,,Q134008481,jmnedict
+7589,高鹿,高鹿,タカシカ,yes,6180,,Q134008481,official_web|jmnedict
 7590,髙田,髙田,タカダ,yes,6180,,Q137544900,person_lists|ndl|jmnedict
 7591,鬼島,鬼島,オニシマ,yes,6180,,Q119142249,ndl|jmnedict
 7592,鬼村,鬼村,オニムラ,yes,6180,,Q114059689,ndl|jmnedict
@@ -10166,7 +10166,7 @@ id,original,surface,pronunciation,verified,rank,description,wikidata,evidence_so
 7595,鯖田,鯖田,サバタ,yes,6180,,Q43610626,ndl|wikidata_person|jmnedict
 7596,鯛中,鯛中,タイナカ,yes,6180,,Q43610636,ndl|wikidata_person|jmnedict
 7597,鯨井,鯨井,クジライ,yes,6180,,Q126199965,ndl|jmnedict
-7598,鳥塚,鳥塚,トリツカ,no,6180,,Q117828993,jmnedict
+7598,鳥塚,鳥塚,トリツカ,yes,6180,,Q117828993,official_web|jmnedict
 7598,鳥塚,鳥塚,トリヅカ,yes,6180,,Q117828993,wikidata_person|jmnedict
 7599,鳥巣,鳥巣,トス,yes,6180,,Q43610645,ndl|jmnedict
 7599,鳥巣,鳥巣,トリス,yes,6180,,Q43610645,ndl|wikidata_person|jmnedict

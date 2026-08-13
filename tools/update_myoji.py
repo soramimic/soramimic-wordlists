@@ -53,8 +53,9 @@ import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
 import zipfile
-from datetime import date, datetime, timezone
+from datetime import date, datetime
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from wpnames import (
@@ -701,7 +702,7 @@ def load_official_evidence(path: Path = OFFICIAL_EVIDENCE_PATH) -> set:
             retrieved = date.fromisoformat(str(record["retrieved_on"]))
         except ValueError as exc:
             raise RuntimeError(f"{path.name}:{lineno}: 確認日が不正") from exc
-        if retrieved > datetime.now(timezone.utc).date():
+        if retrieved > datetime.now(ZoneInfo("Asia/Tokyo")).date():
             raise RuntimeError(f"{path.name}:{lineno}: 確認日が不正")
         observed_surface = str(record["observed_surface"]).strip()
         observed_yomi = str(record["observed_reading"]).strip().translate(HIRA2KATA)
