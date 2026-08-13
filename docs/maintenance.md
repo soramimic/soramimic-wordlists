@@ -44,12 +44,14 @@ python3 tools/audit_taxa.py sekitsui  # 既存行が想定した界・門・綱�
 読みが併記されている場合だけ採用する。別読みの人物が見つかっただけでは候補を否定しない。
 
 ```sh
-python3 tools/audit_myoji_official_web.py prepare --batch YYYY-MM-DD --limit 225
+python3 tools/audit_myoji_official_web.py prepare --batch BATCH_ID --limit 225
 # tools/myoji_official_search_batches/ の担当JSONLへ、全候補の検索結果を記録
-python3 tools/audit_myoji_official_web.py validate --batch YYYY-MM-DD
-python3 tools/audit_myoji_official_web.py promote --batch YYYY-MM-DD
+python3 tools/audit_myoji_official_web.py validate --batch BATCH_ID
+python3 tools/audit_myoji_official_web.py promote --batch BATCH_ID
 python3 tools/update_myoji.py
 ```
+
+`BATCH_ID` は `YYYY-MM-DD`、同日に複数回行う場合は `YYYY-MM-DD-2` のようにする。
 
 `marine_life.csv` はネットワークから無人更新せず、レビュー済み台帳
 `tools/marine_life_source.csv` から全件再生成する。項目を追加するときは台帳末尾へ

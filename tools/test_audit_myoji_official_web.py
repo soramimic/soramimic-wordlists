@@ -11,6 +11,14 @@ import audit_myoji_official_web as a
 
 
 class CandidateTest(unittest.TestCase):
+    def test_batch_name_supports_multiple_runs_per_day(self):
+        self.assertEqual(
+            a.candidates_path("2026-08-13-2").name,
+            "2026-08-13-2-candidates.csv",
+        )
+        with self.assertRaises(RuntimeError):
+            a.candidates_path("batch2")
+
     def test_selects_ranked_unverified_dictionary_pairs_in_order(self):
         rows = [
             {"id": "2", "original": "西", "pronunciation": "ニシ",
@@ -55,6 +63,14 @@ class CandidateTest(unittest.TestCase):
             with self.assertRaises(RuntimeError):
                 a.prepare(1, "2026-08-13")
             self.assertEqual(path.read_text(encoding="utf-8"), "fixed")
+
+    def test_searched_pairs_reads_suffixed_batches(self):
+        record = {"surface": "東", "pronunciation": "アズマ"}
+        with tempfile.TemporaryDirectory() as td, mock.patch.object(
+                a, "BATCH_DIR", Path(td)):
+            (Path(td) / "2026-08-13-2-a.jsonl").write_text(
+                json.dumps(record), encoding="utf-8")
+            self.assertEqual(a.searched_pairs(), {("東", "アズマ")})
 
 
 class ResultValidationTest(unittest.TestCase):

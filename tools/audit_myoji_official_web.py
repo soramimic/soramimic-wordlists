@@ -67,15 +67,15 @@ def select_candidates(path: Path = CSV_PATH, limit: int = 225,
 
 
 def candidates_path(batch: str) -> Path:
-    if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", batch):
-        raise RuntimeError("batchはYYYY-MM-DD形式にする")
+    if not re.fullmatch(r"\d{4}-\d{2}-\d{2}(?:-[a-z0-9]+)?", batch):
+        raise RuntimeError("batchはYYYY-MM-DDまたはYYYY-MM-DD-suffix形式にする")
     return BATCH_DIR / f"{batch}-candidates.csv"
 
 
 def searched_pairs() -> set[tuple[str, str]]:
     """過去ログにある候補を返し、新しいバッチでの再検索を避ける。"""
     pairs = set()
-    for path in sorted(BATCH_DIR.glob("????-??-??-[a-z].jsonl")):
+    for path in sorted(BATCH_DIR.glob("*-?.jsonl")):
         for lineno, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
             if not line.strip():
                 continue
@@ -196,7 +196,7 @@ def validate(batch: str) -> list[dict]:
 
 
 def validate_all() -> None:
-    paths = sorted(BATCH_DIR.glob("????-??-??-candidates.csv"))
+    paths = sorted(BATCH_DIR.glob("*-candidates.csv"))
     if not paths:
         raise RuntimeError("候補スナップショットがない")
     for path in paths:

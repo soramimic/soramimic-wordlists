@@ -5392,7 +5392,7 @@ id,original,surface,pronunciation,verified,rank,description,wikidata,evidence_so
 3924,栢木,栢木,カヤノキ,yes,3714,,Q112942241,ndl|jmnedict
 3925,桃野,桃野,モモノ,yes,3714,,Q126284660,ndl|jmnedict
 3926,桐木,桐木,キリキ,yes,3714,,Q99657195,person_lists|ndl|jmnedict
-3927,桑水流,桑水流,クワズル,no,3714,,Q121292088,jmnedict
+3927,桑水流,桑水流,クワズル,yes,3714,,Q121292088,official_web|jmnedict
 3927,桑水流,桑水流,クワヅル,no,3714,,Q121292088,jmnedict
 3928,桝,桝,マス,yes,3714,,Q125611225,person_lists|ndl|wikidata_person|jmnedict
 3929,梁田,梁田,ヤナダ,yes,3714,,Q130797751,ndl|jmnedict
@@ -6570,7 +6570,7 @@ id,original,surface,pronunciation,verified,rank,description,wikidata,evidence_so
 4813,崔,崔,サイ,yes,4695,,Q16056287,ndl|jmnedict
 4814,嶋倉,嶋倉,シマクラ,yes,4695,,Q121365127,ndl|wikidata_person|jmnedict
 4815,嶋津,嶋津,シマズ,yes,4695,,Q27238265,ndl|wikidata_person|jmnedict
-4815,嶋津,嶋津,シマヅ,no,4695,,Q27238265,jmnedict
+4815,嶋津,嶋津,シマヅ,yes,4695,,Q27238265,official_web|jmnedict
 4816,嶌村,嶌村,シマムラ,yes,4695,,Q121338140,ndl|wikidata_person|jmnedict
 4817,嶺岸,嶺岸,ミネギシ,yes,4695,,Q113833097,person_lists|ndl|jmnedict
 4818,巌,巌,イワオ,yes,4695,,Q124650574,ndl|jmnedict
@@ -6710,7 +6710,7 @@ id,original,surface,pronunciation,verified,rank,description,wikidata,evidence_so
 4926,明坂,明坂,アカザカ,no,4695,,Q130367712,jmnedict
 4926,明坂,明坂,アキサカ,yes,4695,,Q130367712,ndl|jmnedict
 4926,明坂,明坂,アケサカ,yes,4695,,Q130367712,ndl|wikidata_person|jmnedict
-4927,明戸,明戸,アケト,no,4695,,Q124021795,jmnedict
+4927,明戸,明戸,アケト,yes,4695,,Q124021795,official_web|jmnedict
 4927,明戸,明戸,アケド,yes,4695,,Q124021795,ndl|jmnedict
 4928,明神,明神,ミョウジン,yes,4695,,Q122884495,person_lists|ndl|jmnedict
 4929,星田,星田,ホシダ,yes,4695,,Q39242778,person_lists|ndl|wikidata_person|jmnedict
@@ -7824,7 +7824,7 @@ id,original,surface,pronunciation,verified,rank,description,wikidata,evidence_so
 5783,京谷,京谷,キョウタニ,yes,6180,,Q47092564,ndl|wikidata_person|jmnedict
 5784,仁志田,仁志田,ニシダ,yes,6180,,Q124350850,ndl|jmnedict
 5785,仁比,仁比,ニヒ,yes,6180,,Q138820818,ndl|jmnedict
-5786,仁田原,仁田原,ニタハラ,no,6180,,Q110628067,jmnedict
+5786,仁田原,仁田原,ニタハラ,yes,6180,,Q110628067,official_web|jmnedict
 5786,仁田原,仁田原,ニタバル,no,6180,,Q110628067,jmnedict
 5787,今井田,今井田,イマイダ,yes,6180,,Q97040418,ndl|jmnedict
 5788,今倉,今倉,イマクラ,yes,6180,,Q136324215,person_lists|ndl|wikidata_person|jmnedict
