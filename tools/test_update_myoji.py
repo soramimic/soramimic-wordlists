@@ -111,11 +111,17 @@ class JmnedictEvidenceTest(unittest.TestCase):
 class EvidenceSemanticsTest(unittest.TestCase):
     def test_sources_are_ordered_and_dictionary_only_is_not_verified(self):
         pair = ("鈴木", "スズキ")
-        sources = m.evidence_for(pair, {pair}, {pair}, {pair})
+        sources = m.evidence_for(
+            pair, {pair}, {pair}, {pair}, {pair}, {pair})
         self.assertEqual(
-            m.format_evidence(sources), "person_lists|ndl|jmnedict")
+            m.format_evidence(sources),
+            "person_lists|ndl|wikidata_person|official_web|jmnedict")
         self.assertTrue(m.is_human_verified(sources))
         self.assertFalse(m.is_human_verified({"jmnedict"}))
+
+    def test_each_new_person_source_verifies(self):
+        self.assertTrue(m.is_human_verified({"wikidata_person"}))
+        self.assertTrue(m.is_human_verified({"official_web"}))
 
     def test_make_row_exposes_dictionary_evidence_without_verifying(self):
         pair = ("鈴木", "ススキ")
@@ -146,6 +152,92 @@ class EvidenceSemanticsTest(unittest.TestCase):
             rows[0]["evidence_sources"], "person_lists|jmnedict")
         self.assertEqual(rows[1]["verified"], "yes")
         self.assertEqual(rows[1]["evidence_sources"], "ndl|jmnedict")
+
+
+class WikidataPersonEvidenceTest(unittest.TestCase):
+    def test_query_uses_surname_item_reading_without_reference_requirement(self):
+        query = m.WIKIDATA_PERSON_READING_QUERY
+        for token in ("P31", "Q5", "P27", "Q17", "P734", "P1814",
+                      'LANG(?fnLabel) = "ja"'):
+            self.assertIn(token, query)
+        self.assertNotIn("prov:wasDerivedFrom", query)
+
+    def test_parser_normalizes_deduplicates_and_filters(self):
+        def binding(surface=None, reading=None):
+            row = {}
+            if surface is not None:
+                row["fnLabel"] = {"value": surface}
+            if reading is not None:
+                row["kana"] = {"value": reading}
+            return row
+
+        data = {"results": {"bindings": [
+            binding(" 鈴木 ", "す ず き"), binding("鈴木", "スズキ"),
+            binding("Suzuki", "スズキ"), binding("佐藤", "sato"),
+            binding("田中", None), {},
+        ]}}
+        self.assertEqual(m.parse_wikidata_person_json(data),
+                         {("鈴木", "スズキ")})
+
+    def test_fetch_uses_cache_and_rejects_small_uncached_result(self):
+        with tempfile.TemporaryDirectory() as td:
+            path = Path(td) / "wikidata-person-surname-pairs.json"
+            path.write_text(json.dumps([["鈴木", "スズキ"]]), encoding="utf-8")
+            with mock.patch.object(m, "CACHE_DIR", td), mock.patch.object(
+                    m, "MIN_WIKIDATA_PERSON_PAIRS", 1), mock.patch.object(
+                    m, "sparql") as sparql:
+                self.assertEqual(m.fetch_wikidata_person_pairs(),
+                                 {("鈴木", "スズキ")})
+                sparql.assert_not_called()
+
+        data = {"results": {"bindings": [{
+            "fnLabel": {"value": "鈴木"}, "kana": {"value": "すずき"},
+        }]}}
+        with tempfile.TemporaryDirectory() as td, mock.patch.object(
+                m, "CACHE_DIR", td), mock.patch.object(
+                m, "MIN_WIKIDATA_PERSON_PAIRS", 2), mock.patch.object(
+                m, "sparql", return_value=data), self.assertRaises(RuntimeError):
+            m.fetch_wikidata_person_pairs()
+            self.assertFalse(
+                (Path(td) / "wikidata-person-surname-pairs.json").exists())
+
+
+class OfficialEvidenceTest(unittest.TestCase):
+    def test_loader_uses_only_verified_records(self):
+        base = {
+            "surface": "東", "pronunciation": "アヅマ",
+            "status": "verified", "source_url": "https://example.jp/person",
+            "source_type": "official_org_directory", "source_title": "人物一覧",
+            "retrieved_on": "2026-08-13", "observed_surface": "東",
+            "observed_reading": "あづま", "locator": "職員欄",
+        }
+        review = dict(base, surface="西", pronunciation="ニシ",
+                      observed_surface="西", observed_reading="にし",
+                      status="review")
+        with tempfile.TemporaryDirectory() as td:
+            path = Path(td) / "evidence.jsonl"
+            path.write_text("\n".join(map(json.dumps, (base, review))),
+                            encoding="utf-8")
+            self.assertEqual(m.load_official_evidence(path), {("東", "アヅマ")})
+
+    def test_loader_rejects_mismatch_and_duplicates(self):
+        record = {
+            "surface": "東", "pronunciation": "アヅマ",
+            "status": "verified", "source_url": "https://example.jp/person",
+            "source_type": "official_person_profile", "source_title": "人物",
+            "retrieved_on": "2026-08-13", "observed_surface": "東",
+            "observed_reading": "ひがし", "locator": "氏名欄",
+        }
+        with tempfile.TemporaryDirectory() as td:
+            path = Path(td) / "evidence.jsonl"
+            path.write_text(json.dumps(record), encoding="utf-8")
+            with self.assertRaises(RuntimeError):
+                m.load_official_evidence(path)
+            record["observed_reading"] = "あづま"
+            path.write_text("\n".join((json.dumps(record), json.dumps(record))),
+                            encoding="utf-8")
+            with self.assertRaises(RuntimeError):
+                m.load_official_evidence(path)
 
 
 if __name__ == "__main__":

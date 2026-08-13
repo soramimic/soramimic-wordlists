@@ -3,7 +3,7 @@
 - Status: accepted
 - Date: 2026-08-13
 - Supersedes: none
-- Superseded by: none
+- Superseded by: 00051 (verifiedの人物裏付けソースを追加)
 - Related: 00001 / 00014 / 00038
 
 ## Context

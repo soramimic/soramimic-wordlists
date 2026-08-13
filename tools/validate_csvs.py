@@ -21,10 +21,12 @@ import sys
 from collections import Counter
 from pathlib import Path
 
-from wpnames import (PLAYER_DISAMBIGUATION_DESCRIPTION,
-                     has_redundant_player_subject,
-                     is_standalone_player_description,
-                     strip_name_prefix)
+from wpnames import (
+    PLAYER_DISAMBIGUATION_DESCRIPTION,
+    has_redundant_player_subject,
+    is_standalone_player_description,
+    strip_name_prefix,
+)
 
 ROOT = Path(__file__).resolve().parent.parent
 REQUIRED = ("id", "original", "surface")
@@ -45,7 +47,10 @@ IMAGE_URL_RE = re.compile(
 PRON_ASCII_RE = re.compile(r"[A-Za-z]{2,}")
 YEAR_RE = re.compile(r"^(?:NA|前?[0-9]+)$")
 HAN_RE = re.compile(r"[\u3400-\u9fff]")
-MYOJI_EVIDENCE = ("person_lists", "ndl", "jmnedict")
+MYOJI_EVIDENCE = ("person_lists", "ndl", "wikidata_person", "official_web",
+                  "jmnedict")
+MYOJI_HUMAN_EVIDENCE = {"person_lists", "ndl", "wikidata_person",
+                        "official_web"}
 
 errors = []
 
@@ -121,7 +126,7 @@ def validate(path: Path):
                 err(f"{path.name}:{lineno}: evidence_sources の順序・重複が不正: "
                     f"{f[idx['evidence_sources']]}")
             if f[idx["verified"]] == "yes" and not (
-                    {"person_lists", "ndl"} & set(sources)):
+                    MYOJI_HUMAN_EVIDENCE & set(sources)):
                 err(f"{path.name}:{lineno}: verified=yes に人物の裏付けがない")
         if path.name in ("baseball.csv", "football.csv") and "description" in idx:
             v = f[idx["description"]]
@@ -188,17 +193,17 @@ def validate(path: Path):
 def validate_marine_life(path: Path):
     """公開CSVでも分類facetとキュレーション契約を独立に検証する。"""
     from update_marine_life import (
-        CLASSES,
         APHIA_ID,
+        CLASSES,
         IMAGE_FILE_BY_GROUP,
-        detailed_generated_filename,
-        load_generated_image_manifest,
         MIN_APHIA_COUNT,
         MIN_CLASS_COUNTS,
         MIN_QID_COUNT,
         MIN_TOTAL_COUNT,
         OUTPUT_COLUMNS,
         VERTEBRATE_BY_CLASS,
+        detailed_generated_filename,
+        load_generated_image_manifest,
     )
 
     lines = path.read_text(encoding="utf-8").split("\n")

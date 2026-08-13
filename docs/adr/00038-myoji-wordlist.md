@@ -1,5 +1,8 @@
 # ADR 00038: myoji(名字)ワードリストの新規作成と、世帯数を収録しない判断
 
+> `verified` の人物裏付けソースは後続の [ADR 00050](00050-myoji-evidence-sources.md)と
+> [ADR 00051](00051-myoji-person-evidence.md)で拡張している。
+
 - Status: accepted
 - Date: 2026-08-02
 - Supersedes: none
