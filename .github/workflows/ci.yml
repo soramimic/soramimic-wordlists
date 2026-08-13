@@ -38,7 +38,13 @@ jobs:
         run: python tools/test_update_scientist.py
 
       - name: Test myoji evidence updater
-        run: python -m unittest tools/test_update_myoji.py
+        run: >-
+          python -m unittest
+          tools/test_update_myoji.py
+          tools/test_audit_myoji_official_web.py
+
+      - name: Validate myoji official web search batch
+        run: python tools/audit_myoji_official_web.py validate --all
 
       - name: Test municipality updater
         run: python tools/test_update_municipality.py
