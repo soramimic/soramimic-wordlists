@@ -1653,7 +1653,7 @@ id,original,surface,pronunciation,verified,rank,description,wikidata,evidence_so
 1158,兼子,兼子,カネコ,yes,1187,,Q26450260,ndl|wikidata_person|jmnedict
 1159,内海,内海,ウツミ,yes,1187,内海氏とは、日本の姓氏の１つ。垂仁天皇の皇子鐸石別命の裔の一人である清麻呂が、大功により和気朝臣を賜姓され、その子孫が内海氏を称した。,Q26203637,person_lists|ndl|wikidata_person|jmnedict
 1159,内海,内海,ウチウミ,yes,1187,内海氏とは、日本の姓氏の１つ。垂仁天皇の皇子鐸石別命の裔の一人である清麻呂が、大功により和気朝臣を賜姓され、その子孫が内海氏を称した。,Q26203637,ndl|jmnedict
-1159,内海,内海,ウチノウミ,no,1187,内海氏とは、日本の姓氏の１つ。垂仁天皇の皇子鐸石別命の裔の一人である清麻呂が、大功により和気朝臣を賜姓され、その子孫が内海氏を称した。,Q26203637,
+1159,内海,内海,ウチノウミ,yes,1187,内海氏とは、日本の姓氏の１つ。垂仁天皇の皇子鐸石別命の裔の一人である清麻呂が、大功により和気朝臣を賜姓され、その子孫が内海氏を称した。,Q26203637,official_web
 1159,内海,内海,ウチミ,yes,1187,内海氏とは、日本の姓氏の１つ。垂仁天皇の皇子鐸石別命の裔の一人である清麻呂が、大功により和気朝臣を賜姓され、その子孫が内海氏を称した。,Q26203637,ndl|jmnedict
 1160,前原,前原,マエハラ,yes,1187,,Q26216171,person_lists|ndl|wikidata_person|jmnedict
 1160,前原,前原,マエバラ,yes,1187,,Q26216171,ndl|wikidata_person|jmnedict
@@ -5007,7 +5007,7 @@ id,original,surface,pronunciation,verified,rank,description,wikidata,evidence_so
 3642,升,升,マス,yes,3714,,Q125611229,ndl|wikidata_person|jmnedict
 3643,南出,南出,ミナミデ,yes,3714,,Q27182055,person_lists|ndl|jmnedict
 3644,厚見,厚見,アツミ,yes,3714,王仁を祖とする渡来系氏族。姓は連。『日本書紀』応神天皇条によると、天皇が百済の使者の阿直岐に優秀な博士を要請したところ、王仁が派遣され、太子の師となったとされる。,Q113483650,ndl|jmnedict
-3645,厚谷,厚谷,アツタニ,no,3714,,Q117744002,
+3645,厚谷,厚谷,アツタニ,yes,3714,,Q117744002,official_web
 3645,厚谷,厚谷,アツヤ,yes,3714,,Q117744002,ndl|jmnedict
 3646,友寄,友寄,トモヨセ,yes,3714,,Q105638979,ndl|jmnedict
 3646,友寄,友寄,トモヨリ,yes,3714,,Q105638979,ndl|jmnedict
@@ -8422,7 +8422,7 @@ id,original,surface,pronunciation,verified,rank,description,wikidata,evidence_so
 6243,家富,家富,イエトミ,yes,6180,,Q40102890,ndl|wikidata_person|jmnedict
 6243,家富,家富,イエドミ,no,6180,,Q40102890,
 6244,家根谷,家根谷,ヤネタニ,yes,6180,,Q138292831,ndl|jmnedict
-6244,家根谷,家根谷,ヤネヤ,no,6180,,Q138292831,
+6244,家根谷,家根谷,ヤネヤ,yes,6180,,Q138292831,official_web
 6245,寄井,寄井,ヨリイ,yes,6180,,Q124339707,person_lists|ndl|wikidata_person|jmnedict
 6246,寄田,寄田,ヨリタ,yes,6180,,Q138425120,ndl|wikidata_person|jmnedict
 6247,富士井,富士井,フジイ,no,6180,,Q125400037,jmnedict
@@ -8454,7 +8454,7 @@ id,original,surface,pronunciation,verified,rank,description,wikidata,evidence_so
 6267,小嶌,小嶌,コジマ,yes,6180,,Q131836652,ndl|wikidata_person|jmnedict
 6268,小川内,小川内,オガワウチ,yes,6180,,Q116547081,ndl|jmnedict
 6268,小川内,小川内,オガワチ,no,6180,,Q116547081,
-6269,小斉平,小斉平,コサイヒラ,no,6180,,Q115470503,
+6269,小斉平,小斉平,コサイヒラ,yes,6180,,Q115470503,official_web
 6269,小斉平,小斉平,コセヒラ,yes,6180,,Q115470503,wikidata_person|jmnedict
 6270,小材,小材,オザイ,no,6180,,Q39240886,jmnedict
 6270,小材,小材,コザイ,yes,6180,,Q39240886,wikidata_person|jmnedict
@@ -8496,7 +8496,7 @@ id,original,surface,pronunciation,verified,rank,description,wikidata,evidence_so
 6300,尾浦,尾浦,オウラ,yes,6180,,Q108313165,ndl|jmnedict
 6301,尾留川,尾留川,オルカワ,no,6180,,Q39241150,jmnedict
 6301,尾留川,尾留川,ビルカワ,yes,6180,,Q39241150,ndl|wikidata_person|jmnedict
-6302,尾畠,尾畠,オハタ,no,6180,,Q128554161,
+6302,尾畠,尾畠,オハタ,yes,6180,,Q128554161,official_web
 6302,尾畠,尾畠,オバタ,yes,6180,,Q128554161,ndl|wikidata_person|jmnedict
 6303,尾縣,尾縣,オガタ,yes,6180,,Q124357452,wikidata_person|jmnedict
 6304,尾越,尾越,オゴシ,yes,6180,,Q124368300,ndl|wikidata_person|jmnedict
@@ -8547,7 +8547,7 @@ id,original,surface,pronunciation,verified,rank,description,wikidata,evidence_so
 6342,嵩,嵩,ダケ,yes,6180,,Q113003647,ndl|jmnedict
 6343,嵩瀬,嵩瀬,タカセ,yes,6180,,Q30001531,ndl|wikidata_person|jmnedict
 6344,嶋内,嶋内,シマウチ,yes,6180,,Q39241567,ndl|wikidata_person|jmnedict
-6344,嶋内,嶋内,シマノウチ,no,6180,,Q39241567,
+6344,嶋内,嶋内,シマノウチ,yes,6180,,Q39241567,official_web
 6345,嶺重,嶺重,ミネシゲ,yes,6180,,Q140306505,ndl|wikidata_person|jmnedict
 6346,巌崎,巌崎,イワサキ,yes,6180,,Q124368538,wikidata_person|jmnedict
 6347,巌谷,巌谷,イワヤ,yes,6180,,Q114395130,ndl|wikidata_person|jmnedict
@@ -10064,7 +10064,7 @@ id,original,surface,pronunciation,verified,rank,description,wikidata,evidence_so
 7523,難波江,難波江,ナバエ,yes,6180,,Q114729843,ndl|jmnedict
 7523,難波江,難波江,ナンバエ,no,6180,,Q114729843,jmnedict
 7524,雨堤,雨堤,アマツツミ,no,6180,,Q106157260,jmnedict
-7524,雨堤,雨堤,アマヅツミ,no,6180,,Q106157260,
+7524,雨堤,雨堤,アマヅツミ,yes,6180,,Q106157260,official_web
 7525,雨谷,雨谷,アマガイ,yes,6180,,Q136659221,ndl|wikidata_person|jmnedict
 7525,雨谷,雨谷,アマタニ,no,6180,,Q136659221,jmnedict
 7525,雨谷,雨谷,アマダニ,no,6180,,Q136659221,jmnedict
