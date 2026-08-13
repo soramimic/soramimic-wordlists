@@ -20392,7 +20392,7 @@ id,original,surface,pronunciation,verified,rank,description,wikidata,evidence_so
 16466,佐江木,佐江木,サエキ,yes,,,,ndl
 16467,佐江田,佐江田,サエダ,no,,,,
 16468,佐沢,佐沢,サザワ,yes,,,,ndl|jmnedict
-16469,佐治木,佐治木,サジキ,no,,,,jmnedict
+16469,佐治木,佐治木,サジキ,yes,,,,official_web|jmnedict
 16470,佐沼,佐沼,サヌマ,no,,,,jmnedict
 16471,佐波古,佐波古,サハコ,yes,,,,ndl|jmnedict
 16472,佐波瀬,佐波瀬,サバセ,no,,,,
@@ -20436,7 +20436,7 @@ id,original,surface,pronunciation,verified,rank,description,wikidata,evidence_so
 16505,佐田国,佐田国,サタクニ,no,,,,
 16505,佐田国,佐田国,サダクニ,no,,,,jmnedict
 16506,佐田國,佐田國,サダクニ,no,,,,jmnedict
-16507,佐田富,佐田富,サダトミ,no,,,,jmnedict
+16507,佐田富,佐田富,サダトミ,yes,,,,official_web|jmnedict
 16508,佐田尾,佐田尾,サタオ,yes,,,,ndl|jmnedict
 16508,佐田尾,佐田尾,サダオ,no,,,,
 16509,佐田山,佐田山,サダヤマ,yes,,,,ndl
@@ -20446,7 +20446,7 @@ id,original,surface,pronunciation,verified,rank,description,wikidata,evidence_so
 16512,佐甲,佐甲,サコウ,yes,,,,ndl|jmnedict
 16513,佐畑,佐畑,サハタ,no,,,,jmnedict
 16514,佐畠,佐畠,サハタ,no,,,,jmnedict
-16515,佐當,佐當,サトウ,no,,,,jmnedict
+16515,佐當,佐當,サトウ,yes,,,,official_web|jmnedict
 16516,佐登,佐登,サト,no,,,,jmnedict
 16517,佐目,佐目,サメ,no,,,,jmnedict
 16518,佐直,佐直,サジキ,yes,,,,ndl|jmnedict
@@ -20484,7 +20484,7 @@ id,original,surface,pronunciation,verified,rank,description,wikidata,evidence_so
 16547,佐股,佐股,サマタ,yes,,,,ndl|jmnedict
 16548,佐能,佐能,サノウ,yes,,,,ndl|jmnedict
 16549,佐臼,佐臼,サウス,no,,,,jmnedict
-16550,佐舗,佐舗,サジキ,no,,,,jmnedict
+16550,佐舗,佐舗,サジキ,yes,,,,official_web|jmnedict
 16550,佐舗,佐舗,サホ,no,,,,
 16551,佐良,佐良,サラ,no,,,,jmnedict
 16552,佐良土,佐良土,サラド,no,,,,
@@ -23415,7 +23415,7 @@ id,original,surface,pronunciation,verified,rank,description,wikidata,evidence_so
 19095,内東,内東,ナイトウ,no,,,,
 19096,内松,内松,ウチマツ,no,,,,jmnedict
 19097,内林,内林,ウチバヤシ,yes,,,,person_lists|ndl|jmnedict
-19098,内枦保,内枦保,ウチヘボ,no,,,,jmnedict
+19098,内枦保,内枦保,ウチヘボ,yes,,,,official_web|jmnedict
 19099,内柱,内柱,ナイチュウ,no,,,,jmnedict
 19100,内柳,内柳,ウチヤナギ,no,,,,jmnedict
 19101,内柴,内柴,ウチシバ,yes,,,,ndl|jmnedict
@@ -24011,7 +24011,7 @@ id,original,surface,pronunciation,verified,rank,description,wikidata,evidence_so
 19618,出内,出内,デウチ,no,,,,jmnedict
 19619,出分,出分,デブン,yes,,,,ndl
 19619,出分,出分,デワキ,no,,,,
-19620,出利葉,出利葉,イデリハ,no,,,,jmnedict
+19620,出利葉,出利葉,イデリハ,yes,,,,official_web|jmnedict
 19620,出利葉,出利葉,デリハ,yes,,,,ndl|jmnedict
 19621,出南,出南,デミナミ,no,,,,jmnedict
 19622,出原,出原,イデハラ,yes,,,,ndl|jmnedict
