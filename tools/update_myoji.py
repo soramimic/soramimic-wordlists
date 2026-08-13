@@ -13,12 +13,13 @@
   由来・分布(「〜に多い」「発祥」)の文があればそれを拾う
 - **wikidata**: rank の集計に使った姓アイテムの QID(CC0)
 - **verified**: このリポジトリの実在人名リスト(baseball/football/scientist/
-  youtuber の type=family)、または Web NDL Authorities の個人名典拠に同じ
-  (表記, 読み)があるか。SudachiDict には破格の
+  youtuber の type=family)、Web NDL Authorities、Wikidataの人物に使われる姓、
+  または公式人物ページの確認台帳に同じ(表記, 読み)があるか。SudachiDict には破格の
   読み(`伊藤 イロウ` `井上 イトウ` `星野 コシノ`)が混ざるので、**行は消さずに
   フラグで絞れるようにする**。`no` は誤りとは限らず裏が取れなかっただけ
-- **evidence_sources**: 読みを裏付けたソース。`person_lists` / `ndl` は実在人名、
-  `jmnedict` は辞書収録の裏付け。JMnedict 単独では verified=yes にしない
+- **evidence_sources**: 読みを裏付けたソース。`person_lists` / `ndl` /
+  `wikidata_person` / `official_web` は実在人名、`jmnedict` は辞書収録の裏付け。
+  JMnedict 単独では verified=yes にしない
 
 **rank は世帯数・人口順位ではない。** 日本には姓別の公的統計が無く、世帯数・順位を
 持つ民間サイト(名字由来net・日本の苗字七千傑等)は利用規約でスクレイピング・再配布
@@ -52,6 +53,7 @@ import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
 import zipfile
+from datetime import date, datetime, timezone
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -67,6 +69,7 @@ from wpnames import (
 )
 
 CSV_PATH = Path(__file__).resolve().parent.parent / "myoji.csv"
+OFFICIAL_EVIDENCE_PATH = Path(__file__).resolve().parent / "myoji_official_evidence.jsonl"
 CACHE_DIR = os.environ.get("MYOJI_CACHE")
 
 # 既存利用側の位置依存を壊しにくいよう、新しい列は末尾に追加する。
@@ -103,10 +106,16 @@ MIN_SURNAME_ROWS = 50000
 MIN_RANK_LABELS = 3000
 MIN_NDL_PAIRS = 50000
 MIN_JMNEDICT_PAIRS = 100000
+MIN_WIKIDATA_PERSON_PAIRS = 4000
 
 # 読みの裏付け。並び順を固定し、月次更新で不要な差分を出さない。
-EVIDENCE_ORDER = ("person_lists", "ndl", "jmnedict")
-HUMAN_EVIDENCE = frozenset(("person_lists", "ndl"))
+EVIDENCE_ORDER = ("person_lists", "ndl", "wikidata_person", "official_web",
+                  "jmnedict")
+HUMAN_EVIDENCE = frozenset(
+    ("person_lists", "ndl", "wikidata_person", "official_web"))
+OFFICIAL_SOURCE_TYPES = frozenset(
+    ("official_person_profile", "official_org_directory", "official_roster",
+     "official_authority"))
 
 # Web NDL Authorities は個人名典拠を一括配布していないため SPARQL で取得する。
 # 公式の姓抽出例と同じく、コンマ前を姓・姓読みとして扱う。
@@ -256,6 +265,14 @@ SELECT ?fn ?fnLabel (COUNT(DISTINCT ?p) AS ?cnt) WHERE {
 GROUP BY ?fn ?fnLabel
 """
 
+WIKIDATA_PERSON_READING_QUERY = """
+SELECT DISTINCT ?fnLabel ?kana WHERE {
+  ?person wdt:P31 wd:Q5 ; wdt:P27 wd:Q17 ; wdt:P734 ?fn .
+  ?fn wdt:P1814 ?kana ; rdfs:label ?fnLabel .
+  FILTER(LANG(?fnLabel) = "ja")
+}
+"""
+
 
 def fetch_rank() -> tuple:
     """(表記 -> rank, 表記 -> QID) を返す。rank は1始まり・同数は同順位。
@@ -288,6 +305,42 @@ def fetch_rank() -> tuple:
             prev_cnt, prev_rank = c, i
         ranks[label] = prev_rank
     return ranks, {label: q for label, (q, _) in best.items()}
+
+
+def fetch_wikidata_person_pairs() -> set:
+    """日本人のP734として使われる姓item自身のP1814から読みを得る。
+
+    人物のフルネームP1814を姓名分割するのではなく、姓itemに直接記録された読みだけを
+    採る。姓名順や空白の揺れによる誤分割を避けるため。
+    """
+    cache = (Path(CACHE_DIR) / "wikidata-person-surname-pairs.json"
+             if CACHE_DIR else None)
+    if cache and cache.exists():
+        print(f"  キャッシュ: {cache}", flush=True)
+        pairs = {tuple(p) for p in json.loads(cache.read_text(encoding="utf-8"))}
+    else:
+        pairs = parse_wikidata_person_json(
+            sparql(WIKIDATA_PERSON_READING_QUERY))
+    if len(pairs) < MIN_WIKIDATA_PERSON_PAIRS:
+        raise RuntimeError(f"Wikidata の人物姓読みが少なすぎる: {len(pairs)}")
+    if cache and not cache.exists():
+        cache.parent.mkdir(parents=True, exist_ok=True)
+        cache.write_text(json.dumps(sorted(pairs), ensure_ascii=False),
+                         encoding="utf-8")
+    print(f"Wikidata の人物に使われる(姓, 読み) {len(pairs)}組", flush=True)
+    return pairs
+
+
+def parse_wikidata_person_json(data: dict) -> set:
+    """WDQS応答を検査し、正規化済みの姓・読みだけを返す。"""
+    pairs = set()
+    for binding in data.get("results", {}).get("bindings", []):
+        surface = str(binding.get("fnLabel", {}).get("value", "")).strip()
+        yomi = (str(binding.get("kana", {}).get("value", ""))
+                .replace(" ", "").strip().translate(HIRA2KATA))
+        if clean_surname(surface, yomi):
+            pairs.add((surface, yomi))
+    return pairs
 
 
 # ---- ja.wikipedia: 姓記事の冒頭 -----------------------------------------
@@ -605,13 +658,73 @@ def fetch_jmnedict_pairs() -> set:
     return pairs
 
 
+def load_official_evidence(path: Path = OFFICIAL_EVIDENCE_PATH) -> set:
+    """レビュー済み公式ページ台帳から (姓, 読み) を得る。
+
+    元ページの名簿や文章は再配布せず、確認結果と監査用メタデータだけをJSONLで持つ。
+    """
+    if not path.exists():
+        return set()
+    pairs = set()
+    required = {"surface", "pronunciation", "status", "source_url",
+                "source_type", "source_title", "retrieved_on",
+                "observed_surface", "observed_reading", "locator"}
+    seen = set()
+    for lineno, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
+        if not line.strip():
+            continue
+        try:
+            record = json.loads(line)
+        except json.JSONDecodeError as exc:
+            raise RuntimeError(f"{path.name}:{lineno}: JSONが不正") from exc
+        missing = required - set(record)
+        if missing:
+            raise RuntimeError(
+                f"{path.name}:{lineno}: 必須キー不足: {sorted(missing)}")
+        surface = str(record["surface"]).strip()
+        yomi = str(record["pronunciation"]).strip().translate(HIRA2KATA)
+        if not clean_surname(surface, yomi):
+            raise RuntimeError(f"{path.name}:{lineno}: 姓・読みが不正")
+        pair = (surface, yomi)
+        if pair in seen:
+            raise RuntimeError(f"{path.name}:{lineno}: 姓・読みが重複")
+        seen.add(pair)
+        if record["status"] not in ("verified", "rejected", "review"):
+            raise RuntimeError(f"{path.name}:{lineno}: statusが不正")
+        if record["source_type"] not in OFFICIAL_SOURCE_TYPES:
+            raise RuntimeError(f"{path.name}:{lineno}: source_typeが不正")
+        if not str(record["source_title"]).strip() or not str(record["locator"]).strip():
+            raise RuntimeError(f"{path.name}:{lineno}: 表題・確認箇所が空")
+        if not re.fullmatch(r"https://[^\s]+", str(record["source_url"])):
+            raise RuntimeError(f"{path.name}:{lineno}: HTTPS URLでない")
+        try:
+            retrieved = date.fromisoformat(str(record["retrieved_on"]))
+        except ValueError as exc:
+            raise RuntimeError(f"{path.name}:{lineno}: 確認日が不正") from exc
+        if retrieved > datetime.now(timezone.utc).date():
+            raise RuntimeError(f"{path.name}:{lineno}: 確認日が不正")
+        observed_surface = str(record["observed_surface"]).strip()
+        observed_yomi = str(record["observed_reading"]).strip().translate(HIRA2KATA)
+        if (observed_surface, observed_yomi) != pair:
+            raise RuntimeError(f"{path.name}:{lineno}: 掲載表記・読みと候補が不一致")
+        if record["status"] == "verified":
+            pairs.add(pair)
+    print(f"公式人物ページ台帳の(姓, 読み) {len(pairs)}組", flush=True)
+    return pairs
+
+
 def evidence_for(pair: tuple, person_pairs: set, ndl_pairs: set,
+                 wikidata_person_pairs: set, official_pairs: set,
                  jmnedict_pairs: set) -> set:
     sources = set()
     if pair in person_pairs:
         sources.add("person_lists")
     if pair in ndl_pairs:
         sources.add("ndl")
+    if pair in wikidata_person_pairs:
+        sources.add("wikidata_person")
+    if pair in official_pairs:
+        sources.add("official_web")
     if pair in jmnedict_pairs:
         sources.add("jmnedict")
     return sources
@@ -730,6 +843,10 @@ def main() -> int:
     person_pairs = fetch_verified_pairs()
     print("Web NDL Authoritiesから人物典拠を収集中...", flush=True)
     ndl_pairs = fetch_ndl_pairs()
+    print("Wikidataから人物に使われる姓読みを収集中...", flush=True)
+    wikidata_person_pairs = fetch_wikidata_person_pairs()
+    print("公式人物ページの確認台帳を読込中...", flush=True)
+    official_pairs = load_official_evidence()
     print("JMnedictから辞書上の裏付けを収集中...", flush=True)
     jmnedict_pairs = fetch_jmnedict_pairs()
     evidence = {}
@@ -737,6 +854,7 @@ def main() -> int:
         for yomi in yomis:
             pair = (surface, yomi)
             sources = evidence_for(pair, person_pairs, ndl_pairs,
+                                   wikidata_person_pairs, official_pairs,
                                    jmnedict_pairs)
             if sources:
                 evidence[pair] = sources

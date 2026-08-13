@@ -77,9 +77,9 @@ jobs:
         run: python tools/update_youtuber.py
 
       # 名字。SudachiDict の辞書ソース(S3・約70MB)を落として姓エントリを取り、
-      # NDL人物典拠とJMnedictで読みの裏付けを補い、rank は Wikidata の集計で
-      # 毎回全行を更新する(ADR 00038, 00050)
-      - name: Update myoji.csv (SudachiDict/NDL/JMnedict/Wikidata/Wikipedia)
+      # NDL・Wikidata人物姓・公式ページ台帳・JMnedictで読みの裏付けを補い、rank は
+      # Wikidata の集計で毎回全行を更新する(ADR 00038, 00050, 00051)
+      - name: Update myoji.csv (SudachiDict/person evidence/JMnedict/Wikidata)
         id: myoji
         continue-on-error: true
         run: python tools/update_myoji.py

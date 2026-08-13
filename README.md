@@ -35,7 +35,7 @@
 | fictional_anime_character.csv | AI生成の架空アニメ登場人物 | jiroshimaya/fictional-scientists |
 | fictional_daily_anime_character.csv | AI生成の架空日常アニメ登場人物 | jiroshimaya/fictional-scientists |
 | ryuko.csv | 平安〜令和の流行 | Wikipedia等を参照したキュレーション |
-| myoji.csv | 名字と読み | [SudachiDict](https://github.com/WorksApplications/SudachiDict)、[Web NDL Authorities](https://id.ndl.go.jp/auth/ndla/Web)、[JMnedict](https://www.edrdg.org/enamdict/enamdict_doc.html)、Wikidata、Wikipedia |
+| myoji.csv | 名字と読み | [SudachiDict](https://github.com/WorksApplications/SudachiDict)、[Web NDL Authorities](https://id.ndl.go.jp/auth/ndla/Web)、[JMnedict](https://www.edrdg.org/enamdict/enamdict_doc.html)、Wikidata、Wikipedia、公式人物ページの確認台帳 |
 | gimukyoiku.csv | 小中高の学習語 | 本リポジトリでのキュレーション、[教科書LOD](https://jp-textbook.github.io/)、Wikimedia Commons |
 | municipality.csv | 現存・廃止自治体 | 総務省、[e-Stat](https://www.e-stat.go.jp/)、Wikidata、Wikipedia、Wikimedia Commons |
 | school.csv | 幼稚園〜大学等の学校名 | 文部科学省、総務省、Wikidata、Wikipedia、Wikimedia Commons |
@@ -49,7 +49,9 @@
   Research and Development Group のJMnedict/ENAMDICTに基づき、
   [CC BY-SA 4.0](https://www.edrdg.org/edrdg/licence.html)の条件で利用しています。
   Web NDL Authorities由来の情報は国立国会図書館の同サービスから取得しており、
-  [Web NDL Authoritiesの利用条件](https://id.ndl.go.jp/information/use/)に従います
+  [Web NDL Authoritiesの利用条件](https://id.ndl.go.jp/information/use/)に従います。
+  `wikidata_person` はWikidataのCC0データ、`official_web` は公開された公式人物ページで
+  個別確認した表記・読みの判定と根拠URLだけを保持しています
 - 掲載内容に関する権利上のご指摘は、Issueでご連絡ください
 
 ## 自動更新
