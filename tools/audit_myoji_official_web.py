@@ -14,8 +14,9 @@ import argparse
 import csv
 import json
 import re
-from datetime import date, datetime, timezone
+from datetime import date, datetime
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 from update_myoji import (
     HIRA2KATA,
@@ -29,7 +30,7 @@ from wpnames import write_csv_no_trailing_newline
 ROOT = Path(__file__).resolve().parent.parent
 CSV_PATH = ROOT / "myoji.csv"
 BATCH_DIR = Path(__file__).resolve().parent / "myoji_official_search_batches"
-DEFAULT_BATCH = datetime.now(timezone.utc).date().isoformat()
+DEFAULT_BATCH = datetime.now(ZoneInfo("Asia/Tokyo")).date().isoformat()
 CANDIDATE_COLUMNS = ("batch_index", "id", "surface", "pronunciation", "rank",
                      "query")
 SEARCH_STATUSES = frozenset(("verified", "no_support_found", "ambiguous"))
@@ -117,7 +118,7 @@ def _parse_date(value: object, where: str) -> date:
         parsed = date.fromisoformat(str(value))
     except ValueError as exc:
         raise RuntimeError(f"{where}: 日付が不正") from exc
-    if parsed > datetime.now(timezone.utc).date():
+    if parsed > datetime.now(ZoneInfo("Asia/Tokyo")).date():
         raise RuntimeError(f"{where}: 未来の日付")
     return parsed
 
