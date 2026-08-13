@@ -290,7 +290,7 @@ Wikipedia由来の加工文はCC BY-SA 4.0で、同台帳から原記事への�
 |---|---|
 | type | `common`(通用形)/`name`(固有部分)/`nick`(通称・略称) |
 | school_type | 幼稚園から大学・高等専門学校までの校種 |
-| has_school_suffix | `surface` が一般的な学校名接尾辞（`幼稚園`/`高校`/`小`など）で終わるか。`yes`/`no` |
+| has_school_suffix | `surface` が一般的な学校名接尾辞（`幼稚園`/`高校`/`小`など）で終わるか。`yes`/`no`。`name` に残る `学院`/`学園` は固有名として `no` |
 | founder | `国立`/`公立`/`私立` |
 | prefecture, city | 所在地 |
 | status | `current`(現存)/`former`(廃校) |
