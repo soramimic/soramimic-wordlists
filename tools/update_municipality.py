@@ -66,7 +66,7 @@ PREF_CLASS = "Q50337"
 
 COLS = ["id", "original", "surface", "pronunciation", "type", "prefecture",
         "parent", "status", "population", "code", "description", "image",
-        "image_page", "wikidata"]
+        "image_page", "wikidata", "municipality_type"]
 
 SUFFIXES = ("市", "区", "町", "村")
 # 接尾辞のカナ。同じ漢字でも自治体ごとに読みが違う(町=チョウ/マチ、
@@ -193,6 +193,11 @@ def short_form(name: str, kana: str):
             sk = kana[:-len(cand)]
             break
     return short, sk
+
+
+def municipality_type(name: str) -> str:
+    """正式名称から自治体種別(市/区/町/村)を返す。"""
+    return name[-1] if name and name[-1] in SUFFIXES else ""
 
 
 def clean_label(label: str) -> str:
@@ -443,6 +448,7 @@ def build_group(g: dict, existing: dict) -> list:
         "image": of.get("image", ""),
         "image_page": of.get("image_page", ""),
         "wikidata": keep(g["wikidata"], of.get("wikidata", "")),
+        "municipality_type": municipality_type(safe(g["original"])),
     }
     kana = keep(g["pronunciation"], of.get("pronunciation", ""))
     rows = [dict(base, surface=base["original"], pronunciation=kana, type="full")]
@@ -545,6 +551,7 @@ def main() -> int:
             if t in ex["rows"]:
                 r = dict(ex["rows"][t])
                 r["status"] = "former"
+                r["municipality_type"] = municipality_type(r.get("original", ""))
                 rows.append(r)
         print(f"note: 母集団から消えたので former に落とす: "
               f"{ex['rows'].get('full', {}).get('original', key)}")
