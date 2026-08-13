@@ -17291,7 +17291,7 @@ id,original,surface,pronunciation,verified,rank,description,wikidata,evidence_so
 13740,井手添,井手添,イデゾエ,no,,,,
 13741,井手渕,井手渕,イデブチ,no,,,,jmnedict
 13742,井手瀬,井手瀬,イデセ,no,,,,jmnedict
-13743,井手田,井手田,イデタ,no,,,,jmnedict
+13743,井手田,井手田,イデタ,yes,,,,official_web|jmnedict
 13744,井手畑,井手畑,イデハタ,yes,,,,ndl|jmnedict
 13745,井手窪,井手窪,イデクボ,yes,,,,ndl|jmnedict
 13746,井手端,井手端,イデバタ,no,,,,jmnedict
@@ -17317,7 +17317,7 @@ id,original,surface,pronunciation,verified,rank,description,wikidata,evidence_so
 13763,井料田,井料田,イリョウダ,no,,,,jmnedict
 13764,井方,井方,イカタ,yes,,,,ndl|jmnedict
 13764,井方,井方,イガタ,no,,,,jmnedict
-13765,井旗,井旗,イハタ,no,,,,jmnedict
+13765,井旗,井旗,イハタ,yes,,,,official_web|jmnedict
 13765,井旗,井旗,イバタ,no,,,,jmnedict
 13766,井早,井早,イハヤ,yes,,,,ndl|jmnedict
 13767,井早山,井早山,イサヤマ,no,,,,
@@ -18004,7 +18004,7 @@ id,original,surface,pronunciation,verified,rank,description,wikidata,evidence_so
 14376,仁田畑,仁田畑,ニタハタ,no,,,,
 14377,仁田窪,仁田窪,ニタクボ,no,,,,jmnedict
 14378,仁田脇,仁田脇,ニタワキ,yes,,,,ndl|jmnedict
-14379,仁田野,仁田野,ニタノ,no,,,,jmnedict
+14379,仁田野,仁田野,ニタノ,yes,,,,official_web|jmnedict
 14380,仁矢,仁矢,ニヤ,no,,,,jmnedict
 14381,仁礼,仁礼,ニレ,yes,,,,ndl|jmnedict
 14382,仁礼木,仁礼木,ニレキ,no,,,,
@@ -19494,7 +19494,7 @@ id,original,surface,pronunciation,verified,rank,description,wikidata,evidence_so
 15682,伊貸,伊貸,イガシ,yes,,,,person_lists|jmnedict
 15683,伊賀上,伊賀上,イガウエ,yes,,,,person_lists|ndl|jmnedict
 15684,伊賀並,伊賀並,イガナミ,no,,,,jmnedict
-15685,伊賀井,伊賀井,イガイ,no,,,,jmnedict
+15685,伊賀井,伊賀井,イガイ,yes,,,,official_web|jmnedict
 15686,伊賀倉,伊賀倉,イガクラ,yes,,,,ndl|jmnedict
 15687,伊賀利,伊賀利,イガリ,no,,,,jmnedict
 15688,伊賀原,伊賀原,イガハラ,no,,,,jmnedict
