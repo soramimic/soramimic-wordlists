@@ -43,6 +43,9 @@ jobs:
       - name: Test municipality updater
         run: python tools/test_update_municipality.py
 
+      - name: Test school updater
+        run: python tools/test_update_school.py
+
       - name: Test player description helpers
         run: python -m unittest tools/test_wpnames.py
 

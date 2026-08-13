@@ -27,6 +27,7 @@ from wpnames import (
     is_standalone_player_description,
     strip_name_prefix,
 )
+from update_school import has_school_suffix
 
 ROOT = Path(__file__).resolve().parent.parent
 REQUIRED = ("id", "original", "surface")
@@ -84,6 +85,9 @@ def validate(path: Path):
     if path.name == "municipality.csv" and "municipality_type" not in idx:
         err(f"{path.name}: 必須列 municipality_type がない")
         return
+    if path.name == "school.csv" and "has_school_suffix" not in idx:
+        err(f"{path.name}: 必須列 has_school_suffix がない")
+        return
     img_cols = [c for c in ("image", "image_page") if c in idx]
     scientist_years = {}
     player_groups = {}
@@ -113,6 +117,13 @@ def validate(path: Path):
             elif municipality_type != expected_type:
                 err(f"{path.name}:{lineno}: original/municipality_typeが不整合: "
                     f"{f[idx['original']]} / {municipality_type}")
+        if path.name == "school.csv":
+            actual = f[idx["has_school_suffix"]]
+            expected = has_school_suffix(f[idx["surface"]], f[idx["type"]],
+                                         f[idx["school_type"]])
+            if actual != expected:
+                err(f"{path.name}:{lineno}: surface/has_school_suffixが不整合: "
+                    f"{f[idx['surface']]} / {actual}")
         if path.name == "myoji.csv":
             if "evidence_sources" not in idx:
                 err(f"{path.name}: 必須列 evidence_sources がない")
