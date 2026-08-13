@@ -30,11 +30,25 @@ python3 tools/update_municipality.py  # 総務省コード表+Wikidataで市区�
 python3 tools/update_youtuber.py   # WikidataのYouTuber/VTuber(ja記事あり)を追記
 python3 tools/update_school.py     # 文科省の学校コード一覧+Wikidata/Wikipediaで全件再生成
 python3 tools/update_myoji.py      # SudachiDict+人物裏付け+JMnedict+Wikidata/Wikipediaで生成
+python3 tools/audit_myoji_official_web.py validate --all  # 公式Web人物確認バッチを検査
 python3 tools/update_youtuber_subscribers.py  # 登録者数を全行上書き(要 YOUTUBE_API_KEY)
 python3 tools/enrich_images.py     # 画像が空の人物行にCommons画像を遡及付与
 python3 tools/enrich_school_municipality_images.py  # 学校・市町村のCommons画像を補完
 python3 tools/apply_school_type_images.py  # 実写が無い学校へ校種別イメージを付与
 python3 tools/audit_taxa.py sekitsui  # 既存行が想定した界・門・綱の配下か検査(読み取り専用)
+```
+
+名字読みの公式Web確認は、候補を固定してから複数人・複数エージェントで検索する。
+検索結果が見つからなかった候補も `no_support_found` として残すため、同じ組を無駄に
+再検索せず、次回は未調査の続きへ進められる。正例は、公式ページ上で同一人物の姓表記と
+読みが併記されている場合だけ採用する。別読みの人物が見つかっただけでは候補を否定しない。
+
+```sh
+python3 tools/audit_myoji_official_web.py prepare --batch YYYY-MM-DD --limit 225
+# tools/myoji_official_search_batches/ の担当JSONLへ、全候補の検索結果を記録
+python3 tools/audit_myoji_official_web.py validate --batch YYYY-MM-DD
+python3 tools/audit_myoji_official_web.py promote --batch YYYY-MM-DD
+python3 tools/update_myoji.py
 ```
 
 `marine_life.csv` はネットワークから無人更新せず、レビュー済み台帳

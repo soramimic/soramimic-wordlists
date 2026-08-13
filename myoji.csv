@@ -374,7 +374,7 @@ id,original,surface,pronunciation,verified,rank,description,wikidata,evidence_so
 274,浅井,浅井,アサミ,no,273,浅井氏は、日本の氏族のひとつ。本項では、近江国の国人で京極家の家臣で、戦国時代に北近江で勢力を持って、戦国大名となった浅井氏について述べる。,Q24091155,
 274,浅井,浅井,アザイ,yes,273,浅井氏は、日本の氏族のひとつ。本項では、近江国の国人で京極家の家臣で、戦国時代に北近江で勢力を持って、戦国大名となった浅井氏について述べる。,Q24091155,ndl|wikidata_person|jmnedict
 275,白川,白川,シラカワ,yes,273,王氏でも源氏でもあり、神祇伯在任中には王号を称したように王氏としての面を持つが、その前後は源姓を称するのを例とした。,Q26203641,person_lists|ndl|wikidata_person|jmnedict
-275,白川,白川,シロカワ,no,273,王氏でも源氏でもあり、神祇伯在任中には王号を称したように王氏としての面を持つが、その前後は源姓を称するのを例とした。,Q26203641,jmnedict
+275,白川,白川,シロカワ,yes,273,王氏でも源氏でもあり、神祇伯在任中には王号を称したように王氏としての面を持つが、その前後は源姓を称するのを例とした。,Q26203641,official_web|jmnedict
 276,関,関,セキ,yes,273,関は漢姓の一つ。『百家姓』の394番目の姓である。2020年の中華人民共和国の統計では人数順の上位100姓に入っておらず、台湾の2018年の統計でも148番目に多い姓で、5 131人がいる（他に日本の新字体と同じ表記の「関」姓は275人がいる）。,Q24090474,person_lists|ndl|jmnedict
 276,関,関,カン,yes,273,関は漢姓の一つ。『百家姓』の394番目の姓である。2020年の中華人民共和国の統計では人数順の上位100姓に入っておらず、台湾の2018年の統計でも148番目に多い姓で、5 131人がいる（他に日本の新字体と同じ表記の「関」姓は275人がいる）。,Q24090474,ndl|jmnedict
 277,安達,安達,アダチ,yes,277,安達氏は、日本の氏族のひとつ。高句麗国王族末裔・藤原北家魚名流・藤原北家山蔭流・坂上氏坂上流などを称する。,Q24091176,person_lists|ndl|wikidata_person|jmnedict
@@ -432,7 +432,7 @@ id,original,surface,pronunciation,verified,rank,description,wikidata,evidence_so
 311,渡部,渡部,ワタノベ,yes,307,日本の地名、姓氏（渡部氏）。古代の官道の川越などの渡し場であった亘理においての通行の業務に従事した部民や、その場所を言ったもので亘理部が正字であったと考えられている。,Q24090476,ndl|jmnedict
 312,神谷,神谷,カミヤ,yes,307,,Q24091182,person_lists|ndl|jmnedict
 312,神谷,神谷,カミタニ,yes,307,,Q24091182,ndl|jmnedict
-312,神谷,神谷,シンタニ,no,307,,Q24091182,jmnedict
+312,神谷,神谷,シンタニ,yes,307,,Q24091182,official_web|jmnedict
 313,富田,富田,トミタ,yes,314,,Q24090548,person_lists|ndl|wikidata_person|jmnedict
 313,富田,富田,トミダ,yes,314,,Q24090548,person_lists|ndl|wikidata_person|jmnedict
 313,富田,富田,トダ,no,314,,Q24090548,jmnedict
@@ -478,7 +478,7 @@ id,original,surface,pronunciation,verified,rank,description,wikidata,evidence_so
 334,木内,木内,キノウチ,yes,332,,Q26216127,ndl|wikidata_person|jmnedict
 335,加納,加納,カノウ,yes,336,加納氏は、日本の氏族の一つ。,Q26203565,person_lists|ndl|jmnedict
 336,永野,永野,ナガノ,yes,336,,Q26203456,person_lists|ndl|jmnedict
-336,永野,永野,エイノ,no,336,,Q26203456,jmnedict
+336,永野,永野,エイノ,yes,336,,Q26203456,official_web|jmnedict
 336,永野,永野,ナカノ,no,336,,Q26203456,
 337,大崎,大崎,オオサキ,yes,338,陸奥大崎5郡を支配した大名。本姓は源氏。家系は清和源氏のひとつ、河内源氏の流れを汲む足利一門で、南北朝時代に奥州管領として奥州に下向した斯波家兼を始祖とする斯波氏の一族。,Q26203663,person_lists|ndl|wikidata_person|jmnedict
 338,大澤,大澤,オオサワ,yes,338,,Q26229927,person_lists|ndl|wikidata_person|jmnedict
@@ -836,7 +836,7 @@ id,original,surface,pronunciation,verified,rank,description,wikidata,evidence_so
 575,和泉,和泉,ワイズミ,yes,584,,Q26216228,ndl|jmnedict
 576,堀田,堀田,ホッタ,yes,584,堀田氏は、武家・華族だった日本の氏族。江戸時代前期に堀田正盛が徳川家光に老中に取り立てられ、その子達から3家の譜代大名家が出、維新後いずれも華族となった（伯爵1家、子爵2家）。,Q26157576,person_lists|ndl|wikidata_person|jmnedict
 576,堀田,堀田,ホリタ,yes,584,堀田氏は、武家・華族だった日本の氏族。江戸時代前期に堀田正盛が徳川家光に老中に取り立てられ、その子達から3家の譜代大名家が出、維新後いずれも華族となった（伯爵1家、子爵2家）。,Q26157576,person_lists|ndl|wikidata_person|jmnedict
-576,堀田,堀田,ホツタ,no,584,堀田氏は、武家・華族だった日本の氏族。江戸時代前期に堀田正盛が徳川家光に老中に取り立てられ、その子達から3家の譜代大名家が出、維新後いずれも華族となった（伯爵1家、子爵2家）。,Q26157576,jmnedict
+576,堀田,堀田,ホツタ,yes,584,堀田氏は、武家・華族だった日本の氏族。江戸時代前期に堀田正盛が徳川家光に老中に取り立てられ、その子達から3家の譜代大名家が出、維新後いずれも華族となった（伯爵1家、子爵2家）。,Q26157576,official_web|jmnedict
 577,寺西,寺西,テラニシ,yes,584,,Q129896284,person_lists|ndl|wikidata_person|jmnedict
 578,小口,小口,オグチ,yes,584,,Q115786213,ndl|wikidata_person|jmnedict
 579,小幡,小幡,オバタ,yes,584,,Q26229899,person_lists|ndl|wikidata_person|jmnedict
@@ -991,7 +991,7 @@ id,original,surface,pronunciation,verified,rank,description,wikidata,evidence_so
 680,井原,井原,イハラ,yes,695,,Q26231024,person_lists|ndl|jmnedict
 680,井原,井原,イバラ,yes,695,,Q26231024,ndl|jmnedict
 681,井本,井本,イモト,yes,695,,Q130600046,person_lists|ndl|wikidata_person|jmnedict
-681,井本,井本,イノモト,no,695,,Q130600046,jmnedict
+681,井本,井本,イノモト,yes,695,,Q130600046,official_web|jmnedict
 682,大下,大下,オオシタ,yes,695,,Q26231078,person_lists|ndl|wikidata_person|jmnedict
 682,大下,大下,オオシモ,yes,695,,Q26231078,ndl|jmnedict
 683,大木,大木,オオキ,yes,695,,Q26157666,person_lists|ndl|wikidata_person|jmnedict
@@ -4932,7 +4932,7 @@ id,original,surface,pronunciation,verified,rank,description,wikidata,evidence_so
 3589,佐渡,佐渡,サド,yes,3714,,Q27242902,ndl|jmnedict
 3589,佐渡,佐渡,サワタリ,yes,3714,,Q27242902,ndl|jmnedict
 3590,佐生,佐生,サショウ,yes,3714,,Q109543834,ndl|jmnedict
-3590,佐生,佐生,サソウ,no,3714,,Q109543834,jmnedict
+3590,佐生,佐生,サソウ,yes,3714,,Q109543834,official_web|jmnedict
 3590,佐生,佐生,サニュウ,no,3714,,Q109543834,jmnedict
 3590,佐生,佐生,サブ,no,3714,,Q109543834,jmnedict
 3591,佐護,佐護,サゴ,yes,3714,,Q133249075,ndl|jmnedict
@@ -5186,7 +5186,7 @@ id,original,surface,pronunciation,verified,rank,description,wikidata,evidence_so
 3769,小町谷,小町谷,コマチタニ,no,3714,,Q124651733,
 3769,小町谷,小町谷,コマチヤ,yes,3714,,Q124651733,ndl|wikidata_person|jmnedict
 3770,小窪,小窪,コクボ,yes,3714,,Q125217699,person_lists|ndl|jmnedict
-3770,小窪,小窪,オクボ,no,3714,,Q125217699,jmnedict
+3770,小窪,小窪,オクボ,yes,3714,,Q125217699,official_web|jmnedict
 3771,小篠,小篠,コシノ,yes,3714,,Q109918792,ndl|wikidata_person|jmnedict
 3772,小縣,小縣,オガタ,yes,3714,,Q124356439,ndl|wikidata_person|jmnedict
 3773,小里,小里,オザト,yes,3714,土岐氏の庶流。美濃土岐郡の国人。中世小里氏(新城尾里氏)と近世小里氏(城山小里氏)の両氏があるが、血統が異なり連続していない。,Q130390567,ndl|wikidata_person|jmnedict
@@ -5340,7 +5340,7 @@ id,original,surface,pronunciation,verified,rank,description,wikidata,evidence_so
 3886,木子,木子,キシ,yes,3714,,Q115616980,ndl
 3887,木津,木津,キツ,yes,3714,,Q27181390,ndl|jmnedict
 3887,木津,木津,キヅ,yes,3714,,Q27181390,wikidata_person|jmnedict
-3888,木滑,木滑,キナメ,no,3714,,Q127219341,jmnedict
+3888,木滑,木滑,キナメ,yes,3714,,Q127219341,official_web|jmnedict
 3888,木滑,木滑,キナメリ,yes,3714,,Q127219341,ndl|jmnedict
 3889,木辺,木辺,キベ,yes,3714,覚如の長男存覚の子孫に当たる浄土真宗木辺派総本山錦織寺住職家で華族の男爵家。,Q39246986,ndl|wikidata_person|jmnedict
 3890,木野村,木野村,キノムラ,yes,3714,,Q110028885,ndl|jmnedict
