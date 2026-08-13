@@ -268,6 +268,7 @@ Wikipedia由来の加工文はCC BY-SA 4.0で、同台帳から原記事への�
 | 列 | 意味 |
 |---|---|
 | type | `full`(正式名称)/`short`(市区町村の接尾辞を除いた形) |
+| municipality_type | 自治体種別。`市`/`区`/`町`/`村` |
 | prefecture | 都道府県 |
 | parent | 政令指定都市の行政区における親の市 |
 | status | `current`(現存)/`former`(廃止・旧名) |

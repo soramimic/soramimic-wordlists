@@ -24,7 +24,11 @@
 
 ### 列構成
 
-`id, original, surface, pronunciation, type, prefecture, parent, status, population, code, description, wikidata`
+`id, original, surface, pronunciation, type, prefecture, parent, status, population, code, description, image, image_page, wikidata, municipality_type`
+
+`municipality_type` は正式名称の末尾に基づく自治体種別(`市`/`区`/`町`/`村`)。
+表記バリエーションを表す `type` (`full`/`short`)とは独立しており、同じ id の
+全行で同じ値を持つ。既存列の位置を変えないため末尾に追加する。
 
 ### 1自治体 = 1 id、表層は full / short の2行まで
 

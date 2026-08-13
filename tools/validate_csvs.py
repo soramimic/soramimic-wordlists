@@ -75,6 +75,9 @@ def validate(path: Path):
     if path.name == "scientist.csv" and "death_year" not in idx:
         err(f"{path.name}: 必須列 death_year がない")
         return
+    if path.name == "municipality.csv" and "municipality_type" not in idx:
+        err(f"{path.name}: 必須列 municipality_type がない")
+        return
     img_cols = [c for c in ("image", "image_page") if c in idx]
     scientist_years = {}
     player_groups = {}
@@ -95,6 +98,15 @@ def validate(path: Path):
             if PRON_ASCII_RE.search(v):
                 err(f"{path.name}:{lineno}: pronunciation にASCII英字が連続"
                     f"(英名の混入?): {v[:40]}")
+        if path.name == "municipality.csv":
+            municipality_type = f[idx["municipality_type"]]
+            expected_type = f[idx["original"]][-1]
+            if municipality_type not in ("市", "区", "町", "村"):
+                err(f"{path.name}:{lineno}: municipality_type が不正: "
+                    f"{municipality_type}")
+            elif municipality_type != expected_type:
+                err(f"{path.name}:{lineno}: original/municipality_typeが不整合: "
+                    f"{f[idx['original']]} / {municipality_type}")
         if path.name in ("baseball.csv", "football.csv") and "description" in idx:
             v = f[idx["description"]]
             player_groups.setdefault(f[idx["id"]], []).append((lineno, f))
