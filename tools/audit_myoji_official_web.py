@@ -34,6 +34,7 @@ DEFAULT_BATCH = datetime.now(ZoneInfo("Asia/Tokyo")).date().isoformat()
 CANDIDATE_COLUMNS = ("batch_index", "id", "surface", "pronunciation", "rank",
                      "query")
 SEARCH_STATUSES = frozenset(("verified", "no_support_found", "ambiguous"))
+POOLS = frozenset(("ranked-jmnedict", "ranked", "jmnedict", "all"))
 KATA2HIRA = str.maketrans(
     {chr(code): chr(code - 0x60) for code in range(ord("ァ"), ord("ヶ") + 1)})
 REQUIRED_SEARCH_KEYS = frozenset((
@@ -45,15 +46,30 @@ URL_RE = re.compile(r"https://[^\s]+")
 
 
 def select_candidates(path: Path = CSV_PATH, limit: int = 225,
-                      excluded: set[tuple[str, str]] | None = None) -> list[dict]:
-    """順位付き・JMnedict一致済みの未確認読みを上位から固定する。"""
+                      excluded: set[tuple[str, str]] | None = None,
+                      pool: str = "ranked-jmnedict") -> list[dict]:
+    """指定した母集団の未確認読みを優先順で固定する。"""
+    if pool not in POOLS:
+        raise RuntimeError(f"候補poolが不正: {pool}")
     excluded = set() if excluded is None else excluded
     with path.open(encoding="utf-8") as fh:
-        rows = [r for r in csv.DictReader(fh)
-                if r["verified"] == "no" and r["rank"]
-                and "jmnedict" in r["evidence_sources"].split("|")
-                and (r["original"], r["pronunciation"]) not in excluded]
-    rows.sort(key=lambda r: (int(r["rank"]), int(r["id"]), r["pronunciation"]))
+        rows = []
+        for row in csv.DictReader(fh):
+            has_rank = bool(row["rank"])
+            has_jmnedict = "jmnedict" in row["evidence_sources"].split("|")
+            if row["verified"] != "no" or (
+                    row["original"], row["pronunciation"]) in excluded:
+                continue
+            if pool in ("ranked-jmnedict", "ranked") and not has_rank:
+                continue
+            if pool in ("ranked-jmnedict", "jmnedict") and not has_jmnedict:
+                continue
+            rows.append(row)
+    rows.sort(key=lambda r: (
+        int(r["rank"]) if r["rank"] else 10**9,
+        0 if "jmnedict" in r["evidence_sources"].split("|") else 1,
+        int(r["id"]), r["pronunciation"],
+    ))
     result = []
     for index, row in enumerate(rows[:limit]):
         hira = row["pronunciation"].translate(KATA2HIRA)
@@ -88,11 +104,11 @@ def searched_pairs() -> set[tuple[str, str]]:
     return pairs
 
 
-def prepare(limit: int, batch: str) -> None:
+def prepare(limit: int, batch: str, pool: str) -> None:
     path = candidates_path(batch)
     if path.exists():
         raise RuntimeError(f"候補スナップショットは上書きしない: {path}")
-    rows = select_candidates(limit=limit, excluded=searched_pairs())
+    rows = select_candidates(limit=limit, excluded=searched_pairs(), pool=pool)
     if len(rows) != limit:
         raise RuntimeError(f"候補不足: {len(rows)} / {limit}")
     BATCH_DIR.mkdir(parents=True, exist_ok=True)
@@ -239,6 +255,8 @@ def main() -> int:
     prepare_parser = sub.add_parser("prepare")
     prepare_parser.add_argument("--limit", type=int, default=225)
     prepare_parser.add_argument("--batch", default=DEFAULT_BATCH)
+    prepare_parser.add_argument("--pool", choices=sorted(POOLS),
+                                default="ranked-jmnedict")
     validate_parser = sub.add_parser("validate")
     validate_parser.add_argument("--batch", default=DEFAULT_BATCH)
     validate_parser.add_argument("--all", action="store_true")
@@ -246,7 +264,7 @@ def main() -> int:
     promote_parser.add_argument("--batch", default=DEFAULT_BATCH)
     args = parser.parse_args()
     if args.command == "prepare":
-        prepare(args.limit, args.batch)
+        prepare(args.limit, args.batch, args.pool)
     elif args.command == "validate":
         validate_all() if args.all else validate(args.batch)
     else:

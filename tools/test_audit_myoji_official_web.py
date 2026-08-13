@@ -61,8 +61,26 @@ class CandidateTest(unittest.TestCase):
             path = Path(td) / "2026-08-13-candidates.csv"
             path.write_text("fixed", encoding="utf-8")
             with self.assertRaises(RuntimeError):
-                a.prepare(1, "2026-08-13")
+                a.prepare(1, "2026-08-13", "ranked-jmnedict")
             self.assertEqual(path.read_text(encoding="utf-8"), "fixed")
+
+    def test_ranked_pool_includes_rows_without_jmnedict(self):
+        rows = [
+            {"id": "1", "original": "東", "pronunciation": "アズマ",
+             "verified": "no", "rank": "2", "evidence_sources": ""},
+            {"id": "2", "original": "西", "pronunciation": "ニシ",
+             "verified": "no", "rank": "", "evidence_sources": "jmnedict"},
+        ]
+        with tempfile.TemporaryDirectory() as td:
+            path = Path(td) / "myoji.csv"
+            with path.open("w", encoding="utf-8", newline="") as fh:
+                writer = csv.DictWriter(fh, fieldnames=rows[0])
+                writer.writeheader()
+                writer.writerows(rows)
+            ranked = a.select_candidates(path, 10, pool="ranked")
+            dictionary = a.select_candidates(path, 10, pool="jmnedict")
+        self.assertEqual([r["surface"] for r in ranked], ["東"])
+        self.assertEqual([r["surface"] for r in dictionary], ["西"])
 
     def test_searched_pairs_reads_suffixed_batches(self):
         record = {"surface": "東", "pronunciation": "アズマ"}
