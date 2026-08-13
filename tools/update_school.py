@@ -601,8 +601,12 @@ GENERAL_SCHOOL_SUFFIXES = (
     "学校", "大学校", "大学", "高校", "中学", "短大", "高専",
     "こども園", "こどもえん", "子ども園", "子供園",
     "幼稚園", "ようちえん", "保育園", "保育所", "幼稚舎",
-    "学園", "学院", "スクール", "幼稚部", "小学部", "中学部", "高等部",
+    "スクール", "幼稚部", "小学部", "中学部", "高等部", "高等学部",
 )
+# name はすでに本来の校種語を取り除いた固有部分なので、そこに残る
+# 「神戸女学院」「桐蔭学園」などは固有名として扱う。一方、common 自体が
+# 「高等看護学院」「星幼学園」のように終わる場合は施設名の接尾辞とみなす。
+COMMON_ONLY_SCHOOL_SUFFIXES = ("学院", "学園")
 ABBREVIATED_SUFFIX_TYPES = {
     "小": {"小学校", "義務教育学校"},
     "中": {"中学校", "義務教育学校"},
@@ -614,6 +618,8 @@ ABBREVIATED_SUFFIX_TYPES = {
 def has_school_suffix(surface: str, surface_type: str, school_type: str) -> str:
     """surface が一般的な学校名接尾辞で終わるかを yes/no で返す。"""
     if surface.endswith(GENERAL_SCHOOL_SUFFIXES):
+        return "yes"
+    if surface_type == "common" and surface.endswith(COMMON_ONLY_SCHOOL_SUFFIXES):
         return "yes"
     if surface_type not in {"common", "nick"}:
         return "no"

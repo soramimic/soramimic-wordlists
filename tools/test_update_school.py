@@ -23,6 +23,8 @@ class UpdateSchoolTest(unittest.TestCase):
             ("附属小学部", "common", "特別支援学校"),
             ("附属中学部", "common", "特別支援学校"),
             ("附属高等部", "common", "特別支援学校"),
+            ("神戸女学院高等学部", "common", "高等学校"),
+            ("高等看護学院", "common", "専修学校"),
         ]
         for surface, surface_type, school_type in cases:
             with self.subTest(surface=surface, surface_type=surface_type):
@@ -38,6 +40,12 @@ class UpdateSchoolTest(unittest.TestCase):
         self.assertEqual("no", has_school_suffix("上小", "name", "小学校"))
         self.assertEqual("no", has_school_suffix("山中", "nick", "高等学校"))
         self.assertEqual("no", has_school_suffix("第一中", "unknown", "中学校"))
+
+    def test_academy_suffix_is_part_of_generated_core_name(self):
+        self.assertEqual("no", has_school_suffix("神戸女学院", "name", "大学"))
+        self.assertEqual("no", has_school_suffix("桐蔭学園", "name", "高等学校"))
+        self.assertEqual("no", has_school_suffix("青山学院", "nick", "大学"))
+        self.assertEqual("no", has_school_suffix("文化学園大杉並", "nick", "高等学校"))
 
 
 if __name__ == "__main__":
