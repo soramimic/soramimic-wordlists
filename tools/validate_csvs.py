@@ -45,6 +45,7 @@ IMAGE_URL_RE = re.compile(
 PRON_ASCII_RE = re.compile(r"[A-Za-z]{2,}")
 YEAR_RE = re.compile(r"^(?:NA|前?[0-9]+)$")
 HAN_RE = re.compile(r"[\u3400-\u9fff]")
+MYOJI_EVIDENCE = ("person_lists", "ndl", "jmnedict")
 
 errors = []
 
@@ -107,6 +108,21 @@ def validate(path: Path):
             elif municipality_type != expected_type:
                 err(f"{path.name}:{lineno}: original/municipality_typeが不整合: "
                     f"{f[idx['original']]} / {municipality_type}")
+        if path.name == "myoji.csv":
+            if "evidence_sources" not in idx:
+                err(f"{path.name}: 必須列 evidence_sources がない")
+                return
+            sources = [s for s in f[idx["evidence_sources"]].split("|") if s]
+            if any(s not in MYOJI_EVIDENCE for s in sources):
+                err(f"{path.name}:{lineno}: evidence_sources が不正: "
+                    f"{f[idx['evidence_sources']]}")
+            canonical = [s for s in MYOJI_EVIDENCE if s in sources]
+            if sources != canonical:
+                err(f"{path.name}:{lineno}: evidence_sources の順序・重複が不正: "
+                    f"{f[idx['evidence_sources']]}")
+            if f[idx["verified"]] == "yes" and not (
+                    {"person_lists", "ndl"} & set(sources)):
+                err(f"{path.name}:{lineno}: verified=yes に人物の裏付けがない")
         if path.name in ("baseball.csv", "football.csv") and "description" in idx:
             v = f[idx["description"]]
             player_groups.setdefault(f[idx["id"]], []).append((lineno, f))

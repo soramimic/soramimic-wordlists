@@ -29,7 +29,7 @@ python3 tools/update_marine_life.py --check  # 海の生き物の台帳と配布
 python3 tools/update_municipality.py  # 総務省コード表+Wikidataで市区町村を再生成
 python3 tools/update_youtuber.py   # WikidataのYouTuber/VTuber(ja記事あり)を追記
 python3 tools/update_school.py     # 文科省の学校コード一覧+Wikidata/Wikipediaで全件再生成
-python3 tools/update_myoji.py      # SudachiDictの姓エントリ+Wikidata/Wikipediaで生成
+python3 tools/update_myoji.py      # SudachiDict+NDL/JMnedict+Wikidata/Wikipediaで生成
 python3 tools/update_youtuber_subscribers.py  # 登録者数を全行上書き(要 YOUTUBE_API_KEY)
 python3 tools/enrich_images.py     # 画像が空の人物行にCommons画像を遡及付与
 python3 tools/enrich_school_municipality_images.py  # 学校・市町村のCommons画像を補完
