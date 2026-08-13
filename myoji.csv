@@ -11597,12 +11597,12 @@ id,original,surface,pronunciation,verified,rank,description,wikidata,evidence_so
 8845,三重松,三重松,ミエマツ,no,,,,jmnedict
 8846,三重生,三重生,ミエウ,no,,,,
 8846,三重生,三重生,ミエブ,no,,,,
-8847,三野原,三野原,ミノハラ,no,,,,jmnedict
+8847,三野原,三野原,ミノハラ,yes,,,,official_web|jmnedict
 8848,三野宮,三野宮,サンノミヤ,yes,,,,ndl|jmnedict
 8849,三野岡,三野岡,ミノオカ,no,,,,jmnedict
-8850,三野島,三野島,ミノシマ,no,,,,jmnedict
+8850,三野島,三野島,ミノシマ,yes,,,,official_web|jmnedict
 8851,三野本,三野本,ミノモト,no,,,,jmnedict
-8852,三野田,三野田,ミノダ,no,,,,jmnedict
+8852,三野田,三野田,ミノダ,yes,,,,official_web|jmnedict
 8853,三野谷,三野谷,ミノタニ,no,,,,
 8854,三野輪,三野輪,ミノワ,yes,,,,ndl|jmnedict
 8855,三金,三金,ミカネ,yes,,,,ndl|jmnedict
@@ -11611,7 +11611,7 @@ id,original,surface,pronunciation,verified,rank,description,wikidata,evidence_so
 8858,三鍋,三鍋,ミナベ,yes,,,,ndl|jmnedict
 8859,三鍵,三鍵,ミカギ,no,,,,
 8860,三鎌,三鎌,ミカマ,yes,,,,ndl
-8861,三鑰,三鑰,ミカギ,no,,,,jmnedict
+8861,三鑰,三鑰,ミカギ,yes,,,,official_web|jmnedict
 8862,三長,三長,ミツナガ,no,,,,jmnedict
 8862,三長,三長,ミナガ,no,,,,
 8863,三門明,三門明,ミカドメ,no,,,,jmnedict
@@ -12001,7 +12001,7 @@ id,original,surface,pronunciation,verified,rank,description,wikidata,evidence_so
 9174,上安平,上安平,カミヤスヒラ,yes,,,,ndl|jmnedict
 9175,上宗,上宗,ウエソウ,no,,,,
 9175,上宗,上宗,カミムネ,no,,,,
-9176,上定,上定,ウエサダ,no,,,,jmnedict
+9176,上定,上定,ウエサダ,yes,,,,official_web|jmnedict
 9177,上宜,上宜,ウエヨシ,no,,,,
 9178,上実,上実,ウエミ,no,,,,
 9178,上実,上実,カミザネ,no,,,,jmnedict
@@ -12800,7 +12800,7 @@ id,original,surface,pronunciation,verified,rank,description,wikidata,evidence_so
 9807,下之門,下之門,シモノカド,no,,,,jmnedict
 9808,下九沢,下九沢,シモクザワ,no,,,,
 9809,下二井,下二井,シモニイ,no,,,,
-9810,下井倉,下井倉,シモイクラ,no,,,,jmnedict
+9810,下井倉,下井倉,シモイクラ,yes,,,,official_web|jmnedict
 9811,下井戸,下井戸,シモイド,no,,,,jmnedict
 9812,下井手,下井手,シモイデ,no,,,,jmnedict
 9813,下井田,下井田,シモイタ,no,,,,
