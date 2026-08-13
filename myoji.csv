@@ -10203,11 +10203,11 @@ id,original,surface,pronunciation,verified,rank,description,wikidata,evidence_so
 7623,龍村,龍村,タツムラ,yes,6180,,Q140304948,ndl|wikidata_person|jmnedict
 7624,〆垣,〆垣,シメガキ,no,,,,
 7625,〆崎,〆崎,シメザキ,no,,,,
-7626,〆木,〆木,シメキ,no,,,,jmnedict
+7626,〆木,〆木,シメキ,yes,,,,official_web|jmnedict
 7626,〆木,〆木,シメギ,no,,,,
 7627,〆本,〆本,シメモト,no,,,,
 7628,〆田,〆田,シメダ,no,,,,
-7629,〆野,〆野,シメノ,no,,,,jmnedict
+7629,〆野,〆野,シメノ,yes,,,,official_web|jmnedict
 7630,うるし原,うるし原,ウルシハラ,yes,,,,ndl
 7631,すず風,すず風,スズカゼ,no,,,,
 7632,すみれ乃,すみれ乃,スミレノ,no,,,,
@@ -10250,7 +10250,7 @@ id,original,surface,pronunciation,verified,rank,description,wikidata,evidence_so
 7668,一ノ勢,一ノ勢,イチノセ,no,,,,jmnedict
 7669,一ノ原,一ノ原,イチノハラ,no,,,,jmnedict
 7670,一ノ口,一ノ口,イチノクチ,yes,,,,ndl|jmnedict
-7671,一ノ名,一ノ名,イチノナ,no,,,,jmnedict
+7671,一ノ名,一ノ名,イチノナ,yes,,,,official_web|jmnedict
 7672,一ノ坪,一ノ坪,イチノツボ,yes,,,,ndl|jmnedict
 7673,一ノ子,一ノ子,イチノコ,no,,,,jmnedict
 7674,一ノ字,一ノ字,イチノジ,no,,,,jmnedict
@@ -10635,7 +10635,7 @@ id,original,surface,pronunciation,verified,rank,description,wikidata,evidence_so
 8004,七条,七条,ナナジョウ,yes,,,,ndl|jmnedict
 8005,七松,七松,ナナマツ,no,,,,jmnedict
 8006,七林,七林,ナナバヤシ,yes,,,,ndl|jmnedict
-8007,七枝,七枝,ナナエダ,no,,,,jmnedict
+8007,七枝,七枝,ナナエダ,yes,,,,official_web|jmnedict
 8007,七枝,七枝,ナナツエ,no,,,,jmnedict
 8008,七栗,七栗,ナナクリ,no,,,,jmnedict
 8009,七森,七森,ナナモリ,yes,,,,person_lists|ndl|jmnedict
@@ -10681,7 +10681,7 @@ id,original,surface,pronunciation,verified,rank,description,wikidata,evidence_so
 8041,七郎丸,七郎丸,シチロウマル,no,,,,jmnedict
 8042,七釜,七釜,ナナカマ,no,,,,jmnedict
 8043,七釜子,七釜子,ナナカマス,no,,,,
-8044,七門,七門,ナナカド,no,,,,jmnedict
+8044,七門,七門,ナナカド,yes,,,,official_web|jmnedict
 8045,七隈,七隈,ナナクマ,no,,,,
 8046,七障子,七障子,ナナショウジ,no,,,,jmnedict
 8047,七類,七類,シチルイ,yes,,,,ndl
@@ -11075,7 +11075,7 @@ id,original,surface,pronunciation,verified,rank,description,wikidata,evidence_so
 8388,三吉矢,三吉矢,ミヨシヤ,no,,,,
 8389,三吉谷,三吉谷,ミヨシダニ,no,,,,
 8390,三吉野,三吉野,ミヨシノ,yes,,,,ndl|jmnedict
-8391,三名木,三名木,ミナキ,no,,,,jmnedict
+8391,三名木,三名木,ミナキ,yes,,,,official_web|jmnedict
 8391,三名木,三名木,ミナギ,no,,,,
 8392,三名田,三名田,ミナタ,no,,,,jmnedict
 8393,三和山,三和山,ミワヤマ,no,,,,jmnedict
