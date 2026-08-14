@@ -55,6 +55,9 @@ jobs:
       - name: Test player description helpers
         run: python -m unittest tools/test_wpnames.py
 
+      - name: Test player position helpers
+        run: python -m unittest tools/test_enrich_player_positions.py
+
       - name: Test marine life updater
         run: >-
           python -m unittest

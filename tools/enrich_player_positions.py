@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""baseball.csv / football.csv の空の position をロースターとWikidataで補完する。
+"""baseball.csv / football.csv の空の position を補完する。
 
 現役選手はWikipedia日本語版のロースターテンプレートを優先し、歴代選手は
-Wikidataの選手のポジション(P413)を使う。既存値は上書きしない。
+Wikidataの選手のポジション(P413)を使う。どちらでも得られない野球選手は、
+説明文に明記されたポジションで補う。既存値は上書きしない。
 
 usage: python3 tools/enrich_player_positions.py
        python3 tools/enrich_player_positions.py baseball
@@ -47,6 +48,23 @@ POSITION_OVERRIDES = {
         "ラウドルップ": "MF",
     },
 }
+
+# 「実父は捕手として…」や受賞歴中の「最多勝投手」は本人のポジションを
+# 表すとは限らない。本人を「（元）プロ野球選手」と説明する箇所に結び付いた
+# 括弧書きか、「元プロ野球捕手」のような直接の肩書きだけを採用する。
+BASEBALL_DESCRIPTION_POSITION_PATTERNS = (
+    re.compile(
+        r"(?:プロ)?野球選手[^。\n（）()]{0,16}"
+        r"[（(](?P<positions>[^）)]*(?:投手|捕手|内野手|外野手)[^）)]*)[）)]"
+    ),
+    re.compile(
+        r"(?:元)?プロ野球(?P<positions>投手|捕手|内野手|外野手)"
+    ),
+    re.compile(
+        r"(?:元)?プロ野球選手[、,]?ポジションは"
+        r"(?P<positions>[^。\n]*(?:投手|捕手|内野手|外野手)[^。\n]*)"
+    ),
+)
 
 
 def load_cache() -> dict:
@@ -250,6 +268,17 @@ def canonical_positions(kind: str, labels: list[str]) -> str:
     return "/".join(found)
 
 
+def position_from_description(kind: str, description: str) -> str:
+    """本人の肩書きに明示されたポジションだけを説明文から返す。"""
+    if kind != "baseball" or not description:
+        return ""
+    for pattern in BASEBALL_DESCRIPTION_POSITION_PATTERNS:
+        match = pattern.search(description)
+        if match:
+            return canonical_positions(kind, [match.group("positions")])
+    return ""
+
+
 def enrich(kind: str, cache: dict) -> None:
     path = ROOT / f"{kind}.csv"
     rows = list(csv.DictReader(path.open(encoding="utf-8")))
@@ -300,6 +329,13 @@ def enrich(kind: str, cache: dict) -> None:
                 for position_qid in cache["claims"].get(qid, [])
             ]
             position = canonical_positions(kind, labels)
+        if not position:
+            description = next(
+                (row.get("description", "") for row in groups[group_id]
+                 if row.get("description")),
+                "",
+            )
+            position = position_from_description(kind, description)
         if not position:
             continue
         changed = False
