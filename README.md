@@ -67,3 +67,5 @@
   ```sh
   git submodule update --remote wordlists
   ```
+- GitHub Release画像の公開とsource manifest更新は
+  [Release画像source manifest運用](docs/release-image-source-manifest.md)を参照する。

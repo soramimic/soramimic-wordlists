@@ -74,6 +74,8 @@ from pathlib import Path
 from typing import NamedTuple
 from xml.sax.saxutils import escape
 
+from release_image_manifest import GitHub, ManifestError, publish as publish_release_images
+
 ROOT = Path(__file__).resolve().parent.parent
 CSV_PATH = ROOT / "pokemon.csv"
 MOTIF_PATH = ROOT / "tools" / "pokemon_motifs.json"
@@ -791,6 +793,7 @@ def main() -> int:
                          "再実行すれば続きから進む")
     ap.add_argument("--force", action="store_true",
                     help="--upload の差分判定をやめて全枚数を送り直す")
+    ap.add_argument("--note", help="source manifest の更新メモ (--upload 時のみ)")
     ap.add_argument("--verify", action="store_true",
                     help="Releaseのアセットがいま生成されるカードと一致するかを"
                          "サイズで検査して終了する(生成もアップロードもしない)")
@@ -830,23 +833,16 @@ def main() -> int:
         print(f"  {tag}: {len(files)} assets")
 
     if args.upload:
-        failed = 0
-        sent = 0
-        for tag, files in by_tag.items():
-            targets = pending_uploads(tag, files, force=args.force)
-            if not targets:
-                print(f"{tag}: すべて最新 ({len(files)} assets)")
-                continue
-            print(f"uploading to {tag} ({len(targets)}/{len(files)} files) ...",
-                  flush=True)
-            failed += upload(tag, targets)
-            sent += len(targets)
-        if failed:
-            print(f"error: {failed}件のアップロードに失敗。"
-                  "再実行すれば残りだけ送る", file=sys.stderr)
+        try:
+            _, sent = publish_release_images(
+                GitHub(), by_tag,
+                note=args.note, force=args.force,
+            )
+        except ManifestError as exc:
+            print(f"error: Release画像の公開に失敗: {exc}", file=sys.stderr)
             return 1
         if sent:
-            print(f"uploaded {sent} assets")
+            print(f"uploaded {sent} assets; source manifest marker published last")
         else:
             print("すべて最新なので送るものは無い")
     return 0
