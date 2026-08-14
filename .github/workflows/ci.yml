@@ -21,6 +21,9 @@ jobs:
       - name: Validate CSVs
         run: python tools/validate_csvs.py
 
+      - name: Test Release image source manifest tooling
+        run: python -m unittest tools/test_release_image_manifest.py
+
       - name: Validate sekitsui family generated images
         run: python tools/validate_sekitsui_generated_images.py
 

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/soramimic/soramimic-wordlists/blob/main/assets/release-image-source-manifest-v1.schema.json",
+  "title": "Soramimic GitHub Release image source manifest v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "schema", "version", "revision", "generated_at", "repository", "assets"],
+  "properties": {
+    "$schema": {"const": "https://github.com/soramimic/soramimic-wordlists/blob/main/assets/release-image-source-manifest-v1.schema.json"},
+    "schema": {"const": "soramimic.release-image-source-manifest"},
+    "version": {"const": 1},
+    "revision": {"type": "integer", "minimum": 1},
+    "generated_at": {"type": "string", "format": "date-time"},
+    "repository": {"const": "soramimic/soramimic-wordlists"},
+    "assets": {
+      "type": "object",
+      "propertyNames": {"pattern": "^https://github\\.com/soramimic/soramimic-wordlists/releases/download/"},
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["revision", "updated_at", "sha256", "size"],
+        "properties": {
+          "revision": {"type": "integer", "minimum": 1},
+          "updated_at": {"type": "string", "format": "date-time"},
+          "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+          "size": {"type": "integer", "minimum": 0},
+          "note": {"type": "string"}
+        }
+      }
+    }
+  }
+}
