@@ -50,8 +50,9 @@
   [CC BY-SA 4.0](https://www.edrdg.org/edrdg/licence.html)の条件で利用しています。
   Web NDL Authorities由来の情報は国立国会図書館の同サービスから取得しており、
   [Web NDL Authoritiesの利用条件](https://id.ndl.go.jp/information/use/)に従います。
-  `wikidata_person` はWikidataのCC0データ、`official_web` は公開された公式人物ページで
-  個別確認した表記・読みの判定と根拠URLだけを保持しています
+  `wikidata_person` はWikidataのCC0データ、`official_web` と `web_person` は公開された
+  人物ページで個別確認した表記・読みの判定と根拠URLだけを保持しています。ページ本文は
+  再配布しません
 - 掲載内容に関する権利上のご指摘は、Issueでご連絡ください
 
 ## 自動更新

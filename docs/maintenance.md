@@ -31,6 +31,7 @@ python3 tools/update_youtuber.py   # WikidataのYouTuber/VTuber(ja記事あり)�
 python3 tools/update_school.py     # 文科省の学校コード一覧+Wikidata/Wikipediaで全件再生成
 python3 tools/update_myoji.py      # SudachiDict+人物裏付け+JMnedict+Wikidata/Wikipediaで生成
 python3 tools/audit_myoji_official_web.py validate --all  # 公式Web人物確認バッチを検査
+python3 tools/audit_myoji_web_research.py validate-all  # 一般Webでの再調査バッチを検査
 python3 tools/update_youtuber_subscribers.py  # 登録者数を全行上書き(要 YOUTUBE_API_KEY)
 python3 tools/enrich_images.py     # 画像が空の人物行にCommons画像を遡及付与
 python3 tools/enrich_school_municipality_images.py  # 学校・市町村のCommons画像を補完
@@ -55,6 +56,22 @@ python3 tools/update_myoji.py
 `BATCH_ID` は `YYYY-MM-DD`、同日に複数回行う場合は `YYYY-MM-DD-2` のようにする。
 `--pool` は `ranked-jmnedict`（既定）、`ranked`、`jmnedict`、`all` から選ぶ。
 検索済みログはどのpoolでも除外されるため、高確度の母集団から段階的に広げられる。
+
+過去の `verified=no` を一般Webで再調査するときは、旧公式Webログを検索済みとはみなさず、
+新しいバッチへ固定する。未確認のまま終える行にも、漢字＋カタカナ、漢字＋ひらがな、
+人物語を加えた検索の3経路が必要である。検索サービス名は実際に使ったものを記録し、
+実行していない個別検索エンジン名をreceiptへ代入しない。429などの
+失敗応答、検索エンジンの中継URL、別候補から流用されたURLは検索成功として記録しない。
+
+```sh
+python3 tools/audit_myoji_web_research.py prepare --batch BATCH_ID --limit 300
+# tools/myoji_web_research_batches/ の担当JSONLへ全候補の検索receiptを記録
+python3 tools/audit_myoji_web_research.py validate --batch BATCH_ID
+python3 tools/audit_myoji_web_research.py promote --batch BATCH_ID
+python3 tools/audit_myoji_evidence_urls.py --output tools/myoji_web_evidence_url_audit.jsonl
+python3 tools/audit_myoji_web_research.py validate-evidence
+python3 tools/update_myoji.py
+```
 
 `marine_life.csv` はネットワークから無人更新せず、レビュー済み台帳
 `tools/marine_life_source.csv` から全件再生成する。項目を追加するときは台帳末尾へ

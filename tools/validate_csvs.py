@@ -21,13 +21,13 @@ import sys
 from collections import Counter
 from pathlib import Path
 
+from update_school import has_school_suffix
 from wpnames import (
     PLAYER_DISAMBIGUATION_DESCRIPTION,
     has_redundant_player_subject,
     is_standalone_player_description,
     strip_name_prefix,
 )
-from update_school import has_school_suffix
 
 ROOT = Path(__file__).resolve().parent.parent
 REQUIRED = ("id", "original", "surface")
@@ -48,10 +48,21 @@ IMAGE_URL_RE = re.compile(
 PRON_ASCII_RE = re.compile(r"[A-Za-z]{2,}")
 YEAR_RE = re.compile(r"^(?:NA|前?[0-9]+)$")
 HAN_RE = re.compile(r"[\u3400-\u9fff]")
-MYOJI_EVIDENCE = ("person_lists", "ndl", "wikidata_person", "official_web",
-                  "jmnedict")
-MYOJI_HUMAN_EVIDENCE = {"person_lists", "ndl", "wikidata_person",
-                        "official_web"}
+MYOJI_EVIDENCE = (
+    "person_lists",
+    "ndl",
+    "wikidata_person",
+    "official_web",
+    "web_person",
+    "jmnedict",
+)
+MYOJI_HUMAN_EVIDENCE = {
+    "person_lists",
+    "ndl",
+    "wikidata_person",
+    "official_web",
+    "web_person",
+}
 
 errors = []
 
@@ -106,55 +117,70 @@ def validate(path: Path):
         if "pronunciation" in idx:
             v = f[idx["pronunciation"]]
             if PRON_ASCII_RE.search(v):
-                err(f"{path.name}:{lineno}: pronunciation にASCII英字が連続"
-                    f"(英名の混入?): {v[:40]}")
+                err(
+                    f"{path.name}:{lineno}: pronunciation にASCII英字が連続"
+                    f"(英名の混入?): {v[:40]}"
+                )
         if path.name == "municipality.csv":
             municipality_type = f[idx["municipality_type"]]
             expected_type = f[idx["original"]][-1]
             if municipality_type not in ("市", "区", "町", "村"):
-                err(f"{path.name}:{lineno}: municipality_type が不正: "
-                    f"{municipality_type}")
+                err(
+                    f"{path.name}:{lineno}: municipality_type が不正: "
+                    f"{municipality_type}"
+                )
             elif municipality_type != expected_type:
-                err(f"{path.name}:{lineno}: original/municipality_typeが不整合: "
-                    f"{f[idx['original']]} / {municipality_type}")
+                err(
+                    f"{path.name}:{lineno}: original/municipality_typeが不整合: "
+                    f"{f[idx['original']]} / {municipality_type}"
+                )
         if path.name == "school.csv":
             actual = f[idx["has_school_suffix"]]
-            expected = has_school_suffix(f[idx["surface"]], f[idx["type"]],
-                                         f[idx["school_type"]])
+            expected = has_school_suffix(
+                f[idx["surface"]], f[idx["type"]], f[idx["school_type"]]
+            )
             if actual != expected:
-                err(f"{path.name}:{lineno}: surface/has_school_suffixが不整合: "
-                    f"{f[idx['surface']]} / {actual}")
+                err(
+                    f"{path.name}:{lineno}: surface/has_school_suffixが不整合: "
+                    f"{f[idx['surface']]} / {actual}"
+                )
         if path.name == "myoji.csv":
             if "evidence_sources" not in idx:
                 err(f"{path.name}: 必須列 evidence_sources がない")
                 return
             sources = [s for s in f[idx["evidence_sources"]].split("|") if s]
             if any(s not in MYOJI_EVIDENCE for s in sources):
-                err(f"{path.name}:{lineno}: evidence_sources が不正: "
-                    f"{f[idx['evidence_sources']]}")
+                err(
+                    f"{path.name}:{lineno}: evidence_sources が不正: "
+                    f"{f[idx['evidence_sources']]}"
+                )
             canonical = [s for s in MYOJI_EVIDENCE if s in sources]
             if sources != canonical:
-                err(f"{path.name}:{lineno}: evidence_sources の順序・重複が不正: "
-                    f"{f[idx['evidence_sources']]}")
+                err(
+                    f"{path.name}:{lineno}: evidence_sources の順序・重複が不正: "
+                    f"{f[idx['evidence_sources']]}"
+                )
             if f[idx["verified"]] == "yes" and not (
-                    MYOJI_HUMAN_EVIDENCE & set(sources)):
+                MYOJI_HUMAN_EVIDENCE & set(sources)
+            ):
                 err(f"{path.name}:{lineno}: verified=yes に人物の裏付けがない")
         if path.name in ("baseball.csv", "football.csv") and "description" in idx:
             v = f[idx["description"]]
             player_groups.setdefault(f[idx["id"]], []).append((lineno, f))
             if v and not is_standalone_player_description(v):
-                err(f"{path.name}:{lineno}: descriptionが単独で完結していない: "
-                    f"{v[:65]}")
+                err(
+                    f"{path.name}:{lineno}: descriptionが単独で完結していない: {v[:65]}"
+                )
             if v and has_redundant_player_subject(v):
-                err(f"{path.name}:{lineno}: descriptionの人名主語が冗長: "
-                    f"{v[:65]}")
+                err(f"{path.name}:{lineno}: descriptionの人名主語が冗長: {v[:65]}")
             if (
                 path.name == "football.csv"
                 and v
                 and PLAYER_DISAMBIGUATION_DESCRIPTION.search(v)
             ):
-                err(f"{path.name}:{lineno}: descriptionが曖昧さ回避ページ由来: "
-                    f"{v[:65]}")
+                err(
+                    f"{path.name}:{lineno}: descriptionが曖昧さ回避ページ由来: {v[:65]}"
+                )
         if path.name == "scientist.csv":
             # 漢字名の family 行は姓の表記を保つ。読みを surface に誤記すると、
             # 動画字幕でも「小田」ではなく「おだ」のように表示されてしまう。
@@ -163,8 +189,10 @@ def validate(path: Path):
                 and HAN_RE.search(f[idx["original"]])
                 and not HAN_RE.search(f[idx["surface"]])
             ):
-                err(f"{path.name}:{lineno}: 漢字名のfamily surfaceが漢字でない: "
-                    f"{f[idx['surface']]}")
+                err(
+                    f"{path.name}:{lineno}: 漢字名のfamily surfaceが漢字でない: "
+                    f"{f[idx['surface']]}"
+                )
             death_year = f[idx["death_year"]]
             if not YEAR_RE.fullmatch(death_year):
                 err(f"{path.name}:{lineno}: death_year が不正: {death_year}")
@@ -179,10 +207,7 @@ def validate(path: Path):
         for group_rows in player_groups.values():
             descriptions = {fields[idx["description"]] for _, fields in group_rows}
             if len(descriptions) != 1:
-                err(
-                    f"{path.name}:{group_rows[0][0]}: "
-                    "同じidでdescriptionが一致しない"
-                )
+                err(f"{path.name}:{group_rows[0][0]}: 同じidでdescriptionが一致しない")
             aliases = set()
             for _, fields in group_rows:
                 aliases.add(fields[idx["original"]])
@@ -243,15 +268,23 @@ def validate_marine_life(path: Path):
         counts[cls] += 1
         if fields[idx["vertebrate"]] != VERTEBRATE_BY_CLASS[cls]:
             err(f"{path.name}:{item_id + 2}: class/vertebrateが不整合: {name}")
-        if not fields[idx["order"]].endswith("目") or not fields[idx["family"]].endswith("科"):
+        if not fields[idx["order"]].endswith("目") or not fields[
+            idx["family"]
+        ].endswith("科"):
             err(f"{path.name}:{item_id + 2}: order/familyが不正: {name}")
         description = fields[idx["description"]]
-        if description and (not 8 <= len(description) <= 90 or not description.endswith("。")):
+        if description and (
+            not 8 <= len(description) <= 90 or not description.endswith("。")
+        ):
             err(f"{path.name}:{item_id + 2}: descriptionが不正: {name}")
-        if description and re.match(rf"^(?:{re.escape(name)}|本種)(?:は|が)[、 ]*", description):
+        if description and re.match(
+            rf"^(?:{re.escape(name)}|本種)(?:は|が)[、 ]*", description
+        ):
             err(f"{path.name}:{item_id + 2}: descriptionの主語が冗長: {name}")
         if description and ("WoRMS" in description or "学名は" in description):
-            err(f"{path.name}:{item_id + 2}: descriptionが出典メタデータを重複表示: {name}")
+            err(
+                f"{path.name}:{item_id + 2}: descriptionが出典メタデータを重複表示: {name}"
+            )
         scientific_name = fields[idx["scientific_name"]]
         if scientific_name and scientific_name in description:
             err(f"{path.name}:{item_id + 2}: descriptionが学名を重複表示: {name}")
@@ -265,11 +298,14 @@ def validate_marine_life(path: Path):
                 valid_fallbacks.add(detailed)
             if cls == "無脊椎動物":
                 valid_fallbacks.update(
-                    filename for group, filename in IMAGE_FILE_BY_GROUP.items()
+                    filename
+                    for group, filename in IMAGE_FILE_BY_GROUP.items()
                     if group not in {"哺乳類", "爬虫類", "魚類"}
                 )
-            if not any(image.endswith(f"/images/marine_life/{filename}")
-                       for filename in valid_fallbacks):
+            if not any(
+                image.endswith(f"/images/marine_life/{filename}")
+                for filename in valid_fallbacks
+            ):
                 err(f"{path.name}:{item_id + 2}: classとimageが不整合: {name}")
         aphia_id = fields[idx["aphia_id"]]
         if aphia_id and not APHIA_ID.fullmatch(aphia_id):
@@ -294,6 +330,7 @@ def main() -> int:
             validate_marine_life(p)
     # tools のPythonが構文エラーでないこと
     import py_compile
+
     for p in sorted((ROOT / "tools").glob("*.py")):
         try:
             py_compile.compile(str(p), doraise=True)
