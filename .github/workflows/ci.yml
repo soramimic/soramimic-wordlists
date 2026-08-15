@@ -52,7 +52,7 @@ jobs:
           tools/test_update_myoji.py
           tools/test_audit_myoji_official_web.py
 
-      - name: Test 2012 phonebook surname pilot
+      - name: Test phonebook surname census tooling
         run: python -m unittest tools/test_pilot_jpon_2012_surnames.py
 
       - name: Validate myoji official web search batch

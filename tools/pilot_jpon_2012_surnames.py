@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Pilot a resumable, low-rate aggregation of 2012 phonebook surname tables.
+"""Pilot a resumable, low-rate aggregation of Jpon phonebook surname tables.
 
 Only aggregate surname/count facts are persisted. HTML, phone numbers, personal names,
 and addresses are never written to disk. This is a feasibility tool, not a production
@@ -12,12 +12,17 @@ import argparse
 import csv
 import email.utils
 import html.parser
+import http.cookiejar
+import json
+import os
 import random
 import re
 import sqlite3
+import subprocess
 import sys
 import time
 import urllib.error
+import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
 from dataclasses import dataclass
@@ -30,6 +35,9 @@ SITEMAP_TEMPLATE = "https://jpon.xyz/sitemap/sitemap-2012-{shard}.xml"
 SITEMAP_SHARDS = 30
 DEFAULT_DB = Path(__file__).resolve().parent / ".cache/jpon-2012-pilot.sqlite3"
 DEFAULT_CSV = Path(__file__).resolve().parent / ".cache/jpon-2012-pilot.csv"
+YEAR_2000_ROOT = "https://jpon.xyz/2000/index.html"
+DEFAULT_2000_DB = Path(__file__).resolve().parent / ".cache/jpon-2000-pilot.sqlite3"
+DEFAULT_2000_CSV = Path(__file__).resolve().parent / ".cache/jpon-2000-pilot.csv"
 SECTIONS = {
     "この地域に多い苗字": "common",
     "この地域の希少苗字": "rare",
@@ -39,6 +47,9 @@ YEAR_URL_RE = re.compile(
 )
 SPACE_RE = re.compile(r"\s+")
 INT_RE = re.compile(r"^[0-9][0-9,]*$")
+YEAR_2000_PATH_RE = re.compile(
+    r"^/2000/(?:index\.html|\d+/index\.html|\d+/\d+/index\.html|\d+/\d+/\d+\.html)$"
+)
 
 
 @dataclass(frozen=True)
@@ -135,6 +146,19 @@ class SurnameTableParser(html.parser.HTMLParser):
         target[surname] = max(target.get(surname, 0), count)
 
 
+class LinkParser(html.parser.HTMLParser):
+    def __init__(self) -> None:
+        super().__init__(convert_charrefs=True)
+        self.hrefs: list[str] = []
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        if tag != "a":
+            return
+        href = dict(attrs).get("href")
+        if href:
+            self.hrefs.append(href)
+
+
 def clean_text(value: str) -> str:
     return SPACE_RE.sub(" ", value).strip()
 
@@ -171,6 +195,53 @@ def parse_sitemap(xml_bytes: bytes) -> list[str]:
     return list(by_locality.values())
 
 
+def normalize_2000_url(href: str, base_url: str = YEAR_2000_ROOT) -> str | None:
+    """Return a canonical in-scope 2000 hierarchy URL, or None.
+
+    Query strings and fragments are deliberately discarded: surname tables describe
+    the whole town, while pagination exposes the same aggregate tables.
+    """
+    parsed = urllib.parse.urlsplit(urllib.parse.urljoin(base_url, href))
+    if parsed.scheme != "https" or parsed.netloc.lower() != "jpon.xyz":
+        return None
+    path = re.sub(r"/+", "/", parsed.path)
+    if not YEAR_2000_PATH_RE.fullmatch(path):
+        return None
+    return urllib.parse.urlunsplit(("https", "jpon.xyz", path, "", ""))
+
+
+def hierarchy_kind(url: str) -> str | None:
+    normalized = normalize_2000_url(url)
+    if not normalized:
+        return None
+    parts = urllib.parse.urlsplit(normalized).path.strip("/").split("/")[1:]
+    if parts == ["index.html"]:
+        return "root"
+    if parts[-1] == "index.html":
+        return {2: "prefecture", 3: "municipality"}.get(len(parts))
+    return "town" if len(parts) == 3 else None
+
+
+def parse_hierarchy_links(html_text: str, source_url: str) -> list[tuple[str, str]]:
+    """Extract only the next hierarchy level, ignoring navigation/breadcrumb links."""
+    source_kind = hierarchy_kind(source_url)
+    wanted = {
+        "root": "prefecture",
+        "prefecture": "municipality",
+        "municipality": "town",
+    }.get(source_kind)
+    if wanted is None:
+        return []
+    parser = LinkParser()
+    parser.feed(html_text)
+    found: dict[str, str] = {}
+    for href in parser.hrefs:
+        url = normalize_2000_url(href, source_url)
+        if url and hierarchy_kind(url) == wanted:
+            found[url] = wanted
+    return sorted(found.items())
+
+
 def init_db(path: Path) -> sqlite3.Connection:
     path.parent.mkdir(parents=True, exist_ok=True)
     db = sqlite3.connect(path)
@@ -203,6 +274,12 @@ def init_db(path: Path) -> sqlite3.Connection:
         CREATE TABLE IF NOT EXISTS queued_urls (
           url TEXT PRIMARY KEY,
           sitemap_url TEXT NOT NULL REFERENCES seeded_sitemaps(url)
+        );
+        CREATE TABLE IF NOT EXISTS hierarchy_queue (
+          url TEXT PRIMARY KEY,
+          kind TEXT NOT NULL,
+          source_url TEXT,
+          fetched_at TEXT
         );
         """
     )
@@ -270,11 +347,18 @@ def retry_after_seconds(headers: object, default: float) -> float:
             return default
 
 
-def fetch(url: str, user_agent: str, timeout: float, retries: int = 3) -> bytes:
+def fetch(
+    url: str,
+    user_agent: str,
+    timeout: float,
+    retries: int = 3,
+    opener: urllib.request.OpenerDirector | None = None,
+) -> bytes:
     request = urllib.request.Request(url, headers={"User-Agent": user_agent})
+    open_url = opener.open if opener else urllib.request.urlopen
     for attempt in range(retries + 1):
         try:
-            with urllib.request.urlopen(request, timeout=timeout) as response:
+            with open_url(request, timeout=timeout) as response:
                 return response.read()
         except urllib.error.HTTPError as exc:
             if exc.code == 403:
@@ -289,6 +373,151 @@ def fetch(url: str, user_agent: str, timeout: float, retries: int = 3) -> bytes:
                 raise
             time.sleep(10.0 * (2**attempt))
     raise AssertionError("unreachable")
+
+
+_CDP_COOKIE_SCRIPT = r"""
+const http = require('http');
+const endpoint = process.argv[1];
+const outputFd = Number(process.env.JPON_COOKIE_FD);
+const deadline = setTimeout(() => {
+  process.stderr.write('Timed out while reading Chrome cookies');
+  process.exit(1);
+}, 10000);
+function getJson(url) {
+  return new Promise((resolve, reject) => http.get(url, response => {
+    let body = '';
+    response.setEncoding('utf8');
+    response.on('data', chunk => body += chunk);
+    response.on('end', () => {
+      try { resolve(JSON.parse(body)); } catch (error) { reject(error); }
+    });
+  }).on('error', reject));
+}
+(async () => {
+  const version = await getJson(endpoint.replace(/\/$/, '') + '/json/version');
+  const ws = new WebSocket(version.webSocketDebuggerUrl);
+  await new Promise((resolve, reject) => {
+    ws.addEventListener('open', resolve, {once: true});
+    ws.addEventListener('error', reject, {once: true});
+  });
+  const reply = new Promise((resolve, reject) => {
+    ws.addEventListener('message', event => {
+      const message = JSON.parse(event.data);
+      if (message.id === 1) message.error ? reject(new Error(message.error.message)) : resolve(message.result);
+    });
+  });
+  ws.send(JSON.stringify({id: 1, method: 'Storage.getCookies'}));
+  const result = await reply;
+  const cookies = result.cookies.filter(cookie => cookie.domain === 'jpon.xyz' || cookie.domain.endsWith('.jpon.xyz'));
+  require('fs').writeFileSync(outputFd, JSON.stringify(cookies));
+  clearTimeout(deadline);
+  ws.close();
+})().catch(error => { process.stderr.write(String(error.message || error)); process.exit(1); });
+"""
+
+
+def load_cdp_cookie_jar(
+    cdp_endpoint: str = "http://127.0.0.1:9224",
+) -> http.cookiejar.CookieJar:
+    """Copy Jpon cookies from Chrome to an in-memory CookieJar via a private pipe."""
+    read_fd, write_fd = os.pipe()
+    env = dict(os.environ)
+    env["JPON_COOKIE_FD"] = str(write_fd)
+    try:
+        process = subprocess.Popen(
+            ["node", "-e", _CDP_COOKIE_SCRIPT, cdp_endpoint],
+            stdin=subprocess.DEVNULL,
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.PIPE,
+            pass_fds=(write_fd,),
+            env=env,
+        )
+        os.close(write_fd)
+        write_fd = -1
+        with os.fdopen(read_fd, "rb") as pipe:
+            payload = pipe.read()
+        read_fd = -1
+        _unused, error = process.communicate()
+        if process.returncode:
+            raise RuntimeError(
+                "Could not read Jpon login from Chrome CDP: "
+                + error.decode("utf-8", "replace")
+            )
+        records = json.loads(payload)
+    finally:
+        if read_fd >= 0:
+            os.close(read_fd)
+        if write_fd >= 0:
+            os.close(write_fd)
+    jar = http.cookiejar.CookieJar()
+    for item in records:
+        domain = item["domain"]
+        jar.set_cookie(
+            http.cookiejar.Cookie(
+                version=0,
+                name=item["name"],
+                value=item["value"],
+                port=None,
+                port_specified=False,
+                domain=domain,
+                domain_specified=domain.startswith("."),
+                domain_initial_dot=domain.startswith("."),
+                path=item.get("path", "/"),
+                path_specified=True,
+                secure=bool(item.get("secure")),
+                expires=int(item["expires"]) if item.get("expires", -1) > 0 else None,
+                discard=item.get("expires", -1) <= 0,
+                comment=None,
+                comment_url=None,
+                rest={"HttpOnly": item.get("httpOnly", False)},
+                rfc2109=False,
+            )
+        )
+    if not list(jar):
+        raise RuntimeError("Chrome CDP returned no Jpon cookies; log in at https://jpon.xyz first")
+    return jar
+
+
+def enqueue_hierarchy(
+    db: sqlite3.Connection,
+    entries: list[tuple[str, str]],
+    source_url: str | None,
+) -> None:
+    with db:
+        db.executemany(
+            "INSERT OR IGNORE INTO hierarchy_queue(url, kind, source_url) VALUES (?, ?, ?)",
+            ((url, kind, source_url) for url, kind in entries),
+        )
+
+
+def next_hierarchy_url(db: sqlite3.Connection) -> tuple[str, str] | None:
+    row = db.execute(
+        """SELECT url, kind FROM hierarchy_queue WHERE fetched_at IS NULL
+           ORDER BY CASE kind WHEN 'town' THEN 0 WHEN 'municipality' THEN 1
+                              WHEN 'prefecture' THEN 2 ELSE 3 END, rowid LIMIT 1"""
+    ).fetchone()
+    return (row[0], row[1]) if row else None
+
+
+def checkpoint_index(db: sqlite3.Connection, url: str, children: list[tuple[str, str]]) -> None:
+    with db:
+        db.executemany(
+            "INSERT OR IGNORE INTO hierarchy_queue(url, kind, source_url) VALUES (?, ?, ?)",
+            ((child_url, kind, url) for child_url, kind in children),
+        )
+        db.execute(
+            "UPDATE hierarchy_queue SET fetched_at = ? WHERE url = ?",
+            (datetime.now(timezone.utc).isoformat(), url),
+        )
+
+
+def checkpoint_town(db: sqlite3.Connection, url: str, facts: PageFacts) -> None:
+    store_page(db, url, facts)
+    with db:
+        db.execute(
+            "UPDATE hierarchy_queue SET fetched_at = ? WHERE url = ?",
+            (datetime.now(timezone.utc).isoformat(), url),
+        )
 
 
 def sitemap_is_seeded(db: sqlite3.Connection, url: str) -> bool:
@@ -348,6 +577,7 @@ def summary(db: sqlite3.Connection) -> dict[str, int]:
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--year", choices=("2000", "2012"), default="2012")
     parser.add_argument("--limit", type=int, default=100)
     parser.add_argument("--delay", type=float, default=10.0)
     parser.add_argument("--jitter", type=float, default=0.2)
@@ -365,6 +595,11 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--db", type=Path, default=DEFAULT_DB)
     parser.add_argument("--output", type=Path, default=DEFAULT_CSV)
     parser.add_argument(
+        "--cdp-endpoint",
+        default="http://127.0.0.1:9224",
+        help="Chrome DevTools endpoint used only for the authenticated 2000 edition",
+    )
+    parser.add_argument(
         "--user-agent",
         default="soramimic-wordlists-jpon-feasibility-pilot/0.1",
         help="Descriptive User-Agent; append a contact URL or email when running",
@@ -372,10 +607,58 @@ def build_parser() -> argparse.ArgumentParser:
     return parser
 
 
+def crawl_2000(args: argparse.Namespace, db: sqlite3.Connection) -> None:
+    jar = load_cdp_cookie_jar(args.cdp_endpoint)
+    opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(jar))
+    enqueue_hierarchy(db, [(YEAR_2000_ROOT, "root")], None)
+    completed_towns = 0
+    while completed_towns < args.limit:
+        queued = next_hierarchy_url(db)
+        if queued is None:
+            break
+        url, kind = queued
+        body = fetch(url, args.user_agent, args.timeout, opener=opener).decode("utf-8")
+        if kind == "town":
+            facts = parse_page(body)
+            if facts.sections_seen != {"common", "rare"}:
+                raise RuntimeError(f"No surname tables parsed; refusing to checkpoint {url}")
+            if facts.conflicting_overlaps:
+                names = ", ".join(sorted(facts.conflicting_overlaps)[:5])
+                raise RuntimeError(f"Conflicting local counts in common/rare tables at {url}: {names}")
+            checkpoint_town(db, url, facts)
+            completed_towns += 1
+            print(f"[{summary(db)['pages']}] {url} surnames={len(facts.merged)}", flush=True)
+        else:
+            children = parse_hierarchy_links(body, url)
+            if not children:
+                raise RuntimeError(f"No next-level 2000 links parsed; refusing to checkpoint {url}")
+            checkpoint_index(db, url, children)
+            print(f"indexed {url} children={len(children)}", flush=True)
+
+        # The response body has been fully read and the resulting checkpoint committed.
+        # Wait here (not before fetch) so slow responses can never overlap requests.
+        if completed_towns < args.limit and next_hierarchy_url(db) is not None and args.delay:
+            multiplier = random.uniform(1 - args.jitter, 1 + args.jitter)
+            time.sleep(args.delay * multiplier)
+    export_csv(db, args.output)
+    print(summary(db), flush=True)
+
+
 def main(argv: list[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
     if args.limit < 1 or args.delay < 0 or not 0 <= args.jitter <= 1:
         raise SystemExit("--limit must be positive; --delay >= 0; --jitter between 0 and 1")
+    if args.year == "2000":
+        if args.db == DEFAULT_DB:
+            args.db = DEFAULT_2000_DB
+        if args.output == DEFAULT_CSV:
+            args.output = DEFAULT_2000_CSV
+        if args.all_shards or args.sitemap:
+            raise SystemExit("--all-shards and --sitemap apply only to --year 2012")
+        db = init_db(args.db)
+        crawl_2000(args, db)
+        return 0
+
     db = init_db(args.db)
     if args.all_shards and args.sitemap:
         raise SystemExit("use either --all-shards or --sitemap, not both")

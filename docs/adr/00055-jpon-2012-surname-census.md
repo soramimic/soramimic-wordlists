@@ -1,9 +1,9 @@
 # ADR 00055: 2012年電話帳を名字の母集団・順位に使用する
 
-- Status: accepted
+- Status: superseded
 - Date: 2026-08-15
 - Supersedes: 00038-myoji-wordlist.md
-- Superseded by: none
+- Superseded by: 00058-jpon-2000-surname-census.md
 
 ## Context
 

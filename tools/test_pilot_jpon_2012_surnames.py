@@ -1,7 +1,10 @@
+import json
+import os
 import sys
 import tempfile
 import unittest
 from pathlib import Path
+from unittest import mock
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import pilot_jpon_2012_surnames as m
@@ -64,6 +67,39 @@ class ParserTest(unittest.TestCase):
             ],
         )
 
+    def test_2000_hierarchy_parses_only_the_next_level(self):
+        root = """<a href='/2000/1/index.html'>北海道</a>
+        <a href='https://example.test/2000/2/index.html'>outside</a>
+        <a href='/2012/1/index.html'>wrong year</a>"""
+        self.assertEqual(
+            m.parse_hierarchy_links(root, m.YEAR_2000_ROOT),
+            [("https://jpon.xyz/2000/1/index.html", "prefecture")],
+        )
+        prefecture = """<a href='../index.html'>戻る</a>
+        <a href='2/index.html'>札幌市</a><a href='2/index.html#top'>duplicate</a>"""
+        self.assertEqual(
+            m.parse_hierarchy_links(prefecture, "https://jpon.xyz/2000/1/index.html"),
+            [("https://jpon.xyz/2000/1/2/index.html", "municipality")],
+        )
+        municipality = """<a href='3.html?p=1'>中央</a>
+        <a href='4.html?p=2#names'>北</a><a href='index.html'>self</a>"""
+        self.assertEqual(
+            m.parse_hierarchy_links(municipality, "https://jpon.xyz/2000/1/2/index.html"),
+            [
+                ("https://jpon.xyz/2000/1/2/3.html", "town"),
+                ("https://jpon.xyz/2000/1/2/4.html", "town"),
+            ],
+        )
+
+    def test_2000_url_normalization_rejects_other_years_and_hosts(self):
+        self.assertEqual(
+            m.normalize_2000_url("/2000/01/002/3.html?p=9#x"),
+            "https://jpon.xyz/2000/01/002/3.html",
+        )
+        self.assertIsNone(m.normalize_2000_url("https://jpon.xyz/2012/1/2/3.html"))
+        self.assertIsNone(m.normalize_2000_url("https://evil.test/2000/1/2/3.html"))
+        self.assertIsNone(m.normalize_2000_url("//evil.test/2000/1/index.html"))
+
 
 class StorageTest(unittest.TestCase):
     def test_store_is_idempotent_and_resume_skips_page(self):
@@ -91,6 +127,52 @@ class StorageTest(unittest.TestCase):
             self.assertTrue(
                 m.sitemap_is_seeded(db, "https://jpon.xyz/sitemap/test.xml")
             )
+
+    def test_2000_hierarchy_resume_skips_checkpointed_items(self):
+        with tempfile.TemporaryDirectory() as td:
+            db = m.init_db(Path(td) / "pilot.sqlite3")
+            m.enqueue_hierarchy(db, [(m.YEAR_2000_ROOT, "root")], None)
+            m.checkpoint_index(
+                db,
+                m.YEAR_2000_ROOT,
+                [("https://jpon.xyz/2000/1/index.html", "prefecture")],
+            )
+            self.assertEqual(
+                m.next_hierarchy_url(db),
+                ("https://jpon.xyz/2000/1/index.html", "prefecture"),
+            )
+
+
+class CookieTest(unittest.TestCase):
+    def test_cdp_cookie_is_kept_in_memory_and_not_in_sqlite(self):
+        secret = "session-secret-must-not-be-persisted"
+
+        class FakeProcess:
+            returncode = 0
+
+            def __init__(self, _command, **kwargs):
+                payload = json.dumps(
+                    [{
+                        "name": "session", "value": secret, "domain": ".jpon.xyz",
+                        "path": "/", "secure": True, "httpOnly": True, "expires": -1,
+                    }]
+                ).encode()
+                os.write(kwargs["pass_fds"][0], payload)
+
+            def communicate(self):
+                return b"", b""
+
+        with tempfile.TemporaryDirectory() as td, mock.patch.object(
+            m.subprocess, "Popen", FakeProcess
+        ):
+            jar = m.load_cdp_cookie_jar()
+            self.assertEqual([(cookie.name, cookie.value) for cookie in jar], [("session", secret)])
+            db_path = Path(td) / "pilot.sqlite3"
+            db = m.init_db(db_path)
+            m.enqueue_hierarchy(db, [(m.YEAR_2000_ROOT, "root")], None)
+            db.close()
+            for path in Path(td).iterdir():
+                self.assertNotIn(secret.encode(), path.read_bytes())
 
 
 if __name__ == "__main__":
