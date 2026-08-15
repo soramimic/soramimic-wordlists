@@ -8,6 +8,7 @@ MANUAL_TAXONOMY = {
     "モモンガ": {"class": "哺乳類", "order": "ネズミ目", "family": "リス科"},
     "ヒト": {"class": "哺乳類", "order": "サル目", "family": "ヒト科"},
     "クマ": {"class": "哺乳類", "order": "ネコ目", "family": "クマ科"},
+    "ノウサギ": {"class": "哺乳類", "order": "ウサギ目", "family": "ウサギ科"},
 }
 
 # 種ランク・和名完全一致の画像取得では拾えない総称の代表画像。
@@ -27,6 +28,7 @@ MANUAL_IMAGES = {
     "ヒツジ": ("Q7368", "Yorkshire dales sheep.jpg"),
     "ヤギ": ("Q2934", "Billy goat.jpg"),
     "ウサギ": ("Q9394", "Ikesbunny.jpg"),
+    "ノウサギ": ("Q46076", "Hare Hare (20300967221).jpg"),
     "ハムスター": (
         "Q6573",
         "Syrian hamster filling his cheek pouches with Dandelion leaves cropped.jpg",

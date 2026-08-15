@@ -18,10 +18,23 @@ from update_sekitsui import category_for
 
 
 class SekitsuiOverridesTest(unittest.TestCase):
+    def test_nousagi_row_has_taxonomy_and_a_real_image(self):
+        path = Path(__file__).resolve().parents[1] / "sekitsui.csv"
+        with path.open(encoding="utf-8", newline="") as stream:
+            row = next(
+                row for row in csv.DictReader(stream)
+                if row["original"] == "ノウサギ"
+            )
+        self.assertEqual(row["class"], "哺乳類")
+        self.assertEqual(row["order"], "ウサギ目")
+        self.assertEqual(row["family"], "ウサギ科")
+        self.assertEqual(row["wikidata"], "Q46076")
+        self.assertNotIn("class_unknown.svg", row["image"])
+
     def test_common_names_have_specific_images(self):
         self.assertTrue(
             {"モモンガ", "ヒト", "クマ", "ネコ", "イエイヌ", "ウシ", "ウマ",
-             "ブタ", "ヒツジ", "ヤギ", "ウサギ", "ゾウ", "キリン", "サイ",
+             "ブタ", "ヒツジ", "ヤギ", "ウサギ", "ノウサギ", "ゾウ", "キリン", "サイ",
              "シカ", "キツネ", "カワウソ", "リス", "ビーバー", "モグラ",
              "ハリネズミ", "シロクマ", "オルカ", "ベルーガ", "アホロートル",
              "ナミチンパンジー", "ニワトリ", "ゴリラ", "パンダ", "イルカ",
@@ -119,6 +132,12 @@ class SekitsuiOverridesTest(unittest.TestCase):
         self.assertEqual(category_for("モモンガ", {}), "哺乳類")
         self.assertEqual(category_for("ヒト", {}), "哺乳類")
         self.assertEqual(category_for("クマ", {}), "哺乳類")
+        self.assertEqual(category_for("ノウサギ", {}), "哺乳類")
+
+    def test_manual_ranks_fill_nousagi(self):
+        row = {"order": "", "family": ""}
+        apply_manual_ranks("ノウサギ", row)
+        self.assertEqual(row, {"order": "ウサギ目", "family": "ウサギ科"})
 
     def test_manual_class_wins_over_incorrect_fetched_category(self):
         self.assertEqual(category_for("クマ", {"クマ": "魚類"}), "哺乳類")
@@ -175,6 +194,11 @@ class SekitsuiOverridesTest(unittest.TestCase):
                     "class": "哺乳類",
                     "order": "ネコ目",
                     "family": "クマ科",
+                },
+                "ノウサギ": {
+                    "class": "哺乳類",
+                    "order": "ウサギ目",
+                    "family": "ウサギ科",
                 },
             },
         )
