@@ -10,11 +10,11 @@ taxon rank(P105)が科/属のノードの表示名を取る。表示名は「階
 別名 > 日本語ラベル > 学名(P225)」の順(動物と同じ。Wikidataの ja ラベルは
 「バラ」のように階級を含まないことがあり、別名に「バラ科」がある)。
 
-- **和名からの逆引きはしない**。`wikidata` 列が空の行は空のままにする。植物は
+- **この工程では和名から逆引きしない**。`wikidata` 列が空の行は空のままにする。植物は
   動物と同じ和名を持つものが多く(スギ・ハス・ホトトギス・カマツカ等)、和名で
   引くと動物側のタクソンを拾ってしまう。CSV の `wikidata` は
-  `enrich_plant_images.py` が動物界ガードを通して埋めた QID なので、そこから
-  辿るぶんには界をまたがない
+  `enrich_plant_entities.py` が種ランク完全一致と植物クレード制約を通して埋めた
+  QIDなので、そこから辿るぶんには界をまたがない
 - 既存の family/genus が空の行だけ埋める(冪等)。`--refresh` で全行を引き直す。
   他の列は一切変更しない。列が無ければ extinct の後ろに追加する
 - 取得結果は CACHE に逐次保存するので、中断しても再実行で続きから再開できる
@@ -31,6 +31,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import taxonomy as tx  # noqa: E402
+from plant_overrides import apply_manual_taxon  # noqa: E402
 from wpnames import write_csv_no_trailing_newline  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -40,6 +41,7 @@ CACHE = Path(__file__).resolve().parent / ".cache" / "plant_taxonomy.json"
 # 上位の階級から順に(rank QID, 列名, 階級付き別名の語尾)。
 # 先頭(科)が幅優先探索の打ち切り階級になる
 RANKS = [(tx.FAMILY, "family", "科"), (tx.GENUS, "genus", "属")]
+EXTRA_COLS = ["scientific_name", "family_wikidata"]
 # 科が引けた行数がこれを下回ったら部分応答とみなして中断
 # (QIDのある約5800行に対する下限)
 MIN_TOTAL = 3000
@@ -53,6 +55,8 @@ def main(argv: list[str]) -> int:
         reader = csv.DictReader(f)
         rows = [dict(r) for r in reader]
         cols = tx.add_columns(reader.fieldnames, own, "extinct")
+        cols = tx.add_columns(cols, ["family_wikidata"], "family")
+        cols = tx.add_columns(cols, ["scientific_name"], "genus")
 
     targets = [r for r in rows if refresh or not any(r.get(c) for c in own)]
     cache = tx.load_cache(CACHE)
@@ -65,7 +69,12 @@ def main(argv: list[str]) -> int:
         q = r.get("wikidata", "")
         vals = tx.resolve(q, nodes, ranks) if q else [""] * len(ranks)
         r.update(dict(zip(own, vals)))
+        rank_qids = tx.resolve_qids(q, nodes, ranks) if q else [""] * len(ranks)
+        r["family_wikidata"] = rank_qids[0]
+        r["scientific_name"] = nodes.get(q, {}).get("sci", "") if q else ""
+        apply_manual_taxon(r)
     for r in rows:
+        apply_manual_taxon(r)
         for c in cols:
             r.setdefault(c, "")
     filled = {c: sum(1 for r in rows if r[c]) for c in own}

@@ -38,6 +38,20 @@ jobs:
           tools/test_apply_sekitsui_generated_images.py
           tools/test_materialize_sekitsui_generated_images.py
 
+      - name: Validate plant family generated images
+        run: python tools/validate_plant_generated_images.py
+
+      - name: Test plant taxonomy and family generated image tooling
+        run: >-
+          python -m unittest
+          tools/test_enrich_plant_entities.py
+          tools/test_enrich_plant_images.py
+          tools/test_plant_overrides.py
+          tools/test_update_plant_schema.py
+          tools/test_plan_plant_generated_images.py
+          tools/test_apply_plant_generated_images.py
+          tools/test_materialize_plant_generated_images.py
+
       - name: Test semantic image replacements
         run: python -m unittest tools/test_apply_gimukyoiku_semantic_images.py
 

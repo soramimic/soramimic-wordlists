@@ -61,6 +61,14 @@ jobs:
         continue-on-error: true
         run: python tools/update_plant.py
 
+      - name: Enrich plant taxonomy and verified photos
+        id: plantmeta
+        continue-on-error: true
+        run: |
+          python tools/enrich_plant_entities.py
+          python tools/enrich_plant_taxonomy.py
+          python tools/enrich_plant_images.py
+
       - name: Update insect.csv (Wikidata taxa)
         id: insect
         continue-on-error: true
@@ -127,6 +135,7 @@ jobs:
         run: |
           python tools/apply_class_images.py
           python tools/apply_sekitsui_generated_images.py
+          python tools/apply_plant_generated_images.py
 
       - name: 失敗したupdaterの書きかけ出力を巻き戻す
         id: failures
@@ -139,6 +148,7 @@ jobs:
           O_SCIENTIST: ${{ steps.scientist.outcome }}
           O_SEKITSUI: ${{ steps.sekitsui.outcome }}
           O_PLANT: ${{ steps.plant.outcome }}
+          O_PLANTMETA: ${{ steps.plantmeta.outcome }}
           O_INSECT: ${{ steps.insect.outcome }}
           O_MUNICIPALITY: ${{ steps.municipality.outcome }}
           O_YOUTUBER: ${{ steps.youtuber.outcome }}
@@ -167,6 +177,7 @@ jobs:
           revert_if_failed scientist "$O_SCIENTIST" scientist.csv
           revert_if_failed sekitsui "$O_SEKITSUI" sekitsui.csv
           revert_if_failed plant "$O_PLANT" plant.csv
+          revert_if_failed plant_metadata "$O_PLANTMETA" plant.csv
           revert_if_failed insect "$O_INSECT" insect.csv
           revert_if_failed municipality "$O_MUNICIPALITY" municipality.csv
           revert_if_failed youtuber "$O_YOUTUBER" youtuber.csv
