@@ -183,6 +183,7 @@ Wikipedia由来の加工文はCC BY-SA 4.0で、同台帳から原記事への�
 | status | `current`(活動中)/`former`(活動終了) |
 | channel | 登録者数が最大のYouTubeチャンネル名 |
 | subscribers | YouTubeが公開する有効数字3桁の概数 |
+| subscribers_as_of | `subscribers` の取得日(UTC、`YYYY-MM-DD`)。取得できない場合は `NA` |
 | description | 活動内容の短い説明 |
 | image, image_page | Commonsの実写。ない場合は象徴カード |
 | wikidata | 本人のQID |

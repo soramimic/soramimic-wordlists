@@ -10,11 +10,12 @@ channels.list(part=statistics)。Wikidataの登録者数(P3744)は記録時点�
   (channel 列の「登録者数が最大の1本をメインとみなす」定義と揃える)
 - 登録者数を非公開にしているチャンネル(hiddenSubscriberCount)は候補から除く。
   1本も取れなければ NA
-- **subscribers は毎回全行を上書きする**。時変値なので「既存値は書き換えない」
-  (ADR 00014)の明示的な例外(ADR 00030)。subscribers 以外の列・行順・id は
-  一切変更しない
-- 書き込みは全チャンネルの取得が成功してから最後に1回だけ行う(途中で失敗した
-  回は youtuber.csv を書きかけのまま残さない)
+- **subscribers と subscribers_as_of は毎回全行を上書きする**。時変値なので
+  「既存値は書き換えない」(ADR 00014)の明示的な例外(ADR 00030)。この2列以外の
+  列・行順・id は一切変更しない。登録者数が取れない行は両列とも NA
+- 書き込みは全チャンネルの取得が成功してから最後に一時ファイルを置換して行う
+  (途中で失敗した回は youtuber.csv を書きかけのまま残さず、登録者数と取得日が
+  別々のスナップショットになることもない)
 - APIキーは環境変数 YOUTUBE_API_KEY、無ければ ~/.config/soramimic/youtube_api_key。
   どちらも無ければ「スキップ」を出して正常終了する(fork や鍵未設定のCIで
   ワークフローを壊さないため)
@@ -32,7 +33,9 @@ import csv
 import json
 import os
 import re
+import stat
 import sys
+import tempfile
 import time
 import urllib.error
 import urllib.parse
@@ -47,6 +50,7 @@ CSV_PATH = ROOT / "youtuber.csv"
 KEY_FILE = Path.home() / ".config" / "soramimic" / "youtube_api_key"
 API = "https://www.googleapis.com/youtube/v3/channels"
 COL = "subscribers"
+AS_OF_COL = "subscribers_as_of"
 QID_BATCH = 200  # SPARQL の VALUES に並べるQID数(fetch_attrs と同じ)
 YT_BATCH = 50    # channels.list の id パラメータは1回50件まで
 # YouTubeチャンネルIDの書式(UC + 22文字)。P2397 にURLやユーザー名が
@@ -55,6 +59,57 @@ CHANNEL_ID_RE = re.compile(r"^UC[0-9A-Za-z_-]{22}$")
 # 登録者数が取れた人数がこれを下回ったら取得失敗とみなし、書き込まずに終了する
 # (毎回上書きする列なので、取得が壊れた回に既存値をNAで潰さないための下限)
 MIN_PEOPLE = 300
+
+
+def _utc_date() -> str:
+    """成功したスナップショットの取得日を UTC の ISO 8601 形式で返す。"""
+    from datetime import datetime, timezone
+    return datetime.now(timezone.utc).date().isoformat()
+
+
+def apply_snapshot(rows: list, cols: list, best: dict, as_of: str) -> tuple:
+    """同一スナップショットの登録者数と取得日を全行へ反映する。
+
+    返り値は (新たに値が入った人, 値が変わった人, 取れなくなった人)。
+    subscribers が NA の行では取得日も必ず NA にして、古い日付を残さない。
+    """
+    for col in (COL, AS_OF_COL):
+        if col not in cols:
+            cols.append(col)
+
+    filled, updated, lost = set(), set(), set()
+    for row in rows:
+        old = row.get(COL) or ""
+        new = str(best[row["id"]]) if row["id"] in best else "NA"
+        if old != new:
+            if new == "NA":
+                # 前回は値があったのに今回取れなかった(空 -> NA は列の新設なので
+                # 「取れなくなった」ではない)
+                if old != "":
+                    lost.add(row["id"])
+            elif old in ("", "NA"):
+                filled.add(row["id"])
+            else:
+                updated.add(row["id"])
+        row[COL] = new
+        row[AS_OF_COL] = as_of if new != "NA" else "NA"
+        for col in cols:
+            row.setdefault(col, "")
+    return filled, updated, lost
+
+
+def write_snapshot_atomic(path: Path, cols: list, rows: list) -> None:
+    """同じディレクトリの一時ファイルを置換し、CSVを原子的に更新する。"""
+    fd, tmp_name = tempfile.mkstemp(prefix=f".{path.name}.", suffix=".tmp",
+                                    dir=path.parent)
+    os.close(fd)
+    tmp_path = Path(tmp_name)
+    try:
+        write_csv_no_trailing_newline(tmp_path, cols, rows)
+        os.chmod(tmp_path, stat.S_IMODE(path.stat().st_mode))
+        os.replace(tmp_path, path)
+    finally:
+        tmp_path.unlink(missing_ok=True)
 
 
 def _load_key() -> str:
@@ -166,8 +221,6 @@ def main() -> int:
         reader = csv.DictReader(fh)
         rows = list(reader)
         cols = list(reader.fieldnames or [])
-    if COL not in cols:
-        cols.append(COL)  # 既存の列順は崩さず末尾に足す
 
     # id が1人の単位(family/given/full で複数行)。QIDは本人のもの
     qid_of = {}
@@ -201,25 +254,10 @@ def main() -> int:
               "書き込まずに中断します", file=sys.stderr)
         return 1
 
-    # ここから書き込み(全取得が成功した後に1回だけ)
-    filled, updated, lost = set(), set(), set()
-    for r in rows:
-        old = r.get(COL) or ""
-        new = str(best[r["id"]]) if r["id"] in best else "NA"
-        if old != new:
-            if new == "NA":
-                # 前回は値があったのに今回取れなかった(空 -> NA は列の新設なので
-                # 「取れなくなった」ではない)
-                if old != "":
-                    lost.add(r["id"])
-            elif old in ("", "NA"):
-                filled.add(r["id"])   # 新たに値が入った
-            else:
-                updated.add(r["id"])  # 登録者数が動いた
-        r[COL] = new
-        for c in cols:
-            r.setdefault(c, "")
-    write_csv_no_trailing_newline(CSV_PATH, cols, rows)
+    # ここから書き込み(全取得が成功した後に、2列を1回の置換で反映)
+    as_of = _utc_date()
+    filled, updated, lost = apply_snapshot(rows, cols, best, as_of)
+    write_snapshot_atomic(CSV_PATH, cols, rows)
 
     have = [r for r in rows if r[COL] != "NA"]
     print(f"\nyoutuber.csv: {COL} 充足 {len(best)}/{people}人 "
@@ -227,6 +265,7 @@ def main() -> int:
     print(f"{COL} の上書き結果: 値が変わった {len(updated)}人 / "
           f"新たに入った {len(filled)}人 / 取れなくなった {len(lost)}人",
           flush=True)
+    print(f"{AS_OF_COL}: {as_of} (UTC、登録者数ありの行)", flush=True)
     top = sorted(best.items(), key=lambda kv: -kv[1])[:10]
     name = {r["id"]: r["original"] for r in rows}
     print("登録者数 上位10人:", flush=True)
