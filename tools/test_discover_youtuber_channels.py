@@ -40,6 +40,19 @@ class DiscoverYoutuberChannelsTest(unittest.TestCase):
             "山田花子", f"本文 https://youtube.com/channel/{channel_id}")
         self.assertEqual((accepted, deferred), ([], []))
 
+    def test_official_youtube_template_with_id_only_is_accepted(self):
+        channel_id = "UC" + "a" * 22
+        text = f"""
+== 外部リンク ==
+* {{{{YouTube|{channel_id}|山田花子 公式}}}}
+"""
+
+        accepted, deferred = discover.wikipedia_links("山田花子", text)
+
+        self.assertEqual([item["youtube_locator"][1] for item in accepted],
+                         [channel_id])
+        self.assertEqual(deferred, [])
+
     @mock.patch.object(discover, "sparql")
     def test_jawiki_article_is_anchored_by_qid_sitelink(self, sparql):
         sparql.return_value = {"results": {"bindings": [{

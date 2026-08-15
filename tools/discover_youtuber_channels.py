@@ -33,6 +33,8 @@ CSV_PATH = ROOT / "youtuber.csv"
 WIKI_API = "https://ja.wikipedia.org/w/api.php"
 YOUTUBE_HOST_RE = re.compile(r"(?:www\.|m\.)?youtube\.com$", re.I)
 URL_RE = re.compile(r"https?://[^\s\]\[|{}<>]+", re.I)
+CHANNEL_ID_IN_TEXT_RE = re.compile(
+    r"(?<![0-9A-Za-z_-])UC[0-9A-Za-z_-]{22}(?![0-9A-Za-z_-])")
 OFFICIAL_RE = re.compile(r"公式|official|本人", re.I)
 EXTERNAL_SECTION_RE = re.compile(
     r"(?ms)^==\s*外部リンク\s*==\s*(.*?)(?=^==[^=]|\Z)")
@@ -162,7 +164,7 @@ def wikipedia_links(title: str, text: str) -> tuple:
             continue
         urls = URL_RE.findall(line)
         # {{YouTube|...UC...}} のようなテンプレートもURLへ正規化する。
-        for channel_id in updater.CHANNEL_ID_RE.findall(line):
+        for channel_id in CHANNEL_ID_IN_TEXT_RE.findall(line):
             urls.append(f"https://www.youtube.com/channel/{channel_id}")
         for url in sorted(set(urls)):
             locator = youtube_locator(url)
