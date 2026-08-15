@@ -1,44 +1,9 @@
 #!/usr/bin/env python3
-"""myoji.csv(日本の名字)を生成・更新する。
+"""公開出典から myoji.csv を更新する。
 
-出典と、その組み合わせを選んだ理由(詳細は docs/adr/00038):
-
-- **母集団と読み**: SudachiDict(Works Applications, **Apache License 2.0**)の
-  辞書ソース `small_lex.csv` / `core_lex.csv` / `notcore_lex.csv` から、品詞が
-  `名詞,固有名詞,人名,姓` のエントリを抜く。表記と読み(カタカナ)がそのまま取れる
-- **rank**: Wikidata(CC0)の「日本国籍の人物(P31=Q5 かつ P27=Q17)の姓(P734)」を
-  日本語ラベルごとに数えた **著名人ベースの参考順位**
-- **description**: ja.wikipedia(CC BY-SA 4.0)の姓記事の冒頭。「東 (姓)」
-  「佐藤氏」「近衛家」のように姓そのものを説明している記事名を優先して探し、
-  由来・分布(「〜に多い」「発祥」)の文があればそれを拾う
-- **wikidata**: rank の集計に使った姓アイテムの QID(CC0)
-- **verified**: このリポジトリの実在人名リスト(baseball/football/scientist/
-  youtuber の type=family)、Web NDL Authorities、Wikidataの人物に使われる姓、
-  または公式人物ページの確認台帳に同じ(表記, 読み)があるか。SudachiDict には破格の
-  読み(`伊藤 イロウ` `井上 イトウ` `星野 コシノ`)が混ざるので、**行は消さずに
-  フラグで絞れるようにする**。`no` は誤りとは限らず裏が取れなかっただけ
-- **evidence_sources**: 読みを裏付けたソース。`person_lists` / `ndl` /
-  `wikidata_person` / `official_web` / `web_person` は実在人名、`jmnedict` は
-  辞書収録の裏付け。JMnedict 単独では verified=yes にしない
-
-**rank は世帯数・人口順位ではない。** 日本には姓別の公的統計が無く、世帯数・順位を
-持つ民間サイト(名字由来net・日本の苗字七千傑等)は利用規約でスクレイピング・再配布
-を禁じているので使わない。本リストの rank は「Wikidata に人物項目がある著名人に
-その姓が何人いるか」の順位で、実際の人口順位とは別物(芸名・筆名の偏り、Wikidata の
-整備状況の偏りをそのまま含む)。用途は「よく見る姓を上から取る」程度の目安に限る。
-
-差分方針(ADR 00014):
-- 既存行の id・表記・読みは絶対に書き換えない。新しい(表記, 読み)の組だけ追記する
-- description / wikidata は**空欄の補完のみ**行い、既に入っている値は書き換えない
-- **rank だけは毎回全行を再計算して上書きする**(youtuber の subscribers と同じ
-  明示的な例外)。順位は集計のスナップショットなので、一部だけ更新すると同じ列の中で
-  基準時点が混ざって順位として読めなくなるため
-
-環境変数:
-- `MYOJI_CACHE`: SudachiDict の zip を置くディレクトリ(開発用)。指定すると
-  2回目以降はダウンロードを省略する。CI では未設定=毎回取得
-
-usage: python3 tools/update_myoji.py
+列の意味と出典・ライセンスは docs/wordlists.md、docs/adr/00038、
+README.md を参照する。既存の固定IDと確認済み情報を保護し、rankだけを
+同じ基準時点で再計算する。
 """
 
 import argparse
@@ -789,10 +754,7 @@ def fetch_jmnedict_pairs() -> set:
 
 
 def load_official_evidence(path: Path = OFFICIAL_EVIDENCE_PATH) -> set:
-    """レビュー済み公式ページ台帳から (姓, 読み) を得る。
-
-    元ページの名簿や文章は再配布せず、確認結果と監査用メタデータだけをJSONLで持つ。
-    """
+    """公開用の最小根拠台帳から (姓, 読み) を得る。"""
     if not path.exists():
         return set()
     pairs = set()
@@ -802,11 +764,7 @@ def load_official_evidence(path: Path = OFFICIAL_EVIDENCE_PATH) -> set:
         "status",
         "source_url",
         "source_type",
-        "source_title",
         "retrieved_on",
-        "observed_surface",
-        "observed_reading",
-        "locator",
     }
     seen = set()
     for lineno, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
@@ -831,11 +789,6 @@ def load_official_evidence(path: Path = OFFICIAL_EVIDENCE_PATH) -> set:
             raise RuntimeError(f"{path.name}:{lineno}: statusが不正")
         if record["source_type"] not in OFFICIAL_SOURCE_TYPES:
             raise RuntimeError(f"{path.name}:{lineno}: source_typeが不正")
-        if (
-            not str(record["source_title"]).strip()
-            or not str(record["locator"]).strip()
-        ):
-            raise RuntimeError(f"{path.name}:{lineno}: 表題・確認箇所が空")
         if not re.fullmatch(r"https://[^\s]+", str(record["source_url"])):
             raise RuntimeError(f"{path.name}:{lineno}: HTTPS URLでない")
         try:
@@ -844,10 +797,6 @@ def load_official_evidence(path: Path = OFFICIAL_EVIDENCE_PATH) -> set:
             raise RuntimeError(f"{path.name}:{lineno}: 確認日が不正") from exc
         if retrieved > datetime.now(ZoneInfo("Asia/Tokyo")).date():
             raise RuntimeError(f"{path.name}:{lineno}: 確認日が不正")
-        observed_surface = str(record["observed_surface"]).strip()
-        observed_yomi = str(record["observed_reading"]).strip().translate(HIRA2KATA)
-        if (observed_surface, observed_yomi) != pair:
-            raise RuntimeError(f"{path.name}:{lineno}: 掲載表記・読みと候補が不一致")
         if record["status"] == "verified":
             pairs.add(pair)
     print(f"公式人物ページ台帳の(姓, 読み) {len(pairs)}組", flush=True)
@@ -865,11 +814,7 @@ def load_web_evidence(path: Path = WEB_EVIDENCE_PATH) -> set:
         "status",
         "source_url",
         "source_type",
-        "source_title",
         "retrieved_on",
-        "observed_surface",
-        "observed_reading",
-        "locator",
         "evidence_tier",
         "identity_basis",
     }
@@ -911,26 +856,12 @@ def load_web_evidence(path: Path = WEB_EVIDENCE_PATH) -> set:
             raise RuntimeError(f"{where}: identity_basisが不正")
         if not re.fullmatch(r"https://[^\s]+", str(record["source_url"])):
             raise RuntimeError(f"{where}: HTTPS URLでない")
-        if (
-            not str(record["source_title"]).strip()
-            or not str(record["locator"]).strip()
-        ):
-            raise RuntimeError(f"{where}: 表題・確認箇所が空")
         try:
             retrieved = date.fromisoformat(str(record["retrieved_on"]))
         except ValueError as exc:
             raise RuntimeError(f"{where}: 確認日が不正") from exc
         if retrieved > datetime.now(ZoneInfo("Asia/Tokyo")).date():
             raise RuntimeError(f"{where}: 確認日が不正")
-        observed = (
-            str(record["observed_surface"]).strip(),
-            str(record["observed_reading"])
-            .replace(" ", "")
-            .strip()
-            .translate(HIRA2KATA),
-        )
-        if observed != pair:
-            raise RuntimeError(f"{where}: 掲載表記・読みと候補が不一致")
         pairs.add(pair)
     print(f"一般Web人物台帳の(姓, 読み) {len(pairs)}組", flush=True)
     return pairs

@@ -302,18 +302,12 @@ class OfficialEvidenceTest(unittest.TestCase):
             "status": "verified",
             "source_url": "https://example.jp/person",
             "source_type": "official_org_directory",
-            "source_title": "人物一覧",
             "retrieved_on": "2026-08-13",
-            "observed_surface": "東",
-            "observed_reading": "あづま",
-            "locator": "職員欄",
         }
         review = dict(
             base,
             surface="西",
             pronunciation="ニシ",
-            observed_surface="西",
-            observed_reading="にし",
             status="review",
         )
         with tempfile.TemporaryDirectory() as td:
@@ -323,25 +317,18 @@ class OfficialEvidenceTest(unittest.TestCase):
             )
             self.assertEqual(m.load_official_evidence(path), {("東", "アヅマ")})
 
-    def test_loader_rejects_mismatch_and_duplicates(self):
+    def test_loader_rejects_duplicates(self):
         record = {
             "surface": "東",
             "pronunciation": "アヅマ",
             "status": "verified",
             "source_url": "https://example.jp/person",
             "source_type": "official_person_profile",
-            "source_title": "人物",
             "retrieved_on": "2026-08-13",
-            "observed_surface": "東",
-            "observed_reading": "ひがし",
-            "locator": "氏名欄",
         }
         with tempfile.TemporaryDirectory() as td:
             path = Path(td) / "evidence.jsonl"
             path.write_text(json.dumps(record), encoding="utf-8")
-            with self.assertRaises(RuntimeError):
-                m.load_official_evidence(path)
-            record["observed_reading"] = "あづま"
             path.write_text(
                 "\n".join((json.dumps(record), json.dumps(record))), encoding="utf-8"
             )
@@ -357,11 +344,7 @@ class WebEvidenceTest(unittest.TestCase):
             "status": "verified",
             "source_url": "https://example.jp/player/enokiya",
             "source_type": "sports_database",
-            "source_title": "選手名鑑",
             "retrieved_on": "2026-08-14",
-            "observed_surface": "榎谷",
-            "observed_reading": "えのきや",
-            "locator": "選手プロフィール",
             "evidence_tier": "B",
             "identity_basis": "same_profile",
         }
@@ -413,11 +396,7 @@ class WebEvidenceTest(unittest.TestCase):
             "status": "verified",
             "source_url": "https://example.jp/player/enokiya",
             "source_type": "sports_database",
-            "source_title": "選手名鑑",
             "retrieved_on": "2026-08-14",
-            "observed_surface": "榎谷",
-            "observed_reading": "えのきや",
-            "locator": "選手プロフィール",
             "evidence_tier": "B",
             "identity_basis": "same_profile",
         }
@@ -433,11 +412,7 @@ class WebEvidenceTest(unittest.TestCase):
             "status": "verified",
             "source_url": "https://example.jp/roster/enokiya",
             "source_type": "official_roster",
-            "source_title": "選手名簿",
             "retrieved_on": "2026-08-14",
-            "observed_surface": "榎谷",
-            "observed_reading": "エノキヤ",
-            "locator": "選手欄",
             "evidence_tier": "A",
             "identity_basis": "same_record",
         }
@@ -453,11 +428,7 @@ class WebEvidenceTest(unittest.TestCase):
             "status": "verified",
             "source_url": "https://example.jp/person",
             "source_type": "person_database",
-            "source_title": "人物",
             "retrieved_on": "2026-08-14",
-            "observed_surface": "榎谷",
-            "observed_reading": "エノタニ",
-            "locator": "氏名欄",
             "evidence_tier": "C",
             "identity_basis": "same_profile",
         }
@@ -474,11 +445,7 @@ class WebEvidenceTest(unittest.TestCase):
             "status": "verified",
             "source_url": "https://example.jp/person",
             "source_type": "person_database",
-            "source_title": "人物",
             "retrieved_on": "2026-08-14",
-            "observed_surface": "榎谷",
-            "observed_reading": "エノキヤ",
-            "locator": "榎谷 エノキヤ",
             "evidence_tier": "A",
             "identity_basis": "same_profile",
         }

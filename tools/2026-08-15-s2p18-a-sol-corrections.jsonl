@@ -1,5 +1,0 @@
-{"surface":"名切","pronunciation":"ナキリ","decision":"verified","already_verified":false,"source_url":"https://www.city.atsugi.kanagawa.jp/soshiki/gikaisomuka/6/8898.html","source_type":"government_register","source_title":"厚木市議会議員名簿","observed_surface":"名切","observed_reading":"ナキリ","locator":"名切文梨／なきり ふみな","notes":"Sol標準Web再検索でフル姓名・読みの本文再現とURL監査passを確認。","evidence_tier":"A","identity_basis":"same_record"}
-{"surface":"吉直","pronunciation":"ヨシナオ","decision":"ambiguous","already_verified":false,"notes":"Sol最終監査：吉直は「旭吉直」の名部分で姓ではないため不採用。"}
-{"surface":"君津","pronunciation":"キミツ","decision":"ambiguous","already_verified":false,"notes":"Sol最終監査：取得本文は君津という地名の解説であり人物の姓ではないため不採用。"}
-{"surface":"吉宇田","pronunciation":"ヨシウダ","decision":"ambiguous","already_verified":false,"notes":"Sol最終監査：代表者吉宇田明宏と会社名ヨシウダは確認できるが、人物のフル読みを同一レコードで確認できないため保留。"}
-{"surface":"向本","pronunciation":"ムコウモト","decision":"ambiguous","already_verified":false,"notes":"Sol最終監査：求人票は担当者の姓読みムコウモトのみで、名を含むフル読みを確認できないため保留。"}
