@@ -3,10 +3,10 @@
 > `verified` の人物裏付けソースは後続の [ADR 00050](00050-myoji-evidence-sources.md)と
 > [ADR 00051](00051-myoji-person-evidence.md)で拡張している。
 
-- Status: accepted
+- Status: superseded
 - Date: 2026-08-02
 - Supersedes: none
-- Superseded by: none
+- Superseded by: 00055-jpon-2012-surname-census.md
 - Related: 00001(自動更新のソース選定4基準) / 00005(人名リストの自動更新) / 00009(description の生成方式) / 00014(既存行を劣化させない) / 00030(時変値を毎回全行上書きする先例)
 
 ## Context
