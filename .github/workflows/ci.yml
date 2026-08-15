@@ -49,6 +49,33 @@ jobs:
       - name: Validate myoji official web search batch
         run: python tools/audit_myoji_official_web.py validate --all
 
+      - name: Test myoji general web research tooling
+        run: >-
+          python -m unittest
+          tools/test_apply_myoji_negative_reviews.py
+          tools/test_apply_myoji_result_url_audit.py
+          tools/test_apply_myoji_review_rejections_to_ledger.py
+          tools/test_apply_myoji_url_audit.py
+          tools/test_audit_myoji_evidence_urls.py
+          tools/test_audit_myoji_negative_result_urls.py
+          tools/test_audit_myoji_web_research.py
+          tools/test_bing_search_runner.py
+          tools/test_duckduckgo_html_runner.py
+          tools/test_finalize_myoji_negative_audits.py
+          tools/test_generate_myoji_negative_pass_candidates.py
+          tools/test_generate_myoji_reaudit_candidates.py
+          tools/test_google_search_runner.py
+          tools/test_official_domain_search_runner.py
+          tools/test_repair_myoji_result_metadata.py
+          tools/test_sanitize_myoji_search_receipts.py
+          tools/test_validate_myoji_evidence_ledger.py
+          tools/test_yahoo_japan_search_runner.py
+
+      - name: Validate myoji general web research batches
+        run: |
+          python tools/audit_myoji_web_research.py validate-all
+          python tools/audit_myoji_web_research.py validate-evidence
+
       - name: Test municipality updater
         run: python tools/test_update_municipality.py
 

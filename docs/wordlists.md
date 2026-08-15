@@ -239,18 +239,19 @@ Wikipedia由来の加工文はCC BY-SA 4.0で、同台帳から原記事への�
 
 | 列 | 意味 |
 |---|---|
-| verified | 実在人名リスト、Web NDL Authorities、Wikidataの人物姓、または公式人物ページで同じ表記と読みを確認できたか(`yes`/`no`) |
+| verified | 実在人名リスト、Web NDL Authorities、Wikidataの人物姓、またはレビュー済み人物ページで同じ表記と読みを確認できたか(`yes`/`no`) |
 | rank | Wikidata上の著名人数による参考順位 |
 | description | 名字や氏族の短い説明 |
 | wikidata | 集計に使った姓アイテムのQID |
-| evidence_sources | 読みの裏付け。`person_lists` / `ndl` / `wikidata_person` / `official_web` / `jmnedict`を`|`区切りで格納 |
+| evidence_sources | 読みの裏付け。`person_lists` / `ndl` / `wikidata_person` / `official_web` / `web_person` / `jmnedict`を`|`区切りで格納 |
 
 同じ漢字表記に複数の読みがある場合も同じ `id` を使う。`verified=no` は誤りを
 意味せず、実在人物で確認できていないことだけを表す。`jmnedict` は辞書収録の
 裏付けなので、それ単独では `verified=yes` にしない。詳細は
 [ADR 00038](adr/00038-myoji-wordlist.md)と
 [ADR 00050](adr/00050-myoji-evidence-sources.md)、
-[ADR 00051](adr/00051-myoji-person-evidence.md)。
+[ADR 00051](adr/00051-myoji-person-evidence.md)と
+[ADR 00053](adr/00053-myoji-general-web-research.md)。
 
 ## gimukyoiku.csv
 

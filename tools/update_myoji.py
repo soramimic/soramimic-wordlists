@@ -18,8 +18,8 @@
   読み(`伊藤 イロウ` `井上 イトウ` `星野 コシノ`)が混ざるので、**行は消さずに
   フラグで絞れるようにする**。`no` は誤りとは限らず裏が取れなかっただけ
 - **evidence_sources**: 読みを裏付けたソース。`person_lists` / `ndl` /
-  `wikidata_person` / `official_web` は実在人名、`jmnedict` は辞書収録の裏付け。
-  JMnedict 単独では verified=yes にしない
+  `wikidata_person` / `official_web` / `web_person` は実在人名、`jmnedict` は
+  辞書収録の裏付け。JMnedict 単独では verified=yes にしない
 
 **rank は世帯数・人口順位ではない。** 日本には姓別の公的統計が無く、世帯数・順位を
 持つ民間サイト(名字由来net・日本の苗字七千傑等)は利用規約でスクレイピング・再配布
@@ -41,6 +41,7 @@
 usage: python3 tools/update_myoji.py
 """
 
+import argparse
 import csv
 import gzip
 import io
@@ -70,18 +71,29 @@ from wpnames import (
 )
 
 CSV_PATH = Path(__file__).resolve().parent.parent / "myoji.csv"
-OFFICIAL_EVIDENCE_PATH = Path(__file__).resolve().parent / "myoji_official_evidence.jsonl"
+OFFICIAL_EVIDENCE_PATH = (
+    Path(__file__).resolve().parent / "myoji_official_evidence.jsonl"
+)
+WEB_EVIDENCE_PATH = Path(__file__).resolve().parent / "myoji_web_evidence.jsonl"
 CACHE_DIR = os.environ.get("MYOJI_CACHE")
 
 # 既存利用側の位置依存を壊しにくいよう、新しい列は末尾に追加する。
-COLS = ["id", "original", "surface", "pronunciation", "verified", "rank",
-        "description", "wikidata", "evidence_sources"]
+COLS = [
+    "id",
+    "original",
+    "surface",
+    "pronunciation",
+    "verified",
+    "rank",
+    "description",
+    "wikidata",
+    "evidence_sources",
+]
 
 # verified の判定に使う「実在の日本人の名簿」。このリポジトリ内の実在人名リストの
 # type=family 行(姓とその読み)を突き合わせる。架空のリスト(fictional_*)は
 # 実在の裏付けにならないので使わない
-PERSON_LISTS = ("baseball.csv", "football.csv", "scientist.csv",
-                "youtuber.csv")
+PERSON_LISTS = ("baseball.csv", "football.csv", "scientist.csv", "youtuber.csv")
 
 # ---- SudachiDict --------------------------------------------------------
 # 辞書ソースCSVは git から外れて S3 配布になっている(GitHub の
@@ -110,13 +122,54 @@ MIN_JMNEDICT_PAIRS = 100000
 MIN_WIKIDATA_PERSON_PAIRS = 4000
 
 # 読みの裏付け。並び順を固定し、月次更新で不要な差分を出さない。
-EVIDENCE_ORDER = ("person_lists", "ndl", "wikidata_person", "official_web",
-                  "jmnedict")
+EVIDENCE_ORDER = (
+    "person_lists",
+    "ndl",
+    "wikidata_person",
+    "official_web",
+    "web_person",
+    "jmnedict",
+)
 HUMAN_EVIDENCE = frozenset(
-    ("person_lists", "ndl", "wikidata_person", "official_web"))
+    ("person_lists", "ndl", "wikidata_person", "official_web", "web_person")
+)
 OFFICIAL_SOURCE_TYPES = frozenset(
-    ("official_person_profile", "official_org_directory", "official_roster",
-     "official_authority"))
+    (
+        "official_person_profile",
+        "official_org_directory",
+        "official_roster",
+        "official_authority",
+    )
+)
+WEB_SOURCE_TYPES = frozenset(
+    (
+        "government_register",
+        "school_profile",
+        "university_profile",
+        "sports_roster",
+        "sports_database",
+        "corporate_filing",
+        "corporate_release",
+        "professional_directory",
+        "news_report",
+        "publisher_biography",
+        "person_database",
+    )
+)
+WEB_EVIDENCE_TIERS = frozenset(("A", "B"))
+WEB_IDENTITY_BASES = frozenset(("same_record", "same_row", "same_profile"))
+WEB_TIER_A_SOURCE_TYPES = OFFICIAL_SOURCE_TYPES | frozenset(
+    (
+        "government_register",
+        "school_profile",
+        "university_profile",
+        "sports_roster",
+        "corporate_filing",
+        "corporate_release",
+        "professional_directory",
+    )
+)
+WEB_TIER_B_SOURCE_TYPES = WEB_SOURCE_TYPES - WEB_TIER_A_SOURCE_TYPES
 
 # Web NDL Authorities は個人名典拠を一括配布していないため SPARQL で取得する。
 # 公式の姓抽出例と同じく、コンマ前を姓・姓読みとして扱う。
@@ -150,28 +203,69 @@ BULLET = (" - ", " – ", " — ", "‐")
 MIN_DESC_LEN = 12  # 「佐藤。」のような中身の無い説明を落とす
 PAREN = re.compile(r"[（(][^）)]*[）)]")
 # 説明文の主語がこれで終わるものは姓の説明ではない(「吹田城は、大阪府…」)
-NON_SURNAME_HEAD = ("城", "駅", "市", "町", "村", "川", "山", "湖", "藩",
-                    "大学", "神社", "寺", "空港", "公園", "大字")
+NON_SURNAME_HEAD = (
+    "城",
+    "駅",
+    "市",
+    "町",
+    "村",
+    "川",
+    "山",
+    "湖",
+    "藩",
+    "大学",
+    "神社",
+    "寺",
+    "空港",
+    "公園",
+    "大字",
+)
 NON_SURNAME_WORDS = ("株式会社", "有限会社", "郵便番号", "麻雀", "の格式")
 # **説明文のどこか**にこれが無ければ姓・氏族の説明ではないとみなす(ADR 00038)。
 # 由緒から書き出して氏族の語が2文目以降に来る記事(金子・小山)を取りこぼさない
 # よう、最初の一文ではなく全体で見る。姓・氏族を指す語のゆるい形も含める
-CLAN_WORDS = ("姓", "名字", "苗字", "氏族", "一族", "氏は", "家は", "武家",
-              "華族", "氏の", "氏を", "氏流", "豪族", "名族", "国人")
+CLAN_WORDS = (
+    "姓",
+    "名字",
+    "苗字",
+    "氏族",
+    "一族",
+    "氏は",
+    "家は",
+    "武家",
+    "華族",
+    "氏の",
+    "氏を",
+    "氏流",
+    "豪族",
+    "名族",
+    "国人",
+)
 # 「江口 光清は、安土桃山時代の…武将。最上氏の家臣。」のような人物記事を弾く。
 # ja.wikipedia の人物記事名は「姓 名」で主語に空白が入るが、姓・氏族の記事の
 # 主語(「佐藤氏」「日本の氏族」)には入らない
 PERSON_HEAD = re.compile(r"\S+\s\S")
 # 「〜を参照のこと。」「〜は次のとおりである。」のような誘導文は情報が無いので
 # description に採らない
-POINTER = re.compile(r"参照|詳細は|下記|次のとおり|次の通り|次のような"
-                     r"|以下のとおり|以下の通り|以下のような|次に記す")
+POINTER = re.compile(
+    r"参照|詳細は|下記|次のとおり|次の通り|次のような"
+    r"|以下のとおり|以下の通り|以下のような|次に記す"
+)
 # 「名越流北条氏は、鎌倉時代の北条氏の分流。」のように、その姓ではなく**別の氏の
 # 支流**を説明している記事の見出し。姓の説明として採らない
 BRANCH_HEAD = re.compile(r".+流.+[氏家]$")
 # 「どこに多いか・由来」のトリビア。この語を含む文を優先して拾う
-TRIVIA_WORDS = ("由来", "発祥", "起源", "に多い", "分布", "多く見られる",
-                "多い姓", "多い名字", "多い苗字")
+TRIVIA_WORDS = (
+    "由来",
+    "発祥",
+    "起源",
+    "に多い",
+    "分布",
+    "多く見られる",
+    "多い姓",
+    "多い名字",
+    "多い苗字",
+)
 DESC_MAX = 130  # トリビアの1文を足すときの上限(通常は make_description の90字)
 
 
@@ -183,11 +277,15 @@ def http_get(url: str, timeout: int = 300) -> bytes:
 
 def latest_sudachi_version() -> str:
     """S3 のバケット一覧から最新の辞書バージョン(YYYYMMDD)を選ぶ。"""
-    url = S3_BUCKET + "?" + urllib.parse.urlencode(
-        {"list-type": "2", "prefix": S3_PREFIX, "delimiter": "/"})
+    url = (
+        S3_BUCKET
+        + "?"
+        + urllib.parse.urlencode(
+            {"list-type": "2", "prefix": S3_PREFIX, "delimiter": "/"}
+        )
+    )
     xml = http_get(url, timeout=60).decode("utf-8")
-    vers = sorted(set(re.findall(
-        re.escape(S3_PREFIX) + r"(\d{8})/", xml)))
+    vers = sorted(set(re.findall(re.escape(S3_PREFIX) + r"(\d{8})/", xml)))
     if not vers:
         raise RuntimeError("SudachiDict のバージョン一覧が取れない")
     return vers[-1]
@@ -226,7 +324,7 @@ def fetch_surnames() -> dict:
                 for row in csv.reader(io.TextIOWrapper(fh, encoding="utf-8")):
                     if len(row) <= COL_YOMI:
                         continue
-                    if tuple(row[COL_POS1:COL_POS1 + 4]) != POS_SURNAME:
+                    if tuple(row[COL_POS1 : COL_POS1 + 4]) != POS_SURNAME:
                         continue
                     raw += 1
                     surface = row[COL_SURFACE].strip()
@@ -236,8 +334,11 @@ def fetch_surnames() -> dict:
                     pairs.add((surface, yomi))
                     n += 1
         print(f"  {name}: 採用 {n}件", flush=True)
-    print(f"姓エントリ {raw}件 -> 採用 {len(pairs)}組"
-          f"(表記 {len({s for s, _ in pairs})}種)", flush=True)
+    print(
+        f"姓エントリ {raw}件 -> 採用 {len(pairs)}組"
+        f"(表記 {len({s for s, _ in pairs})}種)",
+        flush=True,
+    )
     if len(pairs) < MIN_SURNAME_ROWS:
         raise RuntimeError(f"姓エントリが少なすぎる: {len(pairs)}")
     out = {}
@@ -291,17 +392,23 @@ def fetch_rank() -> tuple:
         c = int(b["cnt"]["value"])
         counts[label] = counts.get(label, 0) + c
         cur = best.get(label)
-        if (cur is None or c > cur[1]
-                or (c == cur[1] and int(qid[1:]) < int(cur[0][1:]))):
+        if (
+            cur is None
+            or c > cur[1]
+            or (c == cur[1] and int(qid[1:]) < int(cur[0][1:]))
+        ):
             best[label] = (qid, c)
-    print(f"Wikidata: 姓ラベル {len(counts)}種 / 延べ {sum(counts.values())}人",
-          flush=True)
+    print(
+        f"Wikidata: 姓ラベル {len(counts)}種 / 延べ {sum(counts.values())}人",
+        flush=True,
+    )
     if len(counts) < MIN_RANK_LABELS:
         raise RuntimeError(f"Wikidata の集計が少なすぎる: {len(counts)}")
     # 同数は同順位(1,2,2,4...)。同数内の並びは表記順で決定的にする
     ranks, prev_cnt, prev_rank = {}, None, 0
     for i, (label, c) in enumerate(
-            sorted(counts.items(), key=lambda kv: (-kv[1], kv[0])), start=1):
+        sorted(counts.items(), key=lambda kv: (-kv[1], kv[0])), start=1
+    ):
         if c != prev_cnt:
             prev_cnt, prev_rank = c, i
         ranks[label] = prev_rank
@@ -314,20 +421,21 @@ def fetch_wikidata_person_pairs() -> set:
     人物のフルネームP1814を姓名分割するのではなく、姓itemに直接記録された読みだけを
     採る。姓名順や空白の揺れによる誤分割を避けるため。
     """
-    cache = (Path(CACHE_DIR) / "wikidata-person-surname-pairs.json"
-             if CACHE_DIR else None)
+    cache = (
+        Path(CACHE_DIR) / "wikidata-person-surname-pairs.json" if CACHE_DIR else None
+    )
     if cache and cache.exists():
         print(f"  キャッシュ: {cache}", flush=True)
         pairs = {tuple(p) for p in json.loads(cache.read_text(encoding="utf-8"))}
     else:
-        pairs = parse_wikidata_person_json(
-            sparql(WIKIDATA_PERSON_READING_QUERY))
+        pairs = parse_wikidata_person_json(sparql(WIKIDATA_PERSON_READING_QUERY))
     if len(pairs) < MIN_WIKIDATA_PERSON_PAIRS:
         raise RuntimeError(f"Wikidata の人物姓読みが少なすぎる: {len(pairs)}")
     if cache and not cache.exists():
         cache.parent.mkdir(parents=True, exist_ok=True)
-        cache.write_text(json.dumps(sorted(pairs), ensure_ascii=False),
-                         encoding="utf-8")
+        cache.write_text(
+            json.dumps(sorted(pairs), ensure_ascii=False), encoding="utf-8"
+        )
     print(f"Wikidata の人物に使われる(姓, 読み) {len(pairs)}組", flush=True)
     return pairs
 
@@ -337,8 +445,12 @@ def parse_wikidata_person_json(data: dict) -> set:
     pairs = set()
     for binding in data.get("results", {}).get("bindings", []):
         surface = str(binding.get("fnLabel", {}).get("value", "")).strip()
-        yomi = (str(binding.get("kana", {}).get("value", ""))
-                .replace(" ", "").strip().translate(HIRA2KATA))
+        yomi = (
+            str(binding.get("kana", {}).get("value", ""))
+            .replace(" ", "")
+            .strip()
+            .translate(HIRA2KATA)
+        )
         if clean_surname(surface, yomi):
             pairs.add((surface, yomi))
     return pairs
@@ -352,8 +464,13 @@ def title_candidates(surface: str) -> list:
     曖昧さ回避サフィックス付き(「東 (姓)」)がいちばん姓そのものの記事で、次が
     氏族記事「佐藤氏」、家の記事「近衛家」、最後が素の記事。
     """
-    return [f"{surface} (姓)", f"{surface} (名字)", f"{surface}氏",
-            f"{surface}家", surface]
+    return [
+        f"{surface} (姓)",
+        f"{surface} (名字)",
+        f"{surface}氏",
+        f"{surface}家",
+        surface,
+    ]
 
 
 def existing_titles(titles: list) -> set:
@@ -367,7 +484,7 @@ def existing_titles(titles: list) -> set:
         return set(json.loads(cache.read_text(encoding="utf-8")))
     ok = set()
     for i in range(0, len(titles), 50):
-        data = api({"action": "query", "titles": "|".join(titles[i:i + 50])})
+        data = api({"action": "query", "titles": "|".join(titles[i : i + 50])})
         q = data.get("query", {})
         back = {n["to"]: n["from"] for n in q.get("normalized", [])}
         for p in q.get("pages", {}).values():
@@ -380,8 +497,7 @@ def existing_titles(titles: list) -> set:
             print(f"  存在確認 {i}/{len(titles)}", flush=True)
     if cache:
         cache.parent.mkdir(parents=True, exist_ok=True)
-        cache.write_text(json.dumps(sorted(ok), ensure_ascii=False),
-                         encoding="utf-8")
+        cache.write_text(json.dumps(sorted(ok), ensure_ascii=False), encoding="utf-8")
     return ok
 
 
@@ -395,13 +511,23 @@ def fetch_intros(titles: list) -> dict:
     cache = Path(CACHE_DIR) / "intros.json" if CACHE_DIR else None
     if cache and cache.exists():
         print(f"  キャッシュ: {cache}", flush=True)
-        return {k: tuple(v) for k, v in
-                json.loads(cache.read_text(encoding="utf-8")).items()}
+        return {
+            k: tuple(v)
+            for k, v in json.loads(cache.read_text(encoding="utf-8")).items()
+        }
     out = {}
     for i in range(0, len(titles), 20):
-        data = api({"action": "query", "prop": "extracts", "exintro": 1,
-                    "explaintext": 1, "exlimit": "max", "redirects": 1,
-                    "titles": "|".join(titles[i:i + 20])})
+        data = api(
+            {
+                "action": "query",
+                "prop": "extracts",
+                "exintro": 1,
+                "explaintext": 1,
+                "exlimit": "max",
+                "redirects": 1,
+                "titles": "|".join(titles[i : i + 20]),
+            }
+        )
         q = data.get("query", {})
         back = {r["to"]: r["from"] for r in q.get("redirects", [])}
         back.update({n["to"]: n["from"] for n in q.get("normalized", [])})
@@ -413,8 +539,7 @@ def fetch_intros(titles: list) -> dict:
             print(f"  記事冒頭 {i}/{len(titles)}", flush=True)
     if cache:
         cache.parent.mkdir(parents=True, exist_ok=True)
-        cache.write_text(json.dumps(out, ensure_ascii=False),
-                         encoding="utf-8")
+        cache.write_text(json.dumps(out, ensure_ascii=False), encoding="utf-8")
     return out
 
 
@@ -482,8 +607,7 @@ def accept_description(desc: str, surface: str) -> bool:
     if head.endswith(NON_SURNAME_HEAD):
         return False
     # 主語が「名越流北条氏」= 別の氏の支流の説明なら、その姓の説明ではない
-    if BRANCH_HEAD.match(head) and not head.endswith(
-            (surface + "氏", surface + "家")):
+    if BRANCH_HEAD.match(head) and not head.endswith((surface + "氏", surface + "家")):
         return False
     # 主語が「江口 光清」なら人物記事。「最上氏の家臣」等で下の条件を通ってしまう
     if PERSON_HEAD.match(head):
@@ -515,11 +639,12 @@ def fetch_articles(surfaces: list) -> dict:
             desc = build_description(intro, title)
             if accept_description(desc, s):
                 desc_of[s] = desc
-                kind = "素の記事" if title == s else title[len(s):] or "-"
+                kind = "素の記事" if title == s else title[len(s) :] or "-"
                 stats[kind] = stats.get(kind, 0) + 1
                 break
-    detail = " / ".join(f"{k}:{v}" for k, v in sorted(stats.items(),
-                                                     key=lambda kv: -kv[1]))
+    detail = " / ".join(
+        f"{k}:{v}" for k, v in sorted(stats.items(), key=lambda kv: -kv[1])
+    )
     print(f"description採用 {len(desc_of)}件 ({detail})", flush=True)
     return desc_of
 
@@ -563,8 +688,7 @@ def parse_ndl_csv(data: bytes) -> set:
     pairs = set()
     for row in rows:
         surface = (row.get("surname") or "").strip()
-        yomi = ((row.get("yomi") or "").replace(" ", "").strip()
-                .translate(HIRA2KATA))
+        yomi = (row.get("yomi") or "").replace(" ", "").strip().translate(HIRA2KATA)
         if clean_surname(surface, yomi):
             pairs.add((surface, yomi))
     return pairs
@@ -577,31 +701,33 @@ def fetch_ndl_pairs() -> set:
         print(f"  キャッシュ: {cache}", flush=True)
         pairs = {tuple(p) for p in json.loads(cache.read_text(encoding="utf-8"))}
         if len(pairs) < MIN_NDL_PAIRS:
-            raise RuntimeError(
-                f"NDLキャッシュの姓読みが少なすぎる: {len(pairs)}")
+            raise RuntimeError(f"NDLキャッシュの姓読みが少なすぎる: {len(pairs)}")
         return pairs
 
     pairs = set()
     offset = 0
     while True:
         query = NDL_QUERY + f"LIMIT {NDL_PAGE_SIZE} OFFSET {offset}"
-        url = NDL_SPARQL + "?" + urllib.parse.urlencode(
-            {"query": query, "format": "csv"})
+        url = (
+            NDL_SPARQL + "?" + urllib.parse.urlencode({"query": query, "format": "csv"})
+        )
         last_error = None
         for attempt in range(5):
             try:
                 raw_page = http_get(url, timeout=180)
-                record_count = len(list(csv.DictReader(io.StringIO(
-                    raw_page.decode("utf-8-sig")))))
+                record_count = len(
+                    list(csv.DictReader(io.StringIO(raw_page.decode("utf-8-sig"))))
+                )
                 page = parse_ndl_csv(raw_page)
                 last_error = None
                 break
             except (OSError, UnicodeError, csv.Error, RuntimeError) as exc:
                 last_error = exc
-                time.sleep(2 ** attempt)
+                time.sleep(2**attempt)
         if last_error is not None:
             raise RuntimeError(
-                f"Web NDL Authorities の取得に失敗(offset={offset})") from last_error
+                f"Web NDL Authorities の取得に失敗(offset={offset})"
+            ) from last_error
         pairs.update(page)
         if offset and offset % 10000 == 0:
             print(f"  NDL {offset + len(page)}件取得", flush=True)
@@ -613,7 +739,9 @@ def fetch_ndl_pairs() -> set:
         raise RuntimeError(f"Web NDL Authorities の姓読みが少なすぎる: {len(pairs)}")
     if cache:
         cache.parent.mkdir(parents=True, exist_ok=True)
-        cache.write_text(json.dumps(sorted(pairs), ensure_ascii=False), encoding="utf-8")
+        cache.write_text(
+            json.dumps(sorted(pairs), ensure_ascii=False), encoding="utf-8"
+        )
     print(f"Web NDL Authorities の(姓, 読み) {len(pairs)}組", flush=True)
     return pairs
 
@@ -627,7 +755,8 @@ def parse_jmnedict(blob: bytes) -> set:
                 continue
             is_surname = any(
                 (node.text or "") == JMNEDICT_SURNAME
-                for node in entry.findall("./trans/name_type"))
+                for node in entry.findall("./trans/name_type")
+            )
             if is_surname:
                 surfaces = [n.text for n in entry.findall("./k_ele/keb") if n.text]
                 for reading in entry.findall("./r_ele"):
@@ -667,9 +796,18 @@ def load_official_evidence(path: Path = OFFICIAL_EVIDENCE_PATH) -> set:
     if not path.exists():
         return set()
     pairs = set()
-    required = {"surface", "pronunciation", "status", "source_url",
-                "source_type", "source_title", "retrieved_on",
-                "observed_surface", "observed_reading", "locator"}
+    required = {
+        "surface",
+        "pronunciation",
+        "status",
+        "source_url",
+        "source_type",
+        "source_title",
+        "retrieved_on",
+        "observed_surface",
+        "observed_reading",
+        "locator",
+    }
     seen = set()
     for lineno, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
         if not line.strip():
@@ -680,8 +818,7 @@ def load_official_evidence(path: Path = OFFICIAL_EVIDENCE_PATH) -> set:
             raise RuntimeError(f"{path.name}:{lineno}: JSONが不正") from exc
         missing = required - set(record)
         if missing:
-            raise RuntimeError(
-                f"{path.name}:{lineno}: 必須キー不足: {sorted(missing)}")
+            raise RuntimeError(f"{path.name}:{lineno}: 必須キー不足: {sorted(missing)}")
         surface = str(record["surface"]).strip()
         yomi = str(record["pronunciation"]).strip().translate(HIRA2KATA)
         if not clean_surname(surface, yomi):
@@ -694,7 +831,10 @@ def load_official_evidence(path: Path = OFFICIAL_EVIDENCE_PATH) -> set:
             raise RuntimeError(f"{path.name}:{lineno}: statusが不正")
         if record["source_type"] not in OFFICIAL_SOURCE_TYPES:
             raise RuntimeError(f"{path.name}:{lineno}: source_typeが不正")
-        if not str(record["source_title"]).strip() or not str(record["locator"]).strip():
+        if (
+            not str(record["source_title"]).strip()
+            or not str(record["locator"]).strip()
+        ):
             raise RuntimeError(f"{path.name}:{lineno}: 表題・確認箇所が空")
         if not re.fullmatch(r"https://[^\s]+", str(record["source_url"])):
             raise RuntimeError(f"{path.name}:{lineno}: HTTPS URLでない")
@@ -714,9 +854,97 @@ def load_official_evidence(path: Path = OFFICIAL_EVIDENCE_PATH) -> set:
     return pairs
 
 
-def evidence_for(pair: tuple, person_pairs: set, ndl_pairs: set,
-                 wikidata_person_pairs: set, official_pairs: set,
-                 jmnedict_pairs: set) -> set:
+def load_web_evidence(path: Path = WEB_EVIDENCE_PATH) -> set:
+    """レビュー済み一般Web人物台帳から (姓, 読み) を得る。"""
+    if not path.exists():
+        return set()
+    pairs = set()
+    required = {
+        "surface",
+        "pronunciation",
+        "status",
+        "source_url",
+        "source_type",
+        "source_title",
+        "retrieved_on",
+        "observed_surface",
+        "observed_reading",
+        "locator",
+        "evidence_tier",
+        "identity_basis",
+    }
+    for lineno, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
+        if not line.strip():
+            continue
+        where = f"{path.name}:{lineno}"
+        try:
+            record = json.loads(line)
+        except json.JSONDecodeError as exc:
+            raise RuntimeError(f"{where}: JSONが不正") from exc
+        missing = required - set(record)
+        if missing:
+            raise RuntimeError(f"{where}: 必須キー不足: {sorted(missing)}")
+        surface = str(record["surface"]).strip()
+        yomi = (
+            str(record["pronunciation"]).replace(" ", "").strip().translate(HIRA2KATA)
+        )
+        pair = (surface, yomi)
+        if not clean_surname(*pair):
+            raise RuntimeError(f"{where}: 姓・読みが不正")
+        if pair in pairs:
+            raise RuntimeError(f"{where}: 姓・読みが重複")
+        if record["status"] != "verified":
+            raise RuntimeError(f"{where}: statusが不正")
+        if record["source_type"] not in OFFICIAL_SOURCE_TYPES | WEB_SOURCE_TYPES:
+            raise RuntimeError(f"{where}: source_typeが不正")
+        if record["evidence_tier"] not in WEB_EVIDENCE_TIERS:
+            raise RuntimeError(f"{where}: evidence_tierが不正")
+        if (
+            record["evidence_tier"] == "A"
+            and record["source_type"] not in WEB_TIER_A_SOURCE_TYPES
+        ) or (
+            record["evidence_tier"] == "B"
+            and record["source_type"] not in WEB_TIER_B_SOURCE_TYPES
+        ):
+            raise RuntimeError(f"{where}: source_typeとevidence_tierが不一致")
+        if record["identity_basis"] not in WEB_IDENTITY_BASES:
+            raise RuntimeError(f"{where}: identity_basisが不正")
+        if not re.fullmatch(r"https://[^\s]+", str(record["source_url"])):
+            raise RuntimeError(f"{where}: HTTPS URLでない")
+        if (
+            not str(record["source_title"]).strip()
+            or not str(record["locator"]).strip()
+        ):
+            raise RuntimeError(f"{where}: 表題・確認箇所が空")
+        try:
+            retrieved = date.fromisoformat(str(record["retrieved_on"]))
+        except ValueError as exc:
+            raise RuntimeError(f"{where}: 確認日が不正") from exc
+        if retrieved > datetime.now(ZoneInfo("Asia/Tokyo")).date():
+            raise RuntimeError(f"{where}: 確認日が不正")
+        observed = (
+            str(record["observed_surface"]).strip(),
+            str(record["observed_reading"])
+            .replace(" ", "")
+            .strip()
+            .translate(HIRA2KATA),
+        )
+        if observed != pair:
+            raise RuntimeError(f"{where}: 掲載表記・読みと候補が不一致")
+        pairs.add(pair)
+    print(f"一般Web人物台帳の(姓, 読み) {len(pairs)}組", flush=True)
+    return pairs
+
+
+def evidence_for(
+    pair: tuple,
+    person_pairs: set,
+    ndl_pairs: set,
+    wikidata_person_pairs: set,
+    official_pairs: set,
+    web_pairs: set,
+    jmnedict_pairs: set,
+) -> set:
     sources = set()
     if pair in person_pairs:
         sources.add("person_lists")
@@ -726,6 +954,8 @@ def evidence_for(pair: tuple, person_pairs: set, ndl_pairs: set,
         sources.add("wikidata_person")
     if pair in official_pairs:
         sources.add("official_web")
+    if pair in web_pairs:
+        sources.add("web_person")
     if pair in jmnedict_pairs:
         sources.add("jmnedict")
     return sources
@@ -743,17 +973,39 @@ def is_human_verified(sources: set) -> bool:
     return bool(HUMAN_EVIDENCE & sources)
 
 
+def sync_web_person_sources(sources: set, pair: tuple, web_pairs: set) -> set:
+    """Make web_person reflect the current reviewed ledger exactly.
+
+    Other evidence tokens are retained.  Legacy verified=yes rows without an
+    evidence_sources column are handled by the caller as person_lists.
+    """
+    synced = set(sources)
+    synced.discard("web_person")
+    if pair in web_pairs:
+        synced.add("web_person")
+    return synced
+
+
 # ---- CSV の組み立て -----------------------------------------------------
 def sort_key(ranks: dict):
     """参考順位の上位から、順位が無い表記は表記順で後ろに並べる。"""
     return lambda s: (ranks.get(s, 10**9), s)
 
 
-def make_row(rid: str, surface: str, yomi: str, ranks: dict, qids: dict,
-             descs: dict, evidence: dict) -> dict:
+def make_row(
+    rid: str,
+    surface: str,
+    yomi: str,
+    ranks: dict,
+    qids: dict,
+    descs: dict,
+    evidence: dict,
+) -> dict:
     sources = evidence.get((surface, yomi), set())
     return {
-        "id": rid, "original": surface, "surface": surface,
+        "id": rid,
+        "original": surface,
+        "surface": surface,
         "pronunciation": yomi,
         "verified": "yes" if is_human_verified(sources) else "no",
         "rank": str(ranks[surface]) if surface in ranks else "",
@@ -765,18 +1017,23 @@ def make_row(rid: str, surface: str, yomi: str, ranks: dict, qids: dict,
 
 def yomi_order(surface: str, yomis: list, evidence: dict) -> list:
     """同じ id の中では裏が取れた読みを先に置く(鈴木ならスズキ > ススキ)。"""
-    return sorted(yomis, key=lambda y: (
-        0 if is_human_verified(evidence.get((surface, y), set())) else 1, y))
+    return sorted(
+        yomis,
+        key=lambda y: (
+            0 if is_human_verified(evidence.get((surface, y), set())) else 1,
+            y,
+        ),
+    )
 
 
-def build_rows(surnames: dict, ranks: dict, qids: dict, descs: dict,
-               evidence: dict) -> list:
+def build_rows(
+    surnames: dict, ranks: dict, qids: dict, descs: dict, evidence: dict
+) -> list:
     """初回生成。"""
     rows = []
     for i, surface in enumerate(sorted(surnames, key=sort_key(ranks)), start=1):
         for yomi in yomi_order(surface, surnames[surface], evidence):
-            rows.append(make_row(str(i), surface, yomi, ranks, qids, descs,
-                                 evidence))
+            rows.append(make_row(str(i), surface, yomi, ranks, qids, descs, evidence))
     return rows
 
 
@@ -784,14 +1041,18 @@ def is_blank(v) -> bool:
     return v is None or v.strip() in ("", "NA")
 
 
-def merge_rows(old_rows: list, surnames: dict, ranks: dict, qids: dict,
-               descs: dict, evidence: dict) -> list:
+def merge_rows(
+    old_rows: list, surnames: dict, ranks: dict, qids: dict, descs: dict, evidence: dict
+) -> list:
     """2回目以降。既存行を保ちつつ rank を全件更新し、新しい組を追記する。"""
     id_of = {}
     for r in old_rows:
         id_of.setdefault(r["original"], r["id"])
     seen = {(r["original"], r["pronunciation"]) for r in old_rows}
 
+    current_web_pairs = {
+        pair for pair, sources in evidence.items() if "web_person" in sources
+    }
     changed_rank = filled = verified_up = evidence_up = 0
     for r in old_rows:
         # rank は毎回全行を上書きする(集計のスナップショットなので部分更新できない)
@@ -806,21 +1067,31 @@ def merge_rows(old_rows: list, surnames: dict, ranks: dict, qids: dict,
         # evidence_sources 導入前の yes は実在人名リスト由来なので出典を復元する。
         if r.get("verified") == "yes" and not old_sources:
             old_sources.add("person_lists")
-        new_sources = old_sources | evidence.get(pair, set())
+        # General-Web evidence is a synchronized ledger projection, unlike
+        # other sources which remain additive across refreshes.
+        old_without_web = old_sources - {"web_person"}
+        new_sources = old_without_web | (evidence.get(pair, set()) - {"web_person"})
+        new_sources = sync_web_person_sources(new_sources, pair, current_web_pairs)
         if new_sources != old_sources:
             evidence_up += 1
         r["evidence_sources"] = format_evidence(new_sources)
-        if r.get("verified") != "yes":
-            r["verified"] = "yes" if is_human_verified(new_sources) else "no"
-            verified_up += r["verified"] == "yes"
-        for col, val in (("description", descs.get(r["original"], "")),
-                         ("wikidata", qids.get(r["original"], ""))):
+        new_verified = "yes" if is_human_verified(new_sources) else "no"
+        if r.get("verified") != new_verified:
+            r["verified"] = new_verified
+            verified_up += new_verified == "yes"
+        for col, val in (
+            ("description", descs.get(r["original"], "")),
+            ("wikidata", qids.get(r["original"], "")),
+        ):
             if is_blank(r.get(col)) and val:
                 r[col] = val
                 filled += 1
-    print(f"既存 {len(old_rows)}行: rank更新 {changed_rank}行 / "
-          f"verified no->yes {verified_up}行 / evidence追加 {evidence_up}行 / "
-          f"空欄補完 {filled}セル", flush=True)
+    print(
+        f"既存 {len(old_rows)}行: rank更新 {changed_rank}行 / "
+        f"verified no->yes {verified_up}行 / evidence追加 {evidence_up}行 / "
+        f"空欄補完 {filled}セル",
+        flush=True,
+    )
 
     next_id = max(int(r["id"]) for r in old_rows) + 1 if old_rows else 1
     new_surfaces = sorted(set(surnames) - set(id_of), key=sort_key(ranks))
@@ -831,14 +1102,68 @@ def merge_rows(old_rows: list, surnames: dict, ranks: dict, qids: dict,
     for surface in sorted(surnames, key=sort_key(ranks)):
         for yomi in yomi_order(surface, surnames[surface], evidence):
             if (surface, yomi) not in seen:
-                added.append(make_row(id_of[surface], surface, yomi, ranks,
-                                      qids, descs, evidence))
-    print(f"新規追記 {len(added)}行(うち新しい表記 {len(new_surfaces)}種)",
-          flush=True)
+                added.append(
+                    make_row(
+                        id_of[surface], surface, yomi, ranks, qids, descs, evidence
+                    )
+                )
+    print(f"新規追記 {len(added)}行(うち新しい表記 {len(new_surfaces)}種)", flush=True)
     return old_rows + added
 
 
-def main() -> int:
+def apply_web_evidence_only(
+    csv_path: Path = CSV_PATH, evidence_path: Path = WEB_EVIDENCE_PATH
+) -> tuple[int, int]:
+    """Apply only reviewed web evidence to an existing CSV.
+
+    This deliberately preserves row order and every field other than
+    ``verified`` and ``evidence_sources``.  It performs no dictionary/network
+    refresh and never adds or removes rows.
+    """
+    if not csv_path.exists():
+        raise RuntimeError(f"CSVがありません: {csv_path}")
+    web_pairs = load_web_evidence(evidence_path)
+    with csv_path.open(encoding="utf-8", newline="") as stream:
+        reader = csv.DictReader(stream)
+        columns = reader.fieldnames or []
+        rows = list(reader)
+    required = {"surface", "pronunciation", "verified", "evidence_sources"}
+    if not required <= set(columns):
+        raise RuntimeError(f"CSV列が不足: {sorted(required - set(columns))}")
+    verified_up = evidence_up = 0
+    for row in rows:
+        pair = (row["surface"], row["pronunciation"].translate(HIRA2KATA))
+        old = parse_evidence(row.get("evidence_sources", ""))
+        if row.get("verified") == "yes" and not old:
+            old.add("person_lists")
+        new = sync_web_person_sources(old, pair, web_pairs)
+        if new != old:
+            row["evidence_sources"] = format_evidence(new)
+            evidence_up += 1
+        new_verified = "yes" if is_human_verified(new) else "no"
+        if row["verified"] != new_verified:
+            row["verified"] = new_verified
+            verified_up += new_verified == "yes"
+    write_csv_no_trailing_newline(csv_path, columns, rows)
+    print(
+        f"evidence-only: verified no->yes {verified_up}行 / "
+        f"evidence追加 {evidence_up}行",
+        flush=True,
+    )
+    return verified_up, evidence_up
+
+
+def main(argv=None) -> int:
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--evidence-only",
+        action="store_true",
+        help="既存CSVにレビュー済みWeb人物台帳だけを適用する",
+    )
+    args = parser.parse_args(argv)
+    if args.evidence_only:
+        apply_web_evidence_only()
+        return 0
     surnames = fetch_surnames()
     print("実在人名リストから読みの裏付けを収集中...", flush=True)
     person_pairs = fetch_verified_pairs()
@@ -848,15 +1173,23 @@ def main() -> int:
     wikidata_person_pairs = fetch_wikidata_person_pairs()
     print("公式人物ページの確認台帳を読込中...", flush=True)
     official_pairs = load_official_evidence()
+    print("一般Web人物ページの確認台帳を読込中...", flush=True)
+    web_pairs = load_web_evidence()
     print("JMnedictから辞書上の裏付けを収集中...", flush=True)
     jmnedict_pairs = fetch_jmnedict_pairs()
     evidence = {}
     for surface, yomis in surnames.items():
         for yomi in yomis:
             pair = (surface, yomi)
-            sources = evidence_for(pair, person_pairs, ndl_pairs,
-                                   wikidata_person_pairs, official_pairs,
-                                   jmnedict_pairs)
+            sources = evidence_for(
+                pair,
+                person_pairs,
+                ndl_pairs,
+                wikidata_person_pairs,
+                official_pairs,
+                web_pairs,
+                jmnedict_pairs,
+            )
             if sources:
                 evidence[pair] = sources
     ranks, qids = fetch_rank()
@@ -882,17 +1215,26 @@ def main() -> int:
     n_wd = sum(1 for r in rows if r["wikidata"])
     n_ver = sum(1 for r in rows if r["verified"] == "yes")
     n = len(rows)
-    print(f"\nmyoji.csv: {n}行 / 表記 {len({r['original'] for r in rows})}種 / "
-          f"複数読みの表記 {sum(1 for v in surnames.values() if len(v) > 1)}種",
-          flush=True)
-    print(f"  verified=yes {n_ver}行 ({n_ver / n:.1%}) / "
-          f"rank付与 {n_rank}行 ({n_rank / n:.1%}) / "
-          f"description付与 {n_desc}行 ({n_desc / n:.1%}) / "
-          f"wikidata付与 {n_wd}行 ({n_wd / n:.1%})", flush=True)
-    print("  注意: rank は著名人ベースの参考順位であって世帯数・人口順位ではない",
-          flush=True)
-    print("  注意: verified=no は誤りとは限らず、実在人名で裏が取れなかっただけ",
-          flush=True)
+    print(
+        f"\nmyoji.csv: {n}行 / 表記 {len({r['original'] for r in rows})}種 / "
+        f"複数読みの表記 {sum(1 for v in surnames.values() if len(v) > 1)}種",
+        flush=True,
+    )
+    print(
+        f"  verified=yes {n_ver}行 ({n_ver / n:.1%}) / "
+        f"rank付与 {n_rank}行 ({n_rank / n:.1%}) / "
+        f"description付与 {n_desc}行 ({n_desc / n:.1%}) / "
+        f"wikidata付与 {n_wd}行 ({n_wd / n:.1%})",
+        flush=True,
+    )
+    print(
+        "  注意: rank は著名人ベースの参考順位であって世帯数・人口順位ではない",
+        flush=True,
+    )
+    print(
+        "  注意: verified=no は誤りとは限らず、実在人名で裏が取れなかっただけ",
+        flush=True,
+    )
     return 0
 
 
