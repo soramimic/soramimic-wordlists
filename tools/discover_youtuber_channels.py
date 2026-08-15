@@ -1,14 +1,16 @@
 #!/usr/bin/env python3
 """channel欠損者の公式YouTube URLを、人物に直結する出典だけから収集する。
 
-自動採用する根拠は次の2種類に限定する。
+自動採用する根拠は次に限定する。
 
 - 本人のWikidata項目の公式サイト(P856)が直接指すYouTubeチャンネルURL
-- 本人のja.wikipedia記事の「外部リンク」節で、公式または本人名が明記された
-  YouTubeチャンネルURL
+- 本人QIDのYouTube handle(P11245)
+- 本人の非リダイレクトja.wikipedia記事の先頭YouTube infobox
+- 同記事の「外部リンク」節で公式または本人名が明記されたチャンネルURL
 
 YouTubeの名前検索は行わない。動画/再生リスト、/c/カスタムURL、明示性のない
-外部リンク、解決不能なhandleは候補レポートへ出すだけでCSVへは反映しない。
+外部リンク、解決不能なhandle、P856公式サイト本文は候補レポートへ出すだけで
+CSVへは反映しない。公式サイト本文は一般Web検索で人手確認して台帳へ追加する。
 採用IDは tools/youtuber_channel_sources.jsonl に根拠付きで保存し、
 update_youtuber_subscribers.py が同じIDから subscribers と snippet.title を取得する。
 """
@@ -36,6 +38,10 @@ URL_RE = re.compile(r"https?://[^\s\]\[|{}<>]+", re.I)
 CHANNEL_ID_IN_TEXT_RE = re.compile(
     r"(?<![0-9A-Za-z_-])UC[0-9A-Za-z_-]{22}(?![0-9A-Za-z_-])")
 OFFICIAL_RE = re.compile(r"公式|official|本人", re.I)
+THIRD_PARTY_OPERATOR_RE = re.compile(
+    r"(?:弟|兄|姉|妹|家族|遺族|スタッフ|事務所).{0,12}(?:運営|管理)")
+CHANNEL_TABS = {"about", "community", "featured", "live", "playlists",
+                "shorts", "streams", "videos"}
 EXTERNAL_SECTION_RE = re.compile(
     r"(?ms)^==\s*外部リンク\s*==\s*(.*?)(?=^==[^=]|\Z)")
 
@@ -72,12 +78,19 @@ def youtube_locator(url: str):
     if not YOUTUBE_HOST_RE.fullmatch((parsed.hostname or "").lower()):
         return None
     parts = [urllib.parse.unquote(part) for part in parsed.path.split("/") if part]
-    if len(parts) == 2 and parts[0] == "channel" \
+    suffix_is_safe = len(parts) <= 2 or all(
+        part.casefold() in CHANNEL_TABS for part in parts[2:])
+    if len(parts) >= 2 and suffix_is_safe and parts[0] == "channel" \
             and updater.CHANNEL_ID_RE.fullmatch(parts[1]):
         return "id", parts[1]
-    if len(parts) == 1 and parts[0].startswith("@") and len(parts[0]) > 1:
+    if len(parts) >= 2 and suffix_is_safe and parts[0] == "channel" \
+            and parts[1].startswith("@") and len(parts[1]) > 1:
+        return "forHandle", parts[1]
+    if parts and (len(parts) == 1 or all(
+            part.casefold() in CHANNEL_TABS for part in parts[1:])) \
+            and parts[0].startswith("@") and len(parts[0]) > 1:
         return "forHandle", parts[0]
-    if len(parts) == 2 and parts[0] == "user" and parts[1]:
+    if len(parts) >= 2 and suffix_is_safe and parts[0] == "user" and parts[1]:
         return "forUsername", parts[1]
     return None
 
@@ -115,6 +128,28 @@ SELECT ?p ?url WHERE {{
     return out
 
 
+def fetch_youtube_handles(qids: list) -> dict:
+    """本人QIDのYouTube handle(P11245)だけを取得する。"""
+    out = {}
+    for start in range(0, len(qids), updater.QID_BATCH):
+        batch = qids[start:start + updater.QID_BATCH]
+        values = " ".join(f"wd:{qid}" for qid in batch)
+        query = f"""
+SELECT ?p ?handle WHERE {{
+  VALUES ?p {{ {values} }}
+  ?p p:P11245 ?statement . ?statement ps:P11245 ?handle .
+  FILTER NOT EXISTS {{ ?statement wikibase:rank wikibase:DeprecatedRank }}
+}}"""
+        for binding in sparql(query)["results"]["bindings"]:
+            qid = binding["p"]["value"].rsplit("/", 1)[1]
+            handle = urllib.parse.unquote(binding["handle"]["value"].strip())
+            if handle:
+                if not handle.startswith("@"):
+                    handle = "@" + handle
+                out.setdefault(qid, []).append(handle)
+    return {qid: sorted(set(handles)) for qid, handles in out.items()}
+
+
 def fetch_jawiki_sitelinks(qids: list) -> dict:
     """QIDに直結するja.wikipedia記事名とURLを取得する。名前検索はしない。"""
     out = {}
@@ -146,10 +181,69 @@ def fetch_wikitext(title: str) -> tuple:
     data = _request_json(WIKI_API + "?" + urllib.parse.urlencode(params))
     page = data.get("query", {}).get("pages", [{}])[0]
     if page.get("missing"):
-        return title, ""
+        return title, "", False
     content = page.get("revisions", [{}])[0].get("slots", {}).get(
         "main", {}).get("content", "")
-    return page.get("title", title), content
+    return (page.get("title", title), content,
+            bool(data.get("query", {}).get("redirects")))
+
+
+def _first_template(text: str, name: str) -> str:
+    """先頭部にある指定infoboxテンプレートを波括弧の対応込みで返す。"""
+    lead = text.split("\n==", 1)[0]
+    match = re.search(r"\{\{\s*" + re.escape(name), lead, re.I)
+    if not match:
+        return ""
+    depth = 0
+    index = match.start()
+    while index < len(lead) - 1:
+        pair = lead[index:index + 2]
+        if pair == "{{":
+            depth += 1
+            index += 2
+            continue
+        if pair == "}}":
+            depth -= 1
+            index += 2
+            if depth == 0:
+                return lead[match.start():index]
+            continue
+        index += 1
+    return ""
+
+
+def infobox_links(text: str) -> list:
+    """本人記事先頭のYouTube infoboxフィールドだけをlocator化する。"""
+    clean = re.sub(r"<!--.*?-->", "", text, flags=re.S)
+    box = (_first_template(clean, "Infobox YouTube personality")
+           or _first_template(clean, "Infobox YouTuber"))
+    if not box:
+        return []
+    locators = []
+    field_re = re.compile(
+        r"(?im)^\|\s*(channel(?:_url|_direct_url|_name)?\d*|channels|website)"
+        r"\s*=\s*(.*?)(?=^\|\s*[\w_]+\s*=|\Z)", re.S)
+    for match in field_re.finditer(box):
+        field = match.group(1).casefold()
+        value = match.group(2)
+        urls = URL_RE.findall(value)
+        for channel_id in CHANNEL_ID_IN_TEXT_RE.findall(value):
+            urls.append(f"https://www.youtube.com/channel/{channel_id}")
+        for url in sorted(set(urls)):
+            locator = youtube_locator(url)
+            if locator:
+                locators.append({"evidence_url": url, "youtube_locator": locator})
+        if field.startswith("channel_name") and not urls:
+            username = re.sub(r"[\s{}\[\]|].*", "", value.strip())
+            if username:
+                locators.append({
+                    "evidence_url": f"https://www.youtube.com/user/{username}",
+                    "youtube_locator": ("forUsername", username),
+                })
+    deduped = {}
+    for item in locators:
+        deduped[item["youtube_locator"]] = item
+    return list(deduped.values())
 
 
 def wikipedia_links(title: str, text: str) -> tuple:
@@ -178,7 +272,10 @@ def wikipedia_links(title: str, text: str) -> tuple:
             explicit = bool(OFFICIAL_RE.search(context)) or \
                 compact_title in compact_context
             item = {"evidence_url": url, "locator": line.strip()[:500]}
-            if explicit and locator:
+            if THIRD_PARTY_OPERATOR_RE.search(line):
+                item["reason"] = "本人以外による運営・管理が明記されている"
+                ambiguous.append(item)
+            elif explicit and locator:
                 item["youtube_locator"] = locator
                 verified.append(item)
             else:
@@ -194,6 +291,21 @@ def _load_jsonl(path: Path) -> list:
         return []
     return [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines()
             if line.strip()]
+
+
+def merge_source_records(old_sources: list, verified: list, target_ids: set,
+                         fetch_failed: set) -> list:
+    """成功した再監査だけを置換し、一時取得失敗時は旧証跡を保持する。"""
+    retained = [record for record in old_sources
+                if record.get("source_type") in {
+                    "wikidata_p2397", "wikidata_official_site_page"}
+                or record.get("person_id") not in target_ids
+                or record.get("person_id") in fetch_failed]
+    source_map = {(record["person_id"], record["channel_id"]): record
+                  for record in retained}
+    for record in verified:
+        source_map[(record["person_id"], record["channel_id"])] = record
+    return list(source_map.values())
 
 
 def main(argv=None) -> int:
@@ -230,6 +342,8 @@ def main(argv=None) -> int:
 
     official_sites = fetch_official_sites(sorted(
         {row["wikidata"] for row in targets.values()}))
+    youtube_handles = fetch_youtube_handles(sorted(
+        {row["wikidata"] for row in targets.values()}))
     jawiki = fetch_jawiki_sitelinks(sorted(
         {row["wikidata"] for row in targets.values()}))
     accepted = []
@@ -239,6 +353,14 @@ def main(argv=None) -> int:
             targets.items(), key=lambda item: item[1]["original"]), 1):
         qid = row["wikidata"]
         candidates = []
+        for handle in youtube_handles.get(qid, []):
+            candidates.append({
+                "evidence_url": f"https://www.youtube.com/{handle}",
+                "identity_basis": "wikidata_person_youtube_handle_statement",
+                "source_type": "wikidata_youtube_handle",
+                "source_url": f"https://www.wikidata.org/wiki/{qid}",
+                "youtube_locator": ("forHandle", handle),
+            })
         for url in official_sites.get(qid, []):
             locator = youtube_locator(url)
             if locator:
@@ -249,7 +371,8 @@ def main(argv=None) -> int:
                     "source_url": f"https://www.wikidata.org/wiki/{qid}",
                     "youtube_locator": locator,
                 })
-            elif "youtube" in url.casefold():
+                continue
+            if "youtube" in url.casefold():
                 deferred.append({
                     "decision": "deferred_unsupported_url",
                     "evidence_url": url, "original": row["original"],
@@ -258,6 +381,14 @@ def main(argv=None) -> int:
                     "source_type": "wikidata_official_site",
                     "source_url": f"https://www.wikidata.org/wiki/{qid}",
                 })
+                continue
+            deferred.append({
+                "decision": "deferred_official_site_manual_review",
+                "original": row["original"], "person_id": pid, "qid": qid,
+                "reason": "P856公式サイト本文はSSRF回避のため自動取得せずWeb検索で人手確認する",
+                "source_type": "wikidata_official_site_page",
+                "source_url": url,
+            })
         sitelink = jawiki.get(qid)
         if not sitelink:
             deferred.append({
@@ -275,10 +406,28 @@ def main(argv=None) -> int:
             article_url = sitelink["url"]
         try:
             if sitelink:
-                article_title, wikitext = fetch_wikitext(article_title)
+                article_title, wikitext, redirected = fetch_wikitext(article_title)
             else:
                 wikitext = ""
-            wiki_ok, wiki_ambiguous = wikipedia_links(article_title, wikitext)
+                redirected = False
+            if redirected:
+                deferred.append({
+                    "decision": "deferred_jawiki_redirect",
+                    "original": row["original"], "person_id": pid, "qid": qid,
+                    "reason": "本人QIDのjawiki sitelinkが別記事へリダイレクトされるため自動採用しない",
+                    "source_type": "jawiki_external_link",
+                    "source_url": article_url,
+                })
+                wiki_ok, wiki_ambiguous = [], []
+            else:
+                wiki_ok, wiki_ambiguous = wikipedia_links(article_title, wikitext)
+                for item in infobox_links(wikitext):
+                    wiki_ok.append({
+                        **item,
+                        "identity_basis": "person_article_youtube_infobox",
+                        "locator": "本人QIDに直結するjawiki記事先頭のYouTube infobox",
+                        "source_type": "jawiki_infobox",
+                    })
         except Exception as ex:
             fetch_failed.add(pid)
             deferred.append({
@@ -295,8 +444,12 @@ def main(argv=None) -> int:
                 article_title.replace(" ", "_"))
         for item in wiki_ok:
             candidates.append({
-                **item, "identity_basis": "person_article_explicit_official_link",
-                "source_type": "jawiki_external_link", "source_url": article_url,
+                **item,
+                "identity_basis": item.get(
+                    "identity_basis", "person_article_explicit_official_link"),
+                "source_type": item.get(
+                    "source_type", "jawiki_external_link"),
+                "source_url": article_url,
             })
         for item in wiki_ambiguous:
             deferred.append({
@@ -343,13 +496,10 @@ def main(argv=None) -> int:
             "subscribers": channel["subscribers"],
         })
 
-    old_sources = _load_jsonl(updater.SOURCE_PATH)
-    source_map = {(record["person_id"], record["channel_id"]): record
-                  for record in old_sources}
-    for record in verified:
-        source_map[(record["person_id"], record["channel_id"])] = record
+    merged_sources = merge_source_records(
+        _load_jsonl(updater.SOURCE_PATH), verified, set(targets), fetch_failed)
     updater.write_jsonl_atomic(updater.SOURCE_PATH, sorted(
-        source_map.values(), key=lambda record:
+        merged_sources, key=lambda record:
         (int(record["person_id"]), record["channel_id"])))
 
     # P2397名称差異はsubscribers updaterが再生成するので、それ以外だけ置換する。

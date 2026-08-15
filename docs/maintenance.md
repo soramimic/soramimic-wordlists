@@ -40,13 +40,17 @@ python3 tools/apply_school_type_images.py  # 実写が無い学校へ校種別�
 python3 tools/audit_taxa.py sekitsui  # 既存行が想定した界・門・綱の配下か検査(読み取り専用)
 ```
 
-YouTuberのチャンネル補完は名前検索を使わない。Wikidataの本人項目にあるP2397、
-P856が直接指すYouTubeチャンネル、または本人のja.wikipedia記事の外部リンク節で
-「公式」か本人名が明記されたURLだけを自動採用する。採用根拠は
+YouTuberのチャンネル補完で一般Web検索は候補発見にだけ使い、検索結果そのものは
+自動採用根拠にしない。Wikidataの本人項目にあるP2397/P11245、P856が直接指す
+YouTubeチャンネル、または本人QIDの
+非リダイレクトja.wikipedia記事にある外部リンク・先頭YouTube infoboxだけを採用する。
+外部リンクは「公式」か本人名が明記されたURLに限る。採用根拠は
 `tools/youtuber_channel_sources.jsonl`、明示性不足・安全にIDへ解決できないURL・
 既存channelとの名称差異は `tools/youtuber_channel_candidates.jsonl` で確認する。
 複数チャンネルはYouTube Data APIの最新登録者数が最大のIDを選び、その同じIDの
 `snippet.title` と `statistics.subscriberCount` を使う。既存channelは自動上書きしない。
+P856公式サイト本文は、公開編集可能URLによるSSRFを避けるため定期処理から取得しない。
+Web検索で見つけたYouTubeリンクは人物との対応を人手確認して由来台帳へ追加する。
 
 名字読みの公式Web確認は、候補を固定してから複数人・複数エージェントで検索する。
 検索結果が見つからなかった候補も `no_support_found` として残すため、同じ組を無駄に
