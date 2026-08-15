@@ -191,11 +191,14 @@ def main() -> int:
     def ext_str(name: str) -> str:
         return "yes" if name_ext.get(name) else "no"
 
-    cols = ["id", "original", "surface", "pronunciation", "class", "extinct"]
     if CSV_PATH.exists():
-        old_rows = list(csv.DictReader(CSV_PATH.open(encoding="utf-8")))
+        with CSV_PATH.open(encoding="utf-8", newline="") as source:
+            reader = csv.DictReader(source)
+            old_rows = list(reader)
+            cols = list(reader.fieldnames or [])
     else:
         old_rows = []
+        cols = ["id", "original", "surface", "pronunciation", "class", "extinct"]
     na = kept = 0
     for r in old_rows:
         # 既存行は「今回実データが取れたときだけ」更新する。取れなかった名前
@@ -238,9 +241,11 @@ def main() -> int:
 
     added = []
     for name in candidates:
-        added.append({"id": str(next_id), "original": name, "surface": name,
-                      "pronunciation": name, "class": name_cat[name],
-                      "extinct": ext_str(name)})
+        row = {column: "" for column in cols}
+        row.update({"id": str(next_id), "original": name, "surface": name,
+                    "pronunciation": name, "class": name_cat[name],
+                    "extinct": ext_str(name)})
+        added.append(row)
         next_id += 1
 
     write_csv_no_trailing_newline(CSV_PATH, cols, old_rows + added)

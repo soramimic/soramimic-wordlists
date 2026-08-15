@@ -240,6 +240,12 @@ def label_of(node: dict) -> str:
 
 def resolve(start: str, nodes: dict, ranks: list[str]) -> list[str]:
     """start から親を幅優先で辿り、ranks それぞれに最も近いノードの表示名を返す。"""
+    return [label_of(nodes[q]) if q else ""
+            for q in resolve_qids(start, nodes, ranks)]
+
+
+def resolve_qids(start: str, nodes: dict, ranks: list[str]) -> list[str]:
+    """startから各rankで最も近い分類群QIDを返す。"""
     seen: set[str] = set()
     queue = deque([start])
     found = {r: "" for r in ranks}
@@ -252,7 +258,7 @@ def resolve(start: str, nodes: dict, ranks: list[str]) -> list[str]:
         if not n:
             continue
         if n["rank"] in found and not found[n["rank"]]:
-            found[n["rank"]] = label_of(n)
+            found[n["rank"]] = q
         if all(found.values()):
             break
         queue.extend(n["parents"])
