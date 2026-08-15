@@ -4,7 +4,7 @@
 - Date: 2026-07-30
 - Supersedes: none
 - Superseded by: none
-- Related: 00014(既存行を劣化させない・空欄補完のみ) / 00023(debut_year をチャンネル開設年で補う) / 00029(channel・description 列。メインチャンネルの定義) / 00055(channel のYouTube API同期)
+- Related: 00014(既存行を劣化させない・空欄補完のみ) / 00023(debut_year をチャンネル開設年で補う) / 00029(channel・description 列。メインチャンネルの定義) / 00055(API title初回同期) / 00056(channel保護・公式URL経路)
 
 ## Context
 
@@ -49,16 +49,18 @@ P3744 を持つのは686人いるが、**2026年の値があるのは31人だけ
    (利用側は列名で読むので位置は問わない)。**`subscribers_as_of` 列には同じ
    スナップショットの取得日を UTC の `YYYY-MM-DD` で記録する**。登録者数が
    取れない行は `subscribers` と `subscribers_as_of` の両方を `NA` にする
-2. **チャンネルIDは Wikidata の P2397 から引く**。取り消し済み(DeprecatedRank)の
+2. **チャンネルIDは Wikidata の P2397、またはADR 00056の検証済み公式URL台帳から引く**。
+   P2397の取り消し済み(DeprecatedRank)の
    文は除く(ADR 00029 の channel 取得と同じ扱い)。書式が `UC` + 22文字に
    合わない値(URL やユーザー名の誤登録)は API に投げる前に弾く
-3. **1人が複数チャンネルを持つ場合は、その人のチャンネル群で最大の登録者数を採る**。
+3. **新規補完または既存channelが選定titleと一致する人は、チャンネル群で最大の登録者数を採る**。
    channel 列の「登録者数が最大の1本をメインチャンネルとみなす」定義(ADR 00029)と
    同じ基準なので、`subscribers` は原則 `channel` の登録者数になる
 4. **登録者数を非公開にしているチャンネル(`hiddenSubscriberCount`)は候補から除く**。
    1本も取れなければ `NA`。QIDが無い行も `NA`
-5. **`subscribers` と `subscribers_as_of` を毎回全行上書きする**。さらに
-   ADR 00055 により `channel` も同じスナップショットとして上書きする。
+5. **`subscribers` と `subscribers_as_of` を毎回更新し、`channel`は空欄/NAだけを補完する**。
+   既存channelが選定titleと異なる、またはAPIで選定IDを取得できない人は、別IDの
+   subscribersを組み合わせず3値の以前のスナップショットを保持して監査へ回す(ADR 00056)。
    **これは「既存値を書き換えない」(ADR 00014)の明示的な
    例外**である。ADR 00014 は表記・読み・分類のような**確定値**が自動更新で劣化する
    のを防ぐためのもので、登録者数は本質的に**時変値**なので、古い値を残すことに
@@ -74,15 +76,14 @@ P3744 を持つのは686人いるが、**2026年の値があるのは31人だけ
    - クォータ超過で落ちたときに youtuber.csv の追記まで巻き戻したくない
 7. **書き込みは全チャンネルの取得が成功してから、同じディレクトリの一時ファイルを
    `os.replace` で最後に1回だけ置換する**。途中で失敗した回は youtuber.csv を一切
-   書き換えず、`channel`、`subscribers`、`subscribers_as_of` は常に同じ
-   チャンネル・スナップショットになる(詳細は ADR 00055)。
+   書き換えず、新規または更新した`channel`、`subscribers`、`subscribers_as_of` は
+   常に同じチャンネル・スナップショットになる(詳細は ADR 00056)。
    さらに、登録者数が取れた人が
    300人を下回った回は「取得が壊れている」とみなして**書かずに非0終了**する
    (毎回上書きする列なので、取得障害で既存値を `NA` に潰す事故を防ぐ)
 8. **月次バッチに組み込む**(`Update youtuber.csv` の直後、`continue-on-error`)。
-   失敗時の巻き戻し(`revert_if_failed`)には**ファイルを指定しない**。7 により
-   書きかけは残らず、逆に youtuber.csv を巻き戻すと同じ回の `update_youtuber` の
-   追記まで消えてしまうため
+   失敗時は先行して更新されうる公式URL根拠・候補台帳を巻き戻す。CSVは監査台帳生成後に
+   原子的に書くため戻さず、同じ回の`update_youtuber`による追記を保つ
 9. **APIキーはログに出さない**。取得は環境変数 `YOUTUBE_API_KEY`、無ければ
    `~/.config/soramimic/youtube_api_key`。例外メッセージやレスポンス本文に
    混ざる可能性があるので、出力は必ず `_redact()` を通す

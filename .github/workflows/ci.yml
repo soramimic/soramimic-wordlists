@@ -40,6 +40,12 @@ jobs:
       - name: Test scientist updater
         run: python tools/test_update_scientist.py
 
+      - name: Test YouTuber channel and subscriber updaters
+        run: >-
+          python -m unittest
+          tools/test_update_youtuber_subscribers.py
+          tools/test_discover_youtuber_channels.py
+
       - name: Test myoji evidence updater
         run: >-
           python -m unittest
