@@ -92,7 +92,9 @@ jobs:
         continue-on-error: true
         env:
           YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
-        run: python tools/update_youtuber_subscribers.py
+        run: |
+          python tools/discover_youtuber_channels.py
+          python tools/update_youtuber_subscribers.py
 
       # 文科省の学校コード一覧(約6万校)から全件再生成する。Wikipediaの冒頭文
       # 取得が支配的で30分前後かかるので、他のupdaterの後に置く
@@ -169,11 +171,12 @@ jobs:
           revert_if_failed municipality "$O_MUNICIPALITY" municipality.csv
           revert_if_failed youtuber "$O_YOUTUBER" youtuber.csv
           revert_if_failed myoji "$O_MYOJI" myoji.csv
-          # update_youtuber_subscribers は全チャンネルの取得が成功してから
-          # youtuber.csv を1回だけ書くので、失敗した回に書きかけは残らない。
-          # ここで youtuber.csv を巻き戻すと同じ回の update_youtuber の追記まで
-          # 消えてしまうため、巻き戻すファイルは指定しない(失敗の記録だけ残す)
-          revert_if_failed youtuber_subscribers "$O_YTSUBS"
+          # CSVは全API取得と監査台帳生成の成功後に原子的に書く。失敗時は同じ回の
+          # update_youtuberによる追記を守るためCSVを戻さず、先行して更新されうる
+          # チャンネル根拠/候補台帳だけを巻き戻す。
+          revert_if_failed youtuber_subscribers "$O_YTSUBS" \
+            tools/youtuber_channel_sources.jsonl \
+            tools/youtuber_channel_candidates.jsonl
           revert_if_failed school "$O_SCHOOL" school.csv
           # enrich_imagesは複数ファイルを触るため巻き戻さない(他updaterの
           # 成果を消すおそれ)。破壊は次の行数チェックとvalidateで検出する

@@ -1,7 +1,8 @@
 # ADR 00055: YouTuberのチャンネル名をYouTube APIの公式タイトルに同期する
 
-- Status: accepted
+- Status: superseded
 - Date: 2026-08-15
+- Superseded by: 00056 の既存channel保護規則
 - Supersedes: 00029 の channel 取得・更新規則
 - Related: 00014(既存値の保護) / 00029(channel列) / 00030(登録者数スナップショット)
 

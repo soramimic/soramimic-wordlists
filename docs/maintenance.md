@@ -28,6 +28,7 @@ python3 tools/update_insect.py    # Wikidataの昆虫(rank=種・カタカナ和
 python3 tools/update_marine_life.py --check  # 海の生き物の台帳と配布CSVの同期を検査
 python3 tools/update_municipality.py  # 総務省コード表+Wikidataで市区町村を再生成
 python3 tools/update_youtuber.py   # WikidataのYouTuber/VTuber(ja記事あり)を追記
+python3 tools/discover_youtuber_channels.py  # 本人記事/P856の公式YouTube URLを監査
 python3 tools/update_school.py     # 文科省の学校コード一覧+Wikidata/Wikipediaで全件再生成
 python3 tools/update_myoji.py      # SudachiDict+人物裏付け+JMnedict+Wikidata/Wikipediaで生成
 python3 tools/audit_myoji_official_web.py validate --all  # 公式Web人物確認バッチを検査
@@ -38,6 +39,14 @@ python3 tools/enrich_school_municipality_images.py  # 学校・市町村のCommo
 python3 tools/apply_school_type_images.py  # 実写が無い学校へ校種別イメージを付与
 python3 tools/audit_taxa.py sekitsui  # 既存行が想定した界・門・綱の配下か検査(読み取り専用)
 ```
+
+YouTuberのチャンネル補完は名前検索を使わない。Wikidataの本人項目にあるP2397、
+P856が直接指すYouTubeチャンネル、または本人のja.wikipedia記事の外部リンク節で
+「公式」か本人名が明記されたURLだけを自動採用する。採用根拠は
+`tools/youtuber_channel_sources.jsonl`、明示性不足・安全にIDへ解決できないURL・
+既存channelとの名称差異は `tools/youtuber_channel_candidates.jsonl` で確認する。
+複数チャンネルはYouTube Data APIの最新登録者数が最大のIDを選び、その同じIDの
+`snippet.title` と `statistics.subscriberCount` を使う。既存channelは自動上書きしない。
 
 名字読みの公式Web確認は、候補を固定してから複数人・複数エージェントで検索する。
 検索結果が見つからなかった候補も `no_support_found` として残すため、同じ組を無駄に

@@ -181,7 +181,7 @@ Wikipedia由来の加工文はCC BY-SA 4.0で、同台帳から原記事への�
 | org | 所属。複数は `/` 区切り |
 | debut_year | 活動開始年。情報がない場合は `NA` |
 | status | `current`(活動中)/`former`(活動終了) |
-| channel | 登録者数が最大のYouTube公式チャンネル名 |
+| channel | 検証済みYouTube公式チャンネル名。空欄補完後の既存値は自動上書きしない |
 | subscribers | YouTubeが公開する有効数字3桁の概数 |
 | subscribers_as_of | `subscribers` の取得日(UTC、`YYYY-MM-DD`)。取得できない場合は `NA` |
 | description | 活動内容の短い説明 |

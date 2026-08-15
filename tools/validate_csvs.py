@@ -153,11 +153,13 @@ def validate(path: Path):
                 err(f"{path.name}: 必須列 {missing[0]} がない")
                 return
             snapshot = tuple(f[idx[col]] for col in snapshot_cols)
+            channel_present = snapshot[0] not in ("", "NA")
+            subscriber_snapshot = (
+                snapshot[1].isdigit() and ISO_DATE_RE.fullmatch(snapshot[2]))
+            subscriber_unavailable = snapshot[1:] == ("NA", "NA")
             if snapshot != ("NA", "NA", "NA") and not (
-                snapshot[0] not in ("", "NA")
-                and snapshot[1].isdigit()
-                and ISO_DATE_RE.fullmatch(snapshot[2])
-            ):
+                    channel_present
+                    and (subscriber_snapshot or subscriber_unavailable)):
                 err(
                     f"{path.name}:{lineno}: channel/subscribers/取得日が不整合: "
                     f"{' / '.join(snapshot)}"

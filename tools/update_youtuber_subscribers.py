@@ -6,17 +6,16 @@ channels.list(part=snippet,statistics)。Wikidataの登録者数(P3744)は記録
 バラバラ(2019〜2026年が混在)で横比較できないため使わない(詳細は ADR 00030)。
 
 - 対象は wikidata 列にQIDが入っている人。QIDが無い行は NA
-- 1人が複数チャンネルを持つ場合は**その人のチャンネル群で最大の登録者数**を採る
-  (channel 列の「登録者数が最大の1本をメインとみなす」定義と揃える)
+- 1人が複数チャンネルを持つ場合は**その人のチャンネル群で最大の登録者数**を採り、
+  subscribers と channel(snippet.title)を必ず同じチャンネルIDから取る
 - 登録者数を非公開にしているチャンネル(hiddenSubscriberCount)は候補から除く。
   1本も取れなければ NA
-- **channel、subscribers、subscribers_as_of は毎回全行を上書きする**。時変値なので
-  「既存値は書き換えない」(ADR 00014)の明示的な例外(ADR 00030)。この3列以外の
-  列・行順・id は一切変更しない。登録者数またはチャンネル名が
-  取れない行は3列とも NA
+- **subscribers と subscribers_as_of は毎回全行を上書きする**。channel は空欄/NAの
+  人だけ補完し、既存値は上書きしない。既存値と現在のsnippet.titleが異なる場合は
+  監査レポートへ出す。この3列以外の列・行順・idは一切変更しない
 - 書き込みは全チャンネルの取得が成功してから最後に一時ファイルを置換して行う
-  (途中で失敗した回は youtuber.csv を書きかけのまま残さず、チャンネル名・
-  登録者数・取得日が別々のスナップショットになることもない)
+  (途中で失敗した回は youtuber.csv を書きかけのまま残さず、登録者数と取得日が
+  別々のスナップショットになることもない)
 - APIキーは環境変数 YOUTUBE_API_KEY、無ければ ~/.config/soramimic/youtube_api_key。
   どちらも無ければ「スキップ」を出して正常終了する(fork や鍵未設定のCIで
   ワークフローを壊さないため)
@@ -50,6 +49,8 @@ ROOT = Path(__file__).resolve().parent.parent
 CSV_PATH = ROOT / "youtuber.csv"
 KEY_FILE = Path.home() / ".config" / "soramimic" / "youtube_api_key"
 API = "https://www.googleapis.com/youtube/v3/channels"
+SOURCE_PATH = ROOT / "tools" / "youtuber_channel_sources.jsonl"
+REPORT_PATH = ROOT / "tools" / "youtuber_channel_candidates.jsonl"
 COL = "subscribers"
 AS_OF_COL = "subscribers_as_of"
 CHANNEL_COL = "channel"
@@ -69,21 +70,24 @@ def _utc_date() -> str:
     return datetime.now(timezone.utc).date().isoformat()
 
 
-def apply_snapshot(rows: list, cols: list, best: dict, as_of: str) -> tuple:
-    """同一スナップショットのチャンネル名・登録者数・取得日を全行へ反映する。
+def apply_snapshot(rows: list, cols: list, best: dict, as_of: str,
+                   preserve: set = None) -> tuple:
+    """同一スナップショットの登録者数・取得日を全行へ反映する。
 
     返り値は (新たに値が入った人, 値が変わった人, 取れなくなった人)。
-    採用チャンネルが無い行では3列とも必ず NA にして、古い値を残さない。
+    subscribersがNAの行では取得日も必ずNAにする。channelには触れない。
     """
-    for col in (CHANNEL_COL, COL, AS_OF_COL):
+    for col in (COL, AS_OF_COL):
         if col not in cols:
             cols.append(col)
 
+    preserve = preserve or set()
     filled, updated, lost = set(), set(), set()
     for row in rows:
+        if row["id"] in preserve:
+            continue
         old = row.get(COL) or ""
-        winner = best.get(row["id"])
-        new = str(winner[0]) if winner else "NA"
+        new = str(best[row["id"]]) if row["id"] in best else "NA"
         if old != new:
             if new == "NA":
                 # 前回は値があったのに今回取れなかった(空 -> NA は列の新設なので
@@ -94,7 +98,6 @@ def apply_snapshot(rows: list, cols: list, best: dict, as_of: str) -> tuple:
                 filled.add(row["id"])
             else:
                 updated.add(row["id"])
-        row[CHANNEL_COL] = winner[1] if winner else "NA"
         row[COL] = new
         row[AS_OF_COL] = as_of if new != "NA" else "NA"
         for col in cols:
@@ -106,6 +109,31 @@ def _clean_channel_title(title: str) -> str:
     """CSVの素朴なsplit利用者を壊さない形に公式タイトルを整える。"""
     return re.sub(r"[\s　]+", " ",
                   (title or "").replace(",", " ").replace('"', "")).strip()
+
+
+def apply_channel_backfill(rows: list, selected: dict) -> set:
+    """channel が空/NAの人物だけ、選定IDの snippet.title で補完する。"""
+    filled = set()
+    for row in rows:
+        pid = row["id"]
+        choice = selected.get(pid)
+        if choice and row.get("channel") in (None, "", "NA"):
+            row["channel"] = choice["title"]
+            filled.add(pid)
+    return filled
+
+
+def validate_snapshot_alignment(rows: list, selected: dict, preserve: set) -> None:
+    """今回書き換えるchannel/subscribersが同じ選定IDの値か検証する。"""
+    for row in rows:
+        pid = row["id"]
+        if pid in preserve or not row.get(COL, "").isdigit():
+            continue
+        choice = selected.get(pid)
+        if not choice or row.get(CHANNEL_COL) != choice["title"] or \
+                int(row[COL]) != choice["subscribers"]:
+            raise SystemExit(
+                f"error: person id {pid}: channel/subscribersが選定IDと不一致")
 
 
 def write_snapshot_atomic(path: Path, cols: list, rows: list) -> None:
@@ -120,6 +148,141 @@ def write_snapshot_atomic(path: Path, cols: list, rows: list) -> None:
         os.replace(tmp_path, path)
     finally:
         tmp_path.unlink(missing_ok=True)
+
+
+def write_jsonl_atomic(path: Path, records: list) -> None:
+    """監査用JSONLをキー順固定・原子的に書く。"""
+    fd, tmp_name = tempfile.mkstemp(prefix=f".{path.name}.", suffix=".tmp",
+                                    dir=path.parent)
+    os.close(fd)
+    tmp_path = Path(tmp_name)
+    try:
+        with tmp_path.open("w", encoding="utf-8") as handle:
+            for record in records:
+                handle.write(json.dumps(record, ensure_ascii=False,
+                                        sort_keys=True) + "\n")
+        os.replace(tmp_path, path)
+    finally:
+        tmp_path.unlink(missing_ok=True)
+
+
+def update_audit_files(rows: list, qid_of: dict, p2397: dict, selected: dict,
+                       as_of: str) -> tuple:
+    """採用根拠を台帳へ追記し、既存channelとの差異を候補レポートへ出す。"""
+    person = {}
+    for row in rows:
+        person.setdefault(row["id"], row)
+
+    existing = {}
+    if SOURCE_PATH.exists():
+        for line in SOURCE_PATH.read_text(encoding="utf-8").splitlines():
+            if line.strip():
+                record = json.loads(line)
+                existing[(record["person_id"], record["channel_id"])] = record
+    matched = {pid for pid, choice in selected.items()
+               if person[pid].get("channel") == choice["title"]
+               and choice["channel_id"] in p2397.get(qid_of[pid], [])}
+    for pid in matched:
+        choice = selected[pid]
+        key = (pid, choice["channel_id"])
+        if key in existing:
+            continue
+        record = {
+            "channel_id": choice["channel_id"],
+            "channel_title": choice["title"],
+            "decision": "verified",
+            "identity_basis": "wikidata_person_statement",
+            "observed_on": as_of,
+            "original": person[pid]["original"],
+            "person_id": pid,
+            "qid": qid_of[pid],
+            "source_type": "wikidata_p2397",
+            "source_url": f"https://www.wikidata.org/wiki/{qid_of[pid]}",
+            "subscribers": choice["subscribers"],
+        }
+        existing[key] = record
+    write_jsonl_atomic(SOURCE_PATH, sorted(
+        existing.values(), key=lambda r: (int(r["person_id"]), r["channel_id"])))
+
+    report = []
+    if REPORT_PATH.exists():
+        for line in REPORT_PATH.read_text(encoding="utf-8").splitlines():
+            if line.strip():
+                record = json.loads(line)
+                if record.get("source_type") != "wikidata_p2397":
+                    report.append(record)
+    for pid, choice in selected.items():
+        current = person[pid].get("channel")
+        if current not in (None, "", "NA") \
+                and current != choice["title"]:
+            report.append({
+                "candidate_channel_id": choice["channel_id"],
+                "candidate_title": choice["title"],
+                "decision": "deferred_existing_channel_preserved",
+                "existing_channel": current,
+                "original": person[pid]["original"],
+                "person_id": pid,
+                "qid": qid_of[pid],
+                "reason": "既存channelは自動上書きせず、名称差異を人手確認へ回す",
+                "source_type": "wikidata_p2397",
+                "source_url": f"https://www.wikidata.org/wiki/{qid_of[pid]}",
+            })
+    for pid, current in ((pid, row.get("channel"))
+                         for pid, row in person.items()):
+        if current not in (None, "", "NA") and pid not in selected:
+            report.append({
+                "decision": "deferred_channel_unavailable",
+                "existing_channel": current,
+                "original": person[pid]["original"],
+                "person_id": pid,
+                "qid": qid_of.get(pid, "NA"),
+                "reason": "YouTube Data APIで同じチャンネルのtitle/登録者数を確認できないため既存値を保持",
+                "source_type": "youtube_data_api",
+                "source_url": f"https://www.wikidata.org/wiki/{qid_of.get(pid, 'NA')}",
+            })
+    deduped = {}
+    for record in report:
+        key = (record["person_id"], record["decision"],
+               record.get("candidate_channel_id", ""),
+               record.get("evidence_url", ""))
+        deduped[key] = record
+    report = list(deduped.values())
+    write_jsonl_atomic(REPORT_PATH, sorted(
+        report, key=lambda r: (int(r["person_id"]),
+                               r.get("candidate_channel_id",
+                                     r.get("evidence_url", "")))))
+    return len(existing), len({record["person_id"] for record in report})
+
+
+def load_verified_channel_sources(qid_of: dict, name_of: dict) -> dict:
+    """Wikipedia/P856調査でverifiedになった追加IDを QID ごとに読む。"""
+    out = {}
+    if not SOURCE_PATH.exists():
+        return out
+    for lineno, line in enumerate(
+            SOURCE_PATH.read_text(encoding="utf-8").splitlines(), 1):
+        if not line.strip():
+            continue
+        record = json.loads(line)
+        if record.get("decision") != "verified":
+            continue
+        if record.get("source_type") == "wikidata_p2397":
+            continue
+        if record.get("source_type") not in {
+                "jawiki_external_link", "wikidata_official_site"}:
+            raise SystemExit(f"error: {SOURCE_PATH}:{lineno}: 不正なsource_type")
+        channel_id = record.get("channel_id", "")
+        qid = record.get("qid", "")
+        if not CHANNEL_ID_RE.fullmatch(channel_id) or not re.fullmatch(r"Q\d+", qid):
+            raise SystemExit(f"error: {SOURCE_PATH}:{lineno}: 不正なQID/channel_id")
+        person_id = record.get("person_id", "")
+        if qid_of.get(person_id) != qid or name_of.get(person_id) != record.get(
+                "original"):
+            raise SystemExit(f"error: {SOURCE_PATH}:{lineno}: 人物/QID対応がCSVと不一致")
+        if not record.get("source_url") or not record.get("evidence_url"):
+            raise SystemExit(f"error: {SOURCE_PATH}:{lineno}: 出典URLが不足")
+        out.setdefault(qid, []).append(channel_id)
+    return {qid: sorted(set(ids)) for qid, ids in out.items()}
 
 
 def _load_key() -> str:
@@ -195,12 +358,11 @@ def _get(url: str, key: str) -> dict:
     raise SystemExit("error: YouTube Data API への問い合わせが3回失敗しました")
 
 
-def fetch_channel_records(channel_ids: list, key: str) -> tuple:
-    """チャンネルID -> (登録者数, 公式タイトル)を取得する。
+def fetch_channels(channel_ids: list, key: str) -> tuple:
+    """チャンネルID -> {subscribers, title}。非公開・削除済みは含まない。
 
-    タイトル欠損、登録者数非公開、削除済みのチャンネルは含まない。
-    返り値は (レコードの辞書, 非公開だったチャンネル数)。"""
-    records, hidden = {}, 0
+    返り値は (登録者数の辞書, 非公開だったチャンネル数)。"""
+    channels, hidden = {}, 0
     for i in range(0, len(channel_ids), YT_BATCH):
         batch = channel_ids[i:i + YT_BATCH]
         url = API + "?" + urllib.parse.urlencode(
@@ -212,31 +374,33 @@ def fetch_channel_records(channel_ids: list, key: str) -> tuple:
                 hidden += 1
                 continue
             try:
-                channel_id = item["id"]
-                count = int(st["subscriberCount"])
                 title = _clean_channel_title(item["snippet"]["title"])
+                if not title:
+                    continue
+                channels[item["id"]] = {
+                    "channel_id": item["id"],
+                    "subscribers": int(st["subscriberCount"]),
+                    "title": title,
+                }
             except (KeyError, TypeError, ValueError):
                 continue
-            if title:
-                records[channel_id] = (count, title)
         # itemsに返らないID(削除・BANされたチャンネル)は静かにスキップする
         print(f"  登録者数取得 {min(i + YT_BATCH, len(channel_ids))}/"
               f"{len(channel_ids)}", flush=True)
-    return records, hidden
+    return channels, hidden
 
 
-def select_main_channels(qid_of: dict, channels: dict, records: dict) -> dict:
-    """人物ごとに最大登録者数のチャンネルを決定的に1本選ぶ。"""
-    best = {}
-    for person_id, qid in qid_of.items():
-        candidates = [(records[channel_id][0], channel_id,
-                       records[channel_id][1])
-                      for channel_id in channels.get(qid, [])
-                      if channel_id in records]
-        if candidates:
-            count, _, title = sorted(candidates, key=lambda v: (-v[0], v[1]))[0]
-            best[person_id] = (count, title)
-    return best
+def select_channels(channel_ids_by_person: dict, channels: dict) -> dict:
+    """人物ごとに最大登録者数の1本を、ID・人数・titleの組のまま選ぶ。"""
+    selected = {}
+    for pid, ids in channel_ids_by_person.items():
+        choices = [channels[channel_id] for channel_id in ids
+                   if channel_id in channels]
+        if choices:
+            # 同数ならID昇順。API応答順やWikidata順で結果を揺らさない。
+            selected[pid] = sorted(
+                choices, key=lambda c: (-c["subscribers"], c["channel_id"]))[0]
+    return selected
 
 
 def main() -> int:
@@ -253,26 +417,40 @@ def main() -> int:
 
     # id が1人の単位(family/given/full で複数行)。QIDは本人のもの
     qid_of = {}
+    name_of = {}
     for r in rows:
         qid = (r.get("wikidata") or "").strip()
         if qid and qid not in ("NA",):
             qid_of[r["id"]] = qid
+            name_of[r["id"]] = r["original"]
     people = len({r["id"] for r in rows})
     print(f"youtuber.csv: {len(rows)}行 / {people}人 "
           f"(QIDあり {len(qid_of)}人)", flush=True)
 
     qids = sorted(set(qid_of.values()))
-    chans = fetch_channel_ids(qids)
+    p2397 = fetch_channel_ids(qids)
+    chans = {qid: list(channel_ids) for qid, channel_ids in p2397.items()}
+    extra_chans = load_verified_channel_sources(qid_of, name_of)
+    extra_id_pairs = {(qid, channel_id) for qid, channel_ids in extra_chans.items()
+                      for channel_id in channel_ids}
+    for qid, channel_ids in extra_chans.items():
+        if qid in qids:
+            chans[qid] = sorted(set(chans.get(qid, []) + channel_ids))
     all_ids = sorted({c for v in chans.values() for c in v})
-    print(f"P2397のチャンネルID: {len(all_ids)}本 / {len(chans)}人", flush=True)
+    extra_people = len({qid for qid in extra_chans if qid in qids})
+    print(f"採用済みチャンネルID: {len(all_ids)}本 / {len(chans)}人 "
+          f"(外部リンク/P856台帳 {extra_people}人)", flush=True)
 
-    records, hidden = fetch_channel_records(all_ids, key)
-    print(f"名前と登録者数が取れたチャンネル: {len(records)}/{len(all_ids)}本"
+    channels, hidden = fetch_channels(all_ids, key)
+    print(f"登録者数と正式名が取れたチャンネル: {len(channels)}/{len(all_ids)}本"
           f"(非公開 {hidden}本、取得不能 "
-          f"{len(all_ids) - len(records) - hidden}本)", flush=True)
+          f"{len(all_ids) - len(channels) - hidden}本)", flush=True)
 
-    # 人ごとに、その人のチャンネル群の最大値を採る
-    best = select_main_channels(qid_of, chans, records)
+    ids_by_person = {}
+    for pid, qid in qid_of.items():
+        ids_by_person[pid] = chans.get(qid, [])
+    selected = select_channels(ids_by_person, channels)
+    best = {pid: choice["subscribers"] for pid, choice in selected.items()}
     if len(best) < MIN_PEOPLE:
         print(f"error: implausible subscribers count: {len(best)}人"
               f"(下限 {MIN_PEOPLE}人)。取得が壊れている可能性があるため"
@@ -281,33 +459,44 @@ def main() -> int:
 
     # ここから書き込み(全取得が成功した後に、3列を1回の置換で反映)
     as_of = _utc_date()
-    old_channels = {row["id"]: row.get(CHANNEL_COL, "NA") for row in rows}
-    filled, updated, lost = apply_snapshot(rows, cols, best, as_of)
+    current_channel = {}
+    for row in rows:
+        current_channel.setdefault(row["id"], row.get(CHANNEL_COL, "NA"))
+    deferred_existing = {
+        pid for pid, title in current_channel.items()
+        if title not in ("", "NA")
+        and (pid not in selected or title != selected[pid]["title"])
+    }
+    filled, updated, lost = apply_snapshot(
+        rows, cols, best, as_of, preserve=deferred_existing)
+    channel_filled = apply_channel_backfill(rows, selected)
+    validate_snapshot_alignment(rows, selected, deferred_existing)
+    evidence_count, deferred_count = update_audit_files(
+        rows, qid_of, p2397, selected, as_of)
+    # 監査台帳の生成・検証まで成功してからCSVを原子的に置換する。
     write_snapshot_atomic(CSV_PATH, cols, rows)
 
-    new_channels = {pid: data[1] for pid, data in best.items()}
-    channel_filled = {pid for pid, title in new_channels.items()
-                      if old_channels.get(pid, "NA") in ("", "NA") and title}
-    channel_updated = {pid for pid, title in new_channels.items()
-                       if old_channels.get(pid, "NA") not in ("", "NA")
-                       and old_channels[pid] != title}
-    channel_lost = {pid for pid, title in old_channels.items()
-                    if title not in ("", "NA") and pid not in new_channels}
-
     have = [r for r in rows if r[COL] != "NA"]
+    name = {r["id"]: r["original"] for r in rows}
     print(f"\nyoutuber.csv: {COL} 充足 {len(best)}/{people}人 "
           f"({len(have)}/{len(rows)}行)", flush=True)
     print(f"{COL} の上書き結果: 値が変わった {len(updated)}人 / "
           f"新たに入った {len(filled)}人 / 取れなくなった {len(lost)}人",
           flush=True)
     print(f"{AS_OF_COL}: {as_of} (UTC、登録者数ありの行)", flush=True)
-    print(f"{CHANNEL_COL} の同期結果: 名前が変わった {len(channel_updated)}人 / "
-          f"新たに入った {len(channel_filled)}人 / 取れなくなった "
-          f"{len(channel_lost)}人", flush=True)
-    top = sorted(best.items(), key=lambda kv: -kv[1][0])[:10]
-    name = {r["id"]: r["original"] for r in rows}
+    print(f"channel の安全な空欄補完: {len(channel_filled)}人", flush=True)
+    for pid in sorted(channel_filled, key=lambda value: name[value]):
+        choice = selected[pid]
+        source = ("公式外部リンク台帳"
+                  if (qid_of[pid], choice["channel_id"]) in extra_id_pairs
+                  else "Wikidata P2397")
+        print(f"  {name[pid]}: {choice['title']} "
+              f"({source} {choice['channel_id']})", flush=True)
+    print(f"採用根拠台帳: {evidence_count}件 / "
+          f"監査レポートで保留: {deferred_count}人", flush=True)
+    top = sorted(best.items(), key=lambda kv: -kv[1])[:10]
     print("登録者数 上位10人:", flush=True)
-    for pid, (n, _) in top:
+    for pid, n in top:
         print(f"  {n:>12,}  {name[pid]}", flush=True)
     return 0
 
