@@ -27,6 +27,10 @@ jobs:
       - name: Validate sekitsui family generated images
         run: python tools/validate_sekitsui_generated_images.py
 
+      - name: Test sekitsui manual overrides
+        working-directory: tools
+        run: python -m unittest test_sekitsui_overrides.py
+
       - name: Test sekitsui family generated image tooling
         run: >-
           python -m unittest
