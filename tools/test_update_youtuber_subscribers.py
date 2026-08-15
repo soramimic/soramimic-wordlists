@@ -108,6 +108,42 @@ class ApplySnapshotTest(unittest.TestCase):
         with self.assertRaises(SystemExit):
             subscribers.validate_snapshot_alignment(bad, selected, set())
 
+    def test_audit_report_drops_resolved_candidate_but_keeps_unresolved(self):
+        channel_id = "UC" + "a" * 22
+        rows = [
+            {"id": "1", "original": "解決済み", "channel": "正式名"},
+            {"id": "2", "original": "未解決", "channel": "NA"},
+        ]
+        old_report = [
+            {"person_id": "1", "decision": "deferred_ambiguous",
+             "source_type": "web_search_candidate",
+             "evidence_url": "https://example.com/resolved"},
+            {"person_id": "2", "decision": "deferred_ambiguous",
+             "source_type": "web_search_candidate",
+             "evidence_url": "https://example.com/unresolved"},
+        ]
+        selected = {
+            "1": {"channel_id": channel_id, "subscribers": 100,
+                  "title": "正式名"},
+        }
+
+        with tempfile.TemporaryDirectory() as tmp:
+            source_path = Path(tmp) / "sources.jsonl"
+            report_path = Path(tmp) / "report.jsonl"
+            report_path.write_text(
+                "".join(json.dumps(record, ensure_ascii=False) + "\n"
+                        for record in old_report), encoding="utf-8")
+            with mock.patch.object(subscribers, "SOURCE_PATH", source_path), \
+                    mock.patch.object(subscribers, "REPORT_PATH", report_path):
+                _evidence_count, deferred_count = \
+                    subscribers.update_audit_files(
+                        rows, {}, {}, selected, "2026-08-15")
+            rendered = [json.loads(line) for line in
+                        report_path.read_text(encoding="utf-8").splitlines()]
+
+        self.assertEqual(deferred_count, 1)
+        self.assertEqual([record["person_id"] for record in rendered], ["2"])
+
     def test_max_subscribers_keeps_id_title_and_count_from_same_channel(self):
         smaller = {"channel_id": "UC" + "a" * 22,
                    "subscribers": 100, "title": "small"}
@@ -170,7 +206,65 @@ class ApplySnapshotTest(unittest.TestCase):
                 result = subscribers.load_verified_channel_sources(
                     {"1": "Q1"}, {"1": "本人"})
 
-        self.assertEqual(result, {"Q1": [channel_id]})
+        self.assertEqual(result, {"1": [channel_id]})
+
+    def test_web_search_source_requires_primary_link_evidence(self):
+        channel_id = "UC" + "a" * 22
+        record = {
+            "channel_id": channel_id, "decision": "verified",
+            "discovery_method": "gemini_chrome_google_search",
+            "evidence_quote": "本人公式YouTubeです。",
+            "evidence_url": "https://youtube.com/@person",
+            "identity_basis": "youtube_about_self_identification",
+            "original": "本人", "person_id": "1", "qid": "Q1",
+            "source_type": "web_search_primary_link",
+            "source_url": "https://youtube.com/@person",
+        }
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "sources.jsonl"
+            path.write_text(json.dumps(record) + "\n", encoding="utf-8")
+            with mock.patch.object(subscribers, "SOURCE_PATH", path):
+                result = subscribers.load_verified_channel_sources(
+                    {"1": "Q1"}, {"1": "本人"})
+        self.assertEqual(result, {"1": [channel_id]})
+
+        record["identity_basis"] = "wikipedia_person_article_explicit_link"
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "sources.jsonl"
+            path.write_text(json.dumps(record) + "\n", encoding="utf-8")
+            with mock.patch.object(subscribers, "SOURCE_PATH", path):
+                result = subscribers.load_verified_channel_sources(
+                    {"1": "Q1"}, {"1": "本人"})
+        self.assertEqual(result, {"1": [channel_id]})
+
+        del record["evidence_quote"]
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "sources.jsonl"
+            path.write_text(json.dumps(record) + "\n", encoding="utf-8")
+            with mock.patch.object(subscribers, "SOURCE_PATH", path):
+                with self.assertRaises(SystemExit):
+                    subscribers.load_verified_channel_sources(
+                        {"1": "Q1"}, {"1": "本人"})
+
+    def test_web_search_primary_link_supports_person_without_qid(self):
+        channel_id = "UC" + "a" * 22
+        record = {
+            "channel_id": channel_id, "decision": "verified",
+            "discovery_method": "gemini_chrome_google_search",
+            "evidence_quote": "所属先が本人のチャンネルとして明示した。",
+            "evidence_url": "https://youtube.com/channel/" + channel_id,
+            "identity_basis": "official_page_explicit_channel_link",
+            "original": "本人", "person_id": "1", "qid": "NA",
+            "source_type": "web_search_primary_link",
+            "source_url": "https://example.com/person",
+        }
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "sources.jsonl"
+            path.write_text(json.dumps(record) + "\n", encoding="utf-8")
+            with mock.patch.object(subscribers, "SOURCE_PATH", path):
+                result = subscribers.load_verified_channel_sources(
+                    {}, {"1": "本人"})
+        self.assertEqual(result, {"1": [channel_id]})
 
 
 if __name__ == "__main__":
