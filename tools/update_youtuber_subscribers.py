@@ -269,7 +269,9 @@ def load_verified_channel_sources(qid_of: dict, name_of: dict) -> dict:
         if record.get("source_type") == "wikidata_p2397":
             continue
         if record.get("source_type") not in {
-                "jawiki_external_link", "wikidata_official_site"}:
+                "jawiki_external_link", "wikidata_official_site",
+                "wikidata_official_site_page", "wikidata_youtube_handle",
+                "jawiki_infobox"}:
             raise SystemExit(f"error: {SOURCE_PATH}:{lineno}: 不正なsource_type")
         channel_id = record.get("channel_id", "")
         qid = record.get("qid", "")

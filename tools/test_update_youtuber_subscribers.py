@@ -154,6 +154,24 @@ class ApplySnapshotTest(unittest.TestCase):
                     subscribers.load_verified_channel_sources(
                         {"1": "Q1"}, {"1": "本人"})
 
+    def test_wikidata_handle_source_is_allowed_with_matching_identity(self):
+        channel_id = "UC" + "a" * 22
+        record = {
+            "channel_id": channel_id, "decision": "verified",
+            "evidence_url": "https://youtube.com/@person",
+            "original": "本人", "person_id": "1", "qid": "Q1",
+            "source_type": "wikidata_youtube_handle",
+            "source_url": "https://www.wikidata.org/wiki/Q1",
+        }
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "sources.jsonl"
+            path.write_text(json.dumps(record) + "\n", encoding="utf-8")
+            with mock.patch.object(subscribers, "SOURCE_PATH", path):
+                result = subscribers.load_verified_channel_sources(
+                    {"1": "Q1"}, {"1": "本人"})
+
+        self.assertEqual(result, {"Q1": [channel_id]})
+
 
 if __name__ == "__main__":
     unittest.main()
