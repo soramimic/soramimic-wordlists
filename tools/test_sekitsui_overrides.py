@@ -31,6 +31,17 @@ class SekitsuiOverridesTest(unittest.TestCase):
         self.assertEqual(row["wikidata"], "Q46076")
         self.assertNotIn("class_unknown.svg", row["image"])
 
+    def test_monkey_row_has_taxonomy(self):
+        path = Path(__file__).resolve().parents[1] / "sekitsui.csv"
+        with path.open(encoding="utf-8", newline="") as stream:
+            row = next(
+                row for row in csv.DictReader(stream)
+                if row["original"] == "サル"
+            )
+        self.assertEqual(row["class"], "哺乳類")
+        self.assertEqual(row["order"], "サル目")
+        self.assertEqual(row["family"], "")
+
     def test_common_names_have_specific_images(self):
         self.assertTrue(
             {"モモンガ", "ヒト", "クマ", "ネコ", "イエイヌ", "ウシ", "ウマ",
@@ -133,11 +144,17 @@ class SekitsuiOverridesTest(unittest.TestCase):
         self.assertEqual(category_for("ヒト", {}), "哺乳類")
         self.assertEqual(category_for("クマ", {}), "哺乳類")
         self.assertEqual(category_for("ノウサギ", {}), "哺乳類")
+        self.assertEqual(category_for("サル", {}), "哺乳類")
 
     def test_manual_ranks_fill_nousagi(self):
         row = {"order": "", "family": ""}
         apply_manual_ranks("ノウサギ", row)
         self.assertEqual(row, {"order": "ウサギ目", "family": "ウサギ科"})
+
+    def test_manual_ranks_fill_monkey_without_claiming_a_family(self):
+        row = {"order": "", "family": ""}
+        apply_manual_ranks("サル", row)
+        self.assertEqual(row, {"order": "サル目", "family": ""})
 
     def test_manual_class_wins_over_incorrect_fetched_category(self):
         self.assertEqual(category_for("クマ", {"クマ": "魚類"}), "哺乳類")
@@ -199,6 +216,10 @@ class SekitsuiOverridesTest(unittest.TestCase):
                     "class": "哺乳類",
                     "order": "ウサギ目",
                     "family": "ウサギ科",
+                },
+                "サル": {
+                    "class": "哺乳類",
+                    "order": "サル目",
                 },
             },
         )
