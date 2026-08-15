@@ -181,7 +181,7 @@ def update_audit_files(rows: list, qid_of: dict, p2397: dict, selected: dict,
                 existing[(record["person_id"], record["channel_id"])] = record
     matched = {pid for pid, choice in selected.items()
                if person[pid].get("channel") == choice["title"]
-               and choice["channel_id"] in p2397.get(qid_of[pid], [])}
+               and choice["channel_id"] in p2397.get(qid_of.get(pid, ""), [])}
     for pid in matched:
         choice = selected[pid]
         key = (pid, choice["channel_id"])
@@ -205,11 +205,14 @@ def update_audit_files(rows: list, qid_of: dict, p2397: dict, selected: dict,
         existing.values(), key=lambda r: (int(r["person_id"]), r["channel_id"])))
 
     report = []
+    resolved = {pid for pid, choice in selected.items()
+                if person[pid].get("channel") == choice["title"]}
     if REPORT_PATH.exists():
         for line in REPORT_PATH.read_text(encoding="utf-8").splitlines():
             if line.strip():
                 record = json.loads(line)
-                if record.get("source_type") != "wikidata_p2397":
+                if record.get("source_type") != "wikidata_p2397" \
+                        and record.get("person_id") not in resolved:
                     report.append(record)
     for pid, choice in selected.items():
         current = person[pid].get("channel")
@@ -222,10 +225,10 @@ def update_audit_files(rows: list, qid_of: dict, p2397: dict, selected: dict,
                 "existing_channel": current,
                 "original": person[pid]["original"],
                 "person_id": pid,
-                "qid": qid_of[pid],
+                "qid": qid_of.get(pid, "NA"),
                 "reason": "既存channelは自動上書きせず、名称差異を人手確認へ回す",
                 "source_type": "wikidata_p2397",
-                "source_url": f"https://www.wikidata.org/wiki/{qid_of[pid]}",
+                "source_url": f"https://www.wikidata.org/wiki/{qid_of.get(pid, 'NA')}",
             })
     for pid, current in ((pid, row.get("channel"))
                          for pid, row in person.items()):
@@ -255,7 +258,7 @@ def update_audit_files(rows: list, qid_of: dict, p2397: dict, selected: dict,
 
 
 def load_verified_channel_sources(qid_of: dict, name_of: dict) -> dict:
-    """Wikipedia/P856調査でverifiedになった追加IDを QID ごとに読む。"""
+    """調査台帳でverifiedになった追加IDを人物IDごとに読む。"""
     out = {}
     if not SOURCE_PATH.exists():
         return out
@@ -271,20 +274,40 @@ def load_verified_channel_sources(qid_of: dict, name_of: dict) -> dict:
         if record.get("source_type") not in {
                 "jawiki_external_link", "wikidata_official_site",
                 "wikidata_official_site_page", "wikidata_youtube_handle",
-                "jawiki_infobox"}:
+                "jawiki_infobox", "web_search_primary_link"}:
             raise SystemExit(f"error: {SOURCE_PATH}:{lineno}: 不正なsource_type")
         channel_id = record.get("channel_id", "")
         qid = record.get("qid", "")
-        if not CHANNEL_ID_RE.fullmatch(channel_id) or not re.fullmatch(r"Q\d+", qid):
+        if not CHANNEL_ID_RE.fullmatch(channel_id) or not (
+                re.fullmatch(r"Q\d+", qid)
+                or (record.get("source_type") == "web_search_primary_link"
+                    and qid == "NA")):
             raise SystemExit(f"error: {SOURCE_PATH}:{lineno}: 不正なQID/channel_id")
         person_id = record.get("person_id", "")
-        if qid_of.get(person_id) != qid or name_of.get(person_id) != record.get(
-                "original"):
+        if qid_of.get(person_id, "NA") != qid or \
+                name_of.get(person_id) != record.get("original"):
             raise SystemExit(f"error: {SOURCE_PATH}:{lineno}: 人物/QID対応がCSVと不一致")
         if not record.get("source_url") or not record.get("evidence_url"):
             raise SystemExit(f"error: {SOURCE_PATH}:{lineno}: 出典URLが不足")
-        out.setdefault(qid, []).append(channel_id)
-    return {qid: sorted(set(ids)) for qid, ids in out.items()}
+        if record.get("source_type") == "web_search_primary_link":
+            if record.get("discovery_method") not in {
+                    "gemini_chrome_google_search",
+                    "codex_standard_web_search",
+                    "gemini_and_codex_web_search"}:
+                raise SystemExit(
+                    f"error: {SOURCE_PATH}:{lineno}: Web検索の探索方法が不足")
+            if record.get("identity_basis") not in {
+                    "youtube_about_self_identification",
+                    "jawiki_person_article_explicit_link",
+                    "wikipedia_person_article_explicit_link",
+                    "official_page_explicit_channel_link"}:
+                raise SystemExit(
+                    f"error: {SOURCE_PATH}:{lineno}: Web検索の本人対応根拠が不正")
+            if not record.get("evidence_quote"):
+                raise SystemExit(
+                    f"error: {SOURCE_PATH}:{lineno}: Web検索の根拠要約が不足")
+        out.setdefault(person_id, []).append(channel_id)
+    return {person_id: sorted(set(ids)) for person_id, ids in out.items()}
 
 
 def _load_key() -> str:
@@ -421,26 +444,27 @@ def main() -> int:
     qid_of = {}
     name_of = {}
     for r in rows:
+        name_of[r["id"]] = r["original"]
         qid = (r.get("wikidata") or "").strip()
         if qid and qid not in ("NA",):
             qid_of[r["id"]] = qid
-            name_of[r["id"]] = r["original"]
     people = len({r["id"] for r in rows})
     print(f"youtuber.csv: {len(rows)}行 / {people}人 "
           f"(QIDあり {len(qid_of)}人)", flush=True)
 
     qids = sorted(set(qid_of.values()))
     p2397 = fetch_channel_ids(qids)
-    chans = {qid: list(channel_ids) for qid, channel_ids in p2397.items()}
     extra_chans = load_verified_channel_sources(qid_of, name_of)
-    extra_id_pairs = {(qid, channel_id) for qid, channel_ids in extra_chans.items()
+    extra_id_pairs = {(pid, channel_id) for pid, channel_ids in extra_chans.items()
                       for channel_id in channel_ids}
-    for qid, channel_ids in extra_chans.items():
-        if qid in qids:
-            chans[qid] = sorted(set(chans.get(qid, []) + channel_ids))
-    all_ids = sorted({c for v in chans.values() for c in v})
-    extra_people = len({qid for qid in extra_chans if qid in qids})
-    print(f"採用済みチャンネルID: {len(all_ids)}本 / {len(chans)}人 "
+    ids_by_person = {}
+    for pid in name_of:
+        ids_by_person[pid] = sorted(set(
+            p2397.get(qid_of.get(pid, ""), []) + extra_chans.get(pid, [])))
+    all_ids = sorted({c for v in ids_by_person.values() for c in v})
+    channel_people = sum(bool(ids) for ids in ids_by_person.values())
+    extra_people = len(extra_chans)
+    print(f"採用済みチャンネルID: {len(all_ids)}本 / {channel_people}人 "
           f"(外部リンク/P856台帳 {extra_people}人)", flush=True)
 
     channels, hidden = fetch_channels(all_ids, key)
@@ -448,9 +472,6 @@ def main() -> int:
           f"(非公開 {hidden}本、取得不能 "
           f"{len(all_ids) - len(channels) - hidden}本)", flush=True)
 
-    ids_by_person = {}
-    for pid, qid in qid_of.items():
-        ids_by_person[pid] = chans.get(qid, [])
     selected = select_channels(ids_by_person, channels)
     best = {pid: choice["subscribers"] for pid, choice in selected.items()}
     if len(best) < MIN_PEOPLE:
@@ -490,7 +511,7 @@ def main() -> int:
     for pid in sorted(channel_filled, key=lambda value: name[value]):
         choice = selected[pid]
         source = ("公式外部リンク台帳"
-                  if (qid_of[pid], choice["channel_id"]) in extra_id_pairs
+                  if (pid, choice["channel_id"]) in extra_id_pairs
                   else "Wikidata P2397")
         print(f"  {name[pid]}: {choice['title']} "
               f"({source} {choice['channel_id']})", flush=True)

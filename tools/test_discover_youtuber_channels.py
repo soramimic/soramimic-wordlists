@@ -146,10 +146,15 @@ class DiscoverYoutuberChannelsTest(unittest.TestCase):
             "person_id": "1", "channel_id": "manual",
             "source_type": "wikidata_official_site_page",
         }], [], {"1"}, set())
+        web_research = discover.merge_source_records([{
+            "person_id": "1", "channel_id": "web",
+            "source_type": "web_search_primary_link",
+        }], [], {"1"}, set())
 
         self.assertEqual([record["channel_id"] for record in replaced], ["new"])
         self.assertEqual([record["channel_id"] for record in retained], ["old"])
         self.assertEqual([record["channel_id"] for record in manual], ["manual"])
+        self.assertEqual([record["channel_id"] for record in web_research], ["web"])
 
 
 if __name__ == "__main__":

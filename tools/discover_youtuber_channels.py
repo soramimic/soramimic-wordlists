@@ -298,7 +298,8 @@ def merge_source_records(old_sources: list, verified: list, target_ids: set,
     """成功した再監査だけを置換し、一時取得失敗時は旧証跡を保持する。"""
     retained = [record for record in old_sources
                 if record.get("source_type") in {
-                    "wikidata_p2397", "wikidata_official_site_page"}
+                    "wikidata_p2397", "wikidata_official_site_page",
+                    "web_search_primary_link"}
                 or record.get("person_id") not in target_ids
                 or record.get("person_id") in fetch_failed]
     source_map = {(record["person_id"], record["channel_id"]): record
