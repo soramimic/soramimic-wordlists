@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""youtuber.csv の subscribers 列(YouTubeチャンネル登録者数)を更新する。
+"""youtuber.csv の channel と subscribers を YouTube API で更新する。
 
 出典: WikidataのYouTubeチャンネルID(P2397、CC0)と YouTube Data API v3 の
-channels.list(part=statistics)。Wikidataの登録者数(P3744)は記録時点が項目ごとに
+channels.list(part=snippet,statistics)。Wikidataの登録者数(P3744)は記録時点が項目ごとに
 バラバラ(2019〜2026年が混在)で横比較できないため使わない(詳細は ADR 00030)。
 
 - 対象は wikidata 列にQIDが入っている人。QIDが無い行は NA
@@ -10,12 +10,13 @@ channels.list(part=statistics)。Wikidataの登録者数(P3744)は記録時点�
   (channel 列の「登録者数が最大の1本をメインとみなす」定義と揃える)
 - 登録者数を非公開にしているチャンネル(hiddenSubscriberCount)は候補から除く。
   1本も取れなければ NA
-- **subscribers と subscribers_as_of は毎回全行を上書きする**。時変値なので
-  「既存値は書き換えない」(ADR 00014)の明示的な例外(ADR 00030)。この2列以外の
-  列・行順・id は一切変更しない。登録者数が取れない行は両列とも NA
+- **channel、subscribers、subscribers_as_of は毎回全行を上書きする**。時変値なので
+  「既存値は書き換えない」(ADR 00014)の明示的な例外(ADR 00030)。この3列以外の
+  列・行順・id は一切変更しない。登録者数またはチャンネル名が
+  取れない行は3列とも NA
 - 書き込みは全チャンネルの取得が成功してから最後に一時ファイルを置換して行う
-  (途中で失敗した回は youtuber.csv を書きかけのまま残さず、登録者数と取得日が
-  別々のスナップショットになることもない)
+  (途中で失敗した回は youtuber.csv を書きかけのまま残さず、チャンネル名・
+  登録者数・取得日が別々のスナップショットになることもない)
 - APIキーは環境変数 YOUTUBE_API_KEY、無ければ ~/.config/soramimic/youtube_api_key。
   どちらも無ければ「スキップ」を出して正常終了する(fork や鍵未設定のCIで
   ワークフローを壊さないため)
@@ -51,6 +52,7 @@ KEY_FILE = Path.home() / ".config" / "soramimic" / "youtube_api_key"
 API = "https://www.googleapis.com/youtube/v3/channels"
 COL = "subscribers"
 AS_OF_COL = "subscribers_as_of"
+CHANNEL_COL = "channel"
 QID_BATCH = 200  # SPARQL の VALUES に並べるQID数(fetch_attrs と同じ)
 YT_BATCH = 50    # channels.list の id パラメータは1回50件まで
 # YouTubeチャンネルIDの書式(UC + 22文字)。P2397 にURLやユーザー名が
@@ -68,19 +70,20 @@ def _utc_date() -> str:
 
 
 def apply_snapshot(rows: list, cols: list, best: dict, as_of: str) -> tuple:
-    """同一スナップショットの登録者数と取得日を全行へ反映する。
+    """同一スナップショットのチャンネル名・登録者数・取得日を全行へ反映する。
 
     返り値は (新たに値が入った人, 値が変わった人, 取れなくなった人)。
-    subscribers が NA の行では取得日も必ず NA にして、古い日付を残さない。
+    採用チャンネルが無い行では3列とも必ず NA にして、古い値を残さない。
     """
-    for col in (COL, AS_OF_COL):
+    for col in (CHANNEL_COL, COL, AS_OF_COL):
         if col not in cols:
             cols.append(col)
 
     filled, updated, lost = set(), set(), set()
     for row in rows:
         old = row.get(COL) or ""
-        new = str(best[row["id"]]) if row["id"] in best else "NA"
+        winner = best.get(row["id"])
+        new = str(winner[0]) if winner else "NA"
         if old != new:
             if new == "NA":
                 # 前回は値があったのに今回取れなかった(空 -> NA は列の新設なので
@@ -91,11 +94,18 @@ def apply_snapshot(rows: list, cols: list, best: dict, as_of: str) -> tuple:
                 filled.add(row["id"])
             else:
                 updated.add(row["id"])
+        row[CHANNEL_COL] = winner[1] if winner else "NA"
         row[COL] = new
         row[AS_OF_COL] = as_of if new != "NA" else "NA"
         for col in cols:
             row.setdefault(col, "")
     return filled, updated, lost
+
+
+def _clean_channel_title(title: str) -> str:
+    """CSVの素朴なsplit利用者を壊さない形に公式タイトルを整える。"""
+    return re.sub(r"[\s　]+", " ",
+                  (title or "").replace(",", " ").replace('"', "")).strip()
 
 
 def write_snapshot_atomic(path: Path, cols: list, rows: list) -> None:
@@ -185,15 +195,16 @@ def _get(url: str, key: str) -> dict:
     raise SystemExit("error: YouTube Data API への問い合わせが3回失敗しました")
 
 
-def fetch_subscribers(channel_ids: list, key: str) -> tuple:
-    """チャンネルID -> 登録者数(int)。非公開・削除済みのチャンネルは含まない。
+def fetch_channel_records(channel_ids: list, key: str) -> tuple:
+    """チャンネルID -> (登録者数, 公式タイトル)を取得する。
 
-    返り値は (登録者数の辞書, 非公開だったチャンネル数)。"""
-    subs, hidden = {}, 0
+    タイトル欠損、登録者数非公開、削除済みのチャンネルは含まない。
+    返り値は (レコードの辞書, 非公開だったチャンネル数)。"""
+    records, hidden = {}, 0
     for i in range(0, len(channel_ids), YT_BATCH):
         batch = channel_ids[i:i + YT_BATCH]
         url = API + "?" + urllib.parse.urlencode(
-            {"part": "statistics", "id": ",".join(batch), "key": key})
+            {"part": "snippet,statistics", "id": ",".join(batch), "key": key})
         data = _get(url, key)
         for item in data.get("items", []):
             st = item.get("statistics", {})
@@ -201,13 +212,31 @@ def fetch_subscribers(channel_ids: list, key: str) -> tuple:
                 hidden += 1
                 continue
             try:
-                subs[item["id"]] = int(st["subscriberCount"])
+                channel_id = item["id"]
+                count = int(st["subscriberCount"])
+                title = _clean_channel_title(item["snippet"]["title"])
             except (KeyError, TypeError, ValueError):
                 continue
+            if title:
+                records[channel_id] = (count, title)
         # itemsに返らないID(削除・BANされたチャンネル)は静かにスキップする
         print(f"  登録者数取得 {min(i + YT_BATCH, len(channel_ids))}/"
               f"{len(channel_ids)}", flush=True)
-    return subs, hidden
+    return records, hidden
+
+
+def select_main_channels(qid_of: dict, channels: dict, records: dict) -> dict:
+    """人物ごとに最大登録者数のチャンネルを決定的に1本選ぶ。"""
+    best = {}
+    for person_id, qid in qid_of.items():
+        candidates = [(records[channel_id][0], channel_id,
+                       records[channel_id][1])
+                      for channel_id in channels.get(qid, [])
+                      if channel_id in records]
+        if candidates:
+            count, _, title = sorted(candidates, key=lambda v: (-v[0], v[1]))[0]
+            best[person_id] = (count, title)
+    return best
 
 
 def main() -> int:
@@ -237,27 +266,33 @@ def main() -> int:
     all_ids = sorted({c for v in chans.values() for c in v})
     print(f"P2397のチャンネルID: {len(all_ids)}本 / {len(chans)}人", flush=True)
 
-    subs, hidden = fetch_subscribers(all_ids, key)
-    print(f"登録者数が取れたチャンネル: {len(subs)}/{len(all_ids)}本"
+    records, hidden = fetch_channel_records(all_ids, key)
+    print(f"名前と登録者数が取れたチャンネル: {len(records)}/{len(all_ids)}本"
           f"(非公開 {hidden}本、取得不能 "
-          f"{len(all_ids) - len(subs) - hidden}本)", flush=True)
+          f"{len(all_ids) - len(records) - hidden}本)", flush=True)
 
     # 人ごとに、その人のチャンネル群の最大値を採る
-    best = {}
-    for pid, qid in qid_of.items():
-        vals = [subs[c] for c in chans.get(qid, []) if c in subs]
-        if vals:
-            best[pid] = max(vals)
+    best = select_main_channels(qid_of, chans, records)
     if len(best) < MIN_PEOPLE:
         print(f"error: implausible subscribers count: {len(best)}人"
               f"(下限 {MIN_PEOPLE}人)。取得が壊れている可能性があるため"
               "書き込まずに中断します", file=sys.stderr)
         return 1
 
-    # ここから書き込み(全取得が成功した後に、2列を1回の置換で反映)
+    # ここから書き込み(全取得が成功した後に、3列を1回の置換で反映)
     as_of = _utc_date()
+    old_channels = {row["id"]: row.get(CHANNEL_COL, "NA") for row in rows}
     filled, updated, lost = apply_snapshot(rows, cols, best, as_of)
     write_snapshot_atomic(CSV_PATH, cols, rows)
+
+    new_channels = {pid: data[1] for pid, data in best.items()}
+    channel_filled = {pid for pid, title in new_channels.items()
+                      if old_channels.get(pid, "NA") in ("", "NA") and title}
+    channel_updated = {pid for pid, title in new_channels.items()
+                       if old_channels.get(pid, "NA") not in ("", "NA")
+                       and old_channels[pid] != title}
+    channel_lost = {pid for pid, title in old_channels.items()
+                    if title not in ("", "NA") and pid not in new_channels}
 
     have = [r for r in rows if r[COL] != "NA"]
     print(f"\nyoutuber.csv: {COL} 充足 {len(best)}/{people}人 "
@@ -266,10 +301,13 @@ def main() -> int:
           f"新たに入った {len(filled)}人 / 取れなくなった {len(lost)}人",
           flush=True)
     print(f"{AS_OF_COL}: {as_of} (UTC、登録者数ありの行)", flush=True)
-    top = sorted(best.items(), key=lambda kv: -kv[1])[:10]
+    print(f"{CHANNEL_COL} の同期結果: 名前が変わった {len(channel_updated)}人 / "
+          f"新たに入った {len(channel_filled)}人 / 取れなくなった "
+          f"{len(channel_lost)}人", flush=True)
+    top = sorted(best.items(), key=lambda kv: -kv[1][0])[:10]
     name = {r["id"]: r["original"] for r in rows}
     print("登録者数 上位10人:", flush=True)
-    for pid, n in top:
+    for pid, (n, _) in top:
         print(f"  {n:>12,}  {name[pid]}", flush=True)
     return 0
 

@@ -3,7 +3,7 @@
 - Status: accepted
 - Date: 2026-07-30
 - Supersedes: none
-- Superseded by: none
+- Superseded by: 00055(channel の取得・更新規則のみ)
 - Related: 00011(youtuber/vtuber リストの収録基準) / 00014(既存行を劣化させない・空欄補完のみ) / 00023(debut_year をチャンネル開設年で補う) / 00045(descriptionの短文化)
 
 ## Context

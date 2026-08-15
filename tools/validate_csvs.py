@@ -47,6 +47,7 @@ IMAGE_URL_RE = re.compile(
 # 暴走するため、混入を止める。読みはカタカナのみが前提
 PRON_ASCII_RE = re.compile(r"[A-Za-z]{2,}")
 YEAR_RE = re.compile(r"^(?:NA|前?[0-9]+)$")
+ISO_DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 HAN_RE = re.compile(r"[\u3400-\u9fff]")
 MYOJI_EVIDENCE = (
     "person_lists",
@@ -102,6 +103,7 @@ def validate(path: Path):
     img_cols = [c for c in ("image", "image_page") if c in idx]
     scientist_years = {}
     player_groups = {}
+    youtuber_snapshots = {}
     for lineno, line in enumerate(lines[1:], start=2):
         f = line.split(",")
         if len(f) != ncol:
@@ -144,6 +146,27 @@ def validate(path: Path):
                     f"{path.name}:{lineno}: surface/has_school_suffixが不整合: "
                     f"{f[idx['surface']]} / {actual}"
                 )
+        if path.name == "youtuber.csv":
+            snapshot_cols = ("channel", "subscribers", "subscribers_as_of")
+            missing = [col for col in snapshot_cols if col not in idx]
+            if missing:
+                err(f"{path.name}: 必須列 {missing[0]} がない")
+                return
+            snapshot = tuple(f[idx[col]] for col in snapshot_cols)
+            if snapshot != ("NA", "NA", "NA") and not (
+                snapshot[0] not in ("", "NA")
+                and snapshot[1].isdigit()
+                and ISO_DATE_RE.fullmatch(snapshot[2])
+            ):
+                err(
+                    f"{path.name}:{lineno}: channel/subscribers/取得日が不整合: "
+                    f"{' / '.join(snapshot)}"
+                )
+            person_id = f[idx["id"]]
+            if (person_id in youtuber_snapshots
+                    and youtuber_snapshots[person_id] != snapshot):
+                err(f"{path.name}:{lineno}: 同じidでチャンネル情報が一致しない")
+            youtuber_snapshots[person_id] = snapshot
         if path.name == "myoji.csv":
             if "evidence_sources" not in idx:
                 err(f"{path.name}: 必須列 evidence_sources がない")
