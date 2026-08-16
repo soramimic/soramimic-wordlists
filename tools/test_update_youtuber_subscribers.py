@@ -266,6 +266,24 @@ class ApplySnapshotTest(unittest.TestCase):
                     {}, {"1": "本人"})
         self.assertEqual(result, {"1": [channel_id]})
 
+    def test_official_talent_profile_supports_person_without_qid(self):
+        channel_id = "UC" + "n" * 22
+        profile = "https://www.nijisanji.jp/talents/l/example"
+        record = {
+            "channel_id": channel_id, "decision": "verified",
+            "evidence_url": profile,
+            "identity_basis": "official_page_explicit_channel_link",
+            "original": "公式ライバー", "person_id": "7", "qid": "NA",
+            "source_type": "official_talent_profile", "source_url": profile,
+        }
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "sources.jsonl"
+            path.write_text(json.dumps(record) + "\n", encoding="utf-8")
+            with mock.patch.object(subscribers, "SOURCE_PATH", path):
+                result = subscribers.load_verified_channel_sources(
+                    {}, {"7": "公式ライバー"})
+        self.assertEqual(result, {"7": [channel_id]})
+
 
 if __name__ == "__main__":
     unittest.main()

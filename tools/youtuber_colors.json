@@ -1,5 +1,5 @@
 {
-  "_readme": "youtuber.csv の人物のイメージカラー。primary/secondary は16進表記。source=official は色をテキストで公表している公式サイト、official-penlight は公式ライブのペンライトカラー一覧画像、manual は人手で確認したもの(いずれも tools/fetch_youtuber_colors.py)。source=derived-portrait は公式ポートレート画像を情報解析(著作権法30条の4)して求めた代表色(tools/derive_youtuber_colors.py)。解析に使った画像は tools/.cache/ 止まりで再配布しておらず、カードは配色と文字だけの自作SVGのまま。詳細は docs/adr/00018-youtuber-images.md を参照。",
+  "_readme": "youtuber.csv の人物のイメージカラー。primary/secondary は16進表記。source=official は色をテキストで公表している公式サイト(tools/fetch_youtuber_colors.py / tools/update_nijisanji.py)、official-penlight は公式ライブのペンライトカラー一覧画像、manual は人手で確認したもの。source=derived-portrait は公式ポートレート画像を情報解析(著作権法30条の4)して求めた代表色(tools/derive_youtuber_colors.py)。解析に使った画像は tools/.cache/ 止まりで再配布しておらず、カードは配色と文字だけの自作SVGのまま。詳細は docs/adr/00018-youtuber-images.md を参照。",
   "colors": {
     "AZKi": {
       "primary": "#eb52aa",
@@ -15,11 +15,29 @@
       "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
       "penlight_color": "PINK"
     },
+    "Rei7": {
+      "primary": "#4bb3ce",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/reina"
+    },
     "うる虎がーる": {
       "primary": "#f0aa3c",
       "source": "official",
       "source_name": "あおぎり高校公式サイト",
       "source_url": "https://www.aogirihighschool.com/"
+    },
+    "えま★おうがすと": {
+      "primary": "#b32f51",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/emma-august"
+    },
+    "える": {
+      "primary": "#e2364f",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/elu"
     },
     "がうる・ぐら": {
       "primary": "#487ddd",
@@ -43,11 +61,10 @@
       "penlight_color": "LIGHT PINK"
     },
     "でびでび・でびる": {
-      "primary": "#584953",
-      "secondary": "#c5bfc3",
-      "source": "derived-portrait",
-      "source_name": "にじさんじ公式サイト 所属ライバー一覧",
-      "source_url": "https://www.nijisanji.jp/talents"
+      "primary": "#444c7d",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/debidebi-debiru"
     },
     "ときのそら": {
       "primary": "#487ddd",
@@ -56,11 +73,35 @@
       "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
       "penlight_color": "BLUE"
     },
+    "ぷりん・らら・もーど": {
+      "primary": "#ffcef1",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/purin-lala-mode"
+    },
     "ぷわぷわぽぷら": {
       "primary": "#82beaa",
       "source": "official",
       "source_name": "あおぎり高校公式サイト",
       "source_url": "https://www.aogirihighschool.com/"
+    },
+    "ぽめろ・ぱんち": {
+      "primary": "#ffeea0",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/pomelo-punch"
+    },
+    "ましろ爻": {
+      "primary": "#1e2232",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/meme-mashiro"
+    },
+    "アイアアマレ": {
+      "primary": "#fffef7",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/aia-amare"
     },
     "アイラニ・イオフィフティーン": {
       "primary": "#008d39",
@@ -76,11 +117,47 @@
       "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
       "penlight_color": "LIGHT GREEN"
     },
+    "アルス・アルマル": {
+      "primary": "#7fd6e2",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/ars-almal"
+    },
+    "アルバーン・ノックス": {
+      "primary": "#ff5f00",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/alban-knox"
+    },
     "アンジュ・カトリーナ": {
-      "primary": "#b82e44",
-      "source": "derived-portrait",
-      "source_name": "にじさんじ公式サイト 所属ライバー一覧",
-      "source_url": "https://www.nijisanji.jp/talents"
+      "primary": "#c83c35",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/ange-katrina"
+    },
+    "イブラヒム": {
+      "primary": "#7ca1f0",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/ibrahim"
+    },
+    "イロハ": {
+      "primary": "#fdff7a",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/lee-roha"
+    },
+    "エクス・アルビオ": {
+      "primary": "#5c9bbc",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/ex-albio"
+    },
+    "エトナクリムソン": {
+      "primary": "#dc143c",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/etna-crimson"
     },
     "エトラ": {
       "primary": "#555f87",
@@ -88,12 +165,203 @@
       "source_name": "あおぎり高校公式サイト",
       "source_url": "https://www.aogirihighschool.com/"
     },
+    "エナー・アールウェット": {
+      "primary": "#858ed1",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/enna-alouette"
+    },
+    "エリーラペンドラ": {
+      "primary": "#95c8d8",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/elira-pendora"
+    },
+    "エリー・コニファー": {
+      "primary": "#dafff9",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/eli-conifer"
+    },
+    "オジユ": {
+      "primary": "#f1f4f4",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/oh-jiyu"
+    },
+    "オリバー・エバンス": {
+      "primary": "#bcc37e",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/oliver-evans"
+    },
+    "ガオン": {
+      "primary": "#f9e072",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/gaon"
+    },
+    "ギルザレンⅢ世": {
+      "primary": "#002fa7",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/gilzaren-iii"
+    },
+    "クララチャームウッド": {
+      "primary": "#dfcdbf",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/klara-charmwood"
+    },
+    "クロードクローマーク": {
+      "primary": "#7d3caf",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/claude-clawmark"
+    },
+    "ケイリクス・デボネア": {
+      "primary": "#cdcd00",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/kaelix-debonair"
+    },
+    "サニー・ブリスコー": {
+      "primary": "#fff321",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/sonny-brisko"
+    },
+    "シェリン・バーガンディ": {
+      "primary": "#6c2735",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/shellin-burgundy"
+    },
+    "シスター・クレア": {
+      "primary": "#dfc6a8",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/sister-claire"
+    },
     "ジョー・力一": {
-      "primary": "#ab5577",
-      "secondary": "#3faea5",
-      "source": "derived-portrait",
-      "source_name": "にじさんじ公式サイト 所属ライバー一覧",
-      "source_url": "https://www.nijisanji.jp/talents"
+      "primary": "#d598dd",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/joe-rikiichi"
+    },
+    "ジール・ギンジョウカ": {
+      "primary": "#007328",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/zeal-ginjoka"
+    },
+    "スカーレヨナグニ": {
+      "primary": "#e60012",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/scarle-yonaguni"
+    },
+    "セイブル": {
+      "primary": "#0a44aa",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/seible"
+    },
+    "セフィナ": {
+      "primary": "#c92235",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/seffyna"
+    },
+    "セラフ・ダズルガーデン": {
+      "primary": "#dc3c41",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/seraph-dazzlegarden"
+    },
+    "ソナギ": {
+      "primary": "#7c86de",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/so-nagi"
+    },
+    "ソフィア・ヴァレンタイン": {
+      "primary": "#c8c3dc",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/sophia-valentine"
+    },
+    "デレムカド": {
+      "primary": "#f6d4df",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/derem-kado"
+    },
+    "ドッピオドロップサイト": {
+      "primary": "#a50082",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/doppio-dropscythe"
+    },
+    "ドーラ": {
+      "primary": "#a83e4a",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/dola"
+    },
+    "ナギサアルシニア": {
+      "primary": "#cc338b",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/nagisa-arcinia"
+    },
+    "ナセラ": {
+      "primary": "#feecf3",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/na-sera"
+    },
+    "ニュイ・ソシエール": {
+      "primary": "#d24e5f",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/nui-sociere"
+    },
+    "ハナマキア": {
+      "primary": "#ffefd5",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/hana-macchia"
+    },
+    "ハユン": {
+      "primary": "#b14d4d",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/ha-yun"
+    },
+    "フィナーナ竜宮": {
+      "primary": "#35d9ad",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/finana-ryugu"
+    },
+    "フミ": {
+      "primary": "#f4e49d",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/fumi"
+    },
+    "フリオドール": {
+      "primary": "#aa0037",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/freodore"
+    },
+    "フレン・E・ルスタリオ": {
+      "primary": "#ec1d2f",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/furen-e-lustario"
     },
     "フワワ・アビスガード": {
       "primary": "#8fccda",
@@ -109,12 +377,90 @@
       "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
       "penlight_color": "WHITE"
     },
+    "ベルモンド・バンデラス": {
+      "primary": "#683d46",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/belmond-banderas"
+    },
+    "ベンタクロウブリンガー": {
+      "primary": "#8728e1",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/vantacrow-bringer"
+    },
+    "ペトラグリン": {
+      "primary": "#ffae42",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/petra-gurin"
+    },
+    "マリアマリオネット": {
+      "primary": "#e55a9b",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/maria-marionette"
+    },
+    "ミラン・ケストレル": {
+      "primary": "#2c35bd",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/milan-kestrel"
+    },
+    "ミリー・パフェ": {
+      "primary": "#febc87",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/millie-parfait"
+    },
+    "ミンスゥーハ": {
+      "primary": "#5ac8ff",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/min-suha"
+    },
+    "モイラ": {
+      "primary": "#91abd0",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/moira"
+    },
     "モココ・アビスガード": {
       "primary": "#ffbde3",
       "source": "official-penlight",
       "source_name": "hololive 7th fes. Ridin' on Dreams 公式ペンライトカラー",
       "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
       "penlight_color": "LIGHT PINK"
+    },
+    "ヤンナリ": {
+      "primary": "#fad1d6",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/yang-nari"
+    },
+    "ユウQウィルソン": {
+      "primary": "#f5eb28",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/yu-q-wilson"
+    },
+    "ライガリレイ": {
+      "primary": "#7df9ff",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/rai-galilei"
+    },
+    "ライラアルストロエメリア": {
+      "primary": "#f78181",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/layla-alstroemeria"
+    },
+    "ラトナ・プティ": {
+      "primary": "#f36c21",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/ratna-petit"
     },
     "ラプラス・ダークネス": {
       "primary": "#6342c6",
@@ -124,18 +470,64 @@
       "penlight_color": "PURPLE"
     },
     "リゼ・ヘルエスタ": {
-      "primary": "#f8eff3",
-      "secondary": "#5176a6",
-      "source": "derived-portrait",
-      "source_name": "にじさんじ公式サイト 所属ライバー一覧",
-      "source_url": "https://www.nijisanji.jp/talents"
+      "primary": "#42ffff",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/lize-helesta"
+    },
+    "リュハリ": {
+      "primary": "#96ceeb",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/ryu-hari"
+    },
+    "ルイス・キャミー": {
+      "primary": "#e86a74",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/luis-cammy"
+    },
+    "ルカ・カネシロ": {
+      "primary": "#d4af37",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/luca-kaneshiro"
     },
     "ルンルン": {
-      "primary": "#b4b9f9",
-      "secondary": "#f4f9f8",
-      "source": "derived-portrait",
-      "source_name": "にじさんじ公式サイト 所属ライバー一覧",
-      "source_url": "https://www.nijisanji.jp/talents"
+      "primary": "#d8e9fc",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/lunlun"
+    },
+    "レイン・パターソン": {
+      "primary": "#f74848",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/lain-paterson"
+    },
+    "レオス・ヴィンセント": {
+      "primary": "#234a87",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/leos-vincent"
+    },
+    "レヨン": {
+      "primary": "#558e8d",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/rayon"
+    },
+    "レンゾット": {
+      "primary": "#429b76",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/ren-zotto"
+    },
+    "レヴィ・エリファ": {
+      "primary": "#ff5a00",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/levi-elipha"
     },
     "ロボ子さん": {
       "primary": "#eb52aa",
@@ -144,12 +536,36 @@
       "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
       "penlight_color": "PINK"
     },
+    "ローレン・イロアス": {
+      "primary": "#c10e49",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/lauren-iroas"
+    },
     "ワトソン・アメリア": {
       "primary": "#47384b",
       "secondary": "#ab8076",
       "source": "derived-portrait",
       "source_name": "ホロライブプロダクション公式サイト タレント一覧",
       "source_url": "https://hololive.hololivepro.com/talents/"
+    },
+    "ヴェザリウスバンデージ": {
+      "primary": "#c34196",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/vezalius-bandage"
+    },
+    "ヴェールヴァーミリオン": {
+      "primary": "#d5345e",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/ver-vermillion"
+    },
+    "ヴォックス・アクマ": {
+      "primary": "#960018",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/vox-akuma"
     },
     "一伊那尓栖": {
       "primary": "#b170da",
@@ -165,12 +581,23 @@
       "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
       "penlight_color": "PINK"
     },
+    "一橋綾人": {
+      "primary": "#9fcec9",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/ayato-hitotsubashi"
+    },
+    "七瀬すず菜": {
+      "primary": "#9dd9b9",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/suzuna-nanase"
+    },
     "三枝明那": {
-      "primary": "#312528",
-      "secondary": "#d59f84",
-      "source": "derived-portrait",
-      "source_name": "にじさんじ公式サイト 所属ライバー一覧",
-      "source_url": "https://www.nijisanji.jp/talents"
+      "primary": "#f03c32",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/akina-saegusa"
     },
     "不知火フレア": {
       "primary": "#ffa400",
@@ -179,12 +606,59 @@
       "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
       "penlight_color": "ORANGE"
     },
+    "不破湊": {
+      "primary": "#bf69f4",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/minato-fuwa"
+    },
+    "九里詠太": {
+      "primary": "#cc8f7a",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/eita-kuri"
+    },
+    "五十嵐梨花": {
+      "primary": "#ff8c3c",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/rika-igarashi"
+    },
+    "五木左京": {
+      "primary": "#f3a4a9",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/sakyo-itsuki"
+    },
+    "伊波ライ": {
+      "primary": "#dcff50",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/rai-inami"
+    },
+    "伏見ガク": {
+      "primary": "#ffcb5b",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/gaku-fushimi"
+    },
+    "佐伯イッテツ": {
+      "primary": "#8c4664",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/ittetsu-saiki"
+    },
+    "倉持めると": {
+      "primary": "#eb4682",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/meruto-kuramochi"
+    },
     "健屋花那": {
-      "primary": "#d3c1c7",
-      "secondary": "#fa20b2",
-      "source": "derived-portrait",
-      "source_name": "にじさんじ公式サイト 所属ライバー一覧",
-      "source_url": "https://www.nijisanji.jp/talents"
+      "primary": "#ff2fa2",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/kana-sukoya"
     },
     "儒烏風亭らでん": {
       "primary": "#008d39",
@@ -192,6 +666,12 @@
       "source_name": "hololive 7th fes. Ridin' on Dreams 公式ペンライトカラー",
       "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
       "penlight_color": "GREEN"
+    },
+    "先斗寧": {
+      "primary": "#5a7dff",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/nei-ponto"
     },
     "兎田ぺこら": {
       "primary": "#8fccda",
@@ -206,24 +686,53 @@
       "source_name": "あおぎり高校公式サイト",
       "source_url": "https://www.aogirihighschool.com/"
     },
+    "凉舞バレンウォート": {
+      "primary": "#952d22",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/ryoma-barrenwort"
+    },
     "剣持刀也": {
-      "primary": "#594c6b",
-      "source": "derived-portrait",
-      "source_name": "にじさんじ公式サイト 所属ライバー一覧",
-      "source_url": "https://www.nijisanji.jp/talents"
+      "primary": "#a590ae",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/toya-kenmochi"
     },
     "加賀美ハヤト": {
-      "primary": "#a48677",
-      "secondary": "#46373d",
-      "source": "derived-portrait",
-      "source_name": "にじさんじ公式サイト 所属ライバー一覧",
-      "source_url": "https://www.nijisanji.jp/talents"
+      "primary": "#b9adb9",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/hayato-kagami"
+    },
+    "北小路ヒスイ": {
+      "primary": "#38b48b",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/hisui-kitakoji"
+    },
+    "北見遊征": {
+      "primary": "#ff6e1e",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/yusei-kitami"
+    },
+    "十河ののは": {
+      "primary": "#7dc7b0",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/nonoha-togawa"
     },
     "千代浦蝶美": {
       "primary": "#e66ea0",
       "source": "official",
       "source_name": "あおぎり高校公式サイト",
       "source_url": "https://www.aogirihighschool.com/"
+    },
+    "千凛あゆむ": {
+      "primary": "#543298",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/ayumu-senri"
     },
     "博衣こより": {
       "primary": "#ffbde3",
@@ -233,30 +742,58 @@
       "penlight_color": "LIGHT PINK"
     },
     "卯月コウ": {
-      "primary": "#e7c274",
-      "source": "derived-portrait",
-      "source_name": "にじさんじ公式サイト 所属ライバー一覧",
-      "source_url": "https://www.nijisanji.jp/talents"
+      "primary": "#f9e97a",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/kou-uzuki"
+    },
+    "叢雲カゲツ": {
+      "primary": "#6eb487",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/kagetsu-murakumo"
     },
     "叶": {
-      "primary": "#8d796c",
-      "secondary": "#423e3f",
-      "source": "derived-portrait",
-      "source_name": "にじさんじ公式サイト 所属ライバー一覧",
-      "source_url": "https://www.nijisanji.jp/talents"
+      "primary": "#abd3d8",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/kanae"
+    },
+    "司賀りこ": {
+      "primary": "#ffe36c",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/riko-shiga"
     },
     "周央サンゴ": {
-      "primary": "#f9bbc4",
-      "source": "derived-portrait",
-      "source_name": "にじさんじ公式サイト 所属ライバー一覧",
-      "source_url": "https://www.nijisanji.jp/talents"
+      "primary": "#ef8468",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/sango-suo"
+    },
+    "四季凪アキラ": {
+      "primary": "#235aaa",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/akira-shikinagi"
+    },
+    "城瀬いすみ": {
+      "primary": "#e5e2f6",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/isumi-shirose"
+    },
+    "塚原大地": {
+      "primary": "#4a4a5c",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/daichi-tsukahara"
     },
     "壱百満天原サロメ": {
-      "primary": "#ebd7e2",
-      "secondary": "#38172f",
-      "source": "derived-portrait",
-      "source_name": "にじさんじ公式サイト 所属ライバー一覧",
-      "source_url": "https://www.nijisanji.jp/talents"
+      "primary": "#cd3796",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/salome-hyakumantenbara"
     },
     "夏色まつり": {
       "primary": "#ffa400",
@@ -272,12 +809,35 @@
       "source_name": "HOLOSTARS公式サイト タレント一覧",
       "source_url": "https://holostars.hololivepro.com/talent"
     },
+    "夕陽リリ": {
+      "primary": "#bfffff",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/riri-yuhi"
+    },
+    "夜牛詩乃": {
+      "primary": "#bd81d4",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/shino-yagyu"
+    },
+    "夜見れな": {
+      "primary": "#f7265a",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/rena-yorumi"
+    },
+    "夢月ロア": {
+      "primary": "#d8368d",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/roa-yuzuki"
+    },
     "夢追翔": {
-      "primary": "#4a4a52",
-      "secondary": "#cfced9",
-      "source": "derived-portrait",
-      "source_name": "にじさんじ公式サイト 所属ライバー一覧",
-      "source_url": "https://www.nijisanji.jp/talents"
+      "primary": "#ac324b",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/kakeru-yumeoi"
     },
     "大代真白": {
       "primary": "#f0eee6",
@@ -299,6 +859,18 @@
       "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
       "penlight_color": "YELLOW"
     },
+    "天ヶ瀬むゆ": {
+      "primary": "#fa5578",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/muyu-amagase"
+    },
+    "天宮こころ": {
+      "primary": "#c5edff",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/kokoro-amamiya"
+    },
     "天音かなた": {
       "primary": "#8fccda",
       "source": "official-penlight",
@@ -313,12 +885,48 @@
       "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
       "penlight_color": "LIGHT PINK"
     },
+    "宇佐美リト": {
+      "primary": "#fac31e",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/rito-usami"
+    },
+    "宇志海いちご": {
+      "primary": "#ffcace",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/ichigo-ushimi"
+    },
     "宝鐘マリン": {
       "primary": "#ff0100",
       "source": "official-penlight",
       "source_name": "hololive 7th fes. Ridin' on Dreams 公式ペンライトカラー",
       "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
       "penlight_color": "RED"
+    },
+    "家長むぎ": {
+      "primary": "#ff899d",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/mugi-ienaga"
+    },
+    "小々波いるか": {
+      "primary": "#4270b2",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/iruka-kokonami"
+    },
+    "小柳ロウ": {
+      "primary": "#5a5faa",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/rou-koyanagi"
+    },
+    "小清水透": {
+      "primary": "#cda5ff",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/toru-koshimizu"
     },
     "小鳥遊キアラ": {
       "primary": "#ffa400",
@@ -334,6 +942,12 @@
       "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
       "penlight_color": "RED"
     },
+    "山神カルタ": {
+      "primary": "#384b5a",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/karuta-yamagami"
+    },
     "常闇トワ": {
       "primary": "#b170da",
       "source": "official-penlight",
@@ -341,12 +955,29 @@
       "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
       "penlight_color": "VIOLET"
     },
+    "弦月藤士郎": {
+      "primary": "#b43246",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/tojiro-genzuki"
+    },
+    "御子神琴音": {
+      "primary": "#d0669a",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/kotone-mikogami"
+    },
+    "愛園愛美": {
+      "primary": "#f98fb7",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/manami-aizono"
+    },
     "戌亥とこ": {
-      "primary": "#3b2834",
-      "secondary": "#88616a",
-      "source": "derived-portrait",
-      "source_name": "にじさんじ公式サイト 所属ライバー一覧",
-      "source_url": "https://www.nijisanji.jp/talents"
+      "primary": "#92f3a4",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/toko-inui"
     },
     "戌神ころね": {
       "primary": "#fff100",
@@ -362,18 +993,40 @@
       "source_url": "https://www.aogirihighschool.com/"
     },
     "文野環": {
-      "primary": "#6d4f47",
-      "secondary": "#f8f4f3",
-      "source": "derived-portrait",
-      "source_name": "にじさんじ公式サイト 所属ライバー一覧",
-      "source_url": "https://www.nijisanji.jp/talents"
+      "primary": "#ebddb4",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/tamaki-fumino"
+    },
+    "早乙女ベリー": {
+      "primary": "#df6d7c",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/berry-saotome"
+    },
+    "早瀬走": {
+      "primary": "#aa7be8",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/sou-hayase"
+    },
+    "明楽レイ": {
+      "primary": "#a9ceec",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/akira-ray"
+    },
+    "星導ショウ": {
+      "primary": "#a58cdc",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/sho-hoshirube"
     },
     "星川サラ": {
-      "primary": "#fdf5bb",
-      "secondary": "#fb9383",
-      "source": "derived-portrait",
-      "source_name": "にじさんじ公式サイト 所属ライバー一覧",
-      "source_url": "https://www.nijisanji.jp/talents"
+      "primary": "#fab80d",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/sara-hoshikawa"
     },
     "星街すいせい": {
       "primary": "#487ddd",
@@ -382,6 +1035,12 @@
       "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
       "penlight_color": "BLUE"
     },
+    "春崎エアル": {
+      "primary": "#4b5f9e",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/air-harusaki"
+    },
     "春雨麗女": {
       "primary": "#55c3f0",
       "source": "official",
@@ -389,11 +1048,10 @@
       "source_url": "https://www.aogirihighschool.com/"
     },
     "月ノ美兎": {
-      "primary": "#2c2c2c",
-      "secondary": "#fa7fa7",
-      "source": "derived-portrait",
-      "source_name": "にじさんじ公式サイト 所属ライバー一覧",
-      "source_url": "https://www.nijisanji.jp/talents"
+      "primary": "#e43f3b",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/mito-tsukino"
     },
     "月赴ゐぶき": {
       "primary": "#8c2341",
@@ -402,24 +1060,34 @@
       "source_url": "https://www.aogirihighschool.com/"
     },
     "本間ひまわり": {
-      "primary": "#e39c8a",
-      "secondary": "#ae6a91",
-      "source": "derived-portrait",
-      "source_name": "にじさんじ公式サイト 所属ライバー一覧",
-      "source_url": "https://www.nijisanji.jp/talents"
+      "primary": "#fbe340",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/himawari-honma"
     },
     "来栖夏芽": {
-      "primary": "#8d766e",
-      "secondary": "#8ab1cf",
-      "source": "derived-portrait",
-      "source_name": "にじさんじ公式サイト 所属ライバー一覧",
-      "source_url": "https://www.nijisanji.jp/talents"
+      "primary": "#8ad1ef",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/natsume-kurusu"
+    },
+    "東堂コハク": {
+      "primary": "#ea930a",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/kohaku-todo"
     },
     "栗駒こまる": {
       "primary": "#503c32",
       "source": "official",
       "source_name": "あおぎり高校公式サイト",
       "source_url": "https://www.aogirihighschool.com/"
+    },
+    "栞葉るり": {
+      "primary": "#2887ff",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/ruri-shioriha"
     },
     "桃鈴ねね": {
       "primary": "#ffa400",
@@ -428,6 +1096,18 @@
       "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
       "penlight_color": "ORANGE"
     },
+    "桜凛月": {
+      "primary": "#c57fc7",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/ritsuki-sakura"
+    },
+    "梢桃音": {
+      "primary": "#ffc6e2",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/mone-kozue"
+    },
     "森カリオペ": {
       "primary": "#ffbde3",
       "source": "official-penlight",
@@ -435,19 +1115,29 @@
       "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
       "penlight_color": "LIGHT PINK"
     },
+    "森中花咲": {
+      "primary": "#c8f39a",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/kazaki-morinaka"
+    },
     "椎名唯華": {
-      "primary": "#faf7f6",
-      "secondary": "#b64a54",
-      "source": "derived-portrait",
-      "source_name": "にじさんじ公式サイト 所属ライバー一覧",
-      "source_url": "https://www.nijisanji.jp/talents"
+      "primary": "#f1c8de",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/yuika-shiina"
+    },
+    "榊ネス": {
+      "primary": "#c2aae6",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/ness-sakaki"
     },
     "樋口楓": {
-      "primary": "#babbc6",
-      "secondary": "#71768f",
-      "source": "derived-portrait",
-      "source_name": "にじさんじ公式サイト 所属ライバー一覧",
-      "source_url": "https://www.nijisanji.jp/talents"
+      "primary": "#fbaf71",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/kaede-higuchi"
     },
     "水宮枢": {
       "primary": "#8fccda",
@@ -457,11 +1147,10 @@
       "penlight_color": "LIGHT BLUE"
     },
     "水面まどか": {
-      "primary": "#a98079",
-      "secondary": "#ad365e",
-      "source": "derived-portrait",
-      "source_name": "にじさんじ公式サイト 所属ライバー一覧",
-      "source_url": "https://www.nijisanji.jp/talents"
+      "primary": "#ff8184",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/madoka-minamo"
     },
     "沙花叉クロヱ": {
       "primary": "#b94848",
@@ -470,11 +1159,41 @@
       "source_name": "ホロライブプロダクション公式サイト タレント一覧",
       "source_url": "https://hololive.hololivepro.com/talents/"
     },
+    "浮奇・ヴィオレタ": {
+      "primary": "#b600ff",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/uki-violeta"
+    },
+    "海妹四葉": {
+      "primary": "#ffe632",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/yotsuha-umise"
+    },
+    "渋谷ハジメ": {
+      "primary": "#d7fad7",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/hajime-shibuya"
+    },
     "渋谷ハル": {
       "primary": "#f79428",
       "source": "official",
       "source_name": "Neo-Porte公式サイト",
       "source_url": "https://neo-porte.jp/member/"
+    },
+    "渚トラウト": {
+      "primary": "#77b6c2",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/trout-nagisa"
+    },
+    "渡会雲雀": {
+      "primary": "#192332",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/hibari-watarai"
     },
     "湊あくあ": {
       "primary": "#444386",
@@ -491,11 +1210,16 @@
       "penlight_color": "BLUE"
     },
     "物述有栖": {
-      "primary": "#e8b78d",
-      "secondary": "#444253",
-      "source": "derived-portrait",
-      "source_name": "にじさんじ公式サイト 所属ライバー一覧",
-      "source_url": "https://www.nijisanji.jp/talents"
+      "primary": "#81d4e2",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/alice-mononobe"
+    },
+    "狂蘭メロコ": {
+      "primary": "#a09bd8",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/meloco-kyoran"
     },
     "猫又おかゆ": {
       "primary": "#6342c6",
@@ -504,6 +1228,18 @@
       "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
       "penlight_color": "PURPLE"
     },
+    "猫屋敷美紅": {
+      "primary": "#ff8c73",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/miku-nekoyashiki"
+    },
+    "獅子堂あかり": {
+      "primary": "#ffd728",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/akari-shishido"
+    },
     "獅白ぼたん": {
       "primary": "#ffffff",
       "source": "official-penlight",
@@ -511,19 +1247,29 @@
       "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
       "penlight_color": "WHITE"
     },
+    "珠乃井ナナ": {
+      "primary": "#63aed9",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/nana-tamanoi"
+    },
     "甲斐田晴": {
-      "primary": "#968a87",
-      "secondary": "#3b6971",
-      "source": "derived-portrait",
-      "source_name": "にじさんじ公式サイト 所属ライバー一覧",
-      "source_url": "https://www.nijisanji.jp/talents"
+      "primary": "#4dd7e3",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/haru-kaida"
+    },
+    "男虎": {
+      "primary": "#442657",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/onotora"
     },
     "町田ちま": {
-      "primary": "#81a9c2",
-      "secondary": "#f6f2f0",
-      "source": "derived-portrait",
-      "source_name": "にじさんじ公式サイト 所属ライバー一覧",
-      "source_url": "https://www.nijisanji.jp/talents"
+      "primary": "#80c8ef",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/chima-machita"
     },
     "癒月ちょこ": {
       "primary": "#eb52aa",
@@ -540,10 +1286,10 @@
       "penlight_color": "WHITE"
     },
     "白砂あやね": {
-      "primary": "#3c5970",
-      "source": "derived-portrait",
-      "source_name": "にじさんじ公式サイト 所属ライバー一覧",
-      "source_url": "https://www.nijisanji.jp/talents"
+      "primary": "#54a2e5",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/ayane-shirasa"
     },
     "白銀ノエル": {
       "primary": "#ffffff",
@@ -552,6 +1298,12 @@
       "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
       "penlight_color": "WHITE"
     },
+    "白雪巴": {
+      "primary": "#6e3fe7",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/tomoe-shirayuki"
+    },
     "百鬼あやめ": {
       "primary": "#ff0100",
       "source": "official-penlight",
@@ -559,19 +1311,65 @@
       "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
       "penlight_color": "RED"
     },
+    "皇れお": {
+      "primary": "#eeb1cc",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/reo-sumeragi"
+    },
+    "矢車りね": {
+      "primary": "#feecd8",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/rine-yaguruma"
+    },
+    "石神のぞみ": {
+      "primary": "#e6325f",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/nozomi-ishigami"
+    },
     "社築": {
-      "primary": "#c5d1ef",
-      "secondary": "#545353",
-      "source": "derived-portrait",
-      "source_name": "にじさんじ公式サイト 所属ライバー一覧",
-      "source_url": "https://www.nijisanji.jp/talents"
+      "primary": "#b6c6f2",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/kizuku-yashiro"
+    },
+    "神田笑一": {
+      "primary": "#f4d35b",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/shoichi-kanda"
+    },
+    "空星きらめ": {
+      "primary": "#44ddf4",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/kirame-sorahoshi"
+    },
+    "立伝都々": {
+      "primary": "#c31e5a",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/toto-tachitsute"
+    },
+    "竜胆尊": {
+      "primary": "#745bff",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/mikoto-rindou"
     },
     "笹木咲": {
-      "primary": "#f58ea8",
-      "secondary": "#843c60",
-      "source": "derived-portrait",
-      "source_name": "にじさんじ公式サイト 所属ライバー一覧",
-      "source_url": "https://www.nijisanji.jp/talents"
+      "primary": "#ef9aaf",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/saku-sasaki"
+    },
+    "篠宮ゆの": {
+      "primary": "#aad9f4",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/yuno-shinomiya"
     },
     "紫咲シオン": {
       "primary": "#6342c6",
@@ -587,6 +1385,18 @@
       "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
       "penlight_color": "LIGHT PINK"
     },
+    "綺沙良": {
+      "primary": "#846fc7",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/kisara"
+    },
+    "緋八マナ": {
+      "primary": "#64c8f0",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/mana-hibachi"
+    },
     "緋月ゆい": {
       "primary": "#cc213e",
       "source": "official",
@@ -594,10 +1404,10 @@
       "source_url": "https://neo-porte.jp/member/"
     },
     "緑仙": {
-      "primary": "#1c7f91",
-      "source": "derived-portrait",
-      "source_name": "にじさんじ公式サイト 所属ライバー一覧",
-      "source_url": "https://www.nijisanji.jp/talents"
+      "primary": "#5dccab",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/ryushen"
     },
     "胡桃のあ": {
       "primary": "#b297d7",
@@ -605,12 +1415,23 @@
       "source_name": "ぶいすぽっ！公式サイト",
       "source_url": "https://vspo.jp/"
     },
+    "舞元啓介": {
+      "primary": "#094078",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/keisuke-maimoto"
+    },
     "花畑チャイカ": {
-      "primary": "#2e2b28",
-      "secondary": "#9c816a",
-      "source": "derived-portrait",
-      "source_name": "にじさんじ公式サイト 所属ライバー一覧",
-      "source_url": "https://www.nijisanji.jp/talents"
+      "primary": "#40cf84",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/chaika-hanabatake"
+    },
+    "花籠つばさ": {
+      "primary": "#818fbf",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/tsubasa-hanakago"
     },
     "花芽すみれ": {
       "primary": "#beccff",
@@ -625,18 +1446,22 @@
       "source_url": "https://www.aogirihighschool.com/"
     },
     "葉加瀬冬雪": {
-      "primary": "#a8adc4",
-      "secondary": "#343dba",
-      "source": "derived-portrait",
-      "source_name": "にじさんじ公式サイト 所属ライバー一覧",
-      "source_url": "https://www.nijisanji.jp/talents"
+      "primary": "#eeffff",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/fuyuki-hakase"
+    },
+    "葉山舞鈴": {
+      "primary": "#72d5ce",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/marin-hayama"
     },
     "葛葉": {
-      "primary": "#c2c1c1",
-      "secondary": "#393534",
-      "source": "derived-portrait",
-      "source_name": "にじさんじ公式サイト 所属ライバー一覧",
-      "source_url": "https://www.nijisanji.jp/talents"
+      "primary": "#aca7bb",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/kuzuha"
     },
     "虎金妃笑虎": {
       "primary": "#ff0100",
@@ -646,11 +1471,16 @@
       "penlight_color": "RED"
     },
     "蝸堂みかる": {
-      "primary": "#fcf9f8",
-      "secondary": "#a88f72",
-      "source": "derived-portrait",
-      "source_name": "にじさんじ公式サイト 所属ライバー一覧",
-      "source_url": "https://www.nijisanji.jp/talents"
+      "primary": "#ffe673",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/mikaru-kadou"
+    },
+    "西園チグサ": {
+      "primary": "#3a8fb7",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/chigusa-nishizono"
     },
     "角巻わため": {
       "primary": "#fff100",
@@ -659,12 +1489,30 @@
       "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
       "penlight_color": "YELLOW"
     },
+    "語部紡": {
+      "primary": "#07a4e3",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/tsumugu-kataribe"
+    },
     "赤井はあと": {
       "primary": "#ff0100",
       "source": "official-penlight",
       "source_name": "hololive 6th fes. Color Rise Harmony 公式ペンライトカラー",
       "source_url": "https://hololivesuperexpo2025.hololivepro.com/fes/cast",
       "penlight_color": "RED"
+    },
+    "赤城ウェン": {
+      "primary": "#ff8c9b",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/wen-akagi"
+    },
+    "赤羽葉子": {
+      "primary": "#ca636c",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/youko-akabane"
     },
     "輪堂千速": {
       "primary": "#56b1a0",
@@ -680,19 +1528,59 @@
       "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
       "penlight_color": "PURPLE"
     },
+    "轟京子": {
+      "primary": "#e76186",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/kyoko-todoroki"
+    },
+    "酒寄颯馬": {
+      "primary": "#ba6ea5",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/soma-sakayori"
+    },
     "鈴原るる": {
-      "primary": "#b78b91",
-      "secondary": "#733b66",
-      "source": "derived-portrait",
-      "source_name": "にじさんじ公式サイト 所属ライバー一覧",
-      "source_url": "https://www.nijisanji.jp/talents"
+      "primary": "#ffadbb",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/lulu-suzuhara"
     },
     "鈴木勝": {
-      "primary": "#dfdfdf",
-      "secondary": "#464748",
-      "source": "derived-portrait",
-      "source_name": "にじさんじ公式サイト 所属ライバー一覧",
-      "source_url": "https://www.nijisanji.jp/talents"
+      "primary": "#7b788a",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/masaru-suzuki"
+    },
+    "鏑木ろこ": {
+      "primary": "#198caa",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/roco-kaburaki"
+    },
+    "長尾景": {
+      "primary": "#625da1",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/kei-nagao"
+    },
+    "闇ノシュウ": {
+      "primary": "#a660a7",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/shu-yamino"
+    },
+    "雨森小夜": {
+      "primary": "#756f7d",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/sayo-amemori"
+    },
+    "雪城眞尋": {
+      "primary": "#b4e9ff",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/mahiro-yukishiro"
     },
     "雪花ラミィ": {
       "primary": "#8fccda",
@@ -701,12 +1589,17 @@
       "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
       "penlight_color": "LIGHT BLUE"
     },
+    "雲母たまこ": {
+      "primary": "#ffd264",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/tamako-kirara"
+    },
     "静凛": {
-      "primary": "#41425c",
-      "secondary": "#a760b6",
-      "source": "derived-portrait",
-      "source_name": "にじさんじ公式サイト 所属ライバー一覧",
-      "source_url": "https://www.nijisanji.jp/talents"
+      "primary": "#745399",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/rin-shizuka"
     },
     "音乃瀬奏": {
       "primary": "#fff100",
@@ -728,6 +1621,12 @@
       "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
       "penlight_color": "PINK"
     },
+    "風楽奏斗": {
+      "primary": "#f0f0f5",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/kanato-fura"
+    },
     "風真いろは": {
       "primary": "#56b1a0",
       "source": "official-penlight",
@@ -735,12 +1634,48 @@
       "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
       "penlight_color": "LIGHT GREEN"
     },
+    "飛鳥ひな": {
+      "primary": "#fad8dc",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/hina-asuka"
+    },
+    "魁星": {
+      "primary": "#0c6f72",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/kaisei"
+    },
+    "魔使マオ": {
+      "primary": "#c93965",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/mao-matsukai"
+    },
+    "魔界ノりりむ": {
+      "primary": "#ef6f94",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/makaino-ririmu"
+    },
+    "鷹宮リオン": {
+      "primary": "#cc3d7b",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/rion-takamiya"
+    },
     "鷹嶺ルイ": {
       "primary": "#ff0100",
       "source": "official-penlight",
       "source_name": "hololive 7th fes. Ridin' on Dreams 公式ペンライトカラー",
       "source_url": "https://hololivesuperexpo.hololivepro.com/2026/fes/cast/",
       "penlight_color": "RED"
+    },
+    "黒井しば": {
+      "primary": "#585c82",
+      "source": "official",
+      "source_name": "にじさんじ公式タレントプロフィール",
+      "source_url": "https://www.nijisanji.jp/talents/l/shiba-kuroi"
     }
   }
 }

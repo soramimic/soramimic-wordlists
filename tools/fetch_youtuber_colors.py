@@ -69,6 +69,7 @@ README = (
     "source=official は色をテキストで書いている公式サイト、"
     "official-penlight は公式ライブのペンライトカラー一覧画像、"
     "manual は人手で確認したもの)。"
+    "にじさんじの公式プロフィール色は tools/update_nijisanji.py が補完する。"
     "キャラクターイラストからの色抽出はしていない。primary/secondary は16進表記。"
     "詳細は docs/adr/00018-youtuber-images.md を参照。"
 )
@@ -409,7 +410,14 @@ def main() -> int:
     originals = {r["original"] for r in
                  csv.DictReader(CSV_PATH.open(encoding="utf-8"))}
 
+    # 公式名簿updaterが保存したプロフィール色は、このスクリプト単独の再生成でも
+    # 落とさない。名簿側が対象の追加・削除を管理する。
     colors: dict[str, dict] = {}
+    if OUT_PATH.exists():
+        existing = json.loads(OUT_PATH.read_text(encoding="utf-8")).get("colors", {})
+        colors.update({name: entry for name, entry in existing.items()
+                       if entry.get("source_name") ==
+                       "にじさんじ公式タレントプロフィール"})
     for src in SOURCES:
         html = fetch(src["url"], src["key"], args.refresh)
         found = src["parse"](html)
