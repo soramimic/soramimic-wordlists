@@ -61,6 +61,7 @@ jobs:
       - name: Test YouTuber channel and subscriber updaters
         run: >-
           python -m unittest
+          tools/test_enrich_youtuber_images.py
           tools/test_update_youtuber_subscribers.py
           tools/test_discover_youtuber_channels.py
 
