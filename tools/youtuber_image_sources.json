@@ -1,0 +1,89 @@
+{
+  "_readme": "Wikidata P18以外から見つけ、本人QIDとの対応・Commonsライセンス・実画像を目視確認したYouTuber写真。source_type=commons_structured_depictsはCommons Structured DataのP180、commons_person_categoryはWikidata P373の本人カテゴリを根拠にする。チャンネルアイコン、動画サムネイル、ロゴ、コスプレ、VTuberアバターは収録しない。",
+  "images": [
+    {
+      "original": "Mr.Beat",
+      "wikidata": "Q131521202",
+      "file": "Mr-beat.jpg",
+      "source_type": "commons_structured_depicts",
+      "reviewed": "2026-08-16"
+    },
+    {
+      "original": "SEIKIN",
+      "wikidata": "Q52717766",
+      "file": "HIKAKIN & SEIKIN U-FES. 2019 (cropped).jpg",
+      "source_type": "commons_person_category",
+      "reviewed": "2026-08-16"
+    },
+    {
+      "original": "ふくらP",
+      "wikidata": "Q97031291",
+      "file": "FukuraP 2023-03-12.jpg",
+      "source_type": "commons_structured_depicts",
+      "reviewed": "2026-08-16"
+    },
+    {
+      "original": "アイスポセイドン",
+      "wikidata": "Q47523868",
+      "file": "Ice Poseidon.jpg",
+      "source_type": "commons_structured_depicts",
+      "reviewed": "2026-08-16"
+    },
+    {
+      "original": "シバター",
+      "wikidata": "Q18817645",
+      "file": "Shibatar.jpg",
+      "source_type": "commons_structured_depicts",
+      "reviewed": "2026-08-16"
+    },
+    {
+      "original": "ジェマ・ルイーズ",
+      "wikidata": "Q64785889",
+      "file": "Gravure idol photographed on May 9, 2026IMG 0752.jpg",
+      "source_type": "commons_structured_depicts",
+      "reviewed": "2026-08-16"
+    },
+    {
+      "original": "大久保八億",
+      "wikidata": "Q140338137",
+      "file": "Hachioku Ōkubo 2026.jpg",
+      "source_type": "commons_person_category",
+      "reviewed": "2026-08-16"
+    },
+    {
+      "original": "東問",
+      "wikidata": "Q135486669",
+      "file": "Higashi Mon in 2026.jpg",
+      "source_type": "commons_structured_depicts",
+      "reviewed": "2026-08-16"
+    },
+    {
+      "original": "梶原岳人",
+      "wikidata": "Q45819909",
+      "file": "梶原岳人 20260613 京都.jpg",
+      "source_type": "commons_structured_depicts",
+      "reviewed": "2026-08-16"
+    },
+    {
+      "original": "狩野英孝",
+      "wikidata": "Q8977475",
+      "file": "狩野英孝 May 14, 2014 (14169919566) (cropped).jpg",
+      "source_type": "commons_person_category",
+      "reviewed": "2026-08-16"
+    },
+    {
+      "original": "雨穴",
+      "wikidata": "Q108558640",
+      "file": "Uketsu.jpg",
+      "source_type": "commons_structured_depicts",
+      "reviewed": "2026-08-16"
+    },
+    {
+      "original": "須貝駿貴",
+      "wikidata": "Q97496394",
+      "file": "須貝駿貴.png",
+      "source_type": "commons_structured_depicts",
+      "reviewed": "2026-08-16"
+    }
+  ]
+}

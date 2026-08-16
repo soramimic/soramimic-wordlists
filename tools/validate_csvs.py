@@ -42,6 +42,14 @@ IMAGE_URL_RE = re.compile(
     r"|^https://raw\.githubusercontent\.com/soramimic/soramimic-wordlists/"
     r"|^https://github\.com/soramimic/soramimic-wordlists/blob/"
 )
+YOUTUBER_CARD_IMAGE_PREFIX = (
+    "https://raw.githubusercontent.com/soramimic/soramimic-wordlists/"
+    "main/images/youtuber/"
+)
+YOUTUBER_CARD_PAGE_PREFIX = (
+    "https://github.com/soramimic/soramimic-wordlists/blob/"
+    "main/images/youtuber/"
+)
 # 読みにASCII英字が2文字以上続くのは、英名を読みに入れてしまった取り違え
 # (例: sekitsui の "Azara's night monkey")。利用側の読み解析がこの手の行で
 # 暴走するため、混入を止める。読みはカタカナのみが前提
@@ -100,10 +108,16 @@ def validate(path: Path):
     if path.name == "school.csv" and "has_school_suffix" not in idx:
         err(f"{path.name}: 必須列 has_school_suffix がない")
         return
+    if path.name == "youtuber.csv":
+        missing = [col for col in ("image", "image_page") if col not in idx]
+        if missing:
+            err(f"{path.name}: 必須列 {missing[0]} がない")
+            return
     img_cols = [c for c in ("image", "image_page") if c in idx]
     scientist_years = {}
     player_groups = {}
     youtuber_snapshots = {}
+    youtuber_images = {}
     for lineno, line in enumerate(lines[1:], start=2):
         f = line.split(",")
         if len(f) != ncol:
@@ -147,6 +161,32 @@ def validate(path: Path):
                     f"{f[idx['surface']]} / {actual}"
                 )
         if path.name == "youtuber.csv":
+            for col in ("image", "image_page"):
+                if not f[idx[col]]:
+                    err(f"{path.name}:{lineno}: {col} が空")
+            image = f[idx["image"]]
+            image_page = f[idx["image_page"]]
+            if image.startswith(YOUTUBER_CARD_IMAGE_PREFIX):
+                filename = image[len(YOUTUBER_CARD_IMAGE_PREFIX):]
+                expected_page = YOUTUBER_CARD_PAGE_PREFIX + filename
+                if image_page != expected_page:
+                    err(
+                        f"{path.name}:{lineno}: カードのimage/image_pageが不整合")
+                if not (ROOT / "images" / "youtuber" / filename).is_file():
+                    err(
+                        f"{path.name}:{lineno}: カードファイルが存在しない: "
+                        f"{filename}")
+            elif not image_page.startswith("https://commons.wikimedia.org/wiki/File:"):
+                err(
+                    f"{path.name}:{lineno}: 実写のimage_pageがCommonsでない: "
+                    f"{image_page[:60]}")
+            person_id = f[idx["id"]]
+            image_pair = (image, image_page)
+            if (person_id in youtuber_images
+                    and youtuber_images[person_id] != image_pair):
+                err(f"{path.name}:{lineno}: 同じidで画像が一致しない")
+            youtuber_images[person_id] = image_pair
+
             snapshot_cols = ("channel", "subscribers", "subscribers_as_of")
             missing = [col for col in snapshot_cols if col not in idx]
             if missing:
@@ -164,7 +204,6 @@ def validate(path: Path):
                     f"{path.name}:{lineno}: channel/subscribers/取得日が不整合: "
                     f"{' / '.join(snapshot)}"
                 )
-            person_id = f[idx["id"]]
             if (person_id in youtuber_snapshots
                     and youtuber_snapshots[person_id] != snapshot):
                 err(f"{path.name}:{lineno}: 同じidでチャンネル情報が一致しない")

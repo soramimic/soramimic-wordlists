@@ -22,6 +22,9 @@ YouTuber/VTuberの画像は他リストと権利事情が違う。**チャンネ
      `Cosplay ...`(衣装=第三者の意匠)は確実に落とす
 - 表記が必要なライセンスがあるので `image_page` も必ず入れる
   (soramimic-video 側が Commons の extmetadata からクレジットを焼き込む)
+- P18に無い画像は、本人QIDのStructured Data(P180)またはWikidata P373の
+  本人カテゴリから見つけ、実画像を目視確認したものだけを
+  `tools/youtuber_image_sources.json` に保存して補完する
 - WDQSはPOST。取得結果は `tools/.cache/` に逐次保存し、中断しても再開できる
 - 冪等。既存の image が空か、生成カード(gen_youtuber_cards.py 由来)の行だけ
   埋める。実写が既に入っている行は触らない
@@ -50,6 +53,7 @@ CACHE_DIR = Path(__file__).resolve().parent / ".cache"
 WD_CACHE = CACHE_DIR / "youtuber_wikidata.json"
 COMMONS_CACHE = CACHE_DIR / "youtuber_commons.json"
 COMMONS_API = "https://commons.wikimedia.org/w/api.php"
+CURATED_SOURCES = Path(__file__).resolve().parent / "youtuber_image_sources.json"
 
 # 書き出し列は実ファイルのヘッダーに追随する。この3列だけは無ければ末尾に足す
 OWN_COLS = ["image", "image_page", "wikidata"]
@@ -96,6 +100,39 @@ def load_json(path: Path) -> dict:
 def save_json(path: Path, data: dict) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
+
+
+def load_curated_sources(path: Path = CURATED_SOURCES) -> list[dict]:
+    """目視確認済みのP18以外のCommons画像台帳を読む。"""
+    if not path.exists():
+        return []
+    data = json.loads(path.read_text(encoding="utf-8"))
+    sources = data.get("images", [])
+    required = {"original", "wikidata", "file", "source_type", "reviewed"}
+    allowed_source_types = {
+        "commons_structured_depicts",
+        "commons_person_category",
+    }
+    seen_originals = set()
+    seen_qids = set()
+    for i, source in enumerate(sources, 1):
+        missing = sorted(required - set(source))
+        if missing:
+            raise SystemExit(
+                f"error: {path.name} images[{i}] に {missing[0]} がない")
+        if source["original"] in seen_originals:
+            raise SystemExit(
+                f"error: {path.name} で original が重複: {source['original']}")
+        if source["wikidata"] in seen_qids:
+            raise SystemExit(
+                f"error: {path.name} で wikidata が重複: {source['wikidata']}")
+        if source["source_type"] not in allowed_source_types:
+            raise SystemExit(
+                f"error: {path.name} images[{i}] のsource_typeが不正: "
+                f"{source['source_type']}")
+        seen_originals.add(source["original"])
+        seen_qids.add(source["wikidata"])
+    return sources
 
 
 def fetch_persons(occ: str, minus: str) -> list:
@@ -240,9 +277,23 @@ def main() -> int:
     print(f"CSVと照合: {len(by_original)}人"
           f"(QID重複で除外 {len(ambiguous)}人)", flush=True)
 
+    curated = load_curated_sources()
+    for source in curated:
+        recs = by_original.get(source["original"])
+        if not recs:
+            raise SystemExit(
+                f"error: curated imageの人物がCSV/Wikidata照合結果にない: "
+                f"{source['original']}")
+        qids = {r["qid"] for r in recs}
+        if qids != {source["wikidata"]}:
+            raise SystemExit(
+                f"error: curated imageのQIDが現在値と不一致: "
+                f"{source['original']} {source['wikidata']} / {sorted(qids)}")
+
     files = sorted({r["file"] for recs in by_original.values()
-                    for r in recs if r["file"]})
-    print(f"P18のCommonsファイル: {len(files)}件を検査", flush=True)
+                    for r in recs if r["file"]}
+                   | {r["file"] for r in curated})
+    print(f"Commonsファイル: {len(files)}件を検査", flush=True)
     meta = commons_meta(files, args.refresh) if files else {}
 
     photos: dict[str, tuple] = {}     # original -> (image, image_page)
@@ -261,12 +312,29 @@ def main() -> int:
             # カメラ由来の根拠がある方を優先し、同点はファイル名で決定的に選ぶ
             photos[o] = commons_urls(sorted(ok)[0][1])
 
+    # P18に無いが、本人QIDのStructured Data(P180)または本人のCommons
+    # カテゴリから見つかった画像。QID/カテゴリだけではロゴや別人も混ざりうるため、
+    # 台帳へは実画像を目視確認したものだけを入れる。現在のP18候補より後に適用し、
+    # 明示的に選んだ画像を優先する。
+    for source in curated:
+        rec = {
+            "human": True,
+            "file": source["file"],
+        }
+        why = reject_reason(rec, meta.get(source["file"]))
+        if why:
+            raise SystemExit(
+                f"error: curated imageが現在の安全基準を満たさない: "
+                f"{source['original']} ({why})")
+        photos[source["original"]] = commons_urls(source["file"])
+
     n_ok = {c: 0 for c, _, _ in SPECS}
     for o in photos:
         n_ok[by_original[o][0]["cat"]] += 1
     print(f"\n実写として採用: {len(photos)}人 "
           + ", ".join(f"{c} {n}" for c, n in n_ok.items()))
     print(f"P18はあるが不採用: {len(rejected)}件")
+    print(f"目視確認済みP18外画像: {len(curated)}人")
     reasons: dict[str, int] = {}
     for _cat, _o, _f, why in rejected:
         reasons[why] = reasons.get(why, 0) + 1
@@ -276,6 +344,7 @@ def main() -> int:
         for cat, o, f, why in sorted(rejected):
             print(f"  不採用 [{cat}] {o}: {f} ({why})")
 
+    curated_originals = {source["original"] for source in curated}
     filled = qid_filled = kept = 0
     for r in rows:
         o = r["original"]
@@ -286,7 +355,8 @@ def main() -> int:
         hit = photos.get(o)
         if not hit:
             continue
-        if r["image"] and not is_generated_card(r["image"]):
+        if (r["image"] and not is_generated_card(r["image"])
+                and o not in curated_originals):
             kept += 1          # 既に実写がある行は触らない(冪等)
             continue
         if r["image"] == hit[0]:
