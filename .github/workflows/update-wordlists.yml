@@ -79,11 +79,13 @@ jobs:
         continue-on-error: true
         run: python tools/update_municipality.py
 
-      - name: Update youtuber.csv (Wikidata/Wikipedia)
+      - name: Update youtuber.csv (Wikidata/Wikipedia/official rosters)
         id: youtuber
         continue-on-error: true
         run: |
           python tools/update_youtuber.py
+          # 個別記事のない現所属ライバーは、公式名簿・プロフィールから補完する。
+          python tools/update_nijisanji.py
           # 新規人物にも同じ更新内で必ず象徴カードを付け、画像100%を維持する。
           python tools/gen_youtuber_cards.py --prune
 
@@ -183,7 +185,14 @@ jobs:
           revert_if_failed plant_metadata "$O_PLANTMETA" plant.csv
           revert_if_failed insect "$O_INSECT" insect.csv
           revert_if_failed municipality "$O_MUNICIPALITY" municipality.csv
-          revert_if_failed youtuber "$O_YOUTUBER" youtuber.csv
+          revert_if_failed youtuber "$O_YOUTUBER" youtuber.csv \
+            tools/youtuber_colors.json tools/youtuber_channel_sources.jsonl \
+            images/youtuber
+          # カード生成が途中で失敗した場合の未追跡SVGも、この専用ディレクトリ
+          # に限って除く。既存ファイルは上のcheckoutで戻る。
+          if [ "$O_YOUTUBER" = "failure" ]; then
+            git clean -f -- images/youtuber
+          fi
           revert_if_failed myoji "$O_MYOJI" myoji.csv
           # CSVは全API取得と監査台帳生成の成功後に原子的に書く。失敗時は同じ回の
           # update_youtuberによる追記を守るためCSVを戻さず、先行して更新されうる
