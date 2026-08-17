@@ -247,15 +247,20 @@ Wikipedia由来の加工文はCC BY-SA 4.0で、同台帳から原記事への�
 | 列 | 意味 |
 |---|---|
 | verified | 実在人名リスト、Web NDL Authorities、Wikidataの人物姓、またはレビュー済み人物ページで同じ表記と読みを確認できたか(`yes`/`no`) |
-| rank | Wikidata上の著名人数による参考順位 |
+| rank | 取得済みのJpon 2000年版掲載地域における、名字別の暫定掲載単位順位 |
+| listing_units | 同じ名字・電話番号の掲載を1単位として重複除去した件数。電話番号欠損時は掲載行単位 |
+| strict_rows | 氏名の厳格判定を通過した元掲載行数 |
+| regions | その名字を観測した町域数 |
+| prefectures | その名字を観測した都道府県数 |
 | description | 名字や氏族の短い説明 |
 | wikidata | 集計に使った姓アイテムのQID |
 | evidence_sources | 読みの裏付け。`person_lists` / `ndl` / `wikidata_person` / `official_web` / `web_person` / `jmnedict`を`|`区切りで格納 |
 
 同じ漢字表記に複数の読みがある場合も同じ `id` を使う。`verified=no` は誤りを
 意味せず、実在人物で確認できていないことだけを表す。`jmnedict` は辞書収録の
-裏付けなので、それ単独では `verified=yes` にしない。詳細は
-[ADR 00038](adr/00038-myoji-wordlist.md)と
+裏付けなので、それ単独では `verified=yes` にしない。件数と `rank` は収集途中の地域だけを
+母集団とするため、全国人口順位や世帯数順位ではなく、収集の進行に応じて変動する。詳細は
+[ADR 00062](adr/00062-jpon-myoji-replacement.md)と
 [ADR 00050](adr/00050-myoji-evidence-sources.md)、
 [ADR 00051](adr/00051-myoji-person-evidence.md)と
 [ADR 00053](adr/00053-myoji-general-web-research.md)。

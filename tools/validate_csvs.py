@@ -130,12 +130,28 @@ def validate(path: Path):
         if missing:
             err(f"{path.name}: 必須列 {missing[0]} がない")
             return
+    if path.name == "myoji.csv":
+        missing = [
+            col for col in (
+                "verified", "rank", "listing_units", "strict_rows",
+                "regions", "prefectures", "evidence_sources",
+            )
+            if col not in idx
+        ]
+        if missing:
+            err(f"{path.name}: 必須列 {missing[0]} がない")
+            return
     img_cols = [c for c in ("image", "image_page") if c in idx]
     scientist_years = {}
     player_groups = {}
     youtuber_snapshots = {}
     youtuber_images = {}
     youtuber_fan_seen = set()
+    myoji_ranks = {}
+    myoji_counts = {}
+    myoji_order = []
+    myoji_seen_surfaces = set()
+    previous_myoji_rank = 0
     for lineno, line in enumerate(lines[1:], start=2):
         f = line.split(",")
         if len(f) != ncol:
@@ -272,9 +288,41 @@ def validate(path: Path):
                 err(f"{path.name}:{lineno}: 同じidでチャンネル情報が一致しない")
             youtuber_snapshots[person_id] = snapshot
         if path.name == "myoji.csv":
-            if "evidence_sources" not in idx:
-                err(f"{path.name}: 必須列 evidence_sources がない")
-                return
+            surface = f[idx["surface"]]
+            count_names = ("listing_units", "strict_rows", "regions", "prefectures")
+            count_values = {}
+            for name in count_names:
+                value = f[idx[name]]
+                if not value.isdigit() or int(value) < 1:
+                    err(f"{path.name}:{lineno}: {name} が正の整数でない: {value}")
+                else:
+                    count_values[name] = int(value)
+            if len(count_values) == len(count_names):
+                if count_values["listing_units"] > count_values["strict_rows"]:
+                    err(f"{path.name}:{lineno}: listing_units が strict_rows より多い")
+                if count_values["prefectures"] > count_values["regions"]:
+                    err(f"{path.name}:{lineno}: prefectures が regions より多い")
+                counts = tuple(f[idx[name]] for name in count_names)
+                if surface in myoji_counts and myoji_counts[surface] != counts:
+                    err(f"{path.name}:{lineno}: 同じ名字で件数が一致しない: {surface}")
+                myoji_counts[surface] = counts
+            rank = f[idx["rank"]]
+            if not rank.isdigit() or int(rank) < 1:
+                err(f"{path.name}:{lineno}: rank が正の整数でない: {rank}")
+            else:
+                numeric_rank = int(rank)
+                if numeric_rank < previous_myoji_rank:
+                    err(f"{path.name}:{lineno}: rank が昇順でない: {rank}")
+                previous_myoji_rank = numeric_rank
+                original = f[idx["original"]]
+                if original in myoji_ranks and myoji_ranks[original] != rank:
+                    err(f"{path.name}:{lineno}: 同じ名字でrankが一致しない: {original}")
+                myoji_ranks[original] = rank
+                if surface not in myoji_seen_surfaces and "listing_units" in count_values:
+                    myoji_order.append(
+                        (lineno, surface, numeric_rank, count_values["listing_units"])
+                    )
+                    myoji_seen_surfaces.add(surface)
             sources = [s for s in f[idx["evidence_sources"]].split("|") if s]
             if any(s not in MYOJI_EVIDENCE for s in sources):
                 err(
@@ -337,6 +385,20 @@ def validate(path: Path):
             extra = sorted(youtuber_fan_seen - expected)
             detail = f"未適用={missing} 余分={extra}"
             err(f"{path.name}: ファンメイド画像台帳の適用が不完全: {detail}")
+    if path.name == "myoji.csv":
+        previous_count = None
+        expected_rank = 0
+        for position, (lineno, surface, rank, count) in enumerate(myoji_order, 1):
+            if previous_count is not None and count > previous_count:
+                err(f"{path.name}:{lineno}: listing_units が降順でない: {surface}")
+            if count != previous_count:
+                expected_rank = position
+                previous_count = count
+            if rank != expected_rank:
+                err(
+                    f"{path.name}:{lineno}: rank が件数の競争順位でない: "
+                    f"{surface} ({rank}, 期待 {expected_rank})"
+                )
     if player_groups:
         for group_rows in player_groups.values():
             descriptions = {fields[idx["description"]] for _, fields in group_rows}

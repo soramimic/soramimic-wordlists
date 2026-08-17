@@ -1,7 +1,8 @@
 # ADR 00055: 電話帳由来の名字順位を採用しない
 
-- Status: rejected
+- Status: superseded
 - Date: 2026-08-15
+- Superseded by: 00062-jpon-myoji-replacement.md
 - Related: 00038 / 00054
 
 ## Decision

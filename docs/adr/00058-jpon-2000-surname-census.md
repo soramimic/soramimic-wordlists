@@ -1,7 +1,8 @@
 # ADR 00058: 認証を要する電話帳由来データを採用しない
 
-- Status: rejected
+- Status: superseded
 - Date: 2026-08-15
+- Superseded by: 00062-jpon-myoji-replacement.md
 - Related: 00038 / 00054 / 00055
 
 ## Decision
