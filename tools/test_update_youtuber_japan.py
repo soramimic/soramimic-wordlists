@@ -18,30 +18,52 @@ COLUMNS = [
 ]
 
 
-def person(name="人物", qid="NA", channel_id=None, title="人物チャンネル"):
+def person(name="人物", qid="NA", channel_id=None, title="人物チャンネル",
+           shared=False, org="NA"):
     channel_id = channel_id or ("UC" + "a" * 22)
     return {
         "original": name,
         "pronunciation": "ジンブツ",
         "debut_year": "2020",
-        "org": "NA",
+        "org": org,
         "description": "動画を発信するYouTuber。",
         "qid": qid,
         "source_url": "https://example.com/person",
         "channel_id": channel_id,
         "channel_title": title,
         "channel_url": f"https://www.youtube.com/channel/{channel_id}",
+        "channel_shared": shared,
     }
 
 
 class UpdateYoutuberJapanTest(unittest.TestCase):
     def test_reviewed_registry_is_valid_and_contains_initial_people(self):
         people = target.load_people()
+        names = {item["original"] for item in people}
 
-        self.assertEqual(
-            [item["original"] for item in people],
-            ["ヒカル", "きまぐれクック", "カジサック", "ポッキー", "瀬戸弘司"],
-        )
+        self.assertEqual(len(people), 28)
+        self.assertTrue({
+            "ヒカル", "シルクロード", "カンタ", "テオくん", "☆イニ☆",
+            "河村拓哉", "鶴崎修功", "山本祥彰", "やまと", "ひゅうが", "ゆうま",
+        }.issubset(names))
+        self.assertTrue({"フィッシャーズ", "水溜りボンド", "スカイピース",
+                         "QuizKnock", "コムドット"}.isdisjoint(names))
+
+    def test_requested_group_members_are_present_as_people(self):
+        with target.CSV_PATH.open(encoding="utf-8", newline="") as handle:
+            originals = {
+                row["original"] for row in csv.DictReader(handle)
+                if row["type"] == "full"
+            }
+        expected = {
+            "てつや", "りょう", "しばゆー", "としみつ", "ゆめまる", "虫眼鏡",
+            "シルクロード", "マサイ", "モトキ", "ザカオ", "ダーマ", "ンダホ",
+            "カンタ", "トミー", "テオくん", "☆イニ☆", "伊沢拓司", "河村拓哉",
+            "ふくらP", "鶴崎修功", "須貝駿貴", "山本祥彰", "東問", "東言",
+            "やまと", "ゆうた", "ひゅうが", "ゆうま", "あむぎり",
+        }
+
+        self.assertTrue(expected.issubset(originals))
 
     def test_adds_person_activity_name_and_japan_scope(self):
         rows, sources, added, ids = target.apply_people(
@@ -57,6 +79,23 @@ class UpdateYoutuberJapanTest(unittest.TestCase):
         self.assertEqual(sources[0]["person_id"], "0")
         self.assertEqual(sources[0]["source_type"], "reviewed_person_roster")
 
+    def test_shared_channel_discovers_people_but_is_not_a_subscriber_source(self):
+        channel_id = "UC" + "s" * 22
+        people = [
+            person(name="甲", channel_id=channel_id, title="共有チャンネル",
+                   shared=True, org="グループ"),
+            person(name="乙", channel_id=channel_id, title="共有チャンネル",
+                   shared=True, org="グループ"),
+        ]
+
+        rows, sources, added, ids = target.apply_people(
+            [], COLUMNS, people, [], "2026-08-17")
+
+        self.assertEqual(added, 2)
+        self.assertEqual(set(ids), {"甲", "乙"})
+        self.assertEqual({row["channel"] for row in rows}, {"共有チャンネル"})
+        self.assertEqual(sources, [])
+
     def test_is_idempotent_and_preserves_existing_spelling_and_reading(self):
         existing = {column: "" for column in COLUMNS}
         existing.update({
@@ -64,6 +103,7 @@ class UpdateYoutuberJapanTest(unittest.TestCase):
             "pronunciation": "レビューズミノヨミ", "type": "full",
             "category": "youtuber", "wikidata": "NA",
             "channel": "手修正済みチャンネル",
+            "scope": "unknown",
         })
         first_rows, first_sources, first_added, _ = target.apply_people(
             [existing], COLUMNS, [person()], [], "2026-08-17")
@@ -77,6 +117,9 @@ class UpdateYoutuberJapanTest(unittest.TestCase):
         self.assertEqual(second_rows[0]["surface"], "人ぶつ")
         self.assertEqual(second_rows[0]["pronunciation"], "レビューズミノヨミ")
         self.assertEqual(second_rows[0]["channel"], "手修正済みチャンネル")
+        self.assertEqual(second_rows[0]["debut_year"], "2020")
+        self.assertEqual(second_rows[0]["description"], "動画を発信するYouTuber。")
+        self.assertEqual(second_rows[0]["scope"], "japan")
 
     def test_existing_qid_is_used_for_new_channel_evidence(self):
         existing = {column: "" for column in COLUMNS}

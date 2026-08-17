@@ -37,7 +37,8 @@ GLOBAL_CHANNEL_MARKERS = (
 )
 JAPAN_ORG_MARKERS = (
     "にじさんじ", "ホロライブ", "hololive DEV_IS", "あおぎり高校",
-    "ぶいすぽっ!", ".LIVE", "ななしいんく", "V.W.P",
+    "ぶいすぽっ!", ".LIVE", "ななしいんく", "V.W.P", "フィッシャーズ",
+    "東海オンエア", "水溜りボンド", "スカイピース", "QuizKnock", "コムドット",
 )
 
 
