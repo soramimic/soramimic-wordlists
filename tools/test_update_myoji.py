@@ -456,5 +456,11 @@ class WebEvidenceTest(unittest.TestCase):
                 m.load_web_evidence(path)
 
 
+class MainGuardTest(unittest.TestCase):
+    def test_full_rebuild_requires_explicit_flag(self):
+        with self.assertRaises(SystemExit):
+            m.main([])
+
+
 if __name__ == "__main__":
     unittest.main()

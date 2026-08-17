@@ -1,7 +1,8 @@
 # ADR 00038: myoji.csv の公開仕様
 
-- Status: accepted
+- Status: superseded
 - Date: 2026-01-30
+- Superseded by: 00062-jpon-myoji-replacement.md
 - Related: 00001 / 00014 / 00050 / 00051 / 00052 / 00053 / 00054
 
 ## Decision

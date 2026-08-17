@@ -1,7 +1,8 @@
 # ADR 00054: 名字の確認状態と順位
 
-- Status: accepted
+- Status: superseded
 - Date: 2026-08-14
+- Superseded by: 00062-jpon-myoji-replacement.md
 - Related: 00038 / 00050 / 00051 / 00052 / 00053
 
 ## Decision

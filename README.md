@@ -35,7 +35,7 @@
 | fictional_anime_character.csv | AI生成の架空アニメ登場人物 | jiroshimaya/fictional-scientists |
 | fictional_daily_anime_character.csv | AI生成の架空日常アニメ登場人物 | jiroshimaya/fictional-scientists |
 | ryuko.csv | 平安〜令和の流行 | Wikipedia等を参照したキュレーション |
-| myoji.csv | 名字と読み | [SudachiDict](https://github.com/WorksApplications/SudachiDict)、[Web NDL Authorities](https://id.ndl.go.jp/auth/ndla/Web)、[JMnedict](https://www.edrdg.org/enamdict/enamdict_doc.html)、Wikidata、Wikipedia、公式人物ページの確認台帳 |
+| myoji.csv | 名字と読み | [Jpon 2000年版](https://jpon.xyz/2000/index.html)の名字単位集計、[SudachiDict](https://github.com/WorksApplications/SudachiDict)、[Web NDL Authorities](https://id.ndl.go.jp/auth/ndla/Web)、[JMnedict](https://www.edrdg.org/enamdict/enamdict_doc.html)、Wikidata、Wikipedia、公式人物ページの確認台帳 |
 | gimukyoiku.csv | 小中高の学習語 | 本リポジトリでのキュレーション、[教科書LOD](https://jp-textbook.github.io/)、Wikimedia Commons |
 | municipality.csv | 現存・廃止自治体 | 総務省、[e-Stat](https://www.e-stat.go.jp/)、Wikidata、Wikipedia、Wikimedia Commons |
 | school.csv | 幼稚園〜大学等の学校名 | 文部科学省、総務省、Wikidata、Wikipedia、Wikimedia Commons |
@@ -45,6 +45,8 @@
 - 本リポジトリは非公式のファンメイド・データ集であり、各作品・団体・人物とは無関係です
 - テキストや画像は、再利用可能な条件で提供された素材または本リポジトリで作成した素材から構成するよう努めていますが、利用にあたっては各リストの出典欄と `image_page` に記載されたライセンスを確認し、利用者自身の責任で判断してください
 - 実在人物を扱うデータの利用にあたっては、肖像権やパブリシティ権等に配慮してください
+- `myoji.csv` の収録対象、掲載件数、観測地域数、`rank` はJpon 2000年版から名字単位に集計しています。
+  個人の氏名、電話番号、住所およびそれらのハッシュ値は収録していません。
 - `myoji.csv` の `evidence_sources=jmnedict` に該当する情報は、Electronic Dictionary
   Research and Development Group のJMnedict/ENAMDICTに基づき、
   [CC BY-SA 4.0](https://www.edrdg.org/edrdg/licence.html)の条件で利用しています。

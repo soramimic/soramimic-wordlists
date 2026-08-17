@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
-"""公開出典から myoji.csv を更新する。
+"""公開出典による名字読みの根拠更新と、旧母集団の明示的な再構築。
 
-列の意味と出典・ライセンスは docs/wordlists.md、docs/adr/00038、
-README.md を参照する。既存の固定IDと確認済み情報を保護し、rankだけを
-同じ基準時点で再計算する。
+通常の ``myoji.csv`` はADR 00062の集計スナップショットで更新する。このツールの
+全面再構築は母集団とrankを旧方式へ戻すため、明示フラグなしでは実行しない。
 """
 
 import argparse
@@ -1091,10 +1090,20 @@ def main(argv=None) -> int:
         action="store_true",
         help="既存CSVにレビュー済みWeb人物台帳だけを適用する",
     )
+    parser.add_argument(
+        "--replace-with-public-lexicon",
+        action="store_true",
+        help="Jpon母集団を破棄し、公開辞書由来の旧方式で全面再構築する",
+    )
     args = parser.parse_args(argv)
     if args.evidence_only:
         apply_web_evidence_only()
         return 0
+    if not args.replace_with_public_lexicon:
+        parser.error(
+            "全面再構築には --replace-with-public-lexicon が必要です。"
+            "通常のmyoji.csv更新にはADR 00062の集計スナップショットを使用してください"
+        )
     surnames = fetch_surnames()
     print("実在人名リストから読みの裏付けを収集中...", flush=True)
     person_pairs = fetch_verified_pairs()
