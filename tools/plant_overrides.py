@@ -19,6 +19,14 @@ MANUAL_TAXA = {
         "genus": "Planchonella",
         "evidence": "Wikidata Q15319651; GBIF accepted taxon 5334075; 環境省RDB第5次",
     },
+    "ユズ": {
+        "wikidata": "Q867776",
+        "scientific_name": "Citrus × junos",
+        "family": "ミカン科",
+        "family_wikidata": "Q146030",
+        "genus": "ミカン属",
+        "evidence": "Wikidata Q867776; GBIF accepted taxon 3831766",
+    },
 }
 
 # P18 だが実写ではないことを確認済みのファイル。QID全体を拒否せずファイル単位に
