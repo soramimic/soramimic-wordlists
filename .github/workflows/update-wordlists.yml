@@ -88,6 +88,8 @@ jobs:
           python tools/update_nijisanji.py
           # 新規人物にも同じ更新内で必ず象徴カードを付け、画像100%を維持する。
           python tools/gen_youtuber_cards.py --prune
+          # 目視確認済みの非営利ファンメイド画像だけを象徴カードへ上書きする。
+          python tools/apply_youtuber_permitted_images.py
 
       # 名字。SudachiDict の辞書ソース(S3・約70MB)を落として姓エントリを取り、
       # NDL・Wikidata人物姓・公式ページ台帳・JMnedictで読みの裏付けを補い、rank は

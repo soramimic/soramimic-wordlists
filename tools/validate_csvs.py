@@ -22,6 +22,10 @@ from collections import Counter
 from pathlib import Path
 
 from update_school import has_school_suffix
+from apply_youtuber_permitted_images import (
+    IMAGE_PREFIX as YOUTUBER_FAN_IMAGE_PREFIX,
+    load_manifest as load_youtuber_fan_manifest,
+)
 from wpnames import (
     PLAYER_DISAMBIGUATION_DESCRIPTION,
     has_redundant_player_subject,
@@ -50,6 +54,13 @@ YOUTUBER_CARD_PAGE_PREFIX = (
     "https://github.com/soramimic/soramimic-wordlists/blob/"
     "main/images/youtuber/"
 )
+YOUTUBER_FAN_IMAGES = {
+    YOUTUBER_FAN_IMAGE_PREFIX + record["file"]: record
+    for record in load_youtuber_fan_manifest().values()
+}
+YOUTUBER_FAN_SOURCE_PAGES = {
+    record["source_page"] for record in YOUTUBER_FAN_IMAGES.values()
+}
 # 読みにASCII英字が2文字以上続くのは、英名を読みに入れてしまった取り違え
 # (例: sekitsui の "Azara's night monkey")。利用側の読み解析がこの手の行で
 # 暴走するため、混入を止める。読みはカタカナのみが前提
@@ -109,7 +120,13 @@ def validate(path: Path):
         err(f"{path.name}: 必須列 has_school_suffix がない")
         return
     if path.name == "youtuber.csv":
-        missing = [col for col in ("image", "image_page") if col not in idx]
+        missing = [
+            col for col in (
+                "image", "image_page", "image_credit", "image_usage",
+                "image_terms_page",
+            )
+            if col not in idx
+        ]
         if missing:
             err(f"{path.name}: 必須列 {missing[0]} がない")
             return
@@ -118,6 +135,7 @@ def validate(path: Path):
     player_groups = {}
     youtuber_snapshots = {}
     youtuber_images = {}
+    youtuber_fan_seen = set()
     for lineno, line in enumerate(lines[1:], start=2):
         f = line.split(",")
         if len(f) != ncol:
@@ -129,7 +147,13 @@ def validate(path: Path):
         for col in img_cols:
             v = f[idx[col]]
             if v and not IMAGE_URL_RE.match(v):
-                err(f"{path.name}:{lineno}: {col} が不正なURL: {v[:60]}")
+                is_reviewed_youtuber_source = (
+                    path.name == "youtuber.csv"
+                    and col == "image_page"
+                    and v in YOUTUBER_FAN_SOURCE_PAGES
+                )
+                if not is_reviewed_youtuber_source:
+                    err(f"{path.name}:{lineno}: {col} が不正なURL: {v[:60]}")
         if "pronunciation" in idx:
             v = f[idx["pronunciation"]]
             if PRON_ASCII_RE.search(v):
@@ -166,6 +190,9 @@ def validate(path: Path):
                     err(f"{path.name}:{lineno}: {col} が空")
             image = f[idx["image"]]
             image_page = f[idx["image_page"]]
+            image_credit = f[idx["image_credit"]]
+            image_usage = f[idx["image_usage"]]
+            image_terms_page = f[idx["image_terms_page"]]
             if image.startswith(YOUTUBER_CARD_IMAGE_PREFIX):
                 filename = image[len(YOUTUBER_CARD_IMAGE_PREFIX):]
                 expected_page = YOUTUBER_CARD_PAGE_PREFIX + filename
@@ -176,12 +203,48 @@ def validate(path: Path):
                     err(
                         f"{path.name}:{lineno}: カードファイルが存在しない: "
                         f"{filename}")
+                if image_credit:
+                    err(f"{path.name}:{lineno}: 象徴カードにimage_creditがある")
+                if image_usage or image_terms_page:
+                    err(f"{path.name}:{lineno}: 象徴カードに利用条件がある")
+            elif image.startswith(YOUTUBER_FAN_IMAGE_PREFIX):
+                record = YOUTUBER_FAN_IMAGES.get(image)
+                if not record:
+                    err(f"{path.name}:{lineno}: 台帳にないファンメイド画像")
+                else:
+                    if image_page != record["source_page"]:
+                        err(
+                            f"{path.name}:{lineno}: ファンメイド画像の"
+                            "image_pageが台帳と不一致")
+                    if image_credit != record["credit"]:
+                        err(
+                            f"{path.name}:{lineno}: ファンメイド画像の"
+                            "image_creditが台帳と不一致")
+                    if image_usage != "noncommercial_fanwork":
+                        err(
+                            f"{path.name}:{lineno}: ファンメイド画像の"
+                            "image_usageが不正")
+                    if image_terms_page != record["guideline_url"]:
+                        err(
+                            f"{path.name}:{lineno}: ファンメイド画像の"
+                            "image_terms_pageが台帳と不一致")
+                    if f[idx["original"]] != record["original"]:
+                        err(
+                            f"{path.name}:{lineno}: ファンメイド画像の"
+                            "人物が台帳と不一致")
+                    youtuber_fan_seen.add(record["original"])
             elif not image_page.startswith("https://commons.wikimedia.org/wiki/File:"):
                 err(
                     f"{path.name}:{lineno}: 実写のimage_pageがCommonsでない: "
                     f"{image_page[:60]}")
+            elif image_credit:
+                err(f"{path.name}:{lineno}: Commons画像にimage_creditがある")
+            elif image_usage or image_terms_page:
+                err(f"{path.name}:{lineno}: Commons画像に利用条件がある")
             person_id = f[idx["id"]]
-            image_pair = (image, image_page)
+            image_pair = (
+                image, image_page, image_credit, image_usage, image_terms_page,
+            )
             if (person_id in youtuber_images
                     and youtuber_images[person_id] != image_pair):
                 err(f"{path.name}:{lineno}: 同じidで画像が一致しない")
@@ -267,6 +330,13 @@ def validate(path: Path):
             if person_id in scientist_years and scientist_years[person_id] != years:
                 err(f"{path.name}:{lineno}: 同じidで生没年が一致しない")
             scientist_years[person_id] = years
+    if path.name == "youtuber.csv":
+        expected = {record["original"] for record in YOUTUBER_FAN_IMAGES.values()}
+        if youtuber_fan_seen != expected:
+            missing = sorted(expected - youtuber_fan_seen)
+            extra = sorted(youtuber_fan_seen - expected)
+            detail = f"未適用={missing} 余分={extra}"
+            err(f"{path.name}: ファンメイド画像台帳の適用が不完全: {detail}")
     if player_groups:
         for group_rows in player_groups.values():
             descriptions = {fields[idx["description"]] for _, fields in group_rows}
