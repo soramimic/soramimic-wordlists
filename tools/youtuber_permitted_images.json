@@ -1,5 +1,4 @@
 {
-  "active": false,
   "_readme": "公式の二次創作ガイドラインに基づき非営利用途向けに制作・目視確認したVTuberファンメイド画像。公式公開立ち絵を背景・構図・配色・非公式表示と組み合わせた二次的創作物であり、公式素材そのものの再配布ではない。利用時はcreditを表示し、source_pageとguideline_urlの現行条件を確認する。ホロライブは別作業のため含めない。",
   "images": [
     {
@@ -169,6 +168,7 @@
     },
     {
       "original": "龍ヶ崎リン",
+      "active": false,
       "file": "yt_fan_4a6b9e3aaa.png",
       "asset_url": "https://static.wixstatic.com/media/bb5a6d_e40cec1d7a7c4dac9a0e71105bd5d7a1~mv2.png/v1/fill/w_4093,h_6000,al_c/rene_new.png",
       "source_page": "https://www.774.ai/talent/rene-ryugasaki",
