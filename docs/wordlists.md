@@ -186,7 +186,7 @@ Wikipedia由来の加工文はCC BY-SA 4.0で、同台帳から原記事への�
 | subscribers | YouTubeが公開する有効数字3桁の概数 |
 | subscribers_as_of | `subscribers` の取得日(UTC、`YYYY-MM-DD`)。取得できない場合は `NA` |
 | description | 活動内容の短い説明 |
-| image, image_page | Commonsの実写、公式プロフィール立ち絵、レビュー済み非営利ファンメイド画像、または象徴カード |
+| image, image_page | Commonsの実写、公式プロフィール立ち絵、または象徴カード |
 | image_credit | 非Commons画像で動画に表示する権利者表記。不要な場合は空欄 |
 | image_usage | `noncommercial_fanwork` は非営利ファン活動でのみ利用可能。その他は空欄 |
 | image_terms_page | `image_usage` の条件を定める公式ガイドライン |
@@ -198,7 +198,7 @@ Wikipedia由来の加工文はCC BY-SA 4.0で、同台帳から原記事への�
 を参照。
 
 人物名には活動名を採用する。VTuberの象徴カードは配色、頭文字、職業アイコンで
-構成する。レビュー済みファンメイド画像は非営利用途に限り、`image_credit` の表示と
+構成する。制限付き公式画像は非営利用途に限り、`image_credit` の表示と
 `image_page`・`image_terms_page` の確認が必要である。利用側は明示的な非営利モード
 でのみ `image_usage=noncommercial_fanwork` を受け入れる。詳細は
 [ADR 00029](adr/00029-youtuber-channel-description-columns.md)、

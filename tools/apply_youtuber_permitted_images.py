@@ -51,6 +51,7 @@ def sha256(path: Path) -> str:
 
 def load_manifest(path: Path = MANIFEST_PATH) -> dict[str, dict]:
     data = json.loads(path.read_text(encoding="utf-8"))
+    active = data.get("active", True) is True
     records = data.get("images", [])
     required = {
         "original", "file", "asset_url", "source_page", "guideline_url",
@@ -118,7 +119,7 @@ def load_manifest(path: Path = MANIFEST_PATH) -> dict[str, dict]:
             raise SystemExit(
                 "error: youtuber_fan画像と台帳が不一致: "
                 f"不足={sorted(filenames - actual)} 孤立={sorted(actual - filenames)}")
-    return result
+    return result if active else {}
 
 
 def apply(csv_path: Path = CSV_PATH, manifest_path: Path = MANIFEST_PATH) -> tuple[int, int]:
