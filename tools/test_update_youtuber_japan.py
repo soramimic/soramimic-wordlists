@@ -75,6 +75,7 @@ class UpdateYoutuberJapanTest(unittest.TestCase):
         self.assertEqual(rows[0]["surface"], "人物")
         self.assertNotIn("チャンネル", rows[0]["surface"])
         self.assertEqual(rows[0]["channel"], "発見用チャンネル名")
+        self.assertEqual(rows[0]["channel_shared"], "no")
         self.assertEqual(rows[0]["scope"], "japan")
         self.assertEqual(sources[0]["person_id"], "0")
         self.assertEqual(sources[0]["source_type"], "reviewed_person_roster")
@@ -94,7 +95,134 @@ class UpdateYoutuberJapanTest(unittest.TestCase):
         self.assertEqual(added, 2)
         self.assertEqual(set(ids), {"甲", "乙"})
         self.assertEqual({row["channel"] for row in rows}, {"共有チャンネル"})
-        self.assertEqual(sources, [])
+        self.assertEqual({row["channel_shared"] for row in rows}, {"yes"})
+        self.assertEqual(len(sources), 2)
+        self.assertEqual(
+            {record["decision"] for record in sources},
+            {"verified_shared_group_channel"})
+        self.assertEqual(
+            {record["person_id"] for record in sources}, set(ids.values()))
+
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "sources.jsonl"
+            target.write_jsonl(path, sources)
+            with mock.patch.object(subscribers, "SOURCE_PATH", path):
+                got = subscribers.load_verified_channel_sources(
+                    {pid: "NA" for pid in ids.values()},
+                    {pid: name for name, pid in ids.items()})
+
+        self.assertEqual(got, {})
+
+    def test_shared_channel_provenance_is_idempotent_and_validated(self):
+        shared = person(shared=True)
+        first_rows, first_sources, _added, _ids = target.apply_people(
+            [], COLUMNS, [shared], [], "2026-08-17")
+        second_rows, second_sources, added, _ids = target.apply_people(
+            first_rows, COLUMNS, [shared], first_sources, "2026-08-18")
+
+        self.assertEqual(added, 0)
+        self.assertEqual(second_rows, first_rows)
+        self.assertEqual(second_sources, first_sources)
+
+        wrong_decision = [dict(first_sources[0], decision="unknown")]
+        with self.assertRaisesRegex(target.RosterConflict, "decision"):
+            target.apply_people(
+                first_rows, COLUMNS, [shared], wrong_decision, "2026-08-18")
+
+        with self.assertRaisesRegex(target.RosterConflict, "根拠が重複"):
+            target.apply_people(
+                first_rows, COLUMNS, [shared], first_sources * 2,
+                "2026-08-18")
+
+    def test_migrates_matching_legacy_shared_roster_provenance_only(self):
+        shared = person(shared=True)
+        rows, sources, _added, _ids = target.apply_people(
+            [], COLUMNS, [shared], [], "2026-08-17")
+        legacy = [dict(sources[0], decision="verified")]
+
+        migrated_rows, migrated, added, _ids = target.apply_people(
+            rows, COLUMNS, [shared], legacy, "2026-08-18")
+
+        self.assertEqual(added, 0)
+        self.assertEqual(migrated_rows, rows)
+        self.assertEqual(
+            migrated[0]["decision"], "verified_shared_group_channel")
+        self.assertEqual(legacy[0]["decision"], "verified")
+        _rows, rerun, _added, _ids = target.apply_people(
+            migrated_rows, COLUMNS, [shared], migrated, "2026-08-19")
+        self.assertEqual(rerun, migrated)
+
+        older_source = [dict(
+            legacy[0], source_type="jawiki_external_link")]
+        _rows, migrated_older_source, _added, _ids = target.apply_people(
+            rows, COLUMNS, [shared], older_source, "2026-08-18")
+        self.assertEqual(
+            migrated_older_source[0]["decision"],
+            "verified_shared_group_channel")
+
+        unrelated = [dict(legacy[0], decision="deferred_ambiguous")]
+        with self.assertRaisesRegex(target.RosterConflict, "decision"):
+            target.apply_people(
+                rows, COLUMNS, [shared], unrelated, "2026-08-18")
+
+    def test_channel_shared_marks_unreviewed_and_duplicate_person_rows(self):
+        unreviewed = {column: "" for column in COLUMNS}
+        unreviewed.update({
+            "id": "1", "original": "台帳外", "category": "youtuber",
+            "wikidata": "NA",
+        })
+        reviewed_rows = []
+        for surface in ("人物", "人物別表記"):
+            row = {column: "" for column in COLUMNS}
+            row.update({
+                "id": "2", "original": "人物", "surface": surface,
+                "category": "youtuber", "wikidata": "NA",
+            })
+            reviewed_rows.append(row)
+
+        rows, _sources, added, _ids = target.apply_people(
+            [unreviewed, *reviewed_rows], COLUMNS, [person(shared=True)],
+            [], "2026-08-17")
+
+        self.assertEqual(added, 0)
+        self.assertEqual(rows[0]["channel_shared"], "NA")
+        self.assertEqual(
+            [row["channel_shared"] for row in rows if row["id"] == "2"],
+            ["yes", "yes"])
+
+    def test_channel_shared_preserves_reviewed_state_outside_roster(self):
+        existing = {column: "" for column in COLUMNS}
+        existing.update({
+            "id": "1", "original": "台帳外", "category": "youtuber",
+            "wikidata": "NA", "channel": "共有チャンネル",
+            "channel_shared": "yes",
+        })
+
+        rows, _sources, added, _ids = target.apply_people(
+            [existing], [*COLUMNS, "channel_shared"], [], [], "2026-08-17")
+
+        self.assertEqual(added, 0)
+        self.assertEqual(rows[0]["channel_shared"], "yes")
+
+    def test_shared_candidate_preserves_existing_personal_channel_marker(self):
+        existing = {column: "" for column in COLUMNS}
+        existing.update({
+            "id": "7", "original": "人物", "surface": "人物",
+            "pronunciation": "ジンブツ", "category": "youtuber",
+            "wikidata": "NA", "channel": "検証済み個人チャンネル",
+        })
+        shared = person(title="グループ共有チャンネル", shared=True)
+
+        rows, sources, added, _ids = target.apply_people(
+            [existing], COLUMNS, [shared], [], "2026-08-17")
+
+        self.assertEqual(added, 0)
+        self.assertEqual(rows[0]["channel"], "検証済み個人チャンネル")
+        self.assertEqual(rows[0]["channel_shared"], "no")
+        self.assertEqual(len(sources), 1)
+        self.assertEqual(
+            sources[0]["decision"], "verified_shared_group_channel")
+        self.assertEqual(sources[0]["channel_title"], "グループ共有チャンネル")
 
     def test_is_idempotent_and_preserves_existing_spelling_and_reading(self):
         existing = {column: "" for column in COLUMNS}
@@ -191,6 +319,11 @@ class UpdateYoutuberJapanTest(unittest.TestCase):
             self.assertEqual(target.main(args), 0)
 
             self.assertEqual((csv_path.read_bytes(), sources_path.read_bytes()), first)
+            with csv_path.open(encoding="utf-8", newline="") as handle:
+                reader = csv.DictReader(handle)
+                written_rows = list(reader)
+            self.assertEqual(reader.fieldnames[-1], "channel_shared")
+            self.assertEqual(written_rows[0]["channel_shared"], "no")
 
 
 if __name__ == "__main__":

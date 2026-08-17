@@ -83,6 +83,47 @@ class ApplySnapshotTest(unittest.TestCase):
         self.assertEqual([row["channel"] for row in rows],
                          ["正式タイトル", "正式タイトル", "手入力を保持"])
 
+    def test_shared_channel_backfill_marks_only_shared_only_people(self):
+        rows = [
+            {"id": "1", "channel": "NA", "channel_shared": "NA"},
+            {"id": "1", "channel": "NA", "channel_shared": "NA"},
+            {"id": "2", "channel": "個人ch", "channel_shared": "no"},
+            {"id": "3", "channel": "別の表示", "channel_shared": "NA"},
+        ]
+        selected = {
+            "2": {"channel_id": "UC" + "p" * 22,
+                  "subscribers": 1, "title": "個人ch"},
+        }
+
+        applied = subscribers.apply_shared_channel_backfill(
+            rows, {"1": ["共有ch"], "2": ["共有ch"], "3": ["共有ch"]},
+            selected)
+
+        self.assertEqual(applied, {"1"})
+        self.assertEqual(
+            [(row["channel"], row["channel_shared"]) for row in rows],
+            [("共有ch", "yes"), ("共有ch", "yes"),
+             ("個人ch", "no"), ("別の表示", "NA")])
+
+    def test_personal_channel_marker_requires_selected_verified_pair(self):
+        rows = [
+            {"id": "1", "channel_shared": "NA"},
+            {"id": "2", "channel_shared": "NA"},
+        ]
+        channel_id = "UC" + "v" * 22
+        selected = {
+            "1": {"channel_id": channel_id, "subscribers": 1,
+                  "title": "検証済み"},
+            "2": {"channel_id": "UC" + "w" * 22, "subscribers": 2,
+                  "title": "Wikidataのみ"},
+        }
+
+        marked = subscribers.apply_personal_channel_markers(
+            rows, selected, {("1", channel_id)})
+
+        self.assertEqual(marked, {"1"})
+        self.assertEqual([row["channel_shared"] for row in rows], ["no", "NA"])
+
     def test_mismatched_existing_channel_preserves_whole_previous_snapshot(self):
         columns = ["id", "channel", "subscribers", "subscribers_as_of"]
         rows = [{"id": "1", "channel": "既存チャンネル", "subscribers": "100",
@@ -143,6 +184,27 @@ class ApplySnapshotTest(unittest.TestCase):
 
         self.assertEqual(deferred_count, 1)
         self.assertEqual([record["person_id"] for record in rendered], ["2"])
+
+    def test_audit_report_drops_shared_channel_from_unavailable_queue(self):
+        rows = [{"id": "1", "original": "共有人物", "channel": "共有ch"}]
+        old_report = [{
+            "person_id": "1", "decision": "deferred_channel_unavailable",
+            "source_type": "youtube_data_api",
+        }]
+        with tempfile.TemporaryDirectory() as tmp:
+            source_path = Path(tmp) / "sources.jsonl"
+            report_path = Path(tmp) / "report.jsonl"
+            report_path.write_text(
+                json.dumps(old_report[0], ensure_ascii=False) + "\n",
+                encoding="utf-8")
+            with mock.patch.object(subscribers, "SOURCE_PATH", source_path), \
+                    mock.patch.object(subscribers, "REPORT_PATH", report_path):
+                _evidence_count, deferred_count = \
+                    subscribers.update_audit_files(
+                        rows, {}, {}, {}, "2026-08-17", {"1"})
+
+            self.assertEqual(report_path.read_text(encoding="utf-8"), "")
+        self.assertEqual(deferred_count, 0)
 
     def test_max_subscribers_keeps_id_title_and_count_from_same_channel(self):
         smaller = {"channel_id": "UC" + "a" * 22,
@@ -283,6 +345,55 @@ class ApplySnapshotTest(unittest.TestCase):
                 result = subscribers.load_verified_channel_sources(
                     {}, {"7": "公式ライバー"})
         self.assertEqual(result, {"7": [channel_id]})
+
+    def test_shared_group_channel_is_valid_but_subscriber_ineligible(self):
+        channel_id = "UC" + "s" * 22
+        personal_id = "UC" + "p" * 22
+        record = {
+            "channel_id": channel_id,
+            "decision": "verified_shared_group_channel",
+            "evidence_url": "https://www.youtube.com/channel/" + channel_id,
+            "identity_basis": "reviewed_person_source_and_official_channel",
+            "original": "共有人物", "person_id": "8", "qid": "NA",
+            "source_type": "reviewed_person_roster",
+            "source_url": "https://example.com/official-member",
+        }
+        personal = {
+            "channel_id": personal_id, "decision": "verified",
+            "evidence_url": "https://www.youtube.com/channel/" + personal_id,
+            "identity_basis": "official_page_explicit_channel_link",
+            "original": "共有人物", "person_id": "8", "qid": "NA",
+            "source_type": "official_talent_profile",
+            "source_url": "https://example.com/personal",
+        }
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "sources.jsonl"
+            path.write_text(
+                json.dumps(record) + "\n" + json.dumps(personal) + "\n",
+                encoding="utf-8")
+            with mock.patch.object(subscribers, "SOURCE_PATH", path):
+                eligible, shared = subscribers.load_channel_source_registry(
+                    {}, {"8": "共有人物"})
+
+        self.assertEqual(eligible, {"8": [personal_id]})
+        self.assertEqual(shared, {"8": [channel_id]})
+
+    def test_unknown_ledger_decision_is_rejected(self):
+        channel_id = "UC" + "x" * 22
+        record = {
+            "channel_id": channel_id, "decision": "typo",
+            "evidence_url": "https://www.youtube.com/channel/" + channel_id,
+            "original": "人物", "person_id": "9", "qid": "NA",
+            "source_type": "reviewed_person_roster",
+            "source_url": "https://example.com/person",
+        }
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "sources.jsonl"
+            path.write_text(json.dumps(record) + "\n", encoding="utf-8")
+            with mock.patch.object(subscribers, "SOURCE_PATH", path):
+                with self.assertRaises(SystemExit):
+                    subscribers.load_channel_source_registry(
+                        {}, {"9": "人物"})
 
 
 if __name__ == "__main__":

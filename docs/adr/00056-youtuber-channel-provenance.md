@@ -32,6 +32,9 @@ P2397とYouTube Data APIの登録者数を取得済みの人が22人いた。従
 4. YouTubeの名前検索は行わない。曖昧・解決不能・既存値と異なる候補はCSVへ書かない。
 5. 採用根拠は`tools/youtuber_channel_sources.jsonl`、保留候補は
    `tools/youtuber_channel_candidates.jsonl`へ人物ID、QID、URL、判定理由付きで保存する。
+   個人チャンネルとして登録者数取得に使えるIDは`decision=verified`、人物確認には
+   使えるがグループ全体の数値を個人へ帰属させないIDは
+   `decision=verified_shared_group_channel`として区別する
 6. Wikimediaの429/maxlagは再試行し、取得不能はその人物だけ保留する。APIキーは既存の
    秘匿・redaction規則を継続する。
 
