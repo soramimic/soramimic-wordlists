@@ -197,7 +197,8 @@ Wikipedia由来の加工文はCC BY-SA 4.0で、同台帳から原記事への�
 でのみ `image_usage=noncommercial_fanwork` を受け入れる。詳細は
 [ADR 00029](adr/00029-youtuber-channel-description-columns.md)、
 [ADR 00061](adr/00061-youtuber-permitted-fan-images.md)、
-[ADR 00062](adr/00062-hololive-profile-images.md)。
+[ADR 00062](adr/00062-hololive-profile-images.md)、
+[ADR 00063](adr/00063-nijisanji-profile-images.md)。
 
 ## fictional_scientist.csv
 

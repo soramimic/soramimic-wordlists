@@ -1,0 +1,1985 @@
+{
+  "_readme": "公式タレントプロフィールで公開されている全身画像。利用時はcreditを表示し、source_pageとterms_pageの現行条件を確認する。リポジトリには画像本体を収録しない。",
+  "images": [
+    {
+      "original": "Rei7",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/6dd0dc39588549d889025712a53360b7/liver-full-body_Rei7.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/reina",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "f95bfeea261ccb0d7d3e4940b30e42aa60925aea94a93bc245f556fb94ee4b5d"
+    },
+    {
+      "original": "えま★おうがすと",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/5a066be52161409b9a14f1b3a760af18/liver-full-body_Emma_August.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/emma-august",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "6447fe889a58dae0f710f21146203fe57a35b4eb0bda8cfe41f07130fa583c6e"
+    },
+    {
+      "original": "える",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/85e296ba421f4541b52c0f2ee3aa588e/liver-full-body_Elu.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/elu",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "1570bf6d97c946ef16a7786830370e5ea5cfa4c422b374f5883a7d0b2a14b8aa"
+    },
+    {
+      "original": "でびでび・でびる",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/2f4135a1e1954525956b09aa3633ecaa/liver-full-body_Debidebi_Debiru.png.webp",
+      "source_page": "https://www.nijisanji.jp/talents/l/debidebi-debiru",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "96e213933f635a7c5c7d1c9c72333f26776b3eb1b5436ef4c7d52cf90853b54a"
+    },
+    {
+      "original": "ぷりん・らら・もーど",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/254525edf0314263978052976fd94e39/liver-full-body_Purin_Lala_Mode.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/purin-lala-mode",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "d2e08c6ffa088681e0a73e1316b04319fd5565ac39d53429dbc2a20a3d363d11"
+    },
+    {
+      "original": "ぽめろ・ぱんち",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/b5c65c0dd6c640128331eb6cbf69417d/liver-full-body_Pomelo_Punch.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/pomelo-punch",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "806075e93bf576f56140f58839de13e52e69db0bf469406d49067bb79c1dd428"
+    },
+    {
+      "original": "ましろ爻",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/58cd252ca867462a94c7fa16b103b989/liver-full-body_Meme_Mashiro.png.webp",
+      "source_page": "https://www.nijisanji.jp/talents/l/meme-mashiro",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "f6d45451891bd06a885f4a525df1002191f730910042d457ec2bad9cb5372868"
+    },
+    {
+      "original": "アイアアマレ",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/f7c5dec0fc4d409ea8eb563138210f82/liver-full-body_Aia_Amare.png.webp",
+      "source_page": "https://www.nijisanji.jp/talents/l/aia-amare",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "7cf50830b7c13b8e4b5745758bb71349c95318bb2e9a2d7011b7b769c790c236"
+    },
+    {
+      "original": "アルス・アルマル",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/a3a0ab5d72a04854966ad5bcc9b6fea0/liver-full-body_Ars_Almal.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/ars-almal",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "5d939e1481b7ea1b8e1db47c5bbd93021b38df1b8e1fbaccdba3a3a4f7d7cb5a"
+    },
+    {
+      "original": "アルバーン・ノックス",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/ccdb07ce60ea499cb90da7707cbc3919/liver-full-body_Alban_Knox.png.webp",
+      "source_page": "https://www.nijisanji.jp/talents/l/alban-knox",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "21e28db4fc15dfe95b1001a7dc02fa2b66418975f56dccc07b9d34889dc81362"
+    },
+    {
+      "original": "アンジュ・カトリーナ",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/9621c6474a884751a176ee3e706fdd73/liver-full-body_Ange_Katrina.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/ange-katrina",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "dd8afdfd78e9ba57bcf2e80322373af97eb6dd35152ad5f41fd03bc6d5aec65d"
+    },
+    {
+      "original": "イブラヒム",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/ef0916162d3d4db5b3dd991e4c58fea0/liver-full-body_Ibrahim.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/ibrahim",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "06538beeb0d8572b795e0d9d92e2a15b5855586af6603a5dd3f7184875e05dff"
+    },
+    {
+      "original": "イロハ",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/f4f2d6e4b7b04bb2a1189e2431975ed9/liver-full-body_Roha_Lee.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/lee-roha",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "6c1f1a5e5bf99860ae7a720acc21b9657317e3372ba212f986881f3153b8dc3e"
+    },
+    {
+      "original": "エクス・アルビオ",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/a956259a055045978a743f3e4d550ee4/liver-full-body_Ex_Albio.png.webp",
+      "source_page": "https://www.nijisanji.jp/talents/l/ex-albio",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "f4e4e0a4a51de9ef2c4cf48ecbce724266ecfb67ee04db6ec72b865490861e28"
+    },
+    {
+      "original": "エトナクリムソン",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/cfb5ca3288704dd68241cc43f91312f0/liver-full-body_Etna_Crimson.png.webp",
+      "source_page": "https://www.nijisanji.jp/talents/l/etna-crimson",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "eb1db8ed1497afe2e0437ef2e1f9d2d5be830bbd52d1c425c95c3b1655a5094c"
+    },
+    {
+      "original": "エナー・アールウェット",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/89e4ef3046a849e397596084477d4a75/liver-full-body_Enna_Alouette.png.webp",
+      "source_page": "https://www.nijisanji.jp/talents/l/enna-alouette",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "142dae21aa8c7eeba5d205b07bb5c889e02f2c9f9dbbbbd1fdc1f9161e9eac6f"
+    },
+    {
+      "original": "エリーラペンドラ",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/8a80534439b04388ab6379406f3d95a1/liver-full-body_Elira_Pendora.png.webp",
+      "source_page": "https://www.nijisanji.jp/talents/l/elira-pendora",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "5f9b2b7dac93aaf1440b8a24043c6822a5bab6e37a5e852dd425eb226f0a793c"
+    },
+    {
+      "original": "エリー・コニファー",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/6a62811051b84e5a9dbaaf835d5faf64/liver-full-body_Eli_Conifer.png.webp",
+      "source_page": "https://www.nijisanji.jp/talents/l/eli-conifer",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "8e0873bda6683e3524ca0abfc7d2ec528083ddb93d4cf993f229e3d5089edb45"
+    },
+    {
+      "original": "オジユ",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/824ed2dbb85d4546bad8bd05d521ea3e/liver-full-body_Jiyu_Oh.png.webp",
+      "source_page": "https://www.nijisanji.jp/talents/l/oh-jiyu",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "2775593869bdf3f9433c360bbf285c981d2508f3f8a9043812cf9e438cf0e566"
+    },
+    {
+      "original": "オリバー・エバンス",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/82795976e9814d4fb52583c07af64b13/liver-full-body_Oliver_Evans.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/oliver-evans",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "07f861f7925c77fa597728293fc3ec5a6ccffeac9e8f4a1008bbe0a7f5d5ec4d"
+    },
+    {
+      "original": "ガオン",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/e97fd321513f4cc09fc474086ec49f64/liver-full-body_Gaon.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/gaon",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "08754e77ab358c24d077455f8722eee199c811be6bf875fd1cb3270a8fb5ab9c"
+    },
+    {
+      "original": "ギルザレンⅢ世",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/c32bd94c812b4eadad5108186c60fb64/liver-full-body_Gilzaren_%E2%85%A2.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/gilzaren-iii",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "672078013d34091fa5d866aa7bc43c6cff2ce763cdf133b770b19fc307d48ae6"
+    },
+    {
+      "original": "クララチャームウッド",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/e5b9de14ed5e4b9e803f4b6251654b39/liver-full-body_Klara_Charmwood.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/klara-charmwood",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "c9bd145a99b0b58ccb661961cd8b08e9ef111f92448b915894cccc495b87b664"
+    },
+    {
+      "original": "クロードクローマーク",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/75769f79d0354edfa6efa2e59ee4eec6/liver-full-body_Claude_Clawmark.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/claude-clawmark",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "839b9b4dc04f3316a77bee542e1a090fb60e15f0419a4e696cc56b738bc07f28"
+    },
+    {
+      "original": "ケイリクス・デボネア",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/3c71873ff6c6420ab94215ed727d589d/liver-full-body_Kaelix_Debonair.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/kaelix-debonair",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "8ccd620c767984100830891fd0ea628e6e4b78edc539a66bf35e98f962eeafdc"
+    },
+    {
+      "original": "サニー・ブリスコー",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/3bd911ca36be4aa59dcece75a9cb004d/liver-full-body_Sonny_Brisko.png.webp",
+      "source_page": "https://www.nijisanji.jp/talents/l/sonny-brisko",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "d399810afbef2e7e2fee555fcc100a7dea49be6f9c111573f24cd3ae19e4644d"
+    },
+    {
+      "original": "シェリン・バーガンディ",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/f8c9d6e54cab4843bc59081d80c62305/liver-full-body_Shellin_Burgundy.png.webp",
+      "source_page": "https://www.nijisanji.jp/talents/l/shellin-burgundy",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "df57d11f776e694fc0d3d0a5e2f0b12da2e155ff53a036664b1a6b50679eeabc"
+    },
+    {
+      "original": "シスター・クレア",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/1865aeb0e2bd419e88303760b1cea121/liver-full-body_Sister_Claire.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/sister-claire",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "d247e12700ba4ee808267de669616dbfff54e48dd7c0f8f84e20d2d89d175483"
+    },
+    {
+      "original": "ジョー・力一",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/17db343033114d50aa360d0efac4ae22/liver-full-body_Joe_Rikiichi.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/joe-rikiichi",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "4bbc5055832208ca5645a811df5bd3fb24ca5c6f0915f5e275153ddc4cf203d2"
+    },
+    {
+      "original": "ジール・ギンジョウカ",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/33d1d55b9ca247cf832f1dc456afcab3/liver-full-body_Zeal_Ginjoka.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/zeal-ginjoka",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "b1143e2cd7b6e35779de1727a4e3574cf277dc437a2b006a521c8f4d17cf2d10"
+    },
+    {
+      "original": "スカーレヨナグニ",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/4fa8014ed1bb4a47bb0aee2c28b46c16/liver-full-body_Scarle_Yonaguni.png.webp",
+      "source_page": "https://www.nijisanji.jp/talents/l/scarle-yonaguni",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "16acb8259e34785f06d917d7e1a04a6dadeeaa39b12ede74218a4e5c4566a3d6"
+    },
+    {
+      "original": "セイブル",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/e854e36dbc814a04869b1032564ab031/liver-full-body_Seible.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/seible",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "5a330598109c47b6c6e731e2d2d5eb1d092dc672581410bbd9118da2bfb68e5c"
+    },
+    {
+      "original": "セフィナ",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/6b7d3fedcf8040f2ab20c8d252c181f2/liver-full-body_Seffyna.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/seffyna",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "7693992dc7848cff3d7ab649f1761e0f7708a71d2c0fde9270485d6abdc5dae1"
+    },
+    {
+      "original": "セラフ・ダズルガーデン",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/b2af326c22cd409bb5c845d68c7ad552/liver-full-body_Seraph_Dazzlegarden.png.webp",
+      "source_page": "https://www.nijisanji.jp/talents/l/seraph-dazzlegarden",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "b5c84cf28ba2e017d15f3e918cda5db98e000fa8d38589acedb81ede0599fa25"
+    },
+    {
+      "original": "ソナギ",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/3d5ba70f48f74529a4e4e3a90de9f73a/liver-full-body_So_Nagi.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/so-nagi",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "37ff3800b79f25b80be9af99a46b7ec49be401c1337c02c6f2827539411e368d"
+    },
+    {
+      "original": "ソフィア・ヴァレンタイン",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/4f61dda7f38f49d98ab2825bd4139db4/liver-full-body_Sophia_Valentine.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/sophia-valentine",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "0bff4cc28256c2ce0d44bcd6e79e58d67e3f273576c78b34a726ccd9c9c5d1d1"
+    },
+    {
+      "original": "デレムカド",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/e75270cb0a8542f4b15f21c6683eb610/liver-full-body_Derem_Kado.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/derem-kado",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "15919469f747dd6b669eaabad189c0f6514acb55c8cdcf9d84db144f6e9f0aaa"
+    },
+    {
+      "original": "ドッピオドロップサイト",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/78a1793b17504a43878a3a745926b11a/liver-full-body_Doppio_Dropscythe.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/doppio-dropscythe",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "539de2e160434ae7a832b65272914b9f6cfa656f87da3a2aa334c048d817d065"
+    },
+    {
+      "original": "ドーラ",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/220b6d7c8b2349f1a7d6264f2a701df5/liver-full-body_Dola.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/dola",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "57aa652bce4bb5d1a3295771f4b280a3c058ac41b55485804994235046d00f27"
+    },
+    {
+      "original": "ナギサアルシニア",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/ed3e65562be94f9f904b9f4fe513face/liver-full-body_Nagisa_Arcinia.png.webp",
+      "source_page": "https://www.nijisanji.jp/talents/l/nagisa-arcinia",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "f625a111a37aa936a6d9a9f7aabf113bbc19d776e643aa27a1c809d7edf8fc62"
+    },
+    {
+      "original": "ナセラ",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/de2dade14f5b4ccbaafa0df251e74b74/liver-full-body_Na_Sera.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/na-sera",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "0fd4a4ea311617bf287e039c7e42dfdabd5bceb8605c167046621509c307225c"
+    },
+    {
+      "original": "ニュイ・ソシエール",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/8a7a7f3625ed4a73b53731dde2f49895/liver-full-body_Nui_Sociere.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/nui-sociere",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "15f464b3fbd95647506a61a2ac03354d90d54fa1d9131fb82cb768cdc6df9827"
+    },
+    {
+      "original": "ハナマキア",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/b1d8513c0d504ace8f69a0e6520fa53f/liver-full-body_Hana_Macchia.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/hana-macchia",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "615b007ec3e4fcffecb0e1046974f1da7622f0b742e54fcf8ba88f778ef5391d"
+    },
+    {
+      "original": "ハユン",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/5e05bac1c3f545c0b34304edd9abd455/liver-full-body_Ha_Yun.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/ha-yun",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "29af869dd7a407f84d80b30270a0a3022cb10de52ca8b1475e738d5ee46faa82"
+    },
+    {
+      "original": "フィナーナ竜宮",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/24e9c1a5a8664c538eba89410cf4990f/liver-full-body_Finana_Ryugu.png.webp",
+      "source_page": "https://www.nijisanji.jp/talents/l/finana-ryugu",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "a0b06b2195dd4a85fd8e1823e4775e651c85615bedf6a530a0ef2d247f8b6e22"
+    },
+    {
+      "original": "フミ",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/1bb39cfc9a0d4a9f9215829e76759ace/liver-full-body_Fumi.png.webp",
+      "source_page": "https://www.nijisanji.jp/talents/l/fumi",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "c2943214655231b6191d6d6a268043abed12253163d0912ebfa855c1bae8c43c"
+    },
+    {
+      "original": "フリオドール",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/4025f8c1776a4d649eeb3a7aef3d3126/liver-full-body_Freodore.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/freodore",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "8eb33d7c01a58189862f19d1d91dfbd43f05462af1b56faab7aa25f7b8064a6e"
+    },
+    {
+      "original": "フレン・E・ルスタリオ",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/5fa8eccf4a744f4aa5d2e902462bd512/liver-full-body_Furen_E_Lustario.png.webp",
+      "source_page": "https://www.nijisanji.jp/talents/l/furen-e-lustario",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "48cec823a795f64727a1422dbf52169d596bb92a80c1738015ef200ea20fd08e"
+    },
+    {
+      "original": "ベルモンド・バンデラス",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/1dc93c01d77f4193a33b4bf658dff95c/liver-full-body_Belmond_Banderas.png.webp",
+      "source_page": "https://www.nijisanji.jp/talents/l/belmond-banderas",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "632e0dfedfca08f834f6db5e9c4974e72d9dd07b782c072fb99acc1bbbbea02a"
+    },
+    {
+      "original": "ベンタクロウブリンガー",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/ef4bf6771c4e4824965ae2ed2d407a72/liver-full-body_Vantacrow_Bringer.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/vantacrow-bringer",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "54cd1f581b5237c7bdb086bf4ccd67b9322221e7291b95ebc382ee34874e5d0a"
+    },
+    {
+      "original": "ペトラグリン",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/9a70033be98b4b4797d881144e269248/liver-full-body_Petra_Gurin.png.webp",
+      "source_page": "https://www.nijisanji.jp/talents/l/petra-gurin",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "705c746d7ecc248edee974b98d9a5c04e03d2ebfc37976f4c2e5b214cfbac298"
+    },
+    {
+      "original": "マリアマリオネット",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/5012d632f29f432da9ac8b1a4aeb3905/liver-full-body_Maria_Marionette.png.webp",
+      "source_page": "https://www.nijisanji.jp/talents/l/maria-marionette",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "93e761375028f846de408273392e6a284f50e441c102d9254ad8d1dd65d27b9b"
+    },
+    {
+      "original": "ミラン・ケストレル",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/4b91312ae86b49a2b8584e5c7b7b59c4/liver-full-body_Milan_Kestrel.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/milan-kestrel",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "c534f751d2ad998d976d18b4bd113039f3a836b399c513f87842d5083a21a4ca"
+    },
+    {
+      "original": "ミリー・パフェ",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/fecac35100b9459db8e060d7fcbe4bbd/liver-full-body_Millie_Parfait.png.webp",
+      "source_page": "https://www.nijisanji.jp/talents/l/millie-parfait",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "5b8f03515e248918f90c44db8ae94af3e1951d962b3b0315540a5a9c54b1df99"
+    },
+    {
+      "original": "ミンスゥーハ",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/1240da962bed4dc39c83fbd5986c9cc1/liver-full-body_Suha_Min.png.webp",
+      "source_page": "https://www.nijisanji.jp/talents/l/min-suha",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "f3a791fa6f273f1bb61d41912c6e768af02395cb5db87a01ecbf6ade78687422"
+    },
+    {
+      "original": "モイラ",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/cd155159dd5346a3bb5100ee5d8cec7f/liver-full-body_Moira.png.webp",
+      "source_page": "https://www.nijisanji.jp/talents/l/moira",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "6f0ce88c6d9288f9e8d418b300613a06722b8a4502ba985e3adb9a3c126dcf02"
+    },
+    {
+      "original": "ヤンナリ",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/5a927078741b4c9b83a581227987f95f/liver-full-body_Yang_Nari.png.webp",
+      "source_page": "https://www.nijisanji.jp/talents/l/yang-nari",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "44aa2a8556373386ca80d0e8d2989134d1760bce8dfdf7669f669568aceed2af"
+    },
+    {
+      "original": "ユウQウィルソン",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/54e70d7f87d647f38b35668b64694753/liver-full-body_Yu_Q._Wilson.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/yu-q-wilson",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "4429a065300e3b349789e81318c52de965180d1cba5eb7898ca33209c61f50ec"
+    },
+    {
+      "original": "ライガリレイ",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/04a5fd5d584646f7a35f03de8e26d4ca/liver-full-body_Rai_Galilei.png.webp",
+      "source_page": "https://www.nijisanji.jp/talents/l/rai-galilei",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "9356b0fbbaad277716a595895a585ddfad49c4cbe76d6e09915227e52c418ca6"
+    },
+    {
+      "original": "ライラアルストロエメリア",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/0a1906593ffe44109c48919014eb250a/liver-full-body_Layla_Alstroemeria.png.webp",
+      "source_page": "https://www.nijisanji.jp/talents/l/layla-alstroemeria",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "33ddeeaae73ccbba9c2d8ef1e40a2d98cccde753988968740c344f185c0a1f8f"
+    },
+    {
+      "original": "ラトナ・プティ",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/276602ab8bda4bc6ab8b68cb61ce2e2e/liver-full-body_Ratna_Petit.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/ratna-petit",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "2b22b918f8a75426f6f0c56f05d3b7d206ed03ce823d51db13c301692b62084a"
+    },
+    {
+      "original": "リゼ・ヘルエスタ",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/3a5c1ac881fd4ae2875089edecfa407c/liver-full-body_Lize_Helesta.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/lize-helesta",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "aa9be3f698bd1456afc912168dbeca34073ab345b2f7be6ca7d045e285ea7a33"
+    },
+    {
+      "original": "リュハリ",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/6e56d7855cab49468ba954daf193dc3c/liver-full-body_Hari_Ryu.png.webp",
+      "source_page": "https://www.nijisanji.jp/talents/l/ryu-hari",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "5da957e8bfd26b22e0533f7b77d587cd08f36ab2833a6dc646c80d68105a691e"
+    },
+    {
+      "original": "ルイス・キャミー",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/953b213e67ff4f57a87712a173bc0270/liver-full-body_Luis_Cammy.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/luis-cammy",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "2d46d9e12b76817405ff7ce4efa47edcf15d013788c60b6db04ac57271b638d0"
+    },
+    {
+      "original": "ルカ・カネシロ",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/550a3bd2194f493fac66c2bf979e801e/liver-full-body_Luca_Kaneshiro.png.webp",
+      "source_page": "https://www.nijisanji.jp/talents/l/luca-kaneshiro",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "cc3a8b15324f60fcf1ffef757a3da25f67cae8ee17d1723ee6ca1f8e79f7c0d3"
+    },
+    {
+      "original": "ルンルン",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/daa256b75a764c38a3d2a9d4d3be68dd/liver-full-body_Lunlun.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/lunlun",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "1fede248c7e87fb745a1ea426f625a9cec865efb01aeba1a413198466f87c5de"
+    },
+    {
+      "original": "レイン・パターソン",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/cbd46c80a0014e5ab4d049cb13041899/liver-full-body_Lain_Paterson.png.webp",
+      "source_page": "https://www.nijisanji.jp/talents/l/lain-paterson",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "da96aee0c361d5576f6412919f2c8279b700b471a2464fe1de8ae5f2476801be"
+    },
+    {
+      "original": "レオス・ヴィンセント",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/cc34baf0f9b34598a705416e6ea3b211/liver-full-body_Leos_Vincent.png.webp",
+      "source_page": "https://www.nijisanji.jp/talents/l/leos-vincent",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "fe3f33069ade4e817f97f908f2b52245cd684f03b1f0de72b62b618ce390f60b"
+    },
+    {
+      "original": "レヨン",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/37bf4c532fc2489c963be8b3dc59b098/liver-full-body_Rayon.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/rayon",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "aa02f5bd2e70e97fb9e3ec066e96a44c8104529b9fa2c1341b5fa38b08004854"
+    },
+    {
+      "original": "レンゾット",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/0daedfc98c3d4fd98629b7e90c77d124/liver-full-body_Ren_Zotto.png.webp",
+      "source_page": "https://www.nijisanji.jp/talents/l/ren-zotto",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "441dd5f4083986502358bdf0dc6b6efcdf227b3f5c1845a36db7d5ba7cee8ec2"
+    },
+    {
+      "original": "レヴィ・エリファ",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/e7c27efac1c640faa6e13c129e240721/liver-full-body_Levi_Elipha.png.webp",
+      "source_page": "https://www.nijisanji.jp/talents/l/levi-elipha",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "a37f418b32f3b5238168e335e197591ba1673c5f6dc97f7afdc36b70f0cc1ccc"
+    },
+    {
+      "original": "ローレン・イロアス",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/7c57cbf1c8dd4ad6a80e11a6deb8ad41/liver-full-body_Lauren_Iroas.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/lauren-iroas",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "7c0556f0c3b63cf2db9a5d1bc441049dba6d194922e40af754688bceb4dcff4f"
+    },
+    {
+      "original": "ヴェザリウスバンデージ",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/72a527d91fb142c8b58e9e0a2d899df3/liver-full-body_Vezalius_Bandage.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/vezalius-bandage",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "282de1755feec84daab19bbf2f9dda11c8aac7b741ac956f1c704bb8b0bc56b3"
+    },
+    {
+      "original": "ヴェールヴァーミリオン",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/a891cf99c7234bfe9b29386501d5c460/liver-full-body_Ver_Vermillion.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/ver-vermillion",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "746904d02871ecc4d6827b6cee283ecbca8a9ab10db05fad59123f20edbabc63"
+    },
+    {
+      "original": "ヴォックス・アクマ",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/e24bc9746ad84f95b2869c88c2e14ccf/liver-full-body_Vox_Akuma.png.webp",
+      "source_page": "https://www.nijisanji.jp/talents/l/vox-akuma",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "838a00662b4d1094912aea709b4e70de863a20acaebf9b2a19a4bcae4c7ccb49"
+    },
+    {
+      "original": "一橋綾人",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/077fe19817b2422a8576679c9daadf02/liver-ful-body_Ayato_Hitotsubashi.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/ayato-hitotsubashi",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "2417fed94be80a21eb75154b1d0bb00d356d411e3b0827b60dba6dd4c3fbe17b"
+    },
+    {
+      "original": "七瀬すず菜",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/bb0e7c18cba444b9b65207de82f07151/liver-full-body_Suzuna_Nanase.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/suzuna-nanase",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "d1de89b9c53769e124bc63eb2f3ecf82f5c50c84a5f5bfbf1c5a645766849db3"
+    },
+    {
+      "original": "三枝明那",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/01272e84f28548648c0053cd00e89f11/liver-full-body_Akina_Saegusa.png.webp",
+      "source_page": "https://www.nijisanji.jp/talents/l/akina-saegusa",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "3c173eabb32a0cca55175296845a29209cab7283d900c9d5cc47adaeaa6dc616"
+    },
+    {
+      "original": "不破湊",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/b59a2e2167734779b18b3dffcbb51c3c/liver-full-body_Minato_Fuwa.png.webp",
+      "source_page": "https://www.nijisanji.jp/talents/l/minato-fuwa",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "9fef9e2238d341929ecdc2729795c57c4dc3348243f5a93564437aef4dba172b"
+    },
+    {
+      "original": "九里詠太",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/231bcb5b65894984966006c2b8120105/liver-full-body_EIta_Kuri.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/eita-kuri",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "f7843927a10e633f44b951605adbac4814988e3cfde2f52b39cb9eccd2d3d8c7"
+    },
+    {
+      "original": "五十嵐梨花",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/e81a579a50e94b998d3131ac92aeec25/liver-full-body_Rika_Igarashi.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/rika-igarashi",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "57a5966f734d9207708af8b2dd1a4b392d15a8e1fc0b27c180a288b509066028"
+    },
+    {
+      "original": "五木左京",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/04a75a05e6ac461a89a559c07c43b385/liver-full-body_Sakyo_Itsuki.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/sakyo-itsuki",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "3ab057172e316eac39297d1f19a0501194f8bb075f149f93df26079f5ce6a2d4"
+    },
+    {
+      "original": "伊波ライ",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/b322902ea6dc42dc95df4dcad0e8d0f1/liver-full-body_Rai_Inami.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/rai-inami",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "55ee01b12aafc19b74cc7da69a78c20d9198a028797846d052c5ae6efbd4c749"
+    },
+    {
+      "original": "伏見ガク",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/33c5bec2fcfc47868cb6fd23246734c0/liver-full-body_Gaku_Fushimi.png.webp",
+      "source_page": "https://www.nijisanji.jp/talents/l/gaku-fushimi",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "6901dd0b95fa6061f9c94030dc340d9b7e6a57b68cbecd04b81451c73ad153b1"
+    },
+    {
+      "original": "佐伯イッテツ",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/2fb92f04f54f4dd8899f40b9562d618c/liver-full-body_Ittetsu_Saiki.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/ittetsu-saiki",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "fa4f43a9e139f10c26217ced195e69ab2c1ebd444dd8b6688f570b429ce8f447"
+    },
+    {
+      "original": "倉持めると",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/eb9459fca6294dc598785dff3aa4c355/liver-full-body_Meruto_Kuramochi.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/meruto-kuramochi",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "51ea789bb7d268fec734ff6e5e04d24c881a71ffb68264afdb47173799d21c4f"
+    },
+    {
+      "original": "健屋花那",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/43abc0bebfbf430ab45614239c810145/liver-full-body_Kana_Sukoya.png.webp",
+      "source_page": "https://www.nijisanji.jp/talents/l/kana-sukoya",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "4ae28a3a9bf132f384806cd33cd6b36f0e6ab4806b4a45f9e3a2da630b534a92"
+    },
+    {
+      "original": "先斗寧",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/efa57ac0cd2f4e7aad849e144e208bcc/liver-full-body_Nei_Ponto.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/nei-ponto",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "81f2aaaba30ad27f40691b3451dd7d0eb71a36fa895c8dfcf5968b13d756e062"
+    },
+    {
+      "original": "凉舞バレンウォート",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/04dcbe4c732d477bbcee717b90abf81b/liver-full-body_Ryoma_Barrenwort.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/ryoma-barrenwort",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "bf876748c8a3d11a419d60a61e2c7877406967addb78bdc58796f6f562e1dd94"
+    },
+    {
+      "original": "剣持刀也",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/85ea8f15e3804395b3e838c57397b656/liver-full-body_Toya_Kenmochi.png.webp",
+      "source_page": "https://www.nijisanji.jp/talents/l/toya-kenmochi",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "d48321210923137f31026b7b527e35e2e743d20866b34d1bf4c655a6cd1eae85"
+    },
+    {
+      "original": "加賀美ハヤト",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/f58d8a7b949b4e4cabae7df63639caa7/liver-full-body_Hayato_Kagami.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/hayato-kagami",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "1c8f7d9cf6ff2bab8239cadde9c71f31d70e1bbd243153042b30f3197afbba0d"
+    },
+    {
+      "original": "北小路ヒスイ",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/2eb359e7cc284278af7e641b42622af7/liver-full-body_Hisui_Kitakoji.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/hisui-kitakoji",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "180585898b79147aa4398dfea8d0679bbc59bcfc51646aa93f9fc0a85db58411"
+    },
+    {
+      "original": "北見遊征",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/a5588877738d4b4c8fbddced49fb4b54/liver-full-body_Yusei_Kitami.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/yusei-kitami",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "2e96043fda29ae638b3a49d2a98e4002e821b13906a17f670914121be4f7963c"
+    },
+    {
+      "original": "十河ののは",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/a063bd7abcc64dbcb12205c89c9b71c9/liver-full-body_Nonoha_Togawa.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/nonoha-togawa",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "0299c9cc9e36e29b4ec979c6c34a9440e8119530cbd3497cf7fa80e3ff3b9d15"
+    },
+    {
+      "original": "千凛あゆむ",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/dbdcebc7c9494c4fb30d7f74b67bb08b/liver-full-body_Ayumu_Senri.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/ayumu-senri",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "4b693d97a337cfb4977d0d166508a5495696d589da9384b68e5dd65775b04c55"
+    },
+    {
+      "original": "卯月コウ",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/a9a37e0a481f4ccf95d7d190f0ba7bf0/liver-full-body_Kou_Uzuki.png.webp",
+      "source_page": "https://www.nijisanji.jp/talents/l/kou-uzuki",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "e25a65b99612db1fd032bbbe3f6385c2950f376bf04b29a6ae877d2ef5e5026c"
+    },
+    {
+      "original": "叢雲カゲツ",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/4f683b14c606428781d676d9ec730713/liver-full-body_Kagetsu_Murakumo.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/kagetsu-murakumo",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "9988abdad1f555bcf933c69f3c789d9ed0992c24569f6b37fd3ae40c52aa1910"
+    },
+    {
+      "original": "叶",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/c22012c1710143cbabcf3e2d2bb9a7d1/liver-full-body_Kanae.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/kanae",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "eb4a9e69ee1cc475da69b52141a2d78090d0db4d2deee3a66464b12bc2ffe570"
+    },
+    {
+      "original": "司賀りこ",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/a283226eac504571af8ba3160e38ffe5/liver-full-body_Riko_Shiga.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/riko-shiga",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "e5f11145e23396facdebab7b68d9ea2bbb4f942174d3217030e3a545e382906e"
+    },
+    {
+      "original": "周央サンゴ",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/eeed2966c1da4c369b1998bfa9581c01/liver-full-body_Sango_Suo.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/sango-suo",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "7a68450cf343c0f622974fd90f7fa29b31d30881f8e972506f72a43b83b2cbe0"
+    },
+    {
+      "original": "四季凪アキラ",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/bff1ed4d4d8c490583c1a7d82497958a/liver-full-body_Akira_Shikinagi.png.webp",
+      "source_page": "https://www.nijisanji.jp/talents/l/akira-shikinagi",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "d3559929c10745af088648cfffa76d70e3feb6c1447239832d703c8fade86040"
+    },
+    {
+      "original": "城瀬いすみ",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/0fa5cc449cb147f591adfd69686f0c22/liver-full-body_Isumi_Shirose.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/isumi-shirose",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "f53a009751ff7e45bdf019cdf84cec24a4b4cd94792322fac1e9ac779047bbc3"
+    },
+    {
+      "original": "塚原大地",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/8dd83e8c942c47bc869b87f3bb527932/liver-full-body_Daichi_Tsukahara.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/daichi-tsukahara",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "5966bc10ab739020e6cc5f3bda8af43bd5df5505cef89438f79f212260204846"
+    },
+    {
+      "original": "壱百満天原サロメ",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/bd3daa25d5084ef68c61468f522eac0d/liver-full-body_Salome_Hyakumantenbara.png.webp",
+      "source_page": "https://www.nijisanji.jp/talents/l/salome-hyakumantenbara",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "8bb61dc7663a246fae9d0418e884e3e97829b68f93c2752908bd634e353bfaf5"
+    },
+    {
+      "original": "夕陽リリ",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/6862b1a0934544f291cd9153c5a3f6f2/liver-full-body_Riri_Yuuhi.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/riri-yuhi",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "8618b145dd73bc9b273c9f8c092dee8fbd9a22868b4e1dbf36a8cc50ef2b7ca5"
+    },
+    {
+      "original": "夜牛詩乃",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/b621edaeaa824532a27c20ae06498003/liver-full-body_Shino_Yagyu.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/shino-yagyu",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "b7d292305de5d5e60e959f691d8471fe007bac3267dbcb61553fd7714fa76257"
+    },
+    {
+      "original": "夜見れな",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/33466403803c4d5aa6fe42a73425e661/liver-full-body_Rena_Yorumi.png.webp",
+      "source_page": "https://www.nijisanji.jp/talents/l/rena-yorumi",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "946ceef35ff790120abeeeace3a2efd0891bbcd628913051d4bdad36b97d249a"
+    },
+    {
+      "original": "夢月ロア",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/e8f38561f9894510a57dabba2229dfef/liver-full-body_Roa_Yuzuki.png.webp",
+      "source_page": "https://www.nijisanji.jp/talents/l/roa-yuzuki",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "18f57d08282f2cc255baa0da5535fc536dc94feee90fc2e6d4efbbc745313035"
+    },
+    {
+      "original": "夢追翔",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/b450137e2b104488ae11a2c32156dd6a/liver-full-body_Kakeru_Yumeoi.png.webp",
+      "source_page": "https://www.nijisanji.jp/talents/l/kakeru-yumeoi",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "64d71876763259f4dae490a04b8e29352f5b7ad27ec75a773fe789468f068ef8"
+    },
+    {
+      "original": "天ヶ瀬むゆ",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/abe11794397a44b684c93923f9bb26cd/liver-full-body_Muyu_Amagase.png.webp",
+      "source_page": "https://www.nijisanji.jp/talents/l/muyu-amagase",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "6bbd5eb0a17f260b9edf9cbf03e639e1142bbc684e08a6802d9de22f2a8a53d9"
+    },
+    {
+      "original": "天宮こころ",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/4e3a233d8dae43edb578b7d6fcca9716/liver-full-body_Kokoro_Amamiya.png.webp",
+      "source_page": "https://www.nijisanji.jp/talents/l/kokoro-amamiya",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "08805053d7a2162e67edbab143b01957c9804644625c13f3b0180d011e902968"
+    },
+    {
+      "original": "宇佐美リト",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/25d5f355d25642e6b07f494b1ad6e70c/liver-full-body_Rito_Usami.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/rito-usami",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "d78e19c9829d871f1723042a7648176a1dc042382d781534f7da124825e963fe"
+    },
+    {
+      "original": "宇志海いちご",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/a36b1cdac921468ab192bc1403be118b/liver-full-body_Ichigo_Ushimi.png.webp",
+      "source_page": "https://www.nijisanji.jp/talents/l/ichigo-ushimi",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "75e14f617d80171dce090b38bafdcd0763dc77f8e0035289366d6732a960ab4c"
+    },
+    {
+      "original": "家長むぎ",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/53fec386a0434dfe85368cd8d908b607/liver-full-body_Mugi_Ienaga.png.webp",
+      "source_page": "https://www.nijisanji.jp/talents/l/mugi-ienaga",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "8fe099a9ccb1b8ce7f737148d75425c88a1219ed73711e90df81c38842d821c5"
+    },
+    {
+      "original": "小々波いるか",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/3df4c4bedcc64d55a5b114b21a70ea76/liver-full-body_Iruka_Kokonami.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/iruka-kokonami",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "3b69926d4eed8bd575f1a098e9d0d1b915936b9154a1861fc7a5b37682fdd3b0"
+    },
+    {
+      "original": "小柳ロウ",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/c030a700f9e04db08a1b502eddc28af9/liver-full-body_Rou_Koyanagi.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/rou-koyanagi",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "ca7d90eee6dae9b3ca64a956dde002110d1d71530d36c15dd78fc741f12306d9"
+    },
+    {
+      "original": "小清水透",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/1a8176b448274de9bcddef29e0a34413/liver-full-body_Toru_Koshimizu.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/toru-koshimizu",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "ee1679d70dde98846d729c9bd148cc0cb88f15eb3a7c1842a4c4fb375d32087c"
+    },
+    {
+      "original": "山神カルタ",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/d97ef1c904544ccdb389c74c2354ccd1/liver-full-body_Karuta_Yamagami.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/karuta-yamagami",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "a0d4cebe2c65b73bd30c3c0476bbdac92c1dc84325d08ff4fddadd40020f833b"
+    },
+    {
+      "original": "弦月藤士郎",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/600a56cbf10c4f82af2e95fc121cdc05/liver-full-body_Tojiro_Genzuki.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/tojiro-genzuki",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "85f5abde43245e53eac878f18c6743a7a290133041d5e2d72f8b5f269070792c"
+    },
+    {
+      "original": "御子神琴音",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/2f1430b248b547ae80ac98c9e79dda6a/liver-full-body_Kotone_Mikogami.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/kotone-mikogami",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "fdaae02eebf01e6d9ef015e6af7976c1bccdf821f7cc9c5977548f580afdb41c"
+    },
+    {
+      "original": "愛園愛美",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/2822fe5b850349f89892467ca4c3f4ef/liver-full-body_Manami_Aizono.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/manami-aizono",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "a330a5c22bafef5e29d3691602e7309ab0bd1299d25bc4418e1e8f35538a2a6b"
+    },
+    {
+      "original": "戌亥とこ",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/5fcffae3db654f01a4e5442b44514c9a/liver-full-body_Toko_Inui.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/toko-inui",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "7fcb864ddff6b7f070d16e8dc496cd8b0dd4fe48a4b5d7a606a178383b9c836b"
+    },
+    {
+      "original": "文野環",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/12cccc417efd458d85f23bce2a747d93/liver-full-body_Tamaki_Fumino.png.webp",
+      "source_page": "https://www.nijisanji.jp/talents/l/tamaki-fumino",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "849f65ef9a2e32a9c52acfd4692913260704ce694b85143814d07d121e402b04"
+    },
+    {
+      "original": "早乙女ベリー",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/6d1d67ef5e1a4440a82d1ac42e491c5c/liver-full-body_Berry_Saotome.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/berry-saotome",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "2ab36ae0363228fb5d7d8a6debac8423b34e00527ac12220fa1a576f1fe9730f"
+    },
+    {
+      "original": "早瀬走",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/f58fe3526c34470685785c6ad842dfe7/liver-full-body_Sou_Hayase.png.webp",
+      "source_page": "https://www.nijisanji.jp/talents/l/sou-hayase",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "e4100217b51736369b2f50f2557e8f4637cffa8f8e9e9b9c17aaba731e2b9832"
+    },
+    {
+      "original": "明楽レイ",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/67e3247195fb46e3b7247266c287e1fe/liver-full-body_Ray_Akira.png.webp",
+      "source_page": "https://www.nijisanji.jp/talents/l/akira-ray",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "6e4be0e24d70c5af97caacd335b1b489a34f5055ec0ae0873f7b91e16f081f2f"
+    },
+    {
+      "original": "星導ショウ",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/06df629c142d40e087d1659cde774579/liver-full-body_Sho_Hoshirube.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/sho-hoshirube",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "58947c5b1cc957fee242df426a9b7c797107f708a2960f2f4cc367c0e99e9f4c"
+    },
+    {
+      "original": "星川サラ",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/0325347d596743e8b07117d2d2e2cdb4/liver-full-body_Sara_Hoshikawa.png.webp",
+      "source_page": "https://www.nijisanji.jp/talents/l/sara-hoshikawa",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "01feb930ebe123fe80e6852b6560de0f7ab9f8ef97f9ba4604c3a1bed5dde6c3"
+    },
+    {
+      "original": "春崎エアル",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/efe1364d92d74d03b3492bb9f376884d/liver-full-body_Air_Harusaki.png.webp",
+      "source_page": "https://www.nijisanji.jp/talents/l/air-harusaki",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "de7e18a7049c09521f8bcb49317a6c2686b6a03f9efbcbefc500d602df59c4e4"
+    },
+    {
+      "original": "月ノ美兎",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/598fa0f71c554ef9bbde319304025876/liver-full-body_Mito_Tsukino.png.webp",
+      "source_page": "https://www.nijisanji.jp/talents/l/mito-tsukino",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "6d3152fc0159b7ae43e4f186a3b4d272fe9fd4acf81f1d993f1b2560c0334050"
+    },
+    {
+      "original": "本間ひまわり",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/27cd419ab524479793ff01a1e0b6ea68/liver-full-body_Himawari_Honma.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/himawari-honma",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "13d7b033dc8caf145a756d7cc3a39e18781452cc5fdfcb3e93ffb2e8379209e0"
+    },
+    {
+      "original": "来栖夏芽",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/2184aea064c74b8aa65386d767c69499/liver-full-body_Natsume_Kurusu.png.webp",
+      "source_page": "https://www.nijisanji.jp/talents/l/natsume-kurusu",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "eb46ea9c8cebb888b9203a7b8fcfd28c3dfd8ff3931ef3d48473bf233a0d9c78"
+    },
+    {
+      "original": "東堂コハク",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/b2fff37985fc46dca20e533cebcf59d0/liver-full-body_Kohaku_Todo.png.webp",
+      "source_page": "https://www.nijisanji.jp/talents/l/kohaku-todo",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "ab5e1c5df54bc55e16af0b32424152ae0e6805aece467abff1d8bcba901641e8"
+    },
+    {
+      "original": "栞葉るり",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/05424e96d850455c8f0c5ef7d58e2632/liver-full-body_Ruri_Shioriha.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/ruri-shioriha",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "e36dcbd601839d27c2ef3a07e6d1c4489ca8ed2ca34422ea353d12b75b63cb2b"
+    },
+    {
+      "original": "桜凛月",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/7bcf3db4b99c40fcae9c793a99c53968/liver-full-body_Ritsuki_Sakura.png.webp",
+      "source_page": "https://www.nijisanji.jp/talents/l/ritsuki-sakura",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "d36dc2a331f17390c923f84951ca692344ebd1616eaa379700422f641aa56cb6"
+    },
+    {
+      "original": "梢桃音",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/8fb211adde7940c8a8bcca33ea51322b/liver-full-body_Mone_Kozue.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/mone-kozue",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "cf3bd038f03d09f43f98596b050d7e3725f353f3ffe96b9b3b51ce0840efaa21"
+    },
+    {
+      "original": "森中花咲",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/e63d7af23e3648fdb7e42339a61a6b5b/liver-full-body_Kazaki_Morinaka.png.webp",
+      "source_page": "https://www.nijisanji.jp/talents/l/kazaki-morinaka",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "923f0e2bdb90a94d921a7510ab3272f37c23ab0afb1f3dcc01a873e950e65a14"
+    },
+    {
+      "original": "椎名唯華",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/3fe3df1c3a4443d48b9ebb3e1b3d931f/liver-full-body_Yuika_Shiina.png.webp",
+      "source_page": "https://www.nijisanji.jp/talents/l/yuika-shiina",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "b384348d4ccd43702f8cb995238b417505153cbd1edcfafd9c4ec485e0626314"
+    },
+    {
+      "original": "榊ネス",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/51df5bc896df4ac0a84eb1d2e7d88040/liver-full-body_Ness_Sakaki.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/ness-sakaki",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "4fc0645e5ae5308f06acfbba67ef47911603360ba54e8bca5e0d895a3535f713"
+    },
+    {
+      "original": "樋口楓",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/325a9fbd45e64b3b860519952e73efa8/liver-full-body_Kaede_Higuchi.png.webp",
+      "source_page": "https://www.nijisanji.jp/talents/l/kaede-higuchi",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "7732096eb7b3276d8e5144877d85191928eaafceb343a829ef9a0cc7c86d744d"
+    },
+    {
+      "original": "水面まどか",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/181961e0c33044ceac567c41385510d8/liver-full-body_Madoka_Minamo.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/madoka-minamo",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "4dbe0f50701efe79fd2af60e6138316b798fdf7172006371fa1c34bf46a0c8c5"
+    },
+    {
+      "original": "浮奇・ヴィオレタ",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/5d6cb33814944b6daf5764fc3382bc22/liver-full-body_Uki_Violeta.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/uki-violeta",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "4da127bce90106d739efdfb534de1528e7c3f454e68b9ceebdd555130d59a616"
+    },
+    {
+      "original": "海妹四葉",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/0b24d9310a1447ffab41c4edd01106b4/liver-full-body_Yotsuha_Umise.png.webp",
+      "source_page": "https://www.nijisanji.jp/talents/l/yotsuha-umise",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "116463f3dd69d9bd8b3dbced9b18fb91f634ff224e2ac93e277e4f7e30653a9b"
+    },
+    {
+      "original": "渋谷ハジメ",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/0ce8ab8faf61481cafcb322c8ad00dd3/liver-full-body_Hajime_Shibuya.png.webp",
+      "source_page": "https://www.nijisanji.jp/talents/l/hajime-shibuya",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "6e3c5d12bc51841b00c7e4ece1614b2b855ac902e51db7a41b9bfc06043db9d5"
+    },
+    {
+      "original": "渚トラウト",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/1b7969ba92e44313b880ca427c37388d/liver-full-body_Trout_Nagisa.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/trout-nagisa",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "da2c03db5eed3669924e365b3e8b5415d1ee4edd0cbe8786e6b443fb2e27a196"
+    },
+    {
+      "original": "渡会雲雀",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/33099dcba7fb4b5e8a73364eb89cc242/liver-full-body_Hibari_Watarai.png.webp",
+      "source_page": "https://www.nijisanji.jp/talents/l/hibari-watarai",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "fc202cf92924115762ecc5dc52b2ed4f867a885f78ee8230d739c828603f1385"
+    },
+    {
+      "original": "物述有栖",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/2ccb380ae3874f3b82c6c3ca09297bee/liver-full-body_Alice_Mononobe.png.webp",
+      "source_page": "https://www.nijisanji.jp/talents/l/alice-mononobe",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "fa408fcb17b4030a7ba0a832ca1068af02fc7f1d3b5bdf28c9b2af4fbcdd63e4"
+    },
+    {
+      "original": "狂蘭メロコ",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/73fd15e324b14d27a194e96a099cd319/liver-full-body_Meloco_Kyoran.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/meloco-kyoran",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "93cef3b897c98fdda768719a56e4ad8e02ffdae658c298b2ec949d1043ff8892"
+    },
+    {
+      "original": "猫屋敷美紅",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/a62f45f160b24d4782231e455929be54/liver-full-body_Miku_Nekoyashiki.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/miku-nekoyashiki",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "180202c5a7a8fe96259d8a27523cffdf38717d54567cbffae52caccf9f469327"
+    },
+    {
+      "original": "獅子堂あかり",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/464d8da72a1344c5875c680b70fbe2c0/liver-full-body_Akari_Shishido.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/akari-shishido",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "3c5e9f62105a7b9ae85d6c901da0cc5c7a3a2dd83b76314d7eca6c2fd3f8a03c"
+    },
+    {
+      "original": "珠乃井ナナ",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/f7d3327711a448a1beeada896f5edaad/liver-full-body_Nana_Tamanoi.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/nana-tamanoi",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "87db0ba80ac9595d8290d9046e5e76292d58efba0e5ba440937eb7dfe0966e53"
+    },
+    {
+      "original": "甲斐田晴",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/79a8248101f24357ba2be23dc2c62b80/liver-full-body_Haru_Kaida.png.webp",
+      "source_page": "https://www.nijisanji.jp/talents/l/haru-kaida",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "280ecbd8dec37697543114d34dae816736163aee3af649e2aaa1e3944ff01a32"
+    },
+    {
+      "original": "男虎",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/186b216ed64042e894691f55d3d7a8a4/liver-full-body_Onotora.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/onotora",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "d94f028fe754acedcd02639680be150646258b8e47ce3d8cd33327e93eed2327"
+    },
+    {
+      "original": "町田ちま",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/7aa64a981bfc4af480111bcb00e252c9/liver-full_body_Chima_Machita.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/chima-machita",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "2876e69353f0d41b330a6f6bc096c24587e7866d5ade5bbe45523856bfa7063c"
+    },
+    {
+      "original": "白砂あやね",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/a722cc16753b409e82d02161995c1dd4/liver-full-body_Ayane_Shirasa.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/ayane-shirasa",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "34357b791b809bbe36dc60e982854a0209a4550e9de53522835ee907d3a78d83"
+    },
+    {
+      "original": "白雪巴",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/4468273a1577495a9d3830856a5ff50e/liver-full-body_Tomoe_Shirayuki.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/tomoe-shirayuki",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "0ecd2d7757c6eaf396d9a3a85f51ac016b18d1c9d8a29c1f9a5c8a73d797eca3"
+    },
+    {
+      "original": "皇れお",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/5de62979e6bf4e5db400a647e81b0496/liver-full-body_Reo_Sumeragi.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/reo-sumeragi",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "49dce161ef5d8bfda65274ac5eb9b20c301eb60353bfa6b14cd65ca603c7969a"
+    },
+    {
+      "original": "矢車りね",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/90d07ee115c648e4a472b34626810dc7/liver-full-body_Rine_Yaguruma.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/rine-yaguruma",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "52563c6394cea6ecf77984c0f5c58accd986569c6d6c2a592a8acd8520425648"
+    },
+    {
+      "original": "石神のぞみ",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/6491735c29be4acfaa3cabf77a043f3e/liver-full-body_Nozomi_Ishigami.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/nozomi-ishigami",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "ad000300e13b8e9edcbd1768a81c40a9fa97553ad9ff9713687db029ec5b8ec4"
+    },
+    {
+      "original": "社築",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/def82e9e6aee4b5c90856ce8dc624116/liver-full-body_Kizuku_Yashiro.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/kizuku-yashiro",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "ce9e5a1ba53b807ab20945df2adcd9b123eaa6370a1ef89068e6c1e5a4a97e6a"
+    },
+    {
+      "original": "神田笑一",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/c229f237b61041acb344ceb7914691ff/liver-full-body_Shoichi_Kanda.png.webp",
+      "source_page": "https://www.nijisanji.jp/talents/l/shoichi-kanda",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "c396796a20ef9031f7ce4d2518560fc835fc87cce2040f650686d099affcd05c"
+    },
+    {
+      "original": "空星きらめ",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/ebe1e4c448004a82959c47cc6b88b850/liver-full-body_Kirame_Sorahoshi.png.webp",
+      "source_page": "https://www.nijisanji.jp/talents/l/kirame-sorahoshi",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "f1159d5f986a6d5225abd3eab9c2d056682918323f96913f20d39494a6135dd1"
+    },
+    {
+      "original": "立伝都々",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/5a5c4a9ab46e4c22bab331f33c142041/liver-full-body_Toto_Tachitsute.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/toto-tachitsute",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "e3812206265fe14a6304ceb6348c5365c9d2d5c88e23d7ba43ccdd134bf59df9"
+    },
+    {
+      "original": "竜胆尊",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/eff8688a778e41d9a114f73798c93284/liver-full-body_Mikoto_Rindou.png.webp",
+      "source_page": "https://www.nijisanji.jp/talents/l/mikoto-rindou",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "05b50a3c089e22da0d5310c6aef72d97982634405a19edb09121821f14c0044d"
+    },
+    {
+      "original": "笹木咲",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/14949cf0ee014fc3be6f28e3d4a82377/liver-full-body_Saku_Sasaki.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/saku-sasaki",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "dc2be1df5d7f7e98a4f43855475e16e4270402995c98211d9d843a4f83cd2204"
+    },
+    {
+      "original": "篠宮ゆの",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/02025776e57c4829af3f444946661ae4/liver-full-body_Yuno_Shinomiya.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/yuno-shinomiya",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "7b466ca23a3c777765af0e19ec1b0110ac366859589356c40fcb1d6517e9170d"
+    },
+    {
+      "original": "綺沙良",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/820872d1f5084c64aaf32f5c7f915cd4/liver-full-body_Kisara.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/kisara",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "5ff257f5989feba799d9f4aeab79c5e76a6e35d9fb711a3d852a6bf8d842ac2e"
+    },
+    {
+      "original": "緋八マナ",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/c06b239e3d6a433c95b53981b736f374/liver-full-body_Mana_Hibachi.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/mana-hibachi",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "861199f704b429ffc792d2325e3bbcb9893d9de2eec40383b55a98eb15bdf51d"
+    },
+    {
+      "original": "緑仙",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/ca78a19194f5402491f74fc66ef9cc95/liver-full-body_Ryushen.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/ryushen",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "abe917aa7717d1b29d1e05caf504f31b68773db5394761f19aac726c93f28c61"
+    },
+    {
+      "original": "舞元啓介",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/e8fa6c21a87449868f72278d5d04a273/liver-full-body_Keisuke_Maimoto.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/keisuke-maimoto",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "717c520e170d849a345cffea8880d2fa79bf54cc60a7f5615a8f68ff3028f5ff"
+    },
+    {
+      "original": "花畑チャイカ",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/0716d1972c5245c3b2b4d931b1dcf479/liver-full-body_Chaika_Hanabatake.png.webp",
+      "source_page": "https://www.nijisanji.jp/talents/l/chaika-hanabatake",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "62ed5e5cf8732e00fb27a69b5143eccd6309db8b4c17e15202d87f605d91ecfc"
+    },
+    {
+      "original": "花籠つばさ",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/e9c6eba2e0c64db7b1af0cfb1dcd0361/liver-full-body_Tsubasa_Hanakago.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/tsubasa-hanakago",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "03a166006704aa8ad2fe45d44fc7e3c4abb13fd7818ee93c0fe35cec9cf47309"
+    },
+    {
+      "original": "葉加瀬冬雪",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/fcb119d0c05147c38545b32498f372ca/liver-full-body_Fuyuki_Hakase.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/fuyuki-hakase",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "acc714701cf760df57a9769bfc03142b923dc1b2ce93d175024990290e04dd00"
+    },
+    {
+      "original": "葉山舞鈴",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/29177bbfa1df4db592e157db5be55c1f/liver-full-body_Marin_Hayama.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/marin-hayama",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "59825fd148f967d6a0144dd114f9f7cc2bf4cbca2723e634761786f8e5951bac"
+    },
+    {
+      "original": "葛葉",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/026e3370bbd1436c8f6800abfd151caa/liver-full-body_Kuzuha.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/kuzuha",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "a0e40c3900f10cb7cefabcedfff07b26b96c180abbd4563de423770f357f5a38"
+    },
+    {
+      "original": "蝸堂みかる",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/7c6a2292375d42b28ca241115715fcba/liver-full-body_Mikaru_Kadou.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/mikaru-kadou",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "0bb1f3dc19a1ad9e6a54424f780c4846b67a11ee404fb9eb6fad91f297d72510"
+    },
+    {
+      "original": "西園チグサ",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/1d573785c0b94e4881719a2e1bbbc505/liver-full-body_Chigusa_Nishizono.png.webp",
+      "source_page": "https://www.nijisanji.jp/talents/l/chigusa-nishizono",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "b6be477a0c67f2006f5a770fad5a2ead3ec8a695d995ffd5f581958b0e414b73"
+    },
+    {
+      "original": "語部紡",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/89a0e168860742a4881bdc5180f49101/liver-full-body_Tsumugu_Kataribe.png.webp",
+      "source_page": "https://www.nijisanji.jp/talents/l/tsumugu-kataribe",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "5ef914b322ace33990705b5e06555126d572d2354690139cf4c31db38e4ba4c2"
+    },
+    {
+      "original": "赤城ウェン",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/ffd19831d38f412882acab5fe6c1287f/liver-full-body_Wen_Akagi.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/wen-akagi",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "d4dc59a9b88094c9b9a97399e74b40d671afaaa01ff29aec864974e867ea00dd"
+    },
+    {
+      "original": "赤羽葉子",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/4f42e66b01cf49b3ba57d864d2ec5500/liver-full-body_Yoko_Akabane.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/youko-akabane",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "4ac22651d578829c9ef9ac9cb701b4b016f787c5a161139a3b8df249050398e2"
+    },
+    {
+      "original": "轟京子",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/d766f9594a5f475c8a25977347339185/liver-full-body_Kyoko_Todoroki.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/kyoko-todoroki",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "a7b87ea2bc68b952a2655f9d60eacd22e422034231646724fe1c9b1cd5768ca4"
+    },
+    {
+      "original": "酒寄颯馬",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/897165f7cb234403b3af389482b30c88/liver-full-body_Soma_Sakayori.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/soma-sakayori",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "1504fcea8b53a7c3140ba4d23c71ee0ef956ee7599c72909fb686aa0685ad319"
+    },
+    {
+      "original": "鈴原るる",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/f92d0987550341eb87d1950488851729/liver-full-body_Lulu_Suzuhara.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/lulu-suzuhara",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "c0f408fba4434c8a3dcde731ab85972b35394a9f8965c743b6a7a998fe35162b"
+    },
+    {
+      "original": "鈴木勝",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/4604a15137594ec6a8acd85b8429202e/liver-full-body_Masaru_Suzuki.png.webp",
+      "source_page": "https://www.nijisanji.jp/talents/l/masaru-suzuki",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "7ff9c75c7535ab4c3bec3de606830b4fd75fcbd31c6ba7d73f31950dc211b22a"
+    },
+    {
+      "original": "鏑木ろこ",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/2393c247e5f7427a9f038754ccc95ea6/liver-full-body_Roko_Kaburaki.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/roco-kaburaki",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "ff2eb1e7347cc94cdffb7e7ba009adb99cd2e7255a1f5289b9df01ed2d5c34c1"
+    },
+    {
+      "original": "長尾景",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/e5292bacc85d452d896ace11e8dfeab3/liver-full-body_Kei_Nagao.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/kei-nagao",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "b73326c7c6f7159daf2a672f596d4ee57e2d1e9f83a8f7a9f2d3673e8724123d"
+    },
+    {
+      "original": "闇ノシュウ",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/0a0e34055ac44c9c9798773463138ef3/liver-full-body_Shu_Yamino.png.webp",
+      "source_page": "https://www.nijisanji.jp/talents/l/shu-yamino",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "523f19b1ed98c6cf818bff417ef4d8190a8a4351c3dc593e147b560a86dca110"
+    },
+    {
+      "original": "雨森小夜",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/d168128463b3424b87e75106aaf16c0e/liver-full-body_Sayo_Amemori.png.webp",
+      "source_page": "https://www.nijisanji.jp/talents/l/sayo-amemori",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "34f5b445a94e964c59cc3dbf6791f8423aca872ad488b97b6e074e22bc05f23b"
+    },
+    {
+      "original": "雪城眞尋",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/68768d25fb014162974f963f3e4fe6eb/liver-full-body_Mahiro_Yukishiro.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/mahiro-yukishiro",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "c7d770386230af4aec6c99f52d5db41fa06bc170a5fc02e0b006c1269841ee3b"
+    },
+    {
+      "original": "雲母たまこ",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/6e5dd850700445bb865709c79b2f427d/liver-full-body_Tamako_Kirara.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/tamako-kirara",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "feb2e38dfd00079133d3137b0408e80ff24ff86f04fc2fdf73381c4fd59eee8e"
+    },
+    {
+      "original": "静凛",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/0c6e9b9bfc6443e1a602ee4394db0564/liver-full-body_Rin_Shizuka.png.webp",
+      "source_page": "https://www.nijisanji.jp/talents/l/rin-shizuka",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "7b89a3bb883e0718621b4bb9e86a678620d05fd6105deadd316dc5a092625652"
+    },
+    {
+      "original": "風楽奏斗",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/6adc5e85c48d4c0aa6baf367ee9be9e1/liver-full-body_Kanato_Fura.png.webp",
+      "source_page": "https://www.nijisanji.jp/talents/l/kanato-fura",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "caeea55205b9e6fb9b9068addd09ec3dd18af4de906ac064b4e38a5d1c76a402"
+    },
+    {
+      "original": "飛鳥ひな",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/8c1fe0ae5d254102acc973b606d34b03/liver-full-body_Hina_Asuka.png.webp",
+      "source_page": "https://www.nijisanji.jp/talents/l/hina-asuka",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "03092d4222b148e8372d3d0c1874fcfdd57104f3b8502ca762c4bc20eccfe760"
+    },
+    {
+      "original": "魁星",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/cd6c2a5803374944bddcd034e9dd61ab/liver-full-body_Kaisei.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/kaisei",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "e8d6285dff633292629e4765bff0e4b5f28ccdb348656b2d3796950802c1868b"
+    },
+    {
+      "original": "魔使マオ",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/2161806346db48e6977199a3b52d1aac/liver-full-body_Mao_Matsukai.png",
+      "source_page": "https://www.nijisanji.jp/talents/l/mao-matsukai",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "2bdcfa9e225a66272d0a44ff9e2c03865a2ba892fad7cdd92f37b6541274e06b"
+    },
+    {
+      "original": "魔界ノりりむ",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/a85b15e28c304719b90bc5145de43b25/liver-full-body_Ririmu_Makaino.png.webp",
+      "source_page": "https://www.nijisanji.jp/talents/l/makaino-ririmu",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "8f91a264923fa1a1a26067d271c1450c2cf77a6416ecd4be49ab9482ccac1249"
+    },
+    {
+      "original": "鷹宮リオン",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/8469a568bd1145008ac64f61770872e8/liver-full-body_Rion_Takamiya.png.webp",
+      "source_page": "https://www.nijisanji.jp/talents/l/rion-takamiya",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "807bfb51c37d91d593c93ac9fec90e5e7c23e6833d2c8d36953d873d12e35dd7"
+    },
+    {
+      "original": "黒井しば",
+      "talent_status": "current",
+      "image_url": "https://images.microcms-assets.io/assets/5694fd90407444338a64d654e407cc0e/3fbc6812c536425598740306ee8fd001/liver-full-body_Shiba_Kuroi.png.webp",
+      "source_page": "https://www.nijisanji.jp/talents/l/shiba-kuroi",
+      "credit": "にじさんじ公式立ち絵 © ANYCOLOR",
+      "terms_page": "https://www.anycolor.co.jp/guidelines/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "9671bb20b8a3c90ffc6869aa103e322135c0b04b884290b9bd7460f719f66ae0"
+    }
+  ]
+}
