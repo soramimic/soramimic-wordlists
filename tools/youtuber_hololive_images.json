@@ -1,0 +1,1142 @@
+{
+  "_readme": "公式タレントプロフィールで公開されている全身画像。利用時はcreditを表示し、source_pageとterms_pageの現行条件を確認する。リポジトリには画像本体を収録しない。",
+  "images": [
+    {
+      "original": "ときのそら",
+      "talent_status": "current",
+      "image_url": "https://hololive.hololivepro.com/wp-content/uploads/2020/06/Tokino-Sora_pr-img_01.webp",
+      "source_page": "https://hololive.hololivepro.com/talents/tokino-sora/",
+      "credit": "ホロライブプロダクション公式立ち絵 © COVER",
+      "terms_page": "https://hololivepro.com/terms/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "c096a9043f79fa8f347d92e764b6b4bf8160229fd364ea0158ffe26655178b88",
+      "fallback_rows": []
+    },
+    {
+      "original": "ロボ子さん",
+      "talent_status": "current",
+      "image_url": "https://hololive.hololivepro.com/wp-content/uploads/2020/06/Robocosan_pr-img_01.webp",
+      "source_page": "https://hololive.hololivepro.com/talents/roboco-san/",
+      "credit": "ホロライブプロダクション公式立ち絵 © COVER",
+      "terms_page": "https://hololivepro.com/terms/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "1339f22bbc9016500f1c029c31e2e2f63b1b0a6e55df9d039fb6cc1f773f755f",
+      "fallback_rows": []
+    },
+    {
+      "original": "アキ・ローゼンタール",
+      "talent_status": "current",
+      "image_url": "https://hololive.hololivepro.com/wp-content/uploads/2020/06/Aki-Rosenthal_pr-img_01.png",
+      "source_page": "https://hololive.hololivepro.com/talents/aki-rosenthal/",
+      "credit": "ホロライブプロダクション公式立ち絵 © COVER",
+      "terms_page": "https://hololivepro.com/terms/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "1c0560d928ed985911c863a8085388dfb07c61f4af6e888e4ef305491581aabe",
+      "fallback_rows": []
+    },
+    {
+      "original": "赤井はあと",
+      "talent_status": "current",
+      "image_url": "https://hololive.hololivepro.com/wp-content/uploads/2020/06/Akai-Haato_pr-img_01.webp",
+      "source_page": "https://hololive.hololivepro.com/talents/akai-haato/",
+      "credit": "ホロライブプロダクション公式立ち絵 © COVER",
+      "terms_page": "https://hololivepro.com/terms/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "9bec1a463668191c3854dc982d4786cbb084e769f93586a330202c5ff60548c3",
+      "fallback_rows": []
+    },
+    {
+      "original": "白上フブキ",
+      "talent_status": "current",
+      "image_url": "https://hololive.hololivepro.com/wp-content/uploads/2020/06/Shirakami-Fubuki_pr-img_01.webp",
+      "source_page": "https://hololive.hololivepro.com/talents/shirakami-fubuki/",
+      "credit": "ホロライブプロダクション公式立ち絵 © COVER",
+      "terms_page": "https://hololivepro.com/terms/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "59daa6792c7a4ba21c61cce71a2afc741bfbebe0d3f6f0454c22e2efb7110993",
+      "fallback_rows": []
+    },
+    {
+      "original": "夏色まつり",
+      "talent_status": "current",
+      "image_url": "https://hololive.hololivepro.com/wp-content/uploads/2020/06/Natsuiro-Matsuri_pr-img_01.png",
+      "source_page": "https://hololive.hololivepro.com/talents/natsuiro-matsuri/",
+      "credit": "ホロライブプロダクション公式立ち絵 © COVER",
+      "terms_page": "https://hololivepro.com/terms/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "1a55a5b7119d8a2e179969d09a3fc5d2d6929f12f52f952098410246ebc37060",
+      "fallback_rows": []
+    },
+    {
+      "original": "百鬼あやめ",
+      "talent_status": "current",
+      "image_url": "https://hololive.hololivepro.com/wp-content/uploads/2020/06/Nakiri-Ayame_pr-img_01.webp",
+      "source_page": "https://hololive.hololivepro.com/talents/nakiri-ayame/",
+      "credit": "ホロライブプロダクション公式立ち絵 © COVER",
+      "terms_page": "https://hololivepro.com/terms/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "9ce4ab645711dced9cfef306b9c83cb8f8e7a6d27e36cebc00d7703631405eaa",
+      "fallback_rows": []
+    },
+    {
+      "original": "癒月ちょこ",
+      "talent_status": "current",
+      "image_url": "https://hololive.hololivepro.com/wp-content/uploads/2020/06/Yuzuki-Choco_pr-img_01.webp",
+      "source_page": "https://hololive.hololivepro.com/talents/yuzuki-choco/",
+      "credit": "ホロライブプロダクション公式立ち絵 © COVER",
+      "terms_page": "https://hololivepro.com/terms/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "028b10eca77b84fcc32496cb119452544ef3f471a5e213d3e4998e33f6730718",
+      "fallback_rows": []
+    },
+    {
+      "original": "大空スバル",
+      "talent_status": "current",
+      "image_url": "https://hololive.hololivepro.com/wp-content/uploads/2020/06/Oozora-Subaru_pr-img_01.webp",
+      "source_page": "https://hololive.hololivepro.com/talents/oozora-subaru/",
+      "credit": "ホロライブプロダクション公式立ち絵 © COVER",
+      "terms_page": "https://hololivepro.com/terms/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "6f224753352f07e4323265b1742087bb140ea532052f912385b151efabf6f415",
+      "fallback_rows": []
+    },
+    {
+      "original": "AZKi",
+      "talent_status": "current",
+      "image_url": "https://hololive.hololivepro.com/wp-content/uploads/2020/06/AZKi_pr-img_01.webp",
+      "source_page": "https://hololive.hololivepro.com/talents/azki/",
+      "credit": "ホロライブプロダクション公式立ち絵 © COVER",
+      "terms_page": "https://hololivepro.com/terms/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "d65d8c75dc4a10fa8612b1cdebd8e88caa63b85eda90b74f1769599f7fd653a4",
+      "fallback_rows": []
+    },
+    {
+      "original": "大神ミオ",
+      "talent_status": "current",
+      "image_url": "https://hololive.hololivepro.com/wp-content/uploads/2020/06/Ookami-Mio_pr-img_01.png",
+      "source_page": "https://hololive.hololivepro.com/talents/ookami-mio/",
+      "credit": "ホロライブプロダクション公式立ち絵 © COVER",
+      "terms_page": "https://hololivepro.com/terms/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "31a21e3a61539fb3691bae13c93022b60138cc2522f3e06ae9a6db926c0d253a",
+      "fallback_rows": []
+    },
+    {
+      "original": "さくらみこ",
+      "talent_status": "current",
+      "image_url": "https://hololive.hololivepro.com/wp-content/uploads/2020/06/Sakura-Miko_pr-img_01.png",
+      "source_page": "https://hololive.hololivepro.com/talents/sakuramiko/",
+      "credit": "ホロライブプロダクション公式立ち絵 © COVER",
+      "terms_page": "https://hololivepro.com/terms/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "5b7995dbf131c48bdf5b998da56fd2f49c235246022f734c9dc73f3db30f0b94",
+      "fallback_rows": []
+    },
+    {
+      "original": "猫又おかゆ",
+      "talent_status": "current",
+      "image_url": "https://hololive.hololivepro.com/wp-content/uploads/2020/06/Nekomata-Okayu_pr-img_01.png",
+      "source_page": "https://hololive.hololivepro.com/talents/nekomata-okayu/",
+      "credit": "ホロライブプロダクション公式立ち絵 © COVER",
+      "terms_page": "https://hololivepro.com/terms/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "7481b97da12b642b99e24661eddd9fc3c98d4fe5416a078df047df9606c5cdf4",
+      "fallback_rows": []
+    },
+    {
+      "original": "戌神ころね",
+      "talent_status": "current",
+      "image_url": "https://hololive.hololivepro.com/wp-content/uploads/2020/06/Inugami-Korone_pr-img_01.png",
+      "source_page": "https://hololive.hololivepro.com/talents/inugami-korone/",
+      "credit": "ホロライブプロダクション公式立ち絵 © COVER",
+      "terms_page": "https://hololivepro.com/terms/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "01b0aaded5402dda4af8bd1e1a73ca2827687531d3807ddc8040d88b5ae98333",
+      "fallback_rows": []
+    },
+    {
+      "original": "星街すいせい",
+      "talent_status": "current",
+      "image_url": "https://hololive.hololivepro.com/wp-content/uploads/2020/06/Hoshimachi-Suisei_pr-img_01.png",
+      "source_page": "https://hololive.hololivepro.com/talents/hoshimachi-suisei/",
+      "credit": "ホロライブプロダクション公式立ち絵 © COVER",
+      "terms_page": "https://hololivepro.com/terms/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "ca144a905ce1859a0919014379fabff3fb8b594110ea304d5ec9e9843a585527",
+      "fallback_rows": []
+    },
+    {
+      "original": "兎田ぺこら",
+      "talent_status": "current",
+      "image_url": "https://hololive.hololivepro.com/wp-content/uploads/2020/06/Usada-Pekora_pr-img_01.png",
+      "source_page": "https://hololive.hololivepro.com/talents/usada-pekora/",
+      "credit": "ホロライブプロダクション公式立ち絵 © COVER",
+      "terms_page": "https://hololivepro.com/terms/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "70d8413ccc20cd63b0beefcd8d1aff3e5d410eeb56e20c330112547d70069632",
+      "fallback_rows": []
+    },
+    {
+      "original": "不知火フレア",
+      "talent_status": "current",
+      "image_url": "https://hololive.hololivepro.com/wp-content/uploads/2020/06/Shiranui-Flare_pr-img_01.png",
+      "source_page": "https://hololive.hololivepro.com/talents/shiranui-flare/",
+      "credit": "ホロライブプロダクション公式立ち絵 © COVER",
+      "terms_page": "https://hololivepro.com/terms/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "5238a9fe9f75f600b8e2a1f284bd2c2bde013ab0177acbc23dea3f2acbb71348",
+      "fallback_rows": []
+    },
+    {
+      "original": "白銀ノエル",
+      "talent_status": "current",
+      "image_url": "https://hololive.hololivepro.com/wp-content/uploads/2020/06/Shirogane-Noel_pr-img_01.webp",
+      "source_page": "https://hololive.hololivepro.com/talents/shirogane-noel/",
+      "credit": "ホロライブプロダクション公式立ち絵 © COVER",
+      "terms_page": "https://hololivepro.com/terms/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "45ac2ffdaecbc85ab279f6ed5c1532d0ea5e1b07f50026b25c5d34c6acfdf339",
+      "fallback_rows": []
+    },
+    {
+      "original": "宝鐘マリン",
+      "talent_status": "current",
+      "image_url": "https://hololive.hololivepro.com/wp-content/uploads/2020/06/Houshou-Marine_pr-img_01.png",
+      "source_page": "https://hololive.hololivepro.com/talents/houshou-marine/",
+      "credit": "ホロライブプロダクション公式立ち絵 © COVER",
+      "terms_page": "https://hololivepro.com/terms/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "d6dcc3f5ddbd537014fb8452b71932c0a6744d8dd7ee54ea2c797219e790a8ea",
+      "fallback_rows": []
+    },
+    {
+      "original": "角巻わため",
+      "talent_status": "current",
+      "image_url": "https://hololive.hololivepro.com/wp-content/uploads/2020/06/Tsunomaki-Watame_pr-img_01.webp",
+      "source_page": "https://hololive.hololivepro.com/talents/tsunomaki-watame/",
+      "credit": "ホロライブプロダクション公式立ち絵 © COVER",
+      "terms_page": "https://hololivepro.com/terms/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "20bc168d74ed69e1cd1366373f8cc9d87513ebd8a01a740dbd58cd651cb64b5b",
+      "fallback_rows": []
+    },
+    {
+      "original": "常闇トワ",
+      "talent_status": "current",
+      "image_url": "https://hololive.hololivepro.com/wp-content/uploads/2020/06/Tokoyami-Towa_pr-img_01.webp",
+      "source_page": "https://hololive.hololivepro.com/talents/tokoyami-towa/",
+      "credit": "ホロライブプロダクション公式立ち絵 © COVER",
+      "terms_page": "https://hololivepro.com/terms/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "de7194057af02e13ad7898ec98c4aa08a2fa6347eaa44d6883f251f2e47a9a49",
+      "fallback_rows": []
+    },
+    {
+      "original": "姫森ルーナ",
+      "talent_status": "current",
+      "image_url": "https://hololive.hololivepro.com/wp-content/uploads/2020/06/Himemori-Luna_pr-img_01.webp",
+      "source_page": "https://hololive.hololivepro.com/talents/himemori-luna/",
+      "credit": "ホロライブプロダクション公式立ち絵 © COVER",
+      "terms_page": "https://hololivepro.com/terms/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "1bbec26eccaadfa10a17b99cecd0c1a9ab08b7210a0750cfab4324367d3013bf",
+      "fallback_rows": []
+    },
+    {
+      "original": "雪花ラミィ",
+      "talent_status": "current",
+      "image_url": "https://hololive.hololivepro.com/wp-content/uploads/2020/06/Yukihana-Lamy_pr-img_01.webp",
+      "source_page": "https://hololive.hololivepro.com/talents/yukihana-lamy/",
+      "credit": "ホロライブプロダクション公式立ち絵 © COVER",
+      "terms_page": "https://hololivepro.com/terms/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "c61bd7a6f78c8e237f22d3cdb701fb39f35ea623e0d15f55aa98e953e6c6152f",
+      "fallback_rows": []
+    },
+    {
+      "original": "桃鈴ねね",
+      "talent_status": "current",
+      "image_url": "https://hololive.hololivepro.com/wp-content/uploads/2020/06/Momosuzu-Nene_pr-img_01.webp",
+      "source_page": "https://hololive.hololivepro.com/talents/momosuzu-nene/",
+      "credit": "ホロライブプロダクション公式立ち絵 © COVER",
+      "terms_page": "https://hololivepro.com/terms/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "4466ee4016a98960cc668171015c264502f77f7ae48c20532976799d7d4edf34",
+      "fallback_rows": []
+    },
+    {
+      "original": "獅白ぼたん",
+      "talent_status": "current",
+      "image_url": "https://hololive.hololivepro.com/wp-content/uploads/2020/07/Shishiro-Botan_pr-img_01.webp",
+      "source_page": "https://hololive.hololivepro.com/talents/shishiro-botan/",
+      "credit": "ホロライブプロダクション公式立ち絵 © COVER",
+      "terms_page": "https://hololivepro.com/terms/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "04b039568bdf7ecb961ec41e9de18679fc6c8502f4a1549c5ee496c4be00c757",
+      "fallback_rows": []
+    },
+    {
+      "original": "尾丸ポルカ",
+      "talent_status": "current",
+      "image_url": "https://hololive.hololivepro.com/wp-content/uploads/2020/07/Omaru-Polka_pr-img_01.webp",
+      "source_page": "https://hololive.hololivepro.com/talents/omaru-polka/",
+      "credit": "ホロライブプロダクション公式立ち絵 © COVER",
+      "terms_page": "https://hololivepro.com/terms/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "7b57dbe509e08a8cc894d2f3c2a0892fca8858cd9ce80f49fdf78189be463a80",
+      "fallback_rows": []
+    },
+    {
+      "original": "ラプラス・ダークネス",
+      "talent_status": "current",
+      "image_url": "https://hololive.hololivepro.com/wp-content/uploads/2020/07/La-Darknesss_pr-img_01.png",
+      "source_page": "https://hololive.hololivepro.com/talents/la-darknesss/",
+      "credit": "ホロライブプロダクション公式立ち絵 © COVER",
+      "terms_page": "https://hololivepro.com/terms/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "48721d9fa2aa905e9b9de1d627eefb8594575bbff2a851b8a967e9bae4b68aca",
+      "fallback_rows": []
+    },
+    {
+      "original": "鷹嶺ルイ",
+      "talent_status": "current",
+      "image_url": "https://hololive.hololivepro.com/wp-content/uploads/2024/08/Takane-Lui_pr-img_01.png",
+      "source_page": "https://hololive.hololivepro.com/talents/takane-lui/",
+      "credit": "ホロライブプロダクション公式立ち絵 © COVER",
+      "terms_page": "https://hololivepro.com/terms/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "df3d158e57265540f809df9392c37f32229f6c22397167aa8120a7d1fd046839",
+      "fallback_rows": []
+    },
+    {
+      "original": "博衣こより",
+      "talent_status": "current",
+      "image_url": "https://hololive.hololivepro.com/wp-content/uploads/2020/07/Hakui-Koyori_pr-img_01.webp",
+      "source_page": "https://hololive.hololivepro.com/talents/hakui-koyori/",
+      "credit": "ホロライブプロダクション公式立ち絵 © COVER",
+      "terms_page": "https://hololivepro.com/terms/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "c2cbde71df93a749bd9cb076729b30d8007f7b74bb3375fa10746765a3c30e9f",
+      "fallback_rows": []
+    },
+    {
+      "original": "風真いろは",
+      "talent_status": "current",
+      "image_url": "https://hololive.hololivepro.com/wp-content/uploads/2020/07/Kazama-Iroha_pr-img_01.png",
+      "source_page": "https://hololive.hololivepro.com/talents/kazama-iroha/",
+      "credit": "ホロライブプロダクション公式立ち絵 © COVER",
+      "terms_page": "https://hololivepro.com/terms/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "eb7d28418989637c61ea7881f70408d814d025224db9f3c212c3d4408c22b0be",
+      "fallback_rows": []
+    },
+    {
+      "original": "沙花叉クロヱ",
+      "talent_status": "activity_ended",
+      "image_url": "https://hololive.hololivepro.com/wp-content/uploads/2024/09/Sakamata-Chloe_pr-img_01.png",
+      "source_page": "https://hololive.hololivepro.com/talents/sakamata-chloe/",
+      "credit": "ホロライブプロダクション公式立ち絵 © COVER",
+      "terms_page": "https://hololivepro.com/terms/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "5886ce0d15fa5f1f6f74e09cb6ee3344e0a9f0958e11bf8301b527e15699c7b1",
+      "fallback_rows": []
+    },
+    {
+      "original": "湊あくあ",
+      "talent_status": "graduated",
+      "image_url": "https://hololive.hololivepro.com/wp-content/uploads/2023/09/Minato-Aqua_pr-img_01.png",
+      "source_page": "https://hololive.hololivepro.com/talents/minato-aqua/",
+      "credit": "ホロライブプロダクション公式立ち絵 © COVER",
+      "terms_page": "https://hololivepro.com/terms/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "fb2f66c6dc0ea9d2ff78d579c9ce475ba592280b0061e8228694275b11a12d32",
+      "fallback_rows": []
+    },
+    {
+      "original": "紫咲シオン",
+      "talent_status": "graduated",
+      "image_url": "https://hololive.hololivepro.com/wp-content/uploads/2020/06/Murasaki-Shion_pr-img_01.png",
+      "source_page": "https://hololive.hololivepro.com/talents/murasaki-shion/",
+      "credit": "ホロライブプロダクション公式立ち絵 © COVER",
+      "terms_page": "https://hololivepro.com/terms/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "cecdc77735de4a24477df905af3c70cd0859445f1393561c67425d4171038a8b",
+      "fallback_rows": []
+    },
+    {
+      "original": "天音かなた",
+      "talent_status": "graduated",
+      "image_url": "https://hololive.hololivepro.com/wp-content/uploads/2024/07/Amane-Kanata_pr-img_01.png",
+      "source_page": "https://hololive.hololivepro.com/talents/amane-kanata/",
+      "credit": "ホロライブプロダクション公式立ち絵 © COVER",
+      "terms_page": "https://hololivepro.com/terms/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "9b67acffbd16fdc1e3c8ee47b6b754d7c8ed8be23ec6dec7db682557b946b580",
+      "fallback_rows": []
+    },
+    {
+      "original": "桐生ココ",
+      "talent_status": "graduated",
+      "image_url": "https://hololive.hololivepro.com/wp-content/uploads/2023/09/Kiryu-Coco_pr-img_01.png",
+      "source_page": "https://hololive.hololivepro.com/talents/kiryu-coco/",
+      "credit": "ホロライブプロダクション公式立ち絵 © COVER",
+      "terms_page": "https://hololivepro.com/terms/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "0f2a4fb9491e479fc7c76d95a448522ef71f5e54c278a63aaf787bd3ba30b082",
+      "fallback_rows": [
+        {
+          "id": "1257",
+          "original": "桐生ココ",
+          "surface": "桐生ココ",
+          "pronunciation": "キリュウココ",
+          "type": "full",
+          "category": "vtuber",
+          "org": "ホロライブ",
+          "debut_year": "NA",
+          "status": "former",
+          "wikidata": "NA",
+          "channel": "Kiryu Coco",
+          "description": "ホロライブプロダクション所属VTuber。",
+          "subscribers": "NA",
+          "subscribers_as_of": "NA"
+        }
+      ]
+    },
+    {
+      "original": "アユンダ・リス",
+      "talent_status": "current",
+      "image_url": "https://hololive.hololivepro.com/wp-content/uploads/2020/07/Ayunda-Risu_pr-img_01.webp",
+      "source_page": "https://hololive.hololivepro.com/talents/ayunda-risu/",
+      "credit": "ホロライブプロダクション公式立ち絵 © COVER",
+      "terms_page": "https://hololivepro.com/terms/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "6e35a255e8415fe2d66a0c45e5856e65739e16f5496691b4f820939b34aad816",
+      "fallback_rows": [
+        {
+          "id": "1258",
+          "original": "アユンダ・リス",
+          "surface": "アユンダ・リス",
+          "pronunciation": "アユンダ・リス",
+          "type": "full",
+          "category": "vtuber",
+          "org": "ホロライブインドネシア",
+          "debut_year": "NA",
+          "status": "current",
+          "wikidata": "NA",
+          "channel": "Ayunda Risu",
+          "description": "ホロライブプロダクション所属VTuber。",
+          "subscribers": "NA",
+          "subscribers_as_of": "NA"
+        }
+      ]
+    },
+    {
+      "original": "ムーナ・ホシノヴァ",
+      "talent_status": "current",
+      "image_url": "https://hololive.hololivepro.com/wp-content/uploads/2020/07/Moona-Hoshinova_pr-img_01.webp",
+      "source_page": "https://hololive.hololivepro.com/talents/moona-hoshinova/",
+      "credit": "ホロライブプロダクション公式立ち絵 © COVER",
+      "terms_page": "https://hololivepro.com/terms/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "beb28d9496dbb679c4779fefe445351fb2eec062b6b30c97b5e312a6fc429f85",
+      "fallback_rows": [
+        {
+          "id": "1259",
+          "original": "ムーナ・ホシノヴァ",
+          "surface": "ムーナ・ホシノヴァ",
+          "pronunciation": "ムーナ・ホシノヴァ",
+          "type": "full",
+          "category": "vtuber",
+          "org": "ホロライブインドネシア",
+          "debut_year": "NA",
+          "status": "current",
+          "wikidata": "NA",
+          "channel": "Moona Hoshinova",
+          "description": "ホロライブプロダクション所属VTuber。",
+          "subscribers": "NA",
+          "subscribers_as_of": "NA"
+        }
+      ]
+    },
+    {
+      "original": "アイラニ・イオフィフティーン",
+      "talent_status": "current",
+      "image_url": "https://hololive.hololivepro.com/wp-content/uploads/2020/07/Airani-Iofifteen_pr-img_01.webp",
+      "source_page": "https://hololive.hololivepro.com/talents/airani-iofifteen/",
+      "credit": "ホロライブプロダクション公式立ち絵 © COVER",
+      "terms_page": "https://hololivepro.com/terms/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "69554af0b2239fda254b17f6a23034cc57375e24692bb2838884355dca994614",
+      "fallback_rows": []
+    },
+    {
+      "original": "クレイジー・オリー",
+      "talent_status": "current",
+      "image_url": "https://hololive.hololivepro.com/wp-content/uploads/2020/07/Kureiji-Ollie_pr-img_01.png",
+      "source_page": "https://hololive.hololivepro.com/talents/kureiji-ollie/",
+      "credit": "ホロライブプロダクション公式立ち絵 © COVER",
+      "terms_page": "https://hololivepro.com/terms/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "b84e14c0cc82a70bf0a43bcd99e56d309173e032ac42e4b5a1531f666b902427",
+      "fallback_rows": [
+        {
+          "id": "1260",
+          "original": "クレイジー・オリー",
+          "surface": "クレイジー・オリー",
+          "pronunciation": "クレイジー・オリー",
+          "type": "full",
+          "category": "vtuber",
+          "org": "ホロライブインドネシア",
+          "debut_year": "NA",
+          "status": "current",
+          "wikidata": "NA",
+          "channel": "Kureiji Ollie",
+          "description": "ホロライブプロダクション所属VTuber。",
+          "subscribers": "NA",
+          "subscribers_as_of": "NA"
+        }
+      ]
+    },
+    {
+      "original": "アーニャ・メルフィッサ",
+      "talent_status": "current",
+      "image_url": "https://hololive.hololivepro.com/wp-content/uploads/2020/07/Anya-Melfissa_pr-img_01.png",
+      "source_page": "https://hololive.hololivepro.com/talents/anya-melfissa/",
+      "credit": "ホロライブプロダクション公式立ち絵 © COVER",
+      "terms_page": "https://hololivepro.com/terms/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "6bedc036bc9135cb661871d1f8346c3515140a7ce12a4ad3b0ac828e74294d96",
+      "fallback_rows": [
+        {
+          "id": "1261",
+          "original": "アーニャ・メルフィッサ",
+          "surface": "アーニャ・メルフィッサ",
+          "pronunciation": "アーニャ・メルフィッサ",
+          "type": "full",
+          "category": "vtuber",
+          "org": "ホロライブインドネシア",
+          "debut_year": "NA",
+          "status": "current",
+          "wikidata": "NA",
+          "channel": "Anya Melfissa",
+          "description": "ホロライブプロダクション所属VTuber。",
+          "subscribers": "NA",
+          "subscribers_as_of": "NA"
+        }
+      ]
+    },
+    {
+      "original": "パヴォリア・レイネ",
+      "talent_status": "current",
+      "image_url": "https://hololive.hololivepro.com/wp-content/uploads/2020/07/Pavolia-Reine_pr-img_01.png",
+      "source_page": "https://hololive.hololivepro.com/talents/pavolia-reine/",
+      "credit": "ホロライブプロダクション公式立ち絵 © COVER",
+      "terms_page": "https://hololivepro.com/terms/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "91b4b9c70afb9041864064639698675e5297c7da8e86fd8618e3ebdc8afa8050",
+      "fallback_rows": [
+        {
+          "id": "1262",
+          "original": "パヴォリア・レイネ",
+          "surface": "パヴォリア・レイネ",
+          "pronunciation": "パヴォリア・レイネ",
+          "type": "full",
+          "category": "vtuber",
+          "org": "ホロライブインドネシア",
+          "debut_year": "NA",
+          "status": "current",
+          "wikidata": "NA",
+          "channel": "Pavolia Reine",
+          "description": "ホロライブプロダクション所属VTuber。",
+          "subscribers": "NA",
+          "subscribers_as_of": "NA"
+        }
+      ]
+    },
+    {
+      "original": "ベスティア・ゼータ",
+      "talent_status": "current",
+      "image_url": "https://hololive.hololivepro.com/wp-content/uploads/2020/07/Vestia-Zeta_pr-img_01.webp",
+      "source_page": "https://hololive.hololivepro.com/talents/vestia-zeta/",
+      "credit": "ホロライブプロダクション公式立ち絵 © COVER",
+      "terms_page": "https://hololivepro.com/terms/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "8925de244c789d18836c26a3f7d1eae333a55adc397f757ea8c501dace2dead7",
+      "fallback_rows": []
+    },
+    {
+      "original": "カエラ・コヴァルスキア",
+      "talent_status": "current",
+      "image_url": "https://hololive.hololivepro.com/wp-content/uploads/2020/07/Kaela-Kovalskia_pr-img_01.webp",
+      "source_page": "https://hololive.hololivepro.com/talents/kaela-kovalskia/",
+      "credit": "ホロライブプロダクション公式立ち絵 © COVER",
+      "terms_page": "https://hololivepro.com/terms/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "e84df7cd5fcae2eecf5e661645dd8e71cf2278a5324aa1f3faa0bf5fde98acee",
+      "fallback_rows": [
+        {
+          "id": "1263",
+          "original": "カエラ・コヴァルスキア",
+          "surface": "カエラ・コヴァルスキア",
+          "pronunciation": "カエラ・コヴァルスキア",
+          "type": "full",
+          "category": "vtuber",
+          "org": "ホロライブインドネシア",
+          "debut_year": "NA",
+          "status": "current",
+          "wikidata": "NA",
+          "channel": "Kaela Kovalskia",
+          "description": "ホロライブプロダクション所属VTuber。",
+          "subscribers": "NA",
+          "subscribers_as_of": "NA"
+        }
+      ]
+    },
+    {
+      "original": "こぼ・かなえる",
+      "talent_status": "current",
+      "image_url": "https://hololive.hololivepro.com/wp-content/uploads/2020/07/Kobo-Kanaeru_pr-img_01.webp",
+      "source_page": "https://hololive.hololivepro.com/talents/kobo-kanaeru/",
+      "credit": "ホロライブプロダクション公式立ち絵 © COVER",
+      "terms_page": "https://hololivepro.com/terms/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "9ac1ace4c10dff455b5715a541eb82bc2c91df3fb4574841397c9e8fc3b21f0e",
+      "fallback_rows": []
+    },
+    {
+      "original": "森カリオペ",
+      "talent_status": "current",
+      "image_url": "https://hololive.hololivepro.com/wp-content/uploads/2020/07/Mori-Calliope_pr-img_01.webp",
+      "source_page": "https://hololive.hololivepro.com/talents/mori-calliope/",
+      "credit": "ホロライブプロダクション公式立ち絵 © COVER",
+      "terms_page": "https://hololivepro.com/terms/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "36e2246fefea101df5de5f00a207038df58571264bf6117b2542619f8f66856d",
+      "fallback_rows": []
+    },
+    {
+      "original": "小鳥遊キアラ",
+      "talent_status": "current",
+      "image_url": "https://hololive.hololivepro.com/wp-content/uploads/2020/07/Takanashi-Kiara_pr-img_01.webp",
+      "source_page": "https://hololive.hololivepro.com/talents/takanashi-kiara/",
+      "credit": "ホロライブプロダクション公式立ち絵 © COVER",
+      "terms_page": "https://hololivepro.com/terms/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "7d4dd5540818e1f6bda239160aa3996a6e765b4fcac5d4b420f3c56d330926d7",
+      "fallback_rows": []
+    },
+    {
+      "original": "一伊那尓栖",
+      "talent_status": "current",
+      "image_url": "https://hololive.hololivepro.com/wp-content/uploads/2020/07/Ninomae-Inanis_pr-img_01.webp",
+      "source_page": "https://hololive.hololivepro.com/talents/ninomae-inanis/",
+      "credit": "ホロライブプロダクション公式立ち絵 © COVER",
+      "terms_page": "https://hololivepro.com/terms/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "6bc478c1f42d08b1d0f940a02db9a0185fdbc781b1c4d748deffc0f397e0427f",
+      "fallback_rows": []
+    },
+    {
+      "original": "ワトソン・アメリア",
+      "talent_status": "activity_ended",
+      "image_url": "https://hololive.hololivepro.com/wp-content/uploads/2020/07/Watson-Amelia_pr-img_01.png",
+      "source_page": "https://hololive.hololivepro.com/talents/watson-amelia/",
+      "credit": "ホロライブプロダクション公式立ち絵 © COVER",
+      "terms_page": "https://hololivepro.com/terms/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "a0aadc5780e8398bf025b0d04879c0ed722a969ac99c51f58fd67d12b5e2bf9d",
+      "fallback_rows": []
+    },
+    {
+      "original": "IRyS",
+      "talent_status": "current",
+      "image_url": "https://hololive.hololivepro.com/wp-content/uploads/2020/07/IRyS_pr-img_01.webp",
+      "source_page": "https://hololive.hololivepro.com/talents/irys/",
+      "credit": "ホロライブプロダクション公式立ち絵 © COVER",
+      "terms_page": "https://hololivepro.com/terms/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "cd35fafde0a3fc06f491a8cb7e429cf5e4407fee855ae90da339adceeae1340d",
+      "fallback_rows": []
+    },
+    {
+      "original": "オーロ・クロニー",
+      "talent_status": "current",
+      "image_url": "https://hololive.hololivepro.com/wp-content/uploads/2020/07/Ouro-Kronii_pr-img_01.webp",
+      "source_page": "https://hololive.hololivepro.com/talents/ouro-kronii/",
+      "credit": "ホロライブプロダクション公式立ち絵 © COVER",
+      "terms_page": "https://hololivepro.com/terms/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "fffe8ff0379e6e2e9b0ad90279049bfc1e3e49061ee2d746d1e6f8422f756dee",
+      "fallback_rows": [
+        {
+          "id": "1264",
+          "original": "オーロ・クロニー",
+          "surface": "オーロ・クロニー",
+          "pronunciation": "オーロ・クロニー",
+          "type": "full",
+          "category": "vtuber",
+          "org": "hololive English",
+          "debut_year": "NA",
+          "status": "current",
+          "wikidata": "NA",
+          "channel": "Ouro Kronii",
+          "description": "ホロライブプロダクション所属VTuber。",
+          "subscribers": "NA",
+          "subscribers_as_of": "NA"
+        }
+      ]
+    },
+    {
+      "original": "ハコス・ベールズ",
+      "talent_status": "current",
+      "image_url": "https://hololive.hololivepro.com/wp-content/uploads/2020/07/Hakos-Baelz_pr-img_01.png",
+      "source_page": "https://hololive.hololivepro.com/talents/hakos-baelz/",
+      "credit": "ホロライブプロダクション公式立ち絵 © COVER",
+      "terms_page": "https://hololivepro.com/terms/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "c34bddedace270a82eb641f36d86015f62bab5413e7ee1ac18b7bb8c9c62e776",
+      "fallback_rows": [
+        {
+          "id": "1265",
+          "original": "ハコス・ベールズ",
+          "surface": "ハコス・ベールズ",
+          "pronunciation": "ハコス・ベールズ",
+          "type": "full",
+          "category": "vtuber",
+          "org": "hololive English",
+          "debut_year": "NA",
+          "status": "current",
+          "wikidata": "NA",
+          "channel": "Hakos Baelz",
+          "description": "ホロライブプロダクション所属VTuber。",
+          "subscribers": "NA",
+          "subscribers_as_of": "NA"
+        }
+      ]
+    },
+    {
+      "original": "シオリ・ノヴェラ",
+      "talent_status": "current",
+      "image_url": "https://hololive.hololivepro.com/wp-content/uploads/2021/07/Shiori-Novella_pr-img_01.webp",
+      "source_page": "https://hololive.hololivepro.com/talents/shiori-novella/",
+      "credit": "ホロライブプロダクション公式立ち絵 © COVER",
+      "terms_page": "https://hololivepro.com/terms/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "41b0cc631714487d7ed8d6fe4122efac693f2729da1cf41fdab2eefb0ec2d27c",
+      "fallback_rows": [
+        {
+          "id": "1266",
+          "original": "シオリ・ノヴェラ",
+          "surface": "シオリ・ノヴェラ",
+          "pronunciation": "シオリ・ノヴェラ",
+          "type": "full",
+          "category": "vtuber",
+          "org": "hololive English",
+          "debut_year": "NA",
+          "status": "current",
+          "wikidata": "NA",
+          "channel": "Shiori Novella",
+          "description": "ホロライブプロダクション所属VTuber。",
+          "subscribers": "NA",
+          "subscribers_as_of": "NA"
+        }
+      ]
+    },
+    {
+      "original": "古石ビジュー",
+      "talent_status": "current",
+      "image_url": "https://hololive.hololivepro.com/wp-content/uploads/2021/07/Koseki-Bijou_pr-img_01.webp",
+      "source_page": "https://hololive.hololivepro.com/talents/koseki-bijou/",
+      "credit": "ホロライブプロダクション公式立ち絵 © COVER",
+      "terms_page": "https://hololivepro.com/terms/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "b7ad463f5366d25b20d5596b577dedc498f49ed4c64a6048e50df25cc45583dd",
+      "fallback_rows": [
+        {
+          "id": "1267",
+          "original": "古石ビジュー",
+          "surface": "古石ビジュー",
+          "pronunciation": "コセキビジュー",
+          "type": "full",
+          "category": "vtuber",
+          "org": "hololive English",
+          "debut_year": "NA",
+          "status": "current",
+          "wikidata": "NA",
+          "channel": "Koseki Bijou",
+          "description": "ホロライブプロダクション所属VTuber。",
+          "subscribers": "NA",
+          "subscribers_as_of": "NA"
+        }
+      ]
+    },
+    {
+      "original": "ネリッサ・レイヴンクロフト",
+      "talent_status": "current",
+      "image_url": "https://hololive.hololivepro.com/wp-content/uploads/2021/07/Nerissa-Ravencroft_pr-img_01.webp",
+      "source_page": "https://hololive.hololivepro.com/talents/nerissa-ravencroft/",
+      "credit": "ホロライブプロダクション公式立ち絵 © COVER",
+      "terms_page": "https://hololivepro.com/terms/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "45bd59aeed3a9aa62eeef9d6abb01020d267327192ec30792ab0e3502c4ca747",
+      "fallback_rows": [
+        {
+          "id": "1268",
+          "original": "ネリッサ・レイヴンクロフト",
+          "surface": "ネリッサ・レイヴンクロフト",
+          "pronunciation": "ネリッサ・レイヴンクロフト",
+          "type": "full",
+          "category": "vtuber",
+          "org": "hololive English",
+          "debut_year": "NA",
+          "status": "current",
+          "wikidata": "NA",
+          "channel": "Nerissa Ravencroft",
+          "description": "ホロライブプロダクション所属VTuber。",
+          "subscribers": "NA",
+          "subscribers_as_of": "NA"
+        }
+      ]
+    },
+    {
+      "original": "フワワ・アビスガード",
+      "talent_status": "current",
+      "image_url": "https://hololive.hololivepro.com/wp-content/uploads/2021/07/Fuwawa-Abyssgard_pr-img_01.webp",
+      "source_page": "https://hololive.hololivepro.com/talents/fuwawa-abyssgard/",
+      "credit": "ホロライブプロダクション公式立ち絵 © COVER",
+      "terms_page": "https://hololivepro.com/terms/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "a1e63b978c183a99872ea6ffb744d7be772d1d720ac014740f57ec333dbcf9e6",
+      "fallback_rows": []
+    },
+    {
+      "original": "モココ・アビスガード",
+      "talent_status": "current",
+      "image_url": "https://hololive.hololivepro.com/wp-content/uploads/2021/07/Mococo-Abyssgard_pr-img_01.webp",
+      "source_page": "https://hololive.hololivepro.com/talents/mococo-abyssgard/",
+      "credit": "ホロライブプロダクション公式立ち絵 © COVER",
+      "terms_page": "https://hololivepro.com/terms/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "5519cdf6acc5b766f9db315bfe40075d40936bfc0ece2bcbc3e456348a54d449",
+      "fallback_rows": []
+    },
+    {
+      "original": "エリザベス・ローズ・ブラッドフレイム",
+      "talent_status": "current",
+      "image_url": "https://hololive.hololivepro.com/wp-content/uploads/2023/07/Elizabeth-Rose-Bloodflame_pr-img_01.webp",
+      "source_page": "https://hololive.hololivepro.com/talents/elizabeth-rose-bloodflame/",
+      "credit": "ホロライブプロダクション公式立ち絵 © COVER",
+      "terms_page": "https://hololivepro.com/terms/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "9937145b7fd56ecebaf1ff3bbd7ba1273f2122f8bcf04a345e46ce3d998a437f",
+      "fallback_rows": [
+        {
+          "id": "1269",
+          "original": "エリザベス・ローズ・ブラッドフレイム",
+          "surface": "エリザベス・ローズ・ブラッドフレイム",
+          "pronunciation": "エリザベス・ローズ・ブラッドフレイム",
+          "type": "full",
+          "category": "vtuber",
+          "org": "hololive English",
+          "debut_year": "NA",
+          "status": "current",
+          "wikidata": "NA",
+          "channel": "Elizabeth Rose Bloodflame",
+          "description": "ホロライブプロダクション所属VTuber。",
+          "subscribers": "NA",
+          "subscribers_as_of": "NA"
+        }
+      ]
+    },
+    {
+      "original": "ジジ・ムリン",
+      "talent_status": "current",
+      "image_url": "https://hololive.hololivepro.com/wp-content/uploads/2023/07/Gigi-Murin_pr-img_01.webp",
+      "source_page": "https://hololive.hololivepro.com/talents/gigi-murin/",
+      "credit": "ホロライブプロダクション公式立ち絵 © COVER",
+      "terms_page": "https://hololivepro.com/terms/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "1ee855136ba2cad4c841b6016899dd7113605fe38a1f7847806e8d4adce2fe94",
+      "fallback_rows": [
+        {
+          "id": "1270",
+          "original": "ジジ・ムリン",
+          "surface": "ジジ・ムリン",
+          "pronunciation": "ジジ・ムリン",
+          "type": "full",
+          "category": "vtuber",
+          "org": "hololive English",
+          "debut_year": "NA",
+          "status": "current",
+          "wikidata": "NA",
+          "channel": "Gigi Murin",
+          "description": "ホロライブプロダクション所属VTuber。",
+          "subscribers": "NA",
+          "subscribers_as_of": "NA"
+        }
+      ]
+    },
+    {
+      "original": "セシリア・イマーグリーン",
+      "talent_status": "current",
+      "image_url": "https://hololive.hololivepro.com/wp-content/uploads/2023/07/Cecilia-Immergreen_pr-img_01.png",
+      "source_page": "https://hololive.hololivepro.com/talents/cecilia-immergreen/",
+      "credit": "ホロライブプロダクション公式立ち絵 © COVER",
+      "terms_page": "https://hololivepro.com/terms/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "c6072c9634080f17ffe334027ffb6180c000751cb1ca185a7df63edc385c1f74",
+      "fallback_rows": [
+        {
+          "id": "1271",
+          "original": "セシリア・イマーグリーン",
+          "surface": "セシリア・イマーグリーン",
+          "pronunciation": "セシリア・イマーグリーン",
+          "type": "full",
+          "category": "vtuber",
+          "org": "hololive English",
+          "debut_year": "NA",
+          "status": "current",
+          "wikidata": "NA",
+          "channel": "Cecilia Immergreen",
+          "description": "ホロライブプロダクション所属VTuber。",
+          "subscribers": "NA",
+          "subscribers_as_of": "NA"
+        }
+      ]
+    },
+    {
+      "original": "ラオーラ・パンテーラ",
+      "talent_status": "current",
+      "image_url": "https://hololive.hololivepro.com/wp-content/uploads/2023/07/Raora-Panthera_pr-img_01.webp",
+      "source_page": "https://hololive.hololivepro.com/talents/raora-panthera/",
+      "credit": "ホロライブプロダクション公式立ち絵 © COVER",
+      "terms_page": "https://hololivepro.com/terms/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "5ee075643ea87f1e1c6361cf89517f7ebde8ef4d8d0fafc18fb44c264fa22457",
+      "fallback_rows": [
+        {
+          "id": "1272",
+          "original": "ラオーラ・パンテーラ",
+          "surface": "ラオーラ・パンテーラ",
+          "pronunciation": "ラオーラ・パンテーラ",
+          "type": "full",
+          "category": "vtuber",
+          "org": "hololive English",
+          "debut_year": "NA",
+          "status": "current",
+          "wikidata": "NA",
+          "channel": "Raora Panthera",
+          "description": "ホロライブプロダクション所属VTuber。",
+          "subscribers": "NA",
+          "subscribers_as_of": "NA"
+        }
+      ]
+    },
+    {
+      "original": "がうる・ぐら",
+      "talent_status": "graduated",
+      "image_url": "https://hololive.hololivepro.com/wp-content/uploads/2024/05/Gawr-Gura_pr-img_01.png",
+      "source_page": "https://hololive.hololivepro.com/talents/gawr-gura/",
+      "credit": "ホロライブプロダクション公式立ち絵 © COVER",
+      "terms_page": "https://hololivepro.com/terms/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "ab6021ccb415629a1df2fd25c96f6c522d899b36c94b3f6a5d446bd5bbafbbfa",
+      "fallback_rows": []
+    },
+    {
+      "original": "九十九佐命",
+      "talent_status": "graduated",
+      "image_url": "https://hololive.hololivepro.com/wp-content/uploads/2023/09/Tsukumo-Sana_pr-img_01.png",
+      "source_page": "https://hololive.hololivepro.com/talents/tsukumo-sana/",
+      "credit": "ホロライブプロダクション公式立ち絵 © COVER",
+      "terms_page": "https://hololivepro.com/terms/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "b2bdcad0b6f59ce3d6df2e9cfcaca040ba0fff4cd4f9ec10d74feddba85dd251",
+      "fallback_rows": [
+        {
+          "id": "1273",
+          "original": "九十九佐命",
+          "surface": "九十九佐命",
+          "pronunciation": "ツクモサナ",
+          "type": "full",
+          "category": "vtuber",
+          "org": "hololive English",
+          "debut_year": "NA",
+          "status": "former",
+          "wikidata": "NA",
+          "channel": "Tsukumo Sana",
+          "description": "ホロライブプロダクション所属VTuber。",
+          "subscribers": "NA",
+          "subscribers_as_of": "NA"
+        }
+      ]
+    },
+    {
+      "original": "セレス・ファウナ",
+      "talent_status": "graduated",
+      "image_url": "https://hololive.hololivepro.com/wp-content/uploads/2023/10/Ceres-Fauna_pr-img_01.png",
+      "source_page": "https://hololive.hololivepro.com/talents/ceres-fauna/",
+      "credit": "ホロライブプロダクション公式立ち絵 © COVER",
+      "terms_page": "https://hololivepro.com/terms/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "6b4772cd5c98516537d72883beb3a674ec01d9b1b9a2eff6b7ae53516192910a",
+      "fallback_rows": [
+        {
+          "id": "1274",
+          "original": "セレス・ファウナ",
+          "surface": "セレス・ファウナ",
+          "pronunciation": "セレス・ファウナ",
+          "type": "full",
+          "category": "vtuber",
+          "org": "hololive English",
+          "debut_year": "NA",
+          "status": "former",
+          "wikidata": "NA",
+          "channel": "Ceres Fauna",
+          "description": "ホロライブプロダクション所属VTuber。",
+          "subscribers": "NA",
+          "subscribers_as_of": "NA"
+        }
+      ]
+    },
+    {
+      "original": "七詩ムメイ",
+      "talent_status": "graduated",
+      "image_url": "https://hololive.hololivepro.com/wp-content/uploads/2023/10/Nanashi-Mumei_pr-img_01.png",
+      "source_page": "https://hololive.hololivepro.com/talents/nanashi-mumei/",
+      "credit": "ホロライブプロダクション公式立ち絵 © COVER",
+      "terms_page": "https://hololivepro.com/terms/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "ca2ee36c165def2509c20f4134e03acd0e48dc50f0d5245c21ec8f67ebeb162a",
+      "fallback_rows": [
+        {
+          "id": "1275",
+          "original": "七詩ムメイ",
+          "surface": "七詩ムメイ",
+          "pronunciation": "ナナシムメイ",
+          "type": "full",
+          "category": "vtuber",
+          "org": "hololive English",
+          "debut_year": "NA",
+          "status": "former",
+          "wikidata": "NA",
+          "channel": "Nanashi Mumei",
+          "description": "ホロライブプロダクション所属VTuber。",
+          "subscribers": "NA",
+          "subscribers_as_of": "NA"
+        }
+      ]
+    },
+    {
+      "original": "音乃瀬奏",
+      "talent_status": "current",
+      "image_url": "https://hololive.hololivepro.com/wp-content/uploads/2023/09/Otonose-Kanade_pr-img_01_a.png",
+      "source_page": "https://hololive.hololivepro.com/talents/otonose-kanade/",
+      "credit": "ホロライブプロダクション公式立ち絵 © COVER",
+      "terms_page": "https://hololivepro.com/terms/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "867392fafd75afc60957c7c0393369cf54fc534daf95337e93f741b1c301378f",
+      "fallback_rows": []
+    },
+    {
+      "original": "一条莉々華",
+      "talent_status": "current",
+      "image_url": "https://hololive.hololivepro.com/wp-content/uploads/2023/09/Ichijou-Ririka_pr-img_01_a.png",
+      "source_page": "https://hololive.hololivepro.com/talents/ichijou-ririka/",
+      "credit": "ホロライブプロダクション公式立ち絵 © COVER",
+      "terms_page": "https://hololivepro.com/terms/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "eb0ec772618e1cd9d24ec62cc7a580ac27c3c27d0c76886a3d6cf6728cdaf5db",
+      "fallback_rows": []
+    },
+    {
+      "original": "儒烏風亭らでん",
+      "talent_status": "current",
+      "image_url": "https://hololive.hololivepro.com/wp-content/uploads/2023/09/Juufuutei-Raden_pr-img_01_a.webp",
+      "source_page": "https://hololive.hololivepro.com/talents/juufuutei-raden/",
+      "credit": "ホロライブプロダクション公式立ち絵 © COVER",
+      "terms_page": "https://hololivepro.com/terms/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "5bd5a54acabfc79525c875db2e4790484120770e845f52e93a31fcea77ff1f65",
+      "fallback_rows": []
+    },
+    {
+      "original": "轟はじめ",
+      "talent_status": "current",
+      "image_url": "https://hololive.hololivepro.com/wp-content/uploads/2023/09/Todoroki-Hajime_pr-img_01_a.png",
+      "source_page": "https://hololive.hololivepro.com/talents/todoroki-hajime/",
+      "credit": "ホロライブプロダクション公式立ち絵 © COVER",
+      "terms_page": "https://hololivepro.com/terms/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "40b40d5f83819128036b9f990b3ee772f4e26ef94a2d4458a9fbd398d46ddffd",
+      "fallback_rows": []
+    },
+    {
+      "original": "響咲リオナ",
+      "talent_status": "current",
+      "image_url": "https://hololive.hololivepro.com/wp-content/uploads/2023/09/Isaki-Riona_pr-img_01_a.png",
+      "source_page": "https://hololive.hololivepro.com/talents/isaki-riona/",
+      "credit": "ホロライブプロダクション公式立ち絵 © COVER",
+      "terms_page": "https://hololivepro.com/terms/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "7937fc47b297336206c2faebdca7fcf8dcad74c8fe900905aad33b3da2812cf1",
+      "fallback_rows": []
+    },
+    {
+      "original": "虎金妃笑虎",
+      "talent_status": "current",
+      "image_url": "https://hololive.hololivepro.com/wp-content/uploads/2023/09/Koganei-Niko_pr-img_01_a.png",
+      "source_page": "https://hololive.hololivepro.com/talents/koganei-niko/",
+      "credit": "ホロライブプロダクション公式立ち絵 © COVER",
+      "terms_page": "https://hololivepro.com/terms/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "b742a11419f8e494082c7a51b785a389194a148b2a87585ca93f814162753b7e",
+      "fallback_rows": []
+    },
+    {
+      "original": "水宮枢",
+      "talent_status": "current",
+      "image_url": "https://hololive.hololivepro.com/wp-content/uploads/2023/09/Mizumiya-Su_pr-img_01_a.png",
+      "source_page": "https://hololive.hololivepro.com/talents/mizumiya-su/",
+      "credit": "ホロライブプロダクション公式立ち絵 © COVER",
+      "terms_page": "https://hololivepro.com/terms/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "1769f635405c57192206aac42e162ae6a29b94cf2cb0936ceab34f8d0454a813",
+      "fallback_rows": []
+    },
+    {
+      "original": "輪堂千速",
+      "talent_status": "current",
+      "image_url": "https://hololive.hololivepro.com/wp-content/uploads/2023/09/Rindo-Chihaya_pr-img_01_a.png",
+      "source_page": "https://hololive.hololivepro.com/talents/rindo-chihaya/",
+      "credit": "ホロライブプロダクション公式立ち絵 © COVER",
+      "terms_page": "https://hololivepro.com/terms/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "45672648df955e311b01ff801764805d53a8dc51a247c87c963f17e7caf77038",
+      "fallback_rows": []
+    },
+    {
+      "original": "綺々羅々ヴィヴィ",
+      "talent_status": "current",
+      "image_url": "https://hololive.hololivepro.com/wp-content/uploads/2023/09/Kikirara-Vivi_pr-img_01_a.webp",
+      "source_page": "https://hololive.hololivepro.com/talents/kikirara-vivi/",
+      "credit": "ホロライブプロダクション公式立ち絵 © COVER",
+      "terms_page": "https://hololivepro.com/terms/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "597e9d671ddb59d4f44b90773892d81eca9e9e285a68a90d257e464110751e54",
+      "fallback_rows": []
+    },
+    {
+      "original": "火威青",
+      "talent_status": "graduated",
+      "image_url": "https://hololive.hololivepro.com/wp-content/uploads/2023/09/Hiodoshi-Ao_pr-img_01_a.png",
+      "source_page": "https://hololive.hololivepro.com/talents/hiodoshi-ao/",
+      "credit": "ホロライブプロダクション公式立ち絵 © COVER",
+      "terms_page": "https://hololivepro.com/terms/",
+      "reviewed": "2026-08-17",
+      "source_sha256": "c176a67684d498a0ff843a1fffc76fc2b61b87e5124ec64efe119a02929e3496",
+      "fallback_rows": []
+    }
+  ]
+}

@@ -26,6 +26,10 @@ from apply_youtuber_permitted_images import (
     IMAGE_PREFIX as YOUTUBER_FAN_IMAGE_PREFIX,
     load_manifest as load_youtuber_fan_manifest,
 )
+from apply_youtuber_hololive_images import (
+    IMAGE_USAGE as HOLOLIVE_IMAGE_USAGE,
+    load_manifest as load_hololive_image_manifest,
+)
 from wpnames import (
     PLAYER_DISAMBIGUATION_DESCRIPTION,
     has_redundant_player_subject,
@@ -60,6 +64,13 @@ YOUTUBER_FAN_IMAGES = {
 }
 YOUTUBER_FAN_SOURCE_PAGES = {
     record["source_page"] for record in YOUTUBER_FAN_IMAGES.values()
+}
+YOUTUBER_HOLOLIVE_IMAGES = {
+    record["image_url"]: record
+    for record in load_hololive_image_manifest().values()
+}
+YOUTUBER_HOLOLIVE_SOURCE_PAGES = {
+    record["source_page"] for record in YOUTUBER_HOLOLIVE_IMAGES.values()
 }
 # 読みにASCII英字が2文字以上続くのは、英名を読みに入れてしまった取り違え
 # (例: sekitsui の "Azara's night monkey")。利用側の読み解析がこの手の行で
@@ -147,6 +158,7 @@ def validate(path: Path):
     youtuber_snapshots = {}
     youtuber_images = {}
     youtuber_fan_seen = set()
+    youtuber_hololive_seen = set()
     myoji_ranks = {}
     myoji_counts = {}
     myoji_order = []
@@ -163,12 +175,17 @@ def validate(path: Path):
         for col in img_cols:
             v = f[idx[col]]
             if v and not IMAGE_URL_RE.match(v):
-                is_reviewed_youtuber_source = (
-                    path.name == "youtuber.csv"
-                    and col == "image_page"
-                    and v in YOUTUBER_FAN_SOURCE_PAGES
+                is_reviewed_youtuber_url = path.name == "youtuber.csv" and (
+                    (col == "image" and v in YOUTUBER_HOLOLIVE_IMAGES)
+                    or (
+                        col == "image_page"
+                        and v in (
+                            YOUTUBER_FAN_SOURCE_PAGES
+                            | YOUTUBER_HOLOLIVE_SOURCE_PAGES
+                        )
+                    )
                 )
-                if not is_reviewed_youtuber_source:
+                if not is_reviewed_youtuber_url:
                     err(f"{path.name}:{lineno}: {col} が不正なURL: {v[:60]}")
         if "pronunciation" in idx:
             v = f[idx["pronunciation"]]
@@ -249,6 +266,26 @@ def validate(path: Path):
                             f"{path.name}:{lineno}: ファンメイド画像の"
                             "人物が台帳と不一致")
                     youtuber_fan_seen.add(record["original"])
+            elif image in YOUTUBER_HOLOLIVE_IMAGES:
+                record = YOUTUBER_HOLOLIVE_IMAGES[image]
+                expected_status = (
+                    "current" if record["talent_status"] == "current" else "former"
+                )
+                checks = (
+                    (image_page, record["source_page"], "image_page"),
+                    (image_credit, record["credit"], "image_credit"),
+                    (image_usage, HOLOLIVE_IMAGE_USAGE, "image_usage"),
+                    (image_terms_page, record["terms_page"], "image_terms_page"),
+                    (f[idx["original"]], record["original"], "人物"),
+                    (f[idx["status"]], expected_status, "status"),
+                )
+                for actual, expected, label in checks:
+                    if actual != expected:
+                        err(
+                            f"{path.name}:{lineno}: ホロライブ公式画像の"
+                            f"{label}が台帳と不一致"
+                        )
+                youtuber_hololive_seen.add(record["original"])
             elif not image_page.startswith("https://commons.wikimedia.org/wiki/File:"):
                 err(
                     f"{path.name}:{lineno}: 実写のimage_pageがCommonsでない: "
@@ -385,6 +422,14 @@ def validate(path: Path):
             extra = sorted(youtuber_fan_seen - expected)
             detail = f"未適用={missing} 余分={extra}"
             err(f"{path.name}: ファンメイド画像台帳の適用が不完全: {detail}")
+        hololive_expected = {
+            record["original"] for record in YOUTUBER_HOLOLIVE_IMAGES.values()
+        }
+        if youtuber_hololive_seen != hololive_expected:
+            missing = sorted(hololive_expected - youtuber_hololive_seen)
+            extra = sorted(youtuber_hololive_seen - hololive_expected)
+            detail = f"未適用={missing} 余分={extra}"
+            err(f"{path.name}: ホロライブ公式画像台帳の適用が不完全: {detail}")
     if path.name == "myoji.csv":
         previous_count = None
         expected_rank = 0
