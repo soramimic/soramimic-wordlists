@@ -8,6 +8,8 @@ channels.list(part=snippet,statistics)。Wikidataの登録者数(P3744)は記録
 - 対象は wikidata 列にQIDが入っている人。QIDが無い行は NA
 - 1人が複数チャンネルを持つ場合は**その人のチャンネル群で最大の登録者数**を採り、
   subscribers と channel(snippet.title)を必ず同じチャンネルIDから取る
+- `verified_shared_group_channel` は人物確認・表示だけに使い、グループ登録者数を
+  個人へ帰属させない。別の検証済み個人チャンネルがあれば、そのIDだけを採る
 - 登録者数を非公開にしているチャンネル(hiddenSubscriberCount)は候補から除く。
   1本も取れなければ NA
 - **subscribers と subscribers_as_of は毎回全行を上書きする**。channel は空欄/NAの
@@ -123,6 +125,55 @@ def apply_channel_backfill(rows: list, selected: dict) -> set:
     return filled
 
 
+def load_shared_channel_titles() -> dict:
+    """検証済み共有チャンネルの表示名を人物IDごとに読む。"""
+    titles = {}
+    if not SOURCE_PATH.exists():
+        return titles
+    for line in SOURCE_PATH.read_text(encoding="utf-8").splitlines():
+        if not line.strip():
+            continue
+        record = json.loads(line)
+        if record.get("decision") != "verified_shared_group_channel":
+            continue
+        title = (record.get("channel_title") or "").strip()
+        if title:
+            titles.setdefault(record["person_id"], set()).add(title)
+    return {pid: sorted(values) for pid, values in titles.items()}
+
+
+def apply_shared_channel_backfill(rows: list, shared_titles: dict,
+                                  selected: dict) -> set:
+    """個人chがなく共有chが一意な人物へ表示名と共有印を反映する。"""
+    applied = set()
+    for pid, titles in shared_titles.items():
+        if pid in selected or len(titles) != 1:
+            continue
+        title = titles[0]
+        person_rows = [row for row in rows if row["id"] == pid]
+        current = {row.get(CHANNEL_COL, "NA") for row in person_rows}
+        if not person_rows or not current <= {"", "NA", title}:
+            continue
+        for row in person_rows:
+            row[CHANNEL_COL] = title
+            row["channel_shared"] = "yes"
+        applied.add(pid)
+    return applied
+
+
+def apply_personal_channel_markers(rows: list, selected: dict,
+                                   verified_pairs: set) -> set:
+    """台帳で個人chと確認済みの選定チャンネルへ非共有印を付ける。"""
+    personal = {
+        pid for pid, choice in selected.items()
+        if (pid, choice["channel_id"]) in verified_pairs
+    }
+    for row in rows:
+        if row["id"] in personal:
+            row["channel_shared"] = "no"
+    return personal
+
+
 def validate_snapshot_alignment(rows: list, selected: dict, preserve: set) -> None:
     """今回書き換えるchannel/subscribersが同じ選定IDの値か検証する。"""
     for row in rows:
@@ -167,8 +218,9 @@ def write_jsonl_atomic(path: Path, records: list) -> None:
 
 
 def update_audit_files(rows: list, qid_of: dict, p2397: dict, selected: dict,
-                       as_of: str) -> tuple:
+                       as_of: str, shared_people: set = None) -> tuple:
     """採用根拠を台帳へ追記し、既存channelとの差異を候補レポートへ出す。"""
+    shared_people = shared_people or set()
     person = {}
     for row in rows:
         person.setdefault(row["id"], row)
@@ -212,7 +264,8 @@ def update_audit_files(rows: list, qid_of: dict, p2397: dict, selected: dict,
             if line.strip():
                 record = json.loads(line)
                 if record.get("source_type") != "wikidata_p2397" \
-                        and record.get("person_id") not in resolved:
+                        and record.get("person_id") not in resolved \
+                        and record.get("person_id") not in shared_people:
                     report.append(record)
     for pid, choice in selected.items():
         current = person[pid].get("channel")
@@ -232,7 +285,8 @@ def update_audit_files(rows: list, qid_of: dict, p2397: dict, selected: dict,
             })
     for pid, current in ((pid, row.get("channel"))
                          for pid, row in person.items()):
-        if current not in (None, "", "NA") and pid not in selected:
+        if current not in (None, "", "NA") and pid not in selected \
+                and pid not in shared_people:
             report.append({
                 "decision": "deferred_channel_unavailable",
                 "existing_channel": current,
@@ -257,18 +311,20 @@ def update_audit_files(rows: list, qid_of: dict, p2397: dict, selected: dict,
     return len(existing), len({record["person_id"] for record in report})
 
 
-def load_verified_channel_sources(qid_of: dict, name_of: dict) -> dict:
-    """調査台帳でverifiedになった追加IDを人物IDごとに読む。"""
-    out = {}
+def load_channel_source_registry(qid_of: dict, name_of: dict) -> tuple:
+    """調査台帳から登録者数対象IDと共有チャンネル人物を分けて読む。"""
+    out, shared = {}, {}
     if not SOURCE_PATH.exists():
-        return out
+        return out, shared
     for lineno, line in enumerate(
             SOURCE_PATH.read_text(encoding="utf-8").splitlines(), 1):
         if not line.strip():
             continue
         record = json.loads(line)
-        if record.get("decision") != "verified":
-            continue
+        decision = record.get("decision")
+        if decision not in {"verified", "verified_shared_group_channel"}:
+            raise SystemExit(
+                f"error: {SOURCE_PATH}:{lineno}: 不正なdecision: {decision}")
         if record.get("source_type") == "wikidata_p2397":
             continue
         if record.get("source_type") not in {
@@ -308,8 +364,17 @@ def load_verified_channel_sources(qid_of: dict, name_of: dict) -> dict:
             if not record.get("evidence_quote"):
                 raise SystemExit(
                     f"error: {SOURCE_PATH}:{lineno}: Web検索の根拠要約が不足")
+        if decision == "verified_shared_group_channel":
+            shared.setdefault(person_id, []).append(channel_id)
+            continue
         out.setdefault(person_id, []).append(channel_id)
-    return {person_id: sorted(set(ids)) for person_id, ids in out.items()}
+    return ({person_id: sorted(set(ids)) for person_id, ids in out.items()},
+            {person_id: sorted(set(ids)) for person_id, ids in shared.items()})
+
+
+def load_verified_channel_sources(qid_of: dict, name_of: dict) -> dict:
+    """調査台帳で登録者数取得対象になった追加IDを人物IDごとに読む。"""
+    return load_channel_source_registry(qid_of, name_of)[0]
 
 
 def _load_key() -> str:
@@ -456,13 +521,15 @@ def main() -> int:
 
     qids = sorted(set(qid_of.values()))
     p2397 = fetch_channel_ids(qids)
-    extra_chans = load_verified_channel_sources(qid_of, name_of)
+    extra_chans, shared_chans = load_channel_source_registry(qid_of, name_of)
     extra_id_pairs = {(pid, channel_id) for pid, channel_ids in extra_chans.items()
                       for channel_id in channel_ids}
     ids_by_person = {}
     for pid in name_of:
-        ids_by_person[pid] = sorted(set(
-            p2397.get(qid_of.get(pid, ""), []) + extra_chans.get(pid, [])))
+        shared_ids = set(shared_chans.get(pid, []))
+        ids_by_person[pid] = sorted(
+            set(p2397.get(qid_of.get(pid, ""), []) + extra_chans.get(pid, []))
+            - shared_ids)
     all_ids = sorted({c for v in ids_by_person.values() for c in v})
     channel_people = sum(bool(ids) for ids in ids_by_person.values())
     extra_people = len(extra_chans)
@@ -475,6 +542,9 @@ def main() -> int:
           f"{len(all_ids) - len(channels) - hidden}本)", flush=True)
 
     selected = select_channels(ids_by_person, channels)
+    shared_only_people = apply_shared_channel_backfill(
+        rows, load_shared_channel_titles(), selected)
+    apply_personal_channel_markers(rows, selected, extra_id_pairs)
     best = {pid: choice["subscribers"] for pid, choice in selected.items()}
     if len(best) < MIN_PEOPLE:
         print(f"error: implausible subscribers count: {len(best)}人"
@@ -489,7 +559,7 @@ def main() -> int:
         current_channel.setdefault(row["id"], row.get(CHANNEL_COL, "NA"))
     deferred_existing = {
         pid for pid, title in current_channel.items()
-        if title not in ("", "NA")
+        if pid not in shared_only_people and title not in ("", "NA")
         and (pid not in selected or title != selected[pid]["title"])
     }
     filled, updated, lost = apply_snapshot(
@@ -497,7 +567,7 @@ def main() -> int:
     channel_filled = apply_channel_backfill(rows, selected)
     validate_snapshot_alignment(rows, selected, deferred_existing)
     evidence_count, deferred_count = update_audit_files(
-        rows, qid_of, p2397, selected, as_of)
+        rows, qid_of, p2397, selected, as_of, shared_only_people)
     # 監査台帳の生成・検証まで成功してからCSVを原子的に置換する。
     write_snapshot_atomic(CSV_PATH, cols, rows)
 
@@ -519,6 +589,8 @@ def main() -> int:
               f"({source} {choice['channel_id']})", flush=True)
     print(f"採用根拠台帳: {evidence_count}件 / "
           f"監査レポートで保留: {deferred_count}人", flush=True)
+    print(f"グループ共有チャンネルのみ: {len(shared_only_people)}人 "
+          "(個人の登録者数には不使用)", flush=True)
     top = sorted(best.items(), key=lambda kv: -kv[1])[:10]
     print("登録者数 上位10人:", flush=True)
     for pid, n in top:

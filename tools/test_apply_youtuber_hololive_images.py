@@ -13,7 +13,7 @@ FIELDS = [
     "id", "original", "surface", "pronunciation", "type", "category", "org",
     "debut_year", "status", "image", "image_page", "wikidata", "channel",
     "description", "subscribers", "subscribers_as_of", "image_credit",
-    "image_usage", "image_terms_page", "scope",
+    "image_usage", "image_terms_page", "scope", "channel_shared",
 ]
 
 
@@ -84,6 +84,7 @@ class ApplyHololiveImagesTest(unittest.TestCase):
         with csv_path.open(encoding="utf-8", newline="") as handle:
             row = next(csv.DictReader(handle))
         self.assertEqual(row["scope"], "japan")
+        self.assertEqual(row["channel_shared"], "NA")
 
     def test_rejects_unapproved_host(self):
         self.record["image_url"] = "https://example.com/test.png"
@@ -95,6 +96,34 @@ class ApplyHololiveImagesTest(unittest.TestCase):
         self.record["fallback_rows"] = [fallback, fallback]
         with self.assertRaises(SystemExit):
             hololive.load_manifest(self.write_manifest())
+
+    def test_repo_fallback_talents_have_verified_official_channels(self):
+        manifest = hololive.load_manifest()
+        source_path = hololive.ROOT / "tools" / "youtuber_channel_sources.jsonl"
+        sources = [
+            json.loads(line) for line in source_path.read_text(
+                encoding="utf-8").splitlines() if line.strip()
+        ]
+        verified = {
+            record["original"]: record for record in sources
+            if record.get("decision") == "verified"
+            and record.get("source_type") == "official_talent_profile"
+            and record.get("source_url", "").startswith(
+                "https://hololive.hololivepro.com/talents/")
+        }
+        fallbacks = {
+            original: record for original, record in manifest.items()
+            if record["fallback_rows"]
+        }
+
+        self.assertEqual(len(fallbacks), 19)
+        self.assertEqual(set(verified), set(fallbacks))
+        for original, record in fallbacks.items():
+            source = verified[original]
+            self.assertEqual(source["source_url"], record["source_page"])
+            self.assertEqual(
+                source["channel_title"], record["fallback_rows"][0]["channel"])
+            self.assertRegex(source["channel_id"], r"^UC[0-9A-Za-z_-]{22}$")
 
 
 if __name__ == "__main__":

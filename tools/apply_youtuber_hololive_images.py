@@ -144,6 +144,8 @@ def apply(
                     raise SystemExit(f"error: fallback id が既存行と重複: {fallback['id']}")
                 row = {column: "" for column in fieldnames}
                 row.update(fallback)
+                if "channel_shared" in fieldnames and not row["channel_shared"]:
+                    row["channel_shared"] = "NA"
                 if "scope" in fieldnames and not row["scope"]:
                     overseas = ("English" in row.get("org", "") or
                                 "インドネシア" in row.get("org", ""))

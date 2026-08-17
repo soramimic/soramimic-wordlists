@@ -183,6 +183,7 @@ Wikipedia由来の加工文はCC BY-SA 4.0で、同台帳から原記事への�
 | debut_year | 活動開始年。情報がない場合は `NA` |
 | status | `current`(活動中)/`former`(活動終了) |
 | channel | 検証済みYouTube公式チャンネル名。空欄補完後の既存値は自動上書きしない |
+| channel_shared | レビュー済み表示チャンネルがグループ共有のみなら`yes`、個人チャンネルなら`no`、未レビューは`NA` |
 | subscribers | YouTubeが公開する有効数字3桁の概数 |
 | subscribers_as_of | `subscribers` の取得日(UTC、`YYYY-MM-DD`)。取得できない場合は `NA` |
 | description | 活動内容の短い説明 |
@@ -195,7 +196,8 @@ Wikipedia由来の加工文はCC BY-SA 4.0で、同台帳から原記事への�
 `channel` は人物の発見・本人確認にも使う付加情報であり、チャンネル名そのものを
 `original` / `surface` の語彙行にはしない。公式プロフィールから補完した人物と
 `scope` の判断規則は [ADR 00064](adr/00064-youtuber-japan-scope-and-person-discovery.md)
-を参照。
+を参照。`channel_shared=yes`の登録者数はグループ全体の値なので、個人の
+`subscribers`へは入れない。
 
 人物名には活動名を採用する。VTuberの象徴カードは配色、頭文字、職業アイコンで
 構成する。制限付き画像は非営利用途に限り、`image_credit` の表示と

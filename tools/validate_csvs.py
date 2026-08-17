@@ -145,7 +145,7 @@ def validate(path: Path):
         missing = [
             col for col in (
                 "image", "image_page", "image_credit", "image_usage",
-                "image_terms_page", "scope",
+                "image_terms_page", "scope", "channel_shared",
             )
             if col not in idx
         ]
@@ -168,6 +168,7 @@ def validate(path: Path):
     player_groups = {}
     youtuber_snapshots = {}
     youtuber_scopes = {}
+    youtuber_channel_shared = {}
     youtuber_images = {}
     youtuber_fan_seen = set()
     youtuber_hololive_seen = set()
@@ -246,6 +247,14 @@ def validate(path: Path):
                     and youtuber_scopes[person_id] != creator_scope):
                 err(f"{path.name}:{lineno}: 同じidでscopeが一致しない")
             youtuber_scopes[person_id] = creator_scope
+            channel_shared = f[idx["channel_shared"]]
+            if channel_shared not in ("yes", "no", "NA"):
+                err(f"{path.name}:{lineno}: channel_shared が不正: "
+                    f"{channel_shared}")
+            if (person_id in youtuber_channel_shared
+                    and youtuber_channel_shared[person_id] != channel_shared):
+                err(f"{path.name}:{lineno}: 同じidでchannel_sharedが一致しない")
+            youtuber_channel_shared[person_id] = channel_shared
             for col in ("image", "image_page"):
                 if not f[idx[col]]:
                     err(f"{path.name}:{lineno}: {col} が空")
@@ -368,6 +377,9 @@ def validate(path: Path):
                     and youtuber_snapshots[person_id] != snapshot):
                 err(f"{path.name}:{lineno}: 同じidでチャンネル情報が一致しない")
             youtuber_snapshots[person_id] = snapshot
+            if channel_shared == "yes" and not (
+                    channel_present and subscriber_unavailable):
+                err(f"{path.name}:{lineno}: 共有チャンネルに個人登録者数がある")
         if path.name == "myoji.csv":
             surface = f[idx["surface"]]
             count_names = ("listing_units", "strict_rows", "regions", "prefectures")

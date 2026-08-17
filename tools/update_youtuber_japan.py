@@ -22,6 +22,7 @@ ROOT = Path(__file__).resolve().parent.parent
 CSV_PATH = ROOT / "youtuber.csv"
 PEOPLE_PATH = ROOT / "tools" / "youtuber_japan_people.json"
 CHANNEL_SOURCES_PATH = ROOT / "tools" / "youtuber_channel_sources.jsonl"
+CHANNEL_SHARED_COLUMN = "channel_shared"
 CHANNEL_ID_RE = re.compile(r"^UC[0-9A-Za-z_-]{22}$")
 QID_RE = re.compile(r"^Q\d+$")
 YEAR_RE = re.compile(r"^(?:NA|(?:19|20)\d{2})$")
@@ -128,6 +129,11 @@ def apply_people(rows: list[dict], columns: list[str], people: list[dict],
     """
     out_rows = deepcopy(rows)
     out_sources = deepcopy(channel_sources)
+    out_columns = (columns if CHANNEL_SHARED_COLUMN in columns else
+                   [*columns, CHANNEL_SHARED_COLUMN])
+    for row in out_rows:
+        if row.get(CHANNEL_SHARED_COLUMN) not in {"yes", "no", "NA"}:
+            row[CHANNEL_SHARED_COLUMN] = "NA"
     names, qids, by_id = _person_indexes(out_rows)
 
     channel_owners = {}
@@ -160,16 +166,16 @@ def apply_people(rows: list[dict], columns: list[str], people: list[dict],
         pid = next(iter(name_ids)) if name_ids else str(next_id)
         if not name_ids:
             next_id += 1
+        owners = channel_owners.get(person["channel_id"], set())
         if not person["channel_shared"]:
-            owners = channel_owners.get(person["channel_id"], set())
             if owners - {pid}:
                 raise RosterConflict(
                     f"チャンネルが別人物に紐づく: {person['channel_id']}: "
                     f"{sorted(owners)} / {pid}")
-            if len(source_keys.get((pid, person["channel_id"]), [])) > 1:
-                raise RosterConflict(
-                    f"対象チャンネル根拠が重複: person_id={pid} "
-                    f"{person['channel_id']}")
+        if len(source_keys.get((pid, person["channel_id"]), [])) > 1:
+            raise RosterConflict(
+                f"対象チャンネル根拠が重複: person_id={pid} "
+                f"{person['channel_id']}")
         if name_ids:
             categories = {
                 row.get("category") for row in out_rows if row.get("id") == pid
@@ -187,20 +193,29 @@ def apply_people(rows: list[dict], columns: list[str], people: list[dict],
         effective_qids[name] = (next(iter(existing_qids))
                                 if name_ids and existing_qids else qid)
 
-        existing_sources = ([] if person["channel_shared"] else
-                            source_keys.get((pid, person["channel_id"]), []))
+        existing_sources = source_keys.get((pid, person["channel_id"]), [])
         if existing_sources:
             record = existing_sources[0]
             if record.get("original") != name or \
                     _qid(record.get("qid")) != effective_qids[name]:
                 raise RosterConflict(
                     f"対象チャンネル根拠の人物対応が不一致: {name}")
+            if person["channel_shared"]:
+                decision = record.get("decision")
+                if decision == "verified":
+                    # 旧形式で個人チャンネル扱いだったレビュー済み
+                    # 台帳と人物/QID/チャンネルが一致するレコードだけを、
+                    # 登録者数非対象へ移行する。
+                    record["decision"] = "verified_shared_group_channel"
+                elif decision != "verified_shared_group_channel":
+                    raise RosterConflict(
+                        f"共有チャンネル根拠のdecisionが不正: {name}")
 
     added = 0
     for person in people:
         name, pid = person["original"], ids[person["original"]]
         if name not in names:
-            row = {column: "" for column in columns}
+            row = {column: "" for column in out_columns}
             row.update({
                 "id": pid,
                 "original": name,
@@ -216,6 +231,8 @@ def apply_people(rows: list[dict], columns: list[str], people: list[dict],
                 "description": person["description"],
                 "subscribers": "NA",
                 "subscribers_as_of": "NA",
+                CHANNEL_SHARED_COLUMN: ("yes" if person["channel_shared"]
+                                        else "no"),
             })
             if "scope" in columns:
                 row["scope"] = "japan"
@@ -234,17 +251,21 @@ def apply_people(rows: list[dict], columns: list[str], people: list[dict],
                              else person[field])
                     if row.get(field) in MISSING and value not in MISSING:
                         row[field] = str(value)
+                row[CHANNEL_SHARED_COLUMN] = (
+                    "yes" if person["channel_shared"] and
+                    row.get("channel") == person["channel_title"] else "no")
                 if "scope" in columns and row.get("scope") in MISSING | {"unknown"}:
                     row["scope"] = "japan"
 
         key = (pid, person["channel_id"])
         # グループ共有チャンネルは本人確認には使うが、個人の登録者数として
-        # 集計しないため subscriber 更新台帳には入れない。
-        if not person["channel_shared"] and key not in source_keys:
+        # 集計しないことを decision に永続的に記録する。
+        if key not in source_keys:
             record = {
                 "channel_id": person["channel_id"],
                 "channel_title": person["channel_title"],
-                "decision": "verified",
+                "decision": ("verified_shared_group_channel"
+                             if person["channel_shared"] else "verified"),
                 "evidence_url": person["channel_url"],
                 "identity_basis": "reviewed_person_source_and_official_channel",
                 "observed_on": observed_on,
@@ -310,6 +331,8 @@ def main(argv=None) -> int:
     with args.csv.open(encoding="utf-8", newline="") as handle:
         reader = csv.DictReader(handle)
         rows, columns = list(reader), list(reader.fieldnames or [])
+    if CHANNEL_SHARED_COLUMN not in columns:
+        columns.append(CHANNEL_SHARED_COLUMN)
     people = load_people(args.people)
     sources = load_channel_sources(args.channel_sources)
     updated_rows, updated_sources, added, _ids = apply_people(
