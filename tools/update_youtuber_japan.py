@@ -254,6 +254,9 @@ def apply_people(rows: list[dict], columns: list[str], people: list[dict],
                 row[CHANNEL_SHARED_COLUMN] = (
                     "yes" if person["channel_shared"] and
                     row.get("channel") == person["channel_title"] else "no")
+                if row[CHANNEL_SHARED_COLUMN] == "yes":
+                    row["subscribers"] = "NA"
+                    row["subscribers_as_of"] = "NA"
                 if "scope" in columns and row.get("scope") in MISSING | {"unknown"}:
                     row["scope"] = "japan"
 
