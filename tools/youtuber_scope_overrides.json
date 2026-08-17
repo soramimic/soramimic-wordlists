@@ -1,0 +1,40 @@
+{
+  "_readme": "自動判定では表せない活動圏だけを、確認日と根拠付きで上書きする。日本語Wikipedia記事や表記だけを根拠にしない。",
+  "people": [
+    {
+      "original": "ヒカル",
+      "scope": "japan",
+      "basis": "日本向け公式プロフィールと本人チャンネル",
+      "evidence_url": "https://avex.jp/UPSTART/profile/detail.php?id=1002224",
+      "reviewed": "2026-08-17"
+    },
+    {
+      "original": "きまぐれクック",
+      "scope": "japan",
+      "basis": "国内所属先の公式プロフィールと本人チャンネル",
+      "evidence_url": "https://carry0n.co.jp/creator/kimagure-cook/",
+      "reviewed": "2026-08-17"
+    },
+    {
+      "original": "カジサック",
+      "scope": "japan",
+      "basis": "国内所属先による活動開始告知と本人チャンネル",
+      "evidence_url": "https://news.yoshimoto.co.jp/2018/10/entry86919.php",
+      "reviewed": "2026-08-17"
+    },
+    {
+      "original": "ポッキー",
+      "scope": "japan",
+      "basis": "国内所属先の公式告知と本人チャンネル",
+      "evidence_url": "https://uuum.jp/posts/6863",
+      "reviewed": "2026-08-17"
+    },
+    {
+      "original": "瀬戸弘司",
+      "scope": "japan",
+      "basis": "国内所属先の公式プロフィールと本人チャンネル",
+      "evidence_url": "https://uuum.jp/creator/seto",
+      "reviewed": "2026-08-17"
+    }
+  ]
+}

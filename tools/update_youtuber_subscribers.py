@@ -275,12 +275,13 @@ def load_verified_channel_sources(qid_of: dict, name_of: dict) -> dict:
                 "jawiki_external_link", "wikidata_official_site",
                 "wikidata_official_site_page", "wikidata_youtube_handle",
                 "jawiki_infobox", "web_search_primary_link",
-                "official_talent_profile"}:
+                "official_talent_profile", "reviewed_person_roster"}:
             raise SystemExit(f"error: {SOURCE_PATH}:{lineno}: 不正なsource_type")
         channel_id = record.get("channel_id", "")
         qid = record.get("qid", "")
         qid_optional = record.get("source_type") in {
-            "web_search_primary_link", "official_talent_profile"}
+            "web_search_primary_link", "official_talent_profile",
+            "reviewed_person_roster"}
         if not CHANNEL_ID_RE.fullmatch(channel_id) or not (
                 re.fullmatch(r"Q\d+", qid) or (qid_optional and qid == "NA")):
             raise SystemExit(f"error: {SOURCE_PATH}:{lineno}: 不正なQID/channel_id")

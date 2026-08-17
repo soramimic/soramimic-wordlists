@@ -178,6 +178,7 @@ Wikipedia由来の加工文はCC BY-SA 4.0で、同台帳から原記事への�
 |---|---|
 | type | 表層の種類(`family`/`given`/`full`) |
 | category | `youtuber`/`vtuber` |
+| scope | `japan`(日本向け活動を確認)/`global`(海外中心)/`unknown`(根拠不足)。国内知名度や国籍そのものではない |
 | org | 所属。複数は `/` 区切り |
 | debut_year | 活動開始年。情報がない場合は `NA` |
 | status | `current`(活動中)/`former`(活動終了) |
@@ -190,6 +191,11 @@ Wikipedia由来の加工文はCC BY-SA 4.0で、同台帳から原記事への�
 | image_usage | `noncommercial_fanwork` は非営利ファン活動でのみ利用可能。その他は空欄 |
 | image_terms_page | `image_usage` の条件を定める公式ガイドライン |
 | wikidata | 本人のQID |
+
+`channel` は人物の発見・本人確認にも使う付加情報であり、チャンネル名そのものを
+`original` / `surface` の語彙行にはしない。公式プロフィールから補完した人物と
+`scope` の判断規則は [ADR 00064](adr/00064-youtuber-japan-scope-and-person-discovery.md)
+を参照。
 
 人物名には活動名を採用する。VTuberの象徴カードは配色、頭文字、職業アイコンで
 構成する。レビュー済みファンメイド画像は非営利用途に限り、`image_credit` の表示と

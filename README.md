@@ -30,7 +30,7 @@
 | insect.csv | 昆虫 | Wikidata、Wikimedia Commons |
 | marine_life.csv | 海の生き物 | [WoRMS](https://www.marinespecies.org/)、[JODC海洋生物分類コード](https://www.jodc.go.jp/jodcweb/JDOSS/infoTaxonomicCode_j.html)、Wikidata、日本語Wikipedia、Wikimedia Commons、本リポジトリでのキュレーション |
 | pokemon.csv | ポケモン | [PokéAPI](https://github.com/PokeAPI/pokeapi)、[PhyloPic](https://www.phylopic.org/) |
-| youtuber.csv | YouTuber・VTuber | Wikidata、Wikipedia、[YouTube Data API v3](https://developers.google.com/youtube/v3)、Wikimedia Commons、[あおぎり高校](https://vhs-city.com/aogirihighschool/)、[ななしいんく](https://www.774.ai/) |
+| youtuber.csv | YouTuber・VTuber（`scope`で日本向け/海外中心/未判定を選択可） | Wikidata、Wikipedia、公式プロフィール、[YouTube Data API v3](https://developers.google.com/youtube/v3)、Wikimedia Commons、[あおぎり高校](https://vhs-city.com/aogirihighschool/)、[ななしいんく](https://www.774.ai/) |
 | fictional_scientist.csv | AI生成の架空科学者 | jiroshimaya/fictional-scientists |
 | fictional_anime_character.csv | AI生成の架空アニメ登場人物 | jiroshimaya/fictional-scientists |
 | fictional_daily_anime_character.csv | AI生成の架空日常アニメ登場人物 | jiroshimaya/fictional-scientists |

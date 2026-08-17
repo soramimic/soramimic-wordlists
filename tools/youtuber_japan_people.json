@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "people": [
+    {
+      "original": "ヒカル",
+      "pronunciation": "ヒカル",
+      "debut_year": "2013",
+      "org": "NA",
+      "description": "検証企画や娯楽動画を中心に発信するYouTuber。",
+      "qid": "NA",
+      "source_url": "https://avex.jp/UPSTART/profile/detail.php?id=1002224",
+      "channel_id": "UCaminwG9MTO4sLYeC3s6udA",
+      "channel_title": "ヒカル（Hikaru）",
+      "channel_url": "https://www.youtube.com/channel/UCaminwG9MTO4sLYeC3s6udA"
+    },
+    {
+      "original": "きまぐれクック",
+      "pronunciation": "キマグレクック",
+      "debut_year": "2016",
+      "org": "CARRY ON",
+      "description": "魚の調理やさばき方を紹介する料理系YouTuber。",
+      "qid": "NA",
+      "source_url": "https://carry0n.co.jp/creator/kimagure-cook/",
+      "channel_id": "UCaak9sggUeIBPOd8iK_BXcQ",
+      "channel_title": "きまぐれクックKimagure Cook",
+      "channel_url": "https://www.youtube.com/channel/UCaak9sggUeIBPOd8iK_BXcQ"
+    },
+    {
+      "original": "カジサック",
+      "pronunciation": "カジサック",
+      "debut_year": "2018",
+      "org": "吉本興業",
+      "description": "家族企画やトーク動画を中心に発信するYouTuber。",
+      "qid": "NA",
+      "source_url": "https://news.yoshimoto.co.jp/2018/10/entry86919.php",
+      "channel_id": "UC642pLj4GXSj-0Ybdx3ytmA",
+      "channel_title": "カジサック KAJISAC",
+      "channel_url": "https://www.youtube.com/channel/UC642pLj4GXSj-0Ybdx3ytmA"
+    },
+    {
+      "original": "ポッキー",
+      "pronunciation": "ポッキー",
+      "debut_year": "2013",
+      "org": "UUUM",
+      "description": "ゲーム実況動画を中心に発信するYouTuber。",
+      "qid": "NA",
+      "source_url": "https://uuum.jp/posts/6863",
+      "channel_id": "UCzXjPL7zo0bxhOYDxLJ9YEg",
+      "channel_title": "ポッキー",
+      "channel_url": "https://www.youtube.com/channel/UCzXjPL7zo0bxhOYDxLJ9YEg"
+    },
+    {
+      "original": "瀬戸弘司",
+      "pronunciation": "セトコウジ",
+      "debut_year": "2010",
+      "org": "UUUM",
+      "description": "商品レビューや映像制作の動画を発信するYouTuber。",
+      "qid": "NA",
+      "source_url": "https://uuum.jp/creator/seto",
+      "channel_id": "UCFBjsYvwX7kWUjQoW7GcJ5A",
+      "channel_title": "瀬戸弘司 / Koji Seto",
+      "channel_url": "https://www.youtube.com/channel/UCFBjsYvwX7kWUjQoW7GcJ5A"
+    }
+  ]
+}

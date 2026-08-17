@@ -13,7 +13,7 @@ FIELDS = [
     "id", "original", "surface", "pronunciation", "type", "category", "org",
     "debut_year", "status", "image", "image_page", "wikidata", "channel",
     "description", "subscribers", "subscribers_as_of", "image_credit",
-    "image_usage", "image_terms_page",
+    "image_usage", "image_terms_page", "scope",
 ]
 
 
@@ -81,6 +81,9 @@ class ApplyHololiveImagesTest(unittest.TestCase):
         csv_path = self.write_csv([])
         result = hololive.apply(csv_path, self.write_manifest())
         self.assertEqual(result, (1, 1, 1))
+        with csv_path.open(encoding="utf-8", newline="") as handle:
+            row = next(csv.DictReader(handle))
+        self.assertEqual(row["scope"], "japan")
 
     def test_rejects_unapproved_host(self):
         self.record["image_url"] = "https://example.com/test.png"

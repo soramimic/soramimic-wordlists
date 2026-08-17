@@ -138,12 +138,14 @@ def apply_roster(rows: list[dict], cols: list[str], details: list[dict]) -> tupl
     for item in details:
         name = item["name"]
         description = f"{item['affiliation']}所属のバーチャルライバー。"
+        scope = "japan" if item["affiliation"] == "にじさんじ" else "global"
         if name not in by_name:
             row = {col: "" for col in cols}
             row.update({
                 "id": str(next_id), "original": name, "surface": name,
                 "pronunciation": item["ruby"], "type": "full",
                 "category": "vtuber", "org": item["affiliation"],
+                **({"scope": scope} if "scope" in cols else {}),
                 "debut_year": item["debut_year"], "status": "current",
                 "channel": item["channel"] or "NA",
                 "description": description,
@@ -166,6 +168,8 @@ def apply_roster(rows: list[dict], cols: list[str], details: list[dict]) -> tupl
                     row[key] = value
             row.setdefault("subscribers", "NA")
             row.setdefault("subscribers_as_of", "NA")
+            if "scope" in cols and row.get("scope") in (None, "", "unknown"):
+                row["scope"] = scope
         ids[name] = by_name[name][0]["id"]
     return added_people, added_rows, ids
 
