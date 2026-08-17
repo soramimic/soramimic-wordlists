@@ -22,6 +22,7 @@ from wpnames import sparql, write_csv_no_trailing_newline  # noqa: E402
 ROOT = Path(__file__).resolve().parent.parent
 CSV_PATH = ROOT / "youtuber.csv"
 OVERRIDES_PATH = Path(__file__).resolve().parent / "youtuber_scope_overrides.json"
+JAPAN_PEOPLE_PATH = Path(__file__).resolve().parent / "youtuber_japan_people.json"
 SCOPES = {"japan", "global", "unknown"}
 JAPAN_QID = "Q17"
 QID_RE = re.compile(r"^Q[1-9][0-9]*$")
@@ -65,6 +66,17 @@ def load_overrides(path: Path = OVERRIDES_PATH) -> dict[str, dict]:
     return result
 
 
+def load_reviewed_japan_names(path: Path = JAPAN_PEOPLE_PATH) -> set[str]:
+    data = json.loads(path.read_text(encoding="utf-8"))
+    if not isinstance(data, dict) or data.get("schema_version") != 1:
+        raise SystemExit("error: 日本向け人物台帳の形式または活動名が不正")
+    records = data.get("people", [])
+    names = {record.get("original", "") for record in records}
+    if not records or "" in names or len(names) != len(records):
+        raise SystemExit("error: 日本向け人物台帳の形式または活動名が不正")
+    return names
+
+
 def fetch_citizenships(qids: list[str]) -> dict[str, set[str]]:
     """QID -> 国籍(P27)QID集合。国籍なしも空集合として返す。"""
     result = {qid: set() for qid in qids}
@@ -87,10 +99,13 @@ SELECT ?p ?country WHERE {{
 
 
 def infer_scope(row: dict[str, str], countries: set[str],
-                overrides: dict[str, dict]) -> str:
+                overrides: dict[str, dict],
+                reviewed_japan_names: set[str] = frozenset()) -> str:
     original = row.get("original", "")
     if original in overrides:
         return overrides[original]["scope"]
+    if original in reviewed_japan_names:
+        return "japan"
     org = row.get("org", "")
     channel = row.get("channel", "")
     if (any(marker in org for marker in GLOBAL_ORG_MARKERS)
@@ -107,7 +122,9 @@ def infer_scope(row: dict[str, str], countries: set[str],
 
 def apply_scopes(rows: list[dict[str, str]], columns: list[str],
                  citizenships: dict[str, set[str]],
-                 overrides: dict[str, dict]) -> tuple[list[str], dict[str, int]]:
+                 overrides: dict[str, dict],
+                 reviewed_japan_names: set[str] = frozenset()
+                 ) -> tuple[list[str], dict[str, int]]:
     if "scope" not in columns:
         columns = columns + ["scope"]
     grouped: dict[str, list[dict[str, str]]] = {}
@@ -122,23 +139,27 @@ def apply_scopes(rows: list[dict[str, str]], columns: list[str],
             raise SystemExit(f"error: id={person_id} の人物対応が不整合")
         representative = person_rows[0]
         countries = citizenships.get(next(iter(qids), ""), set())
-        scope = infer_scope(representative, countries, overrides)
+        scope = infer_scope(
+            representative, countries, overrides, reviewed_japan_names)
         for row in person_rows:
             row["scope"] = scope
         counts[scope] += 1
     return columns, counts
 
 
-def update(path: Path = CSV_PATH, overrides_path: Path = OVERRIDES_PATH) -> dict[str, int]:
+def update(path: Path = CSV_PATH, overrides_path: Path = OVERRIDES_PATH,
+           japan_people_path: Path = JAPAN_PEOPLE_PATH) -> dict[str, int]:
     with path.open(encoding="utf-8", newline="") as handle:
         reader = csv.DictReader(handle)
         rows = list(reader)
         columns = list(reader.fieldnames or [])
     overrides = load_overrides(overrides_path)
+    reviewed_japan_names = load_reviewed_japan_names(japan_people_path)
     qids = sorted({row.get("wikidata", "") for row in rows
                    if QID_RE.fullmatch(row.get("wikidata", ""))})
     citizenships = fetch_citizenships(qids)
-    columns, counts = apply_scopes(rows, columns, citizenships, overrides)
+    columns, counts = apply_scopes(
+        rows, columns, citizenships, overrides, reviewed_japan_names)
     write_csv_no_trailing_newline(path, columns, rows)
     return counts
 
@@ -147,8 +168,9 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--csv", type=Path, default=CSV_PATH)
     parser.add_argument("--overrides", type=Path, default=OVERRIDES_PATH)
+    parser.add_argument("--japan-people", type=Path, default=JAPAN_PEOPLE_PATH)
     args = parser.parse_args()
-    counts = update(args.csv, args.overrides)
+    counts = update(args.csv, args.overrides, args.japan_people)
     print("youtuber.csv scope: " + ", ".join(
         f"{scope}={counts[scope]}" for scope in ("japan", "global", "unknown")))
     return 0

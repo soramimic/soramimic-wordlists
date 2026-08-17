@@ -41,10 +41,16 @@ class UpdateYoutuberJapanTest(unittest.TestCase):
         people = target.load_people()
         names = {item["original"] for item in people}
 
-        self.assertEqual(len(people), 28)
+        self.assertEqual(len(people), 76)
         self.assertTrue({
             "ヒカル", "シルクロード", "カンタ", "テオくん", "☆イニ☆",
             "河村拓哉", "鶴崎修功", "山本祥彰", "やまと", "ひゅうが", "ゆうま",
+            "NICO", "RIHO", "ケビン", "かけ", "やま", "ないとー",
+            "渋谷ジャパン", "ぎし", "みゆ。", "どば師匠", "ぺろ愛男爵",
+            "ありしゃん", "まりな", "さおりん", "じんじん", "タナカガ",
+            "浅見めい", "じゃぱぱ", "のあ", "たっつん", "ゆあんくん",
+            "むく", "えなぴ", "こう", "いちえ", "けーすけ", "ガチヤマ",
+            "桐崎栄二", "たっくー", "からめる", "よみぃ", "おろちんゆー",
         }.issubset(names))
         self.assertTrue({"フィッシャーズ", "水溜りボンド", "スカイピース",
                          "QuizKnock", "コムドット"}.isdisjoint(names))
@@ -61,6 +67,16 @@ class UpdateYoutuberJapanTest(unittest.TestCase):
             "カンタ", "トミー", "テオくん", "☆イニ☆", "伊沢拓司", "河村拓哉",
             "ふくらP", "鶴崎修功", "須貝駿貴", "山本祥彰", "東問", "東言",
             "やまと", "ゆうた", "ひゅうが", "ゆうま", "あむぎり",
+            "NICO", "RIHO", "ケビン", "かけ", "やま", "ないとー",
+            "渋谷ジャパン", "ぎし", "みゆ。", "どば師匠", "たかし",
+            "てっちゃん", "ともやん", "ぺろ愛男爵", "ありしゃん",
+            "まりな", "さおりん", "じんじん", "タナカガ", "UraN",
+            "エア", "浅見めい", "じゃぱぱ", "のあ", "たっつん",
+            "ゆあんくん", "シヴァ", "どぬく", "うり", "えと", "ヒロ",
+            "なおきり", "もふ", "るな", "むく", "えなぴ", "こう",
+            "いちえ", "けーすけ", "ひろと", "ガチヤマ", "かず",
+            "けんご", "桐崎栄二", "たっくー", "からめる", "よみぃ",
+            "おろちんゆー",
         }
 
         self.assertTrue(expected.issubset(originals))
@@ -223,6 +239,24 @@ class UpdateYoutuberJapanTest(unittest.TestCase):
         self.assertEqual(
             sources[0]["decision"], "verified_shared_group_channel")
         self.assertEqual(sources[0]["channel_title"], "グループ共有チャンネル")
+
+    def test_shared_channel_clears_legacy_group_subscriber_count(self):
+        existing = {column: "" for column in COLUMNS}
+        existing.update({
+            "id": "7", "original": "人物", "surface": "人物",
+            "pronunciation": "ジンブツ", "category": "youtuber",
+            "wikidata": "NA", "channel": "共有チャンネル",
+            "subscribers": "2000000", "subscribers_as_of": "2026-08-17",
+        })
+        shared = person(title="共有チャンネル", shared=True)
+
+        rows, _sources, added, _ids = target.apply_people(
+            [existing], COLUMNS, [shared], [], "2026-08-18")
+
+        self.assertEqual(added, 0)
+        self.assertEqual(rows[0]["channel_shared"], "yes")
+        self.assertEqual(rows[0]["subscribers"], "NA")
+        self.assertEqual(rows[0]["subscribers_as_of"], "NA")
 
     def test_is_idempotent_and_preserves_existing_spelling_and_reading(self):
         existing = {column: "" for column in COLUMNS}

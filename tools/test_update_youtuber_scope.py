@@ -1,4 +1,6 @@
 import sys
+import json
+import tempfile
 import unittest
 from pathlib import Path
 
@@ -17,6 +19,30 @@ class ScopeTest(unittest.TestCase):
         row = self.row(scope="global", org="hololive English")
         overrides = {"人物": {"scope": "japan"}}
         self.assertEqual(scope.infer_scope(row, {"Q30"}, overrides), "japan")
+
+    def test_reviewed_japan_registry_is_a_scope_source(self):
+        row = self.row(original="レビュー済み人物", org="NA")
+        self.assertEqual(scope.infer_scope(
+            row, set(), {}, {"レビュー済み人物"}), "japan")
+        self.assertEqual(scope.infer_scope(
+            row, set(), {"レビュー済み人物": {"scope": "global"}},
+            {"レビュー済み人物"}), "global")
+
+    def test_load_reviewed_japan_names(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "people.json"
+            path.write_text(json.dumps({
+                "schema_version": 1,
+                "people": [{"original": "甲"}, {"original": "乙"}],
+            }, ensure_ascii=False), encoding="utf-8")
+            self.assertEqual(scope.load_reviewed_japan_names(path), {"甲", "乙"})
+
+    def test_load_reviewed_japan_names_rejects_non_object(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "people.json"
+            path.write_text("[]", encoding="utf-8")
+            with self.assertRaisesRegex(SystemExit, "人物台帳"):
+                scope.load_reviewed_japan_names(path)
 
     def test_domestic_and_overseas_official_branches(self):
         self.assertEqual(scope.infer_scope(
