@@ -11,7 +11,8 @@ import apply_youtuber_permitted_images as permitted
 
 class PermittedImagesTest(unittest.TestCase):
     def setUp(self):
-        self.record = next(iter(permitted.load_manifest().values())).copy()
+        data = json.loads(permitted.MANIFEST_PATH.read_text(encoding="utf-8"))
+        self.record = data["images"][0].copy()
 
     def write_manifest(self, record=None):
         tmp = tempfile.NamedTemporaryFile(
@@ -41,8 +42,8 @@ class PermittedImagesTest(unittest.TestCase):
         self.addCleanup(Path(tmp.name).unlink, missing_ok=True)
         return Path(tmp.name)
 
-    def test_repository_manifest_has_twelve_reviewed_images(self):
-        self.assertEqual(12, len(permitted.load_manifest()))
+    def test_repository_manifest_disables_reviewed_images(self):
+        self.assertEqual({}, permitted.load_manifest())
 
     def test_applies_only_to_card_and_adds_credit(self):
         csv_path = self.write_csv(permitted.CARD_PREFIX + "old.svg")
