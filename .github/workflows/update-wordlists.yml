@@ -86,6 +86,10 @@ jobs:
           python tools/update_youtuber.py
           # 個別記事のない現所属ライバーは、公式名簿・プロフィールから補完する。
           python tools/update_nijisanji.py
+          # 公式プロフィールとチャンネルを本人確認に使い、人物名だけを補完する。
+          python tools/update_youtuber_japan.py
+          # 国内向けと海外中心を利用側で絞り込めるよう活動圏を付与する。
+          python tools/update_youtuber_scope.py
           # 新規人物にも同じ更新内で必ず象徴カードを付け、画像100%を維持する。
           python tools/gen_youtuber_cards.py --prune
           # 目視確認済みの非営利ファンメイド画像だけを象徴カードへ上書きする。

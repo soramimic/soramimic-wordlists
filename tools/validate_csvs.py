@@ -145,7 +145,7 @@ def validate(path: Path):
         missing = [
             col for col in (
                 "image", "image_page", "image_credit", "image_usage",
-                "image_terms_page",
+                "image_terms_page", "scope",
             )
             if col not in idx
         ]
@@ -167,6 +167,7 @@ def validate(path: Path):
     scientist_years = {}
     player_groups = {}
     youtuber_snapshots = {}
+    youtuber_scopes = {}
     youtuber_images = {}
     youtuber_fan_seen = set()
     youtuber_hololive_seen = set()
@@ -237,6 +238,14 @@ def validate(path: Path):
                     f"{f[idx['surface']]} / {actual}"
                 )
         if path.name == "youtuber.csv":
+            person_id = f[idx["id"]]
+            creator_scope = f[idx["scope"]]
+            if creator_scope not in ("japan", "global", "unknown"):
+                err(f"{path.name}:{lineno}: scope が不正: {creator_scope}")
+            if (person_id in youtuber_scopes
+                    and youtuber_scopes[person_id] != creator_scope):
+                err(f"{path.name}:{lineno}: 同じidでscopeが一致しない")
+            youtuber_scopes[person_id] = creator_scope
             for col in ("image", "image_page"):
                 if not f[idx[col]]:
                     err(f"{path.name}:{lineno}: {col} が空")
@@ -330,7 +339,6 @@ def validate(path: Path):
                 err(f"{path.name}:{lineno}: Commons画像にimage_creditがある")
             elif image_usage or image_terms_page:
                 err(f"{path.name}:{lineno}: Commons画像に利用条件がある")
-            person_id = f[idx["id"]]
             image_pair = (
                 image, image_page, image_credit, image_usage, image_terms_page,
             )

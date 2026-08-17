@@ -53,7 +53,7 @@ class UpdateNijisanjiTest(unittest.TestCase):
         cols = ["id", "original", "surface", "pronunciation", "type",
                 "category", "org", "debut_year", "status", "image",
                 "image_page", "wikidata", "channel", "description",
-                "subscribers", "subscribers_as_of"]
+                "subscribers", "subscribers_as_of", "scope"]
         rows = [{col: "" for col in cols}]
         rows[0].update({"id": "4", "original": "静凛", "surface": "静凛",
                         "pronunciation": "シズカリン", "type": "full",
@@ -75,6 +75,7 @@ class UpdateNijisanjiTest(unittest.TestCase):
         self.assertEqual(rows[0]["description"], "既存説明。")
         self.assertEqual(rows[1]["type"], "full")
         self.assertEqual(rows[1]["pronunciation"], "フワミナト")
+        self.assertEqual(rows[1]["scope"], "japan")
         self.assertEqual(ids["不破湊"], "5")
 
 
