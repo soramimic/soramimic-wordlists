@@ -27,6 +27,13 @@ class ScopeTest(unittest.TestCase):
             self.row(org="ホロライブプロダクション",
                      channel="Gawr Gura Ch. hololive-EN"), set(), {}), "global")
 
+    def test_domestic_youtuber_groups(self):
+        for org in ("東海オンエア", "フィッシャーズ", "水溜りボンド",
+                    "スカイピース", "QuizKnock", "コムドット"):
+            with self.subTest(org=org):
+                self.assertEqual(
+                    scope.infer_scope(self.row(org=org), set(), {}), "japan")
+
     def test_citizenship_is_conservative_fallback(self):
         self.assertEqual(scope.infer_scope(self.row(), {"Q17"}, {}), "japan")
         self.assertEqual(scope.infer_scope(self.row(), {"Q30"}, {}), "global")

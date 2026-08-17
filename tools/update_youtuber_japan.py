@@ -24,7 +24,7 @@ PEOPLE_PATH = ROOT / "tools" / "youtuber_japan_people.json"
 CHANNEL_SOURCES_PATH = ROOT / "tools" / "youtuber_channel_sources.jsonl"
 CHANNEL_ID_RE = re.compile(r"^UC[0-9A-Za-z_-]{22}$")
 QID_RE = re.compile(r"^Q\d+$")
-YEAR_RE = re.compile(r"^(?:19|20)\d{2}$")
+YEAR_RE = re.compile(r"^(?:NA|(?:19|20)\d{2})$")
 MISSING = {None, "", "NA"}
 
 
@@ -46,8 +46,9 @@ def load_people(path: Path = PEOPLE_PATH) -> list[dict]:
     required = {
         "original", "pronunciation", "debut_year", "org", "description",
         "qid", "source_url", "channel_id", "channel_title", "channel_url",
+        "channel_shared",
     }
-    names, qids, channels = set(), set(), set()
+    names, qids, channels = set(), set(), {}
     for pos, person in enumerate(people, 1):
         missing = sorted(required - person.keys())
         if missing:
@@ -59,9 +60,19 @@ def load_people(path: Path = PEOPLE_PATH) -> list[dict]:
             raise RosterConflict(f"人物台帳の活動名が空または重複: {name!r}")
         if qid != "NA" and (not QID_RE.fullmatch(qid) or qid in qids):
             raise RosterConflict(f"人物台帳のQIDが不正または重複: {qid}")
-        if not CHANNEL_ID_RE.fullmatch(channel_id) or channel_id in channels:
-            raise RosterConflict(
-                f"人物台帳のチャンネルIDが不正または重複: {channel_id}")
+        if not CHANNEL_ID_RE.fullmatch(channel_id):
+            raise RosterConflict(f"人物台帳のチャンネルIDが不正: {channel_id}")
+        if not isinstance(person["channel_shared"], bool):
+            raise ValueError(f"{name}: channel_shared が真偽値ではない")
+        if channel_id in channels:
+            previous = channels[channel_id]
+            if not previous["channel_shared"] or not person["channel_shared"]:
+                raise RosterConflict(
+                    f"人物台帳の個人チャンネルIDが重複: {channel_id}")
+            for field in ("channel_title", "channel_url", "org"):
+                if previous[field] != person[field]:
+                    raise RosterConflict(
+                        f"共有チャンネルの{field}が不一致: {channel_id}")
         if str(person["debut_year"]) != str(person["debut_year"]).strip() or \
                 not YEAR_RE.fullmatch(str(person["debut_year"])):
             raise ValueError(f"{name}: 活動開始年が不正")
@@ -74,7 +85,7 @@ def load_people(path: Path = PEOPLE_PATH) -> list[dict]:
             raise ValueError(f"{name}: source_urlがHTTPS URLではない")
         names.add(name)
         qids.add(qid)
-        channels.add(channel_id)
+        channels[channel_id] = person
     return people
 
 
@@ -149,15 +160,16 @@ def apply_people(rows: list[dict], columns: list[str], people: list[dict],
         pid = next(iter(name_ids)) if name_ids else str(next_id)
         if not name_ids:
             next_id += 1
-        owners = channel_owners.get(person["channel_id"], set())
-        if owners - {pid}:
-            raise RosterConflict(
-                f"チャンネルが別人物に紐づく: {person['channel_id']}: "
-                f"{sorted(owners)} / {pid}")
-        if len(source_keys.get((pid, person["channel_id"]), [])) > 1:
-            raise RosterConflict(
-                f"対象チャンネル根拠が重複: person_id={pid} "
-                f"{person['channel_id']}")
+        if not person["channel_shared"]:
+            owners = channel_owners.get(person["channel_id"], set())
+            if owners - {pid}:
+                raise RosterConflict(
+                    f"チャンネルが別人物に紐づく: {person['channel_id']}: "
+                    f"{sorted(owners)} / {pid}")
+            if len(source_keys.get((pid, person["channel_id"]), [])) > 1:
+                raise RosterConflict(
+                    f"対象チャンネル根拠が重複: person_id={pid} "
+                    f"{person['channel_id']}")
         if name_ids:
             categories = {
                 row.get("category") for row in out_rows if row.get("id") == pid
@@ -175,7 +187,8 @@ def apply_people(rows: list[dict], columns: list[str], people: list[dict],
         effective_qids[name] = (next(iter(existing_qids))
                                 if name_ids and existing_qids else qid)
 
-        existing_sources = source_keys.get((pid, person["channel_id"]), [])
+        existing_sources = ([] if person["channel_shared"] else
+                            source_keys.get((pid, person["channel_id"]), []))
         if existing_sources:
             record = existing_sources[0]
             if record.get("original") != name or \
@@ -210,9 +223,24 @@ def apply_people(rows: list[dict], columns: list[str], people: list[dict],
             names[name] = {pid}
             by_id[pid] = row
             added += 1
+        else:
+            # 既存人物の表記・読み・個人チャンネルは維持し、公式人物台帳で
+            # 確認できた欠損メタデータだけを補完する。
+            for row in out_rows:
+                if row.get("id") != pid:
+                    continue
+                for field in ("org", "debut_year", "channel", "description"):
+                    value = (person["channel_title"] if field == "channel"
+                             else person[field])
+                    if row.get(field) in MISSING and value not in MISSING:
+                        row[field] = str(value)
+                if "scope" in columns and row.get("scope") in MISSING | {"unknown"}:
+                    row["scope"] = "japan"
 
         key = (pid, person["channel_id"])
-        if key not in source_keys:
+        # グループ共有チャンネルは本人確認には使うが、個人の登録者数として
+        # 集計しないため subscriber 更新台帳には入れない。
+        if not person["channel_shared"] and key not in source_keys:
             record = {
                 "channel_id": person["channel_id"],
                 "channel_title": person["channel_title"],
