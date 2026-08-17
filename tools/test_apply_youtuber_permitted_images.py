@@ -42,8 +42,12 @@ class PermittedImagesTest(unittest.TestCase):
         self.addCleanup(Path(tmp.name).unlink, missing_ok=True)
         return Path(tmp.name)
 
-    def test_repository_manifest_disables_reviewed_images(self):
-        self.assertEqual({}, permitted.load_manifest())
+    def test_repository_manifest_enables_only_aogiri_images(self):
+        manifest = permitted.load_manifest()
+        self.assertEqual(11, len(manifest))
+        self.assertEqual({"あおぎり高校"}, {
+            record["organization"] for record in manifest.values()
+        })
 
     def test_applies_only_to_card_and_adds_credit(self):
         csv_path = self.write_csv(permitted.CARD_PREFIX + "old.svg")

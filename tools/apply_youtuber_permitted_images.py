@@ -51,7 +51,6 @@ def sha256(path: Path) -> str:
 
 def load_manifest(path: Path = MANIFEST_PATH) -> dict[str, dict]:
     data = json.loads(path.read_text(encoding="utf-8"))
-    active = data.get("active", True) is True
     records = data.get("images", [])
     required = {
         "original", "file", "asset_url", "source_page", "guideline_url",
@@ -59,6 +58,7 @@ def load_manifest(path: Path = MANIFEST_PATH) -> dict[str, dict]:
         "guideline_reviewed", "reviewed", "source_sha256", "sha256",
     }
     result = {}
+    originals = set()
     filenames = set()
     for index, record in enumerate(records, 1):
         context = f"{path.name} images[{index}]"
@@ -66,8 +66,9 @@ def load_manifest(path: Path = MANIFEST_PATH) -> dict[str, dict]:
         if missing:
             raise SystemExit(f"error: {context} に {missing[0]} がない")
         original = record["original"]
-        if original in result:
+        if original in originals:
             raise SystemExit(f"error: original が重複: {original}")
+        originals.add(original)
         if record["file"] in filenames:
             raise SystemExit(f"error: file が重複: {record['file']}")
         if not FILENAME.fullmatch(record["file"]):
@@ -111,7 +112,10 @@ def load_manifest(path: Path = MANIFEST_PATH) -> dict[str, dict]:
             raise SystemExit(f"error: {context} の画像ハッシュが不一致")
         if not SHA256.fullmatch(record["source_sha256"]):
             raise SystemExit(f"error: {context} のsource_sha256が不正")
-        result[original] = record
+        if not isinstance(record.get("active", True), bool):
+            raise SystemExit(f"error: {context} のactiveが不正")
+        if record.get("active", True):
+            result[original] = record
         filenames.add(record["file"])
     if path.resolve() == MANIFEST_PATH.resolve():
         actual = {item.name for item in ASSET_DIR.glob("*.png")}
@@ -119,7 +123,7 @@ def load_manifest(path: Path = MANIFEST_PATH) -> dict[str, dict]:
             raise SystemExit(
                 "error: youtuber_fan画像と台帳が不一致: "
                 f"不足={sorted(filenames - actual)} 孤立={sorted(actual - filenames)}")
-    return result if active else {}
+    return result
 
 
 def apply(csv_path: Path = CSV_PATH, manifest_path: Path = MANIFEST_PATH) -> tuple[int, int]:
