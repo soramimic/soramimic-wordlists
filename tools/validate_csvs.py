@@ -30,6 +30,10 @@ from apply_youtuber_hololive_images import (
     IMAGE_USAGE as HOLOLIVE_IMAGE_USAGE,
     load_manifest as load_hololive_image_manifest,
 )
+from apply_youtuber_nijisanji_images import (
+    IMAGE_USAGE as NIJISANJI_IMAGE_USAGE,
+    load_manifest as load_nijisanji_image_manifest,
+)
 from wpnames import (
     PLAYER_DISAMBIGUATION_DESCRIPTION,
     has_redundant_player_subject,
@@ -71,6 +75,13 @@ YOUTUBER_HOLOLIVE_IMAGES = {
 }
 YOUTUBER_HOLOLIVE_SOURCE_PAGES = {
     record["source_page"] for record in YOUTUBER_HOLOLIVE_IMAGES.values()
+}
+YOUTUBER_NIJISANJI_IMAGES = {
+    record["image_url"]: record
+    for record in load_nijisanji_image_manifest().values()
+}
+YOUTUBER_NIJISANJI_SOURCE_PAGES = {
+    record["source_page"] for record in YOUTUBER_NIJISANJI_IMAGES.values()
 }
 # 読みにASCII英字が2文字以上続くのは、英名を読みに入れてしまった取り違え
 # (例: sekitsui の "Azara's night monkey")。利用側の読み解析がこの手の行で
@@ -159,6 +170,7 @@ def validate(path: Path):
     youtuber_images = {}
     youtuber_fan_seen = set()
     youtuber_hololive_seen = set()
+    youtuber_nijisanji_seen = set()
     myoji_ranks = {}
     myoji_counts = {}
     myoji_order = []
@@ -176,12 +188,19 @@ def validate(path: Path):
             v = f[idx[col]]
             if v and not IMAGE_URL_RE.match(v):
                 is_reviewed_youtuber_url = path.name == "youtuber.csv" and (
-                    (col == "image" and v in YOUTUBER_HOLOLIVE_IMAGES)
+                    (
+                        col == "image"
+                        and v in (
+                            YOUTUBER_HOLOLIVE_IMAGES
+                            | YOUTUBER_NIJISANJI_IMAGES
+                        )
+                    )
                     or (
                         col == "image_page"
                         and v in (
                             YOUTUBER_FAN_SOURCE_PAGES
                             | YOUTUBER_HOLOLIVE_SOURCE_PAGES
+                            | YOUTUBER_NIJISANJI_SOURCE_PAGES
                         )
                     )
                 )
@@ -286,6 +305,23 @@ def validate(path: Path):
                             f"{label}が台帳と不一致"
                         )
                 youtuber_hololive_seen.add(record["original"])
+            elif image in YOUTUBER_NIJISANJI_IMAGES:
+                record = YOUTUBER_NIJISANJI_IMAGES[image]
+                checks = (
+                    (image_page, record["source_page"], "image_page"),
+                    (image_credit, record["credit"], "image_credit"),
+                    (image_usage, NIJISANJI_IMAGE_USAGE, "image_usage"),
+                    (image_terms_page, record["terms_page"], "image_terms_page"),
+                    (f[idx["original"]], record["original"], "人物"),
+                    (f[idx["status"]], "current", "status"),
+                )
+                for actual, expected, label in checks:
+                    if actual != expected:
+                        err(
+                            f"{path.name}:{lineno}: にじさんじ公式画像の"
+                            f"{label}が台帳と不一致"
+                        )
+                youtuber_nijisanji_seen.add(record["original"])
             elif not image_page.startswith("https://commons.wikimedia.org/wiki/File:"):
                 err(
                     f"{path.name}:{lineno}: 実写のimage_pageがCommonsでない: "
@@ -430,6 +466,14 @@ def validate(path: Path):
             extra = sorted(youtuber_hololive_seen - hololive_expected)
             detail = f"未適用={missing} 余分={extra}"
             err(f"{path.name}: ホロライブ公式画像台帳の適用が不完全: {detail}")
+        nijisanji_expected = {
+            record["original"] for record in YOUTUBER_NIJISANJI_IMAGES.values()
+        }
+        if youtuber_nijisanji_seen != nijisanji_expected:
+            missing = sorted(nijisanji_expected - youtuber_nijisanji_seen)
+            extra = sorted(youtuber_nijisanji_seen - nijisanji_expected)
+            detail = f"未適用={missing} 余分={extra}"
+            err(f"{path.name}: にじさんじ公式画像台帳の適用が不完全: {detail}")
     if path.name == "myoji.csv":
         previous_count = None
         expected_rank = 0

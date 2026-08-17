@@ -7,7 +7,7 @@ Wikidata/日本語Wikipediaを基準にする update_youtuber.py だけでは、
 YouTubeを主活動先としないため対象外。
 
 公式プロフィールにある読み、デビュー日、YouTubeチャンネル、プロフィール色を
-使う。立ち絵そのものは再配布せず、色は自作の象徴カードにだけ反映する。
+使う。立ち絵はこの処理の後に、レビュー済み台帳から別処理で反映する。
 
 usage: python3 tools/update_nijisanji.py
 """

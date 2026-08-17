@@ -92,6 +92,7 @@ jobs:
           python tools/apply_youtuber_permitted_images.py
           # 確認済みの公式プロフィール画像と公式名簿の補完行を反映する。
           python tools/apply_youtuber_hololive_images.py
+          python tools/apply_youtuber_nijisanji_images.py
 
       # 登録者数は時変値なので毎回全行を上書きする(ADR 00030)。
       # secrets.YOUTUBE_API_KEY が未設定(forkなど)ならスクリプト側が
