@@ -66,6 +66,7 @@ jobs:
           tools/test_apply_youtuber_permitted_images.py
           tools/test_enrich_youtuber_images.py
           tools/test_update_nijisanji.py
+          tools/test_update_youtuber.py
           tools/test_update_youtuber_japan.py
           tools/test_update_youtuber_scope.py
           tools/test_update_youtuber_subscribers.py
