@@ -162,6 +162,9 @@ class ApplySnapshotTest(unittest.TestCase):
             {"person_id": "2", "decision": "deferred_ambiguous",
              "source_type": "web_search_candidate",
              "evidence_url": "https://example.com/unresolved"},
+            {"person_id": "3", "decision": "deferred_ambiguous",
+             "source_type": "web_search_candidate",
+             "evidence_url": "https://example.com/removed"},
         ]
         selected = {
             "1": {"channel_id": channel_id, "subscribers": 100,
@@ -290,14 +293,18 @@ class ApplySnapshotTest(unittest.TestCase):
                     {"1": "Q1"}, {"1": "本人"})
         self.assertEqual(result, {"1": [channel_id]})
 
-        record["identity_basis"] = "wikipedia_person_article_explicit_link"
-        with tempfile.TemporaryDirectory() as tmp:
-            path = Path(tmp) / "sources.jsonl"
-            path.write_text(json.dumps(record) + "\n", encoding="utf-8")
-            with mock.patch.object(subscribers, "SOURCE_PATH", path):
-                result = subscribers.load_verified_channel_sources(
-                    {"1": "Q1"}, {"1": "本人"})
-        self.assertEqual(result, {"1": [channel_id]})
+        for identity_basis in (
+                "wikipedia_person_article_explicit_link",
+                "youtube_content_self_identification",
+                "reliable_press_explicit_video_match"):
+            record["identity_basis"] = identity_basis
+            with tempfile.TemporaryDirectory() as tmp:
+                path = Path(tmp) / "sources.jsonl"
+                path.write_text(json.dumps(record) + "\n", encoding="utf-8")
+                with mock.patch.object(subscribers, "SOURCE_PATH", path):
+                    result = subscribers.load_verified_channel_sources(
+                        {"1": "Q1"}, {"1": "本人"})
+            self.assertEqual(result, {"1": [channel_id]})
 
         del record["evidence_quote"]
         with tempfile.TemporaryDirectory() as tmp:
@@ -326,6 +333,26 @@ class ApplySnapshotTest(unittest.TestCase):
             with mock.patch.object(subscribers, "SOURCE_PATH", path):
                 result = subscribers.load_verified_channel_sources(
                     {}, {"1": "本人"})
+        self.assertEqual(result, {"1": [channel_id]})
+
+    def test_reliable_press_video_match_is_a_distinct_source(self):
+        channel_id = "UC" + "r" * 22
+        record = {
+            "channel_id": channel_id, "decision": "verified",
+            "discovery_method": "codex_standard_web_search",
+            "evidence_quote": "本人取材が投稿動画を題名まで特定した。",
+            "evidence_url": "https://youtube.com/watch?v=example",
+            "identity_basis": "reliable_press_explicit_video_match",
+            "original": "本人", "person_id": "1", "qid": "Q1",
+            "source_type": "web_search_reliable_press_video",
+            "source_url": "https://example.com/interview",
+        }
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "sources.jsonl"
+            path.write_text(json.dumps(record) + "\n", encoding="utf-8")
+            with mock.patch.object(subscribers, "SOURCE_PATH", path):
+                result = subscribers.load_verified_channel_sources(
+                    {"1": "Q1"}, {"1": "本人"})
         self.assertEqual(result, {"1": [channel_id]})
 
     def test_official_talent_profile_supports_person_without_qid(self):

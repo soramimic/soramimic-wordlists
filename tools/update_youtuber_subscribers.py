@@ -263,9 +263,11 @@ def update_audit_files(rows: list, qid_of: dict, p2397: dict, selected: dict,
         for line in REPORT_PATH.read_text(encoding="utf-8").splitlines():
             if line.strip():
                 record = json.loads(line)
-                if record.get("source_type") != "wikidata_p2397" \
-                        and record.get("person_id") not in resolved \
-                        and record.get("person_id") not in shared_people:
+                person_id = record.get("person_id")
+                if person_id in person \
+                        and record.get("source_type") != "wikidata_p2397" \
+                        and person_id not in resolved \
+                        and person_id not in shared_people:
                     report.append(record)
     for pid, choice in selected.items():
         current = person[pid].get("channel")
@@ -331,12 +333,14 @@ def load_channel_source_registry(qid_of: dict, name_of: dict) -> tuple:
                 "jawiki_external_link", "wikidata_official_site",
                 "wikidata_official_site_page", "wikidata_youtube_handle",
                 "jawiki_infobox", "web_search_primary_link",
+                "web_search_reliable_press_video",
                 "official_talent_profile", "reviewed_person_roster"}:
             raise SystemExit(f"error: {SOURCE_PATH}:{lineno}: 不正なsource_type")
         channel_id = record.get("channel_id", "")
         qid = record.get("qid", "")
         qid_optional = record.get("source_type") in {
-            "web_search_primary_link", "official_talent_profile",
+            "web_search_primary_link", "web_search_reliable_press_video",
+            "official_talent_profile",
             "reviewed_person_roster"}
         if not CHANNEL_ID_RE.fullmatch(channel_id) or not (
                 re.fullmatch(r"Q\d+", qid) or (qid_optional and qid == "NA")):
@@ -347,7 +351,8 @@ def load_channel_source_registry(qid_of: dict, name_of: dict) -> tuple:
             raise SystemExit(f"error: {SOURCE_PATH}:{lineno}: 人物/QID対応がCSVと不一致")
         if not record.get("source_url") or not record.get("evidence_url"):
             raise SystemExit(f"error: {SOURCE_PATH}:{lineno}: 出典URLが不足")
-        if record.get("source_type") == "web_search_primary_link":
+        if record.get("source_type") in {
+                "web_search_primary_link", "web_search_reliable_press_video"}:
             if record.get("discovery_method") not in {
                     "gemini_chrome_google_search",
                     "codex_standard_web_search",
@@ -356,6 +361,8 @@ def load_channel_source_registry(qid_of: dict, name_of: dict) -> tuple:
                     f"error: {SOURCE_PATH}:{lineno}: Web検索の探索方法が不足")
             if record.get("identity_basis") not in {
                     "youtube_about_self_identification",
+                    "youtube_content_self_identification",
+                    "reliable_press_explicit_video_match",
                     "jawiki_person_article_explicit_link",
                     "wikipedia_person_article_explicit_link",
                     "official_page_explicit_channel_link"}:
