@@ -215,10 +215,10 @@ Wikipedia由来の加工文はCC BY-SA 4.0で、同台帳から原記事への�
 | type | 表層の種類(`family`/`given`/`full`) |
 | birth_year, death_year | 生年と没年 |
 | nationality, field | 国籍と分野 |
-| achievement | 主な業績 |
+| achievement | 架空設定上の主な業績の短い説明 |
 | image, image_page | AI生成の肖像と配布ページ |
 
-すべて架空の人物で、実在人物とは無関係。
+人物・経歴・業績はすべて架空で、実在の人物・出来事とは無関係。
 
 ## fictional_anime_character.csv
 
