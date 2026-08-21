@@ -14330,10 +14330,11 @@
       "updated_at": "2026-07-12T21:43:35Z"
     },
     "https://github.com/soramimic/soramimic-wordlists/releases/download/fictional-scientist-v2/fs_0344.jpg": {
-      "revision": 1,
-      "sha256": "0facdec3e3866526ae95807ce5e54fa6c4ac9bd7b68823ef3cc6a0a18ef38054",
-      "size": 170903,
-      "updated_at": "2026-07-12T21:43:34Z"
+      "note": "架空科学者肖像の品質改善（時代・年齢・疑似文字）",
+      "revision": 2,
+      "sha256": "b10435dae192e510a6092e383a70f32646886c579567ffa1c74e749a77333cbc",
+      "size": 111263,
+      "updated_at": "2026-08-21T15:36:52Z"
     },
     "https://github.com/soramimic/soramimic-wordlists/releases/download/fictional-scientist-v2/fs_0345.jpg": {
       "revision": 1,
@@ -14582,10 +14583,11 @@
       "updated_at": "2026-07-12T21:44:04Z"
     },
     "https://github.com/soramimic/soramimic-wordlists/releases/download/fictional-scientist-v2/fs_0386.jpg": {
-      "revision": 1,
-      "sha256": "c12aea90baca54396b7be672e08898c103284385aff16860c2f3b2bfde203129",
-      "size": 93820,
-      "updated_at": "2026-07-12T21:44:04Z"
+      "note": "架空科学者肖像の品質改善（時代・年齢・疑似文字）",
+      "revision": 2,
+      "sha256": "210ee647ce8111ef44f3485ecf563016e96043a0a277c48e69dc419f473fcee4",
+      "size": 101925,
+      "updated_at": "2026-08-21T15:36:52Z"
     },
     "https://github.com/soramimic/soramimic-wordlists/releases/download/fictional-scientist-v2/fs_0387.jpg": {
       "revision": 1,
@@ -16022,10 +16024,11 @@
       "updated_at": "2026-07-12T21:44:33Z"
     },
     "https://github.com/soramimic/soramimic-wordlists/releases/download/fictional-scientist-v2/fs_0626.jpg": {
-      "revision": 1,
-      "sha256": "acf3a84f3834b10bd3eb46a457890afd5c57defd55e6846a602504c3dc534f45",
-      "size": 86979,
-      "updated_at": "2026-07-12T21:44:34Z"
+      "note": "架空科学者肖像の品質改善（時代・年齢・疑似文字）",
+      "revision": 2,
+      "sha256": "3a5ce10a855b6dd734f93edd4c4c5fa4a67b71c25dd6734c5755d4861b8e6204",
+      "size": 128337,
+      "updated_at": "2026-08-21T15:36:52Z"
     },
     "https://github.com/soramimic/soramimic-wordlists/releases/download/fictional-scientist-v2/fs_0627.jpg": {
       "revision": 1,
@@ -16310,10 +16313,11 @@
       "updated_at": "2026-07-12T21:44:40Z"
     },
     "https://github.com/soramimic/soramimic-wordlists/releases/download/fictional-scientist-v2/fs_0674.jpg": {
-      "revision": 1,
-      "sha256": "353ac3a0b251336669248385a4ba24fc86fae8953bbf56e88b5a9fc1e173181e",
-      "size": 80722,
-      "updated_at": "2026-07-12T21:44:40Z"
+      "note": "架空科学者肖像の品質改善（時代・年齢・疑似文字）",
+      "revision": 2,
+      "sha256": "e6d85a52fad596a7ebea0937141f0f9f6a3597eef75ee934b2d1270c97417d1c",
+      "size": 82773,
+      "updated_at": "2026-08-21T15:36:52Z"
     },
     "https://github.com/soramimic/soramimic-wordlists/releases/download/fictional-scientist-v2/fs_0675.jpg": {
       "revision": 1,
@@ -16490,10 +16494,11 @@
       "updated_at": "2026-07-12T21:45:06Z"
     },
     "https://github.com/soramimic/soramimic-wordlists/releases/download/fictional-scientist-v2/fs_0704.jpg": {
-      "revision": 1,
-      "sha256": "acb9e9a75d8dbe712c79074dbba319a4ebba74112540bb0db815d71b3443ce8c",
-      "size": 115290,
-      "updated_at": "2026-07-12T21:45:06Z"
+      "note": "架空科学者肖像の品質改善（時代・年齢・疑似文字）",
+      "revision": 2,
+      "sha256": "9a31b48067b09ac1306dde5220627cca0a8466ec4e3351536441d1a1a31c2afb",
+      "size": 93445,
+      "updated_at": "2026-08-21T15:36:52Z"
     },
     "https://github.com/soramimic/soramimic-wordlists/releases/download/fictional-scientist-v2/fs_0705.jpg": {
       "revision": 1,
@@ -16544,10 +16549,11 @@
       "updated_at": "2026-07-12T21:45:08Z"
     },
     "https://github.com/soramimic/soramimic-wordlists/releases/download/fictional-scientist-v2/fs_0713.jpg": {
-      "revision": 1,
-      "sha256": "e4d1b06524b01f23dea0d1b99b9c0a5c3eddeda319acb4e00eff93e816f25a45",
-      "size": 102040,
-      "updated_at": "2026-07-12T21:45:08Z"
+      "note": "架空科学者肖像の品質改善（時代・年齢・疑似文字）",
+      "revision": 2,
+      "sha256": "a78a8c1f63d087dbf68eceae74fb55481d01f6292648c6404def4950c21829a0",
+      "size": 107708,
+      "updated_at": "2026-08-21T15:36:53Z"
     },
     "https://github.com/soramimic/soramimic-wordlists/releases/download/fictional-scientist-v2/fs_0714.jpg": {
       "revision": 1,
@@ -16706,10 +16712,11 @@
       "updated_at": "2026-07-12T21:45:12Z"
     },
     "https://github.com/soramimic/soramimic-wordlists/releases/download/fictional-scientist-v2/fs_0740.jpg": {
-      "revision": 1,
-      "sha256": "a4a4af1063e199a5f88c8d23655d35697988127e4e1805ee43c3859a798983d0",
-      "size": 113820,
-      "updated_at": "2026-07-12T21:45:13Z"
+      "note": "架空科学者肖像の品質改善（時代・年齢・疑似文字）",
+      "revision": 2,
+      "sha256": "3b072b021f194a68a2d33d03f32999a9bebf841f1e2ac1f273070d492019b443",
+      "size": 101659,
+      "updated_at": "2026-08-21T15:36:53Z"
     },
     "https://github.com/soramimic/soramimic-wordlists/releases/download/fictional-scientist-v2/fs_0741.jpg": {
       "revision": 1,
@@ -16874,10 +16881,11 @@
       "updated_at": "2026-07-12T21:45:18Z"
     },
     "https://github.com/soramimic/soramimic-wordlists/releases/download/fictional-scientist-v2/fs_0768.jpg": {
-      "revision": 1,
-      "sha256": "50bd16773ad317e16e651357a347db36b869889de8e7b6e2895c1e636316bdef",
-      "size": 131128,
-      "updated_at": "2026-07-12T21:45:18Z"
+      "note": "架空科学者肖像の品質改善（時代・年齢・疑似文字）",
+      "revision": 2,
+      "sha256": "14a35dcfe9b5e9e934d207383865e4cf56e43f7f1be8c59e3c1fa48f618cbf0b",
+      "size": 112135,
+      "updated_at": "2026-08-21T15:36:53Z"
     },
     "https://github.com/soramimic/soramimic-wordlists/releases/download/fictional-scientist-v2/fs_0769.jpg": {
       "revision": 1,
@@ -17024,10 +17032,11 @@
       "updated_at": "2026-07-12T21:45:20Z"
     },
     "https://github.com/soramimic/soramimic-wordlists/releases/download/fictional-scientist-v2/fs_0793.jpg": {
-      "revision": 1,
-      "sha256": "9fc1fdb8eb1280e64e2f7f2223079587f5ab4c4a5176f884513075bff83f4fa5",
-      "size": 112050,
-      "updated_at": "2026-07-12T21:45:21Z"
+      "note": "架空科学者肖像の品質改善（時代・年齢・疑似文字）",
+      "revision": 2,
+      "sha256": "60d9e48a1bb1e2d5fcf1dfd07179ba5eb8a669891ccd03b7d711e89719f64392",
+      "size": 86560,
+      "updated_at": "2026-08-21T15:36:53Z"
     },
     "https://github.com/soramimic/soramimic-wordlists/releases/download/fictional-scientist-v2/fs_0794.jpg": {
       "revision": 1,
@@ -17036,10 +17045,11 @@
       "updated_at": "2026-07-12T21:45:21Z"
     },
     "https://github.com/soramimic/soramimic-wordlists/releases/download/fictional-scientist-v2/fs_0795.jpg": {
-      "revision": 1,
-      "sha256": "8fb59758c5bb8dffbd03d7aabc27033b0e22c188356921b0083121471fee894f",
-      "size": 101282,
-      "updated_at": "2026-07-12T21:45:21Z"
+      "note": "架空科学者肖像の品質改善（時代・年齢・疑似文字）",
+      "revision": 2,
+      "sha256": "d1954d77f28875c3b65fcac5d4ae29dd28a68f0c7ccd298b1de0f9d91421ce56",
+      "size": 73704,
+      "updated_at": "2026-08-21T15:36:53Z"
     },
     "https://github.com/soramimic/soramimic-wordlists/releases/download/fictional-scientist-v2/fs_0796.jpg": {
       "revision": 1,
@@ -17240,10 +17250,11 @@
       "updated_at": "2026-07-12T21:45:25Z"
     },
     "https://github.com/soramimic/soramimic-wordlists/releases/download/fictional-scientist-v2/fs_0829.jpg": {
-      "revision": 1,
-      "sha256": "4eca9f70f14b94d8d177ac4e3aa21a2f6f2b6d609628142aa4e4066db6011339",
-      "size": 102097,
-      "updated_at": "2026-07-12T21:45:25Z"
+      "note": "架空科学者肖像の品質改善（時代・年齢・疑似文字）",
+      "revision": 2,
+      "sha256": "25ec4e07ea120c6f6aa7f13809ea08e6cc9c37d06e9d66b4248bd94f30b14f75",
+      "size": 95736,
+      "updated_at": "2026-08-21T15:36:54Z"
     },
     "https://github.com/soramimic/soramimic-wordlists/releases/download/fictional-scientist-v2/fs_0830.jpg": {
       "revision": 1,
@@ -17324,10 +17335,11 @@
       "updated_at": "2026-07-12T21:45:26Z"
     },
     "https://github.com/soramimic/soramimic-wordlists/releases/download/fictional-scientist-v2/fs_0843.jpg": {
-      "revision": 1,
-      "sha256": "fa84474b0270cc6fc7f2b6444fa00df6adc902966ad0a5a88364a28c03af3193",
-      "size": 96361,
-      "updated_at": "2026-07-12T21:45:26Z"
+      "note": "架空科学者肖像の品質改善（時代・年齢・疑似文字）",
+      "revision": 2,
+      "sha256": "482f6ee637351b34b7b13550da2d909cc1c467a6bdf24533bb2ae0c4a7fcf735",
+      "size": 65108,
+      "updated_at": "2026-08-21T15:36:54Z"
     },
     "https://github.com/soramimic/soramimic-wordlists/releases/download/fictional-scientist-v2/fs_0844.jpg": {
       "revision": 1,
@@ -17414,10 +17426,11 @@
       "updated_at": "2026-07-12T21:45:29Z"
     },
     "https://github.com/soramimic/soramimic-wordlists/releases/download/fictional-scientist-v2/fs_0858.jpg": {
-      "revision": 1,
-      "sha256": "b203c9e5ef4bba272bc1ae76496d25727c032eca2251aeeac7c740e62cb0e1b3",
-      "size": 123604,
-      "updated_at": "2026-07-12T21:45:30Z"
+      "note": "架空科学者肖像の品質改善（時代・年齢・疑似文字）",
+      "revision": 2,
+      "sha256": "2078847273475011c573ef39f80ef148f812065825cb63d05ccdd527548b6451",
+      "size": 110048,
+      "updated_at": "2026-08-21T15:36:54Z"
     },
     "https://github.com/soramimic/soramimic-wordlists/releases/download/fictional-scientist-v2/fs_0859.jpg": {
       "revision": 1,
@@ -17432,10 +17445,11 @@
       "updated_at": "2026-07-12T21:45:30Z"
     },
     "https://github.com/soramimic/soramimic-wordlists/releases/download/fictional-scientist-v2/fs_0861.jpg": {
-      "revision": 1,
-      "sha256": "5f67dfdaa5bf1e1dee0013b41873ee0ae406c659a741e5129138977b0a154d9a",
-      "size": 102704,
-      "updated_at": "2026-07-12T21:45:30Z"
+      "note": "架空科学者肖像の品質改善（時代・年齢・疑似文字）",
+      "revision": 2,
+      "sha256": "4256031a1ddd1e76f2041593d26f51f8e590cc2a584d3a29070946f4ae1b8bda",
+      "size": 72597,
+      "updated_at": "2026-08-21T15:36:54Z"
     },
     "https://github.com/soramimic/soramimic-wordlists/releases/download/fictional-scientist-v2/fs_0862.jpg": {
       "revision": 1,
@@ -17474,10 +17488,11 @@
       "updated_at": "2026-07-12T21:45:30Z"
     },
     "https://github.com/soramimic/soramimic-wordlists/releases/download/fictional-scientist-v2/fs_0868.jpg": {
-      "revision": 1,
-      "sha256": "086c481123a775ee7510fa66d7282dd50aeb44e38b0dd197a4aa367c9732fb2f",
-      "size": 98435,
-      "updated_at": "2026-07-12T21:45:31Z"
+      "note": "架空科学者肖像の品質改善（時代・年齢・疑似文字）",
+      "revision": 2,
+      "sha256": "695e8c6d82358c384f62a16b302f6bb810191fc05f235ec24a006a209cfa662e",
+      "size": 74670,
+      "updated_at": "2026-08-21T15:36:54Z"
     },
     "https://github.com/soramimic/soramimic-wordlists/releases/download/fictional-scientist-v2/fs_0869.jpg": {
       "revision": 1,
@@ -17654,10 +17669,11 @@
       "updated_at": "2026-07-12T21:45:33Z"
     },
     "https://github.com/soramimic/soramimic-wordlists/releases/download/fictional-scientist-v2/fs_0898.jpg": {
-      "revision": 1,
-      "sha256": "5c3bff0a9ca7f94a867f882db54c434423d18d01cd9d87d87db2e6b7f566a41f",
-      "size": 102216,
-      "updated_at": "2026-07-12T21:45:34Z"
+      "note": "架空科学者肖像の品質改善（時代・年齢・疑似文字）",
+      "revision": 2,
+      "sha256": "aad453167225549031b038f66a00f377e85da263584eea87c1e3eca1aa2ef9d2",
+      "size": 82578,
+      "updated_at": "2026-08-21T15:36:55Z"
     },
     "https://github.com/soramimic/soramimic-wordlists/releases/download/fictional-scientist-v2/fs_0899.jpg": {
       "revision": 1,
@@ -17690,10 +17706,11 @@
       "updated_at": "2026-07-12T21:45:35Z"
     },
     "https://github.com/soramimic/soramimic-wordlists/releases/download/fictional-scientist-v2/fs_0904.jpg": {
-      "revision": 1,
-      "sha256": "f225b4a59a8c5b9a68d9069393d3866b46c756923860dbf1eaeceb07acf012dd",
-      "size": 94401,
-      "updated_at": "2026-07-12T21:45:35Z"
+      "note": "架空科学者肖像の品質改善（時代・年齢・疑似文字）",
+      "revision": 2,
+      "sha256": "3e05a1b2cb1fe15741a9b8b17d4e5b363a74288b8fd3436a640d1c5f50192cc4",
+      "size": 80168,
+      "updated_at": "2026-08-21T15:36:55Z"
     },
     "https://github.com/soramimic/soramimic-wordlists/releases/download/fictional-scientist-v2/fs_0905.jpg": {
       "revision": 1,
@@ -17930,10 +17947,11 @@
       "updated_at": "2026-07-12T21:45:39Z"
     },
     "https://github.com/soramimic/soramimic-wordlists/releases/download/fictional-scientist-v2/fs_0944.jpg": {
-      "revision": 1,
-      "sha256": "28c71f74d737d2d8735eb8430b6cb0deff3519b2c233f0f0ee0912877b348ffc",
-      "size": 124291,
-      "updated_at": "2026-07-12T21:45:39Z"
+      "note": "架空科学者肖像の品質改善（時代・年齢・疑似文字）",
+      "revision": 2,
+      "sha256": "5905bd4e915e67612d1106630047a5c55266e30ac3e77671564af44c85121c58",
+      "size": 75922,
+      "updated_at": "2026-08-21T15:36:55Z"
     },
     "https://github.com/soramimic/soramimic-wordlists/releases/download/fictional-scientist-v2/fs_0945.jpg": {
       "revision": 1,
@@ -18050,10 +18068,11 @@
       "updated_at": "2026-07-12T21:45:42Z"
     },
     "https://github.com/soramimic/soramimic-wordlists/releases/download/fictional-scientist-v2/fs_0964.jpg": {
-      "revision": 1,
-      "sha256": "a60267a64402970ae6bd164014d1a1960969f6a1c0ee7b5ce71ef009905b39fd",
-      "size": 97608,
-      "updated_at": "2026-07-12T21:45:42Z"
+      "note": "架空科学者肖像の品質改善（時代・年齢・疑似文字）",
+      "revision": 2,
+      "sha256": "db17ca1905462df00b0f2a803b85d45f303a71a8f1baa56c5a4d2587979edc38",
+      "size": 69561,
+      "updated_at": "2026-08-21T15:36:55Z"
     },
     "https://github.com/soramimic/soramimic-wordlists/releases/download/fictional-scientist-v2/fs_0965.jpg": {
       "revision": 1,
@@ -18080,10 +18099,11 @@
       "updated_at": "2026-07-12T21:45:43Z"
     },
     "https://github.com/soramimic/soramimic-wordlists/releases/download/fictional-scientist-v2/fs_0969.jpg": {
-      "revision": 1,
-      "sha256": "cf78cb2571d2a6bf1eb3443be7d9fcae26c86393332b0dd92307f42c92c6b6c4",
-      "size": 112067,
-      "updated_at": "2026-07-12T21:45:43Z"
+      "note": "架空科学者肖像の品質改善（時代・年齢・疑似文字）",
+      "revision": 2,
+      "sha256": "5a168ae09e140a7c3b5b9287534b194454dc9ea79fbe8d13f7173ac794447d4e",
+      "size": 71917,
+      "updated_at": "2026-08-21T15:36:55Z"
     },
     "https://github.com/soramimic/soramimic-wordlists/releases/download/fictional-scientist-v2/fs_0970.jpg": {
       "revision": 1,
@@ -33338,9 +33358,9 @@
       "updated_at": "2026-07-30T14:30:35Z"
     }
   },
-  "generated_at": "2026-08-14T22:02:29Z",
+  "generated_at": "2026-08-21T15:37:00Z",
   "repository": "soramimic/soramimic-wordlists",
-  "revision": 1,
+  "revision": 2,
   "schema": "soramimic.release-image-source-manifest",
   "version": 1
 }
