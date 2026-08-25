@@ -11,6 +11,7 @@
 - image/image_page は生カンマを含まないURL
 - 選手descriptionが文脈依存の接続語や未完の語尾を含まない
 - 選手descriptionがカードに別表示される人名を主語に繰り返さない
+- 架空科学者achievementが短い完結文で、同じ人物の各表層で一致する
 - 一意であるべき列の妥当性(stationsのwikidata重複など)
 
 usage: python3 tools/validate_csvs.py
@@ -165,6 +166,7 @@ def validate(path: Path):
             return
     img_cols = [c for c in ("image", "image_page") if c in idx]
     scientist_years = {}
+    fictional_scientist_achievements = {}
     player_groups = {}
     youtuber_snapshots = {}
     youtuber_scopes = {}
@@ -471,6 +473,20 @@ def validate(path: Path):
             if person_id in scientist_years and scientist_years[person_id] != years:
                 err(f"{path.name}:{lineno}: 同じidで生没年が一致しない")
             scientist_years[person_id] = years
+        if path.name == "fictional_scientist.csv":
+            achievement = f[idx["achievement"]]
+            if not 8 <= len(achievement) <= 90 or not achievement.endswith("。"):
+                err(
+                    f"{path.name}:{lineno}: achievementが短い完結文でない: "
+                    f"{achievement[:65]}"
+                )
+            person_id = f[idx["id"]]
+            if (
+                person_id in fictional_scientist_achievements
+                and fictional_scientist_achievements[person_id] != achievement
+            ):
+                err(f"{path.name}:{lineno}: 同じidでachievementが一致しない")
+            fictional_scientist_achievements[person_id] = achievement
     if path.name == "youtuber.csv":
         expected = {record["original"] for record in YOUTUBER_FAN_IMAGES.values()}
         if youtuber_fan_seen != expected:
