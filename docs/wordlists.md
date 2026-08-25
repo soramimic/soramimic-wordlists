@@ -44,6 +44,9 @@ Jリーグ照合根拠は
 | description | 経歴や主要実績の短い説明 |
 | image, image_page | Commonsの肖像。ない場合はチームカラーによる選手カード |
 
+`baseball.csv` / `football.csv` で説明を取得できていない行は `description` を空欄とし、
+`NA` や `NA。` のような表示用でないsentinelは保存しない。
+
 baseball / football のうちOpenAI APIで公開Wikipedia本文から候補文を選んだ説明は、
 記事URL・QID・版ID・選択元文・最終説明を
 `tools/openai_player_description_sources.jsonl` に固定する。元文はCC BY-SA 4.0で、

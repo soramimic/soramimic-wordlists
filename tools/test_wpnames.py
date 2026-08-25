@@ -32,6 +32,16 @@ class PlayerDescriptionSubjectTest(unittest.TestCase):
             "池田弘 - 西武ライオンズに所属した元投手。"
         ))
 
+    def test_unusable_player_intro_returns_an_empty_description(self):
+        self.assertEqual(
+            "",
+            make_player_description(
+                "山田太郎 - 日本の野球選手。佐藤太郎 - 日本の俳優。",
+                "山田太郎",
+            ),
+        )
+        self.assertEqual("", make_player_description("山田太郎は、", "山田太郎"))
+
     def test_detects_unrelated_full_name_subject_by_player_role(self):
         self.assertTrue(has_redundant_player_subject(
             "ロバート・ジョゼフ・アーリンは、"
