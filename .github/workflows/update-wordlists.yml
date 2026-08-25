@@ -6,8 +6,14 @@ on:
   workflow_dispatch:
 
 permissions:
+  actions: read
   contents: write
   pull-requests: write
+
+# 月次更新と手動再実行のclaim競合を避けるため直列化する。
+concurrency:
+  group: update-wordlists
+  cancel-in-progress: false
 
 jobs:
   update:
@@ -143,6 +149,152 @@ jobs:
           python tools/apply_sekitsui_generated_images.py
           python tools/apply_plant_generated_images.py
 
+      - name: Set OpenAI enrichment cache date
+        id: openai-cache-date
+        if: vars.OPENAI_LLM_ENRICHMENT_ENABLED == 'true'
+        run: echo "utc=$(date -u +%F)" >> "$GITHUB_OUTPUT"
+
+      # 成功済みresponseと未解決reservationをbest-effortで再利用するcache。
+      # branch scope/post-job保存なので、安全境界は後段のartifact claimが担う。
+      - name: Restore OpenAI enrichment cache and token ledger
+        if: vars.OPENAI_LLM_ENRICHMENT_ENABLED == 'true'
+        uses: actions/cache@v4
+        with:
+          path: |
+            tools/.cache/openai-source-selector.sqlite3
+            tools/.cache/player_descriptions.json
+          key: openai-description-${{ steps.openai-cache-date.outputs.utc }}-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            openai-description-${{ steps.openai-cache-date.outputs.utc }}-
+            openai-description-
+
+      - name: Preflight newly added player description batch
+        id: openaipreflight
+        if: >-
+          vars.OPENAI_LLM_ENRICHMENT_ENABLED == 'true' &&
+          steps.baseball.outcome == 'success' &&
+          steps.football.outcome == 'success'
+        continue-on-error: true
+        run: |
+          python tools/enrich_player_descriptions_openai.py baseball --changed-from HEAD --limit 100
+          python tools/enrich_player_descriptions_openai.py football --changed-from HEAD --limit 100
+
+      # Actions cacheはbranch scopeかつpost-job保存なので、使用量の安全境界には
+      # 使わない。repository全体から見えるimmutable artifactをAPI送信前に作り、
+      # 当日分とrunner消失時の翌日guardを明示的に検証する。
+      - name: Check repository-wide OpenAI run claim
+        id: openaiclaimcheck
+        if: >-
+          vars.OPENAI_LLM_ENRICHMENT_ENABLED == 'true' &&
+          steps.baseball.outcome == 'success' &&
+          steps.football.outcome == 'success' &&
+          steps.openaipreflight.outcome == 'success'
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          utc=$(date -u +%F)
+          next_utc=$(date -u -d "$utc + 1 day" +%F)
+          echo "utc=$utc" >> "$GITHUB_OUTPUT"
+          echo "next_utc=$next_utc" >> "$GITHUB_OUTPUT"
+          existing=$(gh api --paginate \
+            "repos/$GITHUB_REPOSITORY/actions/artifacts?name=openai-description-claim-$utc&per_page=100" \
+            --jq ".artifacts[] | select(.expired == false) | .id" \
+            | head -n 1)
+          if [ -n "$existing" ]; then
+            echo "::error::同じUTC日のOpenAI補完claimが既にあります: $existing"
+            exit 1
+          fi
+
+      - name: Prepare OpenAI run claim artifacts
+        if: >-
+          steps.openaiclaimcheck.outcome == 'success'
+        run: |
+          mkdir -p "$RUNNER_TEMP/openai-claim-current" "$RUNNER_TEMP/openai-claim-next"
+          echo "${{ github.run_id }}:${{ github.run_attempt }}" > "$RUNNER_TEMP/openai-claim-current/run"
+          echo "${{ github.run_id }}:${{ github.run_attempt }}" > "$RUNNER_TEMP/openai-claim-next/run"
+
+      - name: Upload current OpenAI run claim before API use
+        id: openaiclaimcurrent
+        if: >-
+          steps.openaiclaimcheck.outcome == 'success'
+        continue-on-error: true
+        uses: actions/upload-artifact@v4
+        with:
+          name: openai-description-claim-${{ steps.openaiclaimcheck.outputs.utc }}
+          path: ${{ runner.temp }}/openai-claim-current/run
+          if-no-files-found: error
+          retention-days: 2
+
+      - name: Upload next-day OpenAI guard before API use
+        id: openaiclaimnext
+        if: >-
+          steps.openaiclaimcurrent.outcome == 'success'
+        continue-on-error: true
+        uses: actions/upload-artifact@v4
+        with:
+          name: openai-description-claim-${{ steps.openaiclaimcheck.outputs.next_utc }}
+          path: ${{ runner.temp }}/openai-claim-next/run
+          if-no-files-found: error
+          retention-days: 3
+
+      - name: Verify OpenAI run claim artifacts and UTC date
+        id: openaiclaimverify
+        if: >-
+          steps.openaiclaimcurrent.outcome == 'success' &&
+          steps.openaiclaimnext.outcome == 'success'
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CURRENT_ID: ${{ steps.openaiclaimcurrent.outputs.artifact-id }}
+          NEXT_ID: ${{ steps.openaiclaimnext.outputs.artifact-id }}
+          EXPECTED_UTC: ${{ steps.openaiclaimcheck.outputs.utc }}
+          EXPECTED_NEXT_UTC: ${{ steps.openaiclaimcheck.outputs.next_utc }}
+        run: |
+          [ "$(date -u +%F)" = "$EXPECTED_UTC" ] || {
+            echo "::error::claim作成中にUTC日付が変わりました"; exit 1;
+          }
+          current_name=$(gh api "repos/$GITHUB_REPOSITORY/actions/artifacts/$CURRENT_ID" --jq .name)
+          next_name=$(gh api "repos/$GITHUB_REPOSITORY/actions/artifacts/$NEXT_ID" --jq .name)
+          current_expired=$(gh api "repos/$GITHUB_REPOSITORY/actions/artifacts/$CURRENT_ID" --jq .expired)
+          next_expired=$(gh api "repos/$GITHUB_REPOSITORY/actions/artifacts/$NEXT_ID" --jq .expired)
+          current_expires_at=$(gh api "repos/$GITHUB_REPOSITORY/actions/artifacts/$CURRENT_ID" --jq .expires_at)
+          next_expires_at=$(gh api "repos/$GITHUB_REPOSITORY/actions/artifacts/$NEXT_ID" --jq .expires_at)
+          [ "$current_name" = "openai-description-claim-$EXPECTED_UTC" ]
+          [ "$next_name" = "openai-description-claim-$EXPECTED_NEXT_UTC" ]
+          [ "$current_expired" = "false" ] && [ "$next_expired" = "false" ]
+          python3 - "$EXPECTED_UTC" "$current_expires_at" \
+            "$EXPECTED_NEXT_UTC" "$next_expires_at" <<'PY'
+          import datetime
+          import sys
+
+          for day, expires_at in zip(sys.argv[1::2], sys.argv[2::2]):
+              deadline = datetime.datetime.combine(
+                  datetime.date.fromisoformat(day) + datetime.timedelta(days=1),
+                  datetime.time.min,
+                  tzinfo=datetime.timezone.utc,
+              )
+              expiry = datetime.datetime.fromisoformat(expires_at.replace("Z", "+00:00"))
+              if expiry < deadline:
+                  raise SystemExit(f"artifact expires before UTC guard completes: {day}")
+          PY
+
+      - name: Improve newly added player descriptions from verified source text
+        id: openaidesc
+        if: >-
+          vars.OPENAI_LLM_ENRICHMENT_ENABLED == 'true' &&
+          steps.baseball.outcome == 'success' &&
+          steps.football.outcome == 'success' &&
+          steps.openaipreflight.outcome == 'success' &&
+          steps.openaiclaimverify.outcome == 'success'
+        continue-on-error: true
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_DATA_SHARING_INCENTIVE_CONFIRMED_UNTIL: ${{ vars.OPENAI_DATA_SHARING_INCENTIVE_CONFIRMED_UNTIL }}
+        run: |
+          python tools/enrich_player_descriptions_openai.py all --fetch --changed-from HEAD --limit 100
+          python tools/enrich_player_descriptions_openai.py all --apply --cache-only --changed-from HEAD --limit 100
+
       - name: 失敗したupdaterの書きかけ出力を巻き戻す
         id: failures
         env:
@@ -164,6 +316,12 @@ jobs:
           O_PLACEIMAGES: ${{ steps.placeimages.outcome }}
           O_SCHOOLTYPEIMG: ${{ steps.schooltypeimg.outcome }}
           O_CLASSIMG: ${{ steps.classimg.outcome }}
+          O_OPENAIPREFLIGHT: ${{ steps.openaipreflight.outcome }}
+          O_OPENAICLAIMCHECK: ${{ steps.openaiclaimcheck.outcome }}
+          O_OPENAICLAIMCURRENT: ${{ steps.openaiclaimcurrent.outcome }}
+          O_OPENAICLAIMNEXT: ${{ steps.openaiclaimnext.outcome }}
+          O_OPENAICLAIMVERIFY: ${{ steps.openaiclaimverify.outcome }}
+          O_OPENAIDESC: ${{ steps.openaidesc.outcome }}
         run: |
           failed=""
           revert_if_failed() {
@@ -211,6 +369,14 @@ jobs:
           # ので巻き戻せる(同回のupdate_*の追記も一緒に戻るが、次回の実行で
           # 復帰する)
           revert_if_failed class_images "$O_CLASSIMG" sekitsui.csv plant.csv insect.csv
+          revert_if_failed openai_description_preflight "$O_OPENAIPREFLIGHT"
+          revert_if_failed openai_claim_check "$O_OPENAICLAIMCHECK"
+          revert_if_failed openai_claim_current "$O_OPENAICLAIMCURRENT"
+          revert_if_failed openai_claim_next "$O_OPENAICLAIMNEXT"
+          revert_if_failed openai_claim_verify "$O_OPENAICLAIMVERIFY"
+          # LLM取得はCSVを書かず、all applyはCSVと根拠台帳をbundle化し、失敗時に
+          # apply直前の内容へ戻す。先行updaterの成果は保持される。
+          revert_if_failed openai_player_descriptions "$O_OPENAIDESC"
           failed="${failed# }"
           echo "failed=$failed" >> "$GITHUB_OUTPUT"
           if [ -n "$failed" ]; then echo "::warning::失敗したupdater: $failed"; fi

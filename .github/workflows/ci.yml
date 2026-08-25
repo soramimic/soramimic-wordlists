@@ -82,7 +82,18 @@ jobs:
         run: python tools/test_update_school.py
 
       - name: Test player description helpers
-        run: python -m unittest tools/test_wpnames.py
+        run: >-
+          python -m unittest
+          tools/test_wpnames.py
+          tools/test_enrich_player_descriptions.py
+          tools/test_rebuild_football_jleague.py
+
+      - name: Test source-grounded OpenAI description selection
+        run: |
+          python -m unittest \
+            tools/test_openai_source_selector.py \
+            tools/test_enrich_player_descriptions_openai.py
+          python tools/validate_openai_player_description_sources.py
 
       - name: Test player position helpers
         run: python -m unittest tools/test_enrich_player_positions.py

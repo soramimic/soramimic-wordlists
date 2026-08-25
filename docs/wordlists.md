@@ -20,6 +20,8 @@
 
 選手カードはチームカラーと汎用の職業アイコンで構成する。詳細は
 [ADR 00020](adr/00020-player-cards.md)。
+同名人物の説明補正に使えると個別確認したWikipedia記事とQIDは
+`tools/baseball_verified_sources.jsonl` に記録する。
 
 ## football.csv
 
@@ -41,6 +43,11 @@ Jリーグ照合根拠は
 | position | `GK`/`DF`/`MF`/`FW`。複数は `/` 区切り |
 | description | 経歴や主要実績の短い説明 |
 | image, image_page | Commonsの肖像。ない場合はチームカラーによる選手カード |
+
+baseball / football のうちOpenAI APIで公開Wikipedia本文から候補文を選んだ説明は、
+記事URL・QID・版ID・選択元文・最終説明を
+`tools/openai_player_description_sources.jsonl` に固定する。元文はCC BY-SA 4.0で、
+同台帳の恒久版URLから原記事への帰属と加工有無を確認できる。
 
 ## stations.csv
 
