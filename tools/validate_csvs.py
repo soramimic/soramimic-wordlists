@@ -437,6 +437,10 @@ def validate(path: Path):
         if path.name in ("baseball.csv", "football.csv") and "description" in idx:
             v = f[idx["description"]]
             player_groups.setdefault(f[idx["id"]], []).append((lineno, f))
+            if v.strip().rstrip("。").strip() == "NA":
+                err(
+                    f"{path.name}:{lineno}: descriptionにNA sentinelが残っている"
+                )
             if v and not is_standalone_player_description(v):
                 err(
                     f"{path.name}:{lineno}: descriptionが単独で完結していない: {v[:65]}"

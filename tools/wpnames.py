@@ -677,7 +677,7 @@ def make_player_description(
     if override:
         return override
     if is_likely_disambiguation_text(intro):
-        return "NA"
+        return ""
     text = clean_ws(intro)
     sentences = [sentence.strip() for sentence in text.split("。") if sentence.strip()]
     ranked = []
@@ -697,7 +697,7 @@ def make_player_description(
             return description
     first = (sentences[0] + "。") if sentences else intro
     description = _shorten_player_description(make_description(first, "", name))
-    return description if is_standalone_player_description(description) else "NA"
+    return description if is_standalone_player_description(description) else ""
 
 
 def titles_to_qids(titles: list) -> dict:

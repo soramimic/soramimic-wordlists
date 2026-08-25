@@ -87,6 +87,7 @@ jobs:
           tools/test_wpnames.py
           tools/test_enrich_player_descriptions.py
           tools/test_rebuild_football_jleague.py
+          tools/test_validate_csvs.py
 
       - name: Test source-grounded OpenAI description selection
         run: |
