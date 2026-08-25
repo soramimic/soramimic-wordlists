@@ -215,7 +215,7 @@ Wikipedia由来の加工文はCC BY-SA 4.0で、同台帳から原記事への�
 | type | 表層の種類(`family`/`given`/`full`) |
 | birth_year, death_year | 生年と没年 |
 | nationality, field | 国籍と分野 |
-| achievement | 架空設定上の主な業績の短い説明 |
+| achievement | 架空設定上の主な業績の短い完結文 |
 | image, image_page | AI生成の肖像と配布ページ |
 
 人物・経歴・業績はすべて架空で、実在の人物・出来事とは無関係。
