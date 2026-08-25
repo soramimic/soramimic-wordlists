@@ -319,6 +319,8 @@ def standalone_description(name: str, description: str) -> str:
 
 def clean_player_card_description(description: str) -> str:
     """カードの専用行と重複する所属・ポジション文をdescriptionから除く。"""
+    if description.strip().rstrip("。").strip() in ("", "NA"):
+        return ""
     sentences = [part.strip() for part in description.split("。") if part.strip()]
     kept = []
     for sentence in sentences:

@@ -14,8 +14,10 @@ usage: python3 tools/enrich_player_descriptions.py
 import argparse
 import csv
 import json
+import os
 import re
 import sys
+import tempfile
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
@@ -55,6 +57,11 @@ def article_candidates(kind: str, rows: list[dict[str, str]]) -> list[str]:
     return list(dict.fromkeys(c for c in candidates if c))
 
 
+def is_missing_description(value: str) -> bool:
+    """空欄と NA sentinel（誤って句点が付いた旧値を含む）を欠損とみなす。"""
+    return value.strip().rstrip("。").strip() in ("", "NA")
+
+
 def load_cache() -> dict[str, dict[str, str]]:
     try:
         return json.loads(CACHE_PATH.read_text(encoding="utf-8"))
@@ -64,17 +71,24 @@ def load_cache() -> dict[str, dict[str, str]]:
 
 def save_cache(cache: dict[str, dict[str, str]]) -> None:
     CACHE_PATH.parent.mkdir(parents=True, exist_ok=True)
-    CACHE_PATH.write_text(
-        json.dumps(cache, ensure_ascii=False, sort_keys=True),
-        encoding="utf-8",
+    fd, temporary_name = tempfile.mkstemp(
+        prefix=f".{CACHE_PATH.name}.", dir=CACHE_PATH.parent
     )
+    temporary = Path(temporary_name)
+    try:
+        with os.fdopen(fd, "w", encoding="utf-8") as stream:
+            json.dump(cache, stream, ensure_ascii=False, sort_keys=True)
+        os.replace(temporary, CACHE_PATH)
+    finally:
+        temporary.unlink(missing_ok=True)
 
 
 def fetch_intro_batch(batch: list[str]) -> dict[str, dict[str, str]]:
     data = api({
         "action": "query",
-        "prop": "extracts|pageprops",
-        "ppprop": "disambiguation",
+        "prop": "extracts|pageprops|revisions",
+        "ppprop": "disambiguation|wikibase_item",
+        "rvprop": "ids",
         "exintro": 1,
         "explaintext": 1,
         "exlimit": "max",
@@ -94,6 +108,10 @@ def fetch_intro_batch(batch: list[str]) -> dict[str, dict[str, str]]:
         page.get("title", ""): {
             "intro": page.get("extract", ""),
             "disambiguation": "disambiguation" in page.get("pageprops", {}),
+            "qid": page.get("pageprops", {}).get("wikibase_item", ""),
+            "revision": str(
+                page.get("revisions", [{}])[0].get("revid", "")
+            ),
         }
         for page in data["query"]["pages"].values()
         if "missing" not in page
@@ -103,16 +121,29 @@ def fetch_intro_batch(batch: list[str]) -> dict[str, dict[str, str]]:
             "title": target,
             "intro": pages.get(target, {}).get("intro", ""),
             "disambiguation": pages.get(target, {}).get("disambiguation", False),
+            "qid": pages.get(target, {}).get("qid", ""),
+            "revision": pages.get(target, {}).get("revision", ""),
         }
         for source, target in aliases.items()
     }
 
 
-def fetch_intros(titles: list[str], cache: dict[str, dict[str, str]]) -> None:
+def fetch_intros(
+    titles: list[str],
+    cache: dict[str, dict[str, str]],
+    *,
+    refresh: bool = False,
+) -> None:
     missing = [
         title
         for title in titles
-        if title not in cache or "disambiguation" not in cache[title]
+        if refresh or title not in cache or not {
+            "disambiguation", "qid", "revision"
+        }.issubset(cache[title])
+        # Missing pages and transiently incomplete API results are cached with
+        # an empty revision.  Refresh those on the next fetch instead of
+        # turning a temporary miss into a permanent negative cache entry.
+        or not str(cache[title].get("revision", "")).strip()
     ]
     batches = [missing[offset:offset + 20] for offset in range(0, len(missing), 20)]
     completed = 0
@@ -127,7 +158,8 @@ def fetch_intros(titles: list[str], cache: dict[str, dict[str, str]]) -> None:
 def enrich(kind: str, cache: dict[str, dict[str, str]], refresh: bool) -> None:
     config = CONFIG[kind]
     path = config["path"]
-    rows = list(csv.DictReader(path.open(encoding="utf-8")))
+    with path.open(encoding="utf-8") as stream:
+        rows = list(csv.DictReader(stream))
     columns = list(rows[0])
     if "description" not in columns:
         columns.append("description")
@@ -140,7 +172,9 @@ def enrich(kind: str, cache: dict[str, dict[str, str]], refresh: bool) -> None:
     targets = {
         group_id: article_candidates(kind, group_rows)
         for group_id, group_rows in groups.items()
-        if refresh or any(not row["description"] for row in group_rows)
+        if refresh or any(
+            is_missing_description(row["description"]) for row in group_rows
+        )
     }
     titles = list(dict.fromkeys(
         title for candidates in targets.values() for title in candidates
@@ -165,18 +199,21 @@ def enrich(kind: str, cache: dict[str, dict[str, str]], refresh: bool) -> None:
         if not intro:
             continue
         description = make_player_description(intro, title)
-        if description == "NA":
+        if is_missing_description(description):
             continue
         changed = False
         for row in groups[group_id]:
-            if refresh or not row["description"]:
+            if refresh or is_missing_description(row["description"]):
                 row["description"] = description
                 changed = True
         filled_groups += bool(changed)
 
     write_csv_no_trailing_newline(path, columns, rows)
     complete = sum(
-        all(row["description"] for row in group_rows)
+        all(
+            not is_missing_description(row["description"])
+            for row in group_rows
+        )
         for group_rows in groups.values()
     )
     print(

@@ -36,8 +36,8 @@ from apply_youtuber_nijisanji_images import (
     load_manifest as load_nijisanji_image_manifest,
 )
 from wpnames import (
-    PLAYER_DISAMBIGUATION_DESCRIPTION,
     has_redundant_player_subject,
+    is_likely_disambiguation_text,
     is_standalone_player_description,
     strip_name_prefix,
 )
@@ -446,7 +446,7 @@ def validate(path: Path):
             if (
                 path.name == "football.csv"
                 and v
-                and PLAYER_DISAMBIGUATION_DESCRIPTION.search(v)
+                and is_likely_disambiguation_text(v)
             ):
                 err(
                     f"{path.name}:{lineno}: descriptionが曖昧さ回避ページ由来: {v[:65]}"

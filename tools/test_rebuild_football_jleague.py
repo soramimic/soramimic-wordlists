@@ -82,6 +82,11 @@ class RebuildFootballTests(unittest.TestCase):
             target.clean_player_card_description(
                 "山梨県出身の元プロサッカー選手（ポジションはFW）、サッカー指導者。"))
 
+    def test_missing_description_sentinels_stay_missing(self):
+        for value in ("", "NA", "NA。", " NA。。 "):
+            with self.subTest(value=value):
+                self.assertEqual("", target.clean_player_card_description(value))
+
     def test_collect_outputs_player_rows_and_auditable_manifest(self):
         rows, manifest, missing = target.collect(FakeClient(), FakeReadingProvider())
         self.assertEqual(3, len(rows))

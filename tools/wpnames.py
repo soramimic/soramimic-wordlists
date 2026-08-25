@@ -537,7 +537,7 @@ PLAYER_CONTEXTUAL_DESCRIPTION = re.compile(
     r"|(?:など|しており|ており|であり)。$"
 )
 PLAYER_DISAMBIGUATION_DESCRIPTION = re.compile(
-    r"\s-\s|とは、以下の|以下の人物を指す|一覧参照|"
+    r"とは、以下の|以下の人物を指す|一覧参照|"
     r"(?:男性名|女性名|姓名|人名)である。$|(?:男性名|女性名|人名)。$"
 )
 PLAYER_ROLE_DESCRIPTION = re.compile(
@@ -583,9 +583,21 @@ def has_redundant_player_subject(description: str) -> bool:
 def is_likely_disambiguation_text(text: str) -> bool:
     """Wikipediaの曖昧さ回避ページ由来と考えられる本文かを返す。"""
     text = clean_ws(text)
+    depth = 0
+    dash_outside_parentheses = False
+    for offset, char in enumerate(text):
+        if char in "（(":
+            depth += 1
+        elif char in "）)":
+            depth = max(0, depth - 1)
+        elif depth == 0 and text.startswith(" - ", offset):
+            # 曖昧さ回避の「項目名 - 説明」は拾うが、人物記事の生没年
+            # 「（1989年10月2日 - ）」等は括弧内なので拾わない。
+            dash_outside_parentheses = True
+            break
     return bool(
         PLAYER_DISAMBIGUATION_DESCRIPTION.search(text)
-        or text.count(" - ") >= 2
+        or dash_outside_parentheses
         or re.search(r"\{\{\s*(?:aimai|曖昧さ回避)", text, re.IGNORECASE)
     )
 
@@ -647,14 +659,21 @@ def _best_player_achievement_clause(sentence: str) -> str:
     return clause
 
 
-def make_player_description(intro: str, name: str = "") -> str:
+def make_player_description(
+    intro: str,
+    name: str = "",
+    *,
+    allow_override: bool = True,
+) -> str:
     """選手記事の冒頭から主要実績を優先した説明文を作る。
 
     受賞・優勝・記録などを含む完結文があれば、重み付きで最も情報量の多い1文を
     採る。記事冒頭が所属・ポジションだけなら通常の人物説明にフォールバックする。
     """
     normalized_name = DISAMBIG.sub("", name).replace(" ", "").replace("　", "")
-    override = PLAYER_DESCRIPTION_OVERRIDES.get(normalized_name)
+    override = (
+        PLAYER_DESCRIPTION_OVERRIDES.get(normalized_name) if allow_override else None
+    )
     if override:
         return override
     if is_likely_disambiguation_text(intro):
