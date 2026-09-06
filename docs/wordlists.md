@@ -213,6 +213,12 @@ YouTuberは `youtuber.csv`、VTuberは `vtuber.csv` から個別に選択でき�
 を参照。`channel_shared=yes`の登録者数はグループ全体の値なので、個人の
 `subscribers`へは入れない。
 
+ぶいすぽっ！・Neo-Porte・ホロスターズの公式名簿から補完したVTuberの
+活動名・読み・活動状態・チャンネルと各確認先は
+`tools/vtuber_official_people.jsonl` に記録する。新規人物は活動名の `full` 行で
+収録し、確認できない活動開始年・登録者数は `NA` とする。画像には既存形式の
+象徴カードを使用する。
+
 人物名には活動名を採用する。VTuberの象徴カードは配色、頭文字、職業アイコンで
 構成する。制限付き画像は非営利用途に限り、`image_credit` の表示と
 `image_page`・`image_terms_page` の確認が必要である。利用側は明示的な非営利モード
