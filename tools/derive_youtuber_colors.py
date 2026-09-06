@@ -53,7 +53,6 @@ usage:
 
 import argparse
 import colorsys
-import csv
 import hashlib
 import io
 import json
@@ -65,9 +64,9 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from fetch_youtuber_colors import fetch_bytes, norm_name  # noqa: E402
+from creator_csv import CSV_PATHS, read_creator_csvs  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
-CSV_PATH = ROOT / "youtuber.csv"
 COLORS_PATH = Path(__file__).resolve().parent / "youtuber_colors.json"
 # 取得したポートレートの置き場。**Git管理外**(.gitignore 済み)。再配布しない
 CACHE_DIR = Path(__file__).resolve().parent / ".cache" / "youtuber_portraits"
@@ -587,9 +586,9 @@ def collect_portraits(refresh: bool, verbose: bool) -> dict:
 
 
 def load_targets() -> dict:
-    """youtuber.csv の original -> category。"""
-    with CSV_PATH.open(encoding="utf-8") as fh:
-        return {r["original"]: r["category"] for r in csv.DictReader(fh)}
+    """youtuber.csv / vtuber.csv の original -> category。"""
+    _, rows = read_creator_csvs(CSV_PATHS)
+    return {r["original"]: r["category"] for r in rows}
 
 
 def load_colors() -> dict:
@@ -668,7 +667,7 @@ def main() -> int:
     # 肌と黒髪しか出ず、情報量が増えないため)
     hit = {n: e for n, e in portraits.items()
            if targets.get(n) == "vtuber"}
-    print(f"\nyoutuber.csv の vtuber と一致: {len(hit)}人"
+    print(f"\nyoutuber.csv / vtuber.csv の vtuber と一致: {len(hit)}人"
           f"(サイト側 {len(portraits)}人)")
     if args.validate:
         hit = {n: e for n, e in hit.items() if n in official}
@@ -733,7 +732,7 @@ def main() -> int:
 
 
 README = (
-    "youtuber.csv の人物のイメージカラー。primary/secondary は16進表記。"
+    "youtuber.csv / vtuber.csv の人物のイメージカラー。primary/secondary は16進表記。"
     "source=official は色をテキストで公表している公式サイト、"
     "official-penlight は公式ライブのペンライトカラー一覧画像、"
     "manual は人手で確認したもの(tools/fetch_youtuber_colors.py / "

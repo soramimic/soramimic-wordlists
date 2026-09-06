@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""youtuber.csv の channel と subscribers を YouTube API で更新する。
+"""youtuber.csv / vtuber.csv の channel と subscribers を YouTube API で更新する。
 
 出典: WikidataのYouTubeチャンネルID(P2397、CC0)と YouTube Data API v3 の
 channels.list(part=snippet,statistics)。Wikidataの登録者数(P3744)は記録時点が項目ごとに
@@ -15,9 +15,9 @@ channels.list(part=snippet,statistics)。Wikidataの登録者数(P3744)は記録
 - **subscribers と subscribers_as_of は毎回全行を上書きする**。channel は空欄/NAの
   人だけ補完し、既存値は上書きしない。既存値と現在のsnippet.titleが異なる場合は
   監査レポートへ出す。この3列以外の列・行順・idは一切変更しない
-- 書き込みは全チャンネルの取得が成功してから最後に一時ファイルを置換して行う
-  (途中で失敗した回は youtuber.csv を書きかけのまま残さず、登録者数と取得日が
-  別々のスナップショットになることもない)
+- 書き込みは全チャンネルの取得が成功してから各CSVの一時ファイルを置換して行う
+  (各人物の登録者数と取得日を同じスナップショットとして書き込み、
+  CSVを書きかけのまま残さない)
 - APIキーは環境変数 YOUTUBE_API_KEY、無ければ ~/.config/soramimic/youtube_api_key。
   どちらも無ければ「スキップ」を出して正常終了する(fork や鍵未設定のCIで
   ワークフローを壊さないため)
@@ -31,7 +31,6 @@ usage:
   python3 tools/update_youtuber_subscribers.py
 """
 
-import csv
 import json
 import os
 import re
@@ -46,9 +45,9 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from wpnames import UA, sparql, write_csv_no_trailing_newline  # noqa: E402
+from creator_csv import CSV_PATHS, read_creator_csvs, write_creator_csvs  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
-CSV_PATH = ROOT / "youtuber.csv"
 KEY_FILE = Path.home() / ".config" / "soramimic" / "youtube_api_key"
 API = "https://www.googleapis.com/youtube/v3/channels"
 SOURCE_PATH = ROOT / "tools" / "youtuber_channel_sources.jsonl"
@@ -509,10 +508,7 @@ def main() -> int:
               f"{KEY_FILE} を設定してください", flush=True)
         return 0
 
-    with CSV_PATH.open(encoding="utf-8") as fh:
-        reader = csv.DictReader(fh)
-        rows = list(reader)
-        cols = list(reader.fieldnames or [])
+    cols, rows = read_creator_csvs(CSV_PATHS)
 
     # id が1人の単位(family/given/full で複数行)。QIDは本人のもの
     qid_of = {}
@@ -523,7 +519,7 @@ def main() -> int:
         if qid and qid not in ("NA",):
             qid_of[r["id"]] = qid
     people = len({r["id"] for r in rows})
-    print(f"youtuber.csv: {len(rows)}行 / {people}人 "
+    print(f"youtuber.csv / vtuber.csv: {len(rows)}行 / {people}人 "
           f"(QIDあり {len(qid_of)}人)", flush=True)
 
     qids = sorted(set(qid_of.values()))
@@ -576,11 +572,11 @@ def main() -> int:
     evidence_count, deferred_count = update_audit_files(
         rows, qid_of, p2397, selected, as_of, shared_only_people)
     # 監査台帳の生成・検証まで成功してからCSVを原子的に置換する。
-    write_snapshot_atomic(CSV_PATH, cols, rows)
+    write_creator_csvs(cols, rows, paths=CSV_PATHS, writer=write_snapshot_atomic)
 
     have = [r for r in rows if r[COL] != "NA"]
     name = {r["id"]: r["original"] for r in rows}
-    print(f"\nyoutuber.csv: {COL} 充足 {len(best)}/{people}人 "
+    print(f"\nyoutuber.csv / vtuber.csv: {COL} 充足 {len(best)}/{people}人 "
           f"({len(have)}/{len(rows)}行)", flush=True)
     print(f"{COL} の上書き結果: 値が変わった {len(updated)}人 / "
           f"新たに入った {len(filled)}人 / 取れなくなった {len(lost)}人",

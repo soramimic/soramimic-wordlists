@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Apply reviewed, non-commercial VTuber fan-made images to youtuber.csv.
+"""Apply reviewed, non-commercial VTuber fan-made images to vtuber.csv.
 
 Only repository-hosted images listed in ``youtuber_permitted_images.json`` are
 accepted.  They may replace the generic SVG fallback, but never a Commons
@@ -26,7 +26,7 @@ from wpnames import write_csv_no_trailing_newline  # noqa: E402
 
 
 ROOT = Path(__file__).resolve().parent.parent
-CSV_PATH = ROOT / "youtuber.csv"
+CSV_PATH = ROOT / "vtuber.csv"
 MANIFEST_PATH = Path(__file__).resolve().parent / "youtuber_permitted_images.json"
 ASSET_DIR = ROOT / "images" / "youtuber_fan"
 IMAGE_PREFIX = (
@@ -160,7 +160,7 @@ def apply(csv_path: Path = CSV_PATH, manifest_path: Path = MANIFEST_PATH) -> tup
     for original, record in manifest.items():
         targets = by_original.get(original, [])
         if not targets:
-            raise SystemExit(f"error: youtuber.csv に対象がいない: {original}")
+            raise SystemExit(f"error: vtuber.csv に対象がいない: {original}")
         expected_image = IMAGE_PREFIX + record["file"]
         changed = False
         for row in targets:
@@ -195,7 +195,7 @@ def apply(csv_path: Path = CSV_PATH, manifest_path: Path = MANIFEST_PATH) -> tup
 
 def main() -> None:
     people, rows = apply()
-    print(f"youtuber.csv: ファンメイド画像 {people}人 / {rows}行を更新")
+    print(f"vtuber.csv: ファンメイド画像 {people}人 / {rows}行を更新")
 
 
 if __name__ == "__main__":

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""youtuber.csv の description を活動内容中心の短文に更新する。
+"""youtuber.csv / vtuber.csv の description を活動内容中心の短文に更新する。
 
 通常の自動更新は既存行を劣化させないため空欄補完だけを行う。このスクリプトは
 説明文の基準を変更したときに明示的に全件を再生成するためのキュレーション用で、
@@ -9,18 +9,17 @@ usage: python3 tools/enrich_youtuber_descriptions.py --refresh
 """
 
 import argparse
-import csv
 import json
 import sys
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from wpnames import api, write_csv_no_trailing_newline  # noqa: E402
+from wpnames import api  # noqa: E402
 from yt_common import make_youtuber_description  # noqa: E402
+from creator_csv import CSV_PATHS, read_creator_csvs, write_creator_csvs  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
-CSV_PATH = ROOT / "youtuber.csv"
 CACHE_PATH = Path(__file__).resolve().parent / ".cache" / "youtuber_descriptions.json"
 WIKIDATA_CACHE = Path(__file__).resolve().parent / ".cache" / "youtuber_wikidata.json"
 
@@ -99,10 +98,7 @@ def main() -> int:
     )
     args = parser.parse_args()
 
-    with CSV_PATH.open(encoding="utf-8-sig", newline="") as fh:
-        reader = csv.DictReader(fh)
-        rows = list(reader)
-        columns = list(reader.fieldnames or [])
+    columns, rows = read_creator_csvs(CSV_PATHS)
     if "description" not in columns:
         columns.append("description")
     for row in rows:
@@ -130,9 +126,9 @@ def main() -> int:
             changed += 1
             changed_people.add(row["original"])
 
-    write_csv_no_trailing_newline(CSV_PATH, columns, rows)
+    write_creator_csvs(columns, rows, paths=CSV_PATHS)
     values = [row.get("description", "") for row in rows]
-    print(f"youtuber.csv: description {len(changed_people)}人/{changed}行を更新")
+    print(f"youtuber.csv / vtuber.csv: description {len(changed_people)}人/{changed}行を更新")
     print(f"文字数: <=50字 {sum(len(v) <= 50 for v in values)}, "
           f"51-65字 {sum(51 <= len(v) <= 65 for v in values)}, "
           f">65字 {sum(len(v) > 65 for v in values)}")

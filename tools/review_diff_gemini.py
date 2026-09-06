@@ -69,7 +69,7 @@ PROMPT = """\
   (Wikidataに死没日が登録されたことを意味する)。あなたの知識で存命と
   思える人物でも、あなたの知識より新しい情報である可能性が高いため、
   これだけを理由にNGにしないこと(物故→存命への逆方向はNG)
-- youtuber.csvのchannel/subscribers/subscribers_as_of列は同じYouTube API
+- youtuber.csv/vtuber.csvのchannel/subscribers/subscribers_as_of列は同じYouTube API
   スナップショットとして更新され、毎月の実行で subscribers は
   ほぼ全行(700行規模)の数値が一斉に更新される(ADR 00030の仕様)。変更行数の
   多さや変動幅の大きさ、チャンネル改名によるchannel変更はNGの理由にしない。

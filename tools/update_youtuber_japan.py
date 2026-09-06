@@ -18,6 +18,8 @@ from datetime import date
 from pathlib import Path
 
 
+from creator_csv import read_creator_csvs, write_creator_csvs  # noqa: E402
+
 ROOT = Path(__file__).resolve().parent.parent
 CSV_PATH = ROOT / "youtuber.csv"
 PEOPLE_PATH = ROOT / "tools" / "youtuber_japan_people.json"
@@ -331,16 +333,22 @@ def main(argv=None) -> int:
     parser.add_argument("--observed-on", default=date.today().isoformat())
     args = parser.parse_args(argv)
 
-    with args.csv.open(encoding="utf-8", newline="") as handle:
-        reader = csv.DictReader(handle)
-        rows, columns = list(reader), list(reader.fieldnames or [])
+    if args.csv.resolve() == CSV_PATH:
+        columns, rows = read_creator_csvs()
+    else:
+        with args.csv.open(encoding="utf-8", newline="") as handle:
+            reader = csv.DictReader(handle)
+            rows, columns = list(reader), list(reader.fieldnames or [])
     if CHANNEL_SHARED_COLUMN not in columns:
         columns.append(CHANNEL_SHARED_COLUMN)
     people = load_people(args.people)
     sources = load_channel_sources(args.channel_sources)
     updated_rows, updated_sources, added, _ids = apply_people(
         rows, columns, people, sources, args.observed_on)
-    write_csv(args.csv, columns, updated_rows)
+    if args.csv.resolve() == CSV_PATH:
+        write_creator_csvs(columns, updated_rows, writer=write_csv)
+    else:
+        write_csv(args.csv, columns, updated_rows)
     write_jsonl(args.channel_sources, updated_sources)
     print(f"日本向けレビュー済み人物: {len(people)}人、新規 {added}人")
     return 0

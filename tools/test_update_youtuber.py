@@ -1,4 +1,3 @@
-import csv
 import json
 import sys
 import unittest
@@ -6,6 +5,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import update_youtuber as target  # noqa: E402
+from creator_csv import read_creator_csvs
 
 
 class YouTuberExclusionTest(unittest.TestCase):
@@ -13,18 +13,14 @@ class YouTuberExclusionTest(unittest.TestCase):
         excluded = {"うごくちゃん", "佐々木康平", "熱田隆介"}
         self.assertTrue(excluded <= target.EXCLUDED)
 
-        with (Path(__file__).resolve().parent.parent / "youtuber.csv").open(
-                encoding="utf-8", newline="") as handle:
-            originals = {row["original"] for row in csv.DictReader(handle)}
+        _, rows = read_creator_csvs()
+        originals = {row["original"] for row in rows}
         self.assertFalse(excluded & originals)
 
     def test_channel_ledgers_only_reference_current_people(self):
         root = Path(__file__).resolve().parent.parent
-        with (root / "youtuber.csv").open(
-                encoding="utf-8", newline="") as handle:
-            people = {}
-            for row in csv.DictReader(handle):
-                people.setdefault(row["id"], row)
+        _, rows = read_creator_csvs()
+        people = {row["id"]: row for row in rows}
 
         for name in (
                 "youtuber_channel_sources.jsonl",

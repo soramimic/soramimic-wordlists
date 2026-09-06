@@ -21,6 +21,7 @@ import sys
 from collections import Counter
 from pathlib import Path
 
+from creator_csv import read_creator_csvs
 from update_school import has_school_suffix
 from apply_youtuber_permitted_images import (
     IMAGE_PREFIX as YOUTUBER_FAN_IMAGE_PREFIX,
@@ -141,11 +142,11 @@ def validate(path: Path):
     if path.name == "school.csv" and "has_school_suffix" not in idx:
         err(f"{path.name}: 必須列 has_school_suffix がない")
         return
-    if path.name == "youtuber.csv":
+    if path.name in ("youtuber.csv", "vtuber.csv"):
         missing = [
             col for col in (
                 "image", "image_page", "image_credit", "image_usage",
-                "image_terms_page", "scope", "channel_shared",
+                "image_terms_page", "scope", "channel_shared", "category",
             )
             if col not in idx
         ]
@@ -189,7 +190,7 @@ def validate(path: Path):
         for col in img_cols:
             v = f[idx[col]]
             if v and not IMAGE_URL_RE.match(v):
-                is_reviewed_youtuber_url = path.name == "youtuber.csv" and (
+                is_reviewed_youtuber_url = path.name in ("youtuber.csv", "vtuber.csv") and (
                     (
                         col == "image"
                         and v in (
@@ -238,7 +239,9 @@ def validate(path: Path):
                     f"{path.name}:{lineno}: surface/has_school_suffixが不整合: "
                     f"{f[idx['surface']]} / {actual}"
                 )
-        if path.name == "youtuber.csv":
+        if path.name in ("youtuber.csv", "vtuber.csv"):
+            if f[idx["category"]] != path.stem:
+                err(f"{path.name}:{lineno}: category がファイル名と一致しない")
             person_id = f[idx["id"]]
             creator_scope = f[idx["scope"]]
             if creator_scope not in ("japan", "global", "unknown"):
@@ -475,7 +478,7 @@ def validate(path: Path):
             if person_id in scientist_years and scientist_years[person_id] != years:
                 err(f"{path.name}:{lineno}: 同じidで生没年が一致しない")
             scientist_years[person_id] = years
-    if path.name == "youtuber.csv":
+    if path.name == "vtuber.csv":
         expected = {record["original"] for record in YOUTUBER_FAN_IMAGES.values()}
         if youtuber_fan_seen != expected:
             missing = sorted(expected - youtuber_fan_seen)
@@ -633,6 +636,10 @@ def validate_marine_life(path: Path):
 
 
 def main() -> int:
+    try:
+        read_creator_csvs()
+    except (ValueError, OSError, KeyError) as ex:
+        err(f"creator CSVs: {ex}")
     for p in sorted(ROOT.glob("*.csv")):
         validate(p)
         if p.name == "marine_life.csv":

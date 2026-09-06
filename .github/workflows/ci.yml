@@ -109,3 +109,6 @@ jobs:
 
       - name: Verify marine life generated CSV
         run: python tools/update_marine_life.py --check
+
+      - name: Test creator CSV separation
+        run: python -m unittest discover -s tools -p "test_creator*.py"

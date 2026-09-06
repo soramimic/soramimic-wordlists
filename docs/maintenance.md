@@ -56,6 +56,12 @@ python3 tools/enrich_player_descriptions_openai.py football --apply --cache-only
 再確認します。採用した値は記事、QID、版、元文、最終説明を
 `tools/openai_player_description_sources.jsonl` に固定します。
 
+## YouTuber・VTuber
+
+`youtuber.csv` と `vtuber.csv` はそれぞれ別のリストとして提供します。
+月次更新は両リストを対象とし、人物IDは両ファイルを通して重複させません。
+画像の参照先とクレジットは分離前の値を維持します。
+
 ## 検証
 
 ローカルでは次の公開検証を実行できます。

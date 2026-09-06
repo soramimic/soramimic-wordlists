@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Apply reviewed Hololive profile images and roster rows to youtuber.csv."""
+"""Apply reviewed Hololive profile images and roster rows to vtuber.csv."""
 
 from __future__ import annotations
 
@@ -20,8 +20,10 @@ from gen_youtuber_cards import (  # noqa: E402
 from wpnames import write_csv_no_trailing_newline  # noqa: E402
 
 
+from creator_csv import read_creator_csvs, write_creator_csvs  # noqa: E402
+
 ROOT = Path(__file__).resolve().parent.parent
-CSV_PATH = ROOT / "youtuber.csv"
+CSV_PATH = ROOT / "vtuber.csv"
 MANIFEST_PATH = Path(__file__).resolve().parent / "youtuber_hololive_images.json"
 IMAGE_PREFIX = "https://hololive.hololivepro.com/wp-content/uploads/"
 TERMS_PAGE = "https://hololivepro.com/terms/"
@@ -116,16 +118,19 @@ def apply(
     manifest_path: Path = MANIFEST_PATH,
 ) -> tuple[int, int, int]:
     manifest = load_manifest(manifest_path)
-    with csv_path.open(encoding="utf-8", newline="") as handle:
-        reader = csv.DictReader(handle)
-        fieldnames = list(reader.fieldnames or [])
-        rows = list(reader)
+    if csv_path.resolve() == CSV_PATH:
+        fieldnames, rows = read_creator_csvs()
+    else:
+        with csv_path.open(encoding="utf-8", newline="") as handle:
+            reader = csv.DictReader(handle)
+            fieldnames = list(reader.fieldnames or [])
+            rows = list(reader)
     required_columns = FALLBACK_COLUMNS | {
         "image", "image_page", "image_credit", "image_usage", "image_terms_page",
     }
     missing_columns = sorted(required_columns - set(fieldnames))
     if missing_columns:
-        raise SystemExit(f"error: youtuber.csv に {missing_columns[0]} がない")
+        raise SystemExit(f"error: vtuber.csv に {missing_columns[0]} がない")
 
     by_original: dict[str, list[dict[str, str]]] = {}
     used_ids = {row["id"] for row in rows}
@@ -137,7 +142,7 @@ def apply(
         targets = by_original.get(original, [])
         if not targets:
             if not record["fallback_rows"]:
-                raise SystemExit(f"error: youtuber.csv に対象がいない: {original}")
+                raise SystemExit(f"error: vtuber.csv に対象がいない: {original}")
             targets = []
             for fallback in record["fallback_rows"]:
                 if fallback["id"] in used_ids:
@@ -190,13 +195,16 @@ def apply(
                 changed_people.add(original)
                 changed_rows += 1
 
-    write_csv_no_trailing_newline(csv_path, fieldnames, rows)
+    if csv_path.resolve() == CSV_PATH:
+        write_creator_csvs(fieldnames, rows)
+    else:
+        write_csv_no_trailing_newline(csv_path, fieldnames, rows)
     return len(changed_people), changed_rows, added_rows
 
 
 def main() -> None:
     people, rows, added = apply()
-    print(f"youtuber.csv: ホロライブ公式画像 {people}人 / {rows}行を更新 ({added}行追加)")
+    print(f"vtuber.csv: ホロライブ公式画像 {people}人 / {rows}行を更新 ({added}行追加)")
 
 
 if __name__ == "__main__":

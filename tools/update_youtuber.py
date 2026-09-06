@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""youtuber.csv を生成・追記する(詳細は docs/adr/00011, 00012)。
+"""youtuber.csv と vtuber.csv を生成・追記する(詳細は docs/adr/00011, 00012)。
 
 対象: Wikidataの職業(P106)が YouTuber(Q17125263)または
 バーチャルYouTuber(Q55155641)で、ja.wikipediaに記事がある人物。
@@ -201,5 +201,5 @@ SPECS = [
 ]
 
 if __name__ == "__main__":
-    sys.exit(build_list("youtuber.csv", SPECS, "YOUTUBER_CACHE", EXCLUDED,
+    sys.exit(build_list(("youtuber.csv", "vtuber.csv"), SPECS, "YOUTUBER_CACHE", EXCLUDED,
                         EXCLUDED_OCCUPATIONS))

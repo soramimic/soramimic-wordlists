@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""youtuber.csv に Wikidata QID と「自由ライセンスの実写」画像を付与する。
+"""youtuber.csv / vtuber.csv に Wikidata QID と「自由ライセンスの実写」画像を付与する。
 
 YouTuber/VTuberの画像は他リストと権利事情が違う。**チャンネルアイコン・動画
 サムネイル・キャラクターイラストは本人/事務所の著作物なので一切使わない**。
 使えるのは Wikimedia Commons にある自由ライセンスのファイルだけで、さらに
 そこから**実写(生身の人物の写真)だけ**を選び出す(詳細は ADR 00018)。
 
-- 人物の同定は名前の文字列一致ではなく **Wikidata の QID** で行う。youtuber.csv は
+- 人物の同定は名前の文字列一致ではなく **Wikidata の QID** で行う。youtuber.csv / vtuber.csv は
   そもそも「P106がYouTuber/VTuberでja.wikipediaに記事がある人物」から生成されて
   いる(ADR 00011)ので、同じクエリを引き直せば `original` = norm(ja記事名) で
   1対1に戻せる。同名の別人・一般名詞を拾う余地がない
@@ -34,7 +34,6 @@ usage:
 """
 
 import argparse
-import csv
 import json
 import re
 import sys
@@ -44,11 +43,10 @@ import urllib.request
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from wpnames import (DISAMBIG, UA, commons_urls,  # noqa: E402
-                     sparql_post, write_csv_no_trailing_newline)
+from wpnames import DISAMBIG, UA, commons_urls, sparql_post  # noqa: E402
+from creator_csv import CSV_PATHS, read_creator_csvs, write_creator_csvs  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
-CSV_PATH = ROOT / "youtuber.csv"
 CACHE_DIR = Path(__file__).resolve().parent / ".cache"
 WD_CACHE = CACHE_DIR / "youtuber_wikidata.json"
 COMMONS_CACHE = CACHE_DIR / "youtuber_commons.json"
@@ -89,7 +87,7 @@ ALLOWED_MIME = ("image/jpeg", "image/png")
 
 
 def norm(title: str) -> str:
-    """ja記事名 -> youtuber.csv の original(yt_common.norm と同じ規則)。"""
+    """ja記事名 -> youtuber.csv / vtuber.csv の original(yt_common.norm と同じ規則)。"""
     return DISAMBIG.sub("", title).replace("　", "").replace(" ", "")
 
 
@@ -248,10 +246,7 @@ def main() -> int:
 
     wd = collect_wikidata(args.refresh)
 
-    with CSV_PATH.open(encoding="utf-8") as fh:
-        reader = csv.DictReader(fh)
-        rows = [dict(r) for r in reader]
-        cols = list(reader.fieldnames)
+    cols, rows = read_creator_csvs(CSV_PATHS)
     cols += [c for c in OWN_COLS if c not in cols]
     for r in rows:
         for c in cols:
@@ -364,8 +359,8 @@ def main() -> int:
         r["image"], r["image_page"] = hit
         filled += 1
 
-    write_csv_no_trailing_newline(CSV_PATH, cols, rows)
-    print(f"\nyoutuber.csv: image を実写で埋めた行 +{filled}, "
+    write_creator_csvs(cols, rows, paths=CSV_PATHS)
+    print(f"\nyoutuber.csv / vtuber.csv: image を実写で埋めた行 +{filled}, "
           f"既に実写だった行 {kept}, wikidata を埋めた行 +{qid_filled}")
     return 0
 

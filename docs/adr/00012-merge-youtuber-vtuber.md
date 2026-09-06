@@ -1,9 +1,12 @@
 # ADR 00012: youtuber.csv と vtuber.csv を統合し category 列で区別する
 
-- Status: accepted
+- Status: superseded
 - Date: 2026-07-25
 - Supersedes: [00011](00011-youtuber-vtuber-wordlist.md) のうち「2ファイル構成」の判断(取得方式・列の意味・追記専用の運用は変更しない)
-- Superseded by: none
+- Superseded by: [YouTuber・VTuberの分離仕様](../wordlists.md#youtubercsv--vtubercsv)
+
+現在の公開仕様は [リスト別の列説明](../wordlists.md#youtubercsv--vtubercsv) を参照。
+YouTuberとVTuberは別々のCSVで提供する。
 
 ## Context
 
