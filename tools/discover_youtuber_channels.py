@@ -16,7 +16,6 @@ update_youtuber_subscribers.py が同じIDから subscribers と snippet.title �
 """
 
 import argparse
-import csv
 import json
 import re
 import sys
@@ -29,9 +28,9 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import update_youtuber_subscribers as updater  # noqa: E402
 from wpnames import UA, sparql  # noqa: E402
+from creator_csv import CSV_PATHS, read_creator_csvs  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
-CSV_PATH = ROOT / "youtuber.csv"
 WIKI_API = "https://ja.wikipedia.org/w/api.php"
 YOUTUBE_HOST_RE = re.compile(r"(?:www\.|m\.)?youtube\.com$", re.I)
 URL_RE = re.compile(r"https?://[^\s\]\[|{}<>]+", re.I)
@@ -320,8 +319,7 @@ def main(argv=None) -> int:
         print("スキップ(YouTube APIキーが無い): URLからIDを安全に解決できません")
         return 0
 
-    with CSV_PATH.open(encoding="utf-8") as handle:
-        rows = list(csv.DictReader(handle))
+    _, rows = read_creator_csvs(CSV_PATHS)
     people = {}
     for row in rows:
         people.setdefault(row["id"], row)

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""にじさんじ公式タレント一覧から現所属ライバーを youtuber.csv に補完する。
+"""にじさんじ公式タレント一覧から現所属ライバーを vtuber.csv に補完する。
 
 Wikidata/日本語Wikipediaを基準にする update_youtuber.py だけでは、個別記事の
 ないライバーを収録できない。この補完は公式タレント一覧を名簿の一次ソースとし、
@@ -12,7 +12,6 @@ YouTubeを主活動先としないため対象外。
 usage: python3 tools/update_nijisanji.py
 """
 
-import csv
 import html
 import json
 import re
@@ -23,10 +22,10 @@ from datetime import date
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from wpnames import HIRA2KATA, UA, write_csv_no_trailing_newline  # noqa: E402
+from wpnames import HIRA2KATA, UA  # noqa: E402
+from creator_csv import read_creator_csvs, write_creator_csvs  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
-CSV_PATH = ROOT / "youtuber.csv"
 COLORS_PATH = ROOT / "tools" / "youtuber_colors.json"
 CHANNEL_SOURCES_PATH = ROOT / "tools" / "youtuber_channel_sources.jsonl"
 LIST_URL = "https://www.nijisanji.jp/talents"
@@ -232,15 +231,12 @@ def main() -> int:
     roster = parse_roster(fetch(LIST_URL))
     print(f"公式名簿: {len(roster)}人。プロフィールを取得中...", flush=True)
     details = fetch_details(roster)
-    with CSV_PATH.open(encoding="utf-8") as handle:
-        reader = csv.DictReader(handle)
-        rows = list(reader)
-        cols = list(reader.fieldnames or [])
+    cols, rows = read_creator_csvs()
     added_people, added_rows, ids = apply_roster(rows, cols, details)
-    write_csv_no_trailing_newline(CSV_PATH, cols, rows)
+    write_creator_csvs(cols, rows)
     color_count = update_colors(details)
     channel_count = update_channel_sources(details, ids, rows)
-    print(f"youtuber.csv: にじさんじ公式名簿 {len(details)}人、"
+    print(f"vtuber.csv: にじさんじ公式名簿 {len(details)}人、"
           f"新規 {added_people}人/{added_rows}行")
     print(f"公式プロフィール色 {color_count}人、チャンネル根拠 {channel_count}人")
     return 0

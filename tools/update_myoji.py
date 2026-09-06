@@ -57,7 +57,7 @@ COLS = [
 # verified の判定に使う「実在の日本人の名簿」。このリポジトリ内の実在人名リストの
 # type=family 行(姓とその読み)を突き合わせる。架空のリスト(fictional_*)は
 # 実在の裏付けにならないので使わない
-PERSON_LISTS = ("baseball.csv", "football.csv", "scientist.csv", "youtuber.csv")
+PERSON_LISTS = ("baseball.csv", "football.csv", "scientist.csv", "youtuber.csv", "vtuber.csv")
 
 # ---- SudachiDict --------------------------------------------------------
 # 辞書ソースCSVは git から外れて S3 配布になっている(GitHub の

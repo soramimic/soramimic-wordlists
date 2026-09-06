@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""youtuber.csv の実写が無い行に割り当てる「象徴カード」SVGを生成する。
+"""youtuber.csv / vtuber.csv の実写が無い行に割り当てる「象徴カード」SVGを生成する。
 
 YouTuber/VTuberのチャンネルアイコン・サムネイル・キャラクターイラストは本人/
 事務所の著作物なので使えない(詳細は ADR 00018)。自由ライセンスの実写が取れる
@@ -49,7 +49,6 @@ usage:
 
 import argparse
 import colorsys
-import csv
 import hashlib
 import json
 import sys
@@ -58,10 +57,9 @@ from xml.sax.saxutils import escape
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from silhouettes import ATTRIBUTION, silhouette_card_svg  # noqa: E402
-from wpnames import write_csv_no_trailing_newline  # noqa: E402
+from creator_csv import CSV_PATHS, read_creator_csvs, write_creator_csvs  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
-CSV_PATH = ROOT / "youtuber.csv"
 OUT_DIR = ROOT / "images" / "youtuber"
 REL_DIR = "images/youtuber"
 # 本人のイメージカラー(出典URL付き)。tools/fetch_youtuber_colors.py が更新する
@@ -316,12 +314,12 @@ def load_people() -> list:
     """(original, category, org) を CSV の行順で重複なく返す。"""
     seen = set()
     out = []
-    with CSV_PATH.open(encoding="utf-8") as fh:
-        for r in csv.DictReader(fh):
-            if r["original"] in seen:
-                continue
-            seen.add(r["original"])
-            out.append((r["original"], r["category"], r.get("org", "")))
+    _, rows = read_creator_csvs(CSV_PATHS)
+    for r in rows:
+        if r["original"] in seen:
+            continue
+        seen.add(r["original"])
+        out.append((r["original"], r["category"], r.get("org", "")))
     return out
 
 
@@ -381,10 +379,7 @@ def main() -> int:
     if args.no_apply:
         return 0
 
-    with CSV_PATH.open(encoding="utf-8") as fh:
-        reader = csv.DictReader(fh)
-        rows = [dict(r) for r in reader]
-        cols = list(reader.fieldnames)
+    cols, rows = read_creator_csvs(CSV_PATHS)
     for c in ("image", "image_page"):
         if c not in cols:
             cols.append(c)
@@ -405,8 +400,8 @@ def main() -> int:
             filled += 1
         r["image"], r["image_page"] = url, image_page_url(r["original"])
 
-    write_csv_no_trailing_newline(CSV_PATH, cols, rows)
-    print(f"youtuber.csv: カードを付与 +{filled}行, 貼り替え {rebound}行, "
+    write_creator_csvs(cols, rows, paths=CSV_PATHS)
+    print(f"youtuber.csv / vtuber.csv: カードを付与 +{filled}行, 貼り替え {rebound}行, "
           f"実写あり {photo}行")
     return 0
 

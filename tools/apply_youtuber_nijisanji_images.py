@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Apply reviewed NIJISANJI profile images to youtuber.csv."""
+"""Apply reviewed NIJISANJI profile images to vtuber.csv."""
 
 from __future__ import annotations
 
@@ -21,7 +21,7 @@ from wpnames import write_csv_no_trailing_newline  # noqa: E402
 
 
 ROOT = Path(__file__).resolve().parent.parent
-CSV_PATH = ROOT / "youtuber.csv"
+CSV_PATH = ROOT / "vtuber.csv"
 MANIFEST_PATH = Path(__file__).resolve().parent / "youtuber_nijisanji_images.json"
 IMAGE_HOST = "images.microcms-assets.io"
 IMAGE_PATH_PREFIX = "/assets/5694fd90407444338a64d654e407cc0e/"
@@ -119,14 +119,14 @@ def apply(csv_path: Path = CSV_PATH, manifest_path: Path = MANIFEST_PATH) -> tup
     }
     missing_columns = sorted(required_columns - set(fieldnames))
     if missing_columns:
-        raise SystemExit(f"error: youtuber.csv に {missing_columns[0]} がない")
+        raise SystemExit(f"error: vtuber.csv に {missing_columns[0]} がない")
 
     by_original: dict[str, list[dict[str, str]]] = {}
     for row in rows:
         by_original.setdefault(row["original"], []).append(row)
     missing_people = sorted(set(manifest) - set(by_original))
     if missing_people:
-        raise SystemExit(f"error: youtuber.csv に対象がいない: {missing_people[0]}")
+        raise SystemExit(f"error: vtuber.csv に対象がいない: {missing_people[0]}")
 
     changed_people: set[str] = set()
     changed_rows = 0
@@ -166,7 +166,7 @@ def apply(csv_path: Path = CSV_PATH, manifest_path: Path = MANIFEST_PATH) -> tup
 
 def main() -> None:
     people, rows = apply()
-    print(f"youtuber.csv: にじさんじ公式画像 {people}人 / {rows}行を更新")
+    print(f"vtuber.csv: にじさんじ公式画像 {people}人 / {rows}行を更新")
 
 
 if __name__ == "__main__":

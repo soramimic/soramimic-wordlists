@@ -3,7 +3,7 @@
 出典: Wikidata(職業P106がYouTuber/バーチャルYouTuberで、ja.wikipediaに記事が
 ある人物)と、Wikipedia日本語版記事の冒頭文(CC BY-SA 4.0)。
 
-- YouTuberとVTuberを1ファイルに収録し、category列(youtuber/vtuber)で区別する
+- YouTuberとVTuberを別ファイルに収録し、category列(youtuber/vtuber)を保持する
 - 収録は記事名(=活動名)のみ。本名などの個人情報は取得しない
 - 姓名分割できる名前(兎田ぺこら等)は family/given/full、ハンドル型
   (HIKAKIN/キズナアイ等)は full のみ
@@ -34,6 +34,7 @@ import pickle
 import re
 from pathlib import Path
 
+from creator_csv import read_creator_csvs, write_creator_csvs
 from wpnames import (DISAMBIG, HIRA2KATA, _sanitize_desc, clean_ws,
                      fetch_extracts, parse_person, sparql, strip_lead_paren,
                      strip_name_prefix, write_csv_no_trailing_newline)
@@ -575,7 +576,7 @@ def norm(title: str) -> str:
     return DISAMBIG.sub("", title).replace("　", "").replace(" ", "")
 
 
-def build_list(csv_name: str, specs: list, cache_env: str,
+def build_list(csv_name: str | tuple[str, ...], specs: list, cache_env: str,
                excluded: set = frozenset(),
                excluded_occs: dict = None) -> int:
     """リストを生成(初回)または追記・status更新(2回目以降)する。
@@ -587,7 +588,10 @@ def build_list(csv_name: str, specs: list, cache_env: str,
     excluded_occs: 収録しない職業の QID -> ラベル。P106 にこの職業を持つ人物を
       属性ごと弾く。値はラベルの期待キーワード(QID取り違えのフェイルセーフ)。
     """
-    csv_path = Path(__file__).resolve().parent.parent / csv_name
+    root = Path(__file__).resolve().parent.parent
+    split_paths = (tuple(root / name for name in csv_name)
+                   if isinstance(csv_name, tuple) else None)
+    csv_path = root / csv_name if split_paths is None else None
     for s in specs:
         assert_occupation(s["occ"], s["must"], s["must_not"])
         if s.get("exclude"):
@@ -622,7 +626,10 @@ def build_list(csv_name: str, specs: list, cache_env: str,
                 pickle.dump((persons_by_cat, attrs, extracts), fh)
             print(f"キャッシュ保存: {cache}", flush=True)
 
-    if csv_path.exists():
+    if split_paths is not None:
+        cols, old_rows = read_creator_csvs(split_paths)
+        cols += [c for c in COLS if c not in cols]
+    elif csv_path.exists():
         with csv_path.open(encoding="utf-8") as fh:
             reader = csv.DictReader(fh)
             old_rows = list(reader)
@@ -715,7 +722,10 @@ def build_list(csv_name: str, specs: list, cache_env: str,
                           "description": descs.get(title, "NA")})
         next_id += 1
 
-    write_csv_no_trailing_newline(csv_path, cols, old_rows + added)
+    if split_paths is not None:
+        write_creator_csvs(cols, old_rows + added, split_paths)
+    else:
+        write_csv_no_trailing_newline(csv_path, cols, old_rows + added)
 
     n_people = len({r["id"] for r in added})
     print(f"\n{csv_name}: 既存{len(old_rows)}行 + 新規{n_people}人({len(added)}行) "

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""youtuber.csv に日本向け利用のための scope を付与する。
+"""youtuber.csv と vtuber.csv に日本向け利用のための scope を付与する。
 
 scope は知名度や国籍そのものではなく、人物の主な活動圏を絞り込むための保守的な
 区分である。レビュー済み override、公式事務所の国内外区分、Wikidata の国籍の順で
@@ -18,6 +18,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from wpnames import sparql, write_csv_no_trailing_newline  # noqa: E402
+
+from creator_csv import CSV_PATHS  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 CSV_PATH = ROOT / "youtuber.csv"
@@ -170,9 +172,10 @@ def main() -> int:
     parser.add_argument("--overrides", type=Path, default=OVERRIDES_PATH)
     parser.add_argument("--japan-people", type=Path, default=JAPAN_PEOPLE_PATH)
     args = parser.parse_args()
-    counts = update(args.csv, args.overrides, args.japan_people)
-    print("youtuber.csv scope: " + ", ".join(
-        f"{scope}={counts[scope]}" for scope in ("japan", "global", "unknown")))
+    for path in CSV_PATHS if args.csv.resolve() == CSV_PATH else (args.csv,):
+        counts = update(path, args.overrides, args.japan_people)
+        print(f"{path.name} scope: " + ", ".join(
+            f"{scope}={counts[scope]}" for scope in ("japan", "global", "unknown")))
     return 0
 
 

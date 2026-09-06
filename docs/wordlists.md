@@ -182,12 +182,16 @@ Wikipedia由来の加工文はCC BY-SA 4.0で、同台帳から原記事への�
 [ADR 00032](adr/00032-pokemon-fact-columns.md)と
 [ADR 00033](adr/00033-pokemon-motif-silhouettes.md)。
 
-## youtuber.csv
+## youtuber.csv / vtuber.csv
+
+YouTuberは `youtuber.csv`、VTuberは `vtuber.csv` から個別に選択できます。
+両方を使う場合は2つのリストを読み込んでください。既存のID・表記・読み・付加情報は
+分離前から維持しています。2ファイルの列構成は共通です。
 
 | 列 | 意味 |
 |---|---|
 | type | 表層の種類(`family`/`given`/`full`) |
-| category | `youtuber`/`vtuber` |
+| category | ファイルに対応する `youtuber` または `vtuber` |
 | scope | `japan`(日本向け活動を確認)/`global`(海外中心)/`unknown`(根拠不足)。国内知名度や国籍そのものではない |
 | org | 所属。複数は `/` 区切り |
 | debut_year | 活動開始年。情報がない場合は `NA` |

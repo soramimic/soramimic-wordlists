@@ -85,7 +85,7 @@ jobs:
         continue-on-error: true
         run: python tools/update_municipality.py
 
-      - name: Update youtuber.csv (Wikidata/Wikipedia/official rosters)
+      - name: Update youtuber.csv and vtuber.csv (Wikidata/Wikipedia/official rosters)
         id: youtuber
         continue-on-error: true
         run: |
@@ -107,7 +107,7 @@ jobs:
       # 登録者数は時変値なので毎回全行を上書きする(ADR 00030)。
       # secrets.YOUTUBE_API_KEY が未設定(forkなど)ならスクリプト側が
       # 「スキップ」を出して正常終了する
-      - name: Update youtuber subscribers (YouTube Data API)
+      - name: Update YouTuber and VTuber subscribers (YouTube Data API)
         id: ytsubs
         continue-on-error: true
         env:
@@ -343,7 +343,7 @@ jobs:
           revert_if_failed plant_metadata "$O_PLANTMETA" plant.csv
           revert_if_failed insect "$O_INSECT" insect.csv
           revert_if_failed municipality "$O_MUNICIPALITY" municipality.csv
-          revert_if_failed youtuber "$O_YOUTUBER" youtuber.csv \
+          revert_if_failed youtuber "$O_YOUTUBER" youtuber.csv vtuber.csv \
             tools/youtuber_colors.json tools/youtuber_channel_sources.jsonl \
             images/youtuber
           # カード生成が途中で失敗した場合の未追跡SVGも、この専用ディレクトリ

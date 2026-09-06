@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""youtuber.csv の人物の「イメージカラー」を公式サイトから集める。
+"""youtuber.csv / vtuber.csv の人物の「イメージカラー」を公式サイトから集める。
 
 生成カード(gen_youtuber_cards.py)の配色に本人の色を反映するための下ごしらえ。
 結果は `tools/youtuber_colors.json` に**出典URL付き**で書き出す。
@@ -17,7 +17,7 @@
 - 取得した画像は `tools/.cache/`(Git管理外)止まり。**リポジトリに置かない・
   再配布しない**。コミットするのは色の値だけ
 - ファンwikiやまとめサイトは出典にしない(公式の発表ではないため)
-- **youtuber.csv に載っている人の分だけを保存する**。事務所のメンバー一覧を
+- **youtuber.csv / vtuber.csv に載っている人の分だけを保存する**。事務所のメンバー一覧を
   丸ごと複製する形にはしない
 
 ## 取得できないことが分かっているもの
@@ -44,7 +44,6 @@ usage:
 """
 
 import argparse
-import csv
 import io
 import json
 import re
@@ -55,8 +54,9 @@ import urllib.request
 from collections import Counter
 from pathlib import Path
 
+from creator_csv import CSV_PATHS, read_creator_csvs  # noqa: E402
+
 ROOT = Path(__file__).resolve().parent.parent
-CSV_PATH = ROOT / "youtuber.csv"
 OUT_PATH = Path(__file__).resolve().parent / "youtuber_colors.json"
 CACHE_DIR = Path(__file__).resolve().parent / ".cache" / "youtuber_colors"
 
@@ -64,7 +64,7 @@ UA = {"User-Agent": "soramimic-wordlists-updater/1.0 "
                     "(https://github.com/soramimic/soramimic-wordlists)"}
 
 README = (
-    "youtuber.csv の人物のイメージカラー。tools/fetch_youtuber_colors.py が生成する。"
+    "youtuber.csv / vtuber.csv の人物のイメージカラー。tools/fetch_youtuber_colors.py が生成する。"
     "出典は公式が公表している『タレント名と色の対応表』のみ("
     "source=official は色をテキストで書いている公式サイト、"
     "official-penlight は公式ライブのペンライトカラー一覧画像、"
@@ -76,7 +76,7 @@ README = (
 
 
 def norm_name(name: str) -> str:
-    """公式サイトの表記を youtuber.csv の original に寄せる(空白除去)。"""
+    """公式サイトの表記を youtuber.csv / vtuber.csv の original に寄せる(空白除去)。"""
     return name.replace("　", "").replace(" ", "").strip()
 
 
@@ -407,8 +407,8 @@ def main() -> int:
                          "(画像と見比べて検算するため)")
     args = ap.parse_args()
 
-    originals = {r["original"] for r in
-                 csv.DictReader(CSV_PATH.open(encoding="utf-8"))}
+    _, rows = read_creator_csvs(CSV_PATHS)
+    originals = {r["original"] for r in rows}
 
     # 公式名簿updaterが保存したプロフィール色は、このスクリプト単独の再生成でも
     # 落とさない。名簿側が対象の追加・削除を管理する。
@@ -435,7 +435,7 @@ def main() -> int:
                 "source_url": src["url"],
             }
         print(f"{src['name']}: サイト側 {len(found)}人 -> "
-              f"youtuber.csv と一致 {len(hit)}人")
+              f"youtuber.csv / vtuber.csv と一致 {len(hit)}人")
         if args.report and miss:
             print(f"  CSVに居ない(保存しない): {', '.join(miss)}")
 
@@ -453,7 +453,7 @@ def main() -> int:
                 "penlight_color": colorname,
             })
         print(f"{src['name']}: 一覧 {len(found)}人 -> "
-              f"youtuber.csv と一致 {len(hit)}人")
+              f"youtuber.csv / vtuber.csv と一致 {len(hit)}人")
         if args.report and miss:
             print(f"  CSVに居ない(保存しない): {', '.join(miss)}")
         if args.audit:
@@ -463,7 +463,7 @@ def main() -> int:
 
     for name, entry in MANUAL.items():
         if name not in originals:
-            print(f"warn: MANUAL の {name} は youtuber.csv に居ない",
+            print(f"warn: MANUAL の {name} は youtuber.csv / vtuber.csv に居ない",
                   file=sys.stderr)
             continue
         colors[name] = {**entry, "source": "manual"}
