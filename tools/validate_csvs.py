@@ -16,6 +16,7 @@
 usage: python3 tools/validate_csvs.py
 """
 
+import csv
 import re
 import sys
 from collections import Counter
@@ -39,6 +40,10 @@ from apply_vtuber_realize_images import (
     IMAGE_USAGE as REALIZE_IMAGE_USAGE,
     ORG as REALIZE_ORG,
     load_manifest as load_realize_image_manifest,
+)
+from apply_vtuber_reviewed_images import (
+    load_manifest as load_reviewed_vtuber_images,
+    validate_rows as validate_reviewed_vtuber_rows,
 )
 from wpnames import (
     has_redundant_player_subject,
@@ -95,6 +100,14 @@ VTUBER_REALIZE_IMAGES = {
 }
 VTUBER_REALIZE_SOURCE_PAGES = {
     record["source_page"] for record in VTUBER_REALIZE_IMAGES.values()
+}
+VTUBER_REVIEWED_MANIFEST = load_reviewed_vtuber_images(include_inactive=True)
+VTUBER_REVIEWED_IMAGES = {
+    record["image_url"]: record
+    for record in VTUBER_REVIEWED_MANIFEST.values() if record["enabled"]
+}
+VTUBER_REVIEWED_SOURCE_PAGES = {
+    record["source_page"] for record in VTUBER_REVIEWED_IMAGES.values()
 }
 # 読みにASCII英字が2文字以上続くのは、英名を読みに入れてしまった取り違え
 # (例: sekitsui の "Azara's night monkey")。利用側の読み解析がこの手の行で
@@ -210,6 +223,7 @@ def validate(path: Path):
                             YOUTUBER_HOLOLIVE_IMAGES
                             | YOUTUBER_NIJISANJI_IMAGES
                             | VTUBER_REALIZE_IMAGES
+                            | VTUBER_REVIEWED_IMAGES
                         )
                     )
                     or (
@@ -219,6 +233,7 @@ def validate(path: Path):
                             | YOUTUBER_HOLOLIVE_SOURCE_PAGES
                             | YOUTUBER_NIJISANJI_SOURCE_PAGES
                             | VTUBER_REALIZE_SOURCE_PAGES
+                            | VTUBER_REVIEWED_SOURCE_PAGES
                         )
                     )
                 )
@@ -376,6 +391,11 @@ def validate(path: Path):
                             f"{label}が台帳と不一致"
                         )
                 vtuber_realize_seen.add(record["original"])
+            elif image in VTUBER_REVIEWED_IMAGES:
+                # Identity and all image fields are checked against the complete
+                # manifest below, including disabled entries and missing people.
+                if path.name != "vtuber.csv":
+                    err(f"{path.name}:{lineno}: VTuber画像が別のリストにある")
             elif not image_page.startswith("https://commons.wikimedia.org/wiki/File:"):
                 err(
                     f"{path.name}:{lineno}: 実写のimage_pageがCommonsでない: "
@@ -512,6 +532,11 @@ def validate(path: Path):
                 err(f"{path.name}:{lineno}: 同じidで生没年が一致しない")
             scientist_years[person_id] = years
     if path.name == "vtuber.csv":
+        try:
+            with path.open(encoding="utf-8", newline="") as handle:
+                validate_reviewed_vtuber_rows(list(csv.DictReader(handle)), VTUBER_REVIEWED_MANIFEST)
+        except (ValueError, KeyError) as exc:
+            err(f"{path.name}: reviewed image manifest: {exc}")
         expected = {record["original"] for record in YOUTUBER_FAN_IMAGES.values()}
         if youtuber_fan_seen != expected:
             missing = sorted(expected - youtuber_fan_seen)
