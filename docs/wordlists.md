@@ -219,6 +219,11 @@ YouTuberは `youtuber.csv`、VTuberは `vtuber.csv` から個別に選択でき�
 収録し、確認できない活動開始年・登録者数は `NA` とする。画像には既存形式の
 象徴カードを使用する。
 
+りあぷろの30名も同じ人物台帳に収録する。29名は公式プロフィールの立ち絵URL、
+1名は象徴カードを使用する。画像URL・プロフィール・クレジット・利用条件は
+`tools/vtuber_realize_images.json` に記録し、
+`tools/apply_vtuber_realize_images.py` で反映する。画像本体はリポジトリに含めない。
+
 人物名には活動名を採用する。VTuberの象徴カードは配色、頭文字、職業アイコンで
 構成する。制限付き画像は非営利用途に限り、`image_credit` の表示と
 `image_page`・`image_terms_page` の確認が必要である。利用側は明示的な非営利モード

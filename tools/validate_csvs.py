@@ -35,6 +35,11 @@ from apply_youtuber_nijisanji_images import (
     IMAGE_USAGE as NIJISANJI_IMAGE_USAGE,
     load_manifest as load_nijisanji_image_manifest,
 )
+from apply_vtuber_realize_images import (
+    IMAGE_USAGE as REALIZE_IMAGE_USAGE,
+    ORG as REALIZE_ORG,
+    load_manifest as load_realize_image_manifest,
+)
 from wpnames import (
     has_redundant_player_subject,
     is_likely_disambiguation_text,
@@ -83,6 +88,13 @@ YOUTUBER_NIJISANJI_IMAGES = {
 }
 YOUTUBER_NIJISANJI_SOURCE_PAGES = {
     record["source_page"] for record in YOUTUBER_NIJISANJI_IMAGES.values()
+}
+VTUBER_REALIZE_IMAGES = {
+    record["image_url"]: record
+    for record in load_realize_image_manifest().values()
+}
+VTUBER_REALIZE_SOURCE_PAGES = {
+    record["source_page"] for record in VTUBER_REALIZE_IMAGES.values()
 }
 # 読みにASCII英字が2文字以上続くのは、英名を読みに入れてしまった取り違え
 # (例: sekitsui の "Azara's night monkey")。利用側の読み解析がこの手の行で
@@ -174,6 +186,7 @@ def validate(path: Path):
     youtuber_fan_seen = set()
     youtuber_hololive_seen = set()
     youtuber_nijisanji_seen = set()
+    vtuber_realize_seen = set()
     myoji_ranks = {}
     myoji_counts = {}
     myoji_order = []
@@ -196,6 +209,7 @@ def validate(path: Path):
                         and v in (
                             YOUTUBER_HOLOLIVE_IMAGES
                             | YOUTUBER_NIJISANJI_IMAGES
+                            | VTUBER_REALIZE_IMAGES
                         )
                     )
                     or (
@@ -204,6 +218,7 @@ def validate(path: Path):
                             YOUTUBER_FAN_SOURCE_PAGES
                             | YOUTUBER_HOLOLIVE_SOURCE_PAGES
                             | YOUTUBER_NIJISANJI_SOURCE_PAGES
+                            | VTUBER_REALIZE_SOURCE_PAGES
                         )
                     )
                 )
@@ -343,6 +358,24 @@ def validate(path: Path):
                             f"{label}が台帳と不一致"
                         )
                 youtuber_nijisanji_seen.add(record["original"])
+            elif image in VTUBER_REALIZE_IMAGES:
+                record = VTUBER_REALIZE_IMAGES[image]
+                checks = (
+                    (image_page, record["source_page"], "image_page"),
+                    (image_credit, record["credit"], "image_credit"),
+                    (image_usage, REALIZE_IMAGE_USAGE, "image_usage"),
+                    (image_terms_page, record["terms_page"], "image_terms_page"),
+                    (f[idx["original"]], record["original"], "人物"),
+                    (f[idx["org"]], REALIZE_ORG, "org"),
+                    (f[idx["category"]], "vtuber", "category"),
+                )
+                for actual, expected, label in checks:
+                    if actual != expected:
+                        err(
+                            f"{path.name}:{lineno}: りあぷろ公式画像の"
+                            f"{label}が台帳と不一致"
+                        )
+                vtuber_realize_seen.add(record["original"])
             elif not image_page.startswith("https://commons.wikimedia.org/wiki/File:"):
                 err(
                     f"{path.name}:{lineno}: 実写のimage_pageがCommonsでない: "
@@ -501,6 +534,13 @@ def validate(path: Path):
             extra = sorted(youtuber_nijisanji_seen - nijisanji_expected)
             detail = f"未適用={missing} 余分={extra}"
             err(f"{path.name}: にじさんじ公式画像台帳の適用が不完全: {detail}")
+        realize_expected = {
+            record["original"] for record in VTUBER_REALIZE_IMAGES.values()
+        }
+        if vtuber_realize_seen != realize_expected:
+            missing = sorted(realize_expected - vtuber_realize_seen)
+            extra = sorted(vtuber_realize_seen - realize_expected)
+            err(f"{path.name}: りあぷろ公式画像台帳の適用が不完全: 未適用={missing} 余分={extra}")
     if path.name == "myoji.csv":
         previous_count = None
         expected_rank = 0
