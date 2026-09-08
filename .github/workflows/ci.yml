@@ -64,6 +64,7 @@ jobs:
           tools/test_apply_youtuber_hololive_images.py
           tools/test_apply_youtuber_nijisanji_images.py
           tools/test_apply_vtuber_realize_images.py
+          tools/test_apply_vtuber_reviewed_images.py
           tools/test_apply_youtuber_permitted_images.py
           tools/test_enrich_youtuber_images.py
           tools/test_update_nijisanji.py

@@ -224,6 +224,12 @@ YouTuberは `youtuber.csv`、VTuberは `vtuber.csv` から個別に選択でき�
 `tools/vtuber_realize_images.json` に記録し、
 `tools/apply_vtuber_realize_images.py` で反映する。画像本体はリポジトリに含めない。
 
+追加の公式掲載画像と配信画像は `tools/vtuber_reviewed_images.json` に人物ID、
+出典、クレジット、利用条件を記録し、`tools/apply_vtuber_reviewed_images.py` で
+反映する。無効化した画像は象徴カードに戻す。配信画像の出典は元動画を示し、
+非公式であることをクレジットに明示する。人物台帳は共有チャンネルを区別し、
+共有チャンネルの登録者数を個人の人数として記載しない。
+
 人物名には活動名を採用する。VTuberの象徴カードは配色、頭文字、職業アイコンで
 構成する。制限付き画像は非営利用途に限り、`image_credit` の表示と
 `image_page`・`image_terms_page` の確認が必要である。利用側は明示的な非営利モード
