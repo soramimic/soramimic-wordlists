@@ -207,6 +207,12 @@ YouTuberは `youtuber.csv`、VTuberは `vtuber.csv` から個別に選択でき�
 | image_terms_page | `image_usage` の条件を定める公式ガイドライン |
 | wikidata | 本人のQID |
 
+公式情報で確認したVTuberの説明は `tools/vtuber_description_sources.jsonl` に
+人物ID・活動名・説明・出典URL・確認日を記録する。所属団体の説明を本人の説明に
+流用せず、活動内容や特徴を短く記す。架空の経歴は設定と分かる表現にする。
+`python tools/apply_vtuber_descriptions.py` で同一人物の全表記へ適用し、
+`--check` でCSVとの一致を検証できる。説明の自動更新でも確認済みの文を優先する。
+
 `channel` は人物の発見・本人確認にも使う付加情報であり、チャンネル名そのものを
 `original` / `surface` の語彙行にはしない。公式プロフィールから補完した人物と
 `scope` の判断規則は [ADR 00064](adr/00064-youtuber-japan-scope-and-person-discovery.md)

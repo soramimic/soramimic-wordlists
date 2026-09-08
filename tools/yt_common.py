@@ -33,6 +33,7 @@ import os
 import pickle
 import re
 from pathlib import Path
+from creator_descriptions import reviewed_description
 
 from creator_csv import read_creator_csvs, write_creator_csvs
 from wpnames import (DISAMBIG, HIRA2KATA, _sanitize_desc, clean_ws,
@@ -503,6 +504,9 @@ def make_youtuber_description(intro: str, wd_desc: str = "", name: str = "") -> 
     別列または説明として不要なので採らない。記事冒頭が使えない場合は
     Wikidataのja descriptionへフォールバックする。
     """
+    reviewed = reviewed_description(name)
+    if reviewed is not None:
+        return reviewed
     text = deidentify(intro, name)
     sentences = [part.strip() for part in re.split(r"(?<=。)", text) if part.strip()]
     pieces = [_youtuber_piece(part, name) for part in sentences]
