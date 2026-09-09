@@ -150,10 +150,11 @@
       "updated_at": "2026-09-09T11:56:21Z"
     },
     "https://github.com/soramimic/soramimic-wordlists/releases/download/fictional-anime-character-v2/ac_0005.jpg": {
-      "revision": 1,
-      "sha256": "b70108087d2d7ea4694cbcf6863f780cb609abc1e8302425548695c04f69fd2b",
-      "size": 60581,
-      "updated_at": "2026-08-09T22:22:52Z"
+      "note": "Preserve period style in fictional portraits.",
+      "revision": 2,
+      "sha256": "a107e76559db2610e462c3236ae50432b0f24f6a53b42f3d397766931a0d6a0e",
+      "size": 101432,
+      "updated_at": "2026-09-09T12:15:31Z"
     },
     "https://github.com/soramimic/soramimic-wordlists/releases/download/fictional-anime-character-v2/ac_0006.jpg": {
       "note": "Improve fictional portrait clarity and character consistency.",
@@ -6143,32 +6144,32 @@
       "updated_at": "2026-07-12T21:48:18Z"
     },
     "https://github.com/soramimic/soramimic-wordlists/releases/download/fictional-daily-anime-character-v2/dc_0001.jpg": {
-      "note": "Improve fictional portrait clarity and character consistency.",
-      "revision": 2,
-      "sha256": "517b85541c571bcb2e5efa64119c6fd8d93b02dadf3366db31a582bbe17e283e",
-      "size": 62217,
-      "updated_at": "2026-09-09T11:56:23Z"
+      "note": "Preserve period style in fictional portraits.",
+      "revision": 3,
+      "sha256": "7b38bb579361d43f97d27a992885b8f70fc6c9ec8e8cf25afdc9d2247c9921d2",
+      "size": 113854,
+      "updated_at": "2026-09-09T12:15:34Z"
     },
     "https://github.com/soramimic/soramimic-wordlists/releases/download/fictional-daily-anime-character-v2/dc_0002.jpg": {
-      "note": "Improve fictional portrait clarity and character consistency.",
-      "revision": 2,
-      "sha256": "538127dbcf869157b6ce68005266ff10bd6e7874142c69ce59087117a2cd87ad",
-      "size": 82941,
-      "updated_at": "2026-09-09T11:56:23Z"
+      "note": "Preserve period style in fictional portraits.",
+      "revision": 3,
+      "sha256": "5ddc2e9b6da378ea395f25f1675b141969dec472a876c95afd1cb89bad9d73a1",
+      "size": 115588,
+      "updated_at": "2026-09-09T12:15:33Z"
     },
     "https://github.com/soramimic/soramimic-wordlists/releases/download/fictional-daily-anime-character-v2/dc_0003.jpg": {
-      "note": "Improve fictional portrait clarity and character consistency.",
-      "revision": 2,
-      "sha256": "d3f9a34a1100a8e05846d864a766d8bab4577fef922f8052ca3337785289a011",
-      "size": 60972,
-      "updated_at": "2026-09-09T11:56:23Z"
+      "note": "Preserve period style in fictional portraits.",
+      "revision": 3,
+      "sha256": "fee7f4077849404c4b0ce4c8ee2a8fd4a2b692c8314564bbb8951892367a2662",
+      "size": 100889,
+      "updated_at": "2026-09-09T12:15:33Z"
     },
     "https://github.com/soramimic/soramimic-wordlists/releases/download/fictional-daily-anime-character-v2/dc_0004.jpg": {
-      "note": "Improve fictional portrait clarity and character consistency.",
-      "revision": 2,
-      "sha256": "6e1ca8768b3a90167ac278bda0430561f3aada8802ae47ec1c614b03e4f4dffb",
-      "size": 80365,
-      "updated_at": "2026-09-09T11:56:23Z"
+      "note": "Preserve period style in fictional portraits.",
+      "revision": 3,
+      "sha256": "77ad95b0d312b2ed78b57cbbcde36f132a3b6905f8547775a241ba68ff13e61d",
+      "size": 124068,
+      "updated_at": "2026-09-09T12:15:34Z"
     },
     "https://github.com/soramimic/soramimic-wordlists/releases/download/fictional-daily-anime-character-v2/dc_0005.jpg": {
       "note": "Improve fictional portrait clarity and character consistency.",
@@ -12322,32 +12323,32 @@
       "updated_at": "2026-07-12T22:45:55Z"
     },
     "https://github.com/soramimic/soramimic-wordlists/releases/download/fictional-scientist-v2/fs_0001.jpg": {
-      "note": "Improve fictional portrait clarity and character consistency.",
-      "revision": 2,
-      "sha256": "4a935be7152afeded86d98af1039253a4b774813ccbd8ec8ef8d8478d68f9f72",
-      "size": 81294,
-      "updated_at": "2026-09-09T11:56:25Z"
+      "note": "Preserve period style in fictional portraits.",
+      "revision": 3,
+      "sha256": "ee3e7cb995a7082cf5a5c587b211b7ec1008fd53f4960a82f190d7e84bcd1ab3",
+      "size": 173139,
+      "updated_at": "2026-09-09T12:15:36Z"
     },
     "https://github.com/soramimic/soramimic-wordlists/releases/download/fictional-scientist-v2/fs_0002.jpg": {
-      "note": "Improve fictional portrait clarity and character consistency.",
-      "revision": 2,
-      "sha256": "33f9fb080587a4100d6b5f42abfcf7d84f32530447d2d3efdf6155bde43388ff",
-      "size": 77980,
-      "updated_at": "2026-09-09T11:56:25Z"
+      "note": "Preserve period style in fictional portraits.",
+      "revision": 3,
+      "sha256": "d8bdba62f6b24bfd0c1190b691ffcdef567fb55becb429744a7280f92821f591",
+      "size": 129000,
+      "updated_at": "2026-09-09T12:15:36Z"
     },
     "https://github.com/soramimic/soramimic-wordlists/releases/download/fictional-scientist-v2/fs_0003.jpg": {
-      "note": "Improve fictional portrait clarity and character consistency.",
-      "revision": 2,
-      "sha256": "c05ff9c2a67c7aea113fa8a8cbd7b1ca90c964387df47ddf78db4570cf4176af",
-      "size": 78897,
-      "updated_at": "2026-09-09T11:56:25Z"
+      "note": "Preserve period style in fictional portraits.",
+      "revision": 3,
+      "sha256": "5cf4bc979209c040b3aeb49d8acb436a91801bcb73405be02e9b687eb77f0522",
+      "size": 212446,
+      "updated_at": "2026-09-09T12:15:36Z"
     },
     "https://github.com/soramimic/soramimic-wordlists/releases/download/fictional-scientist-v2/fs_0004.jpg": {
-      "note": "Improve fictional portrait clarity and character consistency.",
-      "revision": 2,
-      "sha256": "1142726094026c921b13649d7e57ac7222ec5ec3d08df70672b0a10da88db34b",
-      "size": 87488,
-      "updated_at": "2026-09-09T11:56:25Z"
+      "note": "Preserve period style in fictional portraits.",
+      "revision": 3,
+      "sha256": "07e3e4fa395ddb7404e9136572bdff822d4d1cfe9150808d48831c240d04100f",
+      "size": 146332,
+      "updated_at": "2026-09-09T12:15:36Z"
     },
     "https://github.com/soramimic/soramimic-wordlists/releases/download/fictional-scientist-v2/fs_0005.jpg": {
       "note": "Improve fictional portrait clarity and character consistency.",
@@ -33413,9 +33414,9 @@
       "updated_at": "2026-07-30T14:30:35Z"
     }
   },
-  "generated_at": "2026-09-09T11:56:40Z",
+  "generated_at": "2026-09-09T12:15:50Z",
   "repository": "soramimic/soramimic-wordlists",
-  "revision": 4,
+  "revision": 5,
   "schema": "soramimic.release-image-source-manifest",
   "version": 1
 }
