@@ -125,12 +125,12 @@
     {
       "original": "さくらみこ",
       "talent_status": "current",
-      "image_url": "https://hololive.hololivepro.com/wp-content/uploads/2020/06/Sakura-Miko_pr-img_01.png",
+      "image_url": "https://hololive.hololivepro.com/wp-content/uploads/2020/06/Sakura-Miko_pr-img_01.webp",
       "source_page": "https://hololive.hololivepro.com/talents/sakuramiko/",
       "credit": "ホロライブプロダクション公式立ち絵 © COVER",
       "terms_page": "https://hololivepro.com/terms/",
-      "reviewed": "2026-08-17",
-      "source_sha256": "5b7995dbf131c48bdf5b998da56fd2f49c235246022f734c9dc73f3db30f0b94",
+      "reviewed": "2026-09-11",
+      "source_sha256": "382b700ed39d51dd59b23bd59d02d839a304150e2ce619b33778a827c216bad2",
       "fallback_rows": []
     },
     {
