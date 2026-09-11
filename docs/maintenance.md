@@ -72,3 +72,25 @@ python3 tools/validate_csvs.py
 
 各更新器の回帰テストは `tools/test_*.py` にあります。素材ごとの詳しい条件は
 READMEの出典表示と関連ADRを参照してください。
+
+## 画像URLの定期検査
+
+`.github/workflows/image-link-audit.yml` は毎日4:17 JSTに実行され、全CSVの `image` URLを
+重複排除して2,500件ずつ検査します。前回位置と未解消の検出結果はActions cacheへ保存するため、
+予定実行が抜けても次回は続きから再開します。結果JSONはArtifactとして90日保持します。
+
+404・410は `broken`、空、HTMLまたはPDFの応答は `invalid` とし、再試行後も残ればworkflowを
+失敗させます。アクセス制限、サーバー障害、タイムアウト、未知のContent-Typeは
+`unavailable` としてレポートしますが、リンク切れとは確定しません。リダイレクト先URLは
+queryとfragmentを除いて記録し、一時的な署名をArtifactへ保存しません。
+
+配信元への負荷を抑えるため、検査全体でリクエスト開始を1秒間隔にします。通信待ちは
+2並列とし、1件の遅延で巡回全体が止まらないようにします。
+
+PRではbaseに存在せずheadで新たに使われるURLだけを検査します。手動実行では `max_urls` を
+指定できます。ローカルで同じ検査器を確認するには次を実行します。
+
+```bash
+cd tools
+python -m unittest test_audit_image_links.py
+```

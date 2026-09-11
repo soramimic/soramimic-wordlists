@@ -1,0 +1,121 @@
+name: image-link-audit
+
+on:
+  schedule:
+    - cron: "17 19 * * *" # 毎日4:17 JST。毎時0分の混雑を避ける
+  workflow_dispatch:
+    inputs:
+      max_urls:
+        description: 今回検査するURL数
+        required: false
+        default: "2500"
+  pull_request:
+    paths:
+      - "*.csv"
+      - "tools/audit_image_links.py"
+      - "tools/test_audit_image_links.py"
+      - ".github/workflows/image-link-audit.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.event_name == 'pull_request' && format('image-link-audit-pr-{0}', github.event.pull_request.number) || 'image-link-audit-sweep' }}
+  cancel-in-progress: false
+
+jobs:
+  changed-urls:
+    if: github.event_name == 'pull_request'
+    permissions:
+      contents: read
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Test image URL auditor
+        working-directory: tools
+        run: python -m unittest test_audit_image_links.py
+
+      - name: Check URLs introduced by this pull request
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: >-
+          python tools/audit_image_links.py
+          --changed-from "$BASE_SHA" --changed-to "$HEAD_SHA"
+          --report "$RUNNER_TEMP/image-link-audit-pr.json"
+          --workers 2 --timeout 10 --delay 1
+
+      - name: Upload pull request audit report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: image-link-audit-pr-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/image-link-audit-pr.json
+          if-no-files-found: warn
+          retention-days: 30
+
+  scheduled-shard:
+    if: github.event_name != 'pull_request'
+    permissions:
+      actions: write
+      contents: read
+    runs-on: ubuntu-latest
+    timeout-minutes: 330
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Restore sweep position and unresolved findings
+        id: state-cache
+        uses: actions/cache/restore@v4
+        with:
+          path: ${{ runner.temp }}/image-link-audit-state.json
+          key: image-link-audit-state-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: image-link-audit-state-
+
+      - name: Check the next URL shard
+        id: audit
+        env:
+          MAX_URLS: ${{ inputs.max_urls || '2500' }}
+        run: |
+          set +e
+          python tools/audit_image_links.py \
+            --state "$RUNNER_TEMP/image-link-audit-state.json" \
+            --report "$RUNNER_TEMP/image-link-audit.json" \
+            --max-urls "$MAX_URLS" --workers 2 --timeout 10 --delay 1
+          status=$?
+          echo "status=$status" >> "$GITHUB_OUTPUT"
+          exit 0
+
+      - name: Upload audit report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: image-link-audit-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/image-link-audit.json
+          if-no-files-found: error
+          retention-days: 90
+
+      - name: Save sweep position and unresolved findings
+        if: steps.audit.outputs.status != '2'
+        uses: actions/cache/save@v4
+        with:
+          path: ${{ runner.temp }}/image-link-audit-state.json
+          key: image-link-audit-state-${{ github.run_id }}-${{ github.run_attempt }}
+
+      - name: Fail for broken or invalid image URLs
+        if: steps.audit.outputs.status != '0'
+        env:
+          AUDIT_STATUS: ${{ steps.audit.outputs.status }}
+        run: exit "$AUDIT_STATUS"
