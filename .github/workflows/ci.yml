@@ -114,3 +114,7 @@ jobs:
 
       - name: Test creator CSV separation
         run: python -m unittest discover -s tools -p "test_creator*.py"
+
+      - name: Test image URL audit tooling
+        working-directory: tools
+        run: python -m unittest test_audit_image_links.py
