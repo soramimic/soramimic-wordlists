@@ -86,6 +86,25 @@ class CreatorCsvTest(unittest.TestCase):
                           if r["id"] in {"91", "92"}},
                          {"アオ": "youtuber", "アカ": "vtuber"})
 
+    def test_updater_applies_reviewed_category_override_to_new_person(self):
+        specs = [dict(category=category, occ=category, must=(), must_not=(),
+                      guard=(0, 5)) for category in ("youtuber", "vtuber")]
+        people = {"youtuber": {}, "vtuber": {"Q1": "アカ"}}
+        with mock.patch.object(yt_common, "assert_occupation"), \
+                mock.patch.object(yt_common, "fetch_persons",
+                                  side_effect=lambda occ, *args: people[occ]), \
+                mock.patch.object(yt_common, "fetch_attrs", return_value={}), \
+                mock.patch.object(yt_common, "fetch_extracts", return_value={}), \
+                mock.patch.dict(os.environ, {}, clear=True), \
+                contextlib.redirect_stdout(io.StringIO()):
+            self.assertEqual(yt_common.build_list(
+                tuple(str(path) for path in self.paths), specs, "TEST_CREATOR_CACHE",
+                category_overrides={"アカ": "youtuber"}), 0)
+
+        _, rows = read_creator_csvs(self.paths)
+        added = [row for row in rows if row["original"] == "アカ"]
+        self.assertEqual({row["category"] for row in added}, {"youtuber"})
+
 
 if __name__ == "__main__":
     unittest.main()
