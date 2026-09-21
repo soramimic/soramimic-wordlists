@@ -582,7 +582,8 @@ def norm(title: str) -> str:
 
 def build_list(csv_name: str | tuple[str, ...], specs: list, cache_env: str,
                excluded: set = frozenset(),
-               excluded_occs: dict = None) -> int:
+               excluded_occs: dict = None,
+               category_overrides: dict[str, str] | None = None) -> int:
     """リストを生成(初回)または追記・status更新(2回目以降)する。
 
     specs: category ごとの取得仕様
@@ -591,6 +592,8 @@ def build_list(csv_name: str | tuple[str, ...], specs: list, cache_env: str,
       著名人が公式チャンネルを持つだけのケースを恒久的に弾く。
     excluded_occs: 収録しない職業の QID -> ラベル。P106 にこの職業を持つ人物を
       属性ごと弾く。値はラベルの期待キーワード(QID取り違えのフェイルセーフ)。
+    category_overrides: Wikidataの職業が複数ある人について、レビュー済みの
+      主要活動区分を original(norm()済み) -> category で指定する。
     """
     root = Path(__file__).resolve().parent.parent
     split_paths = (tuple(root / name for name in csv_name)
@@ -687,7 +690,12 @@ def build_list(csv_name: str | tuple[str, ...], specs: list, cache_env: str,
             print(f"{col} の空欄補完: {len(names)}人", flush=True)
 
     added, flagged = [], []
-    entries = [(title, cat, qid)
+    overrides = category_overrides or {}
+    valid_categories = {s["category"] for s in specs}
+    invalid_overrides = set(overrides.values()) - valid_categories
+    if invalid_overrides:
+        raise ValueError(f"unknown category override: {sorted(invalid_overrides)[0]}")
+    entries = [(title, overrides.get(norm(title), cat), qid)
                for cat, persons in persons_by_cat.items()
                for qid, title in persons.items()
                if norm(title) not in excluded]
