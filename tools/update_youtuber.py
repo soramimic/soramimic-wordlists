@@ -185,6 +185,14 @@ EXCLUDED_OCCUPATIONS = {
     "Q852857": "セックスワーカー",  # sex worker
 }
 
+# Wikidata上でVTuber職も持つが、レビュー済みの主要チャンネルと画像が
+# 実在人物のYouTuber/ストリーマーとしての活動を示す人。VTuber限定の
+# 利用で実写YouTuberが混入しないよう、初回生成でも手動分類を保つ。
+CATEGORY_OVERRIDES = {
+    "AmaLee": "youtuber",
+    "ポキメイン": "youtuber",
+}
+
 SPECS = [
     dict(category="youtuber",
          occ="Q17125263",                     # YouTuber
@@ -202,4 +210,4 @@ SPECS = [
 
 if __name__ == "__main__":
     sys.exit(build_list(("youtuber.csv", "vtuber.csv"), SPECS, "YOUTUBER_CACHE", EXCLUDED,
-                        EXCLUDED_OCCUPATIONS))
+                        EXCLUDED_OCCUPATIONS, CATEGORY_OVERRIDES))

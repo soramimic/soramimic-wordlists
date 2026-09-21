@@ -9,6 +9,19 @@ from creator_csv import read_creator_csvs
 
 
 class YouTuberExclusionTest(unittest.TestCase):
+    def test_reviewed_real_person_creators_stay_in_youtuber_list(self):
+        expected = {"AmaLee", "ポキメイン"}
+        self.assertEqual(
+            {name for name, category in target.CATEGORY_OVERRIDES.items()
+             if category == "youtuber"},
+            expected,
+        )
+
+        _, rows = read_creator_csvs()
+        categories = {row["original"]: row["category"] for row in rows
+                      if row["original"] in expected}
+        self.assertEqual(categories, {name: "youtuber" for name in expected})
+
     def test_reviewed_channel_exclusions_are_absent_from_csv(self):
         excluded = {"うごくちゃん", "佐々木康平", "熱田隆介"}
         self.assertTrue(excluded <= target.EXCLUDED)
