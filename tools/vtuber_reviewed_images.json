@@ -6364,6 +6364,50 @@
       "credit": "灯里 愛夏 / vα-liv",
       "terms_page": "https://idolmaster-official.jp/va-liv/policy",
       "reviewed": "2026-09-08"
+    },
+    {
+      "person_id": "1954",
+      "original": "熱千めら",
+      "org": "ホロライブ/アソビ★まわり隊！",
+      "enabled": true,
+      "image_url": "https://hololive.hololivepro.com/wp-content/uploads/2023/09/Achichi-Mela_pr-img_01.webp",
+      "source_page": "https://hololive.hololivepro.com/talents/achichi-mela/",
+      "credit": "ホロライブプロダクション公式立ち絵 © COVER",
+      "terms_page": "https://hololivepro.com/terms/",
+      "reviewed": "2026-09-24"
+    },
+    {
+      "person_id": "1955",
+      "original": "宙科そぴあ",
+      "org": "ホロライブ/アソビ★まわり隊！",
+      "enabled": true,
+      "image_url": "https://hololive.hololivepro.com/wp-content/uploads/2023/09/Sorashina-Sopia_pr-img_01.webp",
+      "source_page": "https://hololive.hololivepro.com/talents/sorashina-sopia/",
+      "credit": "ホロライブプロダクション公式立ち絵 © COVER",
+      "terms_page": "https://hololivepro.com/terms/",
+      "reviewed": "2026-09-24"
+    },
+    {
+      "person_id": "1956",
+      "original": "鈴鳴つづり",
+      "org": "ホロライブ/アソビ★まわり隊！",
+      "enabled": true,
+      "image_url": "https://hololive.hololivepro.com/wp-content/uploads/2023/09/Suzuna-Tsuzuri_pr-img_01.webp",
+      "source_page": "https://hololive.hololivepro.com/talents/suzuna-tsuzuri/",
+      "credit": "ホロライブプロダクション公式立ち絵 © COVER",
+      "terms_page": "https://hololivepro.com/terms/",
+      "reviewed": "2026-09-24"
+    },
+    {
+      "person_id": "1957",
+      "original": "百灯キョーコ",
+      "org": "ホロライブ/アソビ★まわり隊！",
+      "enabled": true,
+      "image_url": "https://hololive.hololivepro.com/wp-content/uploads/2023/09/Hyakuto-Kyoko_pr-img_01.webp",
+      "source_page": "https://hololive.hololivepro.com/talents/hyakuto-kyoko/",
+      "credit": "ホロライブプロダクション公式立ち絵 © COVER",
+      "terms_page": "https://hololivepro.com/terms/",
+      "reviewed": "2026-09-24"
     }
   ]
 }
