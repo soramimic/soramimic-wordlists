@@ -143,6 +143,45 @@ class AuditImageLinksTest(unittest.TestCase):
                     os.chdir(previous)
             self.assertEqual(list(links), ["https://example.com/b.png"])
 
+    def test_pr_images_use_committed_content_and_other_urls_use_network(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            subprocess.run(["git", "init", "-q"], cwd=root, check=True)
+            subprocess.run(["git", "config", "user.email", "test@example.com"], cwd=root, check=True)
+            subprocess.run(["git", "config", "user.name", "Test"], cwd=root, check=True)
+            (root / "images").mkdir()
+            (root / "images/ok.svg").write_text('<svg xmlns="http://www.w3.org/2000/svg"/>')
+            (root / "images/bad.svg").write_text('<html>not an image</html>')
+            subprocess.run(["git", "add", "images"], cwd=root, check=True)
+            subprocess.run(["git", "commit", "-qm", "images"], cwd=root, check=True)
+            (root / "images/ok.svg").write_text('uncommitted data must not be used')
+            (root / "images/missing.svg").write_text('<svg/>')
+            prefix = audit.REPOSITORY_IMAGE_PREFIX
+            external = "https://example.com/image.png"
+            links = {url: [] for url in [prefix + "ok.svg", prefix + "bad.svg",
+                                         prefix + "missing.svg", external]}
+            previous = Path.cwd()
+            try:
+                import os
+                os.chdir(root)
+                with patch.object(audit, "probe", return_value={"status": "ok"}) as probe:
+                    report, status = audit.audit(
+                        links, maximum=0, state_path=None, report_path=root / "report.json",
+                        workers=1, timeout=1, delay=0, repository_revision="HEAD",
+                    )
+                    probe.assert_called_once_with(external, 1)
+                self.assertEqual(status, 1)
+                self.assertEqual(report["counts"],
+                                 {"ok": 2, "broken": 1, "invalid": 1, "unavailable": 0})
+                with patch.object(audit, "probe", return_value={"status": "ok"}) as probe:
+                    audit.audit(
+                        {prefix + "ok.svg": []}, maximum=0, state_path=None,
+                        report_path=root / "scheduled.json", workers=1, timeout=1, delay=0,
+                    )
+                    probe.assert_called_once_with(prefix + "ok.svg", 1)
+            finally:
+                os.chdir(previous)
+
     @staticmethod
     def write_csv(path: Path, rows: list[tuple[str, str]]) -> None:
         with path.open("w", encoding="utf-8", newline="") as handle:

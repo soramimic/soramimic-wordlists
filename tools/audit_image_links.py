@@ -33,6 +33,9 @@ USER_AGENT = (
 )
 STATUSES = ("ok", "broken", "invalid", "unavailable")
 ACTIONABLE = {"broken", "invalid"}
+REPOSITORY_IMAGE_PREFIX = (
+    "https://raw.githubusercontent.com/soramimic/soramimic-wordlists/main/images/"
+)
 
 
 def now() -> str:
@@ -109,6 +112,24 @@ def probe(url: str, timeout: float) -> dict[str, Any]:
         "status": "unavailable",
         "reason": f"unrecognized content type: {content_type}",
     }
+
+
+def probe_revision_image(url: str, revision: str) -> dict[str, Any] | None:
+    """Validate bundled PR images before their stable main URLs are published."""
+    if not url.startswith(REPOSITORY_IMAGE_PREFIX):
+        return None
+    path = "images/" + url[len(REPOSITORY_IMAGE_PREFIX):]
+    if urlsplit(url).query or urlsplit(url).fragment or ".." in Path(path).parts:
+        return None
+    result = subprocess.run(
+        ["git", "show", f"{revision}:{path}"],
+        stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=False,
+    )
+    if result.returncode:
+        return {"status": "broken", "reason": "image missing from proposed revision"}
+    if not image_prefix(result.stdout[:1024]):
+        return {"status": "invalid", "reason": "repository file is not an image"}
+    return {"status": "ok", "reason": "image present in proposed revision"}
 
 
 class RateLimiter:
@@ -222,6 +243,7 @@ def audit(
     workers: int,
     timeout: float,
     delay: float,
+    repository_revision: str | None = None,
 ) -> tuple[dict[str, Any], int]:
     if maximum < 0 or workers not in {1, 2} or not 0 < timeout <= 60 or not 0 <= delay <= 60:
         raise ValueError("max-urls>=0、workers=1..2、timeout=0..60、delay=0..60が必要です")
@@ -232,6 +254,10 @@ def audit(
     started_at = now()
 
     def check(url: str) -> dict[str, Any]:
+        if repository_revision:
+            bundled = probe_revision_image(url, repository_revision)
+            if bundled is not None:
+                return {**bundled, "url": url, "references": links[url], "checked_at": now()}
         limiter.wait()
         result = probe(url, timeout)
         if result["status"] in ACTIONABLE:
@@ -367,6 +393,7 @@ def main(argv: list[str] | None = None) -> int:
             workers=args.workers,
             timeout=args.timeout,
             delay=args.delay,
+            repository_revision=args.changed_to,
         )
         return status
     except (OSError, ValueError, json.JSONDecodeError, subprocess.CalledProcessError) as exc:
