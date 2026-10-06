@@ -35,6 +35,15 @@ from yt_common import build_list
 # チャンネル等)。自動更新は毎回Wikidata全件から候補を作るため、CSVから消す
 # だけでは翌回に再追加される。norm()済みのja記事名で恒久的に除外する。
 EXCLUDED = {
+    # VTuber名義で収録済み。根拠は vtuber_membership_sources.jsonl。
+    "ななかぐら",
+    "佃煮のりお",
+    "宮原健太",
+    "岡本健",
+    "荻野稔",
+    # ユニット名は個人名として収録しない。メンバーは個別に収録する。
+    "KMNZ",
+    "▽▲TRiNITY▲▽",
     # 本人運営チャンネルとしての帰属を検証できない人物
     "うごくちゃん",
     "佐々木康平",
@@ -191,6 +200,7 @@ EXCLUDED_OCCUPATIONS = {
 CATEGORY_OVERRIDES = {
     "AmaLee": "youtuber",
     "ポキメイン": "youtuber",
+    "ヴィーナス・アンジェリック": "youtuber",
 }
 
 SPECS = [
