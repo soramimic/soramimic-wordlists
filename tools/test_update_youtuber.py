@@ -27,7 +27,7 @@ class YouTuberExclusionTest(unittest.TestCase):
         self.assertEqual(categories, {name: "youtuber" for name in expected})
 
     def test_reviewed_channel_exclusions_are_absent_from_csv(self):
-        excluded = {"うごくちゃん", "佐々木康平", "熱田隆介"}
+        excluded = {"うごくちゃん", "佐々木康平", "熱田隆介", "懲役太郎"}
         self.assertTrue(excluded <= target.EXCLUDED)
 
         _, rows = read_creator_csvs()
