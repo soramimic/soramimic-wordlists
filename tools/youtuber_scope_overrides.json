@@ -3997,6 +3997,552 @@
       "basis": "公式所属先の活動圏と本人チャンネル",
       "evidence_url": "https://idolmaster-official.jp/va-liv/manaka",
       "reviewed": "2026-09-08"
+    },
+    {
+      "original": "狛犬うめ",
+      "scope": "japan",
+      "basis": "公式所属先の日本向け活動と本人チャンネル",
+      "evidence_url": "https://varium.jp/talent/ume",
+      "reviewed": "2026-10-08"
+    },
+    {
+      "original": "涼月すい",
+      "scope": "japan",
+      "basis": "公式所属先の日本向け活動と本人チャンネル",
+      "evidence_url": "https://varium.jp/talent/sui",
+      "reviewed": "2026-10-08"
+    },
+    {
+      "original": "綿宮あひる",
+      "scope": "japan",
+      "basis": "公式所属先の日本向け活動と本人チャンネル",
+      "evidence_url": "https://varium.jp/talent/ahiru",
+      "reviewed": "2026-10-08"
+    },
+    {
+      "original": "飴望にぃな",
+      "scope": "japan",
+      "basis": "公式所属先の日本向け活動と本人チャンネル",
+      "evidence_url": "https://varium.jp/talent/nina",
+      "reviewed": "2026-10-08"
+    },
+    {
+      "original": "セレナーデ・オックスブラッド",
+      "scope": "japan",
+      "basis": "公式所属先の日本向け活動と本人チャンネル",
+      "evidence_url": "https://varium.jp/talent/serenade",
+      "reviewed": "2026-10-08"
+    },
+    {
+      "original": "海汐もるふ",
+      "scope": "japan",
+      "basis": "公式所属先の日本向け活動と本人チャンネル",
+      "evidence_url": "https://varium.jp/talent/molf",
+      "reviewed": "2026-10-08"
+    },
+    {
+      "original": "紫電ライム",
+      "scope": "japan",
+      "basis": "公式所属先の日本向け活動と本人チャンネル",
+      "evidence_url": "https://varium.jp/talent/lime",
+      "reviewed": "2026-10-08"
+    },
+    {
+      "original": "透乃おと",
+      "scope": "japan",
+      "basis": "公式所属先の日本向け活動と本人チャンネル",
+      "evidence_url": "https://varium.jp/talent/oto",
+      "reviewed": "2026-10-08"
+    },
+    {
+      "original": "綺音れむ",
+      "scope": "japan",
+      "basis": "公式所属先の日本向け活動と本人チャンネル",
+      "evidence_url": "https://varium.jp/talent/remu",
+      "reviewed": "2026-10-08"
+    },
+    {
+      "original": "兎ノ花ののち",
+      "scope": "japan",
+      "basis": "公式所属先の日本向け活動と本人チャンネル",
+      "evidence_url": "https://varium.jp/talent/nonochi",
+      "reviewed": "2026-10-08"
+    },
+    {
+      "original": "紅愛しゅり",
+      "scope": "japan",
+      "basis": "公式所属先の日本向け活動と本人チャンネル",
+      "evidence_url": "https://varium.jp/talent/shuri",
+      "reviewed": "2026-10-08"
+    },
+    {
+      "original": "アルカナ・グリミィベア",
+      "scope": "japan",
+      "basis": "公式所属先の日本向け活動と本人チャンネル",
+      "evidence_url": "https://varium.jp/talent/arcana",
+      "reviewed": "2026-10-08"
+    },
+    {
+      "original": "モニカ・メロディア",
+      "scope": "japan",
+      "basis": "公式所属先の日本向け活動と本人チャンネル",
+      "evidence_url": "https://varium.jp/talent/monica",
+      "reviewed": "2026-10-08"
+    },
+    {
+      "original": "向日守ぽた",
+      "scope": "japan",
+      "basis": "公式所属先の日本向け活動と本人チャンネル",
+      "evidence_url": "https://varium.jp/talent/pota",
+      "reviewed": "2026-10-08"
+    },
+    {
+      "original": "あくび・でもんすぺーど",
+      "scope": "japan",
+      "basis": "公式所属先の日本向け活動と本人チャンネル",
+      "evidence_url": "https://milpr.com/talents",
+      "reviewed": "2026-10-08"
+    },
+    {
+      "original": "音ノ瀬らこ",
+      "scope": "japan",
+      "basis": "公式所属先の日本向け活動と本人チャンネル",
+      "evidence_url": "https://milpr.com/talents",
+      "reviewed": "2026-10-08"
+    },
+    {
+      "original": "ゆらぎゆら",
+      "scope": "japan",
+      "basis": "公式所属先の日本向け活動と本人チャンネル",
+      "evidence_url": "https://milpr.com/talents",
+      "reviewed": "2026-10-08"
+    },
+    {
+      "original": "小廻こま",
+      "scope": "japan",
+      "basis": "公式所属先の日本向け活動と本人チャンネル",
+      "evidence_url": "https://milpr.com/talents",
+      "reviewed": "2026-10-08"
+    },
+    {
+      "original": "眠雲ツクリ",
+      "scope": "japan",
+      "basis": "公式所属先の日本向け活動と本人チャンネル",
+      "evidence_url": "https://milpr.com/talents",
+      "reviewed": "2026-10-08"
+    },
+    {
+      "original": "雨夜リズ",
+      "scope": "japan",
+      "basis": "公式所属先の日本向け活動と本人チャンネル",
+      "evidence_url": "https://milpr.com/talents",
+      "reviewed": "2026-10-08"
+    },
+    {
+      "original": "虹深°ぬふ",
+      "scope": "japan",
+      "basis": "公式所属先の日本向け活動と本人チャンネル",
+      "evidence_url": "https://milpr.com/talents",
+      "reviewed": "2026-10-08"
+    },
+    {
+      "original": "夕霧レイ",
+      "scope": "japan",
+      "basis": "公式所属先の日本向け活動と本人チャンネル",
+      "evidence_url": "https://milpr.com/talents",
+      "reviewed": "2026-10-08"
+    },
+    {
+      "original": "鹿乃まほろ",
+      "scope": "japan",
+      "basis": "公式所属先の日本向け活動と本人チャンネル",
+      "evidence_url": "https://milpr.com/talents",
+      "reviewed": "2026-10-08"
+    },
+    {
+      "original": "七海ロナ",
+      "scope": "japan",
+      "basis": "公式所属先の日本向け活動と本人チャンネル",
+      "evidence_url": "https://paletteproject.jp/member/case-rona/",
+      "reviewed": "2026-10-08"
+    },
+    {
+      "original": "藤宮コトハ",
+      "scope": "japan",
+      "basis": "公式所属先の日本向け活動と本人チャンネル",
+      "evidence_url": "https://paletteproject.jp/member/case-kotoha/",
+      "reviewed": "2026-10-08"
+    },
+    {
+      "original": "江波キョウカ",
+      "scope": "japan",
+      "basis": "公式所属先の日本向け活動と本人チャンネル",
+      "evidence_url": "https://paletteproject.jp/member/case-kyouka/",
+      "reviewed": "2026-10-08"
+    },
+    {
+      "original": "鬼多見アユム",
+      "scope": "japan",
+      "basis": "公式所属先の日本向け活動と本人チャンネル",
+      "evidence_url": "https://paletteproject.jp/member/case-ayumu/",
+      "reviewed": "2026-10-08"
+    },
+    {
+      "original": "常磐カナメ",
+      "scope": "japan",
+      "basis": "公式所属先の日本向け活動と本人チャンネル",
+      "evidence_url": "https://paletteproject.jp/member/case-kaname/",
+      "reviewed": "2026-10-08"
+    },
+    {
+      "original": "暁月クララ",
+      "scope": "japan",
+      "basis": "公式所属先の日本向け活動と本人チャンネル",
+      "evidence_url": "https://paletteproject.jp/member/case-clara/",
+      "reviewed": "2026-10-08"
+    },
+    {
+      "original": "香鳴ハノン",
+      "scope": "japan",
+      "basis": "公式所属先の日本向け活動と本人チャンネル",
+      "evidence_url": "https://paletteproject.jp/member/case-hanon/",
+      "reviewed": "2026-10-08"
+    },
+    {
+      "original": "夏渚まはろ",
+      "scope": "japan",
+      "basis": "公式所属先の日本向け活動と本人チャンネル",
+      "evidence_url": "https://paletteproject.jp/member/case-mahalo/",
+      "reviewed": "2026-10-08"
+    },
+    {
+      "original": "恋世代おとめ",
+      "scope": "japan",
+      "basis": "公式所属先の日本向け活動と本人チャンネル",
+      "evidence_url": "https://haconect.com/member",
+      "reviewed": "2026-10-08"
+    },
+    {
+      "original": "プルヴォワール・ヌル",
+      "scope": "japan",
+      "basis": "公式所属先の日本向け活動と本人チャンネル",
+      "evidence_url": "https://haconect.com/member",
+      "reviewed": "2026-10-08"
+    },
+    {
+      "original": "ちゃまこ",
+      "scope": "japan",
+      "basis": "公式所属先の日本向け活動と本人チャンネル",
+      "evidence_url": "https://haconect.com/member",
+      "reviewed": "2026-10-08"
+    },
+    {
+      "original": "もふやまそらら",
+      "scope": "japan",
+      "basis": "公式所属先の日本向け活動と本人チャンネル",
+      "evidence_url": "https://haconect.com/member",
+      "reviewed": "2026-10-08"
+    },
+    {
+      "original": "卯夢月めお",
+      "scope": "japan",
+      "basis": "公式所属先の日本向け活動と本人チャンネル",
+      "evidence_url": "https://haconect.com/member",
+      "reviewed": "2026-10-08"
+    },
+    {
+      "original": "白熊汰べる",
+      "scope": "japan",
+      "basis": "公式所属先の日本向け活動と本人チャンネル",
+      "evidence_url": "https://haconect.com/member",
+      "reviewed": "2026-10-08"
+    },
+    {
+      "original": "雫川なのか",
+      "scope": "japan",
+      "basis": "公式所属先の日本向け活動と本人チャンネル",
+      "evidence_url": "https://haconect.com/member",
+      "reviewed": "2026-10-08"
+    },
+    {
+      "original": "翠森アトリ",
+      "scope": "japan",
+      "basis": "公式所属先の日本向け活動と本人チャンネル",
+      "evidence_url": "https://haconect.com/member",
+      "reviewed": "2026-10-08"
+    },
+    {
+      "original": "赤衣アカメ",
+      "scope": "japan",
+      "basis": "公式所属先の日本向け活動と本人チャンネル",
+      "evidence_url": "https://haconect.com/member",
+      "reviewed": "2026-10-08"
+    },
+    {
+      "original": "星ノ音コロン",
+      "scope": "japan",
+      "basis": "公式所属先の日本向け活動と本人チャンネル",
+      "evidence_url": "https://haconect.com/member",
+      "reviewed": "2026-10-08"
+    },
+    {
+      "original": "天海くりね",
+      "scope": "japan",
+      "basis": "公式所属先の日本向け活動と本人チャンネル",
+      "evidence_url": "https://haconect.com/member",
+      "reviewed": "2026-10-08"
+    },
+    {
+      "original": "小日向千虎",
+      "scope": "japan",
+      "basis": "公式所属先の日本向け活動と本人チャンネル",
+      "evidence_url": "https://haconect.com/member",
+      "reviewed": "2026-10-08"
+    },
+    {
+      "original": "ミラ・ルプス",
+      "scope": "japan",
+      "basis": "公式所属先の日本向け活動と本人チャンネル",
+      "evidence_url": "https://haconect.com/member",
+      "reviewed": "2026-10-08"
+    },
+    {
+      "original": "銀灰まお",
+      "scope": "japan",
+      "basis": "公式所属先の日本向け活動と本人チャンネル",
+      "evidence_url": "https://haconect.com/member",
+      "reviewed": "2026-10-08"
+    },
+    {
+      "original": "リン・ガーネット",
+      "scope": "japan",
+      "basis": "公式所属先の日本向け活動と本人チャンネル",
+      "evidence_url": "https://haconect.com/member",
+      "reviewed": "2026-10-08"
+    },
+    {
+      "original": "明堂しろね",
+      "scope": "japan",
+      "basis": "公式所属先の日本向け活動と本人チャンネル",
+      "evidence_url": "https://haconect.com/member",
+      "reviewed": "2026-10-08"
+    },
+    {
+      "original": "華糖シェリー",
+      "scope": "japan",
+      "basis": "公式所属先の日本向け活動と本人チャンネル",
+      "evidence_url": "https://haconect.com/member",
+      "reviewed": "2026-10-08"
+    },
+    {
+      "original": "ぺるぽ",
+      "scope": "japan",
+      "basis": "公式所属先の日本向け活動と本人チャンネル",
+      "evidence_url": "https://haconect.com/member",
+      "reviewed": "2026-10-08"
+    },
+    {
+      "original": "山寧恋",
+      "scope": "japan",
+      "basis": "公式所属先の日本向け活動と本人チャンネル",
+      "evidence_url": "https://haconect.com/member",
+      "reviewed": "2026-10-08"
+    },
+    {
+      "original": "七彩てまり",
+      "scope": "japan",
+      "basis": "公式所属先の日本向け活動と本人チャンネル",
+      "evidence_url": "https://haconect.com/member",
+      "reviewed": "2026-10-08"
+    },
+    {
+      "original": "田中りゅこ",
+      "scope": "japan",
+      "basis": "公式所属先の日本向け活動と本人チャンネル",
+      "evidence_url": "https://haconect.com/member",
+      "reviewed": "2026-10-08"
+    },
+    {
+      "original": "夜夢瑠紅",
+      "scope": "japan",
+      "basis": "公式所属先の日本向け活動と本人チャンネル",
+      "evidence_url": "https://haconect.com/member",
+      "reviewed": "2026-10-08"
+    },
+    {
+      "original": "愛咲よつのは",
+      "scope": "japan",
+      "basis": "公式所属先の日本向け活動と本人チャンネル",
+      "evidence_url": "https://haconect.com/member",
+      "reviewed": "2026-10-08"
+    },
+    {
+      "original": "玉ノ井もなか",
+      "scope": "japan",
+      "basis": "公式所属先の日本向け活動と本人チャンネル",
+      "evidence_url": "https://haconect.com/member",
+      "reviewed": "2026-10-08"
+    },
+    {
+      "original": "綾坂希穂",
+      "scope": "japan",
+      "basis": "公式所属先の日本向け活動と本人チャンネル",
+      "evidence_url": "https://haconect.com/member",
+      "reviewed": "2026-10-08"
+    },
+    {
+      "original": "ソフィ・ローズ",
+      "scope": "japan",
+      "basis": "公式所属先の日本向け活動と本人チャンネル",
+      "evidence_url": "https://haconect.com/member",
+      "reviewed": "2026-10-08"
+    },
+    {
+      "original": "鳳儚",
+      "scope": "japan",
+      "basis": "公式所属先の日本向け活動と本人チャンネル",
+      "evidence_url": "https://haconect.com/member",
+      "reviewed": "2026-10-08"
+    },
+    {
+      "original": "白砂つな",
+      "scope": "japan",
+      "basis": "公式所属先の日本向け活動と本人チャンネル",
+      "evidence_url": "https://haconect.com/member",
+      "reviewed": "2026-10-08"
+    },
+    {
+      "original": "橘シエナ",
+      "scope": "japan",
+      "basis": "公式所属先の日本向け活動と本人チャンネル",
+      "evidence_url": "https://haconect.com/member",
+      "reviewed": "2026-10-08"
+    },
+    {
+      "original": "叶望ゆゆ",
+      "scope": "japan",
+      "basis": "公式所属先の日本向け活動と本人チャンネル",
+      "evidence_url": "https://haconect.com/member",
+      "reviewed": "2026-10-08"
+    },
+    {
+      "original": "木花サクヤ",
+      "scope": "japan",
+      "basis": "公式所属先の日本向け活動と本人チャンネル",
+      "evidence_url": "https://airypro.jp/talents_all",
+      "reviewed": "2026-10-08"
+    },
+    {
+      "original": "赤魔アザト",
+      "scope": "japan",
+      "basis": "公式所属先の日本向け活動と本人チャンネル",
+      "evidence_url": "https://airypro.jp/talents_all",
+      "reviewed": "2026-10-08"
+    },
+    {
+      "original": "黒羊ニグラス",
+      "scope": "japan",
+      "basis": "公式所属先の日本向け活動と本人チャンネル",
+      "evidence_url": "https://airypro.jp/talents_all",
+      "reviewed": "2026-10-08"
+    },
+    {
+      "original": "雪車町ましろ",
+      "scope": "japan",
+      "basis": "公式所属先の日本向け活動と本人チャンネル",
+      "evidence_url": "https://airypro.jp/talents_all",
+      "reviewed": "2026-10-08"
+    },
+    {
+      "original": "九娥つばき",
+      "scope": "japan",
+      "basis": "公式所属先の日本向け活動と本人チャンネル",
+      "evidence_url": "https://airypro.jp/talents_all",
+      "reviewed": "2026-10-08"
+    },
+    {
+      "original": "龍華ちなり",
+      "scope": "japan",
+      "basis": "公式所属先の日本向け活動と本人チャンネル",
+      "evidence_url": "https://airypro.jp/talents_all",
+      "reviewed": "2026-10-08"
+    },
+    {
+      "original": "甘楽はのね",
+      "scope": "japan",
+      "basis": "公式所属先の日本向け活動と本人チャンネル",
+      "evidence_url": "https://airypro.jp/talents_all",
+      "reviewed": "2026-10-08"
+    },
+    {
+      "original": "狼牙ヒナ",
+      "scope": "japan",
+      "basis": "公式所属先の日本向け活動と本人チャンネル",
+      "evidence_url": "https://airypro.jp/talents_all",
+      "reviewed": "2026-10-08"
+    },
+    {
+      "original": "ジル・ティーグルシュ",
+      "scope": "japan",
+      "basis": "公式所属先の日本向け活動と本人チャンネル",
+      "evidence_url": "https://airypro.jp/talents_all",
+      "reviewed": "2026-10-08"
+    },
+    {
+      "original": "蒼神いろは",
+      "scope": "japan",
+      "basis": "公式所属先の日本向け活動と本人チャンネル",
+      "evidence_url": "https://airypro.jp/talents_all",
+      "reviewed": "2026-10-08"
+    },
+    {
+      "original": "緑埜ララン",
+      "scope": "japan",
+      "basis": "公式所属先の日本向け活動と本人チャンネル",
+      "evidence_url": "https://airypro.jp/talents_all",
+      "reviewed": "2026-10-08"
+    },
+    {
+      "original": "朱城スザク",
+      "scope": "japan",
+      "basis": "公式所属先の日本向け活動と本人チャンネル",
+      "evidence_url": "https://airypro.jp/talents_all",
+      "reviewed": "2026-10-08"
+    },
+    {
+      "original": "花澄れん",
+      "scope": "japan",
+      "basis": "公式所属先の日本向け活動と本人チャンネル",
+      "evidence_url": "https://airypro.jp/talents_all",
+      "reviewed": "2026-10-08"
+    },
+    {
+      "original": "天日テラス",
+      "scope": "japan",
+      "basis": "公式所属先の日本向け活動と本人チャンネル",
+      "evidence_url": "https://airypro.jp/talents_all",
+      "reviewed": "2026-10-08"
+    },
+    {
+      "original": "紅炎イザナミ",
+      "scope": "japan",
+      "basis": "公式所属先の日本向け活動と本人チャンネル",
+      "evidence_url": "https://airypro.jp/talents_all",
+      "reviewed": "2026-10-08"
+    },
+    {
+      "original": "鏡迷アリス",
+      "scope": "japan",
+      "basis": "公式所属先の日本向け活動と本人チャンネル",
+      "evidence_url": "https://airypro.jp/talents_all",
+      "reviewed": "2026-10-08"
+    },
+    {
+      "original": "宵闇ニャル",
+      "scope": "japan",
+      "basis": "公式所属先の日本向け活動と本人チャンネル",
+      "evidence_url": "https://airypro.jp/talents_all",
+      "reviewed": "2026-10-08"
     }
   ]
 }
