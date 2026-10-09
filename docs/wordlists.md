@@ -230,6 +230,12 @@ YouTuberは `youtuber.csv`、VTuberは `vtuber.csv` から個別に選択でき�
 収録し、確認できない活動開始年・登録者数は `NA` とする。画像には既存形式の
 象徴カードを使用する。
 
+活動名の姓・名を確認できた人物は、同じIDの `family` / `given` 行でも収録する。
+区切り・読み・姓名順・出典は `tools/vtuber_name_parts.jsonl` に記録し、
+`python tools/apply_vtuber_name_parts.py` で反映、`--check` で検証する。
+既存の `full` 行を保持し、追加行には画像・説明などの付加情報を引き継ぐ。
+単名、肩書き付きの活動名、区切りや姓名順を確認できない名前は分割しない。
+
 りあぷろの30名も同じ人物台帳に収録する。29名は公式プロフィールの立ち絵URL、
 1名は象徴カードを使用する。画像URL・プロフィール・クレジット・利用条件は
 `tools/vtuber_realize_images.json` に記録し、
