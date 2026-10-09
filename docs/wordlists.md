@@ -202,6 +202,7 @@ YouTuberは `youtuber.csv`、VTuberは `vtuber.csv` から個別に選択でき�
 | subscribers_as_of | `subscribers` の取得日(UTC、`YYYY-MM-DD`)。取得できない場合は `NA` |
 | description | 活動内容の短い説明 |
 | image, image_page | Commonsの実写、公式プロフィール立ち絵、レビュー済み非営利ファンメイド画像、または象徴カード |
+| has_image | 本人写真・キャラクター画像なら `yes`、象徴カードまたは画像未設定なら `no`。利用条件は `image_usage`・`image_terms_page` 等を参照 |
 | image_credit | 非Commons画像で動画に表示する権利者表記。不要な場合は空欄 |
 | image_usage | `noncommercial_fanwork` は非営利ファン活動でのみ利用可能。その他は空欄 |
 | image_terms_page | `image_usage` の条件を定める公式ガイドライン |

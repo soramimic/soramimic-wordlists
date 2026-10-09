@@ -22,7 +22,7 @@ from gen_youtuber_cards import (  # noqa: E402
     image_page_url as card_page_url,
     image_url as card_image_url,
 )
-from wpnames import write_csv_no_trailing_newline  # noqa: E402
+from creator_csv import write_creator_csv  # noqa: E402
 
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -189,7 +189,7 @@ def apply(csv_path: Path = CSV_PATH, manifest_path: Path = MANIFEST_PATH) -> tup
         if changed:
             changed_names.add(original)
 
-    write_csv_no_trailing_newline(csv_path, fieldnames, rows)
+    write_creator_csv(csv_path, fieldnames, rows)
     return len(changed_names), changed_rows
 
 

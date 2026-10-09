@@ -8,7 +8,7 @@ from pathlib import Path
 from unittest import mock
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from creator_csv import read_creator_csvs, write_creator_csvs
+from creator_csv import CARD_IMAGE_PREFIX, read_creator_csvs, write_creator_csvs
 from wpnames import write_csv_no_trailing_newline
 import yt_common
 
@@ -19,7 +19,7 @@ class CreatorCsvTest(unittest.TestCase):
         self.addCleanup(self.temp.cleanup)
         self.paths = tuple(Path(self.temp.name) / f"{category}.csv"
                            for category in ("youtuber", "vtuber"))
-        self.columns = [*yt_common.COLS, "image", "subscribers"]
+        self.columns = [*yt_common.COLS, "image", "subscribers", "has_image"]
         self.rows = [self.person("3", "ヒカリ", "youtuber"),
                      self.person("90", "ソラ", "vtuber")]
         write_creator_csvs(self.columns, self.rows, self.paths)
@@ -28,7 +28,28 @@ class CreatorCsvTest(unittest.TestCase):
         return {**dict.fromkeys(self.columns, "NA"), "id": pid,
                 "original": name, "surface": name, "pronunciation": name,
                 "category": category, "type": "full", "status": "current",
-                "image": "https://example.com/image.svg", "subscribers": "1230"}
+                "image": "https://example.com/image.svg", "subscribers": "1230",
+                "has_image": "yes"}
+
+    def test_writer_adds_column_and_refreshes_image_availability(self):
+        columns = [c for c in self.columns if c != "has_image"]
+        for image, expected in (
+            (None, "no"), ("", "no"), ("NA", "no"),
+            (CARD_IMAGE_PREFIX + "yt_test.svg", "no"),
+            ("https://upload.wikimedia.org/wikipedia/commons/a/ab/photo.jpg", "yes"),
+            ("https://example.com/official-portrait.png", "yes"),
+            ("https://raw.githubusercontent.com/soramimic/soramimic-wordlists/"
+             "main/images/vtuber/portrait.png", "yes"),
+            ("https://github.com/soramimic/soramimic-wordlists/releases/"
+             "download/youtuber-images/fan-image.png", "yes"),
+        ):
+            with self.subTest(image=image):
+                rows = [{**row, "image": image} for row in self.rows]
+                write_creator_csvs(columns, rows, self.paths)
+                actual_columns, actual = read_creator_csvs(self.paths)
+                self.assertEqual(actual_columns, self.columns)
+                self.assertEqual({row["has_image"] for row in actual}, {expected})
+                self.assertEqual({row["has_image"] for row in rows}, {"yes"})
 
     def test_round_trip_preserves_all_fields_and_split(self):
         rows = [*self.rows, {**self.rows[1], "surface": "ソ", "type": "family"}]
@@ -85,6 +106,8 @@ class CreatorCsvTest(unittest.TestCase):
         self.assertEqual({r["original"]: r["category"] for r in rows
                           if r["id"] in {"91", "92"}},
                          {"アオ": "youtuber", "アカ": "vtuber"})
+        self.assertEqual({r["has_image"] for r in rows if r["id"] in {"91", "92"}},
+                         {"no"})
 
     def test_updater_applies_reviewed_category_override_to_new_person(self):
         specs = [dict(category=category, occ=category, must=(), must_not=(),

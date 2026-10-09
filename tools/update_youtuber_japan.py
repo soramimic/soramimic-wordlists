@@ -18,7 +18,7 @@ from datetime import date
 from pathlib import Path
 
 
-from creator_csv import read_creator_csvs, write_creator_csvs  # noqa: E402
+from creator_csv import read_creator_csvs, write_creator_csv, write_creator_csvs  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 CSV_PATH = ROOT / "youtuber.csv"
@@ -348,7 +348,7 @@ def main(argv=None) -> int:
     if args.csv.resolve() == CSV_PATH:
         write_creator_csvs(columns, updated_rows, writer=write_csv)
     else:
-        write_csv(args.csv, columns, updated_rows)
+        write_creator_csv(args.csv, columns, updated_rows, writer=write_csv)
     write_jsonl(args.channel_sources, updated_sources)
     print(f"日本向けレビュー済み人物: {len(people)}人、新規 {added}人")
     return 0

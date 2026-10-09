@@ -17,10 +17,7 @@ from gen_youtuber_cards import (  # noqa: E402
     image_page_url as card_page_url,
     image_url as card_image_url,
 )
-from wpnames import write_csv_no_trailing_newline  # noqa: E402
-
-
-from creator_csv import read_creator_csvs, write_creator_csvs  # noqa: E402
+from creator_csv import read_creator_csvs, write_creator_csv, write_creator_csvs  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 CSV_PATH = ROOT / "vtuber.csv"
@@ -198,7 +195,7 @@ def apply(
     if csv_path.resolve() == CSV_PATH:
         write_creator_csvs(fieldnames, rows)
     else:
-        write_csv_no_trailing_newline(csv_path, fieldnames, rows)
+        write_creator_csv(csv_path, fieldnames, rows)
     return len(changed_people), changed_rows, added_rows
 
 

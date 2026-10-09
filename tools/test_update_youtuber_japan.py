@@ -356,8 +356,9 @@ class UpdateYoutuberJapanTest(unittest.TestCase):
             with csv_path.open(encoding="utf-8", newline="") as handle:
                 reader = csv.DictReader(handle)
                 written_rows = list(reader)
-            self.assertEqual(reader.fieldnames[-1], "channel_shared")
+            self.assertEqual(reader.fieldnames[-2:], ["channel_shared", "has_image"])
             self.assertEqual(written_rows[0]["channel_shared"], "no")
+            self.assertEqual(written_rows[0]["has_image"], "no")
 
 
 if __name__ == "__main__":

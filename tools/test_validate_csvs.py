@@ -4,9 +4,54 @@ import sys
 import tempfile
 import unittest
 from pathlib import Path
+from unittest import mock
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import validate_csvs as target
+from wpnames import write_csv_no_trailing_newline
+
+
+class CreatorImageAvailabilityValidationTests(unittest.TestCase):
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.temp.cleanup)
+        self.root = Path(self.temp.name)
+        self.path = self.root / "youtuber.csv"
+        card = self.root / "images/youtuber/yt_test.svg"
+        card.parent.mkdir(parents=True)
+        card.write_text("<svg/>", encoding="utf-8")
+        self.row = dict(
+            id="1", original="テスト", surface="テスト", category="youtuber",
+            scope="unknown", channel_shared="NA", channel="NA",
+            subscribers="NA", subscribers_as_of="NA", image_credit="",
+            image_usage="", image_terms_page="",
+        )
+        self.images = (
+            (target.YOUTUBER_CARD_IMAGE_PREFIX + "yt_test.svg",
+             target.YOUTUBER_CARD_PAGE_PREFIX + "yt_test.svg", "no"),
+            ("https://upload.wikimedia.org/wikipedia/commons/a/ab/photo.jpg",
+             "https://commons.wikimedia.org/wiki/File:photo.jpg", "yes"),
+        )
+        self.addCleanup(target.errors.clear)
+
+    def validate(self, row):
+        target.errors.clear()
+        write_csv_no_trailing_newline(self.path, list(row), [row])
+        with mock.patch.object(target, "ROOT", self.root), \
+                contextlib.redirect_stdout(io.StringIO()):
+            target.validate(self.path)
+        return list(target.errors)
+
+    def test_requires_column_and_correct_flag_for_cards_and_photos(self):
+        for image, page, expected in self.images:
+            row = dict(self.row, image=image, image_page=page, has_image=expected)
+            with self.subTest(image=image):
+                self.assertEqual(self.validate(row), [])
+                for incorrect in ("no" if expected == "yes" else "yes", "NA", "", "true"):
+                    errors = self.validate(dict(row, has_image=incorrect))
+                    self.assertTrue(any("has_image が画像と不一致" in e for e in errors))
+                del row["has_image"]
+                self.assertTrue(any("必須列 has_image がない" in e for e in self.validate(row)))
 
 
 class PlayerDescriptionValidationTests(unittest.TestCase):

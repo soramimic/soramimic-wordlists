@@ -35,10 +35,10 @@ import re
 from pathlib import Path
 from creator_descriptions import reviewed_description
 
-from creator_csv import read_creator_csvs, write_creator_csvs
+from creator_csv import read_creator_csvs, write_creator_csv, write_creator_csvs
 from wpnames import (DISAMBIG, HIRA2KATA, _sanitize_desc, clean_ws,
                      fetch_extracts, parse_person, sparql, strip_lead_paren,
-                     strip_name_prefix, write_csv_no_trailing_newline)
+                     strip_name_prefix)
 
 COLS = ["id", "original", "surface", "pronunciation", "type",
         "category", "org", "debut_year", "status", "channel", "description"]
@@ -737,7 +737,7 @@ def build_list(csv_name: str | tuple[str, ...], specs: list, cache_env: str,
     if split_paths is not None:
         write_creator_csvs(cols, old_rows + added, split_paths)
     else:
-        write_csv_no_trailing_newline(csv_path, cols, old_rows + added)
+        write_creator_csv(csv_path, cols, old_rows + added)
 
     n_people = len({r["id"] for r in added})
     print(f"\n{csv_name}: 既存{len(old_rows)}行 + 新規{n_people}人({len(added)}行) "

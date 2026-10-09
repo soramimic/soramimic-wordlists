@@ -11,7 +11,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 
 from gen_youtuber_cards import asset_name, build_card, image_page_url, image_url
-from wpnames import write_csv_no_trailing_newline
+from creator_csv import write_creator_csv
 
 ROOT = Path(__file__).resolve().parent.parent
 CSV_PATH = ROOT / "vtuber.csv"
@@ -119,7 +119,7 @@ def apply(csv_path: Path = CSV_PATH, manifest_path: Path = MANIFEST_PATH) -> tup
             changed.add(row["original"])
             count += 1
     if count:
-        write_csv_no_trailing_newline(csv_path, fields, rows)
+        write_creator_csv(csv_path, fields, rows)
     return len(changed), count
 
 

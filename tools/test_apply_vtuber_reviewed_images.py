@@ -26,7 +26,8 @@ class ReviewedImagesTests(unittest.TestCase):
                            conditions='非営利の範囲で利用。', reviewed='2026-09-08')
         self.rows = [dict(id='12', original='試験あお', category='vtuber', org='試験社',
                           surface=surface, image='', image_page='', image_credit='',
-                          image_usage='', image_terms_page='') for surface in ['試験あお', 'あお']]
+                          image_usage='', image_terms_page='', has_image='no')
+                     for surface in ['試験あお', 'あお']]
         self.fields = list(self.rows[0])
         self.save()
 
@@ -50,10 +51,12 @@ class ReviewedImagesTests(unittest.TestCase):
         subject.validate_rows(rows, subject.load_manifest(self.manifest_path))
         self.assertEqual([r['surface'] for r in rows], ['試験あお', 'あお'])
         self.assertEqual({r['id'] for r in rows}, {'12'})
+        self.assertEqual({r['has_image'] for r in rows}, {'yes'})
         self.assertFalse(after.endswith(b'\n'))
 
     def test_unrelated_image_is_preserved(self):
-        other = dict(self.rows[0], id='13', original='別人', image='https://example.org/other.png')
+        other = dict(self.rows[0], id='13', original='別人',
+                     image='https://example.org/other.png', has_image='yes')
         self.rows.append(other)
         self.save()
         self.apply()
@@ -68,6 +71,7 @@ class ReviewedImagesTests(unittest.TestCase):
         rows = self.read()
         self.assertTrue((self.root / 'images/youtuber' / asset_name(self.record['original'])).is_file())
         self.assertTrue(all(r['image_credit'] == r['image_usage'] == r['image_terms_page'] == '' for r in rows))
+        self.assertEqual({r['has_image'] for r in rows}, {'no'})
         subject.validate_rows(rows, subject.load_manifest(self.manifest_path, include_inactive=True))
         self.assertEqual(self.apply(), (0, 0))
 

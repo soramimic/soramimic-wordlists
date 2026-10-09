@@ -7,6 +7,26 @@ from wpnames import write_csv_no_trailing_newline
 
 ROOT = Path(__file__).resolve().parent.parent
 CSV_PATHS = (ROOT / "youtuber.csv", ROOT / "vtuber.csv")
+CARD_IMAGE_PREFIX = (
+    "https://raw.githubusercontent.com/soramimic/soramimic-wordlists/"
+    "main/images/youtuber/"
+)
+
+
+def image_availability(image):
+    """Whether an assigned image depicts the creator rather than a name card."""
+    return ("no" if not image or image == "NA" or image.startswith(CARD_IMAGE_PREFIX)
+            else "yes")
+
+
+def write_creator_csv(path, columns, rows, writer=write_csv_no_trailing_newline):
+    """Keep image availability in sync when adding people or replacing images."""
+    columns = list(columns)
+    if "has_image" not in columns:
+        columns.append("has_image")
+    rows = [{**row, "has_image": image_availability(row.get("image"))}
+            for row in rows]
+    writer(path, columns, rows)
 
 
 def validate_creator_rows(rows):
@@ -44,4 +64,5 @@ def write_creator_csvs(columns, rows, paths=CSV_PATHS,
     if any(row["category"] not in destinations for row in rows):
         raise ValueError("Missing destination for creator category")
     for category, path in destinations.items():
-        writer(path, columns, [row for row in rows if row["category"] == category])
+        write_creator_csv(path, columns,
+                          [row for row in rows if row["category"] == category], writer)
