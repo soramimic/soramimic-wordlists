@@ -22,7 +22,7 @@ import sys
 from collections import Counter
 from pathlib import Path
 
-from creator_csv import read_creator_csvs
+from creator_csv import CARD_IMAGE_PREFIX, image_availability, read_creator_csvs
 from update_school import has_school_suffix
 from apply_youtuber_permitted_images import (
     IMAGE_PREFIX as YOUTUBER_FAN_IMAGE_PREFIX,
@@ -65,10 +65,7 @@ IMAGE_URL_RE = re.compile(
     r"|^https://raw\.githubusercontent\.com/soramimic/soramimic-wordlists/"
     r"|^https://github\.com/soramimic/soramimic-wordlists/blob/"
 )
-YOUTUBER_CARD_IMAGE_PREFIX = (
-    "https://raw.githubusercontent.com/soramimic/soramimic-wordlists/"
-    "main/images/youtuber/"
-)
+YOUTUBER_CARD_IMAGE_PREFIX = CARD_IMAGE_PREFIX
 YOUTUBER_CARD_PAGE_PREFIX = (
     "https://github.com/soramimic/soramimic-wordlists/blob/"
     "main/images/youtuber/"
@@ -171,7 +168,7 @@ def validate(path: Path):
         missing = [
             col for col in (
                 "image", "image_page", "image_credit", "image_usage",
-                "image_terms_page", "scope", "channel_shared", "category",
+                "image_terms_page", "scope", "channel_shared", "category", "has_image",
             )
             if col not in idx
         ]
@@ -292,6 +289,9 @@ def validate(path: Path):
                 if not f[idx[col]]:
                     err(f"{path.name}:{lineno}: {col} が空")
             image = f[idx["image"]]
+            if f[idx["has_image"]] != image_availability(image):
+                err(f"{path.name}:{lineno}: has_image が画像と不一致 "
+                    f"(期待値: {image_availability(image)})")
             image_page = f[idx["image_page"]]
             image_credit = f[idx["image_credit"]]
             image_usage = f[idx["image_usage"]]

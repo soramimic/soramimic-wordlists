@@ -32,6 +32,7 @@ class RealizeImagesTests(unittest.TestCase):
             "image": realize.card_image_url("テストライバー"),
             "image_page": realize.card_page_url("テストライバー"),
             "image_credit": "", "image_usage": "", "image_terms_page": "",
+            "has_image": "no",
         }
 
     def manifest(self, records=None):
@@ -56,9 +57,10 @@ class RealizeImagesTests(unittest.TestCase):
         result = list(csv.DictReader(io.StringIO(path.read_text())))
         for before, after in zip([full, part], result):
             for key in before:
-                if not key.startswith("image"):
+                if not key.startswith("image") and key != "has_image":
                     self.assertEqual(before[key], after[key], key)
             self.assertEqual(self.record["image_url"], after["image"])
+            self.assertEqual("yes", after["has_image"])
             self.assertEqual(realize.IMAGE_USAGE, after["image_usage"])
             self.assertEqual(self.record["credit"], after["image_credit"])
             self.assertEqual(self.record["terms_page"], after["image_terms_page"])
@@ -73,7 +75,7 @@ class RealizeImagesTests(unittest.TestCase):
         manifest = self.manifest()
         self.assertEqual({}, realize.load_manifest(manifest))
         self.assertIn(self.record["original"], realize.load_manifest(manifest, include_inactive=True))
-        row = dict(self.row, image=self.record["image_url"], image_usage=realize.IMAGE_USAGE,
+        row = dict(self.row, image=self.record["image_url"], image_usage=realize.IMAGE_USAGE, has_image="yes",
                    image_credit=self.record["credit"], image_terms_page=realize.TERMS_PAGE)
         path = self.csv_path([row])
         self.assertEqual((1, 1), realize.apply(path, manifest))
