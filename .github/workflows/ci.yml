@@ -21,6 +21,9 @@ jobs:
       - name: Validate CSVs
         run: python tools/validate_csvs.py
 
+      - name: Validate reviewed VTuber name parts
+        run: python tools/apply_vtuber_name_parts.py --check
+
       - name: Test Release image source manifest tooling
         run: python -m unittest tools/test_release_image_manifest.py
 
