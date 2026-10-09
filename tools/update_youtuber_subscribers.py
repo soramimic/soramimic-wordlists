@@ -333,13 +333,14 @@ def load_channel_source_registry(qid_of: dict, name_of: dict) -> tuple:
                 "wikidata_official_site_page", "wikidata_youtube_handle",
                 "jawiki_infobox", "web_search_primary_link",
                 "web_search_reliable_press_video",
-                "official_talent_profile", "reviewed_person_roster"}:
+                "official_talent_profile", "reviewed_official_profile",
+                "reviewed_person_roster"}:
             raise SystemExit(f"error: {SOURCE_PATH}:{lineno}: 不正なsource_type")
         channel_id = record.get("channel_id", "")
         qid = record.get("qid", "")
         qid_optional = record.get("source_type") in {
             "web_search_primary_link", "web_search_reliable_press_video",
-            "official_talent_profile",
+            "official_talent_profile", "reviewed_official_profile",
             "reviewed_person_roster"}
         if not CHANNEL_ID_RE.fullmatch(channel_id) or not (
                 re.fullmatch(r"Q\d+", qid) or (qid_optional and qid == "NA")):

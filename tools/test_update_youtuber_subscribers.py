@@ -405,6 +405,47 @@ class ApplySnapshotTest(unittest.TestCase):
         self.assertEqual(eligible, {"8": [personal_id]})
         self.assertEqual(shared, {"8": [channel_id]})
 
+    def test_reviewed_official_profile_preserves_personal_and_shared_roles(self):
+        personal_id = "UC" + "p" * 22
+        shared_id = "UC" + "s" * 22
+        records = [{
+            "channel_id": channel_id, "decision": decision,
+            "evidence_url": "https://www.youtube.com/channel/" + channel_id,
+            "identity_basis": "official_profile_and_channel",
+            "original": "確認済み人物", "person_id": "7", "qid": "NA",
+            "source_type": "reviewed_official_profile",
+            "source_url": "https://example.com/official-profile",
+        } for channel_id, decision in (
+            (personal_id, "verified"),
+            (shared_id, "verified_shared_group_channel"))]
+
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "sources.jsonl"
+            path.write_text("".join(json.dumps(r) + "\n" for r in records),
+                            encoding="utf-8")
+            with mock.patch.object(subscribers, "SOURCE_PATH", path):
+                eligible, shared = subscribers.load_channel_source_registry(
+                    {}, {"7": "確認済み人物"})
+
+        self.assertEqual(eligible, {"7": [personal_id]})
+        self.assertEqual(shared, {"7": [shared_id]})
+
+    def test_reviewed_official_profile_still_requires_matching_identity(self):
+        record = {
+            "channel_id": "UC" + "p" * 22, "decision": "verified",
+            "evidence_url": "https://www.youtube.com/channel/UC" + "p" * 22,
+            "original": "別人", "person_id": "7", "qid": "NA",
+            "source_type": "reviewed_official_profile",
+            "source_url": "https://example.com/official-profile",
+        }
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "sources.jsonl"
+            path.write_text(json.dumps(record) + "\n", encoding="utf-8")
+            with mock.patch.object(subscribers, "SOURCE_PATH", path):
+                with self.assertRaisesRegex(SystemExit, "人物/QID対応"):
+                    subscribers.load_channel_source_registry(
+                        {}, {"7": "確認済み人物"})
+
     def test_unknown_ledger_decision_is_rejected(self):
         channel_id = "UC" + "x" * 22
         record = {
