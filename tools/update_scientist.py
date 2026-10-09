@@ -11,7 +11,8 @@ sitelinks>=20 ≒ 多言語版20版以上に記事がある著名層)と、Wikip
 - 未収録の著名科学者を追記(読み・姓名分割は update_physicist.py と同じ方式)
 - 既存行の読み・id・表記は絶対に書き換えない
 - 既存行の付加列は**空欄/NAの補完のみ**行い、既に埋まっている値は書き換えない
-  (例外は status の 存命→物故と、動画で欠字になる原語・IPA入りdescription)。
+  (例外は status の 存命→物故、nobel の no→yes と、動画で欠字になる
+  原語・IPA入りdescription)。
   Wikidata の
   ラベル揺れ・記事冒頭の改稿を毎回取り込むと、月次PRが既存行の書き換えだらけに
   なり、レビューで本当の追記が埋もれるため(ADR 00014)
@@ -626,7 +627,10 @@ SELECT ?p (MIN(?birth) AS ?b) (MAX(?death) AS ?d) (MIN(?genderL) AS ?g)
              FILTER(LANG(?genderL)="ja") }}
   OPTIONAL {{ ?p wdt:P27 ?country . ?country rdfs:label ?countryL .
              FILTER(LANG(?countryL)="ja") }}
-  OPTIONAL {{ ?p wdt:P166 ?a . ?a wdt:P31 wd:Q7191 . BIND("yes" AS ?nobelV) }}
+  OPTIONAL {{
+    VALUES ?a {{ wd:Q38104 wd:Q44585 wd:Q80061 wd:Q47170 }}
+    ?p wdt:P166 ?a . BIND("yes" AS ?nobelV)
+  }}
   OPTIONAL {{ ?p wdt:P18 ?img }}
   OPTIONAL {{ ?p schema:description ?wdesc . FILTER(LANG(?wdesc)="ja") }}
 }} GROUP BY ?p"""
@@ -756,7 +760,8 @@ def main() -> int:
     # 2回目以降は生成済みの scientist.csv を正とし、初回のみ physicist.csv から移行
     source = NEW_CSV if NEW_CSV.exists() else OLD_CSV
     print(f"既存データ読み込み元: {source.name}", flush=True)
-    old_rows = list(csv.DictReader(source.open(encoding="utf-8")))
+    with source.open(encoding="utf-8", newline="") as fh:
+        old_rows = list(csv.DictReader(fh))
     before = len(old_rows)
     old_rows = [r for r in old_rows if r["original"] not in EXCLUDED]
     removed = before - len(old_rows)
@@ -770,7 +775,7 @@ def main() -> int:
     # 既存行への新列付与 + 空欄のバックフィル。既に埋まっている値は書き換えない
     # (ADR 00014)。上流のラベル揺れ・記事改稿・同名別人の取り違えで、良いデータが
     # 毎回上書きされるのを防ぐ
-    matched = filled = deceased = 0
+    matched = filled = deceased = awarded = 0
     for r in old_rows:
         info = by_key.get(r["original"])
         if info:
@@ -791,6 +796,10 @@ def main() -> int:
                 if is_blank(r.get(c)):
                     r[c] = v if not is_blank(v) else "NA"
                     filled += 1
+            # 新たな受賞だけ反映し、上流で受賞情報が欠けても yes は保持する。
+            if r["nobel"] == "no" and fresh["nobel"] == "yes":
+                r["nobel"] = "yes"
+                awarded += 1
             if description_needs_refresh(r.get("description", "")):
                 replacement = DESCRIPTION_OVERRIDES.get(
                     r["original"], fresh["description"])
@@ -824,7 +833,8 @@ def main() -> int:
             r["description"] = DESCRIPTION_OVERRIDES[r["original"]]
             filled += 1
     print(f"既存 {len(old_rows)}行, Wikidata一致 {matched}行, "
-          f"空欄補完 {filled}セル, 存命→物故 {deceased}行", flush=True)
+          f"空欄補完 {filled}セル, 存命→物故 {deceased}行, "
+          f"ノーベル賞 no→yes {awarded}行", flush=True)
 
     candidates = [p["title"] for p in persons.values()
                   if norm(p["title"]) not in existing
