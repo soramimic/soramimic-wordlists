@@ -92,7 +92,7 @@ baseball / football のうちOpenAI APIで公開Wikipedia本文から候補文�
 | field | 分野。複数は `/` 区切り |
 | era | `古代`/`中世`/`近世`/`近代`/`現代`/`NA` |
 | birth_year, death_year | 生年と没年。紀元前は `前287` の形式 |
-| nobel | 科学系ノーベル賞の受賞有無(`yes`/`no`/`NA`) |
+| nobel | 物理学賞・化学賞・生理学・医学賞・経済学賞の受賞有無(`yes`/`no`/`NA`) |
 | gender | `男性`/`女性`/`その他`/`NA` |
 | country | 市民権のある国。複数は `/` 区切り |
 | status | `物故`/`存命`/`NA` |
@@ -102,6 +102,10 @@ baseball / football のうちOpenAI APIで公開Wikipedia本文から候補文�
 象徴カードは分野の色、姓の頭文字、汎用アイコンで構成する。
 分野の色は本リポジトリ独自の区分。詳細は
 [ADR 00025](adr/00025-scientist-symbol-cards.md)。
+
+`nobel=yes` で受賞者を絞り込める。平和賞・文学賞のみの受賞は対象に含めない。
+新たな受賞は自動更新で `no` から `yes` に反映し、確認済みの `yes` は保持する。
+個別に追加した受賞者の確認先は `tools/scientist_nobel_sources.jsonl` に記録する。
 
 ## sekitsui.csv
 
