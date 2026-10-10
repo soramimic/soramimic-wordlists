@@ -373,9 +373,9 @@
     "id": "3408",
     "original": "明晩あるむ",
     "field": "化学",
-    "degree": "博士号取得",
+    "degree": "博士（理学）",
     "degree_kind": "earned_doctorate",
-    "description": "博士号取得。物理化学を専門とし、身近な化学から研究の話題まで解説するVTuber。",
+    "description": "博士（理学）。物理化学を専門とし、身近な化学から研究の話題まで解説するVTuber。",
     "forms": [
       {
         "surface": "明晩あるむ",
@@ -395,7 +395,8 @@
     ],
     "source_urls": [
       "https://www.youtube.com/watch?v=MZNKC4D0kPI",
-      "https://scholarvtuber.com/vtuber/akekure_arum/"
+      "https://scholarvtuber.com/vtuber/akekure_arum/",
+      "https://note.com/asamorikdb/n/n003b14be517a"
     ],
     "reviewed_on": "2026-10-10"
   },
@@ -433,9 +434,9 @@
     "id": "3410",
     "original": "きゅぷら",
     "field": "生物学",
-    "degree": "博士号取得",
+    "degree": "博士（理学）",
     "degree_kind": "earned_doctorate",
-    "description": "博士号取得。構造生物化学を研究し、将棋の配信などを行うVTuber。",
+    "description": "博士（理学）。構造生物化学を研究し、将棋の配信などを行うVTuber。",
     "forms": [
       {
         "surface": "きゅぷら",
@@ -446,7 +447,8 @@
     "source_urls": [
       "https://x.com/cuplabo/status/2103434235625529760",
       "https://note.com/cupro_laboratory",
-      "https://www.youtube.com/@きゅぷらV"
+      "https://www.youtube.com/@きゅぷらV",
+      "https://note.com/asamorikdb/n/n003b14be517a"
     ],
     "reviewed_on": "2026-10-10"
   },
@@ -503,9 +505,9 @@
     "id": "3413",
     "original": "古知累すすむ",
     "field": "生物学/地学",
-    "degree": "博士号取得",
+    "degree": "博士（理学）",
     "degree_kind": "earned_doctorate",
-    "description": "博士号取得。恐竜を研究し、古生物学の研究成果や自身の論文を解説するVTuber。",
+    "description": "博士（理学）。恐竜を研究し、古生物学の研究成果や自身の論文を解説するVTuber。",
     "forms": [
       {
         "surface": "古知累すすむ",
@@ -525,7 +527,8 @@
     ],
     "source_urls": [
       "https://www.youtube.com/channel/UC_0vLXDfuSHaNmJlW2jd8hA",
-      "https://www.youtube.com/watch?v=WrelkoUnGPQ"
+      "https://www.youtube.com/watch?v=WrelkoUnGPQ",
+      "https://note.com/asamorikdb/n/n003b14be517a"
     ],
     "reviewed_on": "2026-10-10"
   },
@@ -623,9 +626,9 @@
     "id": "3418",
     "original": "痛帝陛下",
     "field": "NA",
-    "degree": "博士号取得",
+    "degree": "博士（人間情報学）",
     "degree_kind": "earned_doctorate",
-    "description": "博士号取得。研究者として活動し、ゲーム実況や研究生活について配信するVTuber。",
+    "description": "博士（人間情報学）。研究者として活動し、ゲーム実況や研究生活について配信するVTuber。",
     "forms": [
       {
         "surface": "痛帝陛下",
@@ -635,7 +638,8 @@
     ],
     "source_urls": [
       "https://www.youtube.com/channel/UCclYncR_-rK4PDfECIsxOHA",
-      "https://www.youtube.com/live/FKupEZ1z4T8"
+      "https://www.youtube.com/live/FKupEZ1z4T8",
+      "https://note.com/asamorikdb/n/n003b14be517a"
     ],
     "reviewed_on": "2026-10-10"
   },
@@ -693,9 +697,9 @@
     "id": "3421",
     "original": "総蔵りんね",
     "field": "環境学/生物学",
-    "degree": "博士号取得",
+    "degree": "博士（環境情報学）",
     "degree_kind": "earned_doctorate",
-    "description": "博士号取得。景観生態学を専門とし、里山の保全や生物多様性について発信するVTuber。",
+    "description": "博士（環境情報学）。景観生態学を専門とし、里山の保全や生物多様性について発信するVTuber。",
     "forms": [
       {
         "surface": "総蔵りんね",
@@ -716,7 +720,8 @@
     "source_urls": [
       "https://scholarvtuber.com/vtuber/fusakurarinne/",
       "https://note.com/fusakurarinnne/n/n3575831ff386",
-      "https://www.youtube.com/@fusakurarinne"
+      "https://www.youtube.com/@fusakurarinne",
+      "https://note.com/asamorikdb/n/n003b14be517a"
     ],
     "reviewed_on": "2026-10-10"
   },
@@ -846,6 +851,68 @@
     "source_urls": [
       "https://www.jst.go.jp/sis/scienceagora/2022/online/20-a19.html",
       "https://www.youtube.com/@mercurius_richland"
+    ],
+    "reviewed_on": "2026-10-10"
+  },
+  {
+    "id": "3427",
+    "original": "建立ライ",
+    "field": "工学",
+    "degree": "博士号取得",
+    "degree_kind": "earned_doctorate",
+    "description": "博士号取得。建築情報学を専門とし、建築用ソフトウェアやプログラミングを解説するVTuber。",
+    "forms": [
+      {
+        "surface": "建立ライ",
+        "pronunciation": "コンリュウライ",
+        "type": "full"
+      },
+      {
+        "surface": "建立",
+        "pronunciation": "コンリュウ",
+        "type": "family"
+      },
+      {
+        "surface": "ライ",
+        "pronunciation": "ライ",
+        "type": "given"
+      }
+    ],
+    "source_urls": [
+      "https://note.com/asamorikdb/n/n003b14be517a",
+      "https://scholarvtuber.com/vtuber/konryu_rai/",
+      "https://www.youtube.com/@Pro-design_Secret_base"
+    ],
+    "reviewed_on": "2026-10-10"
+  },
+  {
+    "id": "3428",
+    "original": "紫波レント",
+    "field": "生物学/化学",
+    "degree": "博士（理学）",
+    "degree_kind": "earned_doctorate",
+    "description": "博士（理学）。酵素工学や構造生物学などを専門とする元大学教員のVTuber。",
+    "forms": [
+      {
+        "surface": "紫波レント",
+        "pronunciation": "シバレント",
+        "type": "full"
+      },
+      {
+        "surface": "紫波",
+        "pronunciation": "シバ",
+        "type": "family"
+      },
+      {
+        "surface": "レント",
+        "pronunciation": "レント",
+        "type": "given"
+      }
+    ],
+    "source_urls": [
+      "https://note.com/asamorikdb/n/n003b14be517a",
+      "https://www.youtube.com/@trans-cyp4365",
+      "https://w.atwiki.jp/sog4/pages/20.html"
     ],
     "reviewed_on": "2026-10-10"
   }
