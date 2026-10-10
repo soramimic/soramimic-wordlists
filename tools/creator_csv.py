@@ -20,13 +20,20 @@ def image_availability(image):
 
 
 def write_creator_csv(path, columns, rows, writer=write_csv_no_trailing_newline):
-    """Keep image availability in sync when adding people or replacing images."""
+    """Preserve usage notices and update image availability when writing creators."""
     columns = list(columns)
     if "has_image" not in columns:
         columns.append("has_image")
-    rows = [{**row, "has_image": image_availability(row.get("image"))}
-            for row in rows]
-    writer(path, columns, rows)
+    updated = []
+    for row in rows:
+        row = {**row, "has_image": image_availability(row.get("image"))}
+        # Missing metadata on new VTubers gets the default notice; explicit edits survive.
+        if "usage_notice" in columns and row.get("usage_notice") in (None, "NA"):
+            row["usage_notice"] = "guidelines" if row.get("category") == "vtuber" else ""
+        if "usage_terms_page" in columns and row.get("usage_terms_page") in (None, "NA"):
+            row["usage_terms_page"] = ""
+        updated.append(row)
+    writer(path, columns, updated)
 
 
 def validate_creator_rows(rows):

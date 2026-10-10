@@ -19,7 +19,8 @@ class CreatorCsvTest(unittest.TestCase):
         self.addCleanup(self.temp.cleanup)
         self.paths = tuple(Path(self.temp.name) / f"{category}.csv"
                            for category in ("youtuber", "vtuber"))
-        self.columns = [*yt_common.COLS, "image", "subscribers", "has_image"]
+        self.columns = [*yt_common.COLS, "image", "subscribers", "has_image",
+                        "usage_notice", "usage_terms_page"]
         self.rows = [self.person("3", "ヒカリ", "youtuber"),
                      self.person("90", "ソラ", "vtuber")]
         write_creator_csvs(self.columns, self.rows, self.paths)
@@ -29,7 +30,9 @@ class CreatorCsvTest(unittest.TestCase):
                 "original": name, "surface": name, "pronunciation": name,
                 "category": category, "type": "full", "status": "current",
                 "image": "https://example.com/image.svg", "subscribers": "1230",
-                "has_image": "yes"}
+                "has_image": "yes",
+                "usage_notice": "guidelines" if category == "vtuber" else "",
+                "usage_terms_page": ""}
 
     def test_writer_adds_column_and_refreshes_image_availability(self):
         columns = [c for c in self.columns if c != "has_image"]
@@ -47,7 +50,7 @@ class CreatorCsvTest(unittest.TestCase):
                 rows = [{**row, "image": image} for row in self.rows]
                 write_creator_csvs(columns, rows, self.paths)
                 actual_columns, actual = read_creator_csvs(self.paths)
-                self.assertEqual(actual_columns, self.columns)
+                self.assertEqual(actual_columns, columns + ["has_image"])
                 self.assertEqual({row["has_image"] for row in actual}, {expected})
                 self.assertEqual({row["has_image"] for row in rows}, {"yes"})
 
@@ -60,6 +63,13 @@ class CreatorCsvTest(unittest.TestCase):
             self.assertFalse(path.read_bytes().endswith(b"\n"))
             self.assertEqual({row["category"] for row in read_creator_csvs((path,))[1]},
                              {path.stem})
+
+    def test_notice_is_preserved_independently_of_category_and_image(self):
+        rows = [{**self.rows[0], "usage_notice": "guidelines",
+                 "usage_terms_page": "https://example.com/terms"},
+                {**self.rows[1], "usage_notice": "", "usage_terms_page": ""}]
+        write_creator_csvs(self.columns, rows, self.paths)
+        self.assertEqual(read_creator_csvs(self.paths)[1], rows)
 
     def test_id_collision_rejected_before_writing(self):
         before = [path.read_bytes() for path in self.paths]
@@ -108,6 +118,9 @@ class CreatorCsvTest(unittest.TestCase):
                          {"アオ": "youtuber", "アカ": "vtuber"})
         self.assertEqual({r["has_image"] for r in rows if r["id"] in {"91", "92"}},
                          {"no"})
+        self.assertEqual({r["category"]: r["usage_notice"] for r in rows
+                          if r["id"] in {"91", "92"}},
+                         {"youtuber": "", "vtuber": "guidelines"})
 
     def test_updater_applies_reviewed_category_override_to_new_person(self):
         specs = [dict(category=category, occ=category, must=(), must_not=(),

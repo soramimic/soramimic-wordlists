@@ -7,6 +7,7 @@ import re
 from pathlib import Path
 
 from wpnames import write_csv_no_trailing_newline
+from usage_notices import validate_usage_notices
 
 ROOT = Path(__file__).resolve().parent.parent
 MANIFEST = Path(__file__).with_suffix(".json")
@@ -15,6 +16,7 @@ FLAG = "celebrity_doctorate"
 
 def load_entries(path=MANIFEST):
     entries = json.loads(Path(path).read_text(encoding="utf-8"))
+    validate_usage_notices(entries)
     ids, names = set(), set()
     for entry in entries:
         person_id, name = entry["id"], entry["original"]
@@ -71,6 +73,9 @@ def apply_entries(rows, columns, entries):
         for row in current:
             row[FLAG] = "yes"
             row["description"] = entry["description"]
+            for column in ("usage_notice", "usage_terms_page"):
+                if row.get(column) in (None, "NA"):
+                    row[column] = entry.get(column, "")
     return result
 
 
@@ -100,6 +105,9 @@ def main():
         columns, rows = list(reader.fieldnames), list(reader)
     if FLAG not in columns:
         columns.append(FLAG)
+    for column in ("usage_notice", "usage_terms_page"):
+        if column not in columns:
+            columns.append(column)
     entries = load_entries()
     updated = apply_entries(rows, columns, entries)
     validate_flags(updated, entries)

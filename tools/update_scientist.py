@@ -683,7 +683,7 @@ def build_attr(bnd: dict) -> dict:
 COLS = ["id", "original", "surface", "pronunciation", "type",
         "field", "era", "birth_year", "death_year", "nobel", "gender",
         "country", "status",
-        "description", "image", "image_page", FLAG]
+        "description", "image", "image_page", FLAG, "usage_notice", "usage_terms_page"]
 # 既存行に付与/保持する新列
 NEW_FIELDS = ["field", "era", "birth_year", "death_year", "nobel", "gender",
               "country", "status", "description"]

@@ -65,6 +65,8 @@ class UpdateScientistTest(unittest.TestCase):
         updated = apply_entries(stale, COLS, entries)
         self.assertEqual(updated, rows)
         self.assertEqual(apply_entries(updated, COLS, entries), updated)
+        notice_edit = [dict(row, usage_notice="", usage_terms_page="") for row in rows]
+        self.assertEqual(apply_entries(notice_edit, COLS, entries), notice_edit)
         self.assertTrue(all(row["description"] == "以前の説明。" for row in stale
                             if row["celebrity_doctorate"] == "yes"))
         wrong_id = [dict(rows[0], id=entries[0]["id"])]
