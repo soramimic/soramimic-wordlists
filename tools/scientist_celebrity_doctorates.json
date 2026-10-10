@@ -1,0 +1,342 @@
+[
+  {
+    "id": "3396",
+    "original": "北白川かかぽ",
+    "field": "物理",
+    "degree": "博士（理学）",
+    "degree_kind": "earned_doctorate",
+    "description": "博士（理学）を取得したVTuber。科学の解説や教育イベントで活動。",
+    "forms": [
+      {
+        "surface": "北白川かかぽ",
+        "pronunciation": "キタシラカワカカポ",
+        "type": "full"
+      },
+      {
+        "surface": "北白川",
+        "pronunciation": "キタシラカワ",
+        "type": "family"
+      },
+      {
+        "surface": "かかぽ",
+        "pronunciation": "カカポ",
+        "type": "given"
+      }
+    ],
+    "source_urls": [
+      "https://sites.google.com/view/kakapo-research/",
+      "https://vee-official.jp/talent/kitashirakawa-kakapo/",
+      "https://www.u-elsi.org/pdf/Journal002_Kitashirakawa.pdf"
+    ],
+    "reviewed_on": "2026-10-10"
+  },
+  {
+    "id": "3397",
+    "original": "宙科そぴあ",
+    "field": "理学",
+    "degree": "博士（理学）",
+    "degree_kind": "earned_doctorate",
+    "description": "博士（理学）の取得を公表したホロライブのVTuber。科学の楽しさを伝える活動を行う。",
+    "forms": [
+      {
+        "surface": "宙科そぴあ",
+        "pronunciation": "ソラシナソピア",
+        "type": "full"
+      },
+      {
+        "surface": "宙科",
+        "pronunciation": "ソラシナ",
+        "type": "family"
+      },
+      {
+        "surface": "そぴあ",
+        "pronunciation": "ソピア",
+        "type": "given"
+      }
+    ],
+    "source_urls": [
+      "https://hololive.hololivepro.com/talents/sorashina-sopia/",
+      "https://www.youtube.com/watch?v=NBPgxu6pLgk",
+      "https://note.com/asamorikdb/n/n003b14be517a",
+      "https://hololive-tsuushin.com/holonews/hakusi/"
+    ],
+    "reviewed_on": "2026-10-10"
+  },
+  {
+    "id": "3398",
+    "original": "須貝駿貴",
+    "field": "物理",
+    "degree": "博士（学術）",
+    "degree_kind": "earned_doctorate",
+    "description": "超伝導の研究で東京大学の博士（学術）を取得。QuizKnockで科学実験や解説を行う。",
+    "forms": [
+      {
+        "surface": "須貝駿貴",
+        "pronunciation": "スガイシュンキ",
+        "type": "full"
+      },
+      {
+        "surface": "須貝",
+        "pronunciation": "スガイ",
+        "type": "family"
+      },
+      {
+        "surface": "駿貴",
+        "pronunciation": "シュンキ",
+        "type": "given"
+      }
+    ],
+    "source_urls": [
+      "https://web.quizknock.com/sugai_interview_2",
+      "https://web.quizknock.com/sugai_interview_2?page=2"
+    ],
+    "reviewed_on": "2026-10-10"
+  },
+  {
+    "id": "3399",
+    "original": "鶴崎修功",
+    "field": "数学",
+    "degree": "博士（数理科学）",
+    "degree_kind": "earned_doctorate",
+    "description": "東京大学大学院で数学を研究して博士号を取得。QuizKnockやクイズ番組で活動。",
+    "forms": [
+      {
+        "surface": "鶴崎修功",
+        "pronunciation": "ツルサキヒサノリ",
+        "type": "full"
+      },
+      {
+        "surface": "鶴崎",
+        "pronunciation": "ツルサキ",
+        "type": "family"
+      },
+      {
+        "surface": "修功",
+        "pronunciation": "ヒサノリ",
+        "type": "given"
+      }
+    ],
+    "source_urls": [
+      "https://www.watanabepro.co.jp/mypage/61000038/",
+      "https://www.ms.u-tokyo.ac.jp/activity/documents/AnnualReport2022.pdf",
+      "https://x.com/Tsurusaki_H"
+    ],
+    "reviewed_on": "2026-10-10"
+  },
+  {
+    "id": "3400",
+    "original": "田村正資",
+    "field": "哲学",
+    "degree": "博士（学術）",
+    "degree_kind": "earned_doctorate",
+    "description": "東京大学で哲学を研究して博士（学術）を取得。QuizKnockの企画や執筆に携わる。",
+    "forms": [
+      {
+        "surface": "田村正資",
+        "pronunciation": "タムラタダシ",
+        "type": "full"
+      },
+      {
+        "surface": "田村",
+        "pronunciation": "タムラ",
+        "type": "family"
+      },
+      {
+        "surface": "正資",
+        "pronunciation": "タダシ",
+        "type": "given"
+      }
+    ],
+    "source_urls": [
+      "https://web.quizknock.com/life-with-quiz",
+      "https://web.quizknock.com/tamura_interview_1"
+    ],
+    "reviewed_on": "2026-10-10"
+  },
+  {
+    "id": "3401",
+    "original": "アグネス・チャン",
+    "field": "教育学",
+    "degree": "Ph.D.（教育学）",
+    "degree_kind": "earned_doctorate",
+    "description": "スタンフォード大学で教育学の博士号を取得した歌手。子どもの支援活動にも携わる。",
+    "forms": [
+      {
+        "surface": "アグネス・チャン",
+        "pronunciation": "アグネス・チャン",
+        "type": "full"
+      },
+      {
+        "surface": "チャン",
+        "pronunciation": "チャン",
+        "type": "family"
+      }
+    ],
+    "source_urls": [
+      "https://www.unicef.or.jp/library/pres_bn2003/pres_03_12.html",
+      "https://www.unic.or.jp/activities/un_japan/un_interview/agnes_chan/"
+    ],
+    "reviewed_on": "2026-10-10"
+  },
+  {
+    "id": "979",
+    "original": "ブライアン・メイ",
+    "field": "天文学",
+    "degree": "Ph.D.（天体物理学）",
+    "degree_kind": "earned_doctorate",
+    "description": "クイーンのギタリスト。インペリアル・カレッジ・ロンドンで天体物理学の博士号を取得。",
+    "forms": [
+      {
+        "surface": "ブライアン・メイ",
+        "pronunciation": "ブライアン・メイ",
+        "type": "full"
+      },
+      {
+        "surface": "メイ",
+        "pronunciation": "メイ",
+        "type": "family"
+      }
+    ],
+    "source_urls": [
+      "https://blogs.imperial.ac.uk/videoarchive/brian-may-december-2010/",
+      "https://www.imperial.ac.uk/news/16474/brian-may-describes-coming-closer-cosmos/"
+    ],
+    "reviewed_on": "2026-10-10"
+  },
+  {
+    "id": "3402",
+    "original": "デクスター・ホーランド",
+    "field": "生物学",
+    "degree": "Ph.D.（分子生物学）",
+    "degree_kind": "earned_doctorate",
+    "description": "オフスプリングのボーカル。南カリフォルニア大学で分子生物学の博士号を取得。",
+    "forms": [
+      {
+        "surface": "デクスター・ホーランド",
+        "pronunciation": "デクスター・ホーランド",
+        "type": "full"
+      },
+      {
+        "surface": "ホーランド",
+        "pronunciation": "ホーランド",
+        "type": "family"
+      }
+    ],
+    "source_urls": [
+      "https://dornsife.usc.edu/bisc/2025/01/07/dexter-holland/",
+      "https://dornsife.usc.edu/news/stories/bob-baker-dexter-holland-memorial-scholarship/",
+      "https://origin.rockinon.com/news/detail/160642"
+    ],
+    "reviewed_on": "2026-10-10"
+  },
+  {
+    "id": "3403",
+    "original": "メイム・ビアリク",
+    "field": "生物学",
+    "degree": "Ph.D.（神経科学）",
+    "degree_kind": "earned_doctorate",
+    "description": "ドラマ『ビッグバン★セオリー』に出演した俳優。UCLAで神経科学の博士号を取得。",
+    "forms": [
+      {
+        "surface": "メイム・ビアリク",
+        "pronunciation": "メイム・ビアリク",
+        "type": "full"
+      },
+      {
+        "surface": "ビアリク",
+        "pronunciation": "ビアリク",
+        "type": "family"
+      }
+    ],
+    "source_urls": [
+      "https://www.ucla.edu/about/notable-bruins/43-mayim-bialik",
+      "https://newsroom.ucla.edu/releases/mayim-bialik-ucla-college-commencement",
+      "https://www.allcinema.net/person/pdf/78197"
+    ],
+    "reviewed_on": "2026-10-10"
+  },
+  {
+    "id": "3404",
+    "original": "鳩山由紀夫",
+    "field": "工学",
+    "degree": "Ph.D.（オペレーションズ・リサーチ）",
+    "degree_kind": "earned_doctorate",
+    "description": "内閣総理大臣を務めた政治家。スタンフォード大学でオペレーションズ・リサーチの博士号を取得。",
+    "forms": [
+      {
+        "surface": "鳩山由紀夫",
+        "pronunciation": "ハトヤマユキオ",
+        "type": "full"
+      },
+      {
+        "surface": "鳩山",
+        "pronunciation": "ハトヤマ",
+        "type": "family"
+      },
+      {
+        "surface": "由紀夫",
+        "pronunciation": "ユキオ",
+        "type": "given"
+      }
+    ],
+    "source_urls": [
+      "https://www.hatoyama.gr.jp/profile.html",
+      "https://orsj.org/wp-content/corsj/or56-9/or56_9_545.pdf"
+    ],
+    "reviewed_on": "2026-10-10"
+  },
+  {
+    "id": "3405",
+    "original": "アンゲラ・メルケル",
+    "field": "物理/化学",
+    "degree": "Dr. rer. nat.（物理学）",
+    "degree_kind": "earned_doctorate",
+    "description": "ドイツ首相を務めた政治家。物理学の博士号を取得し、物理化学の研究所に勤務した。",
+    "forms": [
+      {
+        "surface": "アンゲラ・メルケル",
+        "pronunciation": "アンゲラ・メルケル",
+        "type": "full"
+      },
+      {
+        "surface": "メルケル",
+        "pronunciation": "メルケル",
+        "type": "family"
+      }
+    ],
+    "source_urls": [
+      "https://www.bundesregierung.de/breg-en/service/archive/federal-chancellor-harnack-1938126",
+      "https://www.bundestag.de/webarchiv/abgeordnete/biografien18/M/merkel_angela-258788"
+    ],
+    "reviewed_on": "2026-10-10"
+  },
+  {
+    "id": "3406",
+    "original": "米山隆一",
+    "field": "医学",
+    "degree": "博士（医学）",
+    "degree_kind": "earned_doctorate",
+    "description": "医学博士号を持つ政治家・医師・弁護士。新潟県知事を務めた。",
+    "forms": [
+      {
+        "surface": "米山隆一",
+        "pronunciation": "ヨネヤマリュウイチ",
+        "type": "full"
+      },
+      {
+        "surface": "米山",
+        "pronunciation": "ヨネヤマ",
+        "type": "family"
+      },
+      {
+        "surface": "隆一",
+        "pronunciation": "リュウイチ",
+        "type": "given"
+      }
+    ],
+    "source_urls": [
+      "https://yoneyamaryuichi.com/profile/"
+    ],
+    "reviewed_on": "2026-10-10"
+  }
+]

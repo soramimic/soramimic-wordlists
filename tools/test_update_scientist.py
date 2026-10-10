@@ -8,6 +8,7 @@ from pathlib import Path
 from unittest.mock import patch
 
 import update_scientist
+from scientist_celebrity_doctorates import apply_entries, load_entries, validate_flags
 
 from update_scientist import (
     COLS,
@@ -19,6 +20,59 @@ from update_scientist import (
 
 
 class UpdateScientistTest(unittest.TestCase):
+    def test_reviewed_celebrities_survive_monthly_exclusions_and_refresh(self):
+        entries = load_entries()
+        merkel = next(e for e in entries if e["original"] == "アンゲラ・メルケル")
+        self.assertIn(merkel["original"], update_scientist.EXCLUDED)
+        existing = dict.fromkeys(COLS, "NA")
+        existing.update(id="1", original="既存科学者", surface="既存科学者",
+                        pronunciation="キゾンカガクシャ", type="full", field="物理",
+                        description="理論を提唱した。", image="", image_page="")
+        del existing["celebrity_doctorate"]  # CSV from before the schema extension.
+        expected = apply_entries([existing], COLS, entries)
+        persons = {f"Q{i}": {"title": f"未収録{i}", "fields": ["物理"]}
+                   for i in range(1, 2001)}
+        persons["Q567"] = {"title": merkel["original"], "fields": ["物理"]}
+        attrs = {"Q567": {"country": "誤った国", "birth_year": "1900"}}
+        with tempfile.TemporaryDirectory() as directory:
+            csv_path = Path(directory) / "scientist.csv"
+            update_scientist.write_csv_no_trailing_newline(
+                csv_path, [c for c in COLS if c != "celebrity_doctorate"], [existing])
+            with (patch.object(update_scientist, "NEW_CSV", csv_path),
+                  patch.object(update_scientist, "fetch_person_set", return_value=persons),
+                  patch.object(update_scientist, "fetch_all", return_value=(attrs, {})),
+                  patch.object(update_scientist, "parse_person", return_value=None),
+                  redirect_stdout(io.StringIO())):
+                self.assertEqual(update_scientist.main(), 0)
+                first = csv_path.read_bytes()
+                self.assertEqual(update_scientist.main(), 0)
+                self.assertEqual(csv_path.read_bytes(), first)
+            with csv_path.open(encoding="utf-8", newline="") as fh:
+                actual = list(csv.DictReader(fh))
+        self.assertEqual(actual, expected)
+        validate_flags(actual, entries)
+
+    def test_celebrities_preserve_existing_rows_and_reject_identity_conflicts(self):
+        entries = load_entries()
+        path = Path(__file__).resolve().parent.parent / "scientist.csv"
+        with path.open(encoding="utf-8", newline="") as fh:
+            rows = list(csv.DictReader(fh))
+        self.assertEqual(apply_entries(rows, COLS, entries), rows)
+        validate_flags(rows, entries)
+        wrong_id = [dict(rows[0], id=entries[0]["id"])]
+        with self.assertRaisesRegex(ValueError, "ID/name conflict"):
+            apply_entries(wrong_id, COLS, entries)
+        wrong_name = [dict(rows[0], original=entries[0]["original"])]
+        with self.assertRaisesRegex(ValueError, "ID/name conflict"):
+            apply_entries(wrong_name, COLS, entries)
+        for flag in ("no", "NA", ""):
+            broken = [dict(r) for r in rows]
+            next(r for r in broken if r["celebrity_doctorate"] == "yes")["celebrity_doctorate"] = flag
+            with self.subTest(flag=flag), self.assertRaises(ValueError):
+                validate_flags(broken, entries)
+        with self.assertRaises(ValueError):
+            validate_flags([dict(rows[0], celebrity_doctorate="yes")], [])
+
     def test_new_nobel_awards_are_applied_without_losing_confirmed_awards(self):
         cases = [
             ("新受賞者", "no", "yes", "yes"),
@@ -37,7 +91,7 @@ class UpdateScientistTest(unittest.TestCase):
                         era="現代", birth_year="1970", country="日本",
                         gender="男性", status="存命", nobel=old,
                         description="光を用いた測定法を開発した。",
-                        image="", image_page="")
+                        image="", image_page="", celebrity_doctorate="no")
             for kind in ("family", "full"):
                 rows.append(dict(base, type=kind, surface=name,
                                  pronunciation="テスト"))
@@ -54,6 +108,7 @@ class UpdateScientistTest(unittest.TestCase):
             csv_path = Path(directory) / "scientist.csv"
             update_scientist.write_csv_no_trailing_newline(csv_path, COLS, rows)
             with (patch.object(update_scientist, "NEW_CSV", csv_path),
+                  patch.object(update_scientist, "load_entries", return_value=[]),
                   patch.object(update_scientist, "fetch_person_set", return_value=persons),
                   patch.object(update_scientist, "fetch_all", return_value=(attrs, {})),
                   patch.object(update_scientist, "parse_person", return_value=None),

@@ -89,6 +89,7 @@ baseball / football のうちOpenAI APIで公開Wikipedia本文から候補文�
 | 列 | 意味 |
 |---|---|
 | type | 表層の種類(`family`/`given`/`full`) |
+| celebrity_doctorate | 博士号を持つ著名人として任意選択する人物か(`yes`/`no`)。利用側の既定は `no` のみ |
 | field | 分野。複数は `/` 区切り |
 | era | `古代`/`中世`/`近世`/`近代`/`現代`/`NA` |
 | birth_year, death_year | 生年と没年。紀元前は `前287` の形式 |
@@ -106,6 +107,12 @@ baseball / football のうちOpenAI APIで公開Wikipedia本文から候補文�
 `nobel=yes` で受賞者を絞り込める。平和賞・文学賞のみの受賞は対象に含めない。
 新たな受賞は自動更新で `no` から `yes` に反映し、確認済みの `yes` は保持する。
 個別に追加した受賞者の確認先は `tools/scientist_nobel_sources.jsonl` に記録する。
+
+`celebrity_doctorate=yes` は、博士号を取得したVTuber、YouTuber、芸能人、公人など。
+名誉博士号だけの人物、博士課程への在籍だけの人物、設定上だけの博士は含めない。
+公開活動名、学位、確認先は `tools/scientist_celebrity_doctorates.json` に記録する。
+教育学・哲学・医学・工学も対象とし、詳しい専攻が不明な理学博士は `field=理学` とする。
+生年などが未確認の場合は `NA` を保持する。通常の科学者全員の学位を判定する列ではない。
 
 ## sekitsui.csv
 
