@@ -5,7 +5,7 @@
     "field": "物理",
     "degree": "博士（理学）",
     "degree_kind": "earned_doctorate",
-    "description": "博士（理学）を取得したVTuber。科学の解説や教育イベントで活動。",
+    "description": "博士（理学）。科学の解説や教育イベントで活動するVTuber。",
     "forms": [
       {
         "surface": "北白川かかぽ",
@@ -36,7 +36,7 @@
     "field": "理学",
     "degree": "博士（理学）",
     "degree_kind": "earned_doctorate",
-    "description": "博士（理学）の取得を公表したホロライブのVTuber。科学の楽しさを伝える活動を行う。",
+    "description": "博士（理学）。ホロライブのVTuberとして科学の楽しさを伝える活動を行う。",
     "forms": [
       {
         "surface": "宙科そぴあ",
@@ -68,7 +68,7 @@
     "field": "物理",
     "degree": "博士（学術）",
     "degree_kind": "earned_doctorate",
-    "description": "超伝導の研究で東京大学の博士（学術）を取得。QuizKnockで科学実験や解説を行う。",
+    "description": "博士（学術）。東京大学で超伝導を研究し、QuizKnockで科学実験や解説を行う。",
     "forms": [
       {
         "surface": "須貝駿貴",
@@ -98,7 +98,7 @@
     "field": "数学",
     "degree": "博士（数理科学）",
     "degree_kind": "earned_doctorate",
-    "description": "東京大学大学院で数学を研究して博士号を取得。QuizKnockやクイズ番組で活動。",
+    "description": "博士（数理科学）。東京大学大学院で数学を研究し、QuizKnockやクイズ番組で活動。",
     "forms": [
       {
         "surface": "鶴崎修功",
@@ -129,7 +129,7 @@
     "field": "哲学",
     "degree": "博士（学術）",
     "degree_kind": "earned_doctorate",
-    "description": "東京大学で哲学を研究して博士（学術）を取得。QuizKnockの企画や執筆に携わる。",
+    "description": "博士（学術）。東京大学で哲学を研究し、QuizKnockの企画や執筆に携わる。",
     "forms": [
       {
         "surface": "田村正資",
@@ -159,7 +159,7 @@
     "field": "教育学",
     "degree": "Ph.D.（教育学）",
     "degree_kind": "earned_doctorate",
-    "description": "スタンフォード大学で教育学の博士号を取得した歌手。子どもの支援活動にも携わる。",
+    "description": "Ph.D.（教育学）。スタンフォード大学で学位を取得した歌手。子どもの支援活動にも携わる。",
     "forms": [
       {
         "surface": "アグネス・チャン",
@@ -184,7 +184,7 @@
     "field": "天文学",
     "degree": "Ph.D.（天体物理学）",
     "degree_kind": "earned_doctorate",
-    "description": "クイーンのギタリスト。インペリアル・カレッジ・ロンドンで天体物理学の博士号を取得。",
+    "description": "Ph.D.（天体物理学）。クイーンのギタリスト。黄道光ダスト雲の視線速度を測定し、惑星間塵の運動理解に貢献した。",
     "forms": [
       {
         "surface": "ブライアン・メイ",
@@ -209,7 +209,7 @@
     "field": "生物学",
     "degree": "Ph.D.（分子生物学）",
     "degree_kind": "earned_doctorate",
-    "description": "オフスプリングのボーカル。南カリフォルニア大学で分子生物学の博士号を取得。",
+    "description": "Ph.D.（分子生物学）。南カリフォルニア大学で学位を取得したオフスプリングのボーカル。",
     "forms": [
       {
         "surface": "デクスター・ホーランド",
@@ -235,7 +235,7 @@
     "field": "生物学",
     "degree": "Ph.D.（神経科学）",
     "degree_kind": "earned_doctorate",
-    "description": "ドラマ『ビッグバン★セオリー』に出演した俳優。UCLAで神経科学の博士号を取得。",
+    "description": "Ph.D.（神経科学）。UCLAで学位を取得した俳優。ドラマ『ビッグバン★セオリー』に出演。",
     "forms": [
       {
         "surface": "メイム・ビアリク",
@@ -261,7 +261,7 @@
     "field": "工学",
     "degree": "Ph.D.（オペレーションズ・リサーチ）",
     "degree_kind": "earned_doctorate",
-    "description": "内閣総理大臣を務めた政治家。スタンフォード大学でオペレーションズ・リサーチの博士号を取得。",
+    "description": "Ph.D.（オペレーションズ・リサーチ）。スタンフォード大学で学位を取得し、内閣総理大臣を務めた。",
     "forms": [
       {
         "surface": "鳩山由紀夫",
@@ -291,7 +291,7 @@
     "field": "物理/化学",
     "degree": "Dr. rer. nat.（物理学）",
     "degree_kind": "earned_doctorate",
-    "description": "ドイツ首相を務めた政治家。物理学の博士号を取得し、物理化学の研究所に勤務した。",
+    "description": "Dr. rer. nat.（物理学）。物理化学の研究所に勤務し、ドイツ首相を務めた。",
     "forms": [
       {
         "surface": "アンゲラ・メルケル",
@@ -316,7 +316,7 @@
     "field": "医学",
     "degree": "博士（医学）",
     "degree_kind": "earned_doctorate",
-    "description": "医学博士号を持つ政治家・医師・弁護士。新潟県知事を務めた。",
+    "description": "博士（医学）。政治家・医師・弁護士として活動し、新潟県知事を務めた。",
     "forms": [
       {
         "surface": "米山隆一",

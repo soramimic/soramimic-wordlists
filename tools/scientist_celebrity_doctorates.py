@@ -27,6 +27,8 @@ def load_entries(path=MANIFEST):
             raise ValueError(f"missing earned doctorate evidence: {name}")
         if not all(url.startswith("https://") for url in entry["source_urls"]):
             raise ValueError(f"invalid source URL: {name}")
+        if not entry["description"].startswith(entry["degree"] + "。"):
+            raise ValueError(f"description must begin with the reviewed degree: {name}")
         seen = set()
         for form in entry["forms"]:
             key = (form["surface"], form["pronunciation"], form["type"])
@@ -45,7 +47,7 @@ def load_entries(path=MANIFEST):
 
 
 def apply_entries(rows, columns, entries):
-    """Preserve existing IDs, forms and metadata; append only reviewed new people."""
+    """Apply reviewed descriptions while preserving existing IDs, forms and metadata."""
     result = [dict(row) for row in rows]
     by_id, by_name = {}, {}
     for row in result:
@@ -68,6 +70,7 @@ def apply_entries(rows, columns, entries):
             result.extend(current)
         for row in current:
             row[FLAG] = "yes"
+            row["description"] = entry["description"]
     return result
 
 

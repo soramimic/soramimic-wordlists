@@ -59,6 +59,14 @@ class UpdateScientistTest(unittest.TestCase):
             rows = list(csv.DictReader(fh))
         self.assertEqual(apply_entries(rows, COLS, entries), rows)
         validate_flags(rows, entries)
+        stale = [dict(row, description="以前の説明。")
+                 if row["celebrity_doctorate"] == "yes" else dict(row)
+                 for row in rows]
+        updated = apply_entries(stale, COLS, entries)
+        self.assertEqual(updated, rows)
+        self.assertEqual(apply_entries(updated, COLS, entries), updated)
+        self.assertTrue(all(row["description"] == "以前の説明。" for row in stale
+                            if row["celebrity_doctorate"] == "yes"))
         wrong_id = [dict(rows[0], id=entries[0]["id"])]
         with self.assertRaisesRegex(ValueError, "ID/name conflict"):
             apply_entries(wrong_id, COLS, entries)
