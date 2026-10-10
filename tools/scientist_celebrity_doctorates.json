@@ -338,5 +338,515 @@
       "https://yoneyamaryuichi.com/profile/"
     ],
     "reviewed_on": "2026-10-10"
+  },
+  {
+    "id": "3407",
+    "original": "アイシア=ソリッド",
+    "field": "数学/計算機科学",
+    "degree": "博士（数理科学）",
+    "degree_kind": "earned_doctorate",
+    "description": "博士（数理科学）。数学・統計学・機械学習を解説するデータサイエンス系VTuber。",
+    "forms": [
+      {
+        "surface": "アイシア=ソリッド",
+        "pronunciation": "アイシアソリッド",
+        "type": "full"
+      },
+      {
+        "surface": "アイシア",
+        "pronunciation": "アイシア",
+        "type": "given"
+      },
+      {
+        "surface": "ソリッド",
+        "pronunciation": "ソリッド",
+        "type": "family"
+      }
+    ],
+    "source_urls": [
+      "https://www.edge-tech.co.jp/news/press20260515.html",
+      "https://www.youtube.com/@AIcia_Solid"
+    ],
+    "reviewed_on": "2026-10-10"
+  },
+  {
+    "id": "3408",
+    "original": "明晩あるむ",
+    "field": "化学",
+    "degree": "博士号取得",
+    "degree_kind": "earned_doctorate",
+    "description": "博士号取得。物理化学を専門とし、身近な化学から研究の話題まで解説するVTuber。",
+    "forms": [
+      {
+        "surface": "明晩あるむ",
+        "pronunciation": "アケクレアルム",
+        "type": "full"
+      },
+      {
+        "surface": "明晩",
+        "pronunciation": "アケクレ",
+        "type": "family"
+      },
+      {
+        "surface": "あるむ",
+        "pronunciation": "アルム",
+        "type": "given"
+      }
+    ],
+    "source_urls": [
+      "https://www.youtube.com/watch?v=MZNKC4D0kPI",
+      "https://scholarvtuber.com/vtuber/akekure_arum/"
+    ],
+    "reviewed_on": "2026-10-10"
+  },
+  {
+    "id": "3409",
+    "original": "飴村ファーマ",
+    "field": "薬学",
+    "degree": "博士（薬学）",
+    "degree_kind": "earned_doctorate",
+    "description": "博士（薬学）。薬剤師として病院に勤務し、薬学や医療情報を解説するVTuber。",
+    "forms": [
+      {
+        "surface": "飴村ファーマ",
+        "pronunciation": "アメムラファーマ",
+        "type": "full"
+      },
+      {
+        "surface": "飴村",
+        "pronunciation": "アメムラ",
+        "type": "family"
+      },
+      {
+        "surface": "ファーマ",
+        "pronunciation": "ファーマ",
+        "type": "given"
+      }
+    ],
+    "source_urls": [
+      "https://scholarvtuber.com/vtuber/phama_vtuber/",
+      "https://twpf.jp/vt_pharma"
+    ],
+    "reviewed_on": "2026-10-10"
+  },
+  {
+    "id": "3410",
+    "original": "きゅぷら",
+    "field": "生物学",
+    "degree": "博士号取得",
+    "degree_kind": "earned_doctorate",
+    "description": "博士号取得。構造生物化学を研究し、将棋の配信などを行うVTuber。",
+    "forms": [
+      {
+        "surface": "きゅぷら",
+        "pronunciation": "キュプラ",
+        "type": "full"
+      }
+    ],
+    "source_urls": [
+      "https://x.com/cuplabo/status/2103434235625529760",
+      "https://note.com/cupro_laboratory",
+      "https://www.youtube.com/@きゅぷらV"
+    ],
+    "reviewed_on": "2026-10-10"
+  },
+  {
+    "id": "3411",
+    "original": "矩継凜",
+    "field": "文学",
+    "degree": "Ph.D.（文学）",
+    "degree_kind": "earned_doctorate",
+    "description": "Ph.D.（文学）。大学での研究や授業に関する話題、麻雀などを配信するVTuber。",
+    "forms": [
+      {
+        "surface": "矩継凜",
+        "pronunciation": "クツギリン",
+        "type": "full"
+      },
+      {
+        "surface": "矩継",
+        "pronunciation": "クツギ",
+        "type": "family"
+      },
+      {
+        "surface": "凜",
+        "pronunciation": "リン",
+        "type": "given"
+      }
+    ],
+    "source_urls": [
+      "https://vtuber-post.com/database_detail.html?id=UC6kg7LjrHxfJCXLCaPBZ_Rw"
+    ],
+    "reviewed_on": "2026-10-10"
+  },
+  {
+    "id": "3412",
+    "original": "固体量子",
+    "field": "物理",
+    "degree": "博士号取得",
+    "degree_kind": "earned_doctorate",
+    "description": "博士号取得。物理系VTuber。研究生活や博士課程の経験、物理学について発信する。",
+    "forms": [
+      {
+        "surface": "固体量子",
+        "pronunciation": "コタイリョウコ",
+        "type": "full"
+      }
+    ],
+    "source_urls": [
+      "https://www.youtube.com/watch?v=lYtJw2lI-kA",
+      "https://kotairyoko.wixsite.com/mysite"
+    ],
+    "reviewed_on": "2026-10-10"
+  },
+  {
+    "id": "3413",
+    "original": "古知累すすむ",
+    "field": "生物学/地学",
+    "degree": "博士号取得",
+    "degree_kind": "earned_doctorate",
+    "description": "博士号取得。恐竜を研究し、古生物学の研究成果や自身の論文を解説するVTuber。",
+    "forms": [
+      {
+        "surface": "古知累すすむ",
+        "pronunciation": "コチルイススム",
+        "type": "full"
+      },
+      {
+        "surface": "古知累",
+        "pronunciation": "コチルイ",
+        "type": "family"
+      },
+      {
+        "surface": "すすむ",
+        "pronunciation": "ススム",
+        "type": "given"
+      }
+    ],
+    "source_urls": [
+      "https://www.youtube.com/channel/UC_0vLXDfuSHaNmJlW2jd8hA",
+      "https://www.youtube.com/watch?v=WrelkoUnGPQ"
+    ],
+    "reviewed_on": "2026-10-10"
+  },
+  {
+    "id": "3414",
+    "original": "Psydere",
+    "field": "心理学",
+    "degree": "Ph.D.（社会心理学）",
+    "degree_kind": "earned_doctorate",
+    "description": "Ph.D.（社会心理学）。心理学や科学研究の方法を英語で解説するVTuber。",
+    "forms": [
+      {
+        "surface": "Psydere",
+        "pronunciation": "サイデレ",
+        "type": "full"
+      }
+    ],
+    "source_urls": [
+      "https://psydere.com/",
+      "https://www.reddit.com/r/VirtualYoutubers/comments/1kremqo/",
+      "https://www.reddit.com/r/VirtualYoutubers/comments/1kqe3hw/"
+    ],
+    "reviewed_on": "2026-10-10"
+  },
+  {
+    "id": "3415",
+    "original": "ススキ",
+    "field": "生物学",
+    "degree": "博士（理学）",
+    "degree_kind": "earned_doctorate",
+    "description": "博士（理学）。野生イヌ科動物の行動学を専門とし、動物学を解説するVTuber。",
+    "forms": [
+      {
+        "surface": "ススキ",
+        "pronunciation": "ススキ",
+        "type": "full"
+      }
+    ],
+    "source_urls": [
+      "https://www.youtube.com/@susuki_fox"
+    ],
+    "reviewed_on": "2026-10-10"
+  },
+  {
+    "id": "3416",
+    "original": "ゾンビ先生",
+    "field": "観光学",
+    "degree": "博士（観光学）",
+    "degree_kind": "earned_doctorate",
+    "description": "博士（観光学）。観光学を研究する大学教員。VTuberとして授業や研究に関する動画を発信する。",
+    "forms": [
+      {
+        "surface": "ゾンビ先生",
+        "pronunciation": "ゾンビセンセイ",
+        "type": "full"
+      }
+    ],
+    "source_urls": [
+      "https://research.kindai.ac.jp/search/detail.html?lang=ja&systemId=ab476beb8fe6f1c8",
+      "https://www.youtube.com/@ZombieU"
+    ],
+    "reviewed_on": "2026-10-10"
+  },
+  {
+    "id": "3417",
+    "original": "高遠頼",
+    "field": "生物学/計算機科学",
+    "degree": "博士（理学）",
+    "degree_kind": "earned_doctorate",
+    "description": "博士（理学）。合成生物学やバイオインフォマティクスを専門とし、生命科学を解説するVTuber。",
+    "forms": [
+      {
+        "surface": "高遠頼",
+        "pronunciation": "タカトーライ",
+        "type": "full"
+      },
+      {
+        "surface": "高遠",
+        "pronunciation": "タカトー",
+        "type": "family"
+      },
+      {
+        "surface": "頼",
+        "pronunciation": "ライ",
+        "type": "given"
+      }
+    ],
+    "source_urls": [
+      "https://www.youtube.com/channel/UC40s5z5yrd02Ngy8nQZXE5w",
+      "https://bsky.app/profile/takatohlife.bsky.social"
+    ],
+    "reviewed_on": "2026-10-10"
+  },
+  {
+    "id": "3418",
+    "original": "痛帝陛下",
+    "field": "NA",
+    "degree": "博士号取得",
+    "degree_kind": "earned_doctorate",
+    "description": "博士号取得。研究者として活動し、ゲーム実況や研究生活について配信するVTuber。",
+    "forms": [
+      {
+        "surface": "痛帝陛下",
+        "pronunciation": "ツウテイヘイカ",
+        "type": "full"
+      }
+    ],
+    "source_urls": [
+      "https://www.youtube.com/channel/UCclYncR_-rK4PDfECIsxOHA",
+      "https://www.youtube.com/live/FKupEZ1z4T8"
+    ],
+    "reviewed_on": "2026-10-10"
+  },
+  {
+    "id": "3419",
+    "original": "羽黒千秋",
+    "field": "理学",
+    "degree": "博士（理学）",
+    "degree_kind": "earned_doctorate",
+    "description": "博士（理学）。研究者として活動し、麻雀の対局や視聴者参加型の配信を行うVTuber。",
+    "forms": [
+      {
+        "surface": "羽黒千秋",
+        "pronunciation": "ハグロチアキ",
+        "type": "full"
+      },
+      {
+        "surface": "羽黒",
+        "pronunciation": "ハグロ",
+        "type": "family"
+      },
+      {
+        "surface": "千秋",
+        "pronunciation": "チアキ",
+        "type": "given"
+      }
+    ],
+    "source_urls": [
+      "https://www.youtube.com/@haguro_chiaki",
+      "https://x.com/haguro_chiaki/status/2022483202477297760"
+    ],
+    "reviewed_on": "2026-10-10"
+  },
+  {
+    "id": "3420",
+    "original": "ひろえってぃ",
+    "field": "計算機科学",
+    "degree": "博士（理学）",
+    "degree_kind": "earned_doctorate",
+    "description": "博士（理学）。ヒューマンコンピュータインタラクションを研究し、学術の話題を発信するVTuber。",
+    "forms": [
+      {
+        "surface": "ひろえってぃ",
+        "pronunciation": "ヒロエッティ",
+        "type": "full"
+      }
+    ],
+    "source_urls": [
+      "https://note.com/hiroetty/n/n18c200630c9c",
+      "https://www.youtube.com/@hiroettyChannel"
+    ],
+    "reviewed_on": "2026-10-10"
+  },
+  {
+    "id": "3421",
+    "original": "総蔵りんね",
+    "field": "環境学/生物学",
+    "degree": "博士号取得",
+    "degree_kind": "earned_doctorate",
+    "description": "博士号取得。景観生態学を専門とし、里山の保全や生物多様性について発信するVTuber。",
+    "forms": [
+      {
+        "surface": "総蔵りんね",
+        "pronunciation": "フサクラリンネ",
+        "type": "full"
+      },
+      {
+        "surface": "総蔵",
+        "pronunciation": "フサクラ",
+        "type": "family"
+      },
+      {
+        "surface": "りんね",
+        "pronunciation": "リンネ",
+        "type": "given"
+      }
+    ],
+    "source_urls": [
+      "https://scholarvtuber.com/vtuber/fusakurarinne/",
+      "https://note.com/fusakurarinnne/n/n3575831ff386",
+      "https://www.youtube.com/@fusakurarinne"
+    ],
+    "reviewed_on": "2026-10-10"
+  },
+  {
+    "id": "3422",
+    "original": "まゆつな空高",
+    "field": "計算機科学/工学",
+    "degree": "博士（工学）",
+    "degree_kind": "earned_doctorate",
+    "description": "博士（工学）。計算機科学や工学、博士課程での研究生活について発信するVTuber。",
+    "forms": [
+      {
+        "surface": "まゆつな空高",
+        "pronunciation": "マユツナスカイハイ",
+        "type": "full"
+      }
+    ],
+    "source_urls": [
+      "https://note.com/mayu27_sky_high/n/n78bbabe82690",
+      "https://www.youtube.com/@SkyHighLab"
+    ],
+    "reviewed_on": "2026-10-10"
+  },
+  {
+    "id": "3423",
+    "original": "澪乃ゆい",
+    "field": "生物学/計算機科学",
+    "degree": "Ph.D.",
+    "degree_kind": "earned_doctorate",
+    "description": "Ph.D.。分子生物学やバイオインフォマティクス、AIを用いた創薬を解説するVTuber。",
+    "forms": [
+      {
+        "surface": "澪乃ゆい",
+        "pronunciation": "ミオノユイ",
+        "type": "full"
+      },
+      {
+        "surface": "澪乃",
+        "pronunciation": "ミオノ",
+        "type": "family"
+      },
+      {
+        "surface": "ゆい",
+        "pronunciation": "ユイ",
+        "type": "given"
+      }
+    ],
+    "source_urls": [
+      "https://bsky.app/profile/mionoyui.bsky.social",
+      "https://www.youtube.com/@mionoyui"
+    ],
+    "reviewed_on": "2026-10-10"
+  },
+  {
+    "id": "3424",
+    "original": "水中潜",
+    "field": "工学",
+    "degree": "工学博士",
+    "degree_kind": "earned_doctorate",
+    "description": "工学博士。水中ロボットを研究し、海や南極での調査について発信するVTuber。",
+    "forms": [
+      {
+        "surface": "水中潜",
+        "pronunciation": "ミズナカモグル",
+        "type": "full"
+      },
+      {
+        "surface": "水中",
+        "pronunciation": "ミズナカ",
+        "type": "family"
+      },
+      {
+        "surface": "潜",
+        "pronunciation": "モグル",
+        "type": "given"
+      }
+    ],
+    "source_urls": [
+      "https://scholarvtuber.com/vtuber/mizunakamoguru/",
+      "https://www.youtube.com/@水中潜"
+    ],
+    "reviewed_on": "2026-10-10"
+  },
+  {
+    "id": "3425",
+    "original": "室生鏡花",
+    "field": "経済学",
+    "degree": "Ph.D.（経済学）",
+    "degree_kind": "earned_doctorate",
+    "description": "Ph.D.（経済学）。経済学の話題や麻雀を配信するVTuber。VPLに所属する。",
+    "forms": [
+      {
+        "surface": "室生鏡花",
+        "pronunciation": "ムロウキョウカ",
+        "type": "full"
+      },
+      {
+        "surface": "室生",
+        "pronunciation": "ムロウ",
+        "type": "family"
+      },
+      {
+        "surface": "鏡花",
+        "pronunciation": "キョウカ",
+        "type": "given"
+      }
+    ],
+    "source_urls": [
+      "https://vpl2023.com/player/muro-kyoka/"
+    ],
+    "reviewed_on": "2026-10-10"
+  },
+  {
+    "id": "3426",
+    "original": "メルクリウス・リッチランド",
+    "field": "計算機科学/工学",
+    "degree": "博士（工学）",
+    "degree_kind": "earned_doctorate",
+    "description": "博士（工学）。計算機工学を専門とし、研究や技術の話題を発信するVTuber。",
+    "forms": [
+      {
+        "surface": "メルクリウス・リッチランド",
+        "pronunciation": "メルクリウスリッチランド",
+        "type": "full"
+      }
+    ],
+    "source_urls": [
+      "https://www.jst.go.jp/sis/scienceagora/2022/online/20-a19.html",
+      "https://www.youtube.com/@mercurius_richland"
+    ],
+    "reviewed_on": "2026-10-10"
   }
 ]
