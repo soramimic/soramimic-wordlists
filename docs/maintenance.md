@@ -64,6 +64,14 @@ python3 tools/enrich_player_descriptions_openai.py football --apply --cache-only
 
 ## 検証
 
+科学者リストの著名人博士は、確認済みの台帳から次のコマンドで反映できる。
+`--check` を付けると、CSVを変更せず反映状態を検証する。月次更新でもこの区分を保持する。
+
+```bash
+python3 tools/scientist_celebrity_doctorates.py
+python3 tools/scientist_celebrity_doctorates.py --check
+```
+
 ローカルでは次の公開検証を実行できます。
 
 ```bash

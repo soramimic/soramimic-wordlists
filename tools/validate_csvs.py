@@ -23,6 +23,7 @@ from collections import Counter
 from pathlib import Path
 
 from creator_csv import CARD_IMAGE_PREFIX, image_availability, read_creator_csvs
+from scientist_celebrity_doctorates import load_entries, validate_flags
 from update_school import has_school_suffix
 from apply_youtuber_permitted_images import (
     IMAGE_PREFIX as YOUTUBER_FAN_IMAGE_PREFIX,
@@ -158,6 +159,12 @@ def validate(path: Path):
     if path.name == "scientist.csv" and "death_year" not in idx:
         err(f"{path.name}: 必須列 death_year がない")
         return
+    if path.name == "scientist.csv":
+        try:
+            with path.open(encoding="utf-8", newline="") as handle:
+                validate_flags(list(csv.DictReader(handle)), load_entries())
+        except (ValueError, KeyError) as exc:
+            err(f"{path.name}: {exc}")
     if path.name == "municipality.csv" and "municipality_type" not in idx:
         err(f"{path.name}: 必須列 municipality_type がない")
         return

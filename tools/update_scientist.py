@@ -50,6 +50,7 @@ import urllib.parse
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+from scientist_celebrity_doctorates import FLAG, apply_entries, load_entries
 from wpnames import (DISAMBIG, KATA2HIRA, KATAKANA, fetch_extracts,
                      has_achievement, make_description, parse_person, sparql,
                      strip_name_prefix, write_csv_no_trailing_newline)
@@ -682,7 +683,7 @@ def build_attr(bnd: dict) -> dict:
 COLS = ["id", "original", "surface", "pronunciation", "type",
         "field", "era", "birth_year", "death_year", "nobel", "gender",
         "country", "status",
-        "description", "image", "image_page"]
+        "description", "image", "image_page", FLAG]
 # 既存行に付与/保持する新列
 NEW_FIELDS = ["field", "era", "birth_year", "death_year", "nobel", "gender",
               "country", "status", "description"]
@@ -762,8 +763,10 @@ def main() -> int:
     print(f"既存データ読み込み元: {source.name}", flush=True)
     with source.open(encoding="utf-8", newline="") as fh:
         old_rows = list(csv.DictReader(fh))
+    old_rows = apply_entries(old_rows, COLS, load_entries())
     before = len(old_rows)
-    old_rows = [r for r in old_rows if r["original"] not in EXCLUDED]
+    old_rows = [r for r in old_rows
+                if r["original"] not in EXCLUDED or r[FLAG] == "yes"]
     removed = before - len(old_rows)
     if removed:
         print(f"EXCLUDED の既存行を除外: {removed}行", flush=True)
@@ -777,6 +780,9 @@ def main() -> int:
     # 毎回上書きされるのを防ぐ
     matched = filled = deceased = awarded = 0
     for r in old_rows:
+        # Public activity names and reviewed degree descriptions are curated separately.
+        if r[FLAG] == "yes":
+            continue
         info = by_key.get(r["original"])
         if info:
             matched += 1
@@ -868,6 +874,7 @@ def main() -> int:
         info = by_key.get(norm(title), {})
         a = info.get("attr", {})
         base = {
+            FLAG: "no",
             "field": info.get("field", "物理"),
             "era": a.get("era", "NA"),
             "birth_year": a.get("birth_year", "NA"),
