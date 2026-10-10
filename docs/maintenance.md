@@ -62,6 +62,11 @@ python3 tools/enrich_player_descriptions_openai.py football --apply --cache-only
 月次更新は両リストを対象とし、人物IDは両ファイルを通して重複させません。
 画像の参照先とクレジットは分離前の値を維持します。
 
+`usage_notice`・`usage_terms_page` は同じ人物の全表記でそろえます。
+既存の指定は自動更新で保持し、新規VTuberで指定がない場合は
+`usage_notice=guidelines` を付けます。画像を差し替えても、人物側の注意属性を
+書き換えません。著名人博士の新規追加時の指定は人物台帳に記録します。
+
 ## 検証
 
 科学者リストの著名人博士は、確認済みの台帳から次のコマンドで反映できる。

@@ -648,6 +648,7 @@ def build_list(csv_name: str | tuple[str, ...], specs: list, cache_env: str,
         cols += [c for c in COLS if c not in cols]
     else:
         old_rows, cols = [], list(COLS)
+    cols += [c for c in ("usage_notice", "usage_terms_page") if c not in cols]
     existing = {r["original"] for r in old_rows}
     next_id = max((int(r["id"]) for r in old_rows), default=-1) + 1
 
@@ -727,6 +728,8 @@ def build_list(csv_name: str | tuple[str, ...], specs: list, cache_env: str,
                           "id": str(next_id), "original": original,
                           "surface": surface, "pronunciation": pron,
                           "type": typ, "category": cat,
+                          "usage_notice": "guidelines" if cat == "vtuber" else "",
+                          "usage_terms_page": "",
                           "org": a.get("org", "NA"),
                           "debut_year": a.get("debut_year", "NA"),
                           "status": a.get("status", "current"),
