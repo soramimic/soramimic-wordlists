@@ -3,8 +3,8 @@
 
 GBIF Species Search API を ``q=和名`` で検索し、検索結果自身が持つ
 vernacularNames に ``language=jpn`` かつ完全一致の和名があるものだけを使う。
-Animalia/Chordata 外の候補、および候補間で class/order/family が矛盾する名前は
-適用しない。既存の分類値は上書きしない。
+Animalia/Chordata 外の候補、および候補間で class が矛盾する名前は適用しない。
+目・科の分類体系が異なる場合は、一致する階級だけを補う。既存値は上書きしない。
 
 usage:
   python3 tools/enrich_sekitsui_gbif.py --limit 100 --dry-run
@@ -46,6 +46,7 @@ CLASS_MAP = {
     "Reptilia": "爬虫類",
     "Amphibia": "両生類",
     "Actinopterygii": "魚類",
+    "Teleostei": "魚類",
     "Chondrichthyes": "魚類",
     "Elasmobranchii": "魚類",
     "Holocephali": "魚類",
@@ -93,14 +94,14 @@ def eligible_candidates(name: str, results: list[dict]) -> list[dict[str, str]]:
 
 
 def resolve_candidates(candidates: list[dict[str, str]]) -> dict[str, str] | None:
-    """候補が無矛盾なら一意な階級を返し、矛盾があれば None を返す。"""
+    """大分類の矛盾は棄却し、目・科は候補間で一致した階級だけを返す。"""
     resolved: dict[str, str] = {}
     for field in RANK_FIELDS:
         values = {candidate.get(field, "").strip() for candidate in candidates}
         values.discard("")
-        if len(values) > 1:
+        if field == "class" and len(values) > 1:
             return None
-        resolved[field] = next(iter(values), "")
+        resolved[field] = next(iter(values)) if len(values) == 1 else ""
     return resolved
 
 

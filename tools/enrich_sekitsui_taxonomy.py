@@ -7,7 +7,7 @@ taxon rank(P105)が目(Q36602)/科(Q35409)のノードのラベルを取る。�
 (植物の科・属を取る enrich_plant_taxonomy.py と共通)。
 
 - 既存の order/family が空の行だけ埋める(冪等)。`--refresh` で全行を引き直す。
-  他の列は一切変更しない。列が無ければ extinct の後ろに追加する。
+  未取得の値で既存の分類を消さない。列が無ければ extinct の後ろに追加する。
 - 取得結果は CACHE に逐次保存するので、中断しても再実行で続きから再開できる
   (キャッシュを消せば全件引き直し)。
 - wikidata 列が空の行(画像が無く QID が未取得の行)は、和名(original)から
@@ -33,6 +33,7 @@ from sekitsui_overrides import (  # noqa: E402
     class_from_ranks,
 )
 from wpnames import write_csv_no_trailing_newline  # noqa: E402
+from sekitsui_taxonomy_sources import apply_sources, is_missing  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 CSV_PATH = ROOT / "sekitsui.csv"
@@ -54,7 +55,8 @@ def main(argv: list[str]) -> int:
         rows = [dict(r) for r in reader]
         cols = tx.add_columns(reader.fieldnames, own, "extinct")
 
-    targets = [r for r in rows if refresh or not any(r.get(c) for c in own)]
+    apply_sources(rows)
+    targets = [r for r in rows if refresh or any(is_missing(r.get(c)) for c in own)]
     cache = tx.load_cache(CACHE)
 
     # wikidata列が空の行は和名からタクソンを逆引きする
@@ -71,8 +73,11 @@ def main(argv: list[str]) -> int:
     for r in targets:
         q = row_qid(r)
         vals = tx.resolve(q, nodes, ranks) if q else [""] * len(ranks)
-        r.update(dict(zip(own, vals)))
+        for column, value in zip(own, vals):
+            if not is_missing(value) and (refresh or is_missing(r.get(column))):
+                r[column] = value
         apply_manual_ranks(r["original"], r)
+    apply_sources(rows)
     rank_classes = build_rank_class_maps(rows)
     for r in rows:
         if (r.get("class") or "").strip() in ("", "NA"):

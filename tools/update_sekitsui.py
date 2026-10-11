@@ -36,6 +36,7 @@ from sekitsui_overrides import (
     class_from_ranks,
 )
 from wpnames import sparql, write_csv_no_trailing_newline
+from sekitsui_taxonomy_sources import apply_sources
 
 CSV_PATH = Path(__file__).resolve().parent.parent / "sekitsui.csv"
 
@@ -106,6 +107,7 @@ def main() -> int:
 
     reader = csv.DictReader(CSV_PATH.open(encoding="utf-8"))
     old_rows = list(reader)
+    apply_sources(old_rows)
     rank_classes = build_rank_class_maps(old_rows)
     na = kept = 0
     for r in old_rows:
