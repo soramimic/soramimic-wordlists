@@ -9,6 +9,7 @@ from collections import Counter
 from pathlib import Path
 
 from apply_sekitsui_generated_images import CSV_PATH, RAW_BASE, load_manifest
+from apply_class_images import urls as class_image_urls
 from plan_sekitsui_generated_images import (
     MIN_FAMILY_ROWS, build_plan, load_rows, stable_filename, validate_plan,
 )
@@ -64,11 +65,17 @@ def validate() -> None:
     with CSV_PATH.open(encoding="utf-8") as source:
         rows = list(csv.DictReader(source))
     actual_covered = 0
+    by_class = class_image_urls("sekitsui", "class-image-v1")
     for row in rows:
         target = assignment.get(row["original"])
         if not target or not target.startswith("family:"):
             continue
         family = target.split(":", 1)[1]
+        if family not in by_family:
+            fallback = by_class.get(row.get("class", ""), by_class["NA"])
+            if (row["image"], row["image_page"]) != fallback:
+                raise ValueError(f"CSV class fallback mismatch: {row['original']}")
+            continue
         filename = by_family[family]["filename"]
         if row["image"] != f"{RAW_BASE}/{filename}":
             raise ValueError(f"CSV family image mismatch: {row['original']}")

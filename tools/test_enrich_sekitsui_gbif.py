@@ -44,7 +44,7 @@ class GbifCandidateTest(unittest.TestCase):
         self.assertEqual("鳥類", gbif.CLASS_MAP["Aves"])
         self.assertEqual("爬虫類", gbif.CLASS_MAP["Reptilia"])
         self.assertEqual("両生類", gbif.CLASS_MAP["Amphibia"])
-        for fish_class in ("Actinopterygii", "Chondrichthyes", "Myxini"):
+        for fish_class in ("Actinopterygii", "Teleostei", "Chondrichthyes", "Myxini"):
             self.assertEqual("魚類", gbif.CLASS_MAP[fish_class])
 
     def test_only_exact_japanese_chordate_animal_candidates_are_eligible(self):
@@ -61,12 +61,30 @@ class GbifCandidateTest(unittest.TestCase):
             gbif.eligible_candidates("ニホンアマガエル", results),
         )
 
-    def test_conflicting_exact_candidates_are_rejected(self):
+    def test_conflicting_families_preserve_shared_class_and_order(self):
         candidates = gbif.eligible_candidates(
             "同名",
             [result(name="同名"), result(name="同名", family="Ranidae")],
         )
-        self.assertIsNone(gbif.resolve_candidates(candidates))
+        self.assertEqual(
+            {"class": "Amphibia", "order": "Anura", "family": ""},
+            gbif.resolve_candidates(candidates),
+        )
+
+    def test_historical_order_disagreement_preserves_shared_family(self):
+        self.assertEqual(
+            {"class": "Mammalia", "order": "", "family": "Soricidae"},
+            gbif.resolve_candidates([
+                {"class": "Mammalia", "order": "Soricomorpha", "family": "Soricidae"},
+                {"class": "Mammalia", "order": "Eulipotyphla", "family": "Soricidae"},
+            ]),
+        )
+
+    def test_conflicting_classes_reject_all_ranks(self):
+        self.assertIsNone(gbif.resolve_candidates([
+            {"class": "Mammalia", "order": "", "family": ""},
+            {"class": "Aves", "order": "", "family": ""},
+        ]))
 
     def test_missing_values_do_not_conflict_with_a_known_value(self):
         resolved = gbif.resolve_candidates([
