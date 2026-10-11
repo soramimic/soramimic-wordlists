@@ -32,7 +32,12 @@ jobs:
 
       - name: Test sekitsui manual overrides
         working-directory: tools
-        run: python -m unittest test_sekitsui_overrides.py
+        run: >-
+          python -m unittest test_sekitsui_overrides.py
+          test_enrich_sekitsui_taxonomy.py test_enrich_sekitsui_gbif.py
+
+      - name: Validate reviewed vertebrate taxonomy
+        run: python tools/sekitsui_taxonomy_sources.py --check
 
       - name: Test sekitsui family generated image tooling
         run: >-

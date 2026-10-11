@@ -104,7 +104,7 @@
   {
     "name": "アマツバメ科",
     "group": "鳥類",
-    "member_count": 23,
+    "member_count": 24,
     "japanese_examples": [
       "アカエリムジアマツバメ",
       "オニアナツバメ",
@@ -274,7 +274,7 @@
   {
     "name": "イヌ科",
     "group": "哺乳類",
-    "member_count": 7,
+    "member_count": 9,
     "japanese_examples": [
       "アメリカアカオオカミ",
       "アンデスオオカミ",
@@ -342,7 +342,7 @@
   {
     "name": "ウシ科",
     "group": "哺乳類",
-    "member_count": 6,
+    "member_count": 9,
     "japanese_examples": [
       "イランド",
       "クッティング・ヴォア",
@@ -410,7 +410,7 @@
   {
     "name": "ウ科",
     "group": "鳥類",
-    "member_count": 6,
+    "member_count": 7,
     "japanese_examples": [
       "アオノドヒメウ",
       "キバナウ",
@@ -444,7 +444,7 @@
   {
     "name": "オオコウモリ科",
     "group": "哺乳類",
-    "member_count": 65,
+    "member_count": 79,
     "japanese_examples": [
       "アフリカシタナガフルーツコウモリ",
       "アンゴラフルーツコウモリ",
@@ -512,7 +512,7 @@
   {
     "name": "オナガザル科",
     "group": "哺乳類",
-    "member_count": 10,
+    "member_count": 21,
     "japanese_examples": [
       "インドシナクロラングール",
       "カシミールラングール",
@@ -546,7 +546,7 @@
   {
     "name": "オポッサム科",
     "group": "哺乳類",
-    "member_count": 20,
+    "member_count": 24,
     "japanese_examples": [
       "アカマウスオポッサム",
       "イタチオポッサム",
@@ -580,7 +580,7 @@
   {
     "name": "カエデチョウ科",
     "group": "鳥類",
-    "member_count": 22,
+    "member_count": 23,
     "japanese_examples": [
       "アサギリチョウ",
       "アナンブラカエデチョウ",
@@ -648,7 +648,7 @@
   {
     "name": "カマドドリ科",
     "group": "鳥類",
-    "member_count": 17,
+    "member_count": 18,
     "japanese_examples": [
       "アカカタカマドドリ",
       "アカズキンカマドドリ",
@@ -750,7 +750,7 @@
   {
     "name": "カンガルー科",
     "group": "哺乳類",
-    "member_count": 11,
+    "member_count": 13,
     "japanese_examples": [
       "クリイロキノボリカンガルー",
       "クロドルコプシス",
@@ -784,7 +784,7 @@
   {
     "name": "ガラゴ科",
     "group": "哺乳類",
-    "member_count": 6,
+    "member_count": 7,
     "japanese_examples": [
       "ウルグルコビトガラゴ",
       "ガボンアレンガラゴ",
@@ -818,7 +818,7 @@
   {
     "name": "キジ科",
     "group": "鳥類",
-    "member_count": 12,
+    "member_count": 14,
     "japanese_examples": [
       "エチオピアシャコ",
       "カメルーンヤマシャコ",
@@ -886,7 +886,7 @@
   {
     "name": "キヌゲネズミ科",
     "group": "哺乳類",
-    "member_count": 207,
+    "member_count": 244,
     "japanese_examples": [
       "アカキノボリヤチネズミ",
       "アカモグリマウス",
@@ -920,7 +920,7 @@
   {
     "name": "クイナ科",
     "group": "鳥類",
-    "member_count": 16,
+    "member_count": 17,
     "japanese_examples": [
       "オグロクイナ",
       "キタノドジロコビトクイナ",
@@ -1022,7 +1022,7 @@
   {
     "name": "コビトキツネザル科",
     "group": "哺乳類",
-    "member_count": 15,
+    "member_count": 16,
     "japanese_examples": [
       "アンバーフォークキツネザル",
       "アーノルドネズミキツネザル",
@@ -1158,7 +1158,7 @@
   {
     "name": "シカ科",
     "group": "哺乳類",
-    "member_count": 10,
+    "member_count": 11,
     "japanese_examples": [
       "アキヨシムカシジカ",
       "アンナンホエジカ",
@@ -1294,7 +1294,7 @@
   {
     "name": "ジャコウネコ科",
     "group": "哺乳類",
-    "member_count": 9,
+    "member_count": 11,
     "japanese_examples": [
       "アンゴラジェネット",
       "オオブチジェネット",
@@ -1464,7 +1464,7 @@
   {
     "name": "タカ科",
     "group": "鳥類",
-    "member_count": 12,
+    "member_count": 18,
     "japanese_examples": [
       "アオハイタカ",
       "エボシクマタカ",
@@ -1600,7 +1600,7 @@
   {
     "name": "ツコツコ科",
     "group": "哺乳類",
-    "member_count": 15,
+    "member_count": 20,
     "japanese_examples": [
       "アルゼンチンツコツコ",
       "シャカイツコツコ",
@@ -1634,7 +1634,7 @@
   {
     "name": "ツバメ科",
     "group": "鳥類",
-    "member_count": 10,
+    "member_count": 11,
     "japanese_examples": [
       "アイイロツバメ",
       "クロオビツバメ",
@@ -1736,7 +1736,7 @@
   {
     "name": "デグー科",
     "group": "哺乳類",
-    "member_count": 7,
+    "member_count": 8,
     "japanese_examples": [
       "コルロネズミ",
       "チリアナネズミ",
@@ -1804,7 +1804,7 @@
   {
     "name": "トカゲ科",
     "group": "爬虫類",
-    "member_count": 6,
+    "member_count": 7,
     "japanese_examples": [
       "イヘヤバーバートカゲ",
       "オキナワバーバートカゲ",
@@ -1838,7 +1838,7 @@
   {
     "name": "トガリネズミ科",
     "group": "哺乳類",
-    "member_count": 12,
+    "member_count": 98,
     "japanese_examples": [
       "アズミトガリネズミ",
       "オオアシジャコウネズミ",
@@ -1940,7 +1940,7 @@
   {
     "name": "ナキウサギ科",
     "group": "哺乳類",
-    "member_count": 10,
+    "member_count": 11,
     "japanese_examples": [
       "アカナキウサギ",
       "アフガンナキウサギ",
@@ -2008,7 +2008,7 @@
   {
     "name": "ニシン科",
     "group": "魚類",
-    "member_count": 5,
+    "member_count": 6,
     "japanese_examples": [
       "カタボシイワシ",
       "ギルクリステッラ・アエストゥアリア",
@@ -2042,7 +2042,7 @@
   {
     "name": "ネズミ科",
     "group": "哺乳類",
-    "member_count": 183,
+    "member_count": 210,
     "japanese_examples": [
       "アカオニネズミ",
       "アカシアネズミ",
@@ -2076,7 +2076,7 @@
   {
     "name": "ハゼ科",
     "group": "魚類",
-    "member_count": 34,
+    "member_count": 35,
     "japanese_examples": [
       "アキヒト・バヌアツ",
       "アキヒト・フツナ",
@@ -2110,7 +2110,7 @@
   {
     "name": "ハタオリドリ科",
     "group": "鳥類",
-    "member_count": 10,
+    "member_count": 11,
     "japanese_examples": [
       "カワリオウゴンチョウ",
       "キアシクロハタオリ",
@@ -2178,7 +2178,7 @@
   {
     "name": "ハト科",
     "group": "鳥類",
-    "member_count": 25,
+    "member_count": 26,
     "japanese_examples": [
       "アカハラミカドバト",
       "ウエタルバト",
@@ -2246,7 +2246,7 @@
   {
     "name": "ヒタキ科",
     "group": "鳥類",
-    "member_count": 35,
+    "member_count": 36,
     "japanese_examples": [
       "アカチャツグミヒタキ",
       "アカハラシキチョウ",
@@ -2280,7 +2280,7 @@
   {
     "name": "ヒナコウモリ科",
     "group": "哺乳類",
-    "member_count": 13,
+    "member_count": 16,
     "japanese_examples": [
       "ウスリホオヒゲコウモリ",
       "オガサワラアブラコウモリ",
@@ -2314,7 +2314,7 @@
   {
     "name": "ヒバリ科",
     "group": "鳥類",
-    "member_count": 7,
+    "member_count": 8,
     "japanese_examples": [
       "アフリカコヒバリ",
       "エチオピアヒメコウテンシ",
@@ -2382,7 +2382,7 @@
   {
     "name": "フウキンチョウ科",
     "group": "鳥類",
-    "member_count": 33,
+    "member_count": 34,
     "japanese_examples": [
       "アオエリフウキンチョウ",
       "アカハラマユシトド",
@@ -2416,7 +2416,7 @@
   {
     "name": "フクロウ科",
     "group": "鳥類",
-    "member_count": 12,
+    "member_count": 15,
     "japanese_examples": [
       "アクンワシミミズク",
       "アドミラルチーアオバズク",
@@ -2450,7 +2450,7 @@
   {
     "name": "フクロネコ科",
     "group": "哺乳類",
-    "member_count": 25,
+    "member_count": 27,
     "japanese_examples": [
       "アンテキヌス",
       "イボアシスミントプシス",
@@ -2484,7 +2484,7 @@
   {
     "name": "フサカサゴ科",
     "group": "魚類",
-    "member_count": 5,
+    "member_count": 6,
     "japanese_examples": [
       "イチゴイソカサゴ",
       "セトオニオコゼ",
@@ -2552,7 +2552,7 @@
   {
     "name": "ポケットマウス科",
     "group": "哺乳類",
-    "member_count": 34,
+    "member_count": 37,
     "japanese_examples": [
       "アリゾナポケットマウス",
       "イワポケットマウス",
@@ -2586,7 +2586,7 @@
   {
     "name": "マングース科",
     "group": "哺乳類",
-    "member_count": 5,
+    "member_count": 6,
     "japanese_examples": [
       "アレキサンダークシマンセ",
       "アンゴラクシマンセ",
@@ -2620,7 +2620,7 @@
   {
     "name": "ミズナギドリ科",
     "group": "鳥類",
-    "member_count": 6,
+    "member_count": 7,
     "japanese_examples": [
       "ウエストランドクロミズナギドリ",
       "ソロモンミズナギドリ",
@@ -2654,7 +2654,7 @@
   {
     "name": "ミツスイ科",
     "group": "鳥類",
-    "member_count": 24,
+    "member_count": 25,
     "japanese_examples": [
       "ウェタルオリーブミツスイ",
       "オリーブセスジミツスイ",
@@ -2858,7 +2858,7 @@
   {
     "name": "モグラ科",
     "group": "哺乳類",
-    "member_count": 11,
+    "member_count": 12,
     "japanese_examples": [
       "アンダーソンミミヒミズ",
       "イランモグラ",
@@ -2960,7 +2960,7 @@
   {
     "name": "ヤマネ科",
     "group": "哺乳類",
-    "member_count": 18,
+    "member_count": 19,
     "japanese_examples": [
       "アンゴラヤマネ",
       "イシヤマネ",
@@ -3062,7 +3062,7 @@
   {
     "name": "ヨタカ科",
     "group": "鳥類",
-    "member_count": 11,
+    "member_count": 13,
     "japanese_examples": [
       "ギアナヨタカ",
       "ジャワヨタカ",
@@ -3130,7 +3130,7 @@
   {
     "name": "リス科",
     "group": "哺乳類",
-    "member_count": 88,
+    "member_count": 99,
     "japanese_examples": [
       "アカオシマリス",
       "アカシマリス",
@@ -3424,7 +3424,7 @@
   {
     "name": "アジ科",
     "group": "魚類",
-    "member_count": 1,
+    "member_count": 2,
     "japanese_examples": [
       "ムロアジ"
     ],
@@ -3814,7 +3814,7 @@
   {
     "name": "アメリカムシクイ科",
     "group": "鳥類",
-    "member_count": 4,
+    "member_count": 5,
     "japanese_examples": [
       "カオジロアメリカムシクイ",
       "キガオアメリカムシクイ",
@@ -3848,7 +3848,7 @@
   {
     "name": "アライグマ科",
     "group": "哺乳類",
-    "member_count": 2,
+    "member_count": 3,
     "japanese_examples": [
       "アレンオリンゴ",
       "フサオオリンゴ"
@@ -4207,7 +4207,7 @@
   {
     "name": "インコ科",
     "group": "鳥類",
-    "member_count": 2,
+    "member_count": 5,
     "japanese_examples": [
       "ヒメジャコウインコ",
       "ムラサキガシラジャコウインコ"
@@ -4240,7 +4240,7 @@
   {
     "name": "インドリ科",
     "group": "哺乳類",
-    "member_count": 4,
+    "member_count": 5,
     "japanese_examples": [
       "サンビラノアバヒ",
       "ベトシレオアバヒ",
@@ -4274,7 +4274,7 @@
   {
     "name": "ウグイス科",
     "group": "鳥類",
-    "member_count": 4,
+    "member_count": 5,
     "japanese_examples": [
       "キアシヤブサメ",
       "サンクリストバルウグイス",
@@ -4793,7 +4793,7 @@
   {
     "name": "オオハシ科",
     "group": "鳥類",
-    "member_count": 1,
+    "member_count": 3,
     "japanese_examples": [
       "クリハシオオハシ"
     ],
@@ -4921,7 +4921,7 @@
   {
     "name": "オマキザル科",
     "group": "哺乳類",
-    "member_count": 3,
+    "member_count": 5,
     "japanese_examples": [
       "コロンビアシロガオオマキザル",
       "セザールシロガオオマキザル",
@@ -5410,7 +5410,7 @@
   {
     "name": "カラシン科",
     "group": "魚類",
-    "member_count": 1,
+    "member_count": 2,
     "japanese_examples": [
       "レインボーテトラ"
     ],
@@ -5506,7 +5506,7 @@
   {
     "name": "カワアナゴ科",
     "group": "魚類",
-    "member_count": 3,
+    "member_count": 4,
     "japanese_examples": [
       "クモマダラハゼ",
       "シーサーハゼ",
@@ -5769,7 +5769,7 @@
   {
     "name": "キヌバネドリ科",
     "group": "鳥類",
-    "member_count": 1,
+    "member_count": 2,
     "japanese_examples": [
       "カザリキヌバネドリ"
     ],
@@ -5899,7 +5899,7 @@
   {
     "name": "ギギ科",
     "group": "魚類",
-    "member_count": 1,
+    "member_count": 2,
     "japanese_examples": [
       "カーランチャム"
     ],
@@ -6713,7 +6713,7 @@
   {
     "name": "ゴマフスズメ科",
     "group": "鳥類",
-    "member_count": 4,
+    "member_count": 5,
     "japanese_examples": [
       "キモモシトド",
       "サバンナシトド",
@@ -6909,7 +6909,7 @@
   {
     "name": "サバ科",
     "group": "魚類",
-    "member_count": 1,
+    "member_count": 2,
     "japanese_examples": [
       "ウロコマグロ"
     ],
@@ -7006,7 +7006,7 @@
   {
     "name": "シジュウカラ科",
     "group": "鳥類",
-    "member_count": 1,
+    "member_count": 3,
     "japanese_examples": [
       "オリイヤマガラ"
     ],
@@ -7526,7 +7526,7 @@
   {
     "name": "ズクヨタカ科",
     "group": "鳥類",
-    "member_count": 1,
+    "member_count": 2,
     "japanese_examples": [
       "ヒガシミヤマズクヨタカ"
     ],
@@ -8083,7 +8083,7 @@
   {
     "name": "チンチラ科",
     "group": "哺乳類",
-    "member_count": 3,
+    "member_count": 5,
     "japanese_examples": [
       "オオヤマビスカーチャ",
       "チリヤマビスカーチャ",
@@ -8117,7 +8117,7 @@
   {
     "name": "ツカツクリ科",
     "group": "鳥類",
-    "member_count": 1,
+    "member_count": 2,
     "japanese_examples": [
       "ニューギニアツカツクリ"
     ],
@@ -8246,7 +8246,7 @@
   {
     "name": "テナガザル科",
     "group": "哺乳類",
-    "member_count": 2,
+    "member_count": 3,
     "japanese_examples": [
       "テナガザル",
       "フーロックテナガザル"
@@ -8312,7 +8312,7 @@
   {
     "name": "テンジクネズミ科",
     "group": "哺乳類",
-    "member_count": 4,
+    "member_count": 5,
     "japanese_examples": [
       "アンデスヤマクイ",
       "シプトンヤマクイ",
@@ -8573,7 +8573,7 @@
   {
     "name": "トゲウオ科",
     "group": "魚類",
-    "member_count": 2,
+    "member_count": 3,
     "japanese_examples": [
       "サバジャコ",
       "ミナミトミヨ"
@@ -8996,7 +8996,7 @@
   {
     "name": "ニワシドリ科",
     "group": "鳥類",
-    "member_count": 1,
+    "member_count": 2,
     "japanese_examples": [
       "ショウジョウフウチョウモドキ"
     ],
@@ -9061,7 +9061,7 @@
   {
     "name": "ヌマガメ科",
     "group": "爬虫類",
-    "member_count": 1,
+    "member_count": 2,
     "japanese_examples": [
       "ヤベイシガメ"
     ],
@@ -9093,7 +9093,7 @@
   {
     "name": "ネコ科",
     "group": "哺乳類",
-    "member_count": 3,
+    "member_count": 4,
     "japanese_examples": [
       "イリオモテヤマネコ",
       "オオヤマネコ",
@@ -9516,7 +9516,7 @@
   {
     "name": "ハリネズミ科",
     "group": "哺乳類",
-    "member_count": 2,
+    "member_count": 5,
     "japanese_examples": [
       "チビオジムヌラ",
       "モリハリネズミ"
@@ -9844,7 +9844,7 @@
   {
     "name": "ヒト科",
     "group": "哺乳類",
-    "member_count": 2,
+    "member_count": 3,
     "japanese_examples": [
       "ダヌビウス・グッゲンモシ",
       "ホモ・ユルエンシス"
@@ -10531,7 +10531,7 @@
   {
     "name": "ヘラコウモリ科",
     "group": "哺乳類",
-    "member_count": 2,
+    "member_count": 4,
     "japanese_examples": [
       "セバタンビヘラコウモリ",
       "デスモダス"
@@ -10822,7 +10822,7 @@
   {
     "name": "マイルカ科",
     "group": "哺乳類",
-    "member_count": 3,
+    "member_count": 4,
     "japanese_examples": [
       "エオデルフィヌス・カバテンシス",
       "ノリスデルフィス・アンナカエンシス",
@@ -11017,7 +11017,7 @@
   {
     "name": "マーモセット科",
     "group": "哺乳類",
-    "member_count": 3,
+    "member_count": 10,
     "japanese_examples": [
       "クロミミマーモセット",
       "シルバーマーモセット",
@@ -11051,7 +11051,7 @@
   {
     "name": "ミソサザイ科",
     "group": "鳥類",
-    "member_count": 2,
+    "member_count": 3,
     "japanese_examples": [
       "サンタマルタミソサザイ",
       "ミヤマヌマミソサザイ"
@@ -11215,7 +11215,7 @@
   {
     "name": "ムクドリモドキ科",
     "group": "鳥類",
-    "member_count": 1,
+    "member_count": 2,
     "japanese_examples": [
       "ペルーツリスドリ"
     ],
@@ -11344,7 +11344,7 @@
   {
     "name": "メクラネズミ科",
     "group": "哺乳類",
-    "member_count": 4,
+    "member_count": 5,
     "japanese_examples": [
       "アフリカタケネズミ",
       "ヒガシモグラネズミ",
@@ -11510,7 +11510,7 @@
   {
     "name": "ヤツメウナギ科",
     "group": "魚類",
-    "member_count": 4,
+    "member_count": 6,
     "japanese_examples": [
       "ウチワスナヤツメ",
       "カワヤツメ",
@@ -11544,7 +11544,7 @@
   {
     "name": "ヤモリ科",
     "group": "爬虫類",
-    "member_count": 2,
+    "member_count": 4,
     "japanese_examples": [
       "コガタブロンズヤモリ",
       "ニシヤモリ"
@@ -11706,7 +11706,7 @@
   {
     "name": "ヨシキリ科",
     "group": "鳥類",
-    "member_count": 4,
+    "member_count": 5,
     "japanese_examples": [
       "タヒチヨシキリ",
       "ツアモツヨシキリ",
@@ -11806,7 +11806,7 @@
   {
     "name": "ラクダ科",
     "group": "哺乳類",
-    "member_count": 2,
+    "member_count": 4,
     "japanese_examples": [
       "シリアラクダ",
       "ラマ"
@@ -12003,7 +12003,7 @@
   {
     "name": "ロリス科",
     "group": "哺乳類",
-    "member_count": 1,
+    "member_count": 3,
     "japanese_examples": [
       "スローロリス"
     ],
