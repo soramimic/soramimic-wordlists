@@ -852,7 +852,7 @@
   {
     "name": "キツツキ科",
     "group": "鳥類",
-    "member_count": 7,
+    "member_count": 8,
     "japanese_examples": [
       "アオタケゲラ",
       "アオバネモリゲラ",
@@ -2552,7 +2552,7 @@
   {
     "name": "ポケットマウス科",
     "group": "哺乳類",
-    "member_count": 37,
+    "member_count": 41,
     "japanese_examples": [
       "アリゾナポケットマウス",
       "イワポケットマウス",
@@ -2722,7 +2722,7 @@
   {
     "name": "ムシクイ科",
     "group": "鳥類",
-    "member_count": 14,
+    "member_count": 15,
     "japanese_examples": [
       "アゴジロモリムシクイ",
       "ウガンダハヤシムシクイ",
@@ -3718,7 +3718,7 @@
   {
     "name": "アマガエル科",
     "group": "両生類",
-    "member_count": 1,
+    "member_count": 2,
     "japanese_examples": [
       "アマガエル"
     ],
@@ -5703,7 +5703,7 @@
   {
     "name": "キクイタダキ科",
     "group": "鳥類",
-    "member_count": 1,
+    "member_count": 2,
     "japanese_examples": [
       "ルビーキクイタダキ"
     ],
@@ -6843,7 +6843,7 @@
   {
     "name": "サケ科",
     "group": "魚類",
-    "member_count": 4,
+    "member_count": 5,
     "japanese_examples": [
       "イワナ",
       "ダウリアシロマス",
