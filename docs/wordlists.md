@@ -106,6 +106,9 @@ baseball / football のうちOpenAI APIで公開Wikipedia本文から候補文�
 `nobel=yes` で受賞者を絞り込める。平和賞・文学賞のみの受賞は対象に含めない。
 新たな受賞は自動更新で `no` から `yes` に反映し、確認済みの `yes` は保持する。
 個別に追加した受賞者の確認先は `tools/scientist_nobel_sources.jsonl` に記録する。
+研究業績を補足した説明と確認先は
+[`tools/scientist_achievement_sources.jsonl`](../tools/scientist_achievement_sources.jsonl)
+に記録する。説明には具体的な発見・理論・手法を記し、受賞歴だけの紹介を避ける。
 
 ## sekitsui.csv
 
