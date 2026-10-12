@@ -20,6 +20,87 @@ from update_scientist import (
 
 
 class UpdateScientistTest(unittest.TestCase):
+    def run_alias_update(self, rows, parsed_names):
+        persons = {f"Q{i}": {"title": f"未収録{i}", "fields": ["物理"]}
+                   for i in range(1, 2001)}
+        attrs = {}
+        for index, title in enumerate(parsed_names, 1):
+            persons[f"Q{index}"] = {"title": title, "fields": ["物理"]}
+            attrs[f"Q{index}"] = {"birth_year": "1929", "nobel": "yes"}
+
+        def parse(title, extract):
+            name = parsed_names.get(title)
+            if name is None:
+                return None
+            return (name[:-1], "アカサキ", name[-1:], "イサム",
+                    name, "アカサキイサム", None)
+
+        with tempfile.TemporaryDirectory() as directory:
+            csv_path = Path(directory) / "scientist.csv"
+            update_scientist.write_csv_no_trailing_newline(csv_path, COLS, rows)
+            with (patch.object(update_scientist, "NEW_CSV", csv_path),
+                  patch.object(update_scientist, "load_entries", return_value=[]),
+                  patch.object(update_scientist, "DESCRIPTION_OVERRIDES", {}),
+                  patch.object(update_scientist, "fetch_person_set", return_value=persons),
+                  patch.object(update_scientist, "fetch_all", return_value=(attrs, {})),
+                  patch.object(update_scientist, "parse_person", side_effect=parse),
+                  redirect_stdout(io.StringIO())):
+                self.assertEqual(update_scientist.main(), 0)
+                first = csv_path.read_bytes()
+                self.assertEqual(update_scientist.main(), 0)
+                self.assertEqual(csv_path.read_bytes(), first)
+            with csv_path.open(encoding="utf-8", newline="") as fh:
+                return list(csv.DictReader(fh))
+
+    def test_aliases_match_existing_people_and_backfill_without_renaming(self):
+        csv_path = Path(__file__).resolve().parent.parent / "scientist.csv"
+        with csv_path.open(encoding="utf-8", newline="") as fh:
+            rows = [r for r in csv.DictReader(fh) if r["id"] == "105"]
+        for old_name, incoming_name in (("赤崎勇", "赤﨑勇"), ("赤﨑勇", "赤崎勇")):
+            with self.subTest(old=old_name, incoming=incoming_name):
+                existing = [dict(r, original=old_name,
+                                 surface=old_name[:-1] if r["type"] == "family" else old_name,
+                                 birth_year="NA", nobel="NA") for r in rows]
+                actual = self.run_alias_update(existing, {incoming_name: incoming_name})
+                self.assertEqual(actual, [dict(r, birth_year="1929", nobel="yes")
+                                          for r in existing])
+
+                # The article title may differ from the name parsed from its lead.
+                actual = self.run_alias_update(existing, {"別の表題": incoming_name})
+                self.assertEqual(actual, existing)
+
+    def test_new_aliases_share_one_person_without_merging_matching_readings(self):
+        seed = dict.fromkeys(COLS, "NA")
+        seed.update(id="1", original="既存科学者", surface="既存科学者",
+                    pronunciation="あかさきいさむ", type="full", field="物理",
+                    description="理論を提唱した。", image="", image_page="",
+                    celebrity_doctorate="no", usage_notice="", usage_terms_page="")
+        for names in (("赤崎勇", "赤﨑勇"), ("赤﨑勇", "赤崎勇")):
+            with self.subTest(names=names):
+                actual = self.run_alias_update([seed], {name: name for name in names})
+                self.assertEqual(actual[0], seed)
+                self.assertEqual(len(actual), 3)
+                self.assertEqual({r["id"] for r in actual[1:]}, {"2"})
+                self.assertEqual({r["original"] for r in actual[1:]}, {names[0]})
+                self.assertEqual({r["type"] for r in actual[1:]}, {"family", "full"})
+        self.assertNotEqual(update_scientist.person_key("山崎勇"),
+                            update_scientist.person_key("山﨑勇"))
+
+    def test_akasaki_has_one_complete_person_in_csv(self):
+        csv_path = Path(__file__).resolve().parent.parent / "scientist.csv"
+        with csv_path.open(encoding="utf-8", newline="") as fh:
+            rows = [r for r in csv.DictReader(fh)
+                    if update_scientist.person_key(r["original"]) == "赤崎勇"]
+        self.assertEqual(len(rows), 2)
+        self.assertEqual({r["id"] for r in rows}, {"105"})
+        self.assertEqual({r["surface"] for r in rows}, {"赤崎", "赤崎勇"})
+        self.assertEqual({r["type"] for r in rows}, {"family", "full"})
+        for row in rows:
+            self.assertEqual(row["nobel"], "yes")
+            self.assertEqual(row["birth_year"], "1929")
+            self.assertEqual(row["death_year"], "2021")
+            self.assertTrue(row["image_page"].endswith("File:Isamu_Akasaki_201111.jpg"))
+
     def test_reviewed_celebrities_survive_monthly_exclusions_and_refresh(self):
         entries = load_entries()
         merkel = next(e for e in entries if e["original"] == "アンゲラ・メルケル")
