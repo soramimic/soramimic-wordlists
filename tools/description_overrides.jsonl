@@ -82,8 +82,8 @@
 {"list":"baseball","id":"2928","original":"小松辰雄","column":"description","description":"最優秀防御率などのタイトルを獲得し、沢村賞も受賞した投手。","source_urls":[],"reviewed_on":"2026-10-12"}
 {"list":"baseball","id":"2957","original":"小山正明","column":"description","description":"「投げる精密機械」と呼ばれ、NPB通算320勝と290完投を記録。","source_urls":[],"reviewed_on":"2026-10-12"}
 {"list":"baseball","id":"2977","original":"トニー・ゴンザレス","column":"description","description":"1972年に広島の一軍公式戦に出場したプロ野球選手。","source_urls":["https://npb.jp/bis/players/21523845.html"],"reviewed_on":"2026-10-12"}
-{"list":"baseball","id":"2979","original":"ルイス・ゴンザレス(投手)","column":"description","description":"","source_urls":["https://npb.jp/history/register/index_ko.html"],"reviewed_on":"2026-10-12"}
-{"list":"baseball","id":"2980","original":"ルイス・ゴンザレス(内野手)","column":"description","description":"","source_urls":["https://npb.jp/history/register/index_ko.html"],"reviewed_on":"2026-10-12"}
+{"list":"baseball","id":"2979","original":"ルイス・ゴンザレス(投手)","source_urls":["https://npb.jp/bis/players/53755133.html"],"reviewed_on":"2026-10-12","column":"description","description":"2011年に横浜でプレーした左投げのプロ野球投手。"}
+{"list":"baseball","id":"2980","original":"ルイス・ゴンザレス(内野手)","source_urls":["https://npb.jp/bis/players/23125114.html"],"reviewed_on":"2026-10-12","column":"description","description":"2007年から2008年まで巨人でプレーしたプロ野球内野手。"}
 {"list":"baseball","id":"2996","original":"近藤久","column":"description","description":"1936年に大東京の一軍公式戦に出場したプロ野球選手。","source_urls":["https://npb.jp/bis/players/11013872.html"],"reviewed_on":"2026-10-12"}
 {"list":"baseball","id":"3038","original":"斎藤隆","column":"description","description":"1992年に大洋の一軍公式戦に出場したプロ野球選手。","source_urls":["https://npb.jp/bis/players/61563885.html"],"reviewed_on":"2026-10-12"}
 {"list":"baseball","id":"3041","original":"斎藤達雄","column":"description","description":"広島と大毎に在籍し、斎藤達男の登録名でもプレーしたプロ野球選手。","source_urls":["https://npb.jp/history/register/index_sa.html"],"reviewed_on":"2026-10-12"}
@@ -187,7 +187,7 @@
 {"list":"baseball","id":"4398","original":"田中大輔","column":"description","description":"2007年に中日の一軍公式戦に出場したプロ野球選手。","source_urls":["https://npb.jp/bis/players/81085114.html"],"reviewed_on":"2026-10-12"}
 {"list":"baseball","id":"44","original":"青木秀夫","column":"description","description":"1985年に大洋の一軍公式戦に出場したプロ野球選手。","source_urls":["https://npb.jp/bis/players/71173860.html"],"reviewed_on":"2026-10-12"}
 {"list":"baseball","id":"4410","original":"田中勉","column":"description","description":"1961年に西鉄の一軍公式戦に出場したプロ野球選手。","source_urls":["https://npb.jp/bis/players/71973823.html"],"reviewed_on":"2026-10-12"}
-{"list":"baseball","id":"4418","original":"田中直樹","column":"description","description":"","source_urls":["https://npb.jp/history/register/index_ta.html"],"reviewed_on":"2026-10-12"}
+{"list":"baseball","id":"4418","original":"田中直樹","source_urls":["https://npb.jp/history/register/index_ta.html","https://npb.jp/announcement/2003/reserved_h.html"],"reviewed_on":"2026-10-12","column":"description","description":"2003年から2005年までダイエー・ソフトバンクに在籍した元プロ野球内野手。"}
 {"list":"baseball","id":"442","original":"池永正明","column":"description","description":"プロ野球で5年間に99勝を挙げた投手。","source_urls":[],"reviewed_on":"2026-10-12"}
 {"list":"baseball","id":"4445","original":"田中幸雄(投手)","column":"description","description":"1982年に日本ハムの一軍公式戦に出場したプロ野球選手。","source_urls":["https://npb.jp/bis/players/91793865.html"],"reviewed_on":"2026-10-12"}
 {"list":"baseball","id":"4446","original":"田中幸雄(内野手)","column":"description","description":"1986年に日本ハムの一軍公式戦に出場したプロ野球選手。","source_urls":["https://npb.jp/bis/players/41743862.html"],"reviewed_on":"2026-10-12"}
@@ -270,7 +270,7 @@
 {"list":"baseball","id":"6017","original":"ジェームス・ピータース","column":"description","description":"アメリカ合衆国出身の元プロ野球選手（外野手・投手）。左投左打。","source_urls":[],"reviewed_on":"2026-10-12"}
 {"list":"baseball","id":"6073","original":"ジョー・ヒックス","column":"description","description":"1985年に阪急の一軍公式戦に出場したプロ野球選手。","source_urls":["https://npb.jp/bis/players/61063860.html"],"reviewed_on":"2026-10-12"}
 {"list":"baseball","id":"6088","original":"ルイス・ヒメネス(1982年生の内野手)","column":"description","description":"2009年に日本ハムの一軍公式戦に出場したプロ野球選手。","source_urls":["https://npb.jp/bis/players/63365118.html"],"reviewed_on":"2026-10-12"}
-{"list":"baseball","id":"6089","original":"ルイス・ヒメネス(1988年生の内野手)","column":"description","description":"","source_urls":["https://npb.jp/history/register/index_hi.html"],"reviewed_on":"2026-10-12"}
+{"list":"baseball","id":"6089","original":"ルイス・ヒメネス(1988年生の内野手)","source_urls":["https://www.milb.com/player/luis-jimenez-499864"],"reviewed_on":"2026-10-12","column":"description","description":"ドミニカ共和国出身の三塁手。2013年にエンゼルスでメジャーデビュー。"}
 {"list":"baseball","id":"611","original":"市川友也","column":"description","description":"2010年に巨人の一軍公式戦に出場したプロ野球選手。","source_urls":["https://npb.jp/bis/players/81185131.html"],"reviewed_on":"2026-10-12"}
 {"list":"baseball","id":"6132","original":"平田薫","column":"description","description":"1978年に巨人の一軍公式戦に出場したプロ野球選手。","source_urls":["https://npb.jp/bis/players/41743846.html"],"reviewed_on":"2026-10-12"}
 {"list":"baseball","id":"6145","original":"平野謙","column":"description","description":"1981年に中日の一軍公式戦に出場したプロ野球選手。","source_urls":["https://npb.jp/bis/players/41043863.html"],"reviewed_on":"2026-10-12"}
@@ -336,7 +336,7 @@
 {"list":"baseball","id":"7042","original":"松本卓也","column":"description","description":"1989年にダイエーの一軍公式戦に出場したプロ野球選手。","source_urls":["https://npb.jp/bis/players/33733868.html"],"reviewed_on":"2026-10-12"}
 {"list":"baseball","id":"7043","original":"松本拓也","column":"description","description":"2000年に近鉄の一軍公式戦に出場したプロ野球選手。","source_urls":["https://npb.jp/bis/players/71273888.html"],"reviewed_on":"2026-10-12"}
 {"list":"baseball","id":"7047","original":"松本哲也","column":"description","description":"2008年に巨人の一軍公式戦に出場したプロ野球選手。","source_urls":["https://npb.jp/bis/players/01605114.html"],"reviewed_on":"2026-10-12"}
-{"list":"baseball","id":"7068","original":"松本竜也","column":"description","description":"","source_urls":["https://npb.jp/history/register/index_ma.html"],"reviewed_on":"2026-10-12"}
+{"list":"baseball","id":"7068","original":"松本竜也(左投手)","source_urls":["https://npb.jp/history/register/index_ma.html","https://ja.wikipedia.org/wiki/松本竜也_(左投手)"],"reviewed_on":"2026-10-12","column":"description","description":"2012年から2015年まで巨人に在籍した左投げの元プロ野球投手。"}
 {"list":"baseball","id":"7088","original":"真中満","column":"description","description":"NPBのシーズン代打起用回数と代打安打数の最多記録保持者。","source_urls":[],"reviewed_on":"2026-10-12"}
 {"list":"baseball","id":"7092","original":"チャーリー・マニエル","column":"description","description":"1976年にヤクルトの一軍公式戦に出場したプロ野球選手。","source_urls":["https://npb.jp/bis/players/31933842.html"],"reviewed_on":"2026-10-12"}
 {"list":"baseball","id":"7122","original":"ドミンゴ・マルティネス","column":"description","description":"西武と巨人に在籍したプロ野球選手。","source_urls":["https://npb.jp/history/register/index_ma.html"],"reviewed_on":"2026-10-12"}
@@ -455,6 +455,7 @@
 {"list":"baseball","id":"佐藤薫_ロッテ_00000","original":"佐藤薫","column":"description","description":"1983年にロッテに在籍したプロ野球選手。","source_urls":["https://npb.jp/history/register/index_sa.html"],"reviewed_on":"2026-10-12"}
 {"list":"baseball","id":"加藤邦彦_ロッテ_00000","original":"加藤邦洋(加藤邦彦)","column":"description","description":"1971年にロッテに在籍したプロ野球選手。","source_urls":["https://npb.jp/history/register/index_ka.html"],"reviewed_on":"2026-10-12"}
 {"list":"baseball","id":"加藤響_DeNA_00000","original":"加藤響","column":"description","description":"2025年にDeNAの一軍公式戦に出場したプロ野球選手。","source_urls":["https://npb.jp/bis/players/21525150.html"],"reviewed_on":"2026-10-12"}
+{"list":"baseball","id":"松本竜也_広島_00000","original":"松本竜也(右投手)","source_urls":["https://npb.jp/bis/players/73175155.html"],"reviewed_on":"2026-10-12","column":"description","description":"2022年に広島で一軍デビューした右投げのプロ野球投手。"}
 {"list":"baseball","id":"根岸辰昇_ヤクルト_00000","original":"根岸辰昇","column":"description","description":"東京都杉並区出身のプロ野球選手（内野手・育成選手）。左投左打。","source_urls":[],"reviewed_on":"2026-10-12"}
 {"list":"fictional_anime_character","id":"10","original":"バロックストーミー","column":"description","description":"セレスティア号船長の宿敵である頭目","source_urls":[],"reviewed_on":"2026-10-12"}
 {"list":"fictional_anime_character","id":"100","original":"スピディア","column":"description","description":"審問庁のクレスタの幼馴染、速度制御が得意","source_urls":[],"reviewed_on":"2026-10-12"}
@@ -1075,7 +1076,7 @@
 {"list":"municipality","id":"15097","original":"吹屋町","column":"description","description":"岡山県川上郡にあった町。","source_urls":["https://geoshape.ex.nii.ac.jp/city/resource/33B0160008.html"],"reviewed_on":"2026-10-12"}
 {"list":"municipality","id":"15124","original":"大島中村","column":"description","description":"岡山県にあった村。","source_urls":[],"reviewed_on":"2026-10-12"}
 {"list":"municipality","id":"15125","original":"大島村","column":"description","description":"岡山県浅口郡にあった村。","source_urls":["https://geoshape.ex.nii.ac.jp/city/resource/33B0170008.html"],"reviewed_on":"2026-10-12"}
-{"list":"municipality","id":"15177","original":"川上町高山市","column":"description","description":"","source_urls":[],"reviewed_on":"2026-10-12"}
+{"list":"municipality","id":"15177","original":"高山市村","source_urls":["https://www.city.takahashi.lg.jp/site/koho/chimeioaruku022.html","https://geoshape.ex.nii.ac.jp/nrct/resource/34/340000321700.html"],"reviewed_on":"2026-10-12","column":"description","description":"備中国川上郡にあった村。現在の岡山県高梁市川上町高山市にあたり、市場町・宿場町として栄えた。"}
 {"list":"municipality","id":"15195","original":"広野村","column":"description","description":"岡山県勝田郡にあった村。現在の津山市河面、田熊、近長、福井に当たる。","source_urls":[],"reviewed_on":"2026-10-12"}
 {"list":"municipality","id":"15248","original":"東苫田村","column":"description","description":"岡山県苫田郡にあった村。現在の津山市大田、勝部、志戸部、紫保井、沼、籾保、弥生町に当たる。","source_urls":[],"reviewed_on":"2026-10-12"}
 {"list":"municipality","id":"15269","original":"河辺村","column":"description","description":"岡山県勝田郡にあった村。現在の津山市瓜生原、河辺、国分寺、日上に当たる。","source_urls":[],"reviewed_on":"2026-10-12"}
@@ -1133,17 +1134,17 @@
 {"list":"municipality","id":"16938","original":"戸塚町","column":"description","description":"東京府豊多摩郡にかつて存在した町の一つである。現在の新宿区高田馬場や西早稲田などに当たる地域である。","source_urls":[],"reviewed_on":"2026-10-12"}
 {"list":"municipality","id":"16940","original":"敷香町","column":"description","description":"日本の領有下において樺太に存在した町。","source_urls":[],"reviewed_on":"2026-10-12"}
 {"list":"municipality","id":"16962","original":"栄浜村","column":"description","description":"日本の領有下において樺太に存在した村（指定町村）。","source_urls":[],"reviewed_on":"2026-10-12"}
-{"list":"municipality","id":"16971","original":"沖宿町","column":"description","description":"","source_urls":[],"reviewed_on":"2026-10-12"}
+{"list":"municipality","id":"16971","original":"沖宿村","source_urls":["https://geoshape.ex.nii.ac.jp/nrct/resource/08/080000230600.html","https://geoshape.ex.nii.ac.jp/av/resource/K03/K03G07S00106.html","https://www.city.tsuchiura.lg.jp/data/doc/1702945413_doc_34_0.pdf","https://www.city.tsuchiura.lg.jp/tsuchiurashiritsuhakubutsukan/hanbaitoshonado/page016766.html"],"reviewed_on":"2026-10-12","column":"description","description":"常陸国新治郡にあった村。1889年に上大津村の一部となり、現在の茨城県土浦市沖宿町にあたる。"}
 {"list":"municipality","id":"16977","original":"深海村","column":"description","description":"日本の領有下において樺太に存在した村（指定町村）。","source_urls":[],"reviewed_on":"2026-10-12"}
 {"list":"municipality","id":"16978","original":"清水村","column":"description","description":"日本の領有下において樺太に存在した村（指定町村）。","source_urls":[],"reviewed_on":"2026-10-12"}
 {"list":"municipality","id":"16984","original":"狛江町","column":"description","description":"東京都北多摩郡にあった町。","source_urls":["https://geoshape.ex.nii.ac.jp/city/resource/13341A1968.html"],"reviewed_on":"2026-10-12"}
 {"list":"municipality","id":"16987","original":"珍内町","column":"description","description":"日本の領有下において樺太に存在した町。町制前の名称は三浜村（みはまむら）。","source_urls":[],"reviewed_on":"2026-10-12"}
 {"list":"municipality","id":"16996","original":"白縫村","column":"description","description":"日本の領有下において樺太に存在した村（指定町村）。","source_urls":[],"reviewed_on":"2026-10-12"}
-{"list":"municipality","id":"16998","original":"相打村","column":"description","description":"","source_urls":[],"reviewed_on":"2026-10-12"}
+{"list":"municipality","id":"16998","original":"相打村","source_urls":["https://geoshape.ex.nii.ac.jp/nrct/resource/02/020000198100.html","https://www.city.goshogawara.lg.jp/lib/document/files/chimei236-.pdf"],"reviewed_on":"2026-10-12","column":"description","description":"現在の青森県五所川原市相内にあった近世の村。後に相内村と表記された。"}
 {"list":"municipality","id":"17016","original":"落合町","column":"description","description":"日本の領有下において樺太に存在した町。","source_urls":[],"reviewed_on":"2026-10-12"}
 {"list":"municipality","id":"17026","original":"豊北村","column":"description","description":"日本の領有下において樺太に存在した村（指定町村）。","source_urls":[],"reviewed_on":"2026-10-12"}
-{"list":"municipality","id":"17030","original":"近江国蒲生寺村","column":"description","description":"","source_urls":[],"reviewed_on":"2026-10-12"}
-{"list":"municipality","id":"17044","original":"須々木村","column":"description","description":"","source_urls":[],"reviewed_on":"2026-10-12"}
+{"list":"municipality","id":"17030","original":"寺村","source_urls":["https://geoshape.ex.nii.ac.jp/nrct/resource/25/250000178500.html","https://geoshape.ex.nii.ac.jp/av/resource/K30/K30G05S00142.html","https://www.biwahaku.jp/uploads/FR%E3%81%A0%E3%82%88%E3%82%8A60%E5%8F%B7.pdf","https://www.city.higashiomi.shiga.jp/_res/projects/default_project/_page_/001/003/150/houzoutiitiran050905.pdf"],"reviewed_on":"2026-10-12","column":"description","description":"近江国蒲生郡にあった村。現在の滋賀県東近江市蒲生寺町にあたり、佐久良川沿いには人魚伝説が伝わる。"}
+{"list":"municipality","id":"17044","original":"須々木村","source_urls":["https://geoshape.ex.nii.ac.jp/nrct/resource/22/220000258000.html","https://geoshape.ex.nii.ac.jp/av/resource/K22/K22G01S00079.html"],"reviewed_on":"2026-10-12","column":"description","description":"遠江国榛原郡にあった村。現在の静岡県牧之原市須々木にあたり、幕末には相良藩領と社寺領があった。"}
 {"list":"municipality","id":"1726","original":"対馬市","column":"description","description":"長崎県の対馬に位置する市。行政面積は707.42km2で長崎県下の市町で最も広い自治体である。対馬振興局の所在地。","source_urls":[],"reviewed_on":"2026-10-12"}
 {"list":"municipality","id":"1874","original":"和泊町","column":"description","description":"鹿児島県の南部、沖永良部島東部（東半分）に位置する町。大島郡に属する。","source_urls":[],"reviewed_on":"2026-10-12"}
 {"list":"municipality","id":"1897","original":"読谷村","column":"description","description":"沖縄本島中部の西海岸に位置する、沖縄県中頭郡の村。","source_urls":["https://www.vill.yomitan.okinawa.jp/soshiki/kikaku_seisaku/gyomu/gaiyo/profile/1239.html"],"reviewed_on":"2026-10-12"}
@@ -1891,7 +1892,6 @@
 {"list":"stations","id":"7437","original":"普代","column":"description","description":"愛称「はまゆり咲く」は、普代村の花であるハマユリにちなむ。","source_urls":["https://www.sanrikutetsudou.com/%E9%A7%85%E6%83%85%E5%A0%B1/%E6%99%AE%E4%BB%A3%E9%A7%85/"],"reviewed_on":"2026-10-12"}
 {"list":"stations","id":"7479","original":"船引","column":"description","description":"磐越東線のSuica利用区域の最東端。小野新町・いわき方面への利用はできない。","source_urls":[],"reviewed_on":"2026-10-12"}
 {"list":"stations","id":"7534","original":"平田","column":"description","description":"愛称「漁火大観音」は、ホームから望める釜石大観音にちなむ。","source_urls":["https://www.sanrikutetsudou.com/%E9%A7%85%E6%83%85%E5%A0%B1/%E5%B9%B3%E7%94%B0%E9%A7%85/"],"reviewed_on":"2026-10-12"}
-{"list":"stations","id":"7619","original":"北海道の地名・駅名","column":"description","description":"","source_urls":[],"reviewed_on":"2026-10-12"}
 {"list":"stations","id":"7635","original":"堀内公園","column":"description","description":"駅名の由来となっている堀内公園の最寄駅でもある。","source_urls":[],"reviewed_on":"2026-10-12"}
 {"list":"stations","id":"7646","original":"堀内","column":"description","description":"愛称「義経の祈り」は、源義経ゆかりの鵜鳥神社が近くにあることにちなむ。","source_urls":["https://www.sanrikutetsudou.com/%E9%A7%85%E6%83%85%E5%A0%B1/%E5%A0%80%E5%86%85%E9%A7%85/"],"reviewed_on":"2026-10-12"}
 {"list":"stations","id":"7648","original":"甫嶺","column":"description","description":"愛称「金のしずく」は、駅西側の今出山にかつて金山があったことにちなむ。","source_urls":["https://www.sanrikutetsudou.com/%E9%A7%85%E6%83%85%E5%A0%B1/%E7%94%AB%E5%B6%BA%E9%A7%85/"],"reviewed_on":"2026-10-12"}

@@ -4,11 +4,26 @@ import csv
 import re
 import unittest
 from pathlib import Path
+from unittest import mock
 
+import update_stations
+from description_overrides import reviewed_identities
 from update_stations import compact_station_description, make_station_description
 
 
 class StationDescriptionTest(unittest.TestCase):
+    def test_non_station_entity_is_excluded_even_when_upstream_returns_it(self):
+        bindings = [{
+            "s": {"value": "http://www.wikidata.org/entity/" + qid},
+            "label": {"value": name}, "title": {"value": name},
+        } for qid, name in [("Q11402437", "北海道の地名・駅名"),
+                             ("Q1", "北海道の地名にちなんだ駅")]]
+        with mock.patch.object(update_stations, "http_json", return_value={
+            "results": {"bindings": bindings}
+        }):
+            active = update_stations.fetch_entities()
+        self.assertEqual({"Q1"}, set(active))
+
     def test_distinctive_description_has_priority_over_opening_year(self):
         intro = (
             "別府駅は、福岡県福岡市城南区にある福岡市地下鉄の駅。"
@@ -93,7 +108,10 @@ class StationDescriptionTest(unittest.TestCase):
         for row in empty:
             self.assertFalse(row["opened_year"])
 
+        reviewed = reviewed_identities("stations")
         for row in rows:
+            if (row["id"], row["original"]) in reviewed:
+                continue
             expected = compact_station_description(
                 row["description"], row["opened_year"]
             )
