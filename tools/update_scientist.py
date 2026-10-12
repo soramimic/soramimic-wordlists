@@ -547,9 +547,19 @@ def is_blank(v) -> bool:
     return v is None or v.strip() in ("", "NA")
 
 
+# 同一人物と確認した表記だけを照合時に統一する。CSVの表示名は保持する。
+# https://www.nagoya-u.ac.jp/info/winner/20141008.html
+# https://synth.chem.nagoya-u.ac.jp/wordpress/news/hideto_akasaki_award
+PERSON_ALIASES = {"赤﨑勇": "赤崎勇"}
+
+
+def person_key(original: str) -> str:
+    return PERSON_ALIASES.get(original, original)
+
+
 def norm(title: str) -> str:
-    """既存 original との照合キー(曖昧回避サフィックス除去+全半角空白除去)。"""
-    return DISAMBIG.sub("", title).replace("　", "").replace(" ", "")
+    """記事名の空白・曖昧回避サフィックスを除き、確認済み別表記を照合する。"""
+    return person_key(DISAMBIG.sub("", title).replace("　", "").replace(" ", ""))
 
 
 def image_pair(url: str):
@@ -773,7 +783,7 @@ def main() -> int:
     for r in old_rows:
         r.setdefault("image", "")
         r.setdefault("image_page", "")
-    existing = {r["original"] for r in old_rows}
+    existing = {person_key(r["original"]) for r in old_rows}
 
     # 既存行への新列付与 + 空欄のバックフィル。既に埋まっている値は書き換えない
     # (ADR 00014)。上流のラベル揺れ・記事改稿・同名別人の取り違えで、良いデータが
@@ -783,7 +793,7 @@ def main() -> int:
         # Public activity names and reviewed degree descriptions are curated separately.
         if r[FLAG] == "yes":
             continue
-        info = by_key.get(r["original"])
+        info = by_key.get(person_key(r["original"]))
         if info:
             matched += 1
             a = info["attr"]
@@ -863,9 +873,10 @@ def main() -> int:
             continue
         f_s, f_y, g_s, g_y, full_s, full_y, _reg = parsed
         original = full_s.replace(" ", "")
-        if original in existing:
+        key = person_key(original)
+        if key in existing:
             continue
-        existing.add(original)
+        existing.add(key)
         # 既存規約: 日本人漢字名の読みはひらがな、カタカナ名はそのまま
         if not KATAKANA.match(original):
             f_y = f_y.translate(KATA2HIRA)
