@@ -51,6 +51,8 @@ DISAMBIG = re.compile(r"\s+\([^)]*\)$")
 SUFFIX = re.compile(r"(駅|停留場|停留所)$")
 KANA_NAME = re.compile(r"^[ぁ-ゖァ-ヶーゝゞ・\s]+$")
 EXCLUDE_TITLE = re.compile(r"(信号場|信号所|貨物ターミナル|貨物駅|操車場)( \(|（|$)|一覧")
+# An article about names, rather than a station entity.
+EXCLUDED_QIDS = {"Q11402437"}  # 北海道の地名・駅名
 FEATURE_TERMS = (
     (re.compile(r"(日本|国内|JR|世界).{0,12}(唯一|初|最[東西南北]|最も)"), 6),
     (re.compile(r"(唯一|初めて|最[東西南北]|最も.{0,8}(駅|ホーム))"), 6),
@@ -126,7 +128,7 @@ SELECT DISTINCT ?s ?label ?title ?dissolved ?state WHERE {{
         if "state" in b:
             e["state"].add(b["state"]["value"].rsplit("/", 1)[1])
     active = {q: e for q, e in ents.items()
-              if e["title"] and not e["dissolved"] and not (e["state"] & CLOSED_STATES)
+              if q not in EXCLUDED_QIDS and e["title"] and not e["dissolved"] and not (e["state"] & CLOSED_STATES)
               and not EXCLUDE_TITLE.search(e["title"])}
     return active
 
@@ -424,7 +426,8 @@ def main() -> int:
         return 1
 
     with CSV_PATH.open(encoding="utf-8") as f:
-        rows = list(csv.DictReader(f))
+        rows = [row for row in csv.DictReader(f)
+                if row.get("wikidata") not in EXCLUDED_QIDS]
     by_qid = {r["wikidata"]: r for r in rows if r.get("wikidata")}
 
     added_qids = sorted(q for q in active if q not in by_qid)
@@ -498,6 +501,8 @@ def main() -> int:
     cols = ["id", "original", "surface", "pronunciation", "prefecture", "city",
             "lines", "operator", "opened_year", "station_code", "status",
             "image", "image_page", "description", "wikidata"]
+    from description_overrides import apply_overrides
+    apply_overrides("stations", rows)
     buf = io.StringIO()
     w = csv.DictWriter(buf, fieldnames=cols, lineterminator="\n")
     w.writeheader()

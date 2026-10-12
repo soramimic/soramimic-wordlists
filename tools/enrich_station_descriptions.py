@@ -128,6 +128,8 @@ def main() -> int:
             )
             row["description"] = "" if desc == "NA" else desc
 
+    from description_overrides import apply_overrides
+    apply_overrides("stations", rows)
     buf = io.StringIO()
     writer = csv.DictWriter(
         buf, fieldnames=COLS, lineterminator="\n", extrasaction="ignore"

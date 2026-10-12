@@ -9,6 +9,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import enrich_player_descriptions_openai as target  # noqa: E402
+from description_overrides import apply_overrides  # noqa: E402
 from openai_source_selector import Selection, SourceRecord  # noqa: E402
 
 
@@ -124,7 +125,9 @@ def validate() -> None:
             ),
         )
         descriptions = target.description_state(groups[group_id])
-        if rendered != record["description"] or descriptions != (rendered,):
+        expected_rows = [{**row, "description": rendered} for row in groups[group_id]]
+        apply_overrides(kind, expected_rows)
+        if rendered != record["description"] or descriptions != target.description_state(expected_rows):
             raise ValueError(f"provenance does not reproduce CSV: {kind}:{group_id}")
 
         if kind == "football":

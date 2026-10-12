@@ -13,7 +13,7 @@ id,original,surface,pronunciation,category,decade,era,year,sensitive,description
 11,白拍子,白拍子,シラビョウシ,play,1180年代,平安,NA,no,平安末期から鎌倉初期に貴族や武家が愛した歌舞で、祇王や仏御前が舞い手に名高い。,http://commons.wikimedia.org/wiki/Special:FilePath/Shizuka-gozen_in_her_farewell_dance_to_Yoshitsune.jpg,https://commons.wikimedia.org/wiki/File:Shizuka-gozen_in_her_farewell_dance_to_Yoshitsune.jpg,Q958693
 12,流鏑馬,流鏑馬,ヤブサメ,play,1180年代,鎌倉,1187,no,源頼朝が鶴岡八幡宮で催して以降、鎌倉武士が弓馬の技を競う行事として盛んになった。,http://commons.wikimedia.org/wiki/Special:FilePath/Yabusame_01.jpg,https://commons.wikimedia.org/wiki/File:Yabusame_01.jpg,Q1886157
 13,笠懸,笠懸,カサガケ,play,1190年代,鎌倉,1193,no,源頼朝の故事に始まり、鎌倉時代に流鏑馬と並ぶ騎射三物として最盛期を迎えた武芸。,http://commons.wikimedia.org/wiki/Special:FilePath/Kyujutsu07.jpg,https://commons.wikimedia.org/wiki/File:Kyujutsu07.jpg,Q6373950
-14,直垂,直垂,ヒタタレ,fashion,1190年代,鎌倉,NA,no,公家の普段着だった直垂が着やすさから武士に好まれ、鎌倉の武家の装束として広まった。,http://commons.wikimedia.org/wiki/Special:FilePath/Hitatare_chakuy%C5%8D.jpg,https://commons.wikimedia.org/wiki/File:Hitatare_chakuy%C5%8D.jpg,Q4118264
+14,直垂,直垂,ヒタタレ,fashion,1190年代,鎌倉,NA,no,庶民の衣服だった直垂が武士の普段着となり、後には武家の礼装へと変わっていった。,http://commons.wikimedia.org/wiki/Special:FilePath/Hitatare_chakuy%C5%8D.jpg,https://commons.wikimedia.org/wiki/File:Hitatare_chakuy%C5%8D.jpg,Q4118264
 15,喫茶,喫茶,キッサ,food,1210年代,鎌倉,1211,no,栄西が宋から茶を伝え、喫茶養生記を著した頃から禅僧や武家に茶を飲む習慣が広まった。,http://commons.wikimedia.org/wiki/Special:FilePath/Tea_time_%E3%81%8A%E8%8C%B6%E3%81%AE%E6%99%82%E9%96%93.jpg,https://commons.wikimedia.org/wiki/File:Tea_time_%E3%81%8A%E8%8C%B6%E3%81%AE%E6%99%82%E9%96%93.jpg,Q6097
 16,精進料理,精進料理,ショウジンリョウリ,food,1230年代,鎌倉,1237,no,栄西や道元らが宋から伝え、鎌倉期に禅寺を中心に発達して武家の饗応にも広まった。,http://commons.wikimedia.org/wiki/Special:FilePath/Chinese-buddhist-cuisine-taiwan-1.jpg,https://commons.wikimedia.org/wiki/File:Chinese-buddhist-cuisine-taiwan-1.jpg,Q1326339
 17,平曲,平曲,ヘイキョク,play,1250年代,鎌倉,NA,no,琵琶法師が平家物語を語る平曲が鎌倉中期に成立し、哀調ある語り物として広く愛された。,http://commons.wikimedia.org/wiki/Special:FilePath/Bokiekotoba_biwahousi.JPG,https://commons.wikimedia.org/wiki/File:Bokiekotoba_biwahousi.JPG,Q3129432
@@ -125,7 +125,7 @@ id,original,surface,pronunciation,category,decade,era,year,sensitive,description
 123,あいすくりん,あいすくりん,アイスクリン,food,1860年代,明治,1869,no,横浜の馬車道で売り出された氷菓。開化の味として評判を呼び売る店が増えていった。,http://commons.wikimedia.org/wiki/Special:FilePath/Iceclin.jpg,https://commons.wikimedia.org/wiki/File:Iceclin.jpg,Q11282175
 124,ええじゃないか,ええじゃないか,エエジャナイカ,word,1860年代,江戸,1867,no,東海や京都で人々が囃し言葉を唱えながら仮装して踊り歩く熱狂が各地へ広がった。,http://commons.wikimedia.org/wiki/Special:FilePath/EeJaNaiKaScene.jpg,https://commons.wikimedia.org/wiki/File:EeJaNaiKaScene.jpg,Q5347024
 125,御一新,御一新,ゴイッシン,word,1860年代,明治,1868,no,明治維新を当時の人が呼んだ言葉。世の中が新しくなるという期待をこめて広く使われた。,http://commons.wikimedia.org/wiki/Special:FilePath/Emperor_Arriving_in_Tokyo_by_Kobori_Tomoto_%28Meiji_Memorial_Picture_Gallery%29.jpg,https://commons.wikimedia.org/wiki/File:Emperor_Arriving_in_Tokyo_by_Kobori_Tomoto_%28Meiji_Memorial_Picture_Gallery%29.jpg,Q8707
-126,はしか絵,はしか絵,ハシカエ,item,1860年代,江戸,1862,yes,麻疹の大流行時に疫病除けとして赤を主体とした錦絵が売り出され人々が競って買った。,http://commons.wikimedia.org/wiki/Special:FilePath/Measles_print_%28hashika-e%29%2C_1862_AD_-_Edo-Tokyo_Museum_-_Sumida%2C_Tokyo%2C_Japan_-_DSC06725.jpg,https://commons.wikimedia.org/wiki/File:Measles_print_%28hashika-e%29%2C_1862_AD_-_Edo-Tokyo_Museum_-_Sumida%2C_Tokyo%2C_Japan_-_DSC06725.jpg,Q11674298
+126,はしか絵,はしか絵,ハシカエ,item,1860年代,江戸,1862,yes,麻疹の流行時に予防や養生の心得を伝えた錦絵。疫病神を退治する姿などを描き人々に広まった。,http://commons.wikimedia.org/wiki/Special:FilePath/Measles_print_%28hashika-e%29%2C_1862_AD_-_Edo-Tokyo_Museum_-_Sumida%2C_Tokyo%2C_Japan_-_DSC06725.jpg,https://commons.wikimedia.org/wiki/File:Measles_print_%28hashika-e%29%2C_1862_AD_-_Edo-Tokyo_Museum_-_Sumida%2C_Tokyo%2C_Japan_-_DSC06725.jpg,Q11674298
 127,あんぱん,あんぱん,アンパン,food,1870年代,明治,1875,no,木村屋が酒種で作った菓子パン。銀座で評判となり明治の新しい味の代表になった。,http://commons.wikimedia.org/wiki/Special:FilePath/Anpan_001.jpg,https://commons.wikimedia.org/wiki/File:Anpan_001.jpg,Q568347
 128,学問のすゝめ,学問のすゝめ,ガクモンノススメ,other,1870年代,明治,1872,no,福沢諭吉の啓蒙書。天は人の上に人を造らずの一節が知れわたり大変な部数を売った。,http://commons.wikimedia.org/wiki/Special:FilePath/%E5%AD%A6%E5%95%8F%E3%81%AE%E3%81%99%E3%83%BD%E3%82%81.jpg,https://commons.wikimedia.org/wiki/File:%E5%AD%A6%E5%95%8F%E3%81%AE%E3%81%99%E3%83%BD%E3%82%81.jpg,Q11448137
 129,ガス灯,ガス灯,ガストウ,item,1870年代,明治,1872,no,横浜や銀座に立てられた街灯。夜も明るい町並みが見物人を集めて開化の目印となった。,http://commons.wikimedia.org/wiki/Special:FilePath/Gaslaterne.jpg,https://commons.wikimedia.org/wiki/File:Gaslaterne.jpg,Q856548
@@ -320,7 +320,7 @@ id,original,surface,pronunciation,category,decade,era,year,sensitive,description
 318,駅弁大学,駅弁大学,エキベンダイガク,word,1940年代,昭和,1949,no,大宅壮一が名づけた語で、駅弁を売る町にまで新制大学ができた状況を皮肉に評した。,,,
 319,鐘の鳴る丘,鐘の鳴る丘,カネノナルオカ,play,1940年代,昭和,1947,no,夕方に毎日流れたラジオの連続劇で、主題歌のとんがり帽子が子供たちに愛唱された。,http://commons.wikimedia.org/wiki/Special:FilePath/Kane_no_naruoka-1.jpg,https://commons.wikimedia.org/wiki/File:Kane_no_naruoka-1.jpg,Q11651318
 320,カムカムエヴリバディ,カムカムエヴリバディ,カムカムエヴリバディ,word,1940年代,昭和,1946,no,ラジオ英語会話の主題歌の歌い出しで、誰もが口にする英語ブームの合図になった。,http://commons.wikimedia.org/wiki/Special:FilePath/Hirakawa_Portrait.JPG,https://commons.wikimedia.org/wiki/File:Hirakawa_Portrait.JPG,Q105023442
-321,学校給食,学校給食,ガッコウキュウショク,food,1940年代,昭和,1947,no,都市の小学校で給食が始まり、コッペパンと脱脂粉乳が子供の昼食の定番になった。,http://commons.wikimedia.org/wiki/Special:FilePath/A_school_tray_showing_a_reimbursable_school_breakfast_for_grades_Kindergarten_through_12_-_MyPlate_20210805-FNS-UNC-0023.jpg,https://commons.wikimedia.org/wiki/File:A_school_tray_showing_a_reimbursable_school_breakfast_for_grades_Kindergarten_through_12_-_MyPlate_20210805-FNS-UNC-0023.jpg,Q1195832
+321,学校給食,学校給食,ガッコウキュウショク,food,1940年代,昭和,1947,no,戦後に学校給食が再開し、コッペパンと脱脂粉乳が子供の昼食の定番になった。,http://commons.wikimedia.org/wiki/Special:FilePath/A_school_tray_showing_a_reimbursable_school_breakfast_for_grades_Kindergarten_through_12_-_MyPlate_20210805-FNS-UNC-0023.jpg,https://commons.wikimedia.org/wiki/File:A_school_tray_showing_a_reimbursable_school_breakfast_for_grades_Kindergarten_through_12_-_MyPlate_20210805-FNS-UNC-0023.jpg,Q1195832
 322,ギブミーチョコレート,ギブミーチョコレート,ギブミーチョコレート,word,1940年代,昭和,1946,yes,占領軍の兵士に子供が菓子をねだる際の言い回しとして各地で聞かれた。,,,
 323,銀座カンカン娘,銀座カンカン娘,ギンザカンカンムスメ,play,1940年代,昭和,1949,no,高峰秀子が歌った映画の主題歌で、軽快な歌詞と節回しが銀座のにぎわいを印象づけた。,http://commons.wikimedia.org/wiki/Special:FilePath/Ginza_KanKan_Musume.jpg,https://commons.wikimedia.org/wiki/File:Ginza_KanKan_Musume.jpg,Q5563312
 324,競輪,競輪,ケイリン,play,1940年代,昭和,1948,no,小倉で自転車競走の興行が始まり、投票を伴う新しい見物として各地の都市に広がった。,http://commons.wikimedia.org/wiki/Special:FilePath/Omiya_keirin_finish_3.jpg,https://commons.wikimedia.org/wiki/File:Omiya_keirin_finish_3.jpg,Q774176
@@ -360,7 +360,7 @@ id,original,surface,pronunciation,category,decade,era,year,sensitive,description
 358,わしゃかなわんよ,わしゃかなわんよ,ワシャカナワンヨ,word,1940年代,昭和,1940,no,喜劇俳優高勢実乗の口ぐせで、困ったときの言い回しとして広く口まねされ流行した。,,,
 359,ワンマン,ワンマン,ワンマン,word,1940年代,昭和,1949,no,独断で事を決める人を指す言葉として広まり、人物を評するときの決まり文句になった。,,,
 360,アロハシャツ,アロハシャツ,アロハシャツ,fashion,1950年代,昭和,1956,no,派手な柄の開襟シャツが、夏の気軽な普段着として男性に広く着られ町の風景を明るくした。,http://commons.wikimedia.org/wiki/Special:FilePath/Vintage_aloha_shirt.JPG,https://commons.wikimedia.org/wiki/File:Vintage_aloha_shirt.JPG,Q1145477
-361,アーモンドグリコ,アーモンドグリコ,アーモンドグリコ,food,1950年代,昭和,1955,no,粒入りのキャラメルが発売され、おまけ付きの菓子として子どもに人気を集めて長く売れた。,http://commons.wikimedia.org/wiki/Special:FilePath/Ezaki_Glico_Almond_Glico.jpg,https://commons.wikimedia.org/wiki/File:Ezaki_Glico_Almond_Glico.jpg,Q11285764
+361,アーモンドグリコ,アーモンドグリコ,アーモンドグリコ,food,1950年代,昭和,1955,no,アーモンド入りのキャラメル。「一粒で二度おいしい」という宣伝文句で知られ大人にも人気を集めた。,http://commons.wikimedia.org/wiki/Special:FilePath/Ezaki_Glico_Almond_Glico.jpg,https://commons.wikimedia.org/wiki/File:Ezaki_Glico_Almond_Glico.jpg,Q11285764
 362,イカす,イカす,イカス,word,1950年代,昭和,1958,no,粋でかっこいいことを表す語で、映画スターの口調とともに広まり若者の褒め言葉として定着した。,,,
 363,インスタントラーメン,インスタントラーメン,インスタントラーメン,food,1950年代,昭和,1958,no,湯を注ぐだけで食べられる即席の麺が発売され、爆発的に売れて日本の食卓を大きく変えた。,http://commons.wikimedia.org/wiki/Special:FilePath/Mama_instant_noodle_block.jpg,https://commons.wikimedia.org/wiki/File:Mama_instant_noodle_block.jpg,Q1051265
 364,歌声喫茶,歌声喫茶,ウタゴエキッサ,play,1950年代,昭和,1955,no,客が伴奏に合わせて民謡や労働歌を合唱する喫茶店が、都市の若者や学生に人気を集めた。,http://commons.wikimedia.org/wiki/Special:FilePath/%E5%94%84%E3%81%94%E3%81%88%E5%96%AB%E8%8C%B6_%E5%A4%A2_%2814218592640%29.jpg,https://commons.wikimedia.org/wiki/File:%E5%94%84%E3%81%94%E3%81%88%E5%96%AB%E8%8C%B6_%E5%A4%A2_%2814218592640%29.jpg,Q7902299
@@ -378,7 +378,7 @@ id,original,surface,pronunciation,category,decade,era,year,sensitive,description
 376,カミナリ族,カミナリ族,カミナリゾク,word,1950年代,昭和,1959,no,爆音を響かせてオートバイを走らせる若者たちを指す呼び名で、新しい若者像を表す語となった。,http://commons.wikimedia.org/wiki/Special:FilePath/Forty-years-of-Showa-era-4.png,https://commons.wikimedia.org/wiki/File:Forty-years-of-Showa-era-4.png,Q11294730
 377,カリプソ,カリプソ,カリプソ,play,1950年代,昭和,1957,no,西インド諸島由来の軽快な音楽と踊りが紹介され、歌謡曲にも取り入れられて若者に流行した。,http://commons.wikimedia.org/wiki/Special:FilePath/Calypso22.jpg,https://commons.wikimedia.org/wiki/File:Calypso22.jpg,
 378,缶入りジュース,缶入りジュース,カンイリジュース,food,1950年代,昭和,1954,no,日本で初めての缶入りみかんジュースが発売され、持ち運べる新しい飲み物として話題になった。,,,
-379,缶ビール,缶ビール,カンビール,food,1950年代,昭和,1958,no,缶に入ったビールが発売され、栓抜きのいらない手軽さから行楽や家飲みの酒として広まった。,http://commons.wikimedia.org/wiki/Special:FilePath/Weizenbier-ukko.jpg,https://commons.wikimedia.org/wiki/File:Weizenbier-ukko.jpg,Q44
+379,缶ビール,缶ビール,カンビール,food,1950年代,昭和,1958,no,缶に入ったビール。当初は缶切りが必要だったがプルトップ式の登場で手軽になり行楽や家飲みに広まった。,http://commons.wikimedia.org/wiki/Special:FilePath/Weizenbier-ukko.jpg,https://commons.wikimedia.org/wiki/File:Weizenbier-ukko.jpg,Q44
 380,カンロ飴,カンロ飴,カンロアメ,food,1950年代,昭和,1954,no,醤油を使った独特の甘みの飴が売れ、素朴な味わいで家庭に置かれる菓子として広まった。,,,
 381,街頭テレビ,街頭テレビ,ガイトウテレビ,play,1950年代,昭和,1953,no,駅前や広場に置かれたテレビの前に人が群がり、プロレスや相撲の中継を立ち見で楽しんだ。,http://commons.wikimedia.org/wiki/Special:FilePath/Gaitou_tv.JPG,https://commons.wikimedia.org/wiki/File:Gaitou_tv.JPG,Q11626283
 382,がめつい,がめつい,ガメツイ,word,1950年代,昭和,1959,no,強欲で抜け目がないことを表す語で、舞台の題名から一気に広まり全国で使われるようになった。,,,
@@ -464,7 +464,7 @@ id,original,surface,pronunciation,category,decade,era,year,sensitive,description
 462,インスタントカレー,インスタントカレー,インスタントカレー,food,1960年代,昭和,1960,no,粉や固形の即席カレーが相次いで売られ、手軽さから家庭の定番料理として一気に広まった。,http://commons.wikimedia.org/wiki/Special:FilePath/Curry_Roux_blocks_01.jpg,https://commons.wikimedia.org/wiki/File:Curry_Roux_blocks_01.jpg,
 463,インスタントコーヒー,インスタントコーヒー,インスタントコーヒー,food,1960年代,昭和,1960,no,湯に溶かすだけの粉のコーヒーが国内でも売られ、家庭で気軽に洋風の一杯を楽しませた。,http://commons.wikimedia.org/wiki/Special:FilePath/Instant_coffee.jpg,https://commons.wikimedia.org/wiki/File:Instant_coffee.jpg,Q858049
 464,エレキブーム,エレキブーム,エレキブーム,play,1960年代,昭和,1965,no,電気ギターの演奏が若者の間で人気を集め、素人の楽団が次々と生まれて大会も盛んに開かれた。,,,
-465,エンゼルパイ,エンゼルパイ,エンゼルパイ,food,1960年代,昭和,1961,no,綿菓子のような中身を挟んだチョコ菓子が発売され、洋風の新しい菓子としてよく売れた。,http://commons.wikimedia.org/wiki/Special:FilePath/MORINAGA_-_AngelPie.jpg,https://commons.wikimedia.org/wiki/File:MORINAGA_-_AngelPie.jpg,Q11291366
+465,エンゼルパイ,エンゼルパイ,エンゼルパイ,food,1960年代,昭和,1961,no,マシュマロをビスケットで挟みチョコレートで包んだ菓子。独特の食感で親しまれてきた。,http://commons.wikimedia.org/wiki/Special:FilePath/MORINAGA_-_AngelPie.jpg,https://commons.wikimedia.org/wiki/File:MORINAGA_-_AngelPie.jpg,Q11291366
 466,お呼びでない,お呼びでない,オヨビデナイ,word,1960年代,昭和,1961,no,場違いだったときの照れ隠しに使う言い方で、テレビの寸劇から広まり全国でまねされた。,,,
 467,おれについてこい,おれについてこい,オレニツイテコイ,word,1960年代,昭和,1964,no,五輪で優勝した女子代表の監督の言葉が広まり、引っ張る指導者の口調を表す言い方になった。,,,
 468,オロナミンC,オロナミンC,オロナミンシー,food,1960年代,昭和,1965,no,小瓶の炭酸入り栄養飲料が発売され、明るい広告とともに全国で親しまれる飲み物になった。,http://commons.wikimedia.org/wiki/Special:FilePath/Otsuka_-_Oronamin_C_Drink.jpg,https://commons.wikimedia.org/wiki/File:Otsuka_-_Oronamin_C_Drink.jpg,Q7103779
@@ -473,7 +473,7 @@ id,original,surface,pronunciation,category,decade,era,year,sensitive,description
 471,怪獣ブーム,怪獣ブーム,カイジュウブーム,play,1960年代,昭和,1966,no,特撮テレビ番組から巨大怪獣が人気を集め、軟質の人形や絵本まで次々と売れて広まった。,,,
 472,柿ピー,柿ピー,カキピー,food,1960年代,昭和,1966,no,柿の種と落花生を混ぜた菓子が売り出され、酒の肴や茶の間の菓子として全国に定着した。,http://commons.wikimedia.org/wiki/Special:FilePath/Kakinotane_001.jpg,https://commons.wikimedia.org/wiki/File:Kakinotane_001.jpg,Q3109041
 473,カギッ子,カギッ子,カギッコ,word,1960年代,昭和,1964,no,共働きで留守の家に鍵を持って帰る子どもを指す語で、都市の暮らしの変化を表す言葉になった。,,,
-474,核家族,核家族,カクカゾク,word,1960年代,昭和,1967,no,夫婦と子どもだけの小さな家族を指す語で、都市化と暮らしの変化を語る言葉として広まった。,http://commons.wikimedia.org/wiki/Special:FilePath/1970sfamily3.jpg,https://commons.wikimedia.org/wiki/File:1970sfamily3.jpg,Q720069
+474,核家族,核家族,カクカゾク,word,1960年代,昭和,1967,no,夫婦のみや夫婦と未婚の子ども、ひとり親と未婚の子どもからなる家族。都市化と暮らしの変化を語る言葉として広まった。,http://commons.wikimedia.org/wiki/Special:FilePath/1970sfamily3.jpg,https://commons.wikimedia.org/wiki/File:1970sfamily3.jpg,Q720069
 475,カセットテープレコーダー,カセットテープレコーダー,カセットテープレコーダー,item,1960年代,昭和,1965,no,小さな箱に納めたテープで手軽に録音できる機械が売られ、音楽を持ち歩く習慣を広げた。,http://commons.wikimedia.org/wiki/Special:FilePath/SONY_BM-610_commons.jpg,https://commons.wikimedia.org/wiki/File:SONY_BM-610_commons.jpg,Q213777
 476,かっぱえびせん,かっぱえびせん,カッパエビセン,food,1960年代,昭和,1964,no,海老を練り込んだ棒状の菓子が発売され、やめられないと評判になって長く売れ続けた。,http://commons.wikimedia.org/wiki/Special:FilePath/Kappa_Ebisen_2019.jpg,https://commons.wikimedia.org/wiki/File:Kappa_Ebisen_2019.jpg,Q6367038
 477,カワイコちゃん,カワイコちゃん,カワイコチャン,word,1960年代,昭和,1963,no,かわいい女の子を指す若者言葉として広まり、歌謡曲にも取り入れられて全国で使われた。,,,
@@ -495,7 +495,7 @@ id,original,surface,pronunciation,category,decade,era,year,sensitive,description
 493,ゴーゴー,ゴーゴー,ゴーゴー,play,1960年代,昭和,1967,no,生演奏やレコードに合わせて客が自由に踊る店が現れ、若者の遊び場として人気を集めた。,http://commons.wikimedia.org/wiki/Special:FilePath/Whisky_a_Go-Go.jpg,https://commons.wikimedia.org/wiki/File:Whisky_a_Go-Go.jpg,Q2697917
 494,サイケ,サイケ,サイケ,word,1960年代,昭和,1968,no,派手でどぎつい色や柄を指す略語で、音楽から服装や広告まで幅広く使われて流行した。,http://commons.wikimedia.org/wiki/Special:FilePath/TieDyeShirtMpegMan.jpg,https://commons.wikimedia.org/wiki/File:TieDyeShirtMpegMan.jpg,Q666011
 495,サイケデリック柄,サイケデリック柄,サイケデリックガラ,fashion,1960年代,昭和,1968,no,うず巻きなど目にどぎつい色柄の服や小物が、音楽の流行とともに若者の間で広まった。,http://commons.wikimedia.org/wiki/Special:FilePath/Suit%2C_culotte%2C_woman%27s_%28AM_1995.78.4-4%29.jpg,https://commons.wikimedia.org/wiki/File:Suit%2C_culotte%2C_woman%27s_%28AM_1995.78.4-4%29.jpg,
-496,サインペン,サインペン,サインペン,item,1960年代,昭和,1963,no,細い繊維の穂先で書く筆記具が発売され、書きやすさから事務所も家庭も一気に普及した。,http://commons.wikimedia.org/wiki/Special:FilePath/PentelSignpen20100912.JPG,https://commons.wikimedia.org/wiki/File:PentelSignpen20100912.JPG,Q11304270
+496,サインペン,サインペン,サインペン,item,1960年代,昭和,1963,no,細い繊維の穂先で書く筆記具が発売され、書きやすさから事務所にも家庭にも一気に普及した。,http://commons.wikimedia.org/wiki/Special:FilePath/PentelSignpen20100912.JPG,https://commons.wikimedia.org/wiki/File:PentelSignpen20100912.JPG,Q11304270
 497,サッポロ一番みそラーメン,サッポロ一番みそラーメン,サッポロイチバンミソラーメン,food,1960年代,昭和,1968,no,味噌味の即席の袋麺が発売され、札幌のラーメンの人気と重なって全国でよく売れ広まった。,http://commons.wikimedia.org/wiki/Special:FilePath/Sapporo-ichiban_Miso_ramen_%28instant_cup_noodle%29.jpg,https://commons.wikimedia.org/wiki/File:Sapporo-ichiban_Miso_ramen_%28instant_cup_noodle%29.jpg,Q11304813
 498,三ちゃん農業,三ちゃん農業,サンチャンノウギョウ,word,1960年代,昭和,1963,no,男が働きに出て残る家族だけで営む農業を指す語で、高度成長期の農村を表す言葉になった。,,,
 499,シェー,シェー,シェー,word,1960年代,昭和,1964,no,漫画の登場人物が驚くときの決めポーズと掛け声が、子どもの間で競ってまねされ大流行した。,http://commons.wikimedia.org/wiki/Special:FilePath/Syee_2012-02-02.jpg,https://commons.wikimedia.org/wiki/File:Syee_2012-02-02.jpg,Q11307010
@@ -512,7 +512,7 @@ id,original,surface,pronunciation,category,decade,era,year,sensitive,description
 510,スポ根,スポ根,スポコン,play,1960年代,昭和,1968,no,苦しい練習で強くなる筋書きの漫画やテレビ番組が相次ぎ、子どもの心をつかんで流行した。,,,
 511,スーパーボール,スーパーボール,スーパーボール,play,1960年代,昭和,1965,no,驚くほどよく弾む小さなゴム球が子どもの間で大流行し、駄菓子屋で飛ぶように売れた。,http://commons.wikimedia.org/wiki/Special:FilePath/Colorful_Super_ball.jpg,https://commons.wikimedia.org/wiki/File:Colorful_Super_ball.jpg,Q1554447
 512,ズッコケル,ズッコケル,ズッコケル,word,1960年代,昭和,1968,no,調子が外れて失敗したりあてが外れたりするさまを表す語として、若者の間で広まった。,,,
-513,即席焼きそば,即席焼きそば,ソクセキヤキソバ,food,1960年代,昭和,1963,no,湯を切って作る即席の焼きそばが発売され、汁物とは違う手軽な食事として人気を得た。,http://commons.wikimedia.org/wiki/Special:FilePath/Instant_yakisoba_002.jpg,https://commons.wikimedia.org/wiki/File:Instant_yakisoba_002.jpg,
+513,即席焼きそば,即席焼きそば,ソクセキヤキソバ,food,1960年代,昭和,1963,no,フライパンで麺を戻して炒める袋入りの即席焼きそばが登場し、手軽な食事として人気を得た。,http://commons.wikimedia.org/wiki/Special:FilePath/Instant_yakisoba_002.jpg,https://commons.wikimedia.org/wiki/File:Instant_yakisoba_002.jpg,
 514,それを言っちゃあおしまいよ,それを言っちゃあおしまいよ,ソレオイッチャアオシマイヨ,word,1960年代,昭和,1969,no,映画の名ぜりふが、身も蓋もない本音を止めるときの言い方として広まり長く使われた。,,,
 515,造反有理,造反有理,ゾウハンユウリ,word,1960年代,昭和,1968,yes,毛沢東語録に由来する句で大学紛争の立て看板や落書きに多用された。,http://commons.wikimedia.org/wiki/Special:FilePath/Maoflag1.PNG,https://commons.wikimedia.org/wiki/File:Maoflag1.PNG,Q11639730
 516,タイトスカート,タイトスカート,タイトスカート,fashion,1960年代,昭和,1961,no,体の線に沿った細いスカートが、働く女性のきちんとした装いとして街で広く着られ流行した。,http://commons.wikimedia.org/wiki/Special:FilePath/Peasant_skirt_1435043608.jpg,https://commons.wikimedia.org/wiki/File:Peasant_skirt_1435043608.jpg,Q2160801
@@ -692,7 +692,7 @@ id,original,surface,pronunciation,category,decade,era,year,sensitive,description
 690,カフェバー,カフェバー,カフェバー,other,1980年代,昭和,1984,no,内装に凝った酒も飲める喫茶店が若者の待ち合わせの場として流行した。,http://commons.wikimedia.org/wiki/Special:FilePath/%E3%82%AB%E3%83%95%E3%82%A7%5E%E3%83%90%E3%83%BC_%E3%82%A2%E3%82%A4%E3%83%93%E3%83%BC_-_panoramio.jpg,https://commons.wikimedia.org/wiki/File:%E3%82%AB%E3%83%95%E3%82%A7%5E%E3%83%90%E3%83%BC_%E3%82%A2%E3%82%A4%E3%83%93%E3%83%BC_-_panoramio.jpg,Q11294587
 691,過労死,過労死,カロウシ,word,1980年代,昭和,1988,yes,働き過ぎによる死を指す語が労災の認定を求める動きとともに広まった。,http://commons.wikimedia.org/wiki/Special:FilePath/Nomorekaroshi-shimbashiprotest-june-13-2018.jpg,https://commons.wikimedia.org/wiki/File:Nomorekaroshi-shimbashiprotest-june-13-2018.jpg,Q1051107
 692,ガンプラ,ガンプラ,ガンプラ,item,1980年代,昭和,1981,no,ロボットアニメの模型が品切れになるほど売れ組み立てが流行した。,http://commons.wikimedia.org/wiki/Special:FilePath/Odaiba_Tokyo_August_2014_Gundam_014.JPG,https://commons.wikimedia.org/wiki/File:Odaiba_Tokyo_August_2014_Gundam_014.JPG,Q1066389
-693,キャバクラ,キャバクラ,キャバクラ,word,1980年代,昭和,1985,yes,会員制の高級社交飲食店として登場し、その後全国に広まった業態。,http://commons.wikimedia.org/wiki/Special:FilePath/Kyabakura-New-Babylon-Kanayama-Nagoya.jpg,https://commons.wikimedia.org/wiki/File:Kyabakura-New-Babylon-Kanayama-Nagoya.jpg,Q10928589
+693,キャバクラ,キャバクラ,キャバクラ,word,1980年代,昭和,1985,yes,女性従業員の接客を受けながら飲食する店。キャバレーとクラブを組み合わせた呼び名で全国に広まった。,http://commons.wikimedia.org/wiki/Special:FilePath/Kyabakura-New-Babylon-Kanayama-Nagoya.jpg,https://commons.wikimedia.org/wiki/File:Kyabakura-New-Babylon-Kanayama-Nagoya.jpg,Q10928589
 694,究極,究極,キュウキョク,word,1980年代,昭和,1986,no,漫画「美味しんぼ」で使われ、最高の到達点を表す言葉として広まった。,,,
 695,教官,教官,キョウカン,word,1980年代,昭和,1984,no,テレビドラマ「スチュワーデス物語」の劇中セリフから広まった。,http://commons.wikimedia.org/wiki/Special:FilePath/Classroom_at_a_seconday_school_in_Pendembu_Sierra_Leone.jpg,https://commons.wikimedia.org/wiki/File:Classroom_at_a_seconday_school_in_Pendembu_Sierra_Leone.jpg,Q37226
 696,キン肉マン消しゴム,キン肉マン消しゴム,キンニクマンケシゴム,item,1980年代,昭和,1985,no,人気漫画の登場人物をかたどった小さな消しゴムを集める遊びが流行した。,,,
@@ -713,7 +713,7 @@ id,original,surface,pronunciation,category,decade,era,year,sensitive,description
 711,校内暴力,校内暴力,コウナイボウリョク,word,1980年代,昭和,1982,yes,中学校での生徒の暴力が相次いで報じられ学校の管理をめぐる議論が広がった。,http://commons.wikimedia.org/wiki/Special:FilePath/Violencia_escolar.png,https://commons.wikimedia.org/wiki/File:Violencia_escolar.png,Q1145436
 712,「国際」国家,「国際」国家,コクサイコッカ,word,1980年代,昭和,1987,yes,首相が繰り返し用いた、国際社会への貢献を掲げる政治スローガンとして注目された。,,,
 713,今宵はここまでに,今宵はここまでに,コヨイワココマデニ,word,1980年代,昭和,1988,no,NHK大河ドラマの劇中セリフとして話題になった。,,,
-714,こんなん出ましたけど,こんなん出ましたけど,コンナンデマシタケド,word,1980年代,平成,1989,no,クイズ番組で出された解答を紹介する際の決まり文句。,,,
+714,こんなん出ましたけど,こんなん出ましたけど,コンナンデマシタケド,word,1980年代,平成,1989,no,占い師の泉アツノが使っていた決まり文句。独特の語り口とともにテレビで話題になった。,,,
 715,コンビニ,コンビニ,コンビニ,other,1980年代,昭和,NA,no,深夜も開く小型の店が住宅街に増え買い物の習慣を大きく変えた。,http://commons.wikimedia.org/wiki/Special:FilePath/Nasmir_Mart.jpg,https://commons.wikimedia.org/wiki/File:Nasmir_Mart.jpg,Q7361709
 716,ゴクミ,ゴクミ,ゴクミ,word,1980年代,昭和,1987,no,女優の愛称として広く親しまれた呼び名。,http://commons.wikimedia.org/wiki/Special:FilePath/Goto_Kumiko_from_%22Tora-san%2C_Wish_You_Were_Here%22_at_Opening_Ceremony_of_the_Tokyo_International_Film_Festival_2019_%2849014206052%29.jpg,https://commons.wikimedia.org/wiki/File:Goto_Kumiko_from_%22Tora-san%2C_Wish_You_Were_Here%22_at_Opening_Ceremony_of_the_Tokyo_International_Film_Festival_2019_%2849014206052%29.jpg,Q2480730
 717,5時から男,5時から男,ゴジカラオトコ,word,1980年代,昭和,1988,no,栄養ドリンクのテレビCMのキャッチコピーとして広まった。,,,
@@ -731,12 +731,12 @@ id,original,surface,pronunciation,category,decade,era,year,sensitive,description
 729,スキゾ・パラノ,スキゾ・パラノ,スキゾパラノ,word,1980年代,昭和,1984,no,思想家が著書で用いた、既存の価値観にとらわれない生き方を表す言葉。,,,
 730,スキーブーム,スキーブーム,スキーブーム,play,1980年代,昭和,1987,no,映画の影響もあって若者がゲレンデに殺到しリフト待ちの列ができた。,,,
 731,す・ご・い・で・す・ネッ,す・ご・い・で・す・ネッ,スゴイデスネッ,word,1980年代,昭和,1984,no,タレントがテレビ番組で発した独特の言い回しが流行した。,,,
-732,鈴虫発言,鈴虫発言,スズムシハツゲン,word,1980年代,昭和,1984,yes,国会答弁で首相が野党議員のヤジを鈴虫の鳴き声にたとえ、聞き取りにくいと評した発言。,,,
+732,鈴虫発言,鈴虫発言,スズムシハツゲン,word,1980年代,昭和,1984,yes,中曽根首相が政治倫理を問う声を鈴虫の鳴き声にたとえて批判を招いた発言。,,,
 733,スポーツドリンク,スポーツドリンク,スポーツドリンク,food,1980年代,昭和,1983,no,汗をかいた時に飲む清涼飲料が運動や日常の水分補給に広まった。,http://commons.wikimedia.org/wiki/Special:FilePath/HK_Soft_drink_pre-packed_plastic_bottles_Watsons_Water_Gatorade_July_2017_IX1.jpg,https://commons.wikimedia.org/wiki/File:HK_Soft_drink_pre-packed_plastic_bottles_Watsons_Water_Gatorade_July_2017_IX1.jpg,Q949948
 734,スーパーマリオブラザーズ,スーパーマリオブラザーズ,スーパーマリオブラザーズ,item,1980年代,昭和,1986,no,家庭用ゲーム機の代表作が大ヒットし遊び方が学校でも話題になった。,http://commons.wikimedia.org/wiki/Special:FilePath/Super_Mario_Bros._Logo.svg,https://commons.wikimedia.org/wiki/File:Super_Mario_Bros._Logo.svg,Q11168
 735,聖子ちゃんカット,聖子ちゃんカット,セイコチャンカット,fashion,1980年代,昭和,1981,no,人気歌手にならって毛先を外に流した髪型が女子に大流行した。,http://commons.wikimedia.org/wiki/Special:FilePath/Seiko-chan_cut.png,https://commons.wikimedia.org/wiki/File:Seiko-chan_cut.png,Q11610968
 736,セクシャルハラスメント,セクシャルハラスメント,セクシャルハラスメント,word,1980年代,平成,1989,yes,職場などでの性的いやがらせを指す言葉として社会に定着した。,http://commons.wikimedia.org/wiki/Special:FilePath/Bullying_Sexual.JPG,https://commons.wikimedia.org/wiki/File:Bullying_Sexual.JPG,Q751722
-737,千円パック,千円パック,センエンパック,word,1980年代,昭和,1984,yes,菓子メーカーを狙った脅迫事件で、犯人が要求した現金の受け渡し方法を指す語。,,,
+737,千円パック,千円パック,センエンパック,word,1980年代,昭和,1984,yes,脅迫事件で販売に打撃を受けた森永製菓が、社員らによる直接販売で売り出した菓子の詰め合わせ。,,,
 738,ソバージュ,ソバージュ,ソバージュ,fashion,1980年代,昭和,1986,no,細かく波打たせた長い髪型が女性に流行し美容室の定番になった。,,,
 739,宅配ピザ,宅配ピザ,タクハイピザ,food,1980年代,昭和,1987,no,電話で注文して届けてもらうピザの店が都市部に相次いで開店した。,http://commons.wikimedia.org/wiki/Special:FilePath/Pizza_Margherita_in_Naples_2015.JPG,https://commons.wikimedia.org/wiki/File:Pizza_Margherita_in_Naples_2015.JPG,Q177
 740,竹の子族,竹の子族,タケノコゾク,fashion,1980年代,昭和,1980,no,原宿の歩行者天国で派手な衣装で踊る若者の集団が見物人を集めた。,http://commons.wikimedia.org/wiki/Special:FilePath/%E7%AB%B9%E3%81%AE%E5%AD%90%E6%97%8F%E9%9B%86%E5%90%88%E5%86%99%E7%9C%9F.jpg,https://commons.wikimedia.org/wiki/File:%E7%AB%B9%E3%81%AE%E5%AD%90%E6%97%8F%E9%9B%86%E5%90%88%E5%86%99%E7%9C%9F.jpg,Q837404
@@ -746,7 +746,7 @@ id,original,surface,pronunciation,category,decade,era,year,sensitive,description
 744,チューハイ,チューハイ,チューハイ,food,1980年代,昭和,1984,no,缶入りの飲みやすい酒が発売され若い層にも広く飲まれるようになった。,http://commons.wikimedia.org/wiki/Special:FilePath/Mahou_negra_%2820046267249%29.jpg,https://commons.wikimedia.org/wiki/File:Mahou_negra_%2820046267249%29.jpg,Q1047326
 745,チョロQ,チョロQ,チョロキュー,item,1980年代,昭和,1981,no,後ろに引くと走る小さな車の玩具が子供の間で大流行した。,http://commons.wikimedia.org/wiki/Special:FilePath/Choro-Q_Japanese_logo.png,https://commons.wikimedia.org/wiki/File:Choro-Q_Japanese_logo.png,Q1106058
 746,ツッパリ,ツッパリ,ツッパリ,word,1980年代,昭和,1981,no,反抗的な格好や態度をとる若者を指す言葉で歌や漫画にも使われた。,,,
-747,亭主元気で留守がいい,亭主元気で留守がいい,テイシュゲンキデルスガイイ,word,1980年代,昭和,1986,no,殺虫剤のテレビCMのキャッチコピーとして流行した。,,,
+747,亭主元気で留守がいい,亭主元気で留守がいい,テイシュゲンキデルスガイイ,word,1980年代,昭和,1986,no,衣類用防虫剤「タンスにゴン」のテレビCMのキャッチコピーとして流行した。,,,
 748,テクノカット,テクノカット,テクノカット,fashion,1980年代,昭和,1980,no,電子音楽のグループにならった刈り上げの髪型が若者に流行した。,http://commons.wikimedia.org/wiki/Special:FilePath/Techno_cut_8jo_WATANABEhachijo.jpg,https://commons.wikimedia.org/wiki/File:Techno_cut_8jo_WATANABEhachijo.jpg,Q11319184
 749,テクノポップ,テクノポップ,テクノポップ,play,1980年代,昭和,1980,no,電子音を使った音楽が広く受け入れられ髪型や服装にも影響を与えた。,http://commons.wikimedia.org/wiki/Special:FilePath/Yellow_Magic_Orchestra_in_2008.jpg,https://commons.wikimedia.org/wiki/File:Yellow_Magic_Orchestra_in_2008.jpg,Q11319210
 750,鉄人,鉄人,テツジン,word,1980年代,昭和,1987,no,連続試合出場記録を持つプロ野球選手の異名。,,,
@@ -755,7 +755,7 @@ id,original,surface,pronunciation,category,decade,era,year,sensitive,description
 753,デューダする,デューダする,デューダスル,word,1980年代,平成,1989,no,転職情報誌の名称から、転職することを指す動詞として広まった。,,,
 754,東京ディズニーランド,東京ディズニーランド,トウキョウディズニーランド,play,1980年代,昭和,1983,no,千葉に開園した大型遊園地が家族や若者の行き先の定番になった。,http://commons.wikimedia.org/wiki/Special:FilePath/Japan_Tokyo_keiyo_location_map.svg,https://commons.wikimedia.org/wiki/File:Japan_Tokyo_keiyo_location_map.svg,Q843997
 755,豆乳,豆乳,トウニュウ,food,1980年代,昭和,1983,no,健康によい飲み物として売り出され生産量が短期間で急増した。,http://commons.wikimedia.org/wiki/Special:FilePath/Soy_milk_%282%29.jpg,https://commons.wikimedia.org/wiki/File:Soy_milk_%282%29.jpg,Q192199
-756,トマト銀行,トマト銀行,トマトギンコウ,word,1980年代,昭和,1988,no,地方銀行が採用した親しみやすい愛称。,http://commons.wikimedia.org/wiki/Special:FilePath/Tomato_Bank_%28Japan%29.jpg,https://commons.wikimedia.org/wiki/File:Tomato_Bank_%28Japan%29.jpg,Q11321399
+756,トマト銀行,トマト銀行,トマトギンコウ,word,1980年代,昭和,1988,no,山陽相互銀行が普通銀行へ転換した際に採用した銀行名。野菜の名を使った親しみやすさが話題になった。,http://commons.wikimedia.org/wiki/Special:FilePath/Tomato_Bank_%28Japan%29.jpg,https://commons.wikimedia.org/wiki/File:Tomato_Bank_%28Japan%29.jpg,Q11321399
 757,トラキチ,トラキチ,トラキチ,word,1980年代,昭和,1985,no,阪神タイガースの熱心なファンを指す応援団発の呼び名。,http://commons.wikimedia.org/wiki/Special:FilePath/Balloons.jpg,https://commons.wikimedia.org/wiki/File:Balloons.jpg,Q11656920
 758,トレンディドラマ,トレンディドラマ,トレンディドラマ,play,1980年代,昭和,1988,no,都会の若者の恋愛を描く連続ドラマが同世代の話題をさらった。,http://commons.wikimedia.org/wiki/Special:FilePath/Tokyo_%2816043023330%29.jpg,https://commons.wikimedia.org/wiki/File:Tokyo_%2816043023330%29.jpg,Q8192124
 759,ドライ戦争,ドライ戦争,ドライセンソウ,word,1980年代,昭和,1988,no,ビール各社が繰り広げた辛口ビールの販売競争を指す言葉。,,,
@@ -768,7 +768,7 @@ id,original,surface,pronunciation,category,decade,era,year,sensitive,description
 766,濡れ落葉,濡れ落葉,ヌレオチバ,word,1980年代,平成,1989,yes,退職後も妻にまとわりつく夫を落ち葉にたとえた言葉。,,,
 767,ネアカ・ネクラ,ネアカ・ネクラ,ネアカネクラ,word,1980年代,昭和,1981,no,性格が明るいか暗いかを表す対の言葉が若者の間で盛んに使われた。,,,
 768,ネバカ,ネバカ,ネバカ,word,1980年代,昭和,1985,no,エッセイストが提唱した「〜ねばならない」という考え方への警句。,,,
-769,ノリサメ,ノリサメ,ノリサメ,word,1980年代,昭和,1987,no,お笑いタレントが用いた、ノリが冷めた状態を指す言葉。,,,
+769,ノリサメ,ノリサメ,ノリサメ,word,1980年代,昭和,1987,no,その場では盛り上がっても翌日には冷めた態度をとるなど、本心が読みにくい人を表す言葉。,,,
 770,「NO」と言える日本,「NO」と言える日本,ノートイエルニホン,word,1980年代,平成,1989,yes,作家が著した、対米従属からの脱却を訴える主張をまとめた著書の題名。,,,
 771,ハイソカー,ハイソカー,ハイソカー,item,1980年代,昭和,1987,no,白い車体の高級乗用車が若者や家族に人気を集め呼び名も広まった。,http://commons.wikimedia.org/wiki/Special:FilePath/S130_Toyota_Crown_Hardtop_1.jpg,https://commons.wikimedia.org/wiki/File:S130_Toyota_Crown_Hardtop_1.jpg,Q11326027
 772,ハイテク,ハイテク,ハイテク,word,1980年代,昭和,NA,no,先端技術を指す略語が製品の宣伝や日常の会話に盛んに使われた。,http://commons.wikimedia.org/wiki/Special:FilePath/Vinfast%27s_Electric_Car_Manufacturing_in_Vietnam.jpg,https://commons.wikimedia.org/wiki/File:Vinfast%27s_Electric_Car_Manufacturing_in_Vietnam.jpg,Q466410
@@ -816,7 +816,7 @@ id,original,surface,pronunciation,category,decade,era,year,sensitive,description
 814,ワンフィンガー・ツーフィンガー,ワンフィンガー・ツーフィンガー,ワンフィンガーツーフィンガー,word,1980年代,昭和,1987,no,ウイスキーのテレビCMで使われた注ぎ方を表す言葉。,,,
 815,ワンレン,ワンレン,ワンレン,fashion,1980年代,昭和,1988,no,前髪を作らず長さをそろえた髪型が大人っぽい装いとして流行した。,,,
 816,ワープロ,ワープロ,ワープロ,item,1980年代,昭和,1988,no,文字を打って印刷できる専用機が職場や家庭に急速に普及した。,http://commons.wikimedia.org/wiki/Special:FilePath/Toshiba_Rupo_JW05H_-_Front_side.png,https://commons.wikimedia.org/wiki/File:Toshiba_Rupo_JW05H_-_Front_side.png,Q54277
-817,愛される理由,愛される理由,アイサレルリユウ,word,1990年代,平成,1990,no,テレビドラマの劇中セリフとして話題になった。,,,
+817,愛される理由,愛される理由,アイサレルリユウ,word,1990年代,平成,1990,no,二谷友里恵が結婚や出産に至る日々をつづった著書。ベストセラーとなり題名も話題になった。,,,
 818,AIBO,AIBO,アイボ,item,1990年代,平成,1999,no,自律行動する犬型の家庭用ロボット。高額ながら癒しをうたう新しい玩具として話題になった。,http://commons.wikimedia.org/wiki/Special:FilePath/Red_Dot_Award_Product_Design_2000-2018_Aibos.jpg,https://commons.wikimedia.org/wiki/File:Red_Dot_Award_Product_Design_2000-2018_Aibos.jpg,Q403438
 819,iモード,iモード,アイモード,word,1990年代,平成,1999,no,携帯電話でインターネットを利用できるサービスの名称。,,,
 820,アッシーくん,アッシーくん,アッシークン,word,1990年代,平成,1990,no,女性を車で送迎する役割の男性を指した言葉。,,,
@@ -828,7 +828,7 @@ id,original,surface,pronunciation,category,decade,era,year,sensitive,description
 826,一番搾り,一番搾り,イチバンシボリ,word,1990年代,平成,1990,no,ビールメーカーが発売した新商品の名称。,http://commons.wikimedia.org/wiki/Special:FilePath/KIRIN_Ichiban-Shibori%2C_Yokohama-Brewing_bottle.jpg,https://commons.wikimedia.org/wiki/File:KIRIN_Ichiban-Shibori%2C_Yokohama-Brewing_bottle.jpg,Q11297747
 827,イチロー(効果),イチロー(効果),イチローコウカ,word,1990年代,平成,1994,no,当時オリックスに所属した若手選手の活躍が経済にも波及した現象を指す。,,,
 828,癒し,癒し,イヤシ,word,1990年代,平成,1999,no,心身の疲れを穏やかに解きほぐすことを指す言葉として広く定着した。,http://commons.wikimedia.org/wiki/Special:FilePath/Gu%C3%A9rison_d%27un_boiteux%2C_par_Gustave_Dor%C3%A9.jpg,https://commons.wikimedia.org/wiki/File:Gu%C3%A9rison_d%27un_boiteux%2C_par_Gustave_Dor%C3%A9.jpg,Q1581290
-829,インターネット,インターネット,インターネット,word,1990年代,平成,1995,no,世界的な情報通信網が一般家庭にも広まり始めた年として話題になった。,http://commons.wikimedia.org/wiki/Special:FilePath/Internet_map_1024_-_transparent%2C_inverted.png,https://commons.wikimedia.org/wiki/File:Internet_map_1024_-_transparent%2C_inverted.png,Q75
+829,インターネット,インターネット,インターネット,word,1990年代,平成,1995,no,世界的な情報通信網。一般家庭にも広まり始めたことが話題になった。,http://commons.wikimedia.org/wiki/Special:FilePath/Internet_map_1024_-_transparent%2C_inverted.png,https://commons.wikimedia.org/wiki/File:Internet_map_1024_-_transparent%2C_inverted.png,Q75
 830,インラインスケート,インラインスケート,インラインスケート,play,1990年代,平成,NA,no,車輪が一列に並ぶ靴で滑る遊び。公園や広場で若者が練習する姿が各地で見られるようになった。,http://commons.wikimedia.org/wiki/Special:FilePath/Riedell_wicked_skate.jpg,https://commons.wikimedia.org/wiki/File:Riedell_wicked_skate.jpg,Q1031639
 831,Windows95,Windows95,ウィンドウズキュウジュウゴ,item,1990年代,平成,1995,no,深夜販売に行列ができた基本ソフト。家庭へのパソコン普及の号砲となり社会現象になった。,http://commons.wikimedia.org/wiki/Special:FilePath/RELAP_Desktop_View.jpg,https://commons.wikimedia.org/wiki/File:RELAP_Desktop_View.jpg,Q83370
 832,ウゴウゴルーガ,ウゴウゴルーガ,ウゴウゴルーガ,word,1990年代,平成,1993,no,斬新な演出で人気を集めた子供向けテレビ番組の名称。,,,
@@ -856,7 +856,7 @@ id,original,surface,pronunciation,category,decade,era,year,sensitive,description
 854,貸し渋り,貸し渋り,カシシブリ,word,1990年代,平成,1998,no,金融機関が企業への融資を極端に抑える状況を指す言葉。,,,
 855,カラオケボックス,カラオケボックス,カラオケボックス,play,1990年代,平成,NA,no,小部屋で歌う店が全国に増えた。学生や家族が気軽に集まる定番の遊び場になった。,http://commons.wikimedia.org/wiki/Special:FilePath/Hitokara_at_Karaoke-Box.jpg,https://commons.wikimedia.org/wiki/File:Hitokara_at_Karaoke-Box.jpg,Q910635
 856,カリスマ,カリスマ,カリスマ,word,1990年代,平成,1999,no,絶大な支持や人気を集める人物を指す言葉として一般に定着した。,,,
-857,川崎劇場,川崎劇場,カワサキゲキジョウ,word,1990年代,平成,1991,no,熱の入った采配で知られたプロ野球監督の采配ぶりを称えた言葉。,,,
+857,川崎劇場,川崎劇場,カワサキゲキジョウ,word,1990年代,平成,1991,no,川崎球場での試合を売り込むロッテの宣伝文句。「テレビじゃ見れない川崎劇場」のCMが話題になった。,,,
 858,変わらなきゃ,変わらなきゃ,カワラナキャ,word,1990年代,平成,1995,no,自動車メーカーの企業広告のキャッチコピーとして広まった。,,,
 859,官官接待,官官接待,カンカンセッタイ,word,1990年代,平成,1995,yes,中央省庁と地方自治体の職員同士が、公費で過剰な接待をし合う慣行を指す語。,,,
 860,環境ホルモン,環境ホルモン,カンキョウホルモン,word,1990年代,平成,1998,no,生物の内分泌機能をかく乱するとされる化学物質を指す言葉。,http://commons.wikimedia.org/wiki/Special:FilePath/Dangers_hormonaux_du_contact_quotidien_avec_le_plastique.png,https://commons.wikimedia.org/wiki/File:Dangers_hormonaux_du_contact_quotidien_avec_le_plastique.png,Q1138899
@@ -888,7 +888,7 @@ id,original,surface,pronunciation,category,decade,era,year,sensitive,description
 886,紺ブレ,紺ブレ,コンブレ,word,1990年代,平成,1991,no,紺色のブレザーを好んで着こなすファッションの流行を指す言葉。,,,
 887,ゴーマニズム,ゴーマニズム,ゴーマニズム,word,1990年代,平成,1994,no,漫画家が提唱した、既存の権威を恐れず主張する態度を指す造語。,,,
 888,サポーター,サポーター,サポーター,word,1990年代,平成,1993,no,Jリーグ発足を機に広まった、熱心に応援するファンを指す言葉。,,,
-889,冷めたピザ,冷めたピザ,サメタピザ,word,1990年代,平成,1998,no,停滞する日本経済を海外の識者が例えた表現。,,,
+889,冷めたピザ,冷めたピザ,サメタピザ,word,1990年代,平成,1998,no,海外メディアが小渕恵三の人物像を評した比喩。首相就任時の乏しい期待を表す言葉として話題になった。,,,
 890,雑草魂,雑草魂,ザッソウダマシイ,word,1990年代,平成,1999,no,逆境にも屈しない野球選手の粘り強い精神を表す言葉。,,,
 891,シアトル系カフェ,シアトル系カフェ,シアトルケイカフェ,food,1990年代,平成,NA,no,紙コップのカフェラテを持ち歩く米国式の喫茶店。都市部に次々に開店し定着した。,,,
 892,失楽園する,失楽園する,シツラクエンスル,word,1990年代,平成,1997,yes,不倫を題材にした小説・映画の大ヒットから広まった言葉。,,,
@@ -913,7 +913,7 @@ id,original,surface,pronunciation,category,decade,era,year,sensitive,description
 911,スマイリング・コミュニスト,スマイリング・コミュニスト,スマイリングコミュニスト,word,1990年代,平成,1998,yes,笑顔を絶やさない物腰から、日本共産党の委員長に付けられた呼び名。,,,
 912,スーパーファミコン,スーパーファミコン,スーパーファミコン,item,1990年代,平成,1990,no,家庭用ゲーム機。名作の連発で小学生から高校生までが夢中になり居間の定番になった。,http://commons.wikimedia.org/wiki/Special:FilePath/Nintendo-Super-Famicom-Set-FL.png,https://commons.wikimedia.org/wiki/File:Nintendo-Super-Famicom-Set-FL.png,Q183259
 913,清貧,清貧,セイヒン,word,1990年代,平成,1993,no,質素であっても心豊かに生きる生き方を説いた書籍から広まった言葉。,,,
-914,西暦2000年問題,西暦2000年問題,セイレキニセンネンモンダイ,word,1990年代,平成,1999,no,コンピューターの年号表示に関する不具合が懸念された問題。,http://commons.wikimedia.org/wiki/Special:FilePath/Bug_de_l%27an_2000.jpg,https://commons.wikimedia.org/wiki/File:Bug_de_l%27an_2000.jpg,Q218941
+914,西暦2000年問題,西暦2000年問題,セイレキニセンネンモンダイ,word,1990年代,平成,1999,no,西暦年を二桁で扱うプログラムなどが2000年を正しく処理できず、計算や機器の動作に不具合が起きると懸念された問題。,http://commons.wikimedia.org/wiki/Special:FilePath/Bug_de_l%27an_2000.jpg,https://commons.wikimedia.org/wiki/File:Bug_de_l%27an_2000.jpg,Q218941
 915,セガサターン,セガサターン,セガサターン,item,1990年代,平成,1994,no,家庭用ゲーム機。次世代機の競争の一角を担い個性的な作品をそろえて若者に支持された。,http://commons.wikimedia.org/wiki/Special:FilePath/Sega-Saturn-JP-Mk1-Console-Set.png,https://commons.wikimedia.org/wiki/File:Sega-Saturn-JP-Mk1-Console-Set.png,Q200912
 916,損失補填,損失補填,ソンシツホテン,word,1990年代,平成,1991,yes,証券会社が大口顧客の株取引の損失を穴埋めしていたことが発覚した金融不祥事を表す語。,,,
 917,たまごっち,たまごっち,タマゴッチ,word,1990年代,平成,1997,no,育成を楽しむ携帯型の電子玩具が空前のブームとなった。,http://commons.wikimedia.org/wiki/Special:FilePath/Tamagotchi_0124_ubt.jpeg,https://commons.wikimedia.org/wiki/File:Tamagotchi_0124_ubt.jpeg,Q207786
@@ -921,7 +921,7 @@ id,original,surface,pronunciation,category,decade,era,year,sensitive,description
 919,たれぱんだ,たれぱんだ,タレパンダ,item,1990年代,平成,NA,no,脱力した姿のパンダの絵柄。文具やぬいぐるみが飛ぶように売れ癒し系人気の先駆けになった。,,,
 920,大往生,大往生,ダイオウジョウ,word,1990年代,平成,1994,yes,安らかに天寿をまっとうすることの意義を説いた書籍から広まった言葉。,,,
 921,ダイヤルQ2,ダイヤルQ2,ダイヤルキューツー,other,1990年代,平成,1991,yes,電話で情報を売る仕組みが広まり高額な請求が家庭の問題として騒がれた。,,,
-922,ダダーン・ボヨヨン・ボヨヨン,ダダーン・ボヨヨン・ボヨヨン,ダダーンボヨヨンボヨヨン,word,1990年代,平成,1991,no,健康器具のテレビCMソングのフレーズとして広まった。,,,
+922,ダダーン・ボヨヨン・ボヨヨン,ダダーン・ボヨヨン・ボヨヨン,ダダーンボヨヨンボヨヨン,word,1990年代,平成,1991,no,栄養ドリンク「ダダン」のテレビCMで繰り返されたフレーズ。力強い演出とともに広まった。,,,
 923,だっちゅーの,だっちゅーの,ダッチューノ,word,1990年代,平成,1998,no,お笑いコンビのギャグとして大流行した決まり文句。,,,
 924,だ・よ・ね,だ・よ・ね,ダヨネ,word,1990年代,平成,1995,no,ヒップホップユニットのヒット曲のフレーズとして広まった。,,,
 925,だんご3兄弟,だんご3兄弟,ダンゴサンキョウダイ,word,1990年代,平成,1999,no,NHKの子供向け番組から生まれたヒット曲の題名。,,,
@@ -952,7 +952,7 @@ id,original,surface,pronunciation,category,decade,era,year,sensitive,description
 950,日本版ビッグバン,日本版ビッグバン,ニホンバンビッグバン,word,1990年代,平成,1997,no,金融制度の大規模な自由化改革を指す言葉。,,,
 951,日本列島総不況,日本列島総不況,ニホンレットウソウフキョウ,word,1990年代,平成,1998,no,全国的に景気が落ち込んだ状況を指す言葉。,,,
 952,ニンテンドー64,ニンテンドー64,ニンテンドーロクヨン,item,1990年代,平成,1996,no,立体表現を売りにした家庭用ゲーム機。四人同時の対戦が子どもの遊び方を変えた。,http://commons.wikimedia.org/wiki/Special:FilePath/Nintendo-64-wController-L.jpg,https://commons.wikimedia.org/wiki/File:Nintendo-64-wController-L.jpg,Q184839
-953,ねェ、チューして,ねェ、チューして,ネエチューシテ,word,1990年代,平成,1992,no,清涼飲料水のテレビCMのセリフとして話題になった。,,,
+953,ねェ、チューして,ねェ、チューして,ネエチューシテ,word,1990年代,平成,1992,no,化粧品のテレビCMで水野美紀が発したセリフ。唐沢寿明との共演で話題になった。,,,
 954,ネットサーフィン,ネットサーフィン,ネットサーフィン,word,1990年代,平成,NA,no,ウェブページを次々に見て回ること。家庭からの接続が広がった普及期の定番表現だった。,,,
 955,ノストラダムス,ノストラダムス,ノストラダムス,other,1990年代,平成,1999,no,1999年の予言をめぐる本や特番が相次いだ。世紀末の気分をあおる話題として広まった。,http://commons.wikimedia.org/wiki/Special:FilePath/Nostradamus_by_Cesar.jpg,https://commons.wikimedia.org/wiki/File:Nostradamus_by_Cesar.jpg,Q39978
 956,NOMO,NOMO,ノモ,word,1990年代,平成,1995,no,大リーグに挑戦し活躍した投手の登場が話題になった。,http://commons.wikimedia.org/wiki/Special:FilePath/%E6%8A%95%E3%81%92%E3%81%BE%E3%81%99_%2831879540%29.jpg,https://commons.wikimedia.org/wiki/File:%E6%8A%95%E3%81%92%E3%81%BE%E3%81%99_%2831879540%29.jpg,Q486690
@@ -966,7 +966,7 @@ id,original,surface,pronunciation,category,decade,era,year,sensitive,description
 964,ハローキティ,ハローキティ,ハローキティ,item,1990年代,平成,NA,no,猫の絵柄の商品が大人の層にも広がった。ご当地版の収集熱を生み社会現象と呼ばれた。,http://commons.wikimedia.org/wiki/Special:FilePath/Waiting_Room_C3%2C_Taoyuan_Airport_Terminal_2_20120620.jpg,https://commons.wikimedia.org/wiki/File:Waiting_Room_C3%2C_Taoyuan_Airport_Terminal_2_20120620.jpg,Q191794
 965,バブル経済,バブル経済,バブルケイザイ,word,1990年代,平成,1990,no,実体を伴わずに地価や株価が高騰した好景気を指す言葉。,http://commons.wikimedia.org/wiki/Special:FilePath/Nasdaq_compared_to_corporate_profits.webp,https://commons.wikimedia.org/wiki/File:Nasdaq_compared_to_corporate_profits.webp,Q207781
 966,バブル崩壊,バブル崩壊,バブルホウカイ,other,1990年代,平成,1991,no,地価と株価の急落で好景気が終わったこと。暮らしの空気が一変した世相を表す語。,http://commons.wikimedia.org/wiki/Special:FilePath/Harga_Saham_Nikkei_225.png,https://commons.wikimedia.org/wiki/File:Harga_Saham_Nikkei_225.png,Q1141122
-967,バーコードバトラー,バーコードバトラー,バーコードバトラー,item,1990年代,平成,1991,no,商品の縞模様を読ませて戦う携帯玩具。強い数値を探して子どもがレシートを集めた。,http://commons.wikimedia.org/wiki/Special:FilePath/Epoch-Barcode-Battler.png,https://commons.wikimedia.org/wiki/File:Epoch-Barcode-Battler.png,Q638749
+967,バーコードバトラー,バーコードバトラー,バーコードバトラー,item,1990年代,平成,1991,no,商品などのバーコードを読み取って戦う携帯玩具。1991年にエポック社が発売。,http://commons.wikimedia.org/wiki/Special:FilePath/Epoch-Barcode-Battler.png,https://commons.wikimedia.org/wiki/File:Epoch-Barcode-Battler.png,Q638749
 968,パスポートサイズ,パスポートサイズ,パスポートサイズ,word,1990年代,平成,1990,no,携帯できる小型のビデオカメラの薄さを表した言葉。,,,
 969,パソコン通信,パソコン通信,パソコンツウシン,other,1990年代,平成,NA,no,電話回線で会議室に文章を書き込む仕組み。ネット前夜の交流の場として広まった。,http://commons.wikimedia.org/wiki/Special:FilePath/LAOX_NET_Login_screen%281986%29.png,https://commons.wikimedia.org/wiki/File:LAOX_NET_Login_screen%281986%29.png,Q15135105
 970,パパラッチ,パパラッチ,パパラッチ,word,1990年代,平成,1997,yes,著名人を執拗に追いかけて撮影する報道記者を指す語で、海外の事故をきっかけに世界的に注目された。,http://commons.wikimedia.org/wiki/Special:FilePath/Paparazzi_by_David_Shankbone.jpg,https://commons.wikimedia.org/wiki/File:Paparazzi_by_David_Shankbone.jpg,Q156624
@@ -1012,7 +1012,7 @@ id,original,surface,pronunciation,category,decade,era,year,sensitive,description
 1010,マインドコントロール,マインドコントロール,マインドコントロール,word,1990年代,平成,1995,yes,教団による信者の心理操作が報じられ日常の議論でも使われる語になった。,http://commons.wikimedia.org/wiki/Special:FilePath/Hypnotize_with_Any_TV_Set.jpg,https://commons.wikimedia.org/wiki/File:Hypnotize_with_Any_TV_Set.jpg,Q16944821
 1011,雅美さん、雅子さん、たぬき顔,雅美さん、雅子さん、たぬき顔,マサミサンマサコサンタヌキガオ,word,1990年代,平成,1991,yes,芸能リポーターが芸能人の話題を伝える際に多用した、人名や表情を交えた言い回し。,,,
 1012,ミサンガ,ミサンガ,ミサンガ,item,1990年代,平成,1993,no,願掛けの色糸の腕輪。サッカー人気とともに広まり切れると願いがかなうと言われた。,http://commons.wikimedia.org/wiki/Special:FilePath/Tying_friendship_bracelet.jpg,https://commons.wikimedia.org/wiki/File:Tying_friendship_bracelet.jpg,Q130292872
-1013,見た目で選んで何が悪いの！,見た目で選んで何が悪いの！,ミタメデエランデナニガワルイノ,word,1990年代,平成,1995,no,化粧品のテレビCMで女優が発したセリフとして話題になった。,,,
+1013,見た目で選んで何が悪いの！,見た目で選んで何が悪いの！,ミタメデエランデナニガワルイノ,word,1990年代,平成,1995,no,コダックのレンズ付きフィルムのテレビCMで瀬戸朝香が発したセリフとして話題になった。,,,
 1014,ミッチー・サッチー,ミッチー・サッチー,ミッチーサッチー,word,1990年代,平成,1999,yes,二人の女性タレントの間で起きた騒動が話題になった呼び名。,,,
 1015,ミニ四駆,ミニ四駆,ミニヨンク,play,1990年代,平成,1995,no,組み立て式の小型模型車。改造と競走に小学生が熱中し全国で大会が開かれる人気になった。,http://commons.wikimedia.org/wiki/Special:FilePath/AERO_AVANTE_1.jpg,https://commons.wikimedia.org/wiki/File:AERO_AVANTE_1.jpg,Q2249560
 1016,無党派,無党派,ムトウハ,word,1990年代,平成,1995,yes,特定の支持政党を持たない有権者層を指す言葉。,,,
@@ -1108,7 +1108,7 @@ id,original,surface,pronunciation,category,decade,era,year,sensitive,description
 1106,コスプレ,コスプレ,コスプレ,play,2000年代,平成,NA,no,作品の衣装をまとって撮り合う遊び。催しや専門店の増加とともに趣味として広まった。,http://commons.wikimedia.org/wiki/Special:FilePath/One_Piece_cosplayers_in_Yokohama_20050703.jpg,https://commons.wikimedia.org/wiki/File:One_Piece_cosplayers_in_Yokohama_20050703.jpg,Q142554
 1107,こども店長,こども店長,コドモテンチョウ,word,2000年代,平成,2009,no,自動車メーカーのテレビCMに出演した子役の愛称。,,,
 1108,こなぷん,こなぷん,コナプン,item,2000年代,平成,2006,no,粉を練って食べ物の模型を作る玩具。往年の商品の復刻として親子の世代に売れた。,,,
-1109,コメ泥棒,コメ泥棒,コメドロボウ,word,2000年代,平成,2003,no,あまりのおいしさに白米が止まらなくなる料理を例えた表現。,,,
+1109,コメ泥棒,コメ泥棒,コメドロボウ,word,2000年代,平成,2003,no,冷夏による不作で値上がりした米を狙う盗難が相次ぎ話題になった言葉。,,,
 1110,Godzilla,Godzilla,ゴジラ,word,2000年代,平成,2002,no,後に大リーグでも活躍した強打者に付けられた愛称。,,,
 1111,ゴスロリ,ゴスロリ,ゴスロリ,fashion,2000年代,平成,NA,no,黒を基調に少女趣味の飾りを重ねる装い。原宿を中心に音楽の流行とともに広まった。,http://commons.wikimedia.org/wiki/Special:FilePath/Two_gothic_lolitas_in_Harajuku_20050427.jpg,https://commons.wikimedia.org/wiki/File:Two_gothic_lolitas_in_Harajuku_20050427.jpg,Q27920
 1112,最高で金 最低でも金,最高で金 最低でも金,サイコウデキンサイテイデモキン,word,2000年代,平成,2000,yes,シドニー五輪を前に柔道選手が、金メダル以外は考えていないと語った言葉。,,,
@@ -1126,7 +1126,7 @@ id,original,surface,pronunciation,category,decade,era,year,sensitive,description
 1124,新型インフルエンザ,新型インフルエンザ,シンガタインフルエンザ,word,2000年代,平成,2009,yes,世界的に流行した新しい型のインフルエンザを指す言葉。,http://commons.wikimedia.org/wiki/Special:FilePath/Guidelines_for_Preventing_the_Spread_of_2009_H1N1_Influenza.jpg,https://commons.wikimedia.org/wiki/File:Guidelines_for_Preventing_the_Spread_of_2009_H1N1_Influenza.jpg,Q11501541
 1125,新規参入,新規参入,シンキサンニュウ,word,2000年代,平成,2004,no,新しい企業が業界に参入することを指す言葉。,,,
 1126,真珠夫人,真珠夫人,シンジュフジン,word,2000年代,平成,2002,no,昼のテレビドラマとして大きな話題を呼んだ作品の題名。,,,
-1127,シンジラレナ〜イ,シンジラレナ〜イ,シンジラレナーイ,word,2000年代,平成,2006,no,お笑い芸人のギャグとして広まったフレーズ。,http://commons.wikimedia.org/wiki/Special:FilePath/Trey_Hillman_2013.jpg,https://commons.wikimedia.org/wiki/File:Trey_Hillman_2013.jpg,Q1002851
+1127,シンジラレナ〜イ,シンジラレナ〜イ,シンジラレナーイ,word,2000年代,平成,2006,no,日本ハムのヒルマン監督がリーグ優勝時のインタビューで叫び流行した言葉。,http://commons.wikimedia.org/wiki/Special:FilePath/Trey_Hillman_2013.jpg,https://commons.wikimedia.org/wiki/File:Trey_Hillman_2013.jpg,Q1002851
 1128,事業仕分け,事業仕分け,ジギョウシワケ,word,2000年代,平成,2009,yes,国の予算事業の要否を公開の場で議論した行政改革の取り組み。,http://commons.wikimedia.org/wiki/Special:FilePath/Jigyoshiwake.jpg,https://commons.wikimedia.org/wiki/File:Jigyoshiwake.jpg,
 1129,自己責任,自己責任,ジコセキニン,word,2000年代,平成,2004,yes,イラクで拘束された邦人に対し、危険地帯へ渡航した本人の責任を問う声から広まった語。,,,
 1130,ジコチュー(ジコ虫),ジコチュー(ジコ虫),ジコチュー,word,2000年代,平成,2000,no,自己中心的な考え方や態度を指す略語として広まった。,,,
@@ -1134,7 +1134,7 @@ id,original,surface,pronunciation,category,decade,era,year,sensitive,description
 1132,Suica,Suica,スイカ,item,2000年代,平成,NA,no,かざして改札を通る乗車券。買い物にも使えるようになり財布の中身を大きく変えた。,http://commons.wikimedia.org/wiki/Special:FilePath/Mobile_Suica_03.jpg,https://commons.wikimedia.org/wiki/File:Mobile_Suica_03.jpg,Q1370596
 1133,スキニージーンズ,スキニージーンズ,スキニージーンズ,fashion,2000年代,平成,2006,no,脚に張りつく極細のズボン。上半身を大きめにする着方とともに一気に広まり定番になった。,http://commons.wikimedia.org/wiki/Special:FilePath/BIGSTONE_JEANS.png,https://commons.wikimedia.org/wiki/File:BIGSTONE_JEANS.png,Q83363
 1134,政権交代,政権交代,セイケンコウタイ,word,2000年代,平成,2009,yes,衆議院選挙で与党が入れ替わったことを指す政治用語。,http://commons.wikimedia.org/wiki/Special:FilePath/20090914_Taro_Aso_and_Yukio_Hatoyama_kaidan1.jpg,https://commons.wikimedia.org/wiki/File:20090914_Taro_Aso_and_Yukio_Hatoyama_kaidan1.jpg,Q100235323
-1135,生物兵器(BC兵器),生物兵器(BC兵器),セイブツヘイキ,word,2000年代,平成,2001,yes,米国での炭疽菌事件を背景に、細菌などを用いる兵器への警戒を表す語。,,,
+1135,生物兵器(BC兵器),生物兵器(BC兵器),セイブツヘイキ,word,2000年代,平成,2001,yes,米国の炭疽菌事件で警戒が高まった、病原体などを使う兵器。BC兵器という呼び名には化学兵器も含まれる。,,,
 1136,セカチュー,セカチュー,セカチュー,word,2000年代,平成,2004,no,恋愛小説「世界の中心で、愛をさけぶ」の略称。,,,
 1137,セカンドライフ,セカンドライフ,セカンドライフ,play,2000年代,平成,2007,no,仮想の空間で暮らし商売もできる場。企業まで参入して大きな話題を集め報道も相次いだ。,http://commons.wikimedia.org/wiki/Special:FilePath/Kowloon%27s_Gate_Reborn_in_Second_Life%2C_2026.jpg,https://commons.wikimedia.org/wiki/File:Kowloon%27s_Gate_Reborn_in_Second_Life%2C_2026.jpg,
 1138,セレブ,セレブ,セレブ,word,2000年代,平成,NA,no,有名人や富裕層を指す略語。高級志向の商品や店を語る形容としても広く使われた。,http://commons.wikimedia.org/wiki/Special:FilePath/Marilyn_Monroe_Niagara.png,https://commons.wikimedia.org/wiki/File:Marilyn_Monroe_Niagara.png,Q211236
@@ -1193,7 +1193,7 @@ id,original,surface,pronunciation,category,decade,era,year,sensitive,description
 1191,姫ギャル,姫ギャル,ヒメギャル,fashion,2000年代,平成,NA,no,西洋の姫を思わせる飾りと巻き髪を重ねる装い。若い女性の間で華やかさを競った。,,,
 1192,100円ショップ,100円ショップ,ヒャクエンショップ,item,2000年代,平成,NA,no,何でも均一の価格で売る店が急増した。日用品や雑貨の買い方を大きく変え品ぞろえも広がった。,http://commons.wikimedia.org/wiki/Special:FilePath/%E3%82%B6%E3%83%BB%E3%83%80%E3%82%A4%E3%82%BD%E3%83%BC_%E7%A5%9E%E7%94%B0%E7%A5%9E%E4%BF%9D%E7%94%BA%E3%81%99%E3%81%9A%E3%82%89%E3%82%93%E9%80%9A%E3%82%8A%E5%BA%97_-_panoramio.jpg,https://commons.wikimedia.org/wiki/File:%E3%82%B6%E3%83%BB%E3%83%80%E3%82%A4%E3%82%BD%E3%83%BC_%E7%A5%9E%E7%94%B0%E7%A5%9E%E4%BF%9D%E7%94%BA%E3%81%99%E3%81%9A%E3%82%89%E3%82%93%E9%80%9A%E3%82%8A%E5%BA%97_-_panoramio.jpg,Q1136183
 1193,ヒルズ族,ヒルズ族,ヒルズゾク,word,2000年代,平成,2005,no,再開発された高層街に住み働く新興の成功者を指す言い方。時代の空気を映して広まった。,http://commons.wikimedia.org/wiki/Special:FilePath/Roppongihills_overview.jpg,https://commons.wikimedia.org/wiki/File:Roppongihills_overview.jpg,Q11392389
-1194,品格,品格,ヒンカク,word,2000年代,平成,2006,no,数学者が著した、国としての品位を論じたベストセラー書籍の題名。,,,
+1194,品格,品格,ヒンカク,word,2000年代,平成,2006,no,数学者の藤原正彦によるベストセラー「国家の品格」をきっかけに注目された、品位や風格を表す語。,,,
 1195,美白,美白,ビハク,fashion,2000年代,平成,NA,no,肌を白く保つ化粧品や日焼け止め。日焼けを競った流行の反動として大きく売れた。,http://commons.wikimedia.org/wiki/Special:FilePath/Japanese_lady_shoulder_in_T%C5%8Dky%C5%8D.jpg,https://commons.wikimedia.org/wiki/File:Japanese_lady_shoulder_in_T%C5%8Dky%C5%8D.jpg,Q5358712
 1196,ビフォーアフター,ビフォーアフター,ビフォーアフター,word,2000年代,平成,2003,no,住宅リフォームを紹介するテレビ番組の名称。,,,
 1197,ビリーズブートキャンプ,ビリーズブートキャンプ,ビリーズブートキャンプ,item,2000年代,平成,2007,no,号令に従って動く家庭用の運動映像。短期間で痩せられると評判になり大量に売れた。,,,
@@ -1214,7 +1214,7 @@ id,original,surface,pronunciation,category,decade,era,year,sensitive,description
 1212,ヘルシア緑茶,ヘルシア緑茶,ヘルシアリョクチャ,food,2000年代,平成,NA,no,脂肪の消費を助けるとうたう保健用途の飲料。売り切れが続くほどの人気になった。,http://commons.wikimedia.org/wiki/Special:FilePath/Healthyawater_Grapefruit.jpg,https://commons.wikimedia.org/wiki/File:Healthyawater_Grapefruit.jpg,Q11336630
 1213,へぇ〜,へぇ〜,ヘー,word,2000年代,平成,2003,no,雑学クイズ番組で驚きを表す際に鳴らされる効果音・掛け声。,,,
 1214,ベイブレード,ベイブレード,ベイブレード,item,2000年代,平成,2001,no,改造して強くできる現代版のこま。対戦の面白さで小学生の間で大流行し大会も開かれた。,http://commons.wikimedia.org/wiki/Special:FilePath/Beyblade.jpg,https://commons.wikimedia.org/wiki/File:Beyblade.jpg,Q1063109
-1215,ベッカム様,ベッカム様,ベッカムサマ,word,2000年代,平成,2002,no,来日した人気サッカー選手を敬って呼んだホテル従業員の言葉。,,,
+1215,ベッカム様,ベッカム様,ベッカムサマ,word,2000年代,平成,2002,no,2002年のサッカーW杯で人気を集めたイングランド代表のベッカムを敬愛して呼ぶ言い方。,,,
 1216,ベッカムヘアー,ベッカムヘアー,ベッカムヘアー,fashion,2000年代,平成,2002,no,サッカー選手にならって立てた短髪。大会の人気とともに若い男性に真似が広がった。,,,
 1217,ペットブーム,ペットブーム,ペットブーム,other,2000年代,平成,2002,no,小型の犬が広告で人気を集めた。室内で飼う家庭が急に増え関連の商売も広がった。,,,
 1218,ホームスター,ホームスター,ホームスター,item,2000年代,平成,2005,no,家庭で星空を天井に映す小型の投影機。癒しをうたう家電として幅広く売れ贈り物にもなった。,http://commons.wikimedia.org/wiki/Special:FilePath/Sega_Homestar_planetarium_cropped.jpg,https://commons.wikimedia.org/wiki/File:Sega_Homestar_planetarium_cropped.jpg,Q11338393
@@ -1233,8 +1233,8 @@ id,original,surface,pronunciation,category,decade,era,year,sensitive,description
 1231,ムートンブーツ,ムートンブーツ,ムートンブーツ,fashion,2000年代,平成,NA,no,羊毛の内張りのぼってりした長靴。暖かさと合わせやすさで冬の足元の定番になった。,,,
 1232,メイド喫茶,メイド喫茶,メイドキッサ,play,2000年代,平成,NA,no,給仕役の衣装で接客する喫茶店。秋葉原の名物として報じられ全国に知られる存在になった。,http://commons.wikimedia.org/wiki/Special:FilePath/Maid_cafe_4.jpg,https://commons.wikimedia.org/wiki/File:Maid_cafe_4.jpg,Q8657160
 1233,メガマック,メガマック,メガマック,food,2000年代,平成,2007,no,肉を四枚重ねた期間限定の大型ハンバーガー。大盛りを楽しむ志向を広く押し広げた。,http://commons.wikimedia.org/wiki/Special:FilePath/MEGA_MAC_Set-1.jpg,https://commons.wikimedia.org/wiki/File:MEGA_MAC_Set-1.jpg,Q11343518
-1234,メタボ,メタボ,メタボ,word,2000年代,平成,2007,no,内臓脂肪型の肥満を指す略語。健康診断の話題語として浸透し商品名にも広く使われた。,http://commons.wikimedia.org/wiki/Special:FilePath/Obesity6.JPG,https://commons.wikimedia.org/wiki/File:Obesity6.JPG,Q657193
-1235,メタボリックシンドローム(メタボ),メタボリックシンドローム(メタボ),メタボリックシンドローム,word,2000年代,平成,2006,no,内臓脂肪型肥満に生活習慣病が重なった状態を指す医学用語。,,,
+1234,メタボ,メタボ,メタボ,word,2000年代,平成,2007,no,メタボリックシンドロームの略。内臓脂肪の蓄積に血圧や血糖などの異常が重なる状態で、健康診断の話題語として浸透した。,http://commons.wikimedia.org/wiki/Special:FilePath/Obesity6.JPG,https://commons.wikimedia.org/wiki/File:Obesity6.JPG,Q657193
+1235,メタボリックシンドローム(メタボ),メタボリックシンドローム(メタボ),メタボリックシンドローム,word,2000年代,平成,2006,no,内臓脂肪の蓄積に、血圧・血糖・脂質のうち複数の異常が重なり、動脈硬化の危険が高まる状態。,,,
 1236,めっちゃ悔し〜い,めっちゃ悔し〜い,メッチャクヤシーイ,word,2000年代,平成,2000,no,オリンピックの競泳選手が銀メダル獲得後に語った言葉。,,,
 1237,猛暑日,猛暑日,モウショビ,word,2000年代,平成,2007,no,最高気温が35度以上となる日を表す気象用語。,http://commons.wikimedia.org/wiki/Special:FilePath/Cat_sleeping_on_the_bench_at_very_hot_day.jpg,https://commons.wikimedia.org/wiki/File:Cat_sleeping_on_the_bench_at_very_hot_day.jpg,Q3774617
 1238,萌え,萌え,モエ,word,2000年代,平成,2005,no,対象への強い愛着を表す言い方。趣味人の用語が報道を通じて広く知られるようになった。,http://commons.wikimedia.org/wiki/Special:FilePath/Mahuri.jpg,https://commons.wikimedia.org/wiki/File:Mahuri.jpg,Q497942
@@ -1357,7 +1357,7 @@ id,original,surface,pronunciation,category,decade,era,year,sensitive,description
 1355,五郎丸ポーズ,五郎丸ポーズ,ゴロウマルポーズ,word,2010年代,平成,2015,no,ラグビー選手がキック前に行うルーティン動作として話題になった。,,,
 1356,災害級の暑さ,災害級の暑さ,サイガイキュウノアツサ,word,2010年代,平成,2018,yes,記録的な猛暑について、気象庁が注意を呼びかける際に用いた表現。,,,
 1357,サバ缶,サバ缶,サバカン,food,2010年代,平成,2018,no,鯖の水煮などの缶詰。健康番組の紹介をきっかけに品薄になるほど売れ生産が追いつかなくなった。,http://commons.wikimedia.org/wiki/Special:FilePath/Maquereaux_etal.jpg,https://commons.wikimedia.org/wiki/File:Maquereaux_etal.jpg,Q8064278
-1358,サブスク,サブスク,サブスク,item,2010年代,令和,2019,no,定額で使い放題にする契約の総称。音楽や動画から衣類や車まで広がり買い方そのものを変えた。,,,
+1358,サブスク,サブスク,サブスク,item,2010年代,令和,2019,no,定額を定期的に払い一定期間商品やサービスを利用する契約。音楽や動画から衣類や車まで広まった。,,,
 1359,サラダチキン,サラダチキン,サラダチキン,food,2010年代,平成,2016,no,味を付けた蒸し鶏の商品。手軽な高たんぱく食としてコンビニで定番化し味の種類も増えた。,http://commons.wikimedia.org/wiki/Special:FilePath/%E3%82%B5%E3%83%A9%E3%83%80%E3%83%81%E3%82%AD%E3%83%B3.jpg,https://commons.wikimedia.org/wiki/File:%E3%82%B5%E3%83%A9%E3%83%80%E3%83%81%E3%82%AD%E3%83%B3.jpg,Q56347154
 1360,35億,35億,サンジュウゴオク,word,2010年代,平成,2017,no,世界の男性の数を引き合いに用いたお笑い芸人のギャグのフレーズ。,,,
 1361,3.11,3.11,サンテンイチイチ,word,2010年代,平成,2011,yes,東日本大震災が発生した3月11日という日付を指す呼称として広く定着した。,http://commons.wikimedia.org/wiki/Special:FilePath/Distant_view_of_Rikuzentakata.jpg,https://commons.wikimedia.org/wiki/File:Distant_view_of_Rikuzentakata.jpg,Q1136168
@@ -1390,7 +1390,7 @@ id,original,surface,pronunciation,category,decade,era,year,sensitive,description
 1388,スクイーズ,スクイーズ,スクイーズ,play,2010年代,平成,2018,no,にぎって感触を楽しむ玩具。手元を写す動画が受けて小学生を中心に集める遊びが広まった。,http://commons.wikimedia.org/wiki/Special:FilePath/%E9%9F%93%E5%9B%BD%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%A0_%E3%82%B9%E3%82%AF%E3%82%A4%E3%83%BC%E3%82%BA_%2848624979261%29.jpg,https://commons.wikimedia.org/wiki/File:%E9%9F%93%E5%9B%BD%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%A0_%E3%82%B9%E3%82%AF%E3%82%A4%E3%83%BC%E3%82%BA_%2848624979261%29.jpg,Q11311464
 1389,ステマ,ステマ,ステマ,word,2010年代,平成,2012,yes,宣伝と明かさず口コミを装う手法を指す略語で発覚の騒動が相次いだ。,,,
 1390,SNOW,SNOW,スノー,item,2010年代,平成,2016,no,顔を加工して撮れるカメラアプリ。動物の耳を付ける加工が定番となり自撮り文化を後押しした。,,,
-1391,スパイスカレー,スパイスカレー,スパイスカレー,food,2010年代,令和,2019,no,香辛料を効かせた大阪発のカレー。粉ではなく香りで作る流儀が広まり専門店が全国に増えた。,http://commons.wikimedia.org/wiki/Special:FilePath/%E3%82%B9%E3%83%91%E3%82%A4%E3%82%B9%E3%82%AB%E3%83%AC%E3%83%BC.jpg,https://commons.wikimedia.org/wiki/File:%E3%82%B9%E3%83%91%E3%82%A4%E3%82%B9%E3%82%AB%E3%83%AC%E3%83%BC.jpg,
+1391,スパイスカレー,スパイスカレー,スパイスカレー,food,2010年代,令和,2019,no,香辛料を効かせた大阪発のカレー。独自の香りや味を楽しめる専門店が全国に増えた。,http://commons.wikimedia.org/wiki/Special:FilePath/%E3%82%B9%E3%83%91%E3%82%A4%E3%82%B9%E3%82%AB%E3%83%AC%E3%83%BC.jpg,https://commons.wikimedia.org/wiki/File:%E3%82%B9%E3%83%91%E3%82%A4%E3%82%B9%E3%82%AB%E3%83%AC%E3%83%BC.jpg,
 1392,スプラトゥーン,スプラトゥーン,スプラトゥーン,play,2010年代,平成,2015,no,塗り合いで勝敗を決める対戦ゲーム。撃ち合いに苦手意識のある層も遊べる作品として定着した。,http://commons.wikimedia.org/wiki/Special:FilePath/Splatoon_Japanese_monochrome_logo.svg,https://commons.wikimedia.org/wiki/File:Splatoon_Japanese_monochrome_logo.svg,Q17490239
 1393,スポーツサンダル,スポーツサンダル,スポーツサンダル,fashion,2010年代,平成,2016,no,厚手の帯が付いた運動用の履物。あえて街着に合わせる着こなしが男女ともに流行した。,,,
 1394,スマホ,スマホ,スマホ,word,2010年代,平成,2011,no,高機能な携帯電話「スマートフォン」の略称として一気に普及した。,http://commons.wikimedia.org/wiki/Special:FilePath/Wikipedia_homepage_on_a_large_Android_phone%2C_2015-04-16.jpg,https://commons.wikimedia.org/wiki/File:Wikipedia_homepage_on_a_large_Android_phone%2C_2015-04-16.jpg,Q22645
@@ -1408,7 +1408,7 @@ id,original,surface,pronunciation,category,decade,era,year,sensitive,description
 1406,助かる,助かる,タスカル,word,2010年代,令和,2019,no,投稿や行為をありがたく思う気持ちを一語で示す言い方。感謝と称賛を兼ねた表現として広まった。,,,
 1407,タピオカ,タピオカ,タピオカ,food,2010年代,令和,2019,no,もちもちの粒を入れた台湾風の飲み物。手に持って歩く姿が映えるとして専門店が乱立した。,http://commons.wikimedia.org/wiki/Special:FilePath/Tapioca-1.jpg,https://commons.wikimedia.org/wiki/File:Tapioca-1.jpg,Q873761
 1408,タピる,タピる,タピル,word,2010年代,令和,2019,no,タピオカ入りの飲み物を飲むことを指す若者言葉。,http://commons.wikimedia.org/wiki/Special:FilePath/Ice_bubble_milk_tea_with_tapioca_balls_of_Mister_Donut_in_Japan.jpg,https://commons.wikimedia.org/wiki/File:Ice_bubble_milk_tea_with_tapioca_balls_of_Mister_Donut_in_Japan.jpg,Q715858
-1409,タブレット端末,タブレット端末,タブレットタンマツ,item,2010年代,平成,2012,no,板状の大画面端末。動画や電子書籍を寝ながら楽しむ道具として家庭や教育の場に広まった。,http://commons.wikimedia.org/wiki/Special:FilePath/Steve_Jobs_with_the_Apple_iPad_no_logo_%28cropped%29.jpg,https://commons.wikimedia.org/wiki/File:Steve_Jobs_with_the_Apple_iPad_no_logo_%28cropped%29.jpg,Q155972
+1409,タブレット端末,タブレット端末,タブレットタンマツ,item,2010年代,平成,2012,no,板状の大画面端末。動画や電子書籍を楽しむ道具として家庭や教育の場に広まった。,http://commons.wikimedia.org/wiki/Special:FilePath/Steve_Jobs_with_the_Apple_iPad_no_logo_%28cropped%29.jpg,https://commons.wikimedia.org/wiki/File:Steve_Jobs_with_the_Apple_iPad_no_logo_%28cropped%29.jpg,Q155972
 1410,食べるラー油,食べるラー油,タベルラーユ,word,2010年代,平成,2010,no,具材を加えご飯のお供として食べる調味料が大ヒットした。,http://commons.wikimedia.org/wiki/Special:FilePath/%E3%83%A9%E3%83%BC%E6%B2%B9.jpg,https://commons.wikimedia.org/wiki/File:%E3%83%A9%E3%83%BC%E6%B2%B9.jpg,Q1026822
 1411,第3極,第3極,ダイサンキョク,word,2010年代,平成,2012,yes,衆院選を前に、既存の二大勢力とは別の第三の政治勢力を指した語。,,,
 1412,第3次韓流ブーム,第3次韓流ブーム,ダイサンジカンリュウブーム,play,2010年代,平成,2017,no,韓国の音楽や化粧品が若者に広まった動き。テレビ主導ではなくSNS発で広がった点が特徴だった。,,,
@@ -1447,7 +1447,7 @@ id,original,surface,pronunciation,category,decade,era,year,sensitive,description
 1445,なでしこジャパン,なでしこジャパン,ナデシコジャパン,word,2010年代,平成,2011,no,女子サッカー日本代表チームの愛称。ワールドカップ優勝で広く親しまれた。,http://commons.wikimedia.org/wiki/Special:FilePath/TEAM-01-JPNCAN-2019.jpg,https://commons.wikimedia.org/wiki/File:TEAM-01-JPNCAN-2019.jpg,Q388232
 1446,涙袋メイク,涙袋メイク,ナミダブクロメイク,fashion,2010年代,平成,2018,no,目の下をふくらんで見せる化粧。目を大きく見せる韓国風の手法として若い女性に広まった。,,,
 1447,なめこ栽培キット,なめこ栽培キット,ナメコサイバイキット,play,2010年代,平成,2012,no,きのこを育てて集めるスマホゲーム。ゆるい絵柄と手軽さで子どもから大人まで広く遊ばれた。,,,
-1448,奈良判定,奈良判定,ナラハンテイ,word,2010年代,平成,2018,yes,体操競技で議論を呼んだ採点をめぐる出来事を指す言葉。,,,
+1448,奈良判定,奈良判定,ナラハンテイ,word,2010年代,平成,2018,yes,アマチュアボクシングで奈良県の選手に有利な判定が下されたとする疑惑を指す言葉。,,,
 1449,匂わせ,匂わせ,ニオワセ,word,2010年代,令和,2019,no,交際などをそれとなく示す投稿を指す語。小物を写す手法が話題になり女子中高生に広まった。,,,
 1450,29連勝,29連勝,ニジュウキュウレンショウ,word,2010年代,平成,2017,no,デビューから記録的な連勝を続けた若手棋士の成績を指す言葉。,,,
 1451,2.5次元ミュージカル,2.5次元ミュージカル,ニテンゴジゲンミュージカル,play,2010年代,平成,2016,no,漫画やゲームを舞台化した公演。専用の劇場ができるほど観客が増え若手俳優の登竜門になった。,,,
@@ -1506,7 +1506,7 @@ id,original,surface,pronunciation,category,decade,era,year,sensitive,description
 1504,ぼっち,ぼっち,ボッチ,word,2010年代,平成,2012,no,独りでいる状態を指す略語。ぼっち飯という言い方とともに自称の言葉として広く使われた。,,,
 1505,ボルダリング,ボルダリング,ボルダリング,play,2010年代,平成,2016,no,人工の壁を登る運動。五輪の追加種目に決まったことも追い風となり屋内の施設が急増した。,http://commons.wikimedia.org/wiki/Special:FilePath/GIOVANNI_BOULDERING.jpg,https://commons.wikimedia.org/wiki/File:GIOVANNI_BOULDERING.jpg,Q852989
 1506,ボーカロイド,ボーカロイド,ボーカロイド,play,2010年代,平成,2012,no,歌声を合成する音源で曲を作る文化。投稿サイトから多くの作家と歌手を世に送り出した。,http://commons.wikimedia.org/wiki/Special:FilePath/Vocal_synthesizer_piano_roll.png,https://commons.wikimedia.org/wiki/File:Vocal_synthesizer_piano_roll.png,Q550596
-1507,ボーっと生きてんじゃねーよ！,ボーっと生きてんじゃねーよ！,ボーットイキテンジャネーヨ,word,2010年代,平成,2018,no,人気アニメキャラクターが視聴者を叱る決めゼリフとして話題になった。,,,
+1507,ボーっと生きてんじゃねーよ！,ボーっと生きてんじゃねーよ！,ボーットイキテンジャネーヨ,word,2010年代,平成,2018,no,NHKの番組「チコちゃんに叱られる！」でチコちゃんが答えられない大人を叱る決めゼリフ。,,,
 1508,ポケモンGO,ポケモンGO,ポケモンゴー,word,2010年代,平成,2016,no,位置情報を活用した人気スマートフォンゲームの題名。,http://commons.wikimedia.org/wiki/Special:FilePath/Pok%C3%A9mon_GO_logo.svg,https://commons.wikimedia.org/wiki/File:Pok%C3%A9mon_GO_logo.svg,Q20966579
 1509,ポップコーン専門店,ポップコーン専門店,ポップコーンセンモンテン,food,2010年代,平成,2013,no,味付けを選んで量り売りする店。土産にもなる菓子として話題を呼び長い行列を生んだ。,,,
 1510,マイナス金利,マイナス金利,マイナスキンリ,word,2010年代,平成,2016,no,中央銀行が導入した、金利がマイナスとなる金融政策を指す言葉。,http://commons.wikimedia.org/wiki/Special:FilePath/Negative_and_zero_interest_rate_map.png,https://commons.wikimedia.org/wiki/File:Negative_and_zero_interest_rate_map.png,Q97377851
@@ -1522,7 +1522,7 @@ id,original,surface,pronunciation,category,decade,era,year,sensitive,description
 1520,まつげエクステ,まつげエクステ,マツゲエクステ,fashion,2010年代,平成,2011,no,人工の毛を付けてまつげを増やす施術。毎日の化粧を省けると評判になりサロンが急増した。,http://commons.wikimedia.org/wiki/Special:FilePath/Fake_Eyelashes.jpg,https://commons.wikimedia.org/wiki/File:Fake_Eyelashes.jpg,Q2633526
 1521,魔の2回生,魔の2回生,マノニカイセイ,word,2010年代,平成,2017,yes,当選2回目の国会議員による失言や不祥事が相次いだことを指す語。,,,
 1522,マラソンブーム,マラソンブーム,マラソンブーム,play,2010年代,平成,2011,no,市民マラソンの人気。都市型の大会の抽選が高い倍率になるほど日常的に走る人が増えた。,,,
-1523,マルちゃん正麺,マルちゃん正麺,マルチャンセイメン,food,2010年代,平成,2012,no,生麺に近い食感の袋入り即席麺。品質の高さが評価され各社が同じ製法で追随する流れを作った。,http://commons.wikimedia.org/wiki/Special:FilePath/Toyo_Suisan_Kaisha_company_logo.svg,https://commons.wikimedia.org/wiki/File:Toyo_Suisan_Kaisha_company_logo.svg,Q7830633
+1523,マルちゃん正麺,マルちゃん正麺,マルチャンセイメン,food,2010年代,平成,2012,no,生麺に近い食感の袋入り即席麺。東洋水産独自の製法で生の麺を乾燥させ、自然な食感と味わいを実現した。,http://commons.wikimedia.org/wiki/Special:FilePath/Toyo_Suisan_Kaisha_company_logo.svg,https://commons.wikimedia.org/wiki/File:Toyo_Suisan_Kaisha_company_logo.svg,Q7830633
 1524,〇〇ファースト,〇〇ファースト,マルマルファースト,word,2010年代,平成,2017,yes,地域政党の名称から広まった、特定の対象を最優先するという言い回し。,,,
 1525,○○ペイ,○○ペイ,マルマルペイ,word,2010年代,令和,2019,no,キャッシュレス決済サービスが相次いで登場した際の名称の傾向を指す言葉。,,,
 1526,〜み,〜み,ミ,word,2010年代,平成,2017,no,やばみうれしみのように形容詞を名詞化する接尾語。柔らかい語感が好まれSNSで盛んに使われた。,,,
@@ -1566,7 +1566,7 @@ id,original,surface,pronunciation,category,decade,era,year,sensitive,description
 1564,愛の不時着,愛の不時着,アイノフジャク,word,2020年代,令和,2020,no,大きな話題を呼んだ韓国の恋愛テレビドラマの題名。,http://commons.wikimedia.org/wiki/Special:FilePath/Crash_Landing_on_You_cast.jpg,https://commons.wikimedia.org/wiki/File:Crash_Landing_on_You_cast.jpg,Q65258113
 1565,アイムウェアリングパンツ,アイムウェアリングパンツ,アイムウェアリングパンツ,word,2020年代,令和,2023,no,お笑い芸人が海外の番組で裸に見える芸に添えて発した言葉。,,,
 1566,アクリルスタンド,アクリルスタンド,アクリルスタンド,item,2020年代,令和,2021,no,推しの絵柄を立てて飾る板状の品。持ち歩いて風景と一緒に撮る遊びとともに定番になった。,http://commons.wikimedia.org/wiki/Special:FilePath/202403261400_IMG_8491.jpg,https://commons.wikimedia.org/wiki/File:202403261400_IMG_8491.jpg,Q114154099
-1567,アサイーボウル,アサイーボウル,アサイーボウル,food,2020年代,令和,2024,no,果実の粥に果物や穀物を乗せた品。健康的な朝食として専門店が増え行列を生む店も出た。,http://commons.wikimedia.org/wiki/Special:FilePath/A%C3%A7ai_naTigela_2.jpg,https://commons.wikimedia.org/wiki/File:A%C3%A7ai_naTigela_2.jpg,Q4833218
+1567,アサイーボウル,アサイーボウル,アサイーボウル,food,2020年代,令和,2024,no,アサイーのピューレを使った冷たいスムージーに果物やグラノーラをのせた品。朝食やデザートとして人気を集めた。,http://commons.wikimedia.org/wiki/Special:FilePath/A%C3%A7ai_naTigela_2.jpg,https://commons.wikimedia.org/wiki/File:A%C3%A7ai_naTigela_2.jpg,Q4833218
 1568,アセアセ,アセアセ,アセアセ,word,2020年代,令和,2021,no,焦った気持ちを表す言い方。文字のやり取りに軽く添える語として女子中高生の流行語になった。,,,
 1569,新しい学校のリーダーズ,新しい学校のリーダーズ,アタラシイガッコウノリーダーズ,word,2020年代,令和,2023,no,個性的なパフォーマンスで海外でも注目を集めたダンス&ボーカルユニットの名称。,http://commons.wikimedia.org/wiki/Special:FilePath/Atarashii_Gakko%21_performing_in_London._10th_June_2024.jpg,https://commons.wikimedia.org/wiki/File:Atarashii_Gakko%21_performing_in_London._10th_June_2024.jpg,Q30937273
 1570,あつまれどうぶつの森,あつまれどうぶつの森,アツマレドウブツノモリ,play,2020年代,令和,2020,no,島を自由に作る生活ゲーム。家で過ごす時期に重なり世代を超えて遊ばれ本体まで品薄になった。,http://commons.wikimedia.org/wiki/Special:FilePath/Animal_Crossing-New_Horizons.png,https://commons.wikimedia.org/wiki/File:Animal_Crossing-New_Horizons.png,Q64566657
@@ -1584,7 +1584,7 @@ id,original,surface,pronunciation,category,decade,era,year,sensitive,description
 1582,ウルフカット,ウルフカット,ウルフカット,fashion,2020年代,令和,2021,no,襟足を長く残して段を入れた髪型。韓国風の装いとともに男女ともに広く取り入れられた。,,,
 1583,エコバッグ,エコバッグ,エコバッグ,item,2020年代,令和,2020,no,買い物用の持参袋。レジ袋が有料になったことで全国で一気に生活の必需品として定着した。,http://commons.wikimedia.org/wiki/Special:FilePath/Konomiya_Shoping_Bag.jpg,https://commons.wikimedia.org/wiki/File:Konomiya_Shoping_Bag.jpg,Q11339773
 1584,エッホエッホ,エッホエッホ,エッホエッホ,word,2020年代,令和,2025,no,インターネット上で広まった掛け声のミーム。,,,
-1585,MBTI診断,MBTI診断,エムビーティーアイシンダン,play,2020年代,令和,2022,no,性格を四文字で表す診断。韓国から広まり友人との話題づくりとして若い世代に定着した。,,,
+1585,MBTI診断,MBTI診断,エムビーティーアイシンダン,play,2020年代,令和,2022,no,性格のタイプを四文字で表す検査として話題になった語。ネットで広まった簡易診断には正式なMBTIとは別のものもある。,,,
 1586,おうちカフェ,おうちカフェ,オウチカフェ,word,2020年代,令和,2020,no,家で喫茶店のような飲み物や菓子を楽しむ過ごし方。器や写真にこだわる楽しみとして広まった。,,,
 1587,おうち時間,おうち時間,オウチジカン,word,2020年代,令和,2020,no,家で過ごす時間を楽しむという言い方。手作り料理や模様替えなどの話題と結びついて広まった。,http://commons.wikimedia.org/wiki/Special:FilePath/Japanese_Reading.jpg,https://commons.wikimedia.org/wiki/File:Japanese_Reading.jpg,Q109361845
 1588,大きめシュシュ,大きめシュシュ,オオキメシュシュ,fashion,2020年代,令和,2021,no,髪をまとめる布製の大きな飾り。甘い雰囲気を足せる小物として若い女性に広く流行した。,,,
@@ -1612,7 +1612,7 @@ id,original,surface,pronunciation,category,decade,era,year,sensitive,description
 1610,CapCut,CapCut,キャップカット,item,2020年代,令和,2021,no,スマホで動画を編集するアプリ。型を選ぶだけで作れる手軽さから短い動画作りの定番になった。,,,
 1611,きゅんです,きゅんです,キュンデス,word,2020年代,令和,2020,no,胸がときめいた気持ちを表す言い方。指でハートを作る振り付けとともに動画から広まった。,,,
 1612,切り抜き動画,切り抜き動画,キリヌキドウガ,play,2020年代,令和,2022,no,配信の見どころを短く編集した動画。本人が公認する形も増え二次的な視聴文化として定着した。,http://commons.wikimedia.org/wiki/Special:FilePath/Video_icon2.png,https://commons.wikimedia.org/wiki/File:Video_icon2.png,Q677466
-1613,緊急銃猟,緊急銃猟,キンキュウジュウリョウ,word,2020年代,令和,2025,yes,市街地に出没したクマなどを、迅速に駆除できるようにする猟法を指す語。,,,
+1613,緊急銃猟,緊急銃猟,キンキュウジュウリョウ,word,2020年代,令和,2025,yes,生活圏に出没したクマやイノシシを、安全確保などの条件の下で市町村の委託を受けた人が銃で捕獲できる制度。,,,
 1614,キーウ,キーウ,キーウ,word,2020年代,令和,2022,yes,ロシアによる侵攻を機に、ウクライナの首都の呼び方が変更されたことを指す語。,http://commons.wikimedia.org/wiki/Special:FilePath/Collage_of_Kiev.png,https://commons.wikimedia.org/wiki/File:Collage_of_Kiev.png,Q1899
 1615,ギャルピース,ギャルピース,ギャルピース,other,2020年代,令和,2022,no,手を下向きにひねって作るピースのポーズ。写真の定番の型として若い世代に一気に広まった。,http://commons.wikimedia.org/wiki/Special:FilePath/Gal_Peace_64038.jpg,https://commons.wikimedia.org/wiki/File:Gal_Peace_64038.jpg,Q116921099
 1616,首振りダンス,首振りダンス,クビフリダンス,word,2020年代,令和,2023,no,特徴的な頭の動きが話題になったダンスの振り付けを指す言葉。,http://commons.wikimedia.org/wiki/Special:FilePath/Head-isolation_dance_2023-12-28.gif,https://commons.wikimedia.org/wiki/File:Head-isolation_dance_2023-12-28.gif,Q116858202
@@ -1639,7 +1639,7 @@ id,original,surface,pronunciation,category,decade,era,year,sensitive,description
 1637,3密,3密,サンミツ,word,2020年代,令和,2020,yes,密閉・密集・密接を避けるよう呼びかけた感染症対策の標語。,http://commons.wikimedia.org/wiki/Special:FilePath/3%E3%81%A4%E3%81%AE%E5%AF%86.png,https://commons.wikimedia.org/wiki/File:3%E3%81%A4%E3%81%AE%E5%AF%86.png,Q91082844
 1638,シアーシャツ,シアーシャツ,シアーシャツ,fashion,2020年代,令和,2020,no,生地が透ける薄手の上着。重ね着の主役として支持され通販での検索数を前年から大きく伸ばした。,,,
 1639,宗教2世,宗教2世,シュウキョウニセイ,word,2020年代,令和,2022,yes,特定の信仰を持つ親のもとに生まれ育った子を指す言葉。,,,
-1640,昭和100年,昭和100年,ショウワヒャクネン,word,2020年代,令和,2025,no,昭和が始まってから100年の節目にあたることを指す言葉。,http://commons.wikimedia.org/wiki/Special:FilePath/Showa_100th_Anniversary_Ceremony_at_Nippon_Budokan%2C_29_April_2026.jpg,https://commons.wikimedia.org/wiki/File:Showa_100th_Anniversary_Ceremony_at_Nippon_Budokan%2C_29_April_2026.jpg,Q140879373
+1640,昭和100年,昭和100年,ショウワヒャクネン,word,2020年代,令和,2025,no,昭和が続いていれば昭和100年にあたる2025年を指す言葉。昭和の文化や暮らしを振り返るきっかけとなった。,http://commons.wikimedia.org/wiki/Special:FilePath/Showa_100th_Anniversary_Ceremony_at_Nippon_Budokan%2C_29_April_2026.jpg,https://commons.wikimedia.org/wiki/File:Showa_100th_Anniversary_Ceremony_at_Nippon_Budokan%2C_29_April_2026.jpg,Q140879373
 1641,昭和レトロ,昭和レトロ,ショウワレトロ,word,2020年代,令和,2022,no,昭和の意匠を懐かしんで楽しむ流行。喫茶店や食器や家電の人気に結びつき若者にも広がった。,http://commons.wikimedia.org/wiki/Special:FilePath/Sh%C5%8Dwa.svg,https://commons.wikimedia.org/wiki/File:Sh%C5%8Dwa.svg,Q11514076
 1642,初老ジャパン,初老ジャパン,ショロウジャパン,word,2020年代,令和,2024,no,パリ五輪で活躍したベテラン中心の馬術日本代表の愛称。,http://commons.wikimedia.org/wiki/Special:FilePath/CROSS_COUNTRY_CONCOURS_COMPLET_VERSAILLES_JO_PARIS_2024_%2853885875702%29.jpg,https://commons.wikimedia.org/wiki/File:CROSS_COUNTRY_CONCOURS_COMPLET_VERSAILLES_JO_PARIS_2024_%2853885875702%29.jpg,Q124497539
 1643,ショート動画,ショート動画,ショートドウガ,play,2020年代,令和,2021,no,数十秒の縦型の動画。各サービスが相次いで導入し動画を見る形の主流として定着した。,,,
@@ -1676,7 +1676,7 @@ id,original,surface,pronunciation,category,decade,era,year,sensitive,description
 1674,大丈夫そ,大丈夫そ,ダイジョウブソ,word,2020年代,令和,2021,no,軽く相手を気遣う言い方。語尾を省いた響きが受けて女子中高生の流行語として広まった。,,,
 1675,ダルゴナコーヒー,ダルゴナコーヒー,ダルゴナコーヒー,food,2020年代,令和,2020,no,泡立てた珈琲を牛乳に乗せる飲み物。家で作る過程を見せる投稿とともに世界的に流行した。,http://commons.wikimedia.org/wiki/Special:FilePath/Homemade_Dalgona_Coffee.jpg,https://commons.wikimedia.org/wiki/File:Homemade_Dalgona_Coffee.jpg,Q89638559
 1676,ちいかわ,ちいかわ,チイカワ,item,2020年代,令和,2022,no,小さくてかわいい生き物を描く漫画とキャラクター。グッズや催事が幅広い年代に支持された。,http://commons.wikimedia.org/wiki/Special:FilePath/%E3%81%A1%E3%81%84%E3%81%8B%E3%82%8F%E5%8F%B7%E3%80%8A%E5%AE%9D%E5%A1%9A%E7%B7%9A_1004F%E3%80%8B_%EF%BC%882024%E5%B9%B41%E6%9C%881%E6%97%A5_%E8%B1%8A%E4%B8%AD%E9%A7%85%EF%BC%89.jpg,https://commons.wikimedia.org/wiki/File:%E3%81%A1%E3%81%84%E3%81%8B%E3%82%8F%E5%8F%B7%E3%80%8A%E5%AE%9D%E5%A1%9A%E7%B7%9A_1004F%E3%80%8B_%EF%BC%882024%E5%B9%B41%E6%9C%881%E6%97%A5_%E8%B1%8A%E4%B8%AD%E9%A7%85%EF%BC%89.jpg,Q106093778
-1677,地球グミ,地球グミ,チキュウグミ,food,2020年代,令和,2021,no,地球の断面を模した外国産の菓子。噛む音を聞かせる動画とともに一気に大流行した。,http://commons.wikimedia.org/wiki/Special:FilePath/Trolli.svg,https://commons.wikimedia.org/wiki/File:Trolli.svg,Q113517007
+1677,地球グミ,地球グミ,チキュウグミ,food,2020年代,令和,2021,no,地球を模した球形の外国産グミ。噛む音を聞かせる動画とともに一気に大流行した。,http://commons.wikimedia.org/wiki/Special:FilePath/Trolli.svg,https://commons.wikimedia.org/wiki/File:Trolli.svg,Q113517007
 1678,地球沸騰化,地球沸騰化,チキュウフットウカ,word,2020年代,令和,2023,no,国連の事務総長が地球温暖化の深刻さを強調して用いた表現。,http://commons.wikimedia.org/wiki/Special:FilePath/Change_in_Average_Temperature.svg,https://commons.wikimedia.org/wiki/File:Change_in_Average_Temperature.svg,Q7942
 1679,チャイボーグ,チャイボーグ,チャイボーグ,fashion,2020年代,令和,2020,no,中国の女優風に整えた化粧。強い眉と赤い唇で作る隙のない顔立ちが話題になり流行した。,,,
 1680,ChatGPT,ChatGPT,チャットジーピーティー,item,2020年代,令和,2023,no,対話しながら文章を作る人工知能サービス。誰でも試せる手軽さから社会現象級の話題になった。,http://commons.wikimedia.org/wiki/Special:FilePath/OpenAI_logo_2025_%28symbol%29.svg,https://commons.wikimedia.org/wiki/File:OpenAI_logo_2025_%28symbol%29.svg,Q115564437
@@ -1700,14 +1700,14 @@ id,original,surface,pronunciation,category,decade,era,year,sensitive,description
 1698,沼落ち,沼落ち,ヌマオチ,word,2020年代,令和,2021,no,抜け出せないほど夢中になることを指す言い方。推し文化の広がりとともに一般にも定着した。,,,
 1699,猫ミーム,猫ミーム,ネコミーム,play,2020年代,令和,2024,no,猫の動画の素材で寸劇を作る流行。作りやすさから子どもから大人まで模倣が一気に広がった。,,,
 1700,ネームボード,ネームボード,ネームボード,item,2020年代,令和,2022,no,公演で推しの名前を掲げる手作りの板。作り方を紹介する動画も広まり応援の定番になった。,,,
-1701,働いて働いて働いて働いて働いてまいります,働いて働いて働いて働いて働いてまいります,ハタライテハタライテハタライテハタライテハタライテマイリマス,word,2020年代,令和,2025,yes,首相が就任会見で仕事に取り組む決意を語った言葉。,,,
+1701,働いて働いて働いて働いて働いてまいります,働いて働いて働いて働いて働いてまいります,ハタライテハタライテハタライテハタライテハタライテマイリマス,word,2020年代,令和,2025,yes,高市早苗が自民党総裁に選ばれた後のあいさつで、仕事に取り組む決意を語った言葉。,,,
 1702,はにゃ,はにゃ,ハニャ,word,2020年代,令和,2021,no,戸惑いを表すとぼけた声。芸人の言い回しから広まり女子中高生の流行語として選ばれた。,,,
 1703,バギージーンズ,バギージーンズ,バギージーンズ,fashion,2020年代,令和,2023,no,脚回りが大きくたるんだデニム。細身から幅広へという流れを象徴する形として流行した。,,,
 1704,バケットハット,バケットハット,バケットハット,fashion,2020年代,令和,2020,no,つばが下向きのバケツ型の帽子。バケハという略称とともに若者の定番の小物になった。,,,
 1705,バレエコア,バレエコア,バレエコア,fashion,2020年代,令和,2024,no,バレエの衣装を思わせる甘い装い。リボンや薄い生地を使う着こなしが若い女性に流行した。,,,
 1706,バレルパンツ,バレルパンツ,バレルパンツ,fashion,2020年代,令和,2024,no,樽のように丸い輪郭を描くズボン。新しい形のデニムとして各社が競って売り出した。,,,
 1707,パーソナルカラー診断,パーソナルカラー診断,パーソナルカラーシンダン,fashion,2020年代,令和,2021,no,肌に似合う色の系統を診る考え方。化粧品や服を選ぶ基準として若い女性に一気に広まった。,,,
-1708,ひき肉です,ひき肉です,ヒキニクデス,word,2020年代,令和,2023,no,高校生の動画投稿者の挨拶がまねされた言い方。集合の掛け声として全国の学校に広まった。,,,
+1708,ひき肉です,ひき肉です,ヒキニクデス,word,2020年代,令和,2023,no,中学生の動画グループ「ちょんまげ小僧」のメンバーの挨拶。両手を広げるポーズとともにまねされ広まった。,,,
 1709,ヒス構文,ヒス構文,ヒスコウブン,word,2020年代,令和,2023,no,感情的に問い詰める言い方の型を指す語。まねて遊ぶ動画が量産され若い世代に広まった。,,,
 1710,ビッタビタ,ビッタビタ,ビッタビタ,word,2020年代,令和,2021,no,スケートボードの解説者が着地の見事さを称えた言葉。,,,
 1711,BeReal,BeReal,ビーリアル,item,2020年代,令和,2023,no,加工なしの日常を送り合うSNS。飾らないやり取りが受けて女子中高生の流行アプリ一位になった。,http://commons.wikimedia.org/wiki/Special:FilePath/Logo-BeReal.png,https://commons.wikimedia.org/wiki/File:Logo-BeReal.png,Q111947460

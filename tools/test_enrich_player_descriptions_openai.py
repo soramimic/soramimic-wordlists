@@ -126,6 +126,26 @@ class EnrichPlayerDescriptionsOpenAITests(unittest.TestCase):
         self.assertEqual("12345", records[0].revision)
         self.assertIn("2025年に新人王を受賞した。", records[0].source)
 
+    def test_reviewed_identity_is_excluded_before_candidate_limit(self):
+        rows = baseball_rows()
+        rows.extend({**row, "id": "2", "original": "山田次郎"}
+                    for row in baseball_rows())
+        write_csv(self.csv_path, BASEBALL_COLUMNS, rows)
+        before = self.csv_path.read_bytes()
+        with mock.patch("description_overrides.reviewed_identities",
+                        return_value={("1", "山田 太郎")}):
+            self.assertEqual((1, 0), self.process(None, "plan", limit=1))
+        self.assertEqual(before, self.csv_path.read_bytes())
+
+    def test_reviewed_empty_description_does_not_call_selector(self):
+        selector = FakeSelector({})
+        before = self.csv_path.read_bytes()
+        with mock.patch("description_overrides.reviewed_identities",
+                        return_value={("1", "山田 太郎")}):
+            self.assertEqual((0, 0), self.process(selector, "fetch"))
+        self.assertEqual([], selector.calls)
+        self.assertEqual(before, self.csv_path.read_bytes())
+
     def test_cache_only_apply_updates_every_row_of_the_same_id_atomically(self):
         selector = FakeSelector({
             "baseball:1": Selection(
