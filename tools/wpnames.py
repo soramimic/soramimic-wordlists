@@ -756,6 +756,10 @@ def images_for_titles(titles: list) -> dict:
 def write_csv_no_trailing_newline(path, cols, rows):
     import csv as _csv
     import io as _io
+    from pathlib import Path as _Path
+    from description_overrides import apply_overrides
+    rows = [dict(row) for row in rows]
+    apply_overrides(_Path(path).stem, rows)
     buf = _io.StringIO()
     w = _csv.DictWriter(buf, fieldnames=cols, lineterminator="\n")
     w.writeheader()

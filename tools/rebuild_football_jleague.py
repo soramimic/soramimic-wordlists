@@ -502,6 +502,9 @@ def collect(client: WikipediaClient, reading_provider: ReadingProvider,
 
 def csv_text(rows: list[dict]) -> str:
     import io
+    from description_overrides import apply_overrides
+    rows = [dict(row) for row in rows]
+    apply_overrides("football", rows)
     buf = io.StringIO()
     writer = csv.DictWriter(buf, fieldnames=CSV_COLUMNS, lineterminator="\n")
     writer.writeheader()

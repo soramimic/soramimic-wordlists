@@ -5,6 +5,17 @@
 - Supersedes: none
 - Superseded by: none
 
+## 説明文の補正（2026-10-12）
+
+`description` の登場時期は「第N世代に登場。」と表す。
+メガシンカとキョダイマックスの姿は、それぞれ「メガシンカした姿。」
+「キョダイマックスした姿。」と記す。キョダイマックスの説明には高さ・重さの数値を含めない。
+
+根拠は[メガシンカの公式説明](https://www.pokemon.co.jp/ex/xy/battle/04.html)、
+[キョダイマックスの公式説明](https://www.pokemon.co.jp/ex/sword_shield/system/190708_01.html)、
+[カビゴンの公式体格表記](https://www.pokemon.co.jp/ex/sword_shield/pokemon/191127_07.html)。
+この補正は説明文に適用し、以下の当初決定にある説明テンプレートを更新する。
+
 ## Context
 
 pokemon.csv は `type1/type2` と `generation` しか属性を持っておらず、カード表示(動画レイアウトの `pokemon_card`)で名前とタイプ配色以外に出せる情報が無い。他リストでは scientist の `description`、plant の `family/genus` のように「事実の付加情報」を持たせている。ポケモンでも同じことをしたい。

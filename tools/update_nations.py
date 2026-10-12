@@ -97,6 +97,8 @@ def main() -> int:
         print(f"added: {code} {name} (id={next_id})")
         next_id += 1
 
+    from description_overrides import apply_overrides
+    apply_overrides("nations", rows)
     buf = io.StringIO()
     writer = csv.DictWriter(buf, fieldnames=fieldnames, lineterminator="\n")
     writer.writeheader()

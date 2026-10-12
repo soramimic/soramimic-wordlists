@@ -498,6 +498,8 @@ def main() -> int:
     cols = ["id", "original", "surface", "pronunciation", "prefecture", "city",
             "lines", "operator", "opened_year", "station_code", "status",
             "image", "image_page", "description", "wikidata"]
+    from description_overrides import apply_overrides
+    apply_overrides("stations", rows)
     buf = io.StringIO()
     w = csv.DictWriter(buf, fieldnames=cols, lineterminator="\n")
     w.writeheader()
