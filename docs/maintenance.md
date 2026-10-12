@@ -69,6 +69,14 @@ python3 tools/enrich_player_descriptions_openai.py football --apply --cache-only
 
 ## 検証
 
+確認済みの名称・読み・所属・所在地などは `tools/entry_corrections.jsonl` に記録する。
+修正内容と出典を保持し、通常の更新でも同じIDの各表記へ適用する。
+
+```bash
+python3 tools/entry_corrections.py
+python3 tools/entry_corrections.py --check
+```
+
 確認済みの説明文は `tools/description_overrides.jsonl` に記録する。
 リスト名・ID・原表記を照合し、同じIDの全表記へ反映する。事実を追加・訂正した項目には
 出典URLを付け、既存の事実を保つ文章修正では出典URLを空配列にできる。

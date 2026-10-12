@@ -14,6 +14,7 @@ usage: python3 tools/update_baseball.py
 """
 
 import csv
+import json
 import re
 import sys
 import time
@@ -33,6 +34,22 @@ TEAMS = {
     "千葉ロッテマリーンズ": "ロッテ", "北海道日本ハムファイターズ": "日本ハム",
 }
 CSV_PATH = Path(__file__).resolve().parent.parent / "baseball.csv"
+VERIFIED_SOURCES = Path(__file__).with_name("baseball_verified_sources.jsonl")
+
+
+def verified_player_ids() -> dict[str, str]:
+    return {record["article"]: str(record["verified_id"])
+            for line in VERIFIED_SOURCES.read_text(encoding="utf-8").splitlines()
+            if line.strip() for record in [json.loads(line)]}
+
+
+def existing_player_id(article: str, full_to_ids: dict[str, set[str]],
+                       verified: dict[str, str]) -> str | None:
+    plain = vnorm(DISAMBIG.sub("", article))
+    ids = full_to_ids.get(plain, set())
+    if article in verified and verified[article] in ids:
+        return verified[article]
+    return next(iter(ids)) if len(ids) == 1 else None
 
 
 def roster(team: str) -> list:
@@ -52,7 +69,7 @@ def roster(team: str) -> list:
         if not line.strip().startswith("*") or "選手" not in section:
             continue
         for target, display in LINK.findall(line):
-            players.append((DISAMBIG.sub("", target.strip()),
+            players.append((target.strip(),
                             (display or target).strip(), position))
             break
     return players
@@ -66,11 +83,15 @@ def main() -> int:
         r.setdefault("description", "")
         r.setdefault("position", "")
     # 選手グループ: type=fullのsurface(異体字正規化) -> そのid
-    full_to_id = {vnorm(r["surface"]): r["id"] for r in old_rows if r["type"] == "full"}
+    full_to_ids = {}
+    for row in old_rows:
+        if row["type"] == "full":
+            full_to_ids.setdefault(vnorm(row["surface"]), set()).add(row["id"])
+    verified = verified_player_ids()
     rows_by_id = {}
     for r in old_rows:
         rows_by_id.setdefault(r["id"], []).append(r)
-    existing_full = set(full_to_id)
+    existing_full = set(full_to_ids)
 
     all_players = {}
     for team, short in TEAMS.items():
@@ -88,7 +109,7 @@ def main() -> int:
     # 既存選手: 移籍していればteamに「-球団」を追記、画像が空なら付与
     team_updates = img_updates = position_updates = 0
     for article, (display, club, position) in all_players.items():
-        gid = full_to_id.get(vnorm(article))
+        gid = existing_player_id(article, full_to_ids, verified)
         if gid is None:
             continue
         for r in rows_by_id.get(gid, []):
@@ -107,7 +128,7 @@ def main() -> int:
     print(f"既存行へのposition付与: {position_updates}行")
 
     new_players = {a: v for a, v in all_players.items()
-                   if vnorm(a) not in existing_full}
+                   if existing_player_id(a, full_to_ids, verified) is None}
     extracts = fetch_extracts(sorted(new_players))
 
     added, flagged, no_article = [], [], []

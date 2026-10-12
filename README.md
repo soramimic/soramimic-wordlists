@@ -42,9 +42,18 @@
 | school.csv | 幼稚園〜大学等の学校名 | 文部科学省、総務省、Wikidata、Wikipedia、Wikimedia Commons |
 
 説明文の修正に用いた個別の出典は[説明文の確認台帳](tools/description_overrides.jsonl)に記載しています。
+名称・読み・所属・所在地などの修正の出典は[項目の確認台帳](tools/entry_corrections.jsonl)に記載しています。
 自治体の説明の一部は『歴史的行政区域データセットβ版』（CODH作成）
 [doi:10.20676/00000447](https://doi.org/10.20676/00000447)を要約しています
 （[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)）。
+
+近世の村の名称・読みと説明の一部は
+『[日本歴史地名大系](https://geoshape.ex.nii.ac.jp/nrct/)』地名項目データセット（CODH作成）
+[doi:10.20676/00000448](https://doi.org/10.20676/00000448)を要約・整形しています
+（[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)）。
+『[幕末期近世村領域データセット](https://geoshape.ex.nii.ac.jp/av/)』（CODH作成）
+「幕末期近世村領域データ」（本田謙一氏）を加工した情報を用いた説明も要約しています。
+これらの説明は[CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)で提供します。
 
 ## 利用上の注意
 

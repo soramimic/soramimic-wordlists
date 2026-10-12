@@ -423,6 +423,14 @@ def load_existing() -> tuple:
                       r.get("parent", ""), r.get("original", ""))
         g = groups.setdefault(key, {"id": r["id"], "rows": {}})
         g["rows"][r.get("type", "full")] = r
+    from entry_corrections import source_aliases
+    aliases = source_aliases("municipality")
+    for key, group in list(groups.items()):
+        alias = next((qid for qid, group_id in aliases.items() if group_id == group["id"]), None)
+        if alias and key != "q" + alias:
+            if "q" + alias in groups and groups["q" + alias]["id"] != group["id"]:
+                raise ValueError(f"Conflicting municipality source alias: {alias}")
+            groups["q" + alias] = groups.pop(key)
     next_id = max((int(r["id"]) for r in rows), default=-1) + 1
     return groups, next_id
 
@@ -557,6 +565,8 @@ def main() -> int:
               f"{ex['rows'].get('full', {}).get('original', key)}")
 
     from description_overrides import apply_overrides
+    from entry_corrections import apply_corrections
+    apply_corrections("municipality", rows)
     apply_overrides("municipality", rows)
     buf = io.StringIO()
     w = csv.DictWriter(buf, fieldnames=COLS, lineterminator="\n",
