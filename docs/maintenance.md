@@ -69,6 +69,24 @@ python3 tools/enrich_player_descriptions_openai.py football --apply --cache-only
 
 ## 検証
 
+確認済みの説明文は `tools/description_overrides.jsonl` に記録する。
+リスト名・ID・原表記を照合し、同じIDの全表記へ反映する。事実を追加・訂正した項目には
+出典URLを付け、既存の事実を保つ文章修正では出典URLを空配列にできる。
+説明の対象を確定できない項目は空の説明を保持する。通常の更新処理でもこの補正を優先する。
+
+```bash
+python3 tools/description_overrides.py
+python3 tools/description_overrides.py --check
+```
+
+ポケモンの説明は既存の事実列から再生成する。次のコマンドは説明列だけを更新し、
+`--check` を付けると一致を検証する。
+
+```bash
+python3 tools/update_pokemon.py --descriptions-only
+python3 tools/update_pokemon.py --descriptions-only --check
+```
+
 科学者リストの著名人博士は、確認済みの台帳から次のコマンドで反映できる。
 人物区分と、学位名から始まる説明を同じ人物の全表記へ反映する。
 `--check` を付けると、CSVを変更せず反映状態を検証する。月次更新でも区分と説明を保持する。

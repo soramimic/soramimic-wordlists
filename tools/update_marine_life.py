@@ -511,7 +511,10 @@ def validate_description_sources(
 
 
 def generate(rows: list[dict[str, str]], manifest: list[dict] | None = None) -> bytes:
+    from description_overrides import apply_overrides
     manifest = manifest if manifest is not None else load_generated_image_manifest()
+    rows = [{**row, "original": row["name"]} for row in rows]
+    apply_overrides("marine_life", rows)
     out = io.StringIO(newline="")
     writer = csv.DictWriter(out, fieldnames=OUTPUT_COLUMNS, lineterminator="\n")
     writer.writeheader()

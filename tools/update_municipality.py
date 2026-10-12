@@ -556,6 +556,8 @@ def main() -> int:
         print(f"note: 母集団から消えたので former に落とす: "
               f"{ex['rows'].get('full', {}).get('original', key)}")
 
+    from description_overrides import apply_overrides
+    apply_overrides("municipality", rows)
     buf = io.StringIO()
     w = csv.DictWriter(buf, fieldnames=COLS, lineterminator="\n",
                        extrasaction="ignore")

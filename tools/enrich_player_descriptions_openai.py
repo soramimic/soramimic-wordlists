@@ -721,6 +721,7 @@ def process_kind(
     provenance_path: Path = PROVENANCE_PATH,
     pending_path: Path = PENDING_PATH,
 ) -> tuple[int, int]:
+    from description_overrides import reviewed_identities
     path = Path(CONFIG[kind]["path"])
     columns, rows = read_rows(path)
     groups = group_rows(rows)
@@ -731,8 +732,12 @@ def process_kind(
         for (pending_kind, group_id), record in pending_records.items()
         if pending_kind == kind and group_id in groups
     }
+    reviewed = reviewed_identities(kind)
+    candidate_groups = {group_id: group for group_id, group in groups.items() if not any(
+        (row["id"], row["original"]) in reviewed for row in group
+    )}
     target_ids = target_group_ids(
-        groups,
+        candidate_groups,
         previous_rows=previous_rows,
         include_missing=include_missing,
         include_degraded=include_degraded,

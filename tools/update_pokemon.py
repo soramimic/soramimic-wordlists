@@ -27,7 +27,8 @@ idはポケモン単位(種・各フォームで1つ。種とフォームは別�
   pokemonエントリの値(メガ・キョダイマックスは本体と別の体格を持つ)
 - evolves_from: 進化前の日本語の種名(フシギソウ→フシギダネ)。進化前が無い種は
   NA。出典は pokemon_species.csv の evolves_from_species_id。種レベルの属性なので
-  フォーム行は親種の値を継承する(メガリザードンX→リザード)
+  フォーム行は親種の値を継承する。説明文ではメガシンカ・キョダイマックスの
+  姿を通常の進化と区別し、この列から進化の文を作らない
 - description: 上記の事実を並べた機械生成の説明文。**PokéAPIのフレーバー
   テキスト(pokemon_species_flavor_text.csv)は著作物なので取得も収録もしない**
 
@@ -43,6 +44,7 @@ image/image_page は「型色カード」(タイプ配色のみで描いたSVG�
 usage: python3 tools/update_pokemon.py
 """
 
+import argparse
 import csv
 import io
 import sys
@@ -52,7 +54,6 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from gen_pokemon_typecards import (  # noqa: E402
-    GENERATION_VERSIONS,
     image_page_url,
     image_url,
 )
@@ -67,10 +68,6 @@ SUGATA_FORM_NAMES = {
     "パルデアのすがた",
     "キョダイマックスのすがた",
 }
-# description に入れる「初登場のバージョン対」(GENERATION_VERSIONS)は
-# **gen_pokemon_typecards.py に置いてある**(カードでも初登場を表示するため。
-# update_pokemon.py → gen_pokemon_typecards.py の依存方向に合わせて、あちらを
-# 正とし上の import で借りている)
 # ja-Hrkt の分類名が PokéAPI に未登録の種(第9世代DLC)の暫定フォールバック。
 # 出典: 公式サイト(pokemon.co.jp のDLC紹介ページ)等で確認。PokéAPI側に値が
 # 入ればそちらを優先するので、埋まったらこのマップは削除してよい
@@ -103,6 +100,64 @@ def norm(text: str) -> str:
 def pron(text: str) -> str:
     # ♀♂は読めないので発音では読みに置換(表記はそのまま残す)
     return text.replace("♀", "メス").replace("♂", "オス")
+
+
+def description(
+    genus: str, t1: str, t2: str, gen: str, rarity: str, evolves_from: str,
+    height: str, weight: str, *, form_name: str = "", is_mega: bool = False,
+) -> str:
+    """Render structured facts without inferring a debut game or form evolution."""
+    parts = []
+    if genus != "NA":
+        parts.append(f"{genus}。")
+    if t1 != "NA":
+        parts.append(f"{t1}タイプ。" if t2 == "NA" else f"{t1}・{t2}タイプ。")
+    parts.append(f"第{gen}世代に登場。")
+    if rarity == "ウルトラビースト":
+        parts.append("ウルトラビースト。")
+    elif rarity != "NA":
+        parts.append(f"{rarity}のポケモン。")
+    is_gmax = form_name == "キョダイマックスのすがた"
+    if is_mega:
+        parts.append("メガシンカした姿。")
+    elif is_gmax:
+        parts.append("キョダイマックスした姿。")
+    elif evolves_from != "NA":
+        parts.append(f"{evolves_from}から進化。")
+    # Gmax source sizes are bounds/placeholders rather than exact measurements.
+    if not is_gmax:
+        parts.append(f"高さ{height}m、重さ{weight}kg。")
+    return "".join(parts)
+
+
+def refresh_descriptions(*, check: bool = False, path: Path = OUT_PATH) -> int:
+    """Rebuild only descriptions from existing CSV facts, without network access."""
+    with path.open(encoding="utf-8", newline="") as handle:
+        reader = csv.DictReader(handle)
+        columns, rows = reader.fieldnames, list(reader)
+    names = {row["original"] for row in rows}
+    changed = 0
+    for row in rows:
+        original = row["original"]
+        mega_base = original.removeprefix("メガ").removesuffix("X").removesuffix("Y").removesuffix("Z")
+        is_mega = original.startswith("メガ") and mega_base in names
+        form_name = "キョダイマックスのすがた" if original.endswith(
+            "（キョダイマックスのすがた）") else ""
+        rendered = description(
+            row["genus"], row["type1"], row["type2"], row["generation"],
+            row["rarity"], row["evolves_from"], row["height_m"], row["weight_kg"],
+            form_name=form_name, is_mega=is_mega,
+        )
+        changed += row["description"] != rendered
+        row["description"] = rendered
+    if changed and not check:
+        output = io.StringIO(newline="")
+        writer = csv.DictWriter(output, fieldnames=columns, lineterminator="\n")
+        writer.writeheader()
+        writer.writerows(rows)
+        path.write_text(output.getvalue().rstrip("\n"), encoding="utf-8")
+    print(f"pokemon.csv: {changed} description changes")
+    return int(check and bool(changed))
 
 
 def main() -> int:
@@ -182,26 +237,6 @@ def main() -> int:
         p = pokemon[pokemon_id]
         return f"{int(p['height']) / 10:.1f}", f"{int(p['weight']) / 10:.1f}"
 
-    def description(
-        genus: str, t1: str, t2: str, gen: str, rarity: str, evolves_from: str,
-        height: str, weight: str
-    ) -> str:
-        # 事実の羅列のみで組み立てる(公式のフレーバーテキストは収録しない)
-        parts = []
-        if genus != "NA":
-            parts.append(f"{genus}。")
-        if t1 != "NA":
-            parts.append(f"{t1}タイプ。" if t2 == "NA" else f"{t1}・{t2}タイプ。")
-        parts.append(f"初登場は{GENERATION_VERSIONS[gen]}。")
-        if rarity == "ウルトラビースト":
-            parts.append("ウルトラビースト。")
-        elif rarity != "NA":
-            parts.append(f"{rarity}のポケモン。")
-        if evolves_from != "NA":
-            parts.append(f"{evolves_from}から進化。")
-        parts.append(f"高さ{height}m、重さ{weight}kg。")
-        return "".join(parts)
-
     # 種のデフォルト個体(タイプ参照用)
     default_pokemon: dict[int, str] = {}
     for pid, p in pokemon.items():
@@ -257,7 +292,8 @@ def main() -> int:
                 h,
                 w,
                 evo,
-                description(genus, t1, t2, f_gen, rarity, evo, h, w),
+                description(genus, t1, t2, f_gen, rarity, evo, h, w,
+                            form_name=form_name, is_mega=is_mega),
             ]
             if is_mega:
                 # メガリザードンX 等はフォーム名が完結した名前
@@ -294,4 +330,10 @@ def main() -> int:
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--descriptions-only", action="store_true")
+    parser.add_argument("--check", action="store_true")
+    args = parser.parse_args()
+    if args.check and not args.descriptions_only:
+        parser.error("--check requires --descriptions-only")
+    sys.exit(refresh_descriptions(check=args.check) if args.descriptions_only else main())

@@ -21,6 +21,12 @@ jobs:
       - name: Validate CSVs
         run: python tools/validate_csvs.py
 
+      - name: Validate reviewed descriptions
+        run: |
+          python tools/description_overrides.py --check
+          python tools/update_pokemon.py --descriptions-only --check
+          python -m unittest tools/test_description_overrides.py tools/test_update_pokemon.py
+
       - name: Validate reviewed VTuber name parts
         run: python tools/apply_vtuber_name_parts.py --check
 
