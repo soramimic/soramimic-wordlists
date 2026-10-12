@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """physicist.csv を広義の「科学者」リスト scientist.csv に置き換え・拡張する。
 
-出典: Wikidata(職業P106が物理/化学/数学/天文/生物/計算機科学/地学のいずれか,
+出典: Wikidata(職業P106が物理/化学/数学/天文/生物/計算機科学/地学のいずれか、または経済学賞受賞者,
 sitelinks>=20 ≒ 多言語版20版以上に記事がある著名層)と、Wikipedia日本語版記事
 の冒頭文(CC BY-SA 4.0)。
 
@@ -18,7 +18,7 @@ sitelinks>=20 ≒ 多言語版20版以上に記事がある著名層)と、Wikip
   なり、レビューで本当の追記が埋もれるため(ADR 00014)
 
 新列(詳細は docs/adr/00009):
-- field:   分野(物理/化学/数学/天文学/生物学/計算機科学/地学)を優先順で並べた
+- field:   分野(物理/化学/数学/天文学/生物学/計算機科学/地学/経済学)を優先順で並べた
   単一列のスラッシュ区切り多値(例 物理/数学)。切り詰めなし、無ければNA。
   ソラミミック側の部分一致演算子 field~=物理 で1列のまま絞れる前提
 - era:     時代区分(古代/中世/近世/近代/現代/NA)。生年basis
@@ -50,6 +50,7 @@ import urllib.parse
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+from scientist_economics import apply_awards
 from scientist_celebrity_doctorates import FLAG, apply_entries, load_entries
 from wpnames import (DISAMBIG, KATA2HIRA, KATAKANA, fetch_extracts,
                      has_achievement, make_description, parse_person, sparql,
@@ -75,6 +76,7 @@ OCCUPATIONS = [
     ("Q864503", "生物学"),
     ("Q82594", "計算機科学"),
     ("Q520549", "地学"),
+    ("Q188094", "経済学"),
 ]
 FIELD_ORDER = {label: i for i, (_, label) in enumerate(OCCUPATIONS)}
 
@@ -597,12 +599,16 @@ def fetch_person_set() -> dict:
     qid_fields = {}  # qid -> set(label)
     qid_title = {}   # qid -> ja title
     for occ, label in OCCUPATIONS:
+        # 経済学は受賞者から収録する。自然科学の職業との兼業を要件にしない。
+        award_filter = ("FILTER EXISTS { ?p wdt:P166 wd:Q47170 }"
+                        if label == "経済学" else "")
         q = f"""
 SELECT ?p ?title WHERE {{
   ?p wdt:P106 wd:{occ} ; wikibase:sitelinks ?n .
   ?a schema:about ?p ; schema:isPartOf <https://ja.wikipedia.org/> ;
      schema:name ?title .
   FILTER(?n >= {MIN_SITELINKS})
+  {award_filter}
 }}"""
         data = sparql(q)
         n = 0
@@ -774,6 +780,7 @@ def main() -> int:
     with source.open(encoding="utf-8", newline="") as fh:
         old_rows = list(csv.DictReader(fh))
     old_rows = apply_entries(old_rows, COLS, load_entries())
+    old_rows = apply_awards(old_rows, COLS)
     before = len(old_rows)
     old_rows = [r for r in old_rows
                 if r["original"] not in EXCLUDED or r[FLAG] == "yes"]

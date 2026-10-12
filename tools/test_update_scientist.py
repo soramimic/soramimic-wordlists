@@ -8,6 +8,7 @@ from pathlib import Path
 from unittest.mock import patch
 
 import update_scientist
+from scientist_economics import apply_awards, load_awards
 from scientist_celebrity_doctorates import apply_entries, load_entries, validate_flags
 
 from update_scientist import (
@@ -20,6 +21,51 @@ from update_scientist import (
 
 
 class UpdateScientistTest(unittest.TestCase):
+    def test_reviewed_economic_awards_preserve_forms_and_are_idempotent(self):
+        row = dict.fromkeys(COLS, "")
+        row.update(id="42", original="既存受賞者", surface="別表記",
+                   pronunciation="ベツヒョウキ", field="数学", nobel="no",
+                   image="https://example.org/photo.jpg", celebrity_doctorate="no")
+        records = [{"original": "既存受賞者"}, {
+            "original": "新規受賞者", "entry": {
+                "birth_year": "1955", "description": "モデルを構築した。",
+                "forms": [{"surface": "受賞者", "pronunciation": "ジュショウシャ",
+                           "type": "family"},
+                          {"surface": "新規受賞者", "pronunciation": "シンキジュショウシャ",
+                           "type": "full"}]}}]
+        actual = apply_awards([row], COLS, records)
+        self.assertEqual(actual[0], dict(row, field="数学/経済学", nobel="yes"))
+        self.assertEqual({r["id"] for r in actual[1:]}, {"43"})
+        self.assertEqual({r["nobel"] for r in actual}, {"yes"})
+        self.assertEqual(apply_awards(actual, COLS, records), actual)
+        self.assertEqual(row["nobel"], "no")
+
+    def test_economic_candidate_query_requires_award(self):
+        queries = []
+
+        def query(value):
+            queries.append(value)
+            return {"results": {"bindings": [{
+                "p": {"value": "http://www.wikidata.org/entity/Q123"},
+                "title": {"value": "受賞者"}}]}}
+
+        with patch.object(update_scientist, "sparql", side_effect=query):
+            people = update_scientist.fetch_person_set()
+        economic = next(q for q in queries if "Q188094" in q)
+        self.assertIn("FILTER EXISTS { ?p wdt:P166 wd:Q47170 }", economic)
+        self.assertEqual(people["Q123"]["fields"][-1], "経済学")
+
+    def test_reviewed_economic_awards_are_available_in_csv(self):
+        with update_scientist.NEW_CSV.open(encoding="utf-8", newline="") as fh:
+            rows = list(csv.DictReader(fh))
+        for record in load_awards():
+            matching = [r for r in rows if r["original"] == record["original"]]
+            self.assertTrue(matching, record["original"])
+            for row in matching:
+                self.assertEqual(row["nobel"], "yes")
+                self.assertIn("経済学", row["field"].split("/"))
+                self.assertTrue(row["image"])
+
     def run_alias_update(self, rows, parsed_names):
         persons = {f"Q{i}": {"title": f"未収録{i}", "fields": ["物理"]}
                    for i in range(1, 2001)}
@@ -41,6 +87,7 @@ class UpdateScientistTest(unittest.TestCase):
             with (patch.object(update_scientist, "NEW_CSV", csv_path),
                   patch.object(update_scientist, "load_entries", return_value=[]),
                   patch.object(update_scientist, "DESCRIPTION_OVERRIDES", {}),
+                  patch.object(update_scientist, "apply_awards", side_effect=lambda rows, cols: rows),
                   patch.object(update_scientist, "fetch_person_set", return_value=persons),
                   patch.object(update_scientist, "fetch_all", return_value=(attrs, {})),
                   patch.object(update_scientist, "parse_person", side_effect=parse),
@@ -120,6 +167,7 @@ class UpdateScientistTest(unittest.TestCase):
             update_scientist.write_csv_no_trailing_newline(
                 csv_path, [c for c in COLS if c != "celebrity_doctorate"], [existing])
             with (patch.object(update_scientist, "NEW_CSV", csv_path),
+                  patch.object(update_scientist, "apply_awards", side_effect=lambda rows, cols: rows),
                   patch.object(update_scientist, "fetch_person_set", return_value=persons),
                   patch.object(update_scientist, "fetch_all", return_value=(attrs, {})),
                   patch.object(update_scientist, "parse_person", return_value=None),
@@ -200,6 +248,7 @@ class UpdateScientistTest(unittest.TestCase):
             update_scientist.write_csv_no_trailing_newline(csv_path, COLS, rows)
             with (patch.object(update_scientist, "NEW_CSV", csv_path),
                   patch.object(update_scientist, "load_entries", return_value=[]),
+                  patch.object(update_scientist, "apply_awards", side_effect=lambda rows, cols: rows),
                   patch.object(update_scientist, "fetch_person_set", return_value=persons),
                   patch.object(update_scientist, "fetch_all", return_value=(attrs, {})),
                   patch.object(update_scientist, "parse_person", return_value=None),

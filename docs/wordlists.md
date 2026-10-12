@@ -116,6 +116,8 @@ baseball / football のうちOpenAI APIで公開Wikipedia本文から候補文�
 | description | 主な業績の短い説明 |
 | image, image_page | Commonsの肖像。ない場合は分野別の象徴カード |
 
+経済学賞の受賞者も収録し、`field~=経済学` で選べる。
+
 象徴カードは分野の色、姓の頭文字、汎用アイコンで構成する。
 分野の色は本リポジトリ独自の区分。詳細は
 [ADR 00025](adr/00025-scientist-symbol-cards.md)。
