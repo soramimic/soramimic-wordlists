@@ -6408,6 +6408,19 @@
       "credit": "ホロライブプロダクション公式立ち絵 © COVER",
       "terms_page": "https://hololivepro.com/terms/",
       "reviewed": "2026-09-24"
+    },
+    {
+      "person_id": "9573",
+      "original": "星見まどか",
+      "org": "NA",
+      "enabled": true,
+      "image_url": "https://assets.charaforio.com/contents/assets/202408/66b54b57-50b5-44b8-a840-4d6bec843d1a.png",
+      "source_page": "https://charaforio.com/ja/content/01J4BC2302QCYSJ345GQMX8R21",
+      "credit": "星見まどか公式画像 / イラスト：内野 / 非公式ファン利用",
+      "terms_page": "https://lit.link/MadokaHoshimi",
+      "conditions": "非営利のファン作品に限る。公式と誤認される利用および公式イラストのSNSアイコン等への使用は禁止。公開前に現行規約を確認する。",
+      "reviewed": "2026-10-15",
+      "sha256": "4aafa729124120fc912962b269d59a7a10790e6b76c993c5b716c6ddaa5172b7"
     }
   ]
 }
