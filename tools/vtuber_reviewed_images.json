@@ -6434,6 +6434,19 @@
       "conditions": "個人の非営利ファン活動に限る。公式との誤認や規約の禁止事項に該当する利用は不可。法人・商用利用、大規模イベント等は要相談。公開前に現行規約を確認する。",
       "reviewed": "2026-10-15",
       "sha256": "2918584fba4ac8f4f8ecd5e79aaf710e6c144475508a136744082b11d0487aa0"
+    },
+    {
+      "person_id": "857",
+      "original": "しぐれうい",
+      "org": "NA",
+      "enabled": true,
+      "image_url": "https://raw.githubusercontent.com/soramimic/soramimic-wordlists/main/images/vtuber/LEoghvW-GLc-4-frame.png",
+      "source_page": "https://www.youtube.com/watch?v=LEoghvW-GLc&t=4s",
+      "credit": "しぐれうい（非公式・公開動画素材の静止画）",
+      "terms_page": "https://uishig.fanbox.cc/posts/6268223",
+      "conditions": "個人の非営利ファン作品に限り元動画へのリンクを表示する。公式と誤認される利用やセンシティブな切り抜き、AIイラストを使用する切り抜きは不可。本人の声を元にした音声・歌唱AIの作成は禁止。公開前に現行規約を確認する。",
+      "reviewed": "2026-10-15",
+      "sha256": "3a4bc3df438e514e211c23459a740b1487c743ae7f8d9e0430f7f020736ef369"
     }
   ]
 }
