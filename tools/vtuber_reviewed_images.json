@@ -6421,6 +6421,19 @@
       "conditions": "非営利のファン作品に限る。公式と誤認される利用および公式イラストのSNSアイコン等への使用は禁止。公開前に現行規約を確認する。",
       "reviewed": "2026-10-15",
       "sha256": "4aafa729124120fc912962b269d59a7a10790e6b76c993c5b716c6ddaa5172b7"
+    },
+    {
+      "person_id": "949",
+      "original": "宇推くりあ",
+      "org": "NA",
+      "enabled": true,
+      "image_url": "https://clearusui.com/_astro/clear-kv.CUz_02su.png",
+      "source_page": "https://clearusui.com/",
+      "credit": "宇推くりあ公式立ち絵 © clearusui / 非公式ファン利用",
+      "terms_page": "https://clearusui.com/#guidelines",
+      "conditions": "個人の非営利ファン活動に限る。公式との誤認や規約の禁止事項に該当する利用は不可。法人・商用利用、大規模イベント等は要相談。公開前に現行規約を確認する。",
+      "reviewed": "2026-10-15",
+      "sha256": "2918584fba4ac8f4f8ecd5e79aaf710e6c144475508a136744082b11d0487aa0"
     }
   ]
 }
