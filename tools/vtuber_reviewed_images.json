@@ -7136,6 +7136,32 @@
       "conditions": "個人の非営利ファン作品向け。出典とクレジットを表示し公式と誤認されない形で使用する。公開前に現行の利用条件を確認する。",
       "reviewed": "2026-10-16",
       "sha256": "1b4395cb4504c511f7b663924ded5adcd39a4cdd66a4723291bb5e724eaaca61"
+    },
+    {
+      "person_id": "2928",
+      "original": "天使エル",
+      "org": "NA",
+      "enabled": true,
+      "image_url": "https://yt3.googleusercontent.com/maS9zx_CJ0qj31FJJV6rJDsvHOW0O2MGZHUjbVV3h3p3uS71Mi4s7O0kgHSzzEsFwVuPADvwIQ=s900-c-k-c0x00ffffff-no-rj",
+      "source_page": "https://www.youtube.com/channel/UCdLzCmhVIB9gOBrQ_dcQrOQ",
+      "credit": "天使エル / 非公式ファン利用",
+      "terms_page": "https://lit.link/AmatsukaEru",
+      "conditions": "個人の非営利ファン作品向け。出典とクレジットを表示し公式と誤認されない形で使用する。公開前に現行の利用条件を確認する。",
+      "reviewed": "2026-10-16",
+      "sha256": "39d15b15da3b225c5de52ced884e711a56ecf2559c1f2f9e1bba698b59ffcdbc"
+    },
+    {
+      "person_id": "1055",
+      "original": "鴨見カモミ",
+      "org": "NA",
+      "enabled": true,
+      "image_url": "https://yt3.googleusercontent.com/ytc/AIdro_mtOqMlsU4VVmFivOPIfoQ_ZilBqxXU-XnyN2emr3jAQW8=s900-c-k-c0x00ffffff-no-rj",
+      "source_page": "https://www.youtube.com/channel/UCL-2thbJ7grC9fmGF4OLuTg",
+      "credit": "鴨見カモミ / 非公式ファン利用",
+      "terms_page": "https://www.camomi-camomi.com/guidelines",
+      "conditions": "個人の非営利ファン作品向け。出典とクレジットを表示し公式と誤認されない形で使用する。公開前に現行の利用条件を確認する。",
+      "reviewed": "2026-10-16",
+      "sha256": "2e3df1cf60bb1360785f78e6b3b81a251f8858c557a28a43a4be9000d6eeda1a"
     }
   ]
 }
