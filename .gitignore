@@ -11,3 +11,8 @@ tools/football_jleague_verified.csv
 tools/football_scoped_candidates.csv
 # 生成物(gen_pokemon_typecards.py のSVG出力。配布はGitHub Release)
 build/
+
+# Claude Code local preferences and isolated sessions
+CLAUDE.local.md
+.claude/settings.local.json
+.claude/worktrees/
