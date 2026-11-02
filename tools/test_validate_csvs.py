@@ -56,7 +56,7 @@ class CreatorImageAvailabilityValidationTests(unittest.TestCase):
     def test_rejects_a_subscriber_band_that_disagrees_with_the_count(self):
         image, page, availability = self.images[0]
         row = dict(self.row, image=image, image_page=page, has_image=availability,
-                   subscribers="1000000", subscribers_as_of="2026-08-18")
+                   subscribers="1000000", subscribers_as_of="2026-08-18", channel="テスト")
         self.assertTrue(any("subscriber_band が登録者数と不一致" in e
                             for e in self.validate(row)))
         self.assertEqual(self.validate(dict(row, subscriber_band="1m_plus")), [])
