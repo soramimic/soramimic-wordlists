@@ -234,6 +234,7 @@ YouTuberは `youtuber.csv`、VTuberは `vtuber.csv` から個別に選択でき�
 | channel_shared | レビュー済み表示チャンネルがグループ共有のみなら`yes`、個人チャンネルなら`no`、未レビューは`NA` |
 | subscribers | YouTubeが公開する有効数字3桁の概数 |
 | subscribers_as_of | `subscribers` の取得日(UTC、`YYYY-MM-DD`)。取得できない場合は `NA` |
+| subscriber_band | 記録済みの登録者数による区分。`under_10k`（1万人未満）、`10k_to_100k`（1万人以上10万人未満）、`100k_to_1m`（10万人以上100万人未満）、`1m_plus`（100万人以上）、`unknown`（未収録・非公開などで不明） |
 | description | 活動内容の短い説明 |
 | image, image_page | Commonsの自由ライセンス画像、公式プロフィール画像、レビュー済み非営利ファンメイド画像、または象徴カード |
 | has_image | 本人写真・キャラクター画像なら `yes`、象徴カードまたは画像未設定なら `no`。利用条件は `image_usage`・`image_terms_page` 等を参照 |

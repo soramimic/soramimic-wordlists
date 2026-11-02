@@ -19,14 +19,33 @@ def image_availability(image):
             else "yes")
 
 
+def subscriber_band(subscribers):
+    """Classify the recorded count; missing counts are never treated as zero."""
+    value = "" if subscribers is None else str(subscribers).strip()
+    if not value.isascii() or not value.isdecimal():
+        return "unknown"
+    count = int(value)
+    if count < 10_000:
+        return "under_10k"
+    if count < 100_000:
+        return "10k_to_100k"
+    if count < 1_000_000:
+        return "100k_to_1m"
+    return "1m_plus"
+
+
 def write_creator_csv(path, columns, rows, writer=write_csv_no_trailing_newline):
     """Preserve usage notices and update image availability when writing creators."""
     columns = list(columns)
     if "has_image" not in columns:
         columns.append("has_image")
+    if "subscribers" in columns and "subscriber_band" not in columns:
+        columns.append("subscriber_band")
     updated = []
     for row in rows:
         row = {**row, "has_image": image_availability(row.get("image"))}
+        if "subscriber_band" in columns:
+            row["subscriber_band"] = subscriber_band(row.get("subscribers"))
         # Missing metadata on new VTubers gets the default notice; explicit edits survive.
         if "usage_notice" in columns and row.get("usage_notice") in (None, "NA"):
             row["usage_notice"] = "guidelines" if row.get("category") == "vtuber" else ""

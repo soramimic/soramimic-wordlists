@@ -19,11 +19,12 @@ class CreatorRelativePathTest(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp).resolve()
             paths = (root / "youtuber.csv", root / "vtuber.csv")
-            columns = [*COLUMNS, "channel_shared", "has_image"]
+            columns = [*COLUMNS, "channel_shared", "has_image", "subscriber_band"]
             rows = [
                 {**dict.fromkeys(columns, "NA"), "id": pid,
                  "original": name, "surface": name, "pronunciation": "ジンブツ",
-                 "type": "full", "category": category, "has_image": "no"}
+                 "type": "full", "category": category, "has_image": "no",
+                 "subscriber_band": "unknown"}
                 for pid, name, category in (
                     ("3", "動画の人", "youtuber"),
                     ("4", "仮想の人", "vtuber"),

@@ -22,7 +22,7 @@ import sys
 from collections import Counter
 from pathlib import Path
 
-from creator_csv import CARD_IMAGE_PREFIX, image_availability, read_creator_csvs
+from creator_csv import CARD_IMAGE_PREFIX, image_availability, read_creator_csvs, subscriber_band
 from scientist_celebrity_doctorates import load_entries, validate_flags
 from usage_notices import validate_usage_notices
 from update_school import has_school_suffix
@@ -183,6 +183,7 @@ def validate(path: Path):
             col for col in (
                 "image", "image_page", "image_credit", "image_usage",
                 "image_terms_page", "scope", "channel_shared", "category", "has_image",
+                "subscriber_band",
             )
             if col not in idx
         ]
@@ -303,6 +304,8 @@ def validate(path: Path):
                 if not f[idx[col]]:
                     err(f"{path.name}:{lineno}: {col} が空")
             image = f[idx["image"]]
+            if f[idx["subscriber_band"]] != subscriber_band(f[idx["subscribers"]]):
+                err(f"{path.name}:{lineno}: subscriber_band が登録者数と不一致")
             if f[idx["has_image"]] != image_availability(image):
                 err(f"{path.name}:{lineno}: has_image が画像と不一致 "
                     f"(期待値: {image_availability(image)})")
