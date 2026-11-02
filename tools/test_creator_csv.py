@@ -8,7 +8,7 @@ from pathlib import Path
 from unittest import mock
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from creator_csv import CARD_IMAGE_PREFIX, read_creator_csvs, write_creator_csvs
+from creator_csv import CARD_IMAGE_PREFIX, read_creator_csvs, subscriber_band, write_creator_csvs
 from wpnames import write_csv_no_trailing_newline
 import yt_common
 
@@ -19,7 +19,7 @@ class CreatorCsvTest(unittest.TestCase):
         self.addCleanup(self.temp.cleanup)
         self.paths = tuple(Path(self.temp.name) / f"{category}.csv"
                            for category in ("youtuber", "vtuber"))
-        self.columns = [*yt_common.COLS, "image", "subscribers", "has_image",
+        self.columns = [*yt_common.COLS, "image", "subscribers", "has_image", "subscriber_band",
                         "usage_notice", "usage_terms_page"]
         self.rows = [self.person("3", "ヒカリ", "youtuber"),
                      self.person("90", "ソラ", "vtuber")]
@@ -31,6 +31,7 @@ class CreatorCsvTest(unittest.TestCase):
                 "category": category, "type": "full", "status": "current",
                 "image": "https://example.com/image.svg", "subscribers": "1230",
                 "has_image": "yes",
+                "subscriber_band": "under_10k",
                 "usage_notice": "guidelines" if category == "vtuber" else "",
                 "usage_terms_page": ""}
 
@@ -63,6 +64,29 @@ class CreatorCsvTest(unittest.TestCase):
             self.assertFalse(path.read_bytes().endswith(b"\n"))
             self.assertEqual({row["category"] for row in read_creator_csvs((path,))[1]},
                              {path.stem})
+
+    def test_subscriber_bands_include_boundaries_and_unknown_counts(self):
+        for value, expected in (
+            ("0", "under_10k"), ("9999", "under_10k"),
+            ("10000", "10k_to_100k"), ("99999", "10k_to_100k"),
+            ("100000", "100k_to_1m"), ("999999", "100k_to_1m"),
+            ("1000000", "1m_plus"), ("10000000", "1m_plus"),
+            (None, "unknown"), ("", "unknown"), ("NA", "unknown"),
+            ("-1", "unknown"), ("NaN", "unknown"),
+        ):
+            with self.subTest(value=value):
+                self.assertEqual(subscriber_band(value), expected)
+
+    def test_writer_refreshes_subscriber_bands_without_changing_counts(self):
+        columns = [c for c in self.columns if c != "subscriber_band"]
+        rows = [{**row, "subscribers": "1000000", "subscriber_band": "unknown"}
+                for row in self.rows]
+        write_creator_csvs(columns, rows, self.paths)
+        actual_columns, actual = read_creator_csvs(self.paths)
+        self.assertEqual(actual_columns, columns + ["subscriber_band"])
+        self.assertEqual({row["subscriber_band"] for row in actual}, {"1m_plus"})
+        self.assertEqual({row["subscribers"] for row in actual}, {"1000000"})
+        self.assertEqual({row["subscriber_band"] for row in rows}, {"unknown"})
 
     def test_notice_is_preserved_independently_of_category_and_image(self):
         rows = [{**self.rows[0], "usage_notice": "guidelines",

@@ -23,7 +23,7 @@ class CreatorImageAvailabilityValidationTests(unittest.TestCase):
         self.row = dict(
             id="1", original="テスト", surface="テスト", category="youtuber",
             scope="unknown", channel_shared="NA", channel="NA",
-            subscribers="NA", subscribers_as_of="NA", image_credit="",
+            subscribers="NA", subscribers_as_of="NA", subscriber_band="unknown", image_credit="",
             image_usage="", image_terms_page="",
         )
         self.images = (
@@ -52,6 +52,14 @@ class CreatorImageAvailabilityValidationTests(unittest.TestCase):
                     self.assertTrue(any("has_image が画像と不一致" in e for e in errors))
                 del row["has_image"]
                 self.assertTrue(any("必須列 has_image がない" in e for e in self.validate(row)))
+
+    def test_rejects_a_subscriber_band_that_disagrees_with_the_count(self):
+        image, page, availability = self.images[0]
+        row = dict(self.row, image=image, image_page=page, has_image=availability,
+                   subscribers="1000000", subscribers_as_of="2026-08-18")
+        self.assertTrue(any("subscriber_band が登録者数と不一致" in e
+                            for e in self.validate(row)))
+        self.assertEqual(self.validate(dict(row, subscriber_band="1m_plus")), [])
 
 
 class PlayerDescriptionValidationTests(unittest.TestCase):
