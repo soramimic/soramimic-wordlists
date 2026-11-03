@@ -117,7 +117,8 @@ class ApplyHololiveImagesTest(unittest.TestCase):
         }
 
         self.assertEqual(len(fallbacks), 19)
-        self.assertEqual(set(verified), set(fallbacks))
+        # The channel registry also covers talents added without image fallbacks.
+        self.assertLessEqual(set(fallbacks), set(verified))
         for original, record in fallbacks.items():
             source = verified[original]
             self.assertEqual(source["source_url"], record["source_page"])
