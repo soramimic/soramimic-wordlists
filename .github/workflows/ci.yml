@@ -10,6 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
 
       - uses: actions/setup-python@v5
         with:
@@ -20,6 +22,17 @@ jobs:
 
       - name: Validate CSVs
         run: python tools/validate_csvs.py
+
+      - name: Test automatic subscriber snapshot safeguards
+        run: python -m unittest tools/test_check_subscriber_snapshots.py
+
+      - name: Protect published subscriber snapshots in automatic updates
+        if: >-
+          github.event_name == 'pull_request' &&
+          (github.head_ref == 'auto/update-wordlists' || github.head_ref == 'auto/update-creator-subscribers')
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: python tools/check_subscriber_snapshots.py --base-ref "$BASE_SHA"
 
       - name: Validate reviewed descriptions
         run: |

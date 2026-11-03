@@ -1,0 +1,77 @@
+name: update-creator-subscribers
+
+on:
+  schedule:
+    - cron: "0 21 5 * *" # 毎月6日 6:00 JST
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: update-creator-subscribers
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Generate GitHub App token
+        id: app-token
+        if: vars.BOT_APP_ID != ''
+        uses: actions/create-github-app-token@v2
+        with:
+          app-id: ${{ vars.BOT_APP_ID }}
+          private-key: ${{ secrets.BOT_APP_PRIVATE_KEY }}
+
+      - name: Require refresh and pull request credentials
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+          PR_TOKEN: ${{ steps.app-token.outputs.token || secrets.AUTOMERGE_PAT }}
+        run: |
+          test -n "$YOUTUBE_API_KEY" || { echo '::error::YOUTUBE_API_KEY is required'; exit 1; }
+          test -n "$PR_TOKEN" || { echo '::error::A GitHub App token or AUTOMERGE_PAT is required'; exit 1; }
+
+      - name: Refresh creator subscriber counts
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+        run: python tools/update_youtuber_subscribers.py
+
+      - name: Validate subscriber update
+        run: |
+          python tools/check_subscriber_snapshots.py --base-ref HEAD --require-current
+          python tools/validate_csvs.py
+          python -m unittest tools/test_update_youtuber_subscribers.py tools/test_check_subscriber_snapshots.py
+
+      - name: Create pull request if changed
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ steps.app-token.outputs.token || secrets.AUTOMERGE_PAT }}
+          branch: auto/update-creator-subscribers
+          title: "自動更新: YouTuber・VTuberの登録者数"
+          commit-message: "YouTuber・VTuberの登録者数を更新"
+          body: |
+            YouTuber・VTuberの公開登録者数と取得日、登録者数区分を更新します。
+            CSV検証と登録者数の回帰テストを実施済みです。
+          add-paths: |
+            youtuber.csv
+            vtuber.csv
+            tools/youtuber_channel_sources.jsonl
+            tools/youtuber_channel_candidates.jsonl
+          delete-branch: true
+
+      - name: Report unsuccessful refresh
+        if: failure()
+        run: |
+          echo '::error::Creator subscriber refresh did not complete. Check this run before retrying.'
+          echo 'Creator subscriber refresh did not complete. Check the failed step before retrying.' >> "$GITHUB_STEP_SUMMARY"
