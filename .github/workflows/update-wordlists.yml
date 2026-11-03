@@ -88,6 +88,8 @@ jobs:
       - name: Update youtuber.csv and vtuber.csv (Wikidata/Wikipedia/official rosters)
         id: youtuber
         continue-on-error: true
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
         run: |
           python tools/update_youtuber.py
           # 個別記事のない現所属ライバーは、公式名簿・プロフィールから補完する。
@@ -105,18 +107,7 @@ jobs:
           python tools/apply_youtuber_nijisanji_images.py
           python tools/apply_vtuber_realize_images.py
           python tools/apply_vtuber_reviewed_images.py
-
-      # 登録者数は時変値なので毎回全行を上書きする(ADR 00030)。
-      # secrets.YOUTUBE_API_KEY が未設定(forkなど)ならスクリプト側が
-      # 「スキップ」を出して正常終了する
-      - name: Update YouTuber and VTuber subscribers (YouTube Data API)
-        id: ytsubs
-        continue-on-error: true
-        env:
-          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
-        run: |
           python tools/discover_youtuber_channels.py
-          python tools/update_youtuber_subscribers.py
 
       # 文科省の学校コード一覧(約6万校)から全件再生成する。Wikipediaの冒頭文
       # 取得が支配的で30分前後かかるので、他のupdaterの後に置く
@@ -312,7 +303,6 @@ jobs:
           O_INSECT: ${{ steps.insect.outcome }}
           O_MUNICIPALITY: ${{ steps.municipality.outcome }}
           O_YOUTUBER: ${{ steps.youtuber.outcome }}
-          O_YTSUBS: ${{ steps.ytsubs.outcome }}
           O_SCHOOL: ${{ steps.school.outcome }}
           O_IMAGES: ${{ steps.images.outcome }}
           O_PLACEIMAGES: ${{ steps.placeimages.outcome }}
@@ -347,18 +337,13 @@ jobs:
           revert_if_failed municipality "$O_MUNICIPALITY" municipality.csv
           revert_if_failed youtuber "$O_YOUTUBER" youtuber.csv vtuber.csv \
             tools/youtuber_colors.json tools/youtuber_channel_sources.jsonl \
+            tools/youtuber_channel_candidates.jsonl \
             images/youtuber
           # カード生成が途中で失敗した場合の未追跡SVGも、この専用ディレクトリ
           # に限って除く。既存ファイルは上のcheckoutで戻る。
           if [ "$O_YOUTUBER" = "failure" ]; then
             git clean -f -- images/youtuber
           fi
-          # CSVは全API取得と監査台帳生成の成功後に原子的に書く。失敗時は同じ回の
-          # update_youtuberによる追記を守るためCSVを戻さず、先行して更新されうる
-          # チャンネル根拠/候補台帳だけを巻き戻す。
-          revert_if_failed youtuber_subscribers "$O_YTSUBS" \
-            tools/youtuber_channel_sources.jsonl \
-            tools/youtuber_channel_candidates.jsonl
           revert_if_failed school "$O_SCHOOL" school.csv
           # enrich_imagesは複数ファイルを触るため巻き戻さない(他updaterの
           # 成果を消すおそれ)。破壊は次の行数チェックとvalidateで検出する
