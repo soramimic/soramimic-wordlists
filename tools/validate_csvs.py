@@ -6,8 +6,7 @@
 - 改行コードがLFのみ・末尾改行なし(最終空行でパーサが落ちる)
 - 全行がヘッダと同じ列数(素朴なsplitで列ズレしない)
 - 必須列(id, original, surface)が存在し、値が空でない
-- pronunciation にASCII英字の連続が無い(英名をそのまま読みに入れると、利用側の
-  読み解析が異常に遅くなる。実際に3行で辞書構築が193秒かかっていた)
+- pronunciation の指定読みは、ひらがな・カタカナ・長音のみ
 - image/image_page は生カンマを含まないURL
 - 選手descriptionが文脈依存の接続語や未完の語尾を含まない
 - 選手descriptionがカードに別表示される人名を主語に繰り返さない
@@ -26,6 +25,7 @@ from creator_csv import CARD_IMAGE_PREFIX, image_availability, read_creator_csvs
 from scientist_celebrity_doctorates import load_entries, validate_flags
 from usage_notices import validate_usage_notices
 from update_school import has_school_suffix
+from pronunciation import KANA_RE
 from apply_youtuber_permitted_images import (
     IMAGE_PREFIX as YOUTUBER_FAN_IMAGE_PREFIX,
     load_manifest as load_youtuber_fan_manifest,
@@ -108,10 +108,6 @@ VTUBER_REVIEWED_IMAGES = {
 VTUBER_REVIEWED_SOURCE_PAGES = {
     record["source_page"] for record in VTUBER_REVIEWED_IMAGES.values()
 }
-# 読みにASCII英字が2文字以上続くのは、英名を読みに入れてしまった取り違え
-# (例: sekitsui の "Azara's night monkey")。利用側の読み解析がこの手の行で
-# 暴走するため、混入を止める。読みはカタカナのみが前提
-PRON_ASCII_RE = re.compile(r"[A-Za-z]{2,}")
 YEAR_RE = re.compile(r"^(?:NA|前?[0-9]+)$")
 ISO_DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 HAN_RE = re.compile(r"[\u3400-\u9fff]")
@@ -253,11 +249,8 @@ def validate(path: Path):
                     err(f"{path.name}:{lineno}: {col} が不正なURL: {v[:60]}")
         if "pronunciation" in idx:
             v = f[idx["pronunciation"]]
-            if PRON_ASCII_RE.search(v):
-                err(
-                    f"{path.name}:{lineno}: pronunciation にASCII英字が連続"
-                    f"(英名の混入?): {v[:40]}"
-                )
+            if v and v.lower() != "na" and not KANA_RE.fullmatch(v):
+                err(f"{path.name}:{lineno}: pronunciation はかな・カナ・長音で指定: {v[:40]}")
         if path.name == "municipality.csv":
             municipality_type = f[idx["municipality_type"]]
             expected_type = f[idx["original"]][-1]

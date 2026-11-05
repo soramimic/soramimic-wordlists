@@ -99,7 +99,11 @@ def norm(text: str) -> str:
 
 def pron(text: str) -> str:
     # ♀♂は読めないので発音では読みに置換(表記はそのまま残す)
-    return text.replace("♀", "メス").replace("♂", "オス")
+    from pronunciation import normalize_pronunciation
+
+    return normalize_pronunciation(
+        "pokemon", text, text.replace("♀", "メス").replace("♂", "オス")
+    )
 
 
 def description(

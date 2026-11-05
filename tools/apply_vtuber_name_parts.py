@@ -12,6 +12,7 @@ from pathlib import Path
 from urllib.parse import urlparse
 
 from wpnames import write_csv_no_trailing_newline
+from pronunciation import normalize_pronunciation
 
 ROOT = Path(__file__).resolve().parent.parent
 CSV_PATH = ROOT / "vtuber.csv"
@@ -76,7 +77,8 @@ def add_reviewed_parts(rows, records):
         full = [row for row in group if row["type"] == "full"]
         if (len(full) != 1 or any(row["original"] != record["original"]
                                  or row["category"] != "vtuber" for row in group)
-                or full[0]["pronunciation"] != record["pronunciation"]):
+                or full[0]["pronunciation"] != normalize_pronunciation(
+                    "vtuber", record["original"], record["pronunciation"])):
             raise ValueError(f"Name-part identity or full reading changed: {pid}")
         additions[pid] = []
         for part in ("family", "given"):

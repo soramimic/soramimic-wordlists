@@ -12,7 +12,7 @@
 | id | 単語のグループID(同じ元単語の行は同じid) |
 | original | 元の単語(表示用) |
 | surface | 変換結果として表示する表層 |
-| pronunciation | 読み(カタカナ)。空の場合は `surface` から推定する |
+| pronunciation | 指定読み（ひらがな・カタカナ・長音のみ）。空の場合は `surface` から推定する |
 
 リスト固有の列と補足は[リスト別の列説明](docs/wordlists.md)を参照。
 

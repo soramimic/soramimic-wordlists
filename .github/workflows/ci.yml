@@ -21,6 +21,11 @@ jobs:
       - name: Validate CSVs
         run: python tools/validate_csvs.py
 
+      - name: Validate supplied pronunciations
+        run: |
+          python tools/pronunciation.py --check
+          python -m unittest tools/test_pronunciation.py
+
       - name: Validate reviewed descriptions
         run: |
           python tools/entry_corrections.py --check
