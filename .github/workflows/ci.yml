@@ -23,6 +23,11 @@ jobs:
       - name: Validate CSVs
         run: python tools/validate_csvs.py
 
+      - name: Validate supplied pronunciations
+        run: |
+          python tools/pronunciation.py --check
+          python -m unittest tools/test_pronunciation.py
+
       - name: Test automatic subscriber snapshot safeguards
         run: python -m unittest tools/test_check_subscriber_snapshots.py
 

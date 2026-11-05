@@ -79,6 +79,16 @@ python3 tools/enrich_player_descriptions_openai.py football --apply --cache-only
 
 ## 検証
 
+発音列の指定読みは、ひらがな・カタカナ・長音だけにそろえます。表示名の中黒や空白は
+発音列から除き、英数字・漢字を含む名前の確認済みの読みは
+`tools/pronunciation_sources.jsonl` に出典とともに記録します。共有CSV書き込み処理と
+ポケモン更新器でも反映し、未知の非カナを含む読みは推定せず修正を求めます。
+
+```bash
+python3 tools/pronunciation.py
+python3 tools/pronunciation.py --check
+```
+
 確認済みの名称・読み・所属・所在地などは `tools/entry_corrections.jsonl` に記録する。
 修正内容と出典を保持し、通常の更新でも同じIDの各表記へ適用する。
 

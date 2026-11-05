@@ -76,6 +76,9 @@ def apply_entries(rows, columns, entries):
             for column in ("usage_notice", "usage_terms_page"):
                 if row.get(column) in (None, "NA"):
                     row[column] = entry.get(column, "")
+    from pronunciation import normalize_rows
+
+    normalize_rows("scientist", result)
     return result
 
 
